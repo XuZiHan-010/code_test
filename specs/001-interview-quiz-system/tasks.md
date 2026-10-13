@@ -237,7 +237,7 @@ description: "面试题答题系统 1.0 的任务清单"
 - [ ] T089 [P] 逐页检查加载中、空数据和出错三种状态及手机宽度下的布局：`src/app/practice/`、`src/app/attempts/`、`src/app/mistakes/`、`src/app/notebook/`；用最长的章节 L2（71 题）检查 `src/components/quiz/QuestionOverview.tsx` 的题目概览和跳题
 - [ ] T090 [P] 安全复查并修正：`src/app/api/` 下每个修改类接口都校验 `Origin` 且都调用 `requireUser`；每个查询都带当前用户条件；会话 Cookie 的属性正确；日志和错误响应中不出现密码、会话令牌和 `DEEPSEEK_API_KEY`
 - [ ] T091 按 `specs/001-interview-quiz-system/quickstart.md` 逐条执行验证场景 1 至 8，并完成“上线前的人工检查”表中的四项；记录不符合预期的地方并修正
-- [ ] T092 更新 `CLAUDE.md` 的“当前状态”和“命令”两节，使其与实际的脚本和目录一致
+- [X] T092 更新 `CLAUDE.md` 的“当前状态”和“命令”两节，使其与实际的脚本和目录一致
 - [ ] T093 部署到 Railway：添加 PostgreSQL 并在应用服务中引用 `DATABASE_URL`；设置 `GRADER=deepseek`、`DEEPSEEK_API_KEY`、`CONTENT_REQUIRE_ALL=1`；预部署命令设为 `npm run db:migrate`；健康检查路径设为 `/api/health`；部署后在线上重做 `quickstart.md` 的场景 1 和场景 5。本任务需要项目所有者的 Railway 账号和 DeepSeek 密钥
 
 ---
