@@ -104,7 +104,9 @@ function main(): void {
 
   const totalChapters = parsed.reduce((n, t) => n + t.chapters.length, 0);
   const totalPoints = parsed.reduce((n, t) => n + t.points.length, 0);
-  const typedChapters = typed.reduce((n, f) => n + Object.keys(f.chapters).length, 0);
+  const allTypedChapters = typed.flatMap((f) => Object.values(f.chapters));
+  const typedChapters = allTypedChapters.length;
+  const approvedChapters = allTypedChapters.filter((c) => c.status === "approved").length;
   const { bank } = result;
   const byType = (type: string) => bank.questions.filter((q) => q.type === type).length;
 
@@ -112,8 +114,8 @@ function main(): void {
     `题库：${topics.length} 个专题，${totalChapters} 章，${totalPoints} 个知识点。`,
   );
   console.log(
-    `已生成题型的章节 ${typedChapters} 个，其中通过抽查 ${bank.chapters.length} 个；` +
-      `可发布 ${bank.questions.length} 题（单选 ${byType("single")}，多选 ${byType("multiple")}，简答 ${byType("short")}）。`,
+    `已生成题型的章节 ${typedChapters} 个，其中通过抽查 ${approvedChapters} 个；` +
+      `本次输出 ${bank.chapters.length} 章 ${bank.questions.length} 题（单选 ${byType("single")}，多选 ${byType("multiple")}，简答 ${byType("short")}）。`,
   );
   console.log(`校验通过，${result.warnings.length} 个警告。`);
   if (includeDrafts) {

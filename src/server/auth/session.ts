@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { getDb } from "@/server/db/client";
 import { sessions, users } from "@/server/db/schema";
 
-export const SESSION_COOKIE = "quiz_session";
+export { SESSION_COOKIE } from "@/lib/session-cookie";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 /** 会话有效期：创建或顺延后 30 天 */

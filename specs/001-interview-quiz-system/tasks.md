@@ -70,12 +70,12 @@ description: "面试题答题系统 1.0 的任务清单"
 - [X] T021 创建 `src/server/db/client.ts`（连接池）和 `tests/integration/setup.ts`（运行前对 `quiz_test` 执行迁移，每个测试前清空六张表）
 - [X] T022 [P] 在 `tests/integration/auth.test.ts` 中写账号测试：注册成功并登录；用户名大小写不同视为重复；用户名不满足“3 到 20 个字符，允许字母、数字、下划线和中文”被拒；密码不满足“8 到 72 个字符”被拒；库中的 `password_hash` 不等于明文且能通过 argon2 校验；登录成功与失败（错误信息不区分用户名还是密码）；退出后会话失效；过期会话无效；剩余不足 15 天的会话访问后顺延到 30 天
 - [X] T023 在 `src/server/auth/password.ts`（argon2id 哈希与校验）、`src/server/auth/session.ts`（生成 32 字节随机令牌，库中存 SHA-256，有效期 30 天，剩余不足 15 天时顺延，校验与删除）、`src/server/auth/service.ts`（注册、登录、退出，含用户名和密码规则）中实现账号模块
-- [ ] T024 [P] 创建 `src/server/http/api.ts`（统一的错误响应 `{ error: { code, message } }`、JSON 解析、对修改类请求校验 `Origin`、`requireUser` 取当前用户否则 401）和 `src/server/http/rate-limit.ts`（进程内按键计数的滑动窗口限流）
-- [ ] T025 实现账号接口 `src/app/api/auth/register/route.ts`、`src/app/api/auth/login/route.ts`、`src/app/api/auth/logout/route.ts`，状态码和错误码见 `contracts/http-api.md`；会话 Cookie 为 HttpOnly、SameSite=Lax，生产环境加 Secure；登录按来源地址限制 10 次 / 10 分钟，注册 5 次 / 小时
-- [ ] T026 创建 `src/server/auth/current-user.ts`：从 Cookie 读取并校验会话；供页面使用的 `requireUserOrRedirect()` 在未登录时重定向到 `/login?next=<原地址>`，`next` 只接受站内相对路径
-- [ ] T027 [P] 创建登录页 `src/app/(auth)/login/page.tsx` 和注册页 `src/app/(auth)/register/page.tsx`：表单、显示接口返回的中文错误、成功后跳转到 `next` 或 `/`
-- [ ] T028 [P] 创建页面外壳 `src/app/layout.tsx`、`src/app/globals.css` 和导航 `src/components/AppNav.tsx`（做题模式、错题、错题本、当前用户名、退出）；简体中文；手机宽度优先
-- [ ] T029 [P] 实现 `src/app/api/health/route.ts`：题库已加载且数据库可连接时返回 200 `{ "status": "ok" }`，否则 503；不需要登录
+- [X] T024 [P] 创建 `src/server/http/api.ts`（统一的错误响应 `{ error: { code, message } }`、JSON 解析、对修改类请求校验 `Origin`、`requireUser` 取当前用户否则 401）和 `src/server/http/rate-limit.ts`（进程内按键计数的滑动窗口限流）
+- [X] T025 实现账号接口 `src/app/api/auth/register/route.ts`、`src/app/api/auth/login/route.ts`、`src/app/api/auth/logout/route.ts`，状态码和错误码见 `contracts/http-api.md`；会话 Cookie 为 HttpOnly、SameSite=Lax，生产环境加 Secure；登录按来源地址限制 10 次 / 10 分钟，注册 5 次 / 小时
+- [X] T026 创建 `src/server/auth/current-user.ts`：从 Cookie 读取并校验会话；供页面使用的 `requireUserOrRedirect()` 在未登录时重定向到 `/login?next=<原地址>`，`next` 只接受站内相对路径
+- [X] T027 [P] 创建登录页 `src/app/(auth)/login/page.tsx` 和注册页 `src/app/(auth)/register/page.tsx`：表单、显示接口返回的中文错误、成功后跳转到 `next` 或 `/`
+- [X] T028 [P] 创建页面外壳 `src/app/layout.tsx`、`src/app/globals.css` 和导航 `src/components/AppNav.tsx`（做题模式、错题、错题本、当前用户名、退出）；简体中文；手机宽度优先
+- [X] T029 [P] 实现 `src/app/api/health/route.ts`：题库已加载且数据库可连接时返回 200 `{ "status": "ok" }`，否则 503；不需要登录
 
 **Checkpoint**: 内容流水线跑通且试点专题已通过抽查；可以注册、登录、退出；`npm run content:build` 和 `npm test` 通过
 
@@ -91,29 +91,29 @@ description: "面试题答题系统 1.0 的任务清单"
 
 > 先写这些测试并确认失败，再写实现
 
-- [ ] T030 [P] [US1] 在 `tests/unit/grading-choice.test.ts` 中写选择题判分测试：单选对与错；多选全对、少选、多选、错选；没有选任何选项为 `unanswered`
-- [ ] T031 [P] [US1] 在 `tests/unit/grader.test.ts` 中写评分器测试：假评分器对“【对】”“【错】”“【失败】”开头和其他答案的四种返回；DeepSeek 评分器在接口返回正常 JSON、空内容、非 JSON、`verdict` 取值非法、超时这五种情况下分别成功或抛出错误（接口调用用替身，不联网）
-- [ ] T032 [P] [US1] 在 `tests/integration/attempts.test.ts` 中写作答测试：开始作答固定题目列表和顺序；保存答案后可覆盖；单选题保存多个选项被拒；简答题超过 2000 字被拒；去掉首尾空白后为空的简答题视为未答；有未答题时不带确认交卷返回未答数量，带确认则成功；交卷后选择题立即有判定、简答题为 `pending`；正确率为判对题数除以总题数且未答计入分母；交卷后再保存或再交卷被拒；10 分钟内第 11 次交卷被限流
-- [ ] T033 [P] [US1] 在 `tests/integration/grading-runner.test.ts` 中写评分执行器测试（使用假评分器）：`pending` 的题评出后写入判定和评语，所属作答的 `pending_count` 减一、判对时 `correct_count` 加一；评分失败时保持 `pending`、`grading_tries` 加一、`next_retry_at` 按 1、2、5、15、30 分钟退避；未到 `next_retry_at` 的题不被领取；达到每日上限时不领取
-- [ ] T034 [P] [US1] 在 `tests/integration/api-attempts.test.ts` 中写接口契约测试：`GET /api/attempts/{id}` 对进行中的作答返回的 JSON 中不出现 `correct`、`referenceAnswer`、`citations`、`verdict`、`feedback` 任何一个键；未登录返回 401；访问他人的作答返回 404；对进行中的作答请求结果返回 409；缺少或错误的 `Origin` 的修改请求返回 403
+- [X] T030 [P] [US1] 在 `tests/unit/grading-choice.test.ts` 中写选择题判分测试：单选对与错；多选全对、少选、多选、错选；没有选任何选项为 `unanswered`
+- [X] T031 [P] [US1] 在 `tests/unit/grader.test.ts` 中写评分器测试：假评分器对“【对】”“【错】”“【失败】”开头和其他答案的四种返回；DeepSeek 评分器在接口返回正常 JSON、空内容、非 JSON、`verdict` 取值非法、超时这五种情况下分别成功或抛出错误（接口调用用替身，不联网）
+- [X] T032 [P] [US1] 在 `tests/integration/attempts.test.ts` 中写作答测试：开始作答固定题目列表和顺序；保存答案后可覆盖；单选题保存多个选项被拒；简答题超过 2000 字被拒；去掉首尾空白后为空的简答题视为未答；有未答题时不带确认交卷返回未答数量，带确认则成功；交卷后选择题立即有判定、简答题为 `pending`；正确率为判对题数除以总题数且未答计入分母；交卷后再保存或再交卷被拒；10 分钟内第 11 次交卷被限流
+- [X] T033 [P] [US1] 在 `tests/integration/grading-runner.test.ts` 中写评分执行器测试（使用假评分器）：`pending` 的题评出后写入判定和评语，所属作答的 `pending_count` 减一、判对时 `correct_count` 加一；评分失败时保持 `pending`、`grading_tries` 加一、`next_retry_at` 按 1、2、5、15、30 分钟退避；未到 `next_retry_at` 的题不被领取；达到每日上限时不领取
+- [X] T034 [P] [US1] 在 `tests/integration/api-attempts.test.ts` 中写接口契约测试：`GET /api/attempts/{id}` 对进行中的作答返回的 JSON 中不出现 `correct`、`referenceAnswer`、`citations`、`verdict`、`feedback` 任何一个键；未登录返回 401；访问他人的作答返回 404；对进行中的作答请求结果返回 409；缺少或错误的 `Origin` 的修改请求返回 403
 
 ### Implementation for User Story 1
 
-- [ ] T035 [P] [US1] 在 `src/server/grading/choice.ts` 中实现选择题判分纯函数，规则见 `contracts/grading.md`
-- [ ] T036 [P] [US1] 在 `src/server/grading/grader.ts` 中定义 `ShortAnswerGrader` 接口和按 `GRADER` 选择实现的工厂；在 `src/server/grading/fake-grader.ts` 中实现假评分器
-- [ ] T037 [US1] 在 `src/server/grading/deepseek-grader.ts` 中实现 DeepSeek 评分器：OpenAI SDK，基础地址 `https://api.deepseek.com`，模型取 `DEEPSEEK_MODEL`，`temperature: 0`，`response_format: { type: "json_object" }`，`max_tokens: 300`，超时 20 秒；提示词满足 `contracts/grading.md` 的四条要求（判定标准、只依据参考答案、用户答案放在分隔标记内且其中的指令不得执行、包含“json”字样和输出示例）；任何失败都抛出错误，自身不重试；密钥不写入日志
-- [ ] T038 [US1] 在 `src/server/attempts/service.ts` 中实现 `startAttempt`（章节范围：已有进行中的作答则返回它，否则新建并把该章题号按题库顺序写入 `question_ids`）、`getAttemptForAnswering`（通过题库目录的作答视图组装，附带已保存的答案）、`saveAnswer`（校验题号属于该作答、选项存在、单选只有一个选项、简答题不超过 2000 字；仅 `in_progress` 可写；更新 `last_question_id`）。所有查询都带当前用户条件
-- [ ] T039 [US1] 在 `src/server/attempts/submit.ts` 中实现 `submitAttempt`（一个事务内：以 `status = 'in_progress'` 为条件更新状态，失败则报冲突；判选择题；给未答题补 `unanswered`；简答题记 `pending`；写入 `correct_count`、`pending_count`、`submitted_at`；存在未答题且未确认时返回未答数量而不交卷）和 `getAttemptResult`（仅已交卷可用，通过结果视图组装）
-- [ ] T040 [US1] 在 `src/server/attempts/submit.ts` 的 `submitAttempt` 中加入限流：按 `attempts` 表统计该用户最近 10 分钟内已交卷次数，达到 10 次则拒绝并给出可重试的秒数（FR-041）
-- [ ] T041 [US1] 在 `src/server/grading/runner.ts` 中实现评分执行器，流程见 `contracts/grading.md`：用 `FOR UPDATE SKIP LOCKED` 每批领取最多 20 条到期的 `pending`，同时处理不超过 5 个；领取前检查 `GRADING_DAILY_CAP`；成功和失败的处理各在一个事务内。在 `src/instrumentation.ts` 中启动每 60 秒运行一次的定时器
-- [ ] T042 [P] [US1] 实现接口 `src/app/api/attempts/route.ts`（POST）、`src/app/api/attempts/[id]/route.ts`（GET）、`src/app/api/attempts/[id]/answers/[questionId]/route.ts`（PUT），状态码见 `contracts/http-api.md`
-- [ ] T043 [US1] 实现接口 `src/app/api/attempts/[id]/submit/route.ts`（POST，响应发出后用 `after` 触发一次评分执行器）和 `src/app/api/attempts/[id]/result/route.ts`（GET），状态码见 `contracts/http-api.md`
-- [ ] T044 [P] [US1] 创建专题列表页 `src/app/practice/page.tsx`：按专栏分组列出专题、章节数和题数
-- [ ] T045 [P] [US1] 创建章节列表页 `src/app/practice/[topic]/page.tsx`：每章显示标题、题数、原文标题和链接，以及“开始”按钮（调用 `POST /api/attempts` 后进入答题页）
-- [ ] T046 [P] [US1] 创建答题组件 `src/components/quiz/QuestionCard.tsx`（单选只能选一个；多选标明“多选题”并可选多个；简答题文本框带 2000 字计数和上限）、`src/components/quiz/QuestionOverview.tsx`（题目概览，标出已答和未答，点击跳题）、`src/components/quiz/SubmitDialog.tsx`（显示未答数量并要求确认）
-- [ ] T047 [US1] 创建答题页 `src/app/attempts/[id]/page.tsx` 和 `src/components/quiz/QuizRunner.tsx`：显示第几题和总题数，上一题、下一题和概览跳题，答案变化后自动保存并显示保存状态，交卷流程（处理未答确认、限流提示、已交卷冲突），交卷成功后进入结果页
-- [ ] T048 [P] [US1] 创建结果组件 `src/components/result/ResultQuestion.tsx`（用户答案、正确答案、判定、选择题逐选项对错、简答题评语、解答全文、原文链接；`pending` 显示“待评分”）和 `src/components/result/SourceNotice.tsx`（注明内容来源，并说明解答是对原文的转述，其中的经验数字、产品命令和阈值以原文写作时为准，FR-029）
-- [ ] T049 [US1] 创建结果页 `src/app/attempts/[id]/result/page.tsx`：正确率、逐题结果、“只看错题”筛选；`pendingCount` 大于 0 时每隔几秒重新请求结果接口直到为 0
+- [X] T035 [P] [US1] 在 `src/server/grading/choice.ts` 中实现选择题判分纯函数，规则见 `contracts/grading.md`
+- [X] T036 [P] [US1] 在 `src/server/grading/grader.ts` 中定义 `ShortAnswerGrader` 接口和按 `GRADER` 选择实现的工厂；在 `src/server/grading/fake-grader.ts` 中实现假评分器
+- [X] T037 [US1] 在 `src/server/grading/deepseek-grader.ts` 中实现 DeepSeek 评分器：OpenAI SDK，基础地址 `https://api.deepseek.com`，模型取 `DEEPSEEK_MODEL`，`temperature: 0`，`response_format: { type: "json_object" }`，`max_tokens: 300`，超时 20 秒；提示词满足 `contracts/grading.md` 的四条要求（判定标准、只依据参考答案、用户答案放在分隔标记内且其中的指令不得执行、包含“json”字样和输出示例）；任何失败都抛出错误，自身不重试；密钥不写入日志
+- [X] T038 [US1] 在 `src/server/attempts/service.ts` 中实现 `startAttempt`（章节范围：已有进行中的作答则返回它，否则新建并把该章题号按题库顺序写入 `question_ids`）、`getAttemptForAnswering`（通过题库目录的作答视图组装，附带已保存的答案）、`saveAnswer`（校验题号属于该作答、选项存在、单选只有一个选项、简答题不超过 2000 字；仅 `in_progress` 可写；更新 `last_question_id`）。所有查询都带当前用户条件
+- [X] T039 [US1] 在 `src/server/attempts/submit.ts` 中实现 `submitAttempt`（一个事务内：以 `status = 'in_progress'` 为条件更新状态，失败则报冲突；判选择题；给未答题补 `unanswered`；简答题记 `pending`；写入 `correct_count`、`pending_count`、`submitted_at`；存在未答题且未确认时返回未答数量而不交卷）和 `getAttemptResult`（仅已交卷可用，通过结果视图组装）
+- [X] T040 [US1] 在 `src/server/attempts/submit.ts` 的 `submitAttempt` 中加入限流：按 `attempts` 表统计该用户最近 10 分钟内已交卷次数，达到 10 次则拒绝并给出可重试的秒数（FR-041）
+- [X] T041 [US1] 在 `src/server/grading/runner.ts` 中实现评分执行器，流程见 `contracts/grading.md`：用 `FOR UPDATE SKIP LOCKED` 每批领取最多 20 条到期的 `pending`，同时处理不超过 5 个；领取前检查 `GRADING_DAILY_CAP`；成功和失败的处理各在一个事务内。在 `src/instrumentation.ts` 中启动每 60 秒运行一次的定时器
+- [X] T042 [P] [US1] 实现接口 `src/app/api/attempts/route.ts`（POST）、`src/app/api/attempts/[id]/route.ts`（GET）、`src/app/api/attempts/[id]/answers/[questionId]/route.ts`（PUT），状态码见 `contracts/http-api.md`
+- [X] T043 [US1] 实现接口 `src/app/api/attempts/[id]/submit/route.ts`（POST，响应发出后用 `after` 触发一次评分执行器）和 `src/app/api/attempts/[id]/result/route.ts`（GET），状态码见 `contracts/http-api.md`
+- [X] T044 [P] [US1] 创建专题列表页 `src/app/practice/page.tsx`：按专栏分组列出专题、章节数和题数
+- [X] T045 [P] [US1] 创建章节列表页 `src/app/practice/[topic]/page.tsx`：每章显示标题、题数、原文标题和链接，以及“开始”按钮（调用 `POST /api/attempts` 后进入答题页）
+- [X] T046 [P] [US1] 创建答题组件 `src/components/quiz/QuestionCard.tsx`（单选只能选一个；多选标明“多选题”并可选多个；简答题文本框带 2000 字计数和上限）、`src/components/quiz/QuestionOverview.tsx`（题目概览，标出已答和未答，点击跳题）、`src/components/quiz/SubmitDialog.tsx`（显示未答数量并要求确认）
+- [X] T047 [US1] 创建答题页 `src/app/attempts/[id]/page.tsx` 和 `src/components/quiz/QuizRunner.tsx`：显示第几题和总题数，上一题、下一题和概览跳题，答案变化后自动保存并显示保存状态，交卷流程（处理未答确认、限流提示、已交卷冲突），交卷成功后进入结果页
+- [X] T048 [P] [US1] 创建结果组件 `src/components/result/ResultQuestion.tsx`（用户答案、正确答案、判定、选择题逐选项对错、简答题评语、解答全文、原文链接；`pending` 显示“待评分”）和 `src/components/result/SourceNotice.tsx`（注明内容来源，并说明解答是对原文的转述，其中的经验数字、产品命令和阈值以原文写作时为准，FR-029）
+- [X] T049 [US1] 创建结果页 `src/app/attempts/[id]/result/page.tsx`：正确率、逐题结果、“只看错题”筛选；`pendingCount` 大于 0 时每隔几秒重新请求结果接口直到为 0
 
 **Checkpoint**: 可以登录、选章、作答、交卷并看到结果。此时已是可用的最小版本
 
@@ -194,8 +194,8 @@ description: "面试题答题系统 1.0 的任务清单"
 
 **Independent Test**: 登录后核对首页有两个模式入口；进入对战模式只看到“尚未开放”的说明；进入做题模式到达专题列表（`quickstart.md` 场景 5）
 
-- [ ] T069 [P] [US5] 创建首页 `src/app/page.tsx`：需要登录；提供“做题模式”（进入 `/practice`）和“对战模式”（进入 `/battle`）两个入口（FR-043）
-- [ ] T070 [P] [US5] 创建对战占位页 `src/app/battle/page.tsx`：需要登录；只显示该模式尚未开放的说明和返回做题模式的链接；不包含任何对战功能或数据结构（FR-044、原则 VI）
+- [X] T069 [P] [US5] 创建首页 `src/app/page.tsx`：需要登录；提供“做题模式”（进入 `/practice`）和“对战模式”（进入 `/battle`）两个入口（FR-043）
+- [X] T070 [P] [US5] 创建对战占位页 `src/app/battle/page.tsx`：需要登录；只显示该模式尚未开放的说明和返回做题模式的链接；不包含任何对战功能或数据结构（FR-044、原则 VI）
 
 **Checkpoint**: 五个用户故事全部可用
 

@@ -1,26 +1,162 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * 视觉方向：一张试卷。米色纸面、墨色文字、红笔批改。
+ * 题号像印在卷面上的编号，题目概览像答题卡上的涂卡格，成绩用红笔圈出。
+ * 界面是中文，所以用各平台自带的宋体和黑体，不加载网络字体。
+ */
+@theme {
+  --color-paper: #f4efe4;
+  --color-paper-deep: #e9e1d0;
+  --color-card: #fffdf7;
+  --color-ink: #1d1b18;
+  --color-ink-soft: #5a554c;
+  --color-ink-faint: #8d8779;
+  --color-rule: #d8cfbd;
+  --color-pen: #bf3220;
+  --color-pen-soft: #f7e3de;
+  --color-pass: #2a764a;
+  --color-pass-soft: #deeee4;
+  --color-blue: #1f3d63;
+  --color-blue-soft: #e2e9f2;
+  --color-wait: #94660f;
+  --color-wait-soft: #f6ebd0;
+
+  --font-serif: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "STSong", "SimSun",
+    Georgia, serif;
+  --font-sans: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", "Noto Sans CJK SC",
+    system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-paper);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  /* 纸面上极淡的横线 */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 35px,
+    color-mix(in srgb, var(--color-rule) 38%, transparent) 35px,
+    color-mix(in srgb, var(--color-rule) 38%, transparent) 36px
+  );
+  background-attachment: local;
+}
+
+::selection {
+  background: var(--color-pen-soft);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .sheet {
+    @apply rounded-sm border border-rule bg-card;
+    box-shadow:
+      0 1px 0 var(--color-paper-deep),
+      0 10px 24px -18px rgb(60 45 20 / 0.45);
+  }
+
+  .title {
+    @apply font-serif text-2xl font-bold tracking-wide text-ink sm:text-3xl;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.2em] text-ink-faint uppercase;
+  }
+
+  .btn {
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-sm border border-ink bg-card px-4 py-2 text-sm font-medium text-ink transition-colors duration-150 select-none;
+  }
+  .btn:hover {
+    @apply bg-paper-deep;
+  }
+  .btn:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+  .btn-primary {
+    @apply border-ink bg-ink text-card;
+  }
+  .btn-primary:hover {
+    @apply bg-blue border-blue;
+  }
+  .btn-pen {
+    @apply border-pen text-pen;
+  }
+  .btn-pen:hover {
+    @apply bg-pen-soft;
+  }
+  .btn-quiet {
+    @apply border-transparent bg-transparent text-ink-soft underline-offset-4;
+  }
+  .btn-quiet:hover {
+    @apply bg-transparent text-ink underline;
+  }
+
+  .field {
+    @apply block min-h-11 w-full rounded-sm border border-rule bg-card px-3 py-2 text-base text-ink;
+  }
+  .field:focus {
+    @apply border-blue;
+  }
+
+  .link {
+    @apply text-blue underline decoration-rule underline-offset-4 transition-colors;
+  }
+  .link:hover {
+    @apply decoration-blue;
+  }
+
+  /* 印在卷面上的题号、章节编号 */
+  .stamp {
+    @apply inline-block rounded-sm border border-rule bg-paper px-1.5 py-0.5 font-mono text-xs leading-5 text-ink-soft;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-sm px-2 py-0.5 text-xs font-medium;
+  }
+  .tag-pass {
+    @apply bg-pass-soft text-pass;
+  }
+  .tag-pen {
+    @apply bg-pen-soft text-pen;
+  }
+  .tag-wait {
+    @apply bg-wait-soft text-wait;
+  }
+  .tag-blue {
+    @apply bg-blue-soft text-blue;
+  }
+  .tag-plain {
+    @apply bg-paper-deep text-ink-soft;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
 }
