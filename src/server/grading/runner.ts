@@ -3,6 +3,7 @@ import { getEnv } from "@/env";
 import { getCatalog } from "@/server/content/catalog";
 import { getDb } from "@/server/db/client";
 import { attemptAnswers, attempts, type AnswerResponse } from "@/server/db/schema";
+import { recordVerdicts } from "@/server/mistakes/service";
 import { getGrader, type ShortAnswerGrader } from "./grader";
 
 // 流程见 specs/001-interview-quiz-system/contracts/grading.md 的“评分执行器”。
@@ -99,7 +100,7 @@ async function recordSuccess(
       .returning({ questionId: attemptAnswers.questionId });
     if (updated.length === 0) return;
 
-    await tx
+    const [attempt] = await tx
       .update(attempts)
       .set({
         pendingCount: sql`${attempts.pendingCount} - 1`,
@@ -107,7 +108,13 @@ async function recordSuccess(
           ? { correctCount: sql`coalesce(${attempts.correctCount}, 0) + 1` }
           : {}),
       })
-      .where(eq(attempts.id, claimed.attempt_id));
+      .where(eq(attempts.id, claimed.attempt_id))
+      .returning({ userId: attempts.userId });
+
+    // 简答题到这里才有最终判定，此时计入题目统计
+    if (attempt && verdict !== "unanswered") {
+      await recordVerdicts(tx, attempt.userId, [{ questionId: claimed.question_id, verdict }], now);
+    }
   });
 }
 

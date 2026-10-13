@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api-client";
 import { accuracyPercent } from "@/lib/labels";
+import { NotebookToggle } from "@/components/NotebookToggle";
 import type { AttemptResult } from "@/server/attempts/submit";
 import { ResultQuestion } from "./ResultQuestion";
 import { SourceNotice } from "./SourceNotice";
@@ -99,7 +100,11 @@ export function ResultView({ initial }: { initial: AttemptResult }) {
         <ol className="space-y-5">
           {shown.map(({ question, number }) => (
             <li key={question.id}>
-              <ResultQuestion question={question} number={number} />
+              <ResultQuestion
+                question={question}
+                number={number}
+                actions={<NotebookToggle questionId={question.id} initial={question.inNotebook} />}
+              />
             </li>
           ))}
         </ol>

@@ -58,9 +58,9 @@ interface ShortAnswerGrader {
 
 交卷后简答题的判定为 `pending`，由执行器逐条处理。
 
-1. **触发**：交卷响应发出后立即运行一次；另有定时器每 60 秒运行一次。
-2. **领取**：在事务中选出 `verdict = 'pending'` 且 `next_retry_at` 为空或已到期的行，使用 `FOR UPDATE SKIP LOCKED`，每批最多 20 条。同时处理的评分请求不超过 5 个。
-3. **每日上限**：领取前统计当天已评出的简答题数量，达到 `GRADING_DAILY_CAP`（默认 5000）则本轮不领取。
+1. **触发**：交卷成功后立即在后台运行一次；另有定时器每 60 秒运行一次。
+2. **领取**：选出 `verdict = 'pending'` 且 `next_retry_at` 为空或已到期的行，使用 `FOR UPDATE SKIP LOCKED`，每批最多 20 条，并在同一条语句里把它们的 `next_retry_at` 推后 2 分钟作为保留时间。这样评分期间不需要一直占着事务；执行器中途崩溃时，这些题在保留时间过后会被重新领取。同时处理的评分请求不超过 5 个。
+3. **每日上限**：领取前统计当天（按 UTC 的自然日）已评出的简答题数量，达到 `GRADING_DAILY_CAP`（默认 5000）则本轮不领取。
 4. **成功**：在一个事务里写入 `verdict`、`feedback`、`graded_at`；更新该用户该题的题目统计；所属作答的 `pending_count` 减一，判对时 `correct_count` 加一。
 5. **失败**：`grading_tries` 加一，`next_retry_at` 设为当前时间加退避间隔。间隔依次为 1、2、5、15、30 分钟，之后保持 30 分钟。判定保持 `pending`，不设放弃上限。
 

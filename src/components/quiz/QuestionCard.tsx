@@ -1,5 +1,6 @@
 "use client";
 
+import { NotebookToggle } from "@/components/NotebookToggle";
 import { QUESTION_TYPE_LABEL } from "@/lib/labels";
 import type { AnsweringQuestion } from "@/server/attempts/service";
 import type { AnswerResponse } from "@/server/db/schema";
@@ -12,15 +13,19 @@ export function QuestionCard({
   number,
   total,
   response,
+  inNotebook,
   disabled,
   onChange,
   onBlur,
+  onNotebookChange,
 }: {
   question: AnsweringQuestion;
   number: number;
   total: number;
   response: AnswerResponse | null;
+  inNotebook: boolean;
   disabled: boolean;
+  onNotebookChange: (inNotebook: boolean) => void;
   onChange: (response: AnswerResponse | null) => void;
   onBlur: () => void;
 }) {
@@ -52,6 +57,13 @@ export function QuestionCard({
         {question.type === "multiple" && (
           <span className="text-xs text-ink-soft">选出所有正确的选项，多选、少选、错选都不得分</span>
         )}
+        <span className="ml-auto">
+          <NotebookToggle
+            questionId={question.id}
+            initial={inNotebook}
+            onChange={onNotebookChange}
+          />
+        </span>
       </header>
 
       <h2 className="mb-6 font-serif text-lg leading-8 font-bold sm:text-xl">{question.stem}</h2>

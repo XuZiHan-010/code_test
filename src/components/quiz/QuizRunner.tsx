@@ -31,6 +31,9 @@ export function QuizRunner({ attempt }: { attempt: InProgress }) {
     const last = questions.findIndex((q) => q.id === attempt.lastQuestionId);
     return last >= 0 ? last : 0;
   });
+  const [notebook, setNotebook] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(questions.map((q) => [q.id, q.inNotebook])),
+  );
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [notice, setNotice] = useState<string | null>(null);
   const [ended, setEnded] = useState(false);
@@ -99,6 +102,30 @@ export function QuizRunner({ attempt }: { attempt: InProgress }) {
     void flush();
     setIndex(nextIndex);
     window.scrollTo({ top: 0, behavior: "smooth" });
+    // 记下翻到了哪一题，下次回来从这里接着做。没记上不影响作答，所以不处理失败
+    if (!ended) {
+      void api(`/api/attempts/${attempt.id}/position`, {
+        method: "PUT",
+        body: { questionId: questions[nextIndex].id },
+      });
+    }
+  }
+
+  async function abandon() {
+    const sure = window.confirm(
+      "放弃这次作答？已经填的答案会作废，不计入正确率和错题，之后可以重新开始。",
+    );
+    if (!sure) return;
+    setSubmitting(true);
+    dirty.current.clear();
+    const result = await api(`/api/attempts/${attempt.id}/abandon`, { method: "POST" });
+    if (!result.ok && result.code !== "attempt_not_in_progress") {
+      setSubmitting(false);
+      setNotice(result.message);
+      return;
+    }
+    router.replace(attempt.scope.type === "chapter" ? "/practice" : "/notebook");
+    router.refresh();
   }
 
   async function submit(confirmUnanswered: boolean) {
@@ -196,6 +223,8 @@ export function QuizRunner({ attempt }: { attempt: InProgress }) {
         number={index + 1}
         total={questions.length}
         response={responses[question.id] ?? null}
+        inNotebook={notebook[question.id] ?? false}
+        onNotebookChange={(value) => setNotebook((prev) => ({ ...prev, [question.id]: value }))}
         disabled={ended || submitting}
         onChange={change}
         onBlur={() => void flush()}
@@ -218,7 +247,15 @@ export function QuizRunner({ attempt }: { attempt: InProgress }) {
       <QuestionOverview items={overview} currentIndex={index} onJump={jump} />
 
       <div className="flex flex-wrap items-center justify-end gap-4">
-        <p className="text-xs text-ink-faint">答案会自动保存，可以随时离开，下次接着做。</p>
+        <p className="mr-auto text-xs text-ink-faint">答案会自动保存，可以随时离开，下次接着做。</p>
+        <button
+          type="button"
+          className="btn btn-quiet"
+          onClick={() => void abandon()}
+          disabled={ended || submitting}
+        >
+          放弃并重新开始
+        </button>
         <button
           type="button"
           className="btn btn-pen"

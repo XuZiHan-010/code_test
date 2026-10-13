@@ -19,7 +19,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 当前状态
 
-仓库里只有题库、需求和设计文档，还没有应用代码，也不是 git 仓库。
+五个用户故事的功能都已实现并有测试；题目内容只生成了试点专题（AI 编程，65 题，状态是 `draft`），尚未部署。剩余工作见 `specs/001-interview-quiz-system/tasks.md` 里未勾选的任务：其余 14 个专题的题型生成与抽查、端到端测试、评分一致性评测、上线前检查、部署。
 
 需求走 Spec Kit 流程（已 `specify init`，脚本用 PowerShell），文档都在 `specs/001-interview-quiz-system/`：
 
@@ -29,30 +29,49 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `docs/prd.md` 是较早的 PRD 草稿，已被上面的文档取代，仅作历史参考。
 
-## 技术栈（已在计划中确定）
+## 技术栈与结构
 
-- 一个 Next.js 全栈应用（App Router，TypeScript，Node.js 24），包管理用 npm；界面用 Tailwind CSS。
+- 一个 Next.js 16 全栈应用（App Router，TypeScript，Node.js 24），包管理用 npm；界面用 Tailwind CSS 4。
 - PostgreSQL 加 Drizzle ORM；数据库只存用户数据，通过题号引用题目。
-- 题目内容不进数据库：构建脚本把 `interview-practice/` 的 Markdown 和 `content/typed/` 的题型数据合并、校验，生成 `content/dist/bank.json`，应用启动时读入内存。校验失败则构建失败。
-- 简答题评分调用 DeepSeek 接口（OpenAI 兼容格式）；开发和测试用假评分器（`GRADER=fake`）。
 - 测试用 Vitest；涉及数据库的测试连本地 Docker 里的真实 PostgreSQL，不用模拟。
-- 业务规则放在 `src/server/`，页面和接口路由只做校验、调用和渲染。
+
+业务规则都在 `src/server/`，页面和接口路由只做校验、调用和渲染：
+
+- `content/`：解析 Markdown 题库（`parser`）、校验规则 V1–V14（`validator`）、合并（`build`）、运行时的只读题库（`catalog`）。题目对外只有两种形态：`getForAnswering`（交卷前，不含答案）和 `getWithAnswer`。**交卷前发给浏览器的数据只能来自前者**，`tests/integration/api-attempts.test.ts` 里有契约测试守着这一条。
+- `attempts/`：开始、保存、交卷、结果（`service`、`submit`），以及由作答记录推导的章节状态和成绩（`progress`）。
+- `grading/`：选择题判分；简答题评分器接口和两个实现（DeepSeek、假评分器）；评分执行器 `runner`。交卷时简答题先记为“待评分”，由执行器在后台评出，失败按退避间隔重试。
+- `mistakes/`、`notebook/`：错误次数统计与错题本。两者独立：前者是系统统计，后者由用户手动增删。
+- `auth/`：用户名加密码（argon2id）和服务端会话。`http/api.ts` 的 `handle` 给所有接口加上来源校验和统一的错误格式。
+
+题目内容不进数据库。`npm run content:build` 把 `interview-practice/` 的 Markdown 和 `content/typed/` 的题型数据合并、校验，生成 `content/dist/bank.json`（不提交），应用启动时读入内存。只有状态为 `approved` 的章节会进入；**章节状态只能由项目所有者在人工抽查后改为 `approved`**。给新章节出题用 `.claude/skills/generate-questions/`。
+
+页面在 `src/app/(app)/`（需要登录，带导航）和 `src/app/(auth)/`（登录、注册）。项目开启了 Next.js 的 Cache Components：读取会话的服务端组件必须放在 `<Suspense>` 里，每个页面都是“页面组件包一层 Suspense，里面的异步组件先调用 `requireUserOrRedirect()`”这个写法。Next.js 16 与旧版本差别较大，动框架相关的代码前先查 `node_modules/next/dist/docs/`（见 `AGENTS.md`）。
+
+界面的视觉约定（试卷风格的配色、`.sheet`、`.btn`、`.stamp`、`.tag` 等类）定义在 `src/app/globals.css`，新页面沿用它们。
 
 ## 命令
 
-以下是计划中的命令，脚手架还没搭。搭好后逐条核对并更新本节。
-
 ```powershell
-docker compose up -d db          # 启动本地 PostgreSQL
-npm run db:migrate               # 执行数据库迁移
+docker compose up -d db          # 启动本地 PostgreSQL（端口 54329，含 quiz_dev 和 quiz_test 两个库）
+Copy-Item .env.example .env      # 首次运行；默认 GRADER=fake，不需要 DeepSeek 密钥
+npm run db:migrate               # 对 .env 里的库执行迁移
 npm run content:build            # 解析题库、合并、校验，生成 bank.json
-npm run content:validate         # 只校验内容
-npm run dev                      # 本地运行
-npm run typecheck; npm run lint
-npm test                         # 单元测试加集成测试
-npx vitest run <文件路径> -t "<用例名>"   # 跑单个测试
-npm run e2e                      # 端到端冒烟流程
+npm run content:validate         # 只校验内容，不写文件
+npm run dev                      # 本地运行，http://localhost:3000
+npm run typecheck                # 先生成 Next.js 的路由类型，再跑 tsc
+npm run lint
+npm test                         # 单元测试加集成测试（集成测试需要本地 PostgreSQL 在运行）
+npm run test:unit                # 只跑单元测试，不需要数据库
+npx vitest run tests/integration/attempts.test.ts -t "<用例名>"   # 跑单个测试
+npm run db:generate              # 改了 src/server/db/schema.ts 之后生成迁移文件
+npm run build; npm start         # 生产构建与启动
 ```
+
+`npm run build` 会先执行 `content:build`。试点专题还是 `draft`，所以现在直接构建出来的题库是空的；本地要看到题目，先设 `$env:CONTENT_INCLUDE_DRAFTS = "1"` 再运行 `content:build` 或 `build`。这个变量只供本地开发，正式上线的构建要设 `CONTENT_REQUIRE_ALL=1`。
+
+假评分器按答案开头决定结果：`【对】` 判对，`【错】` 判错，`【失败】` 模拟评分服务出错，其余判错。
+
+`npm run e2e`（Playwright）和 `npm run eval:grading` 的脚本还没写。
 
 ## 题库 `interview-practice/`
 

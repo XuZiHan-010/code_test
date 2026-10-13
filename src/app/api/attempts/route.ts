@@ -3,18 +3,20 @@ import { z } from "zod";
 import { startAttempt } from "@/server/attempts/service";
 import { handle, readJson, requireUser } from "@/server/http/api";
 
-const bodySchema = z.object({
-  scope: z.literal("chapter"),
-  chapterId: z.string().min(1),
-});
+const bodySchema = z.discriminatedUnion("scope", [
+  z.object({ scope: z.literal("chapter"), chapterId: z.string().min(1) }),
+  z.object({ scope: z.literal("notebook") }),
+]);
 
 /** 开始一次作答，或取回该范围已有的进行中的作答 */
 export const POST = handle(async (request) => {
   const user = await requireUser(request);
   const body = await readJson(request, bodySchema);
-  const { attemptId, created } = await startAttempt(user.id, {
-    type: "chapter",
-    chapterId: body.chapterId,
-  });
+  const { attemptId, created } = await startAttempt(
+    user.id,
+    body.scope === "chapter"
+      ? { type: "chapter", chapterId: body.chapterId }
+      : { type: "notebook" },
+  );
   return NextResponse.json({ attemptId }, { status: created ? 201 : 200 });
 });

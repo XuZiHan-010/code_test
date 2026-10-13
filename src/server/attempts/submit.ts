@@ -11,6 +11,8 @@ import {
 import { AppError, notFound } from "@/server/errors";
 import { gradeChoice } from "@/server/grading/choice";
 import { kickGrading } from "@/server/grading/runner";
+import { getWrongCounts, recordVerdicts } from "@/server/mistakes/service";
+import { getMembership } from "@/server/notebook/service";
 import { describeScope, findAttempt, type ScopeView } from "./service";
 
 /** 同一用户在这段时间内最多交卷这么多次（FR-041） */
@@ -115,6 +117,18 @@ export async function submitAttempt(
         });
     }
 
+    // 选择题此刻就有了最终判定，计入题目统计；简答题等评分完成时再计入
+    await recordVerdicts(
+      tx,
+      userId,
+      judged.flatMap((j) =>
+        j.verdict === "correct" || j.verdict === "incorrect"
+          ? [{ questionId: j.questionId, verdict: j.verdict }]
+          : [],
+      ),
+      now,
+    );
+
     await tx
       .update(attempts)
       .set({
@@ -145,6 +159,10 @@ export async function getAttemptResult(userId: string, attemptId: string): Promi
     .from(attemptAnswers)
     .where(eq(attemptAnswers.attemptId, attempt.id));
   const byQuestion = new Map(rows.map((row) => [row.questionId, row]));
+  const [wrongCounts, inNotebook] = await Promise.all([
+    getWrongCounts(userId, attempt.questionIds),
+    getMembership(userId, attempt.questionIds),
+  ]);
 
   const questions: ResultQuestion[] = getCatalog()
     .getWithAnswer(attempt.questionIds)
@@ -160,8 +178,8 @@ export async function getAttemptResult(userId: string, attemptId: string): Promi
         feedback: row?.feedback ?? null,
         referenceAnswer: question.referenceAnswer,
         citations: question.citations,
-        inNotebook: false,
-        wrongCount: 0,
+        inNotebook: inNotebook.has(question.id),
+        wrongCount: wrongCounts.get(question.id) ?? 0,
       };
     });
 

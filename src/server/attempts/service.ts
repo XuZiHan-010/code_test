@@ -1,12 +1,13 @@
-import { and, eq } from "drizzle-orm";
+import { and, eq, isNull } from "drizzle-orm";
 import { getCatalog } from "@/server/content/catalog";
 import type { QuestionForAnswering } from "@/server/content/types";
 import { getDb, type DbOrTx } from "@/server/db/client";
 import { attemptAnswers, attempts, type AnswerResponse } from "@/server/db/schema";
 import { AppError, notFound } from "@/server/errors";
+import { getMembership, listItemIds } from "@/server/notebook/service";
 
 export type AttemptRow = typeof attempts.$inferSelect;
-export type AttemptScope = { type: "chapter"; chapterId: string };
+export type AttemptScope = { type: "chapter"; chapterId: string } | { type: "notebook" };
 
 export interface ScopeView {
   type: "chapter" | "notebook";
@@ -76,7 +77,11 @@ export function describeScope(attempt: AttemptRow): ScopeView {
   return { type: "notebook", chapterId: null, title: "错题本练习" };
 }
 
-async function findInProgress(userId: string, scope: AttemptScope): Promise<AttemptRow | undefined> {
+/** 该范围内进行中的作答（最多一份） */
+export async function findInProgress(
+  userId: string,
+  scope: AttemptScope,
+): Promise<AttemptRow | undefined> {
   const [row] = await getDb()
     .select()
     .from(attempts)
@@ -84,7 +89,9 @@ async function findInProgress(userId: string, scope: AttemptScope): Promise<Atte
       and(
         eq(attempts.userId, userId),
         eq(attempts.scopeType, scope.type),
-        eq(attempts.chapterId, scope.chapterId),
+        scope.type === "chapter"
+          ? eq(attempts.chapterId, scope.chapterId)
+          : isNull(attempts.chapterId),
         eq(attempts.status, "in_progress"),
       ),
     );
@@ -93,32 +100,46 @@ async function findInProgress(userId: string, scope: AttemptScope): Promise<Atte
 
 /**
  * 开始一次作答。该范围已有进行中的作答时返回它，不新建。
- * 题目列表和顺序在创建时固定。
+ * 题目列表和顺序在创建时固定：章节取题库顺序，错题本取当时的内容和加入顺序，
+ * 之后对错题本的增删不影响已经开始的这次练习。
  */
 export async function startAttempt(
   userId: string,
   scope: AttemptScope,
 ): Promise<{ attemptId: string; created: boolean }> {
-  const chapter = getCatalog().getChapter(scope.chapterId);
-  if (!chapter) throw new AppError("chapter_not_found", "没有找到这个章节", 404);
+  let chapterId: string | null = null;
+  if (scope.type === "chapter") {
+    if (!getCatalog().getChapter(scope.chapterId)) {
+      throw new AppError("chapter_not_found", "没有找到这个章节", 404);
+    }
+    chapterId = scope.chapterId;
+  }
 
   const existing = await findInProgress(userId, scope);
   if (existing) return { attemptId: existing.id, created: false };
+
+  const questionIds =
+    scope.type === "chapter"
+      ? getCatalog().getChapter(scope.chapterId)!.questionIds
+      : await listItemIds(userId);
+  if (scope.type === "notebook" && questionIds.length === 0) {
+    throw new AppError("notebook_empty", "错题本里还没有题目，先加几道题再来练习", 422);
+  }
 
   try {
     const [row] = await getDb()
       .insert(attempts)
       .values({
         userId,
-        scopeType: "chapter",
-        chapterId: chapter.id,
-        questionIds: chapter.questionIds,
-        totalCount: chapter.questionIds.length,
+        scopeType: scope.type,
+        chapterId,
+        questionIds,
+        totalCount: questionIds.length,
       })
       .returning({ id: attempts.id });
     return { attemptId: row.id, created: true };
   } catch (error) {
-    // 两个请求同时开始同一章：唯一索引保证只有一个成功，另一个取回已有的那份
+    // 两个请求同时开始同一范围：唯一索引保证只有一个成功，另一个取回已有的那份
     if (!isUniqueViolation(error)) throw error;
     const raced = await findInProgress(userId, scope);
     if (!raced) throw error;
@@ -141,6 +162,7 @@ export async function getAttemptForAnswering(
     .from(attemptAnswers)
     .where(eq(attemptAnswers.attemptId, attempt.id));
   const responses = new Map(saved.map((row) => [row.questionId, row.response]));
+  const inNotebook = await getMembership(userId, attempt.questionIds);
 
   return {
     id: attempt.id,
@@ -151,10 +173,35 @@ export async function getAttemptForAnswering(
       .getForAnswering(attempt.questionIds)
       .map((question) => ({
         ...question,
-        inNotebook: false,
+        inNotebook: inNotebook.has(question.id),
         response: responses.get(question.id) ?? null,
       })),
   };
+}
+
+/** 记下用户翻到的题目，用于下次回来时接着做。翻到一道题但没有作答时调用。 */
+export async function setPosition(
+  userId: string,
+  attemptId: string,
+  questionId: string,
+): Promise<void> {
+  const db = getDb();
+  const attempt = await findAttempt(db, userId, attemptId);
+  if (attempt.status !== "in_progress") throw notInProgress();
+  if (!attempt.questionIds.includes(questionId)) throw notFound("这道题不在这次作答里");
+  await db
+    .update(attempts)
+    .set({ lastQuestionId: questionId })
+    .where(and(eq(attempts.id, attempt.id), eq(attempts.status, "in_progress")));
+}
+
+/** 放弃一份进行中的作答。放弃后的作答不计入任何统计，用户可以重新开始。 */
+export async function abandonAttempt(userId: string, attemptId: string): Promise<void> {
+  await getDb().transaction(async (tx) => {
+    const attempt = await findAttempt(tx, userId, attemptId, { forUpdate: true });
+    if (attempt.status !== "in_progress") throw notInProgress();
+    await tx.update(attempts).set({ status: "abandoned" }).where(eq(attempts.id, attempt.id));
+  });
 }
 
 /** 按题型检查并规整答案。清空的答案规整为 null。 */

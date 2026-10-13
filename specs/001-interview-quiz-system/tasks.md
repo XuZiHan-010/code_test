@@ -129,15 +129,15 @@ description: "面试题答题系统 1.0 的任务清单"
 
 ### Tests for User Story 2
 
-- [ ] T050 [P] [US2] 在 `tests/integration/progress.test.ts` 中写进度测试：章节状态按“有进行中的作答为进行中，否则有已交卷的作答为已完成，否则未开始”推导；最近一次正确率取 `submitted_at` 最新的作答，最高正确率取所有已交卷作答的最大值；重做产生新作答且旧作答保留；放弃后的作答不影响状态和正确率；专题进度为至少有一份已交卷作答的章节数除以章节总数；保存位置后重新读取作答得到相同的 `lastQuestionId`；用户 A 的进度查询不包含用户 B 的记录
+- [X] T050 [P] [US2] 在 `tests/integration/progress.test.ts` 中写进度测试：章节状态按“有进行中的作答为进行中，否则有已交卷的作答为已完成，否则未开始”推导；最近一次正确率取 `submitted_at` 最新的作答，最高正确率取所有已交卷作答的最大值；重做产生新作答且旧作答保留；放弃后的作答不影响状态和正确率；专题进度为至少有一份已交卷作答的章节数除以章节总数；保存位置后重新读取作答得到相同的 `lastQuestionId`；用户 A 的进度查询不包含用户 B 的记录
 
 ### Implementation for User Story 2
 
-- [ ] T051 [US2] 在 `src/server/attempts/progress.ts` 中实现 `getChapterProgress(userId, topicPrefix)`（每章的状态、最近一次和最高正确率、进行中作答的编号、最近一次已交卷作答的编号）和 `getTopicProgress(userId)`（每个专题的已完成章节数和总章节数），计算方式见 `data-model.md` 第三节
-- [ ] T052 [US2] 在 `src/server/attempts/service.ts` 中添加 `setPosition` 和 `abandonAttempt`（仅 `in_progress` 可操作），并实现接口 `src/app/api/attempts/[id]/position/route.ts`（PUT）和 `src/app/api/attempts/[id]/abandon/route.ts`（POST）
-- [ ] T053 [US2] 更新专题列表页 `src/app/practice/page.tsx`：每个专题显示已完成章节数和总章节数（FR-009）
-- [ ] T054 [US2] 更新章节列表页 `src/app/practice/[topic]/page.tsx`：显示每章状态以及最近一次和最高正确率；按状态提供“开始”“继续”“重做”“查看最近结果”（FR-009、FR-021、FR-028）
-- [ ] T055 [US2] 更新 `src/components/quiz/QuizRunner.tsx`：进入时定位到 `lastQuestionId`；翻题时调用位置接口；提供“放弃并重新开始”并要求确认（FR-017、FR-020）
+- [X] T051 [US2] 在 `src/server/attempts/progress.ts` 中实现 `getChapterProgress(userId, topicPrefix)`（每章的状态、最近一次和最高正确率、进行中作答的编号、最近一次已交卷作答的编号）和 `getTopicProgress(userId)`（每个专题的已完成章节数和总章节数），计算方式见 `data-model.md` 第三节
+- [X] T052 [US2] 在 `src/server/attempts/service.ts` 中添加 `setPosition` 和 `abandonAttempt`（仅 `in_progress` 可操作），并实现接口 `src/app/api/attempts/[id]/position/route.ts`（PUT）和 `src/app/api/attempts/[id]/abandon/route.ts`（POST）
+- [X] T053 [US2] 更新专题列表页 `src/app/practice/page.tsx`：每个专题显示已完成章节数和总章节数（FR-009）
+- [X] T054 [US2] 更新章节列表页 `src/app/practice/[topic]/page.tsx`：显示每章状态以及最近一次和最高正确率；按状态提供“开始”“继续”“重做”“查看最近结果”（FR-009、FR-021、FR-028）
+- [X] T055 [US2] 更新 `src/components/quiz/QuizRunner.tsx`：进入时定位到 `lastQuestionId`；翻题时调用位置接口；提供“放弃并重新开始”并要求确认（FR-017、FR-020）
 
 **Checkpoint**: 章节列表反映真实进度，长章节可以分次完成
 
@@ -151,15 +151,15 @@ description: "面试题答题系统 1.0 的任务清单"
 
 ### Tests for User Story 3
 
-- [ ] T056 [P] [US3] 在 `tests/integration/mistakes.test.ts` 中写错题统计测试：交卷判错的选择题错误次数为 1；再次判错变为 2；后来判对时错误次数不变、最近判定变为对、仍在错题列表中；未答的题没有统计行；放弃的作答不产生统计；简答题在评分完成时才更新统计；每章错题只含该章且 `wrong_count >= 1` 的题，可按错误次数降序；错题总览按专题和章节汇总的数量与各章列表一致；不同用户互不可见
+- [X] T056 [P] [US3] 在 `tests/integration/mistakes.test.ts` 中写错题统计测试：交卷判错的选择题错误次数为 1；再次判错变为 2；后来判对时错误次数不变、最近判定变为对、仍在错题列表中；未答的题没有统计行；放弃的作答不产生统计；简答题在评分完成时才更新统计；每章错题只含该章且 `wrong_count >= 1` 的题，可按错误次数降序；错题总览按专题和章节汇总的数量与各章列表一致；不同用户互不可见
 
 ### Implementation for User Story 3
 
-- [ ] T057 [US3] 在 `src/server/mistakes/service.ts` 中实现 `recordVerdicts(tx, userId, items)`（只接受 `correct` 和 `incorrect`；判错时 `wrong_count` 加一；每次都使 `attempt_count` 加一并更新 `last_verdict`、`last_answered_at`；`wrong_count` 只增不减）、`listChapterMistakes(userId, chapterId, sort)` 和 `getMistakeSummary(userId)`（按题库目录把题号归到章节和专题）
-- [ ] T058 [US3] 在 `src/server/attempts/submit.ts` 的交卷事务和 `src/server/grading/runner.ts` 的评分成功事务中调用 `recordVerdicts`；`getAttemptResult` 返回每题的 `wrongCount`
-- [ ] T059 [P] [US3] 创建每章错题页 `src/app/mistakes/[chapterId]/page.tsx`：每题显示错误次数和最近一次对错，可展开查看题目、正确答案和解答（复用 `ResultQuestion` 和 `SourceNotice`），可按错误次数排序（FR-032）
-- [ ] T060 [P] [US3] 创建错题总览页 `src/app/mistakes/page.tsx`：按专题和章节列出错题数量，链接到每章错题页；没有错题时显示说明（FR-034）
-- [ ] T061 [US3] 在章节列表页 `src/app/practice/[topic]/page.tsx` 中为有错题的章节添加“本章错题”入口及数量
+- [X] T057 [US3] 在 `src/server/mistakes/service.ts` 中实现 `recordVerdicts(tx, userId, items)`（只接受 `correct` 和 `incorrect`；判错时 `wrong_count` 加一；每次都使 `attempt_count` 加一并更新 `last_verdict`、`last_answered_at`；`wrong_count` 只增不减）、`listChapterMistakes(userId, chapterId, sort)` 和 `getMistakeSummary(userId)`（按题库目录把题号归到章节和专题）
+- [X] T058 [US3] 在 `src/server/attempts/submit.ts` 的交卷事务和 `src/server/grading/runner.ts` 的评分成功事务中调用 `recordVerdicts`；`getAttemptResult` 返回每题的 `wrongCount`
+- [X] T059 [P] [US3] 创建每章错题页 `src/app/mistakes/[chapterId]/page.tsx`：每题显示错误次数和最近一次对错，可展开查看题目、正确答案和解答（复用 `ResultQuestion` 和 `SourceNotice`），可按错误次数排序（FR-032）
+- [X] T060 [P] [US3] 创建错题总览页 `src/app/mistakes/page.tsx`：按专题和章节列出错题数量，链接到每章错题页；没有错题时显示说明（FR-034）
+- [X] T061 [US3] 在章节列表页 `src/app/practice/[topic]/page.tsx` 中为有错题的章节添加“本章错题”入口及数量
 
 **Checkpoint**: 错题和错误次数与实际判定一致
 
@@ -173,16 +173,16 @@ description: "面试题答题系统 1.0 的任务清单"
 
 ### Tests for User Story 4
 
-- [ ] T062 [P] [US4] 在 `tests/integration/notebook.test.ts` 中写错题本测试：添加后可查到；从未答错的题也能添加；重复添加不报错且只有一条；添加不存在的题号被拒；移除后查不到，且该题的 `question_stats` 不变；移除本不在其中的题不报错；不同用户的错题本互不可见；错题本为空时开始练习被拒；开始练习后题目列表固定，其后增删错题本不改变这次作答的 `question_ids`；错题本练习中判错的题错误次数加一；同一用户同时只有一份进行中的错题本练习
+- [X] T062 [P] [US4] 在 `tests/integration/notebook.test.ts` 中写错题本测试：添加后可查到；从未答错的题也能添加；重复添加不报错且只有一条；添加不存在的题号被拒；移除后查不到，且该题的 `question_stats` 不变；移除本不在其中的题不报错；不同用户的错题本互不可见；错题本为空时开始练习被拒；开始练习后题目列表固定，其后增删错题本不改变这次作答的 `question_ids`；错题本练习中判错的题错误次数加一；同一用户同时只有一份进行中的错题本练习
 
 ### Implementation for User Story 4
 
-- [ ] T063 [US4] 在 `src/server/notebook/service.ts` 中实现 `addItem`（幂等）、`removeItem`、`listItems`（附带所属专题、章节和错误次数）、`getMembership(userId, questionIds)`
-- [ ] T064 [US4] 在 `src/server/attempts/service.ts` 的 `startAttempt` 中支持 `notebook` 范围：把当时错题本的题号按加入时间写入 `question_ids`；错题本为空时返回 `notebook_empty`
-- [ ] T065 [P] [US4] 实现接口 `src/app/api/notebook/[questionId]/route.ts`（PUT 和 DELETE），状态码见 `contracts/http-api.md`
-- [ ] T066 [US4] 在 `src/server/attempts/service.ts` 的 `getAttemptForAnswering` 和 `src/server/attempts/submit.ts` 的 `getAttemptResult` 中返回每题的 `inNotebook`；在 `src/server/mistakes/service.ts` 的 `listChapterMistakes` 中同样返回
-- [ ] T067 [P] [US4] 创建 `src/components/NotebookToggle.tsx`（显示是否已在错题本，点击加入或移除），并在 `src/components/result/ResultQuestion.tsx` 中使用，使结果页和每章错题页都能操作（FR-036、FR-037）
-- [ ] T068 [US4] 创建错题本页 `src/app/notebook/page.tsx`：题目列表（专题、章节、错误次数、移除）、“开始练习”或“继续练习”；为空时显示如何添加题目的引导且不提供练习入口（FR-038 至 FR-040）
+- [X] T063 [US4] 在 `src/server/notebook/service.ts` 中实现 `addItem`（幂等）、`removeItem`、`listItems`（附带所属专题、章节和错误次数）、`getMembership(userId, questionIds)`
+- [X] T064 [US4] 在 `src/server/attempts/service.ts` 的 `startAttempt` 中支持 `notebook` 范围：把当时错题本的题号按加入时间写入 `question_ids`；错题本为空时返回 `notebook_empty`
+- [X] T065 [P] [US4] 实现接口 `src/app/api/notebook/[questionId]/route.ts`（PUT 和 DELETE），状态码见 `contracts/http-api.md`
+- [X] T066 [US4] 在 `src/server/attempts/service.ts` 的 `getAttemptForAnswering` 和 `src/server/attempts/submit.ts` 的 `getAttemptResult` 中返回每题的 `inNotebook`；在 `src/server/mistakes/service.ts` 的 `listChapterMistakes` 中同样返回
+- [X] T067 [P] [US4] 创建 `src/components/NotebookToggle.tsx`（显示是否已在错题本，点击加入或移除），并在 `src/components/result/ResultQuestion.tsx` 中使用，使结果页和每章错题页都能操作（FR-036、FR-037）
+- [X] T068 [US4] 创建错题本页 `src/app/notebook/page.tsx`：题目列表（专题、章节、错误次数、移除）、“开始练习”或“继续练习”；为空时显示如何添加题目的引导且不提供练习入口（FR-038 至 FR-040）
 
 **Checkpoint**: 错题本可以增删、查看和练习
 
