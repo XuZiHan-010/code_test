@@ -1,0 +1,22 @@
+# 本地开发和集成测试用的 PostgreSQL。生产环境使用 Railway 提供的数据库。
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: quiz
+      POSTGRES_PASSWORD: quiz
+      POSTGRES_DB: quiz_dev
+    ports:
+      # 用非默认端口，避免和本机已有的 PostgreSQL 冲突
+      - "54329:5432"
+    volumes:
+      - quiz-pgdata:/var/lib/postgresql/data
+      - ./docker/postgres-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quiz -d quiz_dev"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  quiz-pgdata:

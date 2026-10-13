@@ -1,0 +1,367 @@
+{
+  "prefix": "P",
+  "chapters": {
+    "P1": {
+      "status": "draft",
+      "questions": [
+        { "id": "P1-1", "type": "short" },
+        { "id": "P1-2", "type": "short" },
+        {
+          "id": "P1-3",
+          "type": "single",
+          "stem": "按原文的说法，代码定位的结果通常是什么形态？",
+          "options": [
+            { "key": "A", "text": "命中了搜索关键词的那一个源码文件", "correct": false },
+            { "key": "B", "text": "与需求描述语义相似度最高的一段代码", "correct": false },
+            { "key": "C", "text": "一组有关系的代码位置，如关键函数、必要配置和相关调用方", "correct": true },
+            { "key": "D", "text": "从入口函数出发能够到达的整个依赖图", "correct": false }
+          ]
+        },
+        {
+          "id": "P1-4",
+          "type": "multiple",
+          "stem": "关于定位代码时确认代码版本，下列哪些说法符合原文？",
+          "options": [
+            { "key": "A", "text": "排查线上故障却读了已经改过的主分支，看到的实现可能已经不同", "correct": true },
+            { "key": "B", "text": "使用预建索引时，要确认索引对应的提交，并回到当前源码核验候选", "correct": true },
+            { "key": "C", "text": "工作区里未提交的修改不会影响实际内容，定位时可以忽略", "correct": false },
+            { "key": "D", "text": "预建索引总是和当前源码保持一致，命中之后不需要再核验", "correct": false }
+          ]
+        },
+        {
+          "id": "P1-5",
+          "type": "multiple",
+          "stem": "下列哪些属于原文所说的“搜索锚点”？",
+          "options": [
+            { "key": "A", "text": "接口路径", "correct": true },
+            { "key": "B", "text": "错误码和日志字符串", "correct": true },
+            { "key": "C", "text": "需求描述里的整句原话", "correct": false },
+            { "key": "D", "text": "数据库列名和事件名", "correct": true },
+            { "key": "E", "text": "为同一个需求不断更换的同义词", "correct": false }
+          ]
+        },
+        { "id": "P1-6", "type": "short" },
+        {
+          "id": "P1-7",
+          "type": "single",
+          "stem": "原文为什么说搜索是一个反复进行的过程？",
+          "options": [
+            { "key": "A", "text": "每次读取都会带来新线索，让下一次搜索更具体", "correct": true },
+            { "key": "B", "text": "文本搜索的命中只说明文本存在，要重复搜同一个词来确认", "correct": false },
+            { "key": "C", "text": "搜索结果经常被截断，必须重复同一查询直到拿全", "correct": false },
+            { "key": "D", "text": "语义检索的相似度不稳定，要多次检索后取最高分", "correct": false }
+          ]
+        },
+        { "id": "P1-8", "type": "short" },
+        { "id": "P1-9", "type": "short" },
+        { "id": "P1-10", "type": "short" },
+        {
+          "id": "P1-11",
+          "type": "single",
+          "stem": "关于语法解析器，下列哪一项符合原文的说法？",
+          "options": [
+            { "key": "A", "text": "它能解析符号指向，因此可以代替跳转定义和查找引用", "correct": false },
+            { "key": "B", "text": "它能帮助找到函数、类等代码边界，但不能确定一处调用运行时指向哪个实现", "correct": true },
+            { "key": "C", "text": "它只能按固定长度切块，容易把一个函数拆成几段", "correct": false },
+            { "key": "D", "text": "它能判断接口的多个实现里，由配置选中的是哪一个", "correct": false }
+          ]
+        },
+        {
+          "id": "P1-12",
+          "type": "multiple",
+          "stem": "读懂一个函数之后，原文要求沿哪些关系继续查找？",
+          "options": [
+            { "key": "A", "text": "调用关系：调用方和被调用方", "correct": true },
+            { "key": "B", "text": "数据关系：谁写入字段、谁读取字段", "correct": true },
+            { "key": "C", "text": "相似关系：与它代码相似度高的函数", "correct": false },
+            { "key": "D", "text": "消息关系：事件的发送、订阅和处理", "correct": true },
+            { "key": "E", "text": "命名关系：名称相同的其他函数", "correct": false }
+          ]
+        },
+        {
+          "id": "P1-13",
+          "type": "single",
+          "stem": "找到了类或函数之后，为什么还要核对注册与配置？",
+          "options": [
+            { "key": "A", "text": "因为同名的文本可能出现在注释和测试里", "correct": false },
+            { "key": "B", "text": "因为固定长度切块可能把一个函数拆成几段", "correct": false },
+            { "key": "C", "text": "因为搜索结果被截断时不能断言别处没有实现", "correct": false },
+            { "key": "D", "text": "因为代码存在不代表当前运行路径会使用它", "correct": true }
+          ]
+        },
+        { "id": "P1-14", "type": "short" },
+        { "id": "P1-15", "type": "short" },
+        {
+          "id": "P1-16",
+          "type": "multiple",
+          "stem": "工具返回的结果不完整时，下列哪些做法符合原文？",
+          "options": [
+            { "key": "A", "text": "搜索结果被截断时，不据此断言其他位置没有实现", "correct": true },
+            { "key": "B", "text": "文件读取失败时，不把它当作代码不存在", "correct": true },
+            { "key": "C", "text": "缩小查询范围，补读缺失的内容", "correct": true },
+            { "key": "D", "text": "对无法确认的部分按“不存在”处理，不必另外说明", "correct": false }
+          ]
+        },
+        {
+          "id": "P1-17",
+          "type": "single",
+          "stem": "定位完成后，读过但已经排除的文件应当怎样处理？",
+          "options": [
+            { "key": "A", "text": "全部留在上下文里，方便随时追溯定位判断的来源", "correct": false },
+            { "key": "B", "text": "不必一直占用上下文，需要重新核对时再按位置读取", "correct": true },
+            { "key": "C", "text": "删掉关键路径和函数名，只保留这些文件的全文", "correct": false },
+            { "key": "D", "text": "把它们的内容当作验证依据，写进最终的结论", "correct": false }
+          ]
+        }
+      ]
+    },
+    "P2": {
+      "status": "draft",
+      "questions": [
+        { "id": "P2-1", "type": "short" },
+        {
+          "id": "P2-2",
+          "type": "single",
+          "stem": "下列哪种过期的代码描述最难被发现？",
+          "options": [
+            { "key": "A", "text": "函数名和路径都没变，职责却变了", "correct": true },
+            { "key": "B", "text": "描述对应的函数已经被删除", "correct": false },
+            { "key": "C", "text": "描述对应的函数已经被重命名", "correct": false },
+            { "key": "D", "text": "描述的生成时间已经超过一年", "correct": false }
+          ]
+        },
+        {
+          "id": "P2-3",
+          "type": "single",
+          "stem": "能不能只凭生成时间判断一条代码描述是否过期？",
+          "options": [
+            { "key": "A", "text": "能，生成时间超过一定期限的描述都应视为过期", "correct": false },
+            { "key": "B", "text": "能，最近才生成的描述可以认为仍然有效", "correct": false },
+            { "key": "C", "text": "不能，要比较描述所依据的实现和当前要研究的实现", "correct": true },
+            { "key": "D", "text": "不能，生成时间对排查更新延迟也没有任何帮助", "correct": false }
+          ]
+        },
+        {
+          "id": "P2-4",
+          "type": "multiple",
+          "stem": "一条可维护的代码描述需要记录哪些来源信息？",
+          "options": [
+            { "key": "A", "text": "仓库、文件路径和符号位置", "correct": true },
+            { "key": "B", "text": "源码版本，已提交的代码记录提交号", "correct": true },
+            { "key": "C", "text": "只记录分支名，用它代表源码版本", "correct": false },
+            { "key": "D", "text": "把行号作为定位实现的主要依据", "correct": false }
+          ]
+        },
+        { "id": "P2-5", "type": "short" },
+        { "id": "P2-6", "type": "short" },
+        { "id": "P2-7", "type": "short" },
+        { "id": "P2-8", "type": "short" },
+        { "id": "P2-9", "type": "short" },
+        { "id": "P2-10", "type": "short" },
+        {
+          "id": "P2-11",
+          "type": "single",
+          "stem": "生成任务读的是版本 A，返回时代码已变成 B 且 B 的描述已经完成。怎样防止 A 的结果覆盖 B 的描述？",
+          "options": [
+            { "key": "A", "text": "以最后写入的结果为准，后返回的任务直接覆盖", "correct": false },
+            { "key": "B", "text": "比较两次任务的生成时间，保留开始得更早的那个", "correct": false },
+            { "key": "C", "text": "收到 A 的结果后直接丢弃，不在任何记录里保留", "correct": false },
+            { "key": "D", "text": "结果带着原来的来源标识，写入时检查是否仍匹配目标输入", "correct": true }
+          ]
+        },
+        {
+          "id": "P2-12",
+          "type": "multiple",
+          "stem": "对正在编辑的工作区，描述更新应当怎样处理？",
+          "options": [
+            { "key": "A", "text": "已修改的内容停用旧描述", "correct": true },
+            { "key": "B", "text": "已删除的位置从当前结果中排除", "correct": true },
+            { "key": "C", "text": "新增的内容直接读取或生成新描述", "correct": true },
+            { "key": "D", "text": "未受影响的描述也全部重新生成", "correct": false },
+            { "key": "E", "text": "更新期间禁止 Agent 直接读取源码", "correct": false }
+          ]
+        },
+        {
+          "id": "P2-13",
+          "type": "single",
+          "stem": "一条描述对应的输入没有变化，它的结论是否就可以直接相信？",
+          "options": [
+            { "key": "A", "text": "可以，输入没变就说明描述仍然准确", "correct": false },
+            { "key": "B", "text": "不可以，来源一致不保证模型当初的理解是正确的", "correct": true },
+            { "key": "C", "text": "可以，只要内容指纹覆盖了生成器读取的全部输入", "correct": false },
+            { "key": "D", "text": "不可以，因为输入没变的描述一定已经过期", "correct": false }
+          ]
+        },
+        { "id": "P2-14", "type": "short" },
+        {
+          "id": "P2-15",
+          "type": "multiple",
+          "stem": "检索端已经停用了旧描述，Agent 自己还需要做哪些事？",
+          "options": [
+            { "key": "A", "text": "把上下文里受影响的旧结论明确标为不再适用", "correct": true },
+            { "key": "B", "text": "补充最新的源码依据", "correct": true },
+            { "key": "C", "text": "重新检查依赖这些旧结论的计划", "correct": true },
+            { "key": "D", "text": "什么都不用做，检索端的更新会自动撤回上下文里的旧结论", "correct": false }
+          ]
+        }
+      ]
+    },
+    "P3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "P3-1",
+          "type": "multiple",
+          "stem": "判断 AI 生成的代码能不能交付，原文认为主要看哪几点？",
+          "options": [
+            { "key": "A", "text": "是否符合需求", "correct": true },
+            { "key": "B", "text": "是否破坏已有行为", "correct": true },
+            { "key": "C", "text": "能否安全地接入项目", "correct": true },
+            { "key": "D", "text": "模型的自我审查是否通过", "correct": false },
+            { "key": "E", "text": "只要代码能够运行即可", "correct": false }
+          ]
+        },
+        { "id": "P3-2", "type": "short" },
+        { "id": "P3-3", "type": "short" },
+        {
+          "id": "P3-4",
+          "type": "multiple",
+          "stem": "让 AI 生成代码之前，需要先确定哪些约束？",
+          "options": [
+            { "key": "A", "text": "输入允许什么", "correct": true },
+            { "key": "B", "text": "成功后输出什么", "correct": true },
+            { "key": "C", "text": "边界与失败时怎样处理", "correct": true },
+            { "key": "D", "text": "哪些已有约定必须保留", "correct": true },
+            { "key": "E", "text": "每一行代码具体怎么写", "correct": false },
+            { "key": "F", "text": "内部采用哪种实现方式", "correct": false }
+          ]
+        },
+        { "id": "P3-5", "type": "short" },
+        { "id": "P3-6", "type": "short" },
+        {
+          "id": "P3-7",
+          "type": "single",
+          "stem": "原文所说的“测试 Oracle”指的是什么？",
+          "options": [
+            { "key": "A", "text": "用来代替真实组件、方便构造失败条件的测试替身", "correct": false },
+            { "key": "B", "text": "检查修改有没有破坏原有行为的回归测试", "correct": false },
+            { "key": "C", "text": "判断正确结果的依据，例如人工确认的样例或接口规范", "correct": true },
+            { "key": "D", "text": "根据代码结构和规则提示问题的静态分析", "correct": false }
+          ]
+        },
+        {
+          "id": "P3-8",
+          "type": "single",
+          "stem": "按原文的说法，测试里的断言应该对应什么？",
+          "options": [
+            { "key": "A", "text": "验收契约里约定的结果", "correct": true },
+            { "key": "B", "text": "被测函数没有抛出异常", "correct": false },
+            { "key": "C", "text": "某个方法确实被调用过", "correct": false },
+            { "key": "D", "text": "模型在完成说明里的描述", "correct": false }
+          ]
+        },
+        { "id": "P3-9", "type": "short" },
+        { "id": "P3-10", "type": "short" },
+        { "id": "P3-11", "type": "short" },
+        { "id": "P3-12", "type": "short" },
+        {
+          "id": "P3-13",
+          "type": "single",
+          "stem": "审查 AI 的改动时，为什么要特别看测试和检查配置本身有没有被改？",
+          "options": [
+            { "key": "A", "text": "因为测试替身未必具有真实组件的事务和网络行为", "correct": false },
+            { "key": "B", "text": "因为修改前就已失败的测试要和本次引入的问题区分开", "correct": false },
+            { "key": "C", "text": "因为静态分析通常不知道项目特有的业务规则", "correct": false },
+            { "key": "D", "text": "因为删除断言或放宽预期后测试变绿，可能只是标准变弱了", "correct": true }
+          ]
+        },
+        {
+          "id": "P3-14",
+          "type": "multiple",
+          "stem": "审查 Diff 时，哪些方面是自动检查难以判断、需要特别关注的？",
+          "options": [
+            { "key": "A", "text": "信任边界：当前用户是否真的有权读取或操作对应资源", "correct": true },
+            { "key": "B", "text": "可维护性：是否重复已有逻辑、异常是否按项目约定处理", "correct": true },
+            { "key": "C", "text": "基础正确性：语法是否合法、类型是否匹配", "correct": false },
+            { "key": "D", "text": "引用正确性：代码里对接口的引用是否正确", "correct": false }
+          ]
+        },
+        { "id": "P3-15", "type": "short" },
+        { "id": "P3-16", "type": "short" }
+      ]
+    },
+    "P4": {
+      "status": "draft",
+      "questions": [
+        { "id": "P4-1", "type": "short" },
+        { "id": "P4-2", "type": "short" },
+        { "id": "P4-3", "type": "short" },
+        {
+          "id": "P4-4",
+          "type": "single",
+          "stem": "业务规则和测试场景是什么关系？",
+          "options": [
+            { "key": "A", "text": "一条业务规则只需要一个测试场景来验证", "correct": false },
+            { "key": "B", "text": "规则说明系统应遵守什么，场景规定在什么条件下、经过什么操作来检查它", "correct": true },
+            { "key": "C", "text": "场景先于规则，规则是从已有的测试场景里归纳出来的", "correct": false },
+            { "key": "D", "text": "只要输入相同，就属于同一个测试场景", "correct": false }
+          ]
+        },
+        { "id": "P4-5", "type": "short" },
+        { "id": "P4-6", "type": "short" },
+        { "id": "P4-7", "type": "short" },
+        {
+          "id": "P4-8",
+          "type": "multiple",
+          "stem": "条件组合很多、无法穷举时，原文建议优先覆盖哪些？",
+          "options": [
+            { "key": "A", "text": "会改变业务决策的条件", "correct": true },
+            { "key": "B", "text": "可能造成越权或错误状态的条件", "correct": true },
+            { "key": "C", "text": "已经发生过的故障", "correct": true },
+            { "key": "D", "text": "彼此独立、不会改变当前规则结果的输入变化", "correct": false }
+          ]
+        },
+        { "id": "P4-9", "type": "short" },
+        { "id": "P4-10", "type": "short" },
+        { "id": "P4-11", "type": "short" },
+        {
+          "id": "P4-12",
+          "type": "multiple",
+          "stem": "下列哪些可以作为测试预期的依据（测试 Oracle）？",
+          "options": [
+            { "key": "A", "text": "需求约定", "correct": true },
+            { "key": "B", "text": "人工确认的样例", "correct": true },
+            { "key": "C", "text": "经过审查、描述业务规则的参考模型", "correct": true },
+            { "key": "D", "text": "照着生产实现复制出来的参考模型", "correct": false },
+            { "key": "E", "text": "待测实现当前的实际输出", "correct": false }
+          ]
+        },
+        { "id": "P4-13", "type": "short" },
+        { "id": "P4-14", "type": "short" },
+        { "id": "P4-15", "type": "short" },
+        {
+          "id": "P4-16",
+          "type": "single",
+          "stem": "变异测试中，某个程序改动之后原有测试仍然通过，应当怎样看待？",
+          "options": [
+            { "key": "A", "text": "一定说明测试存在覆盖缺口，必须补充用例", "correct": false },
+            { "key": "B", "text": "说明这个改动无关紧要，可以直接忽略", "correct": false },
+            { "key": "C", "text": "值得检查，但不一定是缺口，可能属于等价变异", "correct": true },
+            { "key": "D", "text": "应当继续调整测试，直到变异分数达到满分", "correct": false }
+          ]
+        },
+        {
+          "id": "P4-17",
+          "type": "single",
+          "stem": "在保证测试覆盖关键业务场景的流程里，哪一项仍要由开发者负责？",
+          "options": [
+            { "key": "A", "text": "核对业务依据和实际执行结果", "correct": true },
+            { "key": "B", "text": "整理规则与测试的对应表", "correct": false },
+            { "key": "C", "text": "提出可能缺失的测试条件", "correct": false },
+            { "key": "D", "text": "编写补充的测试用例", "correct": false }
+          ]
+        }
+      ]
+    }
+  }
+}

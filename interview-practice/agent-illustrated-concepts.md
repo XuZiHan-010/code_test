@@ -1,0 +1,85 @@
+# 图解 Agent：概念与 OpenClaw 面试题
+
+来源：[图解 Agent](https://xiaolinnote.com/agent/)，核对日期：2026-10-13。每篇文章一个题组，题目按原文顺序排列，只考原文讲到的内容，并覆盖原文的全部知识点；与其他题卷相近的考点按本篇文章的讲法单独出题，不做跨卷去重。只列问题，不附答案。
+
+题号前缀为 `K`。OpenClaw 的文件约定、组件和部署能力按文章语境提问，具体路径、默认配置和平台支持以所用版本为准。
+
+## 1. Agent 总览：LLM、Agent、工作模式与协议
+
+原文：[AI Agent 是什么？Agent 面试题万字图解](https://xiaolinnote.com/agent/concept/agent.html)
+
+- **K1-1** LLM 是什么，它的工作原理是什么？
+- **K1-2** LLM 有哪四个弊端？
+- **K1-3** 原文怎样定义 Agent，定义里的三个关键词各说明什么？
+- **K1-4** Agent 分别用什么办法解决 LLM 的四个弊端？
+- **K1-5** Agent 由哪四个核心部分组成？
+- **K1-6** Workflow 和 Agent 的定义分别是什么？
+- **K1-7** Workflow 和 Agent 在控制权、成本和可靠性上有什么区别？
+- **K1-8** 什么时候用 Workflow，什么时候用 Agent，生产环境里最常见的是什么？
+- **K1-9** ReAct 模式的循环是怎样的，有什么优缺点？
+- **K1-10** Plan-and-Execute 模式怎样工作，优势和缺点是什么？
+- **K1-11** Reflection 模式有哪两种实现方式？
+- **K1-12** Multi-Agent 模式是什么，Anthropic 对它有什么提醒？
+- **K1-13** 几种工作模式之间是互斥的吗？
+- **K1-14** Function Call 是什么时候、由谁推出的，它让 LLM 多了什么能力？
+- **K1-15** Function Call 的四步工作流程是什么？
+- **K1-16** Function Call 中，函数是由 LLM 自己执行的吗？
+- **K1-17** Function Call 解决了哪两个问题，为什么说它是 Agent 的基石？
+- **K1-18** Function Call 和 Agent 是什么关系？
+- **K1-19** 只用 Function Call 做集成会遇到什么困境？
+- **K1-20** MCP 是谁在什么时候推出的，它做的是什么事？
+- **K1-21** MCP 的 Host、Client、Server 各是什么角色？
+- **K1-22** 一次 MCP 调用的完整流程是怎样的？
+- **K1-23** MCP 怎样化解 N×M 的集成问题，“工具可发现”带来什么？
+- **K1-24** Skills 是什么，它的文件结构是怎样的？
+- **K1-25** 用厨房和菜谱的比喻，MCP 和 Skills 各解决什么问题？
+- **K1-26** Skill 是怎样被发现、加载和生效的？
+- **K1-27** Skill 只是告诉 Agent 怎么想吗，它能驱动哪些实际操作？
+- **K1-28** Skills 的核心价值是什么？
+- **K1-29** Function Call、MCP、Skills 各自解决什么问题，技术本质是什么？
+- **K1-30** Function Call、MCP、Skills 在运行位置和标准化程度上有什么不同？
+- **K1-31** Function Call、MCP、Skills 三者是怎样的协作关系？
+- **K1-32** 有了 MCP，为什么还需要 A2A？
+- **K1-33** A2A 是谁在什么时候发布的，它定义了什么？
+- **K1-34** A2A 中的消息与制品分别用来传递什么？
+- **K1-35** A2A 中的 Agent Card 是什么？
+- **K1-36** A2A 中的任务（Task）是怎样运作的？
+- **K1-37** A2A 和 MCP 是什么关系？
+- **K1-38** A2A 的“模态无关”指什么？
+- **K1-39** A2A 对异步和长时间运行的任务提供哪些支持？
+- **K1-40** A2A 建立在哪些现有的 Web 标准之上？
+- **K1-41** A2A 的生态现状如何，Agent 协议生态形成了怎样的分层？
+
+## 2. OpenClaw 的系统组成与运行方式
+
+原文：[OpenClaw 是什么？OpenClaw 面试题万字图解](https://xiaolinnote.com/agent/concept/openclaw.html)
+
+- **K2-1** 在 OpenClaw 的架构中，Gateway 与 Agent 执行器分别负责哪一段请求生命周期？
+- **K2-2** Channels 层怎样把不同聊天平台的入站消息转换成统一的 Agent 输入？
+- **K2-3** OpenClaw 的 Nodes 与普通本地工具有什么区别？它们怎样把其他设备的能力接入 Agent？
+- **K2-4** 原文说 OpenClaw 要解决大语言模型的什么局限，它是怎么解决的？
+- **K2-5** OpenClaw 里的 Tools 和 Skills 有什么区别？
+- **K2-6** 原文为什么称 OpenClaw 的记忆是永久记忆？
+- **K2-7** “多平台一键打通”和“权限超大”这两个亮点分别指什么？
+- **K2-8** OpenClaw 靠什么做到 7×24 小时主动干活？
+- **K2-9** OpenClaw 的自我修正闭环是怎样运作的？
+- **K2-10** OpenClaw 的技能生态带来什么？
+- **K2-11** `SOUL.md` 中的人格与沟通风格，和 `AGENTS.md` 中的工作流程与行为约束，应怎样分工？
+- **K2-12** TOOLS.md 的作用是什么？
+- **K2-13** HEARTBEAT.md 是什么，系统什么时候读取它？
+- **K2-14** “文件即 Agent”是什么意思，MEMORY.md 和 sessions 文件夹各放什么？
+- **K2-15** 关闭聊天界面后仍可接收任务的能力，依赖哪些常驻进程与连接？它是所有 Agent 天然具备的吗？
+- **K2-16** 原文将云端黑盒记忆与本地纯文本记忆对比时，本地文件怎样帮助用户检查和纠错？
+- **K2-17** 在运行位置和通用性上，OpenClaw 与传统 Agent 有什么不同？
+- **K2-18** OpenClaw 的记忆里，Markdown 文件和 SQLite 各起什么作用？
+- **K2-19** OpenClaw 的长期记忆是在什么时机、怎样自动写入的？
+- **K2-20** 记忆文件越来越大后，OpenClaw 怎样只取出相关的内容？
+- **K2-21** OpenClaw 记错了用户的喜好，应该怎样纠正？
+- **K2-22** OpenClaw 解决了哪三个痛点？
+- **K2-23** OpenClaw 对设备在线有什么依赖？
+- **K2-24** OpenClaw 运行在本地设备上，是否就不消耗大模型 Token？
+- **K2-25** 为什么说 OpenClaw 的安全风险极高，生产部署时要怎么做？
+- **K2-26** 原文从部署位置、自主规划和本地文件访问这几个角度，怎样对比 Coze、n8n 与 OpenClaw？
+- **K2-27** token 是什么，大致怎么换算？
+- **K2-28** 心跳机制为什么会让 OpenClaw 持续消耗 Token？
+- **K2-29** 除了心跳，OpenClaw 烧 Token 还有哪三个原因？

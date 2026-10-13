@@ -1,0 +1,17 @@
+[
+  { "prefix": "A", "slug": "agent", "title": "Agent", "column": "大模型面试题", "order": 1 },
+  { "prefix": "B", "slug": "rag", "title": "RAG", "column": "大模型面试题", "order": 2 },
+  { "prefix": "C", "slug": "tools", "title": "LLM 工具调用", "column": "大模型面试题", "order": 3 },
+  { "prefix": "D", "slug": "llm", "title": "大模型工程", "column": "大模型面试题", "order": 4 },
+  { "prefix": "E", "slug": "langchain", "title": "LangChain 框架", "column": "大模型面试题", "order": 5 },
+  { "prefix": "P", "slug": "ai-coding", "title": "AI 编程", "column": "大模型面试题", "order": 6 },
+  { "prefix": "F", "slug": "claude-code-basics", "title": "基础入门", "column": "Claude Code", "order": 7 },
+  { "prefix": "G", "slug": "claude-code-playbook", "title": "实践技巧", "column": "Claude Code", "order": 8 },
+  { "prefix": "H", "slug": "claude-code-source", "title": "源码解析", "column": "Claude Code", "order": 9 },
+  { "prefix": "I", "slug": "claude-code-prompts", "title": "提示词工程", "column": "Claude Code", "order": 10 },
+  { "prefix": "J", "slug": "claude-code-insights", "title": "行业观察", "column": "Claude Code", "order": 11 },
+  { "prefix": "N", "slug": "codex", "title": "Codex 工程化、使用与源码", "column": "Codex", "order": 12 },
+  { "prefix": "K", "slug": "agent-illustrated-concepts", "title": "概念与 OpenClaw", "column": "图解 Agent", "order": 13 },
+  { "prefix": "L", "slug": "agent-illustrated-retrieval", "title": "RAG、GraphRAG 与 LightRAG", "column": "图解 Agent", "order": 14 },
+  { "prefix": "M", "slug": "agent-illustrated-engineering", "title": "Harness、Loop 与 Graph Engineering", "column": "图解 Agent", "order": 15 }
+]

@@ -1,0 +1,47 @@
+{
+    "name": "xiaolin-quiz",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "prebuild": "npm run content:build",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint",
+        "typecheck": "next typegen && tsc --noEmit",
+        "test": "vitest run",
+        "test:unit": "vitest run --project unit",
+        "test:int": "vitest run --project integration",
+        "e2e": "playwright test",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "tsx scripts/migrate.ts",
+        "content:build": "tsx scripts/build-content.ts",
+        "content:validate": "tsx scripts/build-content.ts --validate-only",
+        "eval:grading": "tsx scripts/eval-grading.ts"
+    },
+    "dependencies": {
+        "@node-rs/argon2": "^2.2.2",
+        "drizzle-orm": "^0.45.4",
+        "next": "16.4.0",
+        "openai": "^7.32.0",
+        "pg": "^8.23.1",
+        "react": "19.3.0",
+        "react-dom": "19.3.0",
+        "tsx": "^4.23.15",
+        "zod": "^4.6.7"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.64.0",
+        "@tailwindcss/turbopack": "^4",
+        "@types/node": "^24",
+        "@types/pg": "^8.23.1",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "drizzle-kit": "^0.31.11",
+        "eslint": "^9",
+        "eslint-config-next": "16.4.0",
+        "tailwindcss": "^4",
+        "typescript": "^5",
+        "vitest": "^5.0.4"
+    }
+}
