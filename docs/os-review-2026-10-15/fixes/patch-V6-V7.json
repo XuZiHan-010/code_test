@@ -1,0 +1,156 @@
+[
+  {
+    "id": "V6-43",
+    "reason": "收窄 workqueue 类别，避免将允许睡眠推广到 WQ_BH。",
+    "question": "线程工作队列（threaded workqueue）怎样执行任务？",
+    "typed": {
+      "stem": "线程工作队列（threaded workqueue）怎样执行任务？"
+    },
+    "answer": "线程工作队列把任务交给工作线程，在进程上下文执行，允许使用可以睡眠的操作，适合需要等待或执行较重工作的场景。（原文泛称“工作队列”把任务交给工作线程并允许睡眠；这里限定为线程工作队列，WQ_BH 工作项在 softirq 上下文执行，不能睡眠。）[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux Workqueue 的 WQ_BH 标志](https://docs.kernel.org/core-api/workqueue.html#flags)"
+  },
+  {
+    "id": "V6-44",
+    "reason": "排除线程工作队列而非全部 workqueue，保留 A/B/C 正确标记。",
+    "question": "比较硬中断、软中断和线程工作队列（threaded workqueue），下列哪些处理函数不能随意睡眠？",
+    "typed": {
+      "stem": "比较硬中断、软中断和线程工作队列（threaded workqueue），下列哪些处理函数不能随意睡眠？",
+      "options": [
+        {
+          "key": "A",
+          "text": "硬中断的处理",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "软中断的处理",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "软中断由 ksoftirqd 内核线程承接时的处理函数",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "线程工作队列（threaded workqueue）的任务",
+          "correct": false
+        }
+      ]
+    },
+    "answer": "A、B、C 正确：硬中断不能调用可能睡眠的操作；软中断即使由 ksoftirqd 内核线程承接，处理函数仍然不能随意睡眠。D 指线程工作队列，其任务在进程上下文执行，允许使用可以睡眠的操作，因此不选。（原文泛称“工作队列”把任务交给工作线程并允许睡眠；这里限定为线程工作队列，WQ_BH 工作项在 softirq 上下文执行，不能睡眠。）[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux Workqueue 的 WQ_BH 标志](https://docs.kernel.org/core-api/workqueue.html#flags)"
+  },
+  {
+    "id": "V6-45",
+    "reason": "题面与正确选项统一限定线程工作队列，并补足独立题面的比较范围。",
+    "question": "比较硬中断、软中断和线程工作队列（threaded workqueue），哪一种适合需要等待或执行较重工作的场景？",
+    "typed": {
+      "stem": "比较硬中断、软中断和线程工作队列（threaded workqueue），哪一种适合需要等待或执行较重工作的场景？",
+      "options": [
+        {
+          "key": "A",
+          "text": "硬中断",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "软中断",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "由 ksoftirqd 承接的软中断",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "线程工作队列",
+          "correct": true
+        }
+      ]
+    },
+    "answer": "线程工作队列在进程上下文执行，允许使用可以睡眠的操作，适合需要等待或执行较重工作的场景；硬中断和软中断处理函数不能随意睡眠。（原文泛称“工作队列”把任务交给工作线程并允许睡眠；这里限定为线程工作队列，WQ_BH 工作项在 softirq 上下文执行，不能睡眠。）[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux Workqueue 的 WQ_BH 标志](https://docs.kernel.org/core-api/workqueue.html#flags)"
+  },
+  {
+    "id": "V6-47",
+    "reason": "综合比较统一为线程工作队列，并说明原文泛称的边界。",
+    "question": "硬中断、软中断和线程工作队列（threaded workqueue）有什么区别？",
+    "answer": "硬中断先处理紧急且必要的工作，软中断和线程工作队列再承担可以推后的工作。硬中断响应设备事件，处理时间应尽量短，不能调用可能睡眠的操作。软中断是内核的一种延后处理机制，常用于网络收发等高频工作，可以在中断返回路径等位置处理，工作较多时也可能由 ksoftirqd 内核线程承接，但处理函数仍然不能随意睡眠。线程工作队列把任务交给工作线程，在进程上下文执行，允许使用可以睡眠的操作，适合需要等待或执行较重工作的场景。比如网卡中断先确认设备事件，后续网络数据处理再交给软中断等机制完成，这样能减少硬中断处理时间，让 CPU 更快恢复其他工作。（原文泛称“工作队列”把任务交给工作线程并允许睡眠；这里限定为线程工作队列，WQ_BH 工作项在 softirq 上下文执行，不能睡眠。）[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux Workqueue 的 WQ_BH 标志](https://docs.kernel.org/core-api/workqueue.html#flags)"
+  },
+  {
+    "id": "V7-66",
+    "reason": "为 read 返回 0 的判断补流式 Socket 与正读取长度条件。",
+    "question": "对流式 Socket 调用 read，请求读取字节数大于 0，返回 0 通常表示什么？",
+    "typed": {
+      "stem": "对流式 Socket 调用 read，请求读取字节数大于 0，返回 0 通常表示什么？"
+    },
+    "answer": "对流式 Socket 调用 read，且请求读取字节数大于 0 时，返回 0 通常表示对端已经有序关闭发送方向；返回其他错误时也要按错误类型处理，不能一律继续重试。[原文§epoll 的 边缘触发和水平触发有什么区别？](https://xiaolincoding.com/interview/os.html#epoll-%E7%9A%84-%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+  },
+  {
+    "id": "V7-67",
+    "reason": "补全 ET 部分写入后的继续处理与等待条件，保留流式 fd 短写耗尽边界。",
+    "question": "边缘触发下，使用非阻塞 Socket 处理写入时，需要注意什么？",
+    "typed": {
+      "stem": "边缘触发下，使用非阻塞 Socket 处理写入时，需要注意什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "一次 write 必然写完全部数据，不需要特殊处理",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "保存未发送数据；完成前继续尝试，仅当前不可写时等待",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "发现写不完就丢弃剩余数据",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "应该一直监听可写事件，没数据要发也不例外",
+          "correct": false
+        }
+      ]
+    },
+    "answer": "要处理部分写入，保存尚未发送的数据；通常继续尝试发送，直到全部发送完成，或返回 EAGAIN/EWOULDBLOCK 表示当前不可写；只有仍有待发送数据且当前不可写时，才等待后续可写通知，发送完成后不继续等待可写通知。不能把“部分写入”理解为每次 write 后都无条件重新等待。（原文简写为“保存尚未发送的数据，等可写时继续发送”；Linux epoll(7) 也允许对流式 fd 根据短写判断当前写入空间已耗尽，因此并非一律必须等到 EAGAIN。）[原文§epoll 的 边缘触发和水平触发有什么区别？](https://xiaolincoding.com/interview/os.html#epoll-%E7%9A%84-%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux epoll(7) 的 ET 使用与流式 fd 耗尽判断](https://man7.org/linux/man-pages/man7/epoll.7.html)"
+  },
+  {
+    "id": "V7-71",
+    "reason": "限定 EOF 判断的 Socket 类型和读取长度，补齐 ET 读写耗尽边界。",
+    "question": "epoll 的水平触发和边缘触发有什么区别？使用边缘触发读取流式 Socket（每次请求读取字节数大于 0）时要注意什么？",
+    "answer": "水平触发（LT，默认模式）下，只要 fd 仍然满足就绪条件，再调用 epoll_wait 时就仍可能返回这个事件，比如接收缓冲区里还有数据就能继续收到可读通知。边缘触发（ET）侧重通知新的就绪变化，不能指望尚未处理完的旧数据像 LT 一样反复提醒，但也不是一个连接一生只通知一次。例如缓冲区有 2KB 数据只读了 1KB：LT 下下一次等待还能得到可读通知，ET 下如果没有新事件，剩余的 1KB 可能一直留在那里。所以 ET 通常要配合非阻塞 I/O，常用做法是循环读到 EAGAIN/EWOULDBLOCK，表示当前没有数据可读；对流式 Socket 且请求读取字节数大于 0 时，read 返回 0 通常表示对端已有序关闭发送方向，其他错误要按类型处理。写入时要处理部分写入，保存剩余数据并继续发送到完成或当前不可写；只有仍有待发送数据且当前不可写时，才等待后续可写通知，发送完成后不继续等待可写通知。ET 可减少重复通知，但实现要求更高，也不一定比 LT 快，还要兼顾公平性。（原文以循环读到 EAGAIN/EWOULDBLOCK 说明耗尽处理；Linux epoll(7) 也允许对流式 fd 通过短读／短写判断当前 I/O 空间已耗尽，并非所有情况都必须等到 EAGAIN。）[原文§epoll 的 边缘触发和水平触发有什么区别？](https://xiaolincoding.com/interview/os.html#epoll-%E7%9A%84-%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux epoll(7) 的 ET 使用与流式 fd 耗尽判断](https://man7.org/linux/man-pages/man7/epoll.7.html)"
+  },
+  {
+    "id": "V7-73",
+    "reason": "补非阻塞条件，明确可读数据被其他线程读完的竞态。",
+    "question": "多个线程操作同一个非阻塞 Socket，其他线程先把可读数据读完了，当前线程再读会怎样？",
+    "typed": {
+      "stem": "多个线程操作同一个非阻塞 Socket，其他线程先把可读数据读完了，当前线程再读会怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "可能得到 EAGAIN",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "一定读到完整的数据",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "只要暂时没有数据，read 就返回 0 表示对端关闭",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只要暂时没有数据，Socket 就会被自动关闭",
+          "correct": false
+        }
+      ]
+    },
+    "answer": "多个线程操作同一个非阻塞 Socket，其他线程先把可读数据读完后，当前线程再读可能因暂时无数据而得到 EAGAIN/EWOULDBLOCK，不能保证这次一定读到数据；暂时无数据也不等于 read 返回 0 或 Socket 被关闭。[原文§epoll 返回可读后，read 就一定能读到数据吗？](https://xiaolincoding.com/interview/os.html#epoll-%E8%BF%94%E5%9B%9E%E5%8F%AF%E8%AF%BB%E5%90%8E-read-%E5%B0%B1%E4%B8%80%E5%AE%9A%E8%83%BD%E8%AF%BB%E5%88%B0%E6%95%B0%E6%8D%AE%E5%90%97)"
+  }
+]

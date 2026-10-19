@@ -1,0 +1,11 @@
+
+> xiaolin-quiz@0.1.0 content:build
+> tsx scripts/build-content.ts
+
+警告 V14 [R3-139] 正确选项明显比其他选项长，可能泄露答案
+题库：26 个专题，231 章，8100 个知识点。
+已生成题型的章节 231 个，其中通过抽查 0 个；本次输出 231 章 8100 题（单选 4684，多选 618，简答 1947，填空 830，代码 21）。
+复习资料 1 份。
+校验通过，1 个警告。
+注意：CONTENT_INCLUDE_DRAFTS=1，输出包含尚未通过抽查的 draft 章节，仅供本地开发。
+已写出 content/dist/bank.json

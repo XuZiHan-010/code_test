@@ -44,6 +44,7 @@
 - **G1-28** 每个文件聚焦一个主题，控制在 30 行以内，结构清爽、好维护；可以在文件头用 paths 指定生效的路径范围，例如只对测试文件或接口目录生效。[原文§04｜CLAUDE.md 不只是一个文件](https://xiaolinnote.com/claudecode/playbook/cc_claude_md.html#_04-claude-md-%E4%B8%8D%E5%8F%AA%E6%98%AF%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6)
 - **G1-29** 用 CLAUDE.md 起步；长了就拆到 rules/；高频的工作流写到 commands/；可复用的能力封装成 skills/。[原文§04｜CLAUDE.md 不只是一个文件](https://xiaolinnote.com/claudecode/playbook/cc_claude_md.html#_04-claude-md-%E4%B8%8D%E5%8F%AA%E6%98%AF%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6)
 - **G1-30** 第一，总行数约 50 行，给以后补规则留出空间；第二，Architecture 简短指路，不复述架构详情；第三，Hard Constraints 写明原因；第四，Gotchas 保存亲历的坑点，这类经验无法只靠读代码推断，原文认为它价值最高。 [原文§06｜可以参考的模板](https://xiaolinnote.com/claudecode/playbook/cc_claude_md.html#_06-%E5%8F%AF%E4%BB%A5%E5%8F%82%E8%80%83%E7%9A%84%E6%A8%A1%E6%9D%BF)
+- **G1-31** 第一，CLAUDE.md 是给 Agent 的入职手册，不是给人的 README，写之前先问这句话是给人看的还是给 Claude 看的，给人看的留给 README；第二，200 行是黄金线，每行都吃 token，多写不如不写，复述型、愿望型、术语表型这三类内容直接删；第三，具体可验证、告诉 why、持续更新，这三条铁律压过一切技巧。[原文§收尾：3 句话精华](https://xiaolinnote.com/claudecode/playbook/cc_claude_md.html#%E6%94%B6%E5%B0%BE-3-%E5%8F%A5%E8%AF%9D%E7%B2%BE%E5%8D%8E)
 
 ## 2. 大型代码库实战
 
@@ -91,6 +92,10 @@
 - **G2-32** 高级工程师本机配了几十个 skill、hook 和 MCP server，旁边的实习生什么都没配，体验像用 demo 版；官方案例里，一家零售公司把少数人本地的数据分析 skill 打包成 plugin 全公司铺开，业务分析效率整体提高了一个档次。[原文§第二步：用 plugin 把好实践打包分发](https://xiaolinnote.com/claudecode/playbook/cc_large_codebase.html#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E7%94%A8-plugin-%E6%8A%8A%E5%A5%BD%E5%AE%9E%E8%B7%B5%E6%89%93%E5%8C%85%E5%88%86%E5%8F%91)
 - **G2-33** 连接的桥梁叫 MCP server：装一个 Slack MCP，Claude 就能搜公司的 Slack 消息；装一个 BigQuery MCP，就能跑数据查询；装一个 Sentry MCP，就能拉线上错误日志。[原文§第三步：用 MCP 把团队内部系统接进来](https://xiaolinnote.com/claudecode/playbook/cc_large_codebase.html#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E7%94%A8-mcp-%E6%8A%8A%E5%9B%A2%E9%98%9F%E5%86%85%E9%83%A8%E7%B3%BB%E7%BB%9F%E6%8E%A5%E8%BF%9B%E6%9D%A5)
 - **G2-34** 没有人盯着这件事，再好的 plugin 也会变成某人两年前搭的、没人会改的部落知识。[原文§第四步：得有人负责维护](https://xiaolinnote.com/claudecode/playbook/cc_large_codebase.html#%E7%AC%AC%E5%9B%9B%E6%AD%A5-%E5%BE%97%E6%9C%89%E4%BA%BA%E8%B4%9F%E8%B4%A3%E7%BB%B4%E6%8A%A4)
+- **G2-35** 官方博客给了三个理由：索引会过期，千人团队每天提交几百个 commit，embedding 流水线跟不上，查到的可能是两周前已被重命名的函数，而 agentic search 每次都基于当下的代码；冷启动几乎为零，RAG 在百万行代码库上建一次索引要十几分钟，Claude Code 打开就能用；精确匹配向量干不了，查 getUserById 时向量召回会返回一堆“相关”函数，而代码很多时候要的是精确，不是相似。[原文§Q1：大代码库下 context 老爆，是不是模型太小了？](https://xiaolinnote.com/claudecode/playbook/cc_large_codebase.html#q1-%E5%A4%A7%E4%BB%A3%E7%A0%81%E5%BA%93%E4%B8%8B-context-%E8%80%81%E7%88%86-%E6%98%AF%E4%B8%8D%E6%98%AF%E6%A8%A1%E5%9E%8B%E5%A4%AA%E5%B0%8F%E4%BA%86)
+- **G2-36** 在 /plugin 里搜 lsp，装上对应语言的 code intelligence plugin，如 typescript-lsp、pyright-lsp、rust-analyzer-lsp；再装对应的语言服务器二进制，如用 pip 装 pyright、用 npm 装 typescript-language-server。原文称整个过程不超过两分钟。[原文§Q3：大代码库里让 Claude 找一个函数，总找错文件，怎么办？](https://xiaolinnote.com/claudecode/playbook/cc_large_codebase.html#q3-%E5%A4%A7%E4%BB%A3%E7%A0%81%E5%BA%93%E9%87%8C%E8%AE%A9-claude-%E6%89%BE%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0-%E6%80%BB%E6%89%BE%E9%94%99%E6%96%87%E4%BB%B6-%E6%80%8E%E4%B9%88%E5%8A%9E)
+- **G2-37** 否则 Claude 改了某个服务里的一个文件，却去跑整个项目的测试套件，几十分钟才出结果，context 也跟着烧光；每个子目录的 CLAUDE.md 应明确写这块用什么命令测、怎么 lint，让 Claude 只跑该跑的那一部分。[原文§Q3：大代码库里让 Claude 找一个函数，总找错文件，怎么办？](https://xiaolinnote.com/claudecode/playbook/cc_large_codebase.html#q3-%E5%A4%A7%E4%BB%A3%E7%A0%81%E5%BA%93%E9%87%8C%E8%AE%A9-claude-%E6%89%BE%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0-%E6%80%BB%E6%89%BE%E9%94%99%E6%96%87%E4%BB%B6-%E6%80%8E%E4%B9%88%E5%8A%9E)
+- **G2-38** 非工程师为主贡献的代码库，例如产品经理改产品文档、设计师改 Figma 配置文件，这些场景与 Claude Code 的 harness 不太对得上。官方建议这类非常规场景需要更多定制化配置；Claude Code 当下最擅长的还是“Git 加工程师加标准目录”这个最大公约数。[原文§Q7：什么样的项目其实不适合用 Claude Code？](https://xiaolinnote.com/claudecode/playbook/cc_large_codebase.html#q7-%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E9%A1%B9%E7%9B%AE%E5%85%B6%E5%AE%9E%E4%B8%8D%E9%80%82%E5%90%88%E7%94%A8-claude-code)
 
 ## 3. Skill 的工程化使用
 
@@ -145,6 +150,7 @@
 
 - **G3-37** 它整篇没教 Claude 怎么写 CSS，因为模型本来就会；而是专门列了一堆不要做的事，例如不要张口就用 Inter 字体、不要动不动用紫色渐变，全是冲着 Claude 的默认审美去纠偏的。[原文§Q4：一个 skill 里含金量最高的部分，是「坑点清单」](https://xiaolinnote.com/claudecode/playbook/cc_skills.html#q4-%E4%B8%80%E4%B8%AA-skill-%E9%87%8C%E5%90%AB%E9%87%91%E9%87%8F%E6%9C%80%E9%AB%98%E7%9A%84%E9%83%A8%E5%88%86-%E6%98%AF%E3%80%8C%E5%9D%91%E7%82%B9%E6%B8%85%E5%8D%95%E3%80%8D)
 - **G3-38** 原文把它比作开源社区：好东西靠口碑自己长出来，而不是靠委员会评出来；审批环节越重，愿意分享的人越少，门槛低到扔进沙盒就行，几百个 skill 才攒得起来。[原文§Q6：skill 怎么从你的本地走向全团队？](https://xiaolinnote.com/claudecode/playbook/cc_skills.html#q6-skill-%E6%80%8E%E4%B9%88%E4%BB%8E%E4%BD%A0%E7%9A%84%E6%9C%AC%E5%9C%B0%E8%B5%B0%E5%90%91%E5%85%A8%E5%9B%A2%E9%98%9F)
+- **G3-39** 单个 skill 在清单中的描述最多 250 个字符，超出的部分直接被砍掉换成省略号；整张 skill 清单只允许占上下文窗口的 1%。[原文§Q3：为什么你写的 skill Claude 从来不触发？](https://xiaolinnote.com/claudecode/playbook/cc_skills.html#q3-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E5%86%99%E7%9A%84-skill-claude-%E4%BB%8E%E6%9D%A5%E4%B8%8D%E8%A7%A6%E5%8F%91)
 
 ## 4. SDD 规约驱动开发
 
@@ -176,6 +182,7 @@
 - **G4-21** 这一步告诉它要做什么、为什么做，只说需求，不提技术：不要急着说用哪个框架、哪个数据库，而是描述要一个什么样的工具、能完成哪些事。[原文§spec-kit 一套命令跑下来是什么体验？](https://xiaolinnote.com/claudecode/playbook/spec_driven_dev.html#spec-kit-%E4%B8%80%E5%A5%97%E5%91%BD%E4%BB%A4%E8%B7%91%E4%B8%8B%E6%9D%A5%E6%98%AF%E4%BB%80%E4%B9%88%E4%BD%93%E9%AA%8C)
 - **G4-22** spec-kit 的命令行工具是 GitHub 官方提供的工具。原文用 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git 安装，得到 specify 命令；再用 specify init my-kanban --integration claude 初始化 Claude Code 项目，选择脚本类型后创建项目目录并放入工作流 Skill。 [原文§装工具、进项目](https://xiaolinnote.com/claudecode/playbook/spec_driven_dev.html#%E8%A3%85%E5%B7%A5%E5%85%B7%E3%80%81%E8%BF%9B%E9%A1%B9%E7%9B%AE)
 - **G4-23** 不是那几份文档本身，而是它逼着你把先想清楚再写这件事，从一句正确的废话变成了一道绕不过去的工序；含糊点如果现在不问清楚，AI 只能瞎猜着写下去，等验收时才发现不对，返工成本比现在回答几个问题高得多。[原文§需求含糊、项目又大，靠什么兜底？](https://xiaolinnote.com/claudecode/playbook/spec_driven_dev.html#%E9%9C%80%E6%B1%82%E5%90%AB%E7%B3%8A%E3%80%81%E9%A1%B9%E7%9B%AE%E5%8F%88%E5%A4%A7-%E9%9D%A0%E4%BB%80%E4%B9%88%E5%85%9C%E5%BA%95)
+- **G4-24** analyze 一般在拆完任务、正式写代码之前用，把需求、方案和任务清单放在一起交叉比对。[原文§需求含糊、项目又大，靠什么兜底？](https://xiaolinnote.com/claudecode/playbook/spec_driven_dev.html#%E9%9C%80%E6%B1%82%E5%90%AB%E7%B3%8A%E3%80%81%E9%A1%B9%E7%9B%AE%E5%8F%88%E5%A4%A7-%E9%9D%A0%E4%BB%80%E4%B9%88%E5%85%9C%E5%BA%95)
 
 ## 5. grill-me 需求澄清
 
@@ -284,6 +291,8 @@
 
 - **G8-23** 提要求时说清楚要查日期、数字、名称有没有前后打架；发现问题，把有矛盾的原句摘出来，再标上段落或页码，这样拿着原句就能回去核对，比一句帮我看看更有着落。[原文§四、在 Claude 应用里，怎么用得更顺手？](https://xiaolinnote.com/claudecode/playbook/opus55_handbook.html#%E5%9B%9B%E3%80%81%E5%9C%A8-claude-%E5%BA%94%E7%94%A8%E9%87%8C-%E6%80%8E%E4%B9%88%E7%94%A8%E5%BE%97%E6%9B%B4%E9%A1%BA%E6%89%8B)
 - **G8-24** 要明确说要一份文件，并把文件格式、列名和每行代表什么说清楚，例如把项目清单整理成 Excel、按负责人和截止日期排列，交付后就能直接打开检查。[原文§四、在 Claude 应用里，怎么用得更顺手？](https://xiaolinnote.com/claudecode/playbook/opus55_handbook.html#%E5%9B%9B%E3%80%81%E5%9C%A8-claude-%E5%BA%94%E7%94%A8%E9%87%8C-%E6%80%8E%E4%B9%88%E7%94%A8%E5%BE%97%E6%9B%B4%E9%A1%BA%E6%89%8B)
+- **G8-25** 可以在 Claude Code 执行过程中直接输入补充要求并按回车。任务越长，重新开一轮的成本越高，发现遗漏就及时说，没必要憋到最后交卷才指出来。[原文§一、需求到底怎么说，Claude 才好干活？](https://xiaolinnote.com/claudecode/playbook/opus55_handbook.html#%E4%B8%80%E3%80%81%E9%9C%80%E6%B1%82%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E8%AF%B4-claude-%E6%89%8D%E5%A5%BD%E5%B9%B2%E6%B4%BB)
+- **G8-26** 原文的例子是把订单、库存、支付服务各分给一个子 Agent，检查请求失败后的重试次数是否超过配置上限：每个结果要附上重试上限、调用路径和触发条件，找不到证据就明确说明；主 Agent 核对结果之后，再汇总成表，列出服务、是否受影响及依据。[原文§二、长任务，怎么避免干一半就停？](https://xiaolinnote.com/claudecode/playbook/opus55_handbook.html#%E4%BA%8C%E3%80%81%E9%95%BF%E4%BB%BB%E5%8A%A1-%E6%80%8E%E4%B9%88%E9%81%BF%E5%85%8D%E5%B9%B2%E4%B8%80%E5%8D%8A%E5%B0%B1%E5%81%9C)
 
 ## 9. AI 原生研发的六个阶段
 
@@ -326,6 +335,7 @@
 ### 补充考点
 
 - **G9-29** 过去有了产品想法，通常要先写工单，再找产品经理开会补用户故事和验收标准；现在可以先用自己的话和 Claude 讨论，不用一上来就写一份格式完整的需求文档。[原文§1. Plan，怎么把一个想法变成 intent.md？](https://xiaolinnote.com/claudecode/playbook/anthropic_ai_native_sdlc.html#_1-plan-%E6%80%8E%E4%B9%88%E6%8A%8A%E4%B8%80%E4%B8%AA%E6%83%B3%E6%B3%95%E5%8F%98%E6%88%90-intent-md)
+- **G9-30** 不听它说已经完成，而看它能不能拿出结果：让 Claude 自己运行测试和构建、读取失败结果、修改后再次验证，直到满足计划里约定的完成条件。[原文§4. Test，怎么证明 AI 真的做完了？](https://xiaolinnote.com/claudecode/playbook/anthropic_ai_native_sdlc.html#_4-test-%E6%80%8E%E4%B9%88%E8%AF%81%E6%98%8E-ai-%E7%9C%9F%E7%9A%84%E5%81%9A%E5%AE%8C%E4%BA%86)
 
 ## 10. 老项目改造的准备与验收
 
@@ -374,3 +384,8 @@
 - **G10-36** 翻试点的用量记录看 token 主要花在哪一步；便宜的检查放前面，通过后再跑耗资源的验证；重复性强、数量多且能自动判断对错的任务用 Sonnet 这类兼顾成本和能力的模型，复杂逻辑改写和找漏洞的审查留给更强的模型。[原文§七、这样改一遍，要花多少钱？](https://xiaolinnote.com/claudecode/playbook/claude_code_modernization.html#%E4%B8%83%E3%80%81%E8%BF%99%E6%A0%B7%E6%94%B9%E4%B8%80%E9%81%8D-%E8%A6%81%E8%8A%B1%E5%A4%9A%E5%B0%91%E9%92%B1)
 - **G10-37** 不能只看单价：便宜模型反复返工几次，账单可能比强模型一次做完还高；试点时要把重试次数也记下来，再结合用量数据判断哪里值得调整。[原文§七、这样改一遍，要花多少钱？](https://xiaolinnote.com/claudecode/playbook/claude_code_modernization.html#%E4%B8%83%E3%80%81%E8%BF%99%E6%A0%B7%E6%94%B9%E4%B8%80%E9%81%8D-%E8%A6%81%E8%8A%B1%E5%A4%9A%E5%B0%91%E9%92%B1)
 - **G10-38** 团队还会留下跑过的工作流、大家认可的验收条件、审核上线规则，以及每次修改的证据记录；把这些整理好，下次升级就能接着用。[原文§最后](https://xiaolinnote.com/claudecode/playbook/claude_code_modernization.html#%E6%9C%80%E5%90%8E)
+
+### 补充考点
+
+- **G10-39** 引入新依赖时，还要检查许可证要求和安全漏洞。[原文§四、开工前，还要准备什么？](https://xiaolinnote.com/claudecode/playbook/claude_code_modernization.html#%E5%9B%9B%E3%80%81%E5%BC%80%E5%B7%A5%E5%89%8D-%E8%BF%98%E8%A6%81%E5%87%86%E5%A4%87%E4%BB%80%E4%B9%88)
+- **G10-40** 有循环依赖时，要先梳理哪些部分需要一起处理。[原文§六、怎么推到整个项目？](https://xiaolinnote.com/claudecode/playbook/claude_code_modernization.html#%E5%85%AD%E3%80%81%E6%80%8E%E4%B9%88%E6%8E%A8%E5%88%B0%E6%95%B4%E4%B8%AA%E9%A1%B9%E7%9B%AE)

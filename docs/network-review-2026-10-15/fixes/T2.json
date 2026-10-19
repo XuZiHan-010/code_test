@@ -1,0 +1,287 @@
+{
+  "changes": [
+    {
+      "id": "T2-63",
+      "reason": "超出末位的原 D 也会请求剩余内容；改为漏掉最后一个字节的范围。",
+      "typed": {
+        "options": [
+          {
+            "key": "A",
+            "text": "Range: bytes=524288-",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "Range: bytes=524289-",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "Range: bytes=0-524288",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "Range: bytes=524288-1048574",
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-97",
+      "reason": "第二空明确对应 key share，必须按位置评分。",
+      "typed": {
+        "blankOrder": "ordered"
+      },
+      "answer": "以常见的、基于证书和 ECDHE 的 TLS 1.3 完整握手为例，第一空为密码套件，第二空为临时公钥（key share）。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)",
+      "question": "[填空题·有序] 以常见的、基于证书和 ECDHE 的 TLS 1.3 完整握手为例，客户端发送的 ClientHello 带上支持的版本、____和____（也就是 key share）。"
+    },
+    {
+      "id": "T2-98",
+      "reason": "补回证书和 ECDHE 示例限定。",
+      "typed": {
+        "stem": "以常见的、基于证书和 ECDHE 的 TLS 1.3 完整握手为例，服务端收到 ClientHello 后返回什么？"
+      },
+      "question": "以常见的、基于证书和 ECDHE 的 TLS 1.3 完整握手为例，服务端收到 ClientHello 后返回什么？",
+      "answer": "以常见的、基于证书和 ECDHE 的 TLS 1.3 完整握手为例，服务端返回 ServerHello 和自己的 key share，双方由此计算握手密钥。服务端随后发送加密保护的证书、证书签名和 Finished 消息；客户端验证证书、签名和 Finished，再发送自己的 Finished，完成握手。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)"
+    },
+    {
+      "id": "T2-105",
+      "reason": "补回原文握手签名的适用条件。",
+      "typed": {
+        "options": [
+          {
+            "key": "A",
+            "text": "只依靠非对称加密传输全部 HTTP 数据，不需要验证对方身份",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "证书校验：客户端验证证书链、有效期和域名，确认公钥绑定的是要访问的服务器",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "证明私钥的持有：在 ECDHE 等握手中，服务端用证书对应的私钥对握手内容签名，客户端用公钥验证",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "握手完整性校验：通过 Finished 消息验证握手记录，防止协商参数等内容被中途修改",
+            "correct": true
+          },
+          {
+            "key": "E",
+            "text": "数据加密和完整性保护：后续用协商出的对称密钥保护 HTTP 数据",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "HTTPS 主要通过四个机制防范中间人：证书校验（验证证书链、有效期和域名）、证明私钥的持有（在 ECDHE 等握手中，服务端用证书对应的私钥对握手内容签名，客户端用公钥验证）、握手完整性校验（Finished 消息验证握手记录）、数据加密和完整性保护（后续用协商出的对称密钥保护 HTTP 数据，篡改的数据无法通过校验）。[原文§HTTPS是如何防范中间人的攻击？](https://xiaolincoding.com/interview/network.html#https%E6%98%AF%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E4%B8%AD%E9%97%B4%E4%BA%BA%E7%9A%84%E6%94%BB%E5%87%BB)"
+    },
+    {
+      "id": "T2-141",
+      "reason": "错误项明确为最终失败且已关闭，避免检测等待期间也符合可能问法。",
+      "typed": {
+        "options": [
+          {
+            "key": "A",
+            "text": "达到最终重传失败阈值，内核已报告连接失败并关闭本地连接之后",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "本地已经收到对端发来的有效 RST 报文的时候",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "连接没有数据交互，也没有开启保活或应用层超时的时候",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "保活已判定失败或应用层超时已触发，并且本地连接已关闭之后",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "网线被拔掉或者对端突然断电，不一定会立刻让本地连接消失。如果连接没有数据交互，也没有开启保活或应用层超时，本地可能仍然显示 ESTABLISHED。题中错误选项描述的是最终重传失败、保活失败或应用层超时触发后，连接已经关闭的情形；仅开启保活或开始等待确认，不等于已经关闭连接。[原文§HTTP进行TCP连接之后，在什么情况下会中断](https://xiaolincoding.com/interview/network.html#http%E8%BF%9B%E8%A1%8Ctcp%E8%BF%9E%E6%8E%A5%E4%B9%8B%E5%90%8E-%E5%9C%A8%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E4%B8%AD%E6%96%AD)"
+    },
+    {
+      "id": "T2-150",
+      "reason": "原文泛化所有 DNS 服务器配置与递归服务范围；按官方资料勘误。",
+      "typed": {
+        "options": [
+          {
+            "key": "A",
+            "text": "只保存在权威 DNS 服务器中，因此客户端必须先找到权威 DNS 服务器，才能找到根域 DNS 服务器",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "客户端可通过向其提供递归服务的 DNS 解析器完成域名查找；不是任意 DNS 服务器都保证提供这种服务",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "只保存在顶级域 DNS 服务器中，因此客户端必须先找到顶级域 DNS 服务器，才能找到根域 DNS 服务器",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "保存在互联网中所有 DNS 服务器中，因此客户端查询时不再需要经过根域 DNS 服务器这一层",
+            "correct": false
+          }
+        ],
+        "stem": "客户端通过 DNS 服务器完成逐层域名查找时，关于服务器职责和可用条件，下列哪项正确？"
+      },
+      "question": "客户端通过 DNS 服务器完成逐层域名查找时，关于服务器职责和可用条件，下列哪项正确？",
+      "answer": "客户端可以通过可向其提供递归服务的 DNS 解析器完成域名查找，而不必自行逐层查询根域及下级 DNS 服务器。权威服务与递归服务职责不同，递归服务可选，也可以限制客户端；不能保证任意 DNS 服务器都为客户端完成递归解析。（原文写“根域的 DNS 服务器信息保存在互联网中所有的 DNS 服务器中”，并据此认为客户端找到“任意一台 DNS 服务器”即可逐层完成查找；这一说法泛化了服务器配置和递归服务范围。）[原文§DNS的全称了解么？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%85%A8%E7%A7%B0%E4%BA%86%E8%A7%A3%E4%B9%88) [核对来源：RFC 1034 §4.3.1 Queries and responses](https://www.rfc-editor.org/rfc/rfc1034.html#section-4.3.1)"
+    },
+    {
+      "id": "T2-179",
+      "reason": "会话固定也可能涉及 Cookie 会话标识，换成明确误述存储位置的错误项。",
+      "typed": {
+        "options": [
+          {
+            "key": "A",
+            "text": "数据存储在服务器端，容易受到 Session 劫持的威胁",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "数据随表单提交，容易因 URL 分享而造成意外泄露",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "数据存储在客户端，容易受到 XSS（跨站脚本攻击）的威胁",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "数据存储在服务器端，因此不会受到客户端脚本攻击的影响",
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-265",
+      "reason": "三项都不同本来是充分条件；明确改为错误的必要条件。",
+      "typed": {
+        "options": [
+          {
+            "key": "A",
+            "text": "协议、主机或端口三者中任意一个不同",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "必须协议、主机和端口三者都不同才属于不同源；只有任意一项不同不算",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "只有主机不同，协议或端口不同并不算不同源",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "只有端口不同，协议或主机不同并不算不同源",
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-285",
+      "reason": "删除过时产品专有描述，保留原文 least_time 机制；该项仍因不是轮询机制而错误。",
+      "typed": {
+        "options": [
+          {
+            "key": "A",
+            "text": "需要手动指定，会优先选择活跃连接最少的后端服务器",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "是默认方式，依次把请求分配给后端服务器，也可以通过 weight 配置权重",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "根据客户端 IP 选择后端服务器，可以做一定程度的会话保持",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "结合响应时间和连接情况选择后端服务器，这是 least_time 的机制",
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-288",
+      "reason": "删除过时产品专有描述；通用哈希按 key 选择后端，consistent 不会把它变成响应时间或连接数调度。",
+      "typed": {
+        "options": [
+          {
+            "key": "A",
+            "text": "根据指定的 key（比如请求 URI）选择后端，加上 consistent 可使用一致性哈希，减少节点变化时的映射调整",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "根据客户端 IP 选择后端，加上 consistent 可以让多个用户共享同一个 NAT 出口",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "根据响应时间选择后端，加上 consistent 可改为按活跃连接数选择后端",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "依次轮流选择后端，加上 consistent 之后可以按 weight 分配请求",
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2-289",
+      "reason": "官方文档以 1.31.0 为商业订阅专有范围分界，更新并保留原文说明。",
+      "typed": {
+        "options": [
+          {
+            "key": "A",
+            "text": "结合响应时间和连接情况选择后端，所有开源 Nginx 都默认具备这项能力",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "只根据客户端 IP 选择后端，与响应时间和连接情况无关",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "只根据活跃连接数选择后端，所有开源 Nginx 都默认具备这项能力",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "结合响应时间和连接情况选择后端；1.31.0 前仅商业订阅提供，此后不再专有，仍需配置 least_time",
+            "correct": true
+          }
+        ],
+        "stem": "关于最短时间 least_time 算法及经官方文档核对的版本范围，下列说法正确的是哪一项？"
+      },
+      "question": "关于最短时间 least_time 算法及经官方文档核对的版本范围，下列说法正确的是哪一项？",
+      "answer": "最短时间 least_time 结合响应时间和连接情况选择后端。官方文档注明，该指令在 1.31.0 以前仅商业订阅提供；自 1.31.0 起不再仅限商业订阅，但仍需显式配置 least_time，不能理解为所有开源 Nginx 版本默认采用此算法。（原文写“这是 NGINX Plus 的能力，不能当作所有开源 Nginx 都默认具备的功能”，未注明 1.31.0 的版本分界。）[原文§Nginx有哪些负载均衡算法？](https://xiaolincoding.com/interview/network.html#nginx%E6%9C%89%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95) [核对来源：NGINX upstream least_time 官方文档](https://nginx.org/en/docs/http/ngx_http_upstream_module.html#least_time)"
+    }
+  ]
+}

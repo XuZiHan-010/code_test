@@ -1,0 +1,88 @@
+{
+  "topic": "redis",
+  "chapters": {
+    "O1": {
+      "status": "draft",
+      "count": 174
+    },
+    "O2": {
+      "status": "draft",
+      "count": 42
+    },
+    "O3": {
+      "status": "draft",
+      "count": 39
+    },
+    "O4": {
+      "status": "draft",
+      "count": 55
+    },
+    "O5": {
+      "status": "draft",
+      "count": 76
+    },
+    "O6": {
+      "status": "draft",
+      "count": 107
+    },
+    "O7": {
+      "status": "draft",
+      "count": 281
+    }
+  },
+  "types": {
+    "fill": 90,
+    "single": 518,
+    "multiple": 90,
+    "short": 76
+  },
+  "questionIdsEqualTypedIds": true,
+  "answerIdsEqualTypedIds": true,
+  "duplicateIds": [],
+  "fillMismatch": [],
+  "uniqueCitedAnchors": 76,
+  "missingAnchors": [],
+  "singleCorrectPositions": {
+    "C": 128,
+    "A": 130,
+    "D": 129,
+    "B": 131
+  },
+  "multipleWithOnlyTwoCorrect": [
+    "O1-14",
+    "O1-16",
+    "O1-85",
+    "O1-101",
+    "O1-112",
+    "O2-30",
+    "O2-38",
+    "O3-14",
+    "O3-34",
+    "O4-32",
+    "O4-38",
+    "O5-47",
+    "O5-72",
+    "O6-22",
+    "O7-75",
+    "O7-76",
+    "O7-161",
+    "O7-216",
+    "O7-241"
+  ],
+  "sourceHeadings": 76,
+  "localHeadings": 76,
+  "normalizedHeadingsEqual": true,
+  "validation": {
+    "contentValidate": {
+      "exitCode": 0,
+      "warnings": [
+        "V14 R3-139"
+      ]
+    },
+    "unitTests": {
+      "exitCode": 0,
+      "testFiles": 10,
+      "testsPassed": 132
+    }
+  }
+}

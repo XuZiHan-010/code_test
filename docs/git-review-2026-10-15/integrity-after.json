@@ -1,0 +1,17 @@
+﻿[
+    {
+        "file":  "interview-practice/git.md",
+        "unchanged":  true,
+        "sha256":  "77145844eb9f63f1a88905cd409eb88c4a9b796f357595039a4ada0f036bc99c"
+    },
+    {
+        "file":  "interview-practice/answers-xiaolin/git.md",
+        "unchanged":  true,
+        "sha256":  "16ca3d5226a4d206a1c7f5d69171bf31011b31f750b2256cef33bd7c9fddaa79"
+    },
+    {
+        "file":  "content/typed/git.json",
+        "unchanged":  true,
+        "sha256":  "ff136b148e772eaf972c616b45dbac2833cf97e5a544edb040cce531317539a4"
+    }
+]

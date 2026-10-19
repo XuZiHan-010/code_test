@@ -1,0 +1,2336 @@
+{
+  "completedAt": "2026-10-16T09:08:23.946Z",
+  "passed": true,
+  "sourceHashes": {
+    "interview-practice/docker.md": "2f57a26f39395aba3a7746909c6c0709c45029fc2eb5d85d834aaf36e0fbed2b",
+    "interview-practice/answers-xiaolin/docker.md": "7527434374984f27d3b04b223f098328f3066d5e4e9e1450b52d5348de735859",
+    "content/typed/docker.json": "dc723770b345cd7b65e3f1c5db2acdbad8839f3dbc6eaf0a864412616ba832f8"
+  },
+  "questionCount": 252,
+  "counts": {
+    "single": 162,
+    "multiple": 37,
+    "fill": 28,
+    "short": 25,
+    "code": 0
+  },
+  "changedQuestionCount": 98,
+  "changedQuestionIds": [
+    "Y1-5",
+    "Y1-10",
+    "Y1-12",
+    "Y1-13",
+    "Y1-14",
+    "Y1-15",
+    "Y1-16",
+    "Y1-17",
+    "Y1-18",
+    "Y1-21",
+    "Y1-22",
+    "Y1-23",
+    "Y1-24",
+    "Y1-36",
+    "Y1-40",
+    "Y1-43",
+    "Y1-46",
+    "Y1-50",
+    "Y1-51",
+    "Y1-53",
+    "Y1-54",
+    "Y1-56",
+    "Y1-58",
+    "Y1-60",
+    "Y1-61",
+    "Y1-62",
+    "Y1-64",
+    "Y1-65",
+    "Y2-1",
+    "Y2-4",
+    "Y2-6",
+    "Y2-11",
+    "Y2-12",
+    "Y2-13",
+    "Y2-15",
+    "Y2-16",
+    "Y2-20",
+    "Y2-21",
+    "Y2-22",
+    "Y2-23",
+    "Y2-25",
+    "Y2-26",
+    "Y2-28",
+    "Y2-30",
+    "Y2-31",
+    "Y2-32",
+    "Y2-33",
+    "Y2-34",
+    "Y2-37",
+    "Y2-43",
+    "Y2-44",
+    "Y2-49",
+    "Y2-50",
+    "Y2-53",
+    "Y2-54",
+    "Y2-55",
+    "Y2-56",
+    "Y2-58",
+    "Y2-61",
+    "Y2-62",
+    "Y3-1",
+    "Y3-2",
+    "Y3-5",
+    "Y3-12",
+    "Y3-13",
+    "Y3-14",
+    "Y3-17",
+    "Y3-18",
+    "Y3-19",
+    "Y3-20",
+    "Y3-21",
+    "Y3-22",
+    "Y3-24",
+    "Y3-25",
+    "Y3-26",
+    "Y3-27",
+    "Y3-28",
+    "Y3-47",
+    "Y3-48",
+    "Y3-50",
+    "Y3-51",
+    "Y4-4",
+    "Y4-19",
+    "Y4-20",
+    "Y4-21",
+    "Y4-22",
+    "Y4-23",
+    "Y4-26",
+    "Y4-27",
+    "Y4-28",
+    "Y4-36",
+    "Y4-51",
+    "Y4-52",
+    "Y4-54",
+    "Y4-55",
+    "Y4-56",
+    "Y4-57",
+    "Y4-61"
+  ],
+  "resolutions": [
+    {
+      "id": "Y1-M1",
+      "requiredIds": [
+        "Y1-24",
+        "Y1-36"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y1-M2",
+      "requiredIds": [
+        "Y1-62",
+        "Y1-60",
+        "Y1-64",
+        "Y1-65"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y1-M3",
+      "requiredIds": [
+        "Y1-61",
+        "Y1-60",
+        "Y1-65"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y2-M1",
+      "requiredIds": [
+        "Y2-15",
+        "Y2-13",
+        "Y2-16",
+        "Y2-23"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y2-M2",
+      "requiredIds": [
+        "Y2-25",
+        "Y2-26",
+        "Y2-34"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y2-M3",
+      "requiredIds": [
+        "Y2-37",
+        "Y2-43",
+        "Y2-44"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y2-M4",
+      "requiredIds": [
+        "Y2-43"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y2-M7",
+      "requiredIds": [
+        "Y2-58",
+        "Y2-62"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y2-M8",
+      "requiredIds": [
+        "Y2-62"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y3Y4-M1",
+      "requiredIds": [
+        "Y3-1",
+        "Y3-2",
+        "Y3-12",
+        "Y3-13",
+        "Y3-5",
+        "Y3-28"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y3Y4-M2",
+      "requiredIds": [
+        "Y3-24",
+        "Y3-27"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y3Y4-M3",
+      "requiredIds": [
+        "Y3-25"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y3Y4-M4",
+      "requiredIds": [
+        "Y4-4"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y3Y4-M5",
+      "requiredIds": [
+        "Y4-19",
+        "Y4-20",
+        "Y4-22",
+        "Y4-23",
+        "Y4-21"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y3Y4-M6",
+      "requiredIds": [
+        "Y4-27",
+        "Y4-26",
+        "Y4-36"
+      ],
+      "unchangedIds": []
+    },
+    {
+      "id": "Y3Y4-M7",
+      "requiredIds": [
+        "Y4-54",
+        "Y4-55",
+        "Y4-57",
+        "Y4-61",
+        "Y4-51",
+        "Y4-52",
+        "Y4-56"
+      ],
+      "unchangedIds": []
+    }
+  ],
+  "newOfficialCitationCount": 148,
+  "referencePageCount": 32,
+  "singleKeys": [
+    {
+      "id": "Y1-2",
+      "key": "C"
+    },
+    {
+      "id": "Y1-3",
+      "key": "A"
+    },
+    {
+      "id": "Y1-5",
+      "key": "A"
+    },
+    {
+      "id": "Y1-6",
+      "key": "D"
+    },
+    {
+      "id": "Y1-9",
+      "key": "A"
+    },
+    {
+      "id": "Y1-11",
+      "key": "C"
+    },
+    {
+      "id": "Y1-12",
+      "key": "B"
+    },
+    {
+      "id": "Y1-13",
+      "key": "A"
+    },
+    {
+      "id": "Y1-14",
+      "key": "C"
+    },
+    {
+      "id": "Y1-15",
+      "key": "C"
+    },
+    {
+      "id": "Y1-19",
+      "key": "D"
+    },
+    {
+      "id": "Y1-20",
+      "key": "A"
+    },
+    {
+      "id": "Y1-21",
+      "key": "A"
+    },
+    {
+      "id": "Y1-25",
+      "key": "B"
+    },
+    {
+      "id": "Y1-26",
+      "key": "B"
+    },
+    {
+      "id": "Y1-27",
+      "key": "D"
+    },
+    {
+      "id": "Y1-29",
+      "key": "B"
+    },
+    {
+      "id": "Y1-32",
+      "key": "D"
+    },
+    {
+      "id": "Y1-33",
+      "key": "D"
+    },
+    {
+      "id": "Y1-34",
+      "key": "C"
+    },
+    {
+      "id": "Y1-35",
+      "key": "B"
+    },
+    {
+      "id": "Y1-38",
+      "key": "B"
+    },
+    {
+      "id": "Y1-39",
+      "key": "A"
+    },
+    {
+      "id": "Y1-40",
+      "key": "C"
+    },
+    {
+      "id": "Y1-44",
+      "key": "D"
+    },
+    {
+      "id": "Y1-45",
+      "key": "C"
+    },
+    {
+      "id": "Y1-47",
+      "key": "A"
+    },
+    {
+      "id": "Y1-49",
+      "key": "A"
+    },
+    {
+      "id": "Y1-51",
+      "key": "B"
+    },
+    {
+      "id": "Y1-52",
+      "key": "B"
+    },
+    {
+      "id": "Y1-55",
+      "key": "D"
+    },
+    {
+      "id": "Y1-57",
+      "key": "D"
+    },
+    {
+      "id": "Y1-58",
+      "key": "B"
+    },
+    {
+      "id": "Y1-60",
+      "key": "C"
+    },
+    {
+      "id": "Y1-61",
+      "key": "D"
+    },
+    {
+      "id": "Y1-62",
+      "key": "A"
+    },
+    {
+      "id": "Y1-63",
+      "key": "C"
+    },
+    {
+      "id": "Y2-1",
+      "key": "A"
+    },
+    {
+      "id": "Y2-2",
+      "key": "D"
+    },
+    {
+      "id": "Y2-3",
+      "key": "C"
+    },
+    {
+      "id": "Y2-4",
+      "key": "B"
+    },
+    {
+      "id": "Y2-5",
+      "key": "D"
+    },
+    {
+      "id": "Y2-6",
+      "key": "A"
+    },
+    {
+      "id": "Y2-7",
+      "key": "B"
+    },
+    {
+      "id": "Y2-9",
+      "key": "C"
+    },
+    {
+      "id": "Y2-10",
+      "key": "B"
+    },
+    {
+      "id": "Y2-13",
+      "key": "D"
+    },
+    {
+      "id": "Y2-14",
+      "key": "C"
+    },
+    {
+      "id": "Y2-15",
+      "key": "A"
+    },
+    {
+      "id": "Y2-16",
+      "key": "B"
+    },
+    {
+      "id": "Y2-17",
+      "key": "D"
+    },
+    {
+      "id": "Y2-18",
+      "key": "A"
+    },
+    {
+      "id": "Y2-20",
+      "key": "C"
+    },
+    {
+      "id": "Y2-21",
+      "key": "B"
+    },
+    {
+      "id": "Y2-24",
+      "key": "D"
+    },
+    {
+      "id": "Y2-26",
+      "key": "C"
+    },
+    {
+      "id": "Y2-27",
+      "key": "A"
+    },
+    {
+      "id": "Y2-28",
+      "key": "D"
+    },
+    {
+      "id": "Y2-29",
+      "key": "B"
+    },
+    {
+      "id": "Y2-30",
+      "key": "C"
+    },
+    {
+      "id": "Y2-31",
+      "key": "A"
+    },
+    {
+      "id": "Y2-32",
+      "key": "C"
+    },
+    {
+      "id": "Y2-36",
+      "key": "D"
+    },
+    {
+      "id": "Y2-37",
+      "key": "B"
+    },
+    {
+      "id": "Y2-38",
+      "key": "A"
+    },
+    {
+      "id": "Y2-40",
+      "key": "C"
+    },
+    {
+      "id": "Y2-41",
+      "key": "B"
+    },
+    {
+      "id": "Y2-42",
+      "key": "A"
+    },
+    {
+      "id": "Y2-45",
+      "key": "D"
+    },
+    {
+      "id": "Y2-47",
+      "key": "C"
+    },
+    {
+      "id": "Y2-48",
+      "key": "A"
+    },
+    {
+      "id": "Y2-49",
+      "key": "B"
+    },
+    {
+      "id": "Y2-51",
+      "key": "D"
+    },
+    {
+      "id": "Y2-54",
+      "key": "B"
+    },
+    {
+      "id": "Y2-55",
+      "key": "C"
+    },
+    {
+      "id": "Y2-56",
+      "key": "A"
+    },
+    {
+      "id": "Y2-57",
+      "key": "D"
+    },
+    {
+      "id": "Y2-59",
+      "key": "C"
+    },
+    {
+      "id": "Y2-60",
+      "key": "B"
+    },
+    {
+      "id": "Y3-2",
+      "key": "B"
+    },
+    {
+      "id": "Y3-3",
+      "key": "A"
+    },
+    {
+      "id": "Y3-4",
+      "key": "A"
+    },
+    {
+      "id": "Y3-5",
+      "key": "C"
+    },
+    {
+      "id": "Y3-6",
+      "key": "A"
+    },
+    {
+      "id": "Y3-8",
+      "key": "C"
+    },
+    {
+      "id": "Y3-9",
+      "key": "D"
+    },
+    {
+      "id": "Y3-11",
+      "key": "D"
+    },
+    {
+      "id": "Y3-15",
+      "key": "D"
+    },
+    {
+      "id": "Y3-17",
+      "key": "C"
+    },
+    {
+      "id": "Y3-18",
+      "key": "B"
+    },
+    {
+      "id": "Y3-19",
+      "key": "D"
+    },
+    {
+      "id": "Y3-20",
+      "key": "B"
+    },
+    {
+      "id": "Y3-21",
+      "key": "D"
+    },
+    {
+      "id": "Y3-22",
+      "key": "C"
+    },
+    {
+      "id": "Y3-23",
+      "key": "B"
+    },
+    {
+      "id": "Y3-24",
+      "key": "B"
+    },
+    {
+      "id": "Y3-29",
+      "key": "D"
+    },
+    {
+      "id": "Y3-30",
+      "key": "A"
+    },
+    {
+      "id": "Y3-31",
+      "key": "C"
+    },
+    {
+      "id": "Y3-32",
+      "key": "B"
+    },
+    {
+      "id": "Y3-33",
+      "key": "C"
+    },
+    {
+      "id": "Y3-34",
+      "key": "B"
+    },
+    {
+      "id": "Y3-35",
+      "key": "B"
+    },
+    {
+      "id": "Y3-36",
+      "key": "A"
+    },
+    {
+      "id": "Y3-40",
+      "key": "A"
+    },
+    {
+      "id": "Y3-41",
+      "key": "D"
+    },
+    {
+      "id": "Y3-42",
+      "key": "B"
+    },
+    {
+      "id": "Y3-44",
+      "key": "B"
+    },
+    {
+      "id": "Y3-45",
+      "key": "A"
+    },
+    {
+      "id": "Y3-46",
+      "key": "A"
+    },
+    {
+      "id": "Y3-48",
+      "key": "C"
+    },
+    {
+      "id": "Y3-49",
+      "key": "C"
+    },
+    {
+      "id": "Y3-52",
+      "key": "D"
+    },
+    {
+      "id": "Y3-53",
+      "key": "A"
+    },
+    {
+      "id": "Y3-54",
+      "key": "C"
+    },
+    {
+      "id": "Y3-56",
+      "key": "D"
+    },
+    {
+      "id": "Y3-57",
+      "key": "C"
+    },
+    {
+      "id": "Y3-58",
+      "key": "A"
+    },
+    {
+      "id": "Y3-60",
+      "key": "D"
+    },
+    {
+      "id": "Y3-61",
+      "key": "A"
+    },
+    {
+      "id": "Y4-1",
+      "key": "A"
+    },
+    {
+      "id": "Y4-2",
+      "key": "D"
+    },
+    {
+      "id": "Y4-3",
+      "key": "C"
+    },
+    {
+      "id": "Y4-4",
+      "key": "B"
+    },
+    {
+      "id": "Y4-5",
+      "key": "D"
+    },
+    {
+      "id": "Y4-6",
+      "key": "A"
+    },
+    {
+      "id": "Y4-7",
+      "key": "B"
+    },
+    {
+      "id": "Y4-8",
+      "key": "C"
+    },
+    {
+      "id": "Y4-9",
+      "key": "B"
+    },
+    {
+      "id": "Y4-15",
+      "key": "D"
+    },
+    {
+      "id": "Y4-16",
+      "key": "C"
+    },
+    {
+      "id": "Y4-17",
+      "key": "A"
+    },
+    {
+      "id": "Y4-18",
+      "key": "B"
+    },
+    {
+      "id": "Y4-19",
+      "key": "D"
+    },
+    {
+      "id": "Y4-20",
+      "key": "A"
+    },
+    {
+      "id": "Y4-24",
+      "key": "C"
+    },
+    {
+      "id": "Y4-25",
+      "key": "B"
+    },
+    {
+      "id": "Y4-26",
+      "key": "D"
+    },
+    {
+      "id": "Y4-27",
+      "key": "C"
+    },
+    {
+      "id": "Y4-29",
+      "key": "A"
+    },
+    {
+      "id": "Y4-30",
+      "key": "C"
+    },
+    {
+      "id": "Y4-31",
+      "key": "B"
+    },
+    {
+      "id": "Y4-32",
+      "key": "D"
+    },
+    {
+      "id": "Y4-33",
+      "key": "A"
+    },
+    {
+      "id": "Y4-34",
+      "key": "B"
+    },
+    {
+      "id": "Y4-37",
+      "key": "D"
+    },
+    {
+      "id": "Y4-38",
+      "key": "C"
+    },
+    {
+      "id": "Y4-39",
+      "key": "A"
+    },
+    {
+      "id": "Y4-40",
+      "key": "C"
+    },
+    {
+      "id": "Y4-42",
+      "key": "B"
+    },
+    {
+      "id": "Y4-43",
+      "key": "A"
+    },
+    {
+      "id": "Y4-45",
+      "key": "D"
+    },
+    {
+      "id": "Y4-46",
+      "key": "C"
+    },
+    {
+      "id": "Y4-50",
+      "key": "A"
+    },
+    {
+      "id": "Y4-51",
+      "key": "B"
+    },
+    {
+      "id": "Y4-52",
+      "key": "D"
+    },
+    {
+      "id": "Y4-53",
+      "key": "A"
+    },
+    {
+      "id": "Y4-55",
+      "key": "C"
+    },
+    {
+      "id": "Y4-56",
+      "key": "B"
+    },
+    {
+      "id": "Y4-57",
+      "key": "D"
+    },
+    {
+      "id": "Y4-58",
+      "key": "C"
+    },
+    {
+      "id": "Y4-59",
+      "key": "B"
+    }
+  ],
+  "checks": [
+    {
+      "name": "三份修前拷贝与原审哈希一致",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "真实parser/schema/buildBank无错误及Docker警告",
+      "passed": true,
+      "details": {
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "252题题号/题序/唯一性保持",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "题型162单选37多选28填空25简答保持",
+      "passed": true,
+      "details": {
+        "single": 162,
+        "multiple": 37,
+        "fill": 28,
+        "short": 25,
+        "code": 0
+      }
+    },
+    {
+      "name": "4章状态/章节题序均保持draft",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Markdown与typed题号顺序逐章一致",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "逐题结构/全部选择题正确字母/填空配置/原文引用保持",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "28道填空题卷/stem/空数/顺序同步",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "252题Catalog作答视图实际返回对应题且不含答案字段",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "252题Catalog答案视图与实际合并结果完全相同",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "16组必修所列44个题号均有内容/解析修订（语义另审）",
+      "passed": true,
+      "details": [
+        {
+          "id": "Y1-M1",
+          "requiredIds": [
+            "Y1-24",
+            "Y1-36"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y1-M2",
+          "requiredIds": [
+            "Y1-62",
+            "Y1-60",
+            "Y1-64",
+            "Y1-65"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y1-M3",
+          "requiredIds": [
+            "Y1-61",
+            "Y1-60",
+            "Y1-65"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y2-M1",
+          "requiredIds": [
+            "Y2-15",
+            "Y2-13",
+            "Y2-16",
+            "Y2-23"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y2-M2",
+          "requiredIds": [
+            "Y2-25",
+            "Y2-26",
+            "Y2-34"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y2-M3",
+          "requiredIds": [
+            "Y2-37",
+            "Y2-43",
+            "Y2-44"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y2-M4",
+          "requiredIds": [
+            "Y2-43"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y2-M7",
+          "requiredIds": [
+            "Y2-58",
+            "Y2-62"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y2-M8",
+          "requiredIds": [
+            "Y2-62"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y3Y4-M1",
+          "requiredIds": [
+            "Y3-1",
+            "Y3-2",
+            "Y3-12",
+            "Y3-13",
+            "Y3-5",
+            "Y3-28"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y3Y4-M2",
+          "requiredIds": [
+            "Y3-24",
+            "Y3-27"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y3Y4-M3",
+          "requiredIds": [
+            "Y3-25"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y3Y4-M4",
+          "requiredIds": [
+            "Y4-4"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y3Y4-M5",
+          "requiredIds": [
+            "Y4-19",
+            "Y4-20",
+            "Y4-22",
+            "Y4-23",
+            "Y4-21"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y3Y4-M6",
+          "requiredIds": [
+            "Y4-27",
+            "Y4-26",
+            "Y4-36"
+          ],
+          "unchangedIds": []
+        },
+        {
+          "id": "Y3Y4-M7",
+          "requiredIds": [
+            "Y4-54",
+            "Y4-55",
+            "Y4-57",
+            "Y4-61",
+            "Y4-51",
+            "Y4-52",
+            "Y4-56"
+          ],
+          "unchangedIds": []
+        }
+      ]
+    },
+    {
+      "name": "新增勘误引用使用核对来源前缀及HTTPS官方一级来源",
+      "passed": true,
+      "details": {
+        "count": 148,
+        "invalidCitations": []
+      }
+    },
+    {
+      "name": "所有答案尾部官方链接完整解析到citations",
+      "passed": true,
+      "details": {
+        "raw": 148,
+        "parsed": 148
+      }
+    },
+    {
+      "name": "实际引用域名均在原文/官方白名单",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://xiaolincoding.com/interview/docker.html",
+      "passed": true,
+      "details": {
+        "url": "https://xiaolincoding.com/interview/docker.html",
+        "httpStatus": 200,
+        "effectiveUrl": "https://xiaolincoding.com/interview/docker.html",
+        "fetchedAt": "2026-10-16T06:04:27.225Z",
+        "sha256": "d1d0d791910b37a2d203df54566a17c8939b6b5101a5395bd86a26c1cd8d6244",
+        "error": null,
+        "title": "Docker面试题 | 小林coding",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\58cb2654f5e43ab4d371.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "docker%E5%BA%95%E5%B1%82%E4%BE%9D%E6%89%98%E4%BA%8Elinux%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E7%9A%84",
+            "found": true
+          },
+          {
+            "fragment": "%E8%AE%B2%E8%AE%B2cgroup-v2-0",
+            "found": true
+          },
+          {
+            "fragment": "docker-%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "docker-%E6%9C%89%E5%93%AA%E5%87%A0%E4%B8%AA%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6",
+            "found": true
+          },
+          {
+            "fragment": "%E9%95%9C%E5%83%8F%E5%92%8C%E5%AE%B9%E5%99%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "docker-%E9%95%9C%E5%83%8F%E7%9A%84%E5%88%86%E5%B1%82%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88",
+            "found": true
+          },
+          {
+            "fragment": "dockerfile-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E6%9C%89%E5%93%AA%E4%BA%9B",
+            "found": true
+          },
+          {
+            "fragment": "dockerfile-%E4%B8%AD-cmd-%E5%92%8C-entrypoint-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "dockerfile-%E4%B8%AD-copy-%E5%92%8C-add-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%9A%E9%98%B6%E6%AE%B5%E6%9E%84%E5%BB%BA-multi-stage-build-%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84",
+            "found": true
+          },
+          {
+            "fragment": "%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%8F-docker-%E9%95%9C%E5%83%8F%E4%BD%93%E7%A7%AF",
+            "found": true
+          },
+          {
+            "fragment": "docker-commit-%E5%92%8C-docker-build-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "docker-%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E5%BC%8F",
+            "found": true
+          },
+          {
+            "fragment": "docker-%E7%9A%84%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B",
+            "found": true
+          },
+          {
+            "fragment": "%E5%90%8C%E4%B8%80%E4%B8%AA%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%B8%8A%E7%9A%84%E5%A4%9A%E4%B8%AA%E5%AE%B9%E5%99%A8%E4%B9%8B%E9%97%B4%E6%80%8E%E4%B9%88%E9%80%9A%E4%BF%A1",
+            "found": true
+          },
+          {
+            "fragment": "docker-compose-%E6%98%AF%E4%BB%80%E4%B9%88-%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E7%94%A8",
+            "found": true
+          },
+          {
+            "fragment": "docker-%E5%92%8C-kubernetes-%E6%98%AF%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB",
+            "found": true
+          },
+          {
+            "fragment": "docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%9C%89%E5%93%AA%E4%BA%9B",
+            "found": true
+          },
+          {
+            "fragment": "%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E4%B8%80%E4%B8%AA%E8%BF%90%E8%A1%8C%E4%B8%AD%E7%9A%84%E5%AE%B9%E5%99%A8",
+            "found": true
+          },
+          {
+            "fragment": "%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A8%E5%90%8E%E7%AB%8B%E5%88%BB%E9%80%80%E5%87%BA-%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5",
+            "found": true
+          },
+          {
+            "fragment": "docker-run-%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%9C%89%E5%93%AA%E4%BA%9B",
+            "found": true
+          },
+          {
+            "fragment": "%E5%A6%82%E4%BD%95%E6%B8%85%E7%90%86-docker-%E7%9A%84%E6%97%A0%E7%94%A8%E9%95%9C%E5%83%8F%E3%80%81%E5%AE%B9%E5%99%A8%E5%92%8C%E5%8D%B7",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y1-1",
+          "Y1-2",
+          "Y1-3",
+          "Y1-4",
+          "Y1-5",
+          "Y1-6",
+          "Y1-7",
+          "Y1-8",
+          "Y1-9",
+          "Y1-10",
+          "Y1-11",
+          "Y1-12",
+          "Y1-13",
+          "Y1-14",
+          "Y1-15",
+          "Y1-16",
+          "Y1-17",
+          "Y1-18",
+          "Y1-19",
+          "Y1-20",
+          "Y1-21",
+          "Y1-22",
+          "Y1-23",
+          "Y1-24",
+          "Y1-25",
+          "Y1-26",
+          "Y1-27",
+          "Y1-28",
+          "Y1-29",
+          "Y1-30",
+          "Y1-31",
+          "Y1-32",
+          "Y1-33",
+          "Y1-34",
+          "Y1-35",
+          "Y1-36",
+          "Y1-37",
+          "Y1-38",
+          "Y1-39",
+          "Y1-40",
+          "Y1-41",
+          "Y1-42",
+          "Y1-43",
+          "Y1-44",
+          "Y1-45",
+          "Y1-46",
+          "Y1-47",
+          "Y1-48",
+          "Y1-49",
+          "Y1-50",
+          "Y1-51",
+          "Y1-52",
+          "Y1-53",
+          "Y1-54",
+          "Y1-55",
+          "Y1-56",
+          "Y1-57",
+          "Y1-58",
+          "Y1-59",
+          "Y1-60",
+          "Y1-61",
+          "Y1-62",
+          "Y1-63",
+          "Y1-64",
+          "Y1-65",
+          "Y2-1",
+          "Y2-2",
+          "Y2-3",
+          "Y2-4",
+          "Y2-5",
+          "Y2-6",
+          "Y2-7",
+          "Y2-8",
+          "Y2-9",
+          "Y2-10",
+          "Y2-11",
+          "Y2-12",
+          "Y2-13",
+          "Y2-14",
+          "Y2-15",
+          "Y2-16",
+          "Y2-17",
+          "Y2-18",
+          "Y2-19",
+          "Y2-20",
+          "Y2-21",
+          "Y2-22",
+          "Y2-23",
+          "Y2-24",
+          "Y2-25",
+          "Y2-26",
+          "Y2-27",
+          "Y2-28",
+          "Y2-29",
+          "Y2-30",
+          "Y2-31",
+          "Y2-32",
+          "Y2-33",
+          "Y2-34",
+          "Y2-35",
+          "Y2-36",
+          "Y2-37",
+          "Y2-38",
+          "Y2-39",
+          "Y2-40",
+          "Y2-41",
+          "Y2-42",
+          "Y2-43",
+          "Y2-44",
+          "Y2-45",
+          "Y2-46",
+          "Y2-47",
+          "Y2-48",
+          "Y2-49",
+          "Y2-50",
+          "Y2-51",
+          "Y2-52",
+          "Y2-53",
+          "Y2-54",
+          "Y2-55",
+          "Y2-56",
+          "Y2-57",
+          "Y2-58",
+          "Y2-59",
+          "Y2-60",
+          "Y2-61",
+          "Y2-62",
+          "Y3-1",
+          "Y3-2",
+          "Y3-3",
+          "Y3-4",
+          "Y3-5",
+          "Y3-6",
+          "Y3-7",
+          "Y3-8",
+          "Y3-9",
+          "Y3-10",
+          "Y3-11",
+          "Y3-12",
+          "Y3-13",
+          "Y3-14",
+          "Y3-15",
+          "Y3-16",
+          "Y3-17",
+          "Y3-18",
+          "Y3-19",
+          "Y3-20",
+          "Y3-21",
+          "Y3-22",
+          "Y3-23",
+          "Y3-24",
+          "Y3-25",
+          "Y3-26",
+          "Y3-27",
+          "Y3-28",
+          "Y3-29",
+          "Y3-30",
+          "Y3-31",
+          "Y3-32",
+          "Y3-33",
+          "Y3-34",
+          "Y3-35",
+          "Y3-36",
+          "Y3-37",
+          "Y3-38",
+          "Y3-39",
+          "Y3-40",
+          "Y3-41",
+          "Y3-42",
+          "Y3-43",
+          "Y3-44",
+          "Y3-45",
+          "Y3-46",
+          "Y3-47",
+          "Y3-48",
+          "Y3-49",
+          "Y3-50",
+          "Y3-51",
+          "Y3-52",
+          "Y3-53",
+          "Y3-54",
+          "Y3-55",
+          "Y3-56",
+          "Y3-57",
+          "Y3-58",
+          "Y3-59",
+          "Y3-60",
+          "Y3-61",
+          "Y3-62",
+          "Y3-63",
+          "Y3-64",
+          "Y4-1",
+          "Y4-2",
+          "Y4-3",
+          "Y4-4",
+          "Y4-5",
+          "Y4-6",
+          "Y4-7",
+          "Y4-8",
+          "Y4-9",
+          "Y4-10",
+          "Y4-11",
+          "Y4-12",
+          "Y4-13",
+          "Y4-14",
+          "Y4-15",
+          "Y4-16",
+          "Y4-17",
+          "Y4-18",
+          "Y4-19",
+          "Y4-20",
+          "Y4-21",
+          "Y4-22",
+          "Y4-23",
+          "Y4-24",
+          "Y4-25",
+          "Y4-26",
+          "Y4-27",
+          "Y4-28",
+          "Y4-29",
+          "Y4-30",
+          "Y4-31",
+          "Y4-32",
+          "Y4-33",
+          "Y4-34",
+          "Y4-35",
+          "Y4-36",
+          "Y4-37",
+          "Y4-38",
+          "Y4-39",
+          "Y4-40",
+          "Y4-41",
+          "Y4-42",
+          "Y4-43",
+          "Y4-44",
+          "Y4-45",
+          "Y4-46",
+          "Y4-47",
+          "Y4-48",
+          "Y4-49",
+          "Y4-50",
+          "Y4-51",
+          "Y4-52",
+          "Y4-53",
+          "Y4-54",
+          "Y4-55",
+          "Y4-56",
+          "Y4-57",
+          "Y4-58",
+          "Y4-59",
+          "Y4-60",
+          "Y4-61"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://man7.org/linux/man-pages/man7/pid_namespaces.7.html",
+      "passed": true,
+      "details": {
+        "url": "https://man7.org/linux/man-pages/man7/pid_namespaces.7.html",
+        "httpStatus": 200,
+        "effectiveUrl": "https://man7.org/linux/man-pages/man7/pid_namespaces.7.html",
+        "fetchedAt": "2026-10-16T06:04:39.068Z",
+        "sha256": "b488fd46a20f234fcecb9b91fff2ab66c0590dcbf4ff5c25ecfa44ebf424f55f",
+        "error": null,
+        "title": "pid_namespaces(7) - Linux manual page",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\c4bde01028c0012df3f4.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y1-5",
+          "Y1-10"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/engine/storage/volumes/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/engine/storage/volumes/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/engine/storage/volumes/",
+        "fetchedAt": "2026-10-16T06:04:25.949Z",
+        "sha256": "3bbd8f0380f08a046fad57a8c0fad8a6e3679a038ab130b279520c9280985f2c",
+        "error": null,
+        "title": "Volumes | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\ea5bbea450c9bfdd0c42.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y1-10",
+          "Y1-50",
+          "Y1-51",
+          "Y1-53",
+          "Y1-54",
+          "Y1-58",
+          "Y1-65"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.kernel.org/admin-guide/cgroup-v1/cgroups.html",
+      "passed": true,
+      "details": {
+        "url": "https://docs.kernel.org/admin-guide/cgroup-v1/cgroups.html",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.kernel.org/admin-guide/cgroup-v1/cgroups.html",
+        "fetchedAt": "2026-10-16T06:04:41.981Z",
+        "sha256": "897b1ab17c65a937e4ca15e166d51b4c961ec8370aedbcd9d9d2c7439349a763",
+        "error": null,
+        "title": "Control Groups — The Linux Kernel  documentation",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\59cbd83c487d7f5c0554.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "why-are-cgroups-needed",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y1-12",
+          "Y1-13",
+          "Y1-14",
+          "Y1-15",
+          "Y1-16",
+          "Y1-17",
+          "Y1-18",
+          "Y1-21",
+          "Y1-22",
+          "Y1-23"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.kernel.org/admin-guide/cgroup-v2.html",
+      "passed": true,
+      "details": {
+        "url": "https://docs.kernel.org/admin-guide/cgroup-v2.html",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.kernel.org/admin-guide/cgroup-v2.html",
+        "fetchedAt": "2026-10-16T06:04:43.834Z",
+        "sha256": "1b3fb47df6a5f03bb431cec15455c531369ce76502ff68dd039ae9dbc304026b",
+        "error": null,
+        "title": "Control Group v2 — The Linux Kernel  documentation",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\11a08c17c96b7f440739.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "mounting",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y1-12",
+          "Y1-13",
+          "Y1-14",
+          "Y1-15",
+          "Y1-16",
+          "Y1-17",
+          "Y1-18",
+          "Y1-21",
+          "Y1-22",
+          "Y1-23"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/engine/containers/runmetrics/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/engine/containers/runmetrics/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/engine/containers/runmetrics/",
+        "fetchedAt": "2026-10-16T06:04:41.611Z",
+        "sha256": "4de25bcb4d7247c4cf7a7f9aaac77baefd222e80cac861fe6f25848af2cf02b7",
+        "error": null,
+        "title": "Runtime metrics | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\537f1de50a77d034ad56.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "find-the-cgroup-for-a-given-container",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y1-15",
+          "Y1-22"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://www.docker.com/resources/what-container/",
+      "passed": true,
+      "details": {
+        "url": "https://www.docker.com/resources/what-container/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://www.docker.com/resources/what-container/",
+        "fetchedAt": "2026-10-16T06:04:46.425Z",
+        "sha256": "a48a5bc84da0ba717badeba7ed38bfb9d29fcd83ecf6cb8d652618c68744a0f4",
+        "error": null,
+        "title": "What is a Container? | Docker",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\b088504de5cf8235625f.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y1-24",
+          "Y1-36"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/docker-hub/repos/manage/access/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/docker-hub/repos/manage/access/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/docker-hub/repos/manage/access/",
+        "fetchedAt": "2026-10-16T06:04:46.671Z",
+        "sha256": "19e8634ef602f7cd61d9e6e56152cefa6f19bb022d7d37ff0f44c0b51ea830f1",
+        "error": null,
+        "title": "Access management | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\568dad87850b27c00487.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y1-40",
+          "Y1-43",
+          "Y1-46"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/engine/storage/containerd/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/engine/storage/containerd/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/engine/storage/containerd/",
+        "fetchedAt": "2026-10-16T06:04:46.053Z",
+        "sha256": "6d12fd35a3d4e1a97442cacc8f93843ee798126400f77037bda950d4c405e062",
+        "error": null,
+        "title": "containerd image store with Docker Engine | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\62ccfbd125d8e42129f7.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y1-56",
+          "Y1-65"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/engine/storage/drivers/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/engine/storage/drivers/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/engine/storage/drivers/",
+        "fetchedAt": "2026-10-16T09:08:18.305Z",
+        "sha256": "2b0db445e3d0740dd3decc726e759b5a683169227177671116c01418760f7eb5",
+        "error": null,
+        "title": "Storage drivers | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\0cc0bfb3454845491017.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "the-copy-on-write-cow-strategy",
+            "found": true
+          },
+          {
+            "fragment": "images-and-layers",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y1-58",
+          "Y1-65",
+          "Y2-62"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/build/cache/invalidation/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/build/cache/invalidation/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/build/cache/invalidation/",
+        "fetchedAt": "2026-10-16T06:04:52.120Z",
+        "sha256": "b840e44c14b378a5ef290eadb59e35427f354116892835feeb5f7840ec8bde7e",
+        "error": null,
+        "title": "Build cache invalidation | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\ce1cb197520232e96ea3.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "general-rules",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y1-60",
+          "Y1-61",
+          "Y1-65"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/cli/docker/image/pull/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/cli/docker/image/pull/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/cli/docker/image/pull/",
+        "fetchedAt": "2026-10-16T06:04:50.204Z",
+        "sha256": "0e33af4e38a9ea493368d82bfb2aaeaecf5f95f94ed3793245257379bd2b7261",
+        "error": null,
+        "title": "docker image pull | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\f883296b9a157e70096b.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "pull-an-image-from-docker-hub",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y1-60",
+          "Y1-62",
+          "Y1-64",
+          "Y1-65"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/build/building/variables/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/build/building/variables/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/build/building/variables/",
+        "fetchedAt": "2026-10-16T06:05:04.449Z",
+        "sha256": "f590c4a91560dab3922b14c35e5beeb9d094f09745ccb04407ecbf310101bd39",
+        "error": null,
+        "title": "Build variables | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\3ecd2f1dee51e04704b4.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "build-arguments",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y2-4",
+          "Y2-11",
+          "Y2-12"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/dockerfile/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/dockerfile/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/dockerfile/",
+        "fetchedAt": "2026-10-16T06:05:08.644Z",
+        "sha256": "691b157c2a923e783b7ce759926e90d0a8bde414f0024c86da39bd71f01fc992",
+        "error": null,
+        "title": "Dockerfile reference | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\6ca35cbd69e75cb12333.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "user",
+            "found": true
+          },
+          {
+            "fragment": "entrypoint",
+            "found": true
+          },
+          {
+            "fragment": "add",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y2-6",
+          "Y2-11",
+          "Y2-12",
+          "Y2-13",
+          "Y2-15",
+          "Y2-16",
+          "Y2-20",
+          "Y2-21",
+          "Y2-22",
+          "Y2-23",
+          "Y2-25",
+          "Y2-26",
+          "Y2-34"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/build-checks/json-args-recommended/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/build-checks/json-args-recommended/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/build-checks/json-args-recommended/",
+        "fetchedAt": "2026-10-16T06:05:05.800Z",
+        "sha256": "ded543b8ccfc9633341eb80a5c369f050d2d5f83431f43b35337469ec990ce19",
+        "error": null,
+        "title": "JSONArgsRecommended | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\1b9a4ff0516b8244b0e6.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y2-20",
+          "Y2-21",
+          "Y2-22",
+          "Y2-23"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/build/building/best-practices/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/build/building/best-practices/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/build/building/best-practices/",
+        "fetchedAt": "2026-10-16T06:05:11.713Z",
+        "sha256": "f7b562bdd13bed8fd5f4893b667949182714effa274be6fd6e16032c3b677664",
+        "error": null,
+        "title": "Building best practices | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\3cbb6d8ffee89785ec99.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "add-or-copy",
+            "found": true
+          },
+          {
+            "fragment": "pin-base-image-versions",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y2-28",
+          "Y2-30",
+          "Y2-33",
+          "Y2-34",
+          "Y2-55",
+          "Y2-56",
+          "Y2-58",
+          "Y2-62"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/build/building/multi-stage/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/build/building/multi-stage/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/build/building/multi-stage/",
+        "fetchedAt": "2026-10-16T06:05:11.257Z",
+        "sha256": "a251742a74b45e14da20415042be508c3f165ea34289b8e74ee044f0b5e163d2",
+        "error": null,
+        "title": "Multi-stage builds | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\341ad40b8cb54ae936aa.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y2-37",
+          "Y2-43",
+          "Y2-44"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/build/cache/backends/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/build/cache/backends/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/build/cache/backends/",
+        "fetchedAt": "2026-10-16T06:05:14.254Z",
+        "sha256": "9a0972d84a730bd5fe65fbd0682f3d35130a45837668791dec78f6bf3e256fca",
+        "error": null,
+        "title": "Cache storage backends | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\6b4b6092c684f588edd6.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "cache-mode",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y2-37",
+          "Y2-43",
+          "Y2-44"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/build/concepts/context/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/build/concepts/context/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/build/concepts/context/",
+        "fetchedAt": "2026-10-16T06:05:18.203Z",
+        "sha256": "588acdfe3cf3ea314d184efbc1e5201edd4921a9046ab71c254c2e9d4b445996",
+        "error": null,
+        "title": "Build context | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\d087eef4ae8a3b87cea0.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "dockerignore-files",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y2-49",
+          "Y2-50",
+          "Y2-53"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/cli/docker/container/commit/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/cli/docker/container/commit/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/cli/docker/container/commit/",
+        "fetchedAt": "2026-10-16T06:05:17.641Z",
+        "sha256": "65ac196be766d376830d91137c40774cc956bfeb7edf9e4c2f303a6eba91ac99",
+        "error": null,
+        "title": "docker container commit | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\cc81b33112fee0cb34aa.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y2-54",
+          "Y2-61",
+          "Y2-62"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/engine/storage/tmpfs/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/engine/storage/tmpfs/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/engine/storage/tmpfs/",
+        "fetchedAt": "2026-10-16T06:05:18.979Z",
+        "sha256": "344cf85c44b7325d9ee0dcb35508e96a51a189252709433b4391541c25b005c8",
+        "error": null,
+        "title": "tmpfs mounts | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\1e363cba113ace169747.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y3-1",
+          "Y3-2",
+          "Y3-5",
+          "Y3-12",
+          "Y3-13",
+          "Y3-28"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/engine/network/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/engine/network/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/engine/network/",
+        "fetchedAt": "2026-10-16T06:05:21.908Z",
+        "sha256": "c2cb1cf04ea2a69b0c67463e1911a39876f727d2bc6cb6fd9d9300cb852a9014",
+        "error": null,
+        "title": "Networking overview | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\033f31253772b73ed3c8.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y3-14",
+          "Y3-27"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/engine/network/drivers/bridge/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/engine/network/drivers/bridge/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/engine/network/drivers/bridge/",
+        "fetchedAt": "2026-10-16T06:05:22.692Z",
+        "sha256": "57736c718c45feb94ffdfa5f83937ac451343fdb0ea1583fb2edc0f88ed34fba",
+        "error": null,
+        "title": "Bridge network driver | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\881082f899b25c1ac20d.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y3-17",
+          "Y3-18",
+          "Y3-19",
+          "Y3-20",
+          "Y3-21",
+          "Y3-22",
+          "Y3-25",
+          "Y3-26",
+          "Y3-27"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/engine/network/drivers/host/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/engine/network/drivers/host/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/engine/network/drivers/host/",
+        "fetchedAt": "2026-10-16T06:05:23.302Z",
+        "sha256": "a33ebd64c2aeb977c4fd26048090480a74e9d20e59c2c391f90b5574943c2c88",
+        "error": null,
+        "title": "Host network driver | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\6732393fd414a4a8c5da.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y3-19",
+          "Y3-20",
+          "Y3-25",
+          "Y3-26",
+          "Y3-27"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/engine/network/drivers/overlay/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/engine/network/drivers/overlay/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/engine/network/drivers/overlay/",
+        "fetchedAt": "2026-10-16T06:05:26.898Z",
+        "sha256": "a355052d6466db7e3c7c13639cc01d279a686c866af9830be22144d8c86ee3bd",
+        "error": null,
+        "title": "Overlay network driver | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\31bd7709aad5b99abc21.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y3-24",
+          "Y3-25",
+          "Y3-27"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/",
+      "passed": true,
+      "details": {
+        "url": "https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/",
+        "fetchedAt": "2026-10-16T06:05:34.163Z",
+        "sha256": "2b4d461d1e27c2631f48b43b6b1aa76042588197a741b99693173a39a01f6b1d",
+        "error": null,
+        "title": "Network Plugins | Kubernetes",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\08a066cf82b795810e37.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y3-24",
+          "Y3-27"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/cli/docker/compose/down/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/cli/docker/compose/down/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/cli/docker/compose/down/",
+        "fetchedAt": "2026-10-16T06:05:26.175Z",
+        "sha256": "9316a193096bbd75842c8fa5d2c96ba6002f7dbf1221d975a4566340738fa33a",
+        "error": null,
+        "title": "docker compose down | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\30b2db251b761fd32192.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y3-47",
+          "Y3-48",
+          "Y3-50",
+          "Y3-51"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/cli/docker/system/prune/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/cli/docker/system/prune/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/cli/docker/system/prune/",
+        "fetchedAt": "2026-10-16T06:05:37.877Z",
+        "sha256": "be59b1f5f38c0837181ba39eb26cec35ffde8fae9f64ed08d1252f08d6ea0312",
+        "error": null,
+        "title": "docker system prune | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\691b6ed7a108cfec3361.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y4-4",
+          "Y4-51",
+          "Y4-52",
+          "Y4-54",
+          "Y4-55",
+          "Y4-56",
+          "Y4-57",
+          "Y4-61"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/cli/docker/container/attach/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/cli/docker/container/attach/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/cli/docker/container/attach/",
+        "fetchedAt": "2026-10-16T06:05:37.189Z",
+        "sha256": "951a9bdea6a831693d0ed8c31dc438124ce668b42cfd6618ef1cb47451a3ce1a",
+        "error": null,
+        "title": "docker container attach | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\de3a41c0c18d42f16aac.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y4-19",
+          "Y4-20",
+          "Y4-21",
+          "Y4-22",
+          "Y4-23",
+          "Y4-26",
+          "Y4-27",
+          "Y4-36"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/cli/docker/container/ls/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/cli/docker/container/ls/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/cli/docker/container/ls/",
+        "fetchedAt": "2026-10-16T06:05:37.609Z",
+        "sha256": "d010ad9fbf7f621d41a2e0a0cfbf13b8641e5a4aead29d874084668879a222d2",
+        "error": null,
+        "title": "docker container ls | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\50ba6daa98eaf13c7cf3.html",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "filter-by-exit-signal",
+            "found": true
+          }
+        ],
+        "referencedBy": [
+          "Y4-26",
+          "Y4-28",
+          "Y4-36"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/cli/docker/container/stop/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/cli/docker/container/stop/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/cli/docker/container/stop/",
+        "fetchedAt": "2026-10-16T06:05:42.278Z",
+        "sha256": "d863f2a4b9fb623bb01117c12fd98ce78029dbf8e4430c1fa5c5a317f5c8356b",
+        "error": null,
+        "title": "docker container stop | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\2312e689b596653ec226.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y4-26",
+          "Y4-28",
+          "Y4-36"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "引用页面及实际小节锚点：https://docs.docker.com/reference/cli/docker/volume/prune/",
+      "passed": true,
+      "details": {
+        "url": "https://docs.docker.com/reference/cli/docker/volume/prune/",
+        "httpStatus": 200,
+        "effectiveUrl": "https://docs.docker.com/reference/cli/docker/volume/prune/",
+        "fetchedAt": "2026-10-16T06:05:41.967Z",
+        "sha256": "63f2aa19f99dce2f52a4383fe104e28a0fe2065de75cfb1c324fba7d2cd92b7c",
+        "error": null,
+        "title": "docker volume prune | Docker Docs",
+        "htmlFile": "docs\\docker-review-2026-10-16\\fixes\\official-pages\\a194652d247537673151.html",
+        "titleValid": true,
+        "fragments": [],
+        "referencedBy": [
+          "Y4-51",
+          "Y4-52",
+          "Y4-54",
+          "Y4-55",
+          "Y4-56",
+          "Y4-57",
+          "Y4-61"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "检查期间源文件无并发变化",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "原审证据及分章报告未覆盖",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "limitations": [
+    "内容正确性需独立逐题复审，不能由题号或文字变化证明",
+    "未调用DeepSeek或执行Docker资源操作",
+    "原审脚本哈希/单一引用页假设仅适用于修前材料"
+  ]
+}

@@ -1,0 +1,129 @@
+T1-1 [fill]
+Original: [填空题·有序] 按原文，OSI 七层模型从上到下依次是：应用层、____、____、传输层、网络层、____、物理层。
+Stem: 按原文，OSI 七层模型从上到下依次是：应用层、____、____、传输层、网络层、____、物理层。
+Blanks/order: 3/ordered
+Answer: OSI 模型主要有 7 层，从上到下依次是应用层、表示层、会话层、传输层、网络层、数据链路层和物理层，所以三个空依次是：表示层、会话层、数据链路层。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-2 [single]
+Original: 原文说制定 OSI 网络模型（开放式系统互联通信参考模型）的目的是什么？
+Stem: 原文说制定 OSI 网络模型（开放式系统互联通信参考模型）的目的是什么？
+A [incorrect] 把 TCP/IP 四层模型细分为七层，以便 Linux 系统按它实现网络协议栈
+B [correct] 让多种设备能通过网络相互通信，并解决不同设备在网络互联中的兼容性问题
+C [incorrect] 取代以太网和 Wi-Fi，成为不同设备之间唯一统一的物理传输技术
+D [incorrect] 规定所有联网设备必须采用同一套具体的协议实现，从而消除设备差异
+Answer: 为了使多种设备能通过网络相互通信，并解决各种不同设备在网络互联中的兼容性问题，国际标准化组织制定了开放式系统互联通信参考模型，也就是 OSI 网络模型。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-3 [single]
+Original: 按原文，OSI 模型中负责把数据转换成兼容另一个系统能识别的格式的是哪一层？
+Stem: 按原文，OSI 模型中负责把数据转换成兼容另一个系统能识别的格式的是哪一层？
+A [incorrect] 会话层
+B [incorrect] 应用层
+C [incorrect] 数据链路层
+D [correct] 表示层
+Answer: 表示层负责把数据转换成兼容另一个系统能识别的格式；会话层负责建立、管理和终止通信会话，应用层负责给应用程序提供统一的接口，数据链路层负责封帧、差错检测和 MAC 寻址。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-4 [single]
+Original: 按原文，OSI 模型中负责建立、管理和终止表示层实体之间的通信会话的是哪一层？
+Stem: 按原文，OSI 模型中负责建立、管理和终止表示层实体之间的通信会话的是哪一层？
+A [correct] 会话层
+B [incorrect] 表示层
+C [incorrect] 传输层
+D [incorrect] 网络层
+Answer: 会话层负责建立、管理和终止表示层实体之间的通信会话；表示层负责数据格式转换，传输层负责端到端的数据传输，网络层负责数据的路由、转发和分片。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-5 [single]
+Original: 按原文，OSI 模型中负责数据的路由、转发和分片的是哪一层？
+Stem: 按原文，OSI 模型中负责数据的路由、转发和分片的是哪一层？
+A [incorrect] 传输层
+B [incorrect] 数据链路层
+C [correct] 网络层
+D [incorrect] 物理层
+Answer: 网络层负责数据的路由、转发、分片；传输层负责端到端的数据传输，数据链路层负责封帧、差错检测和 MAC 寻址，物理层负责在物理介质上传输比特流。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-6 [multiple]
+Original: 按原文，下列哪些属于 OSI 模型数据链路层的职责？
+Stem: 按原文，下列哪些属于 OSI 模型数据链路层的职责？
+A [correct] 封帧
+B [correct] 差错检测
+C [incorrect] 路由和转发数据
+D [correct] MAC 寻址
+E [incorrect] 建立、管理和终止通信会话
+F [incorrect] 给应用程序提供统一的接口
+Answer: 数据链路层负责数据的封帧和差错检测，以及 MAC 寻址。路由和转发属于网络层，建立、管理和终止通信会话属于会话层，给应用程序提供统一的接口属于应用层。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-7 [fill]
+Original: [填空题·有序] 按原文，OSI 模型中给应用程序提供统一接口的是____，负责端到端数据传输的是____，负责在物理介质上传输比特流的是____。
+Stem: 按原文，OSI 模型中给应用程序提供统一接口的是____，负责端到端数据传输的是____，负责在物理介质上传输比特流的是____。
+Blanks/order: 3/ordered
+Answer: 应用层负责给应用程序提供统一的接口，传输层负责端到端的数据传输，物理层负责在物理介质上传输比特流（bit stream）。三个空依次是：应用层、传输层、物理层。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-8 [single]
+Original: 原文认为 OSI 模型在实际中不如 TCP/IP 模型常用，原因是什么？
+Stem: 原文认为 OSI 模型在实际中不如 TCP/IP 模型常用，原因是什么？
+A [incorrect] OSI 模型只有四层，无法覆盖应用层、传输层和网络层的功能
+B [incorrect] OSI 模型不包含物理层，因此无法描述比特流在介质上的传输
+C [incorrect] OSI 模型只适用于 Linux 系统，在其他系统上无法使用
+D [correct] OSI 模型过于复杂，只提出了概念理论上的分层，没有提供具体的实现方案
+Answer: 由于 OSI 模型实在太复杂，提出的也只是概念理论上的分层，并没有提供具体的实现方案；实际上比较常见、也比较实用的是四层的 TCP/IP 网络模型。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-9 [single]
+Original: 按原文，Linux 系统是按照哪种网络模型来实现网络协议栈的？
+Stem: 按原文，Linux 系统是按照哪种网络模型来实现网络协议栈的？
+A [incorrect] OSI 七层网络模型
+B [correct] TCP/IP 四层网络模型
+C [incorrect] OSI 模型中的表示层与会话层合并后的五层模型
+D [incorrect] 只含传输层和网络层的两层模型
+Answer: TCP/IP 四层网络模型比较常见也比较实用，Linux 系统正是按照这套网络模型来实现网络协议栈的。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-10 [fill]
+Original: [填空题·有序] 按原文，TCP/IP 网络通常由上到下分成 4 层，依次是：____、____、____、____。
+Stem: 按原文，TCP/IP 网络通常由上到下分成 4 层，依次是：____、____、____、____。
+Blanks/order: 4/ordered
+Answer: TCP/IP 网络通常由上到下分成 4 层，依次是应用层、传输层、网络层和网络接口层。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-11 [fill]
+Original: [填空题·无序] 按原文，TCP/IP 模型把 OSI 模型中的____、____和____合并成了应用层。
+Stem: 按原文，TCP/IP 模型把 OSI 模型中的____、____和____合并成了应用层。
+Blanks/order: 3/unordered
+Answer: TCP/IP 模型把 OSI 模型中的应用层、表示层和会话层合并成应用层，所以三个空是：应用层、表示层、会话层（顺序不限）。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-12 [fill]
+Original: [填空题·无序] 按原文，TCP/IP 模型把 OSI 模型中____和____的功能放到了网络接口层。
+Stem: 按原文，TCP/IP 模型把 OSI 模型中____和____的功能放到了网络接口层。
+Blanks/order: 2/unordered
+Answer: TCP/IP 模型把 OSI 模型中数据链路层和物理层的功能放到网络接口层，所以两个空是：数据链路层、物理层（顺序不限）。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-13 [fill]
+Original: [填空题·有序] 按原文，TCP/IP 模型中：支持 HTTP、SMTP 等最终用户进程的是____，通过端口号提供进程到进程通信（TCP、UDP）的是____，负责寻址和路由数据包（IP 协议）的是____，负责在相邻节点之间传输数据（包括封帧、MAC 寻址和物理传输）的是____。
+Stem: 按原文，TCP/IP 模型中：支持 HTTP、SMTP 等最终用户进程的是____，通过端口号提供进程到进程通信（TCP、UDP）的是____，负责寻址和路由数据包（IP 协议）的是____，负责在相邻节点之间传输数据（包括封帧、MAC 寻址和物理传输）的是____。
+Blanks/order: 4/ordered
+Answer: 应用层支持 HTTP、SMTP 等最终用户进程，传输层通过端口号提供进程到进程的通信（TCP、UDP），网络层负责寻址和路由数据包（IP 协议），网络接口层负责在相邻节点之间传输数据，包括封帧、MAC 寻址和物理传输。四个空依次是：应用层、传输层、网络层、网络接口层。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-14 [multiple]
+Original: 按原文，TCP/IP 模型的网络接口层在实际通信时可以使用下列哪些技术？
+Stem: 按原文，TCP/IP 模型的网络接口层在实际通信时可以使用下列哪些技术？
+A [correct] 以太网
+B [incorrect] HTTP
+C [correct] Wi-Fi
+D [incorrect] SMTP
+E [incorrect] TCP
+F [incorrect] UDP
+Answer: 原文指出，实际通信时网络接口层可以使用以太网、Wi-Fi 等技术。HTTP、SMTP 属于应用层支持的协议，TCP、UDP 属于传输层。[原文§网络OSI模型和TCP/IP模型分别介绍一下](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E7%BB%9Cosi%E6%A8%A1%E5%9E%8B%E5%92%8Ctcp-ip%E6%A8%A1%E5%9E%8B%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T1-15 [single]
+Original: 按原文，在 TCP/IP 四层网络模型中，TCP 协议位于哪一层？
+Stem: 按原文，在 TCP/IP 四层网络模型中，TCP 协议位于哪一层？
+A [incorrect] 应用层
+B [incorrect] 网络层
+C [correct] 传输层
+D [incorrect] 网络接口层
+Answer: TCP 位于传输层，传输层通过端口号提供进程到进程的通信。[原文§tcp、ip分别位于哪一层？](https://xiaolincoding.com/interview/network.html#tcp%E3%80%81ip%E5%88%86%E5%88%AB%E4%BD%8D%E4%BA%8E%E5%93%AA%E4%B8%80%E5%B1%82)
+
+T1-16 [single]
+Original: 按原文，在 TCP/IP 四层网络模型中，IP 协议位于哪一层？
+Stem: 按原文，在 TCP/IP 四层网络模型中，IP 协议位于哪一层？
+A [correct] 网络层
+B [incorrect] 传输层
+C [incorrect] 应用层
+D [incorrect] 网络接口层
+Answer: IP 位于网络层，网络层负责寻址和路由数据包。[原文§tcp、ip分别位于哪一层？](https://xiaolincoding.com/interview/network.html#tcp%E3%80%81ip%E5%88%86%E5%88%AB%E4%BD%8D%E4%BA%8E%E5%93%AA%E4%B8%80%E5%B1%82)

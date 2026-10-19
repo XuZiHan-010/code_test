@@ -1,0 +1,101 @@
+{
+  "total_questions": 274,
+  "chapter_counts": {
+    "U1": 17,
+    "U2": 21,
+    "U3": 43,
+    "U4": 36,
+    "U5": 31,
+    "U6": 33,
+    "U7": 35,
+    "U8": 27,
+    "U9": 31
+  },
+  "type_counts": {
+    "single": 156,
+    "multiple": 34,
+    "short": 55,
+    "fill": 29
+  },
+  "ids_and_order_match": true,
+  "duplicate_ids": 0,
+  "fill_sync_errors": [],
+  "single_correct_positions": {
+    "B": 37,
+    "D": 39,
+    "A": 40,
+    "C": 40
+  },
+  "chapter_statuses": {
+    "U1": "draft",
+    "U2": "draft",
+    "U3": "draft",
+    "U4": "draft",
+    "U5": "draft",
+    "U6": "draft",
+    "U7": "draft",
+    "U8": "draft",
+    "U9": "draft"
+  },
+  "source_pages": 53,
+  "source_urls": 298,
+  "source_fetch_errors": [],
+  "anchor_errors": [],
+  "input_sha256": {
+    "content/typed/fastapi.json": "f7d7ed67caf5ca7383b7ce099dc6020cc98a38aec2e728ebf1e8c81356ccbb0f",
+    "interview-practice/fastapi.md": "eb50b83c9f2fa3b11b58bc4667fffbb65850abb61cca7a76150aed90e49ae03f",
+    "interview-practice/answers-xiaolin/fastapi.md": "b13cb699da3220c58e710d1e9c3b288f52f083d76ca4590efef89bd56c3821fa"
+  },
+  "content_validation": {
+    "command": "CONTENT_INCLUDE_DRAFTS=1 npm run content:validate",
+    "exit_code": 0,
+    "topics": 20,
+    "chapters": 199,
+    "questions": 5878,
+    "warnings": [
+      "V14 R3-139 (outside FastAPI)"
+    ]
+  },
+  "unit_tests": {
+    "command": "npm run test:unit",
+    "exit_code": 0,
+    "files_passed": 9,
+    "tests_passed": 103
+  },
+  "review_primary_revision_ids": [
+    "U2-15",
+    "U2-16",
+    "U3-12",
+    "U3-16",
+    "U3-25",
+    "U3-29",
+    "U4-1",
+    "U4-26",
+    "U4-31",
+    "U4-33",
+    "U5-4",
+    "U6-1",
+    "U6-19",
+    "U6-2",
+    "U6-20",
+    "U6-25",
+    "U7-10",
+    "U7-12",
+    "U9-19",
+    "U9-24",
+    "U9-26",
+    "U9-28",
+    "U9-31"
+  ],
+  "review_optional_clarification_ids": [
+    "U3-13",
+    "U3-4",
+    "U5-23",
+    "U6-13",
+    "U7-4",
+    "U7-6",
+    "U8-12",
+    "U9-7"
+  ],
+  "source_inputs_unchanged_after_review": true
+}

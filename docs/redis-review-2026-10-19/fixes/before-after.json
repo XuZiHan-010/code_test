@@ -1,0 +1,2491 @@
+{
+  "counts": {
+    "fill": 90,
+    "single": 528,
+    "multiple": 74,
+    "short": 82
+  },
+  "changedQuestionCount": 42,
+  "questions": [
+    {
+      "id": "O1-14",
+      "reasons": [
+        "两种类型名称组成封闭组合，单选辨认版本编码"
+      ],
+      "before": {
+        "typed": {
+          "id": "O1-14",
+          "type": "multiple",
+          "stem": "按原文表格，以 Redis 7.0 为例，下列哪些数据类型的常见底层编码包含 listpack？",
+          "options": [
+            {
+              "key": "A",
+              "text": "String",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Zset",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Hash",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Set",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文表格，以 Redis 7.0 为例，下列哪些数据类型的常见底层编码包含 listpack？",
+        "answer": "正确的是 Hash 和 Zset。Hash 在字段少且小的时候用 listpack，Zset 在小型有序集合时用 listpack。String 的常见编码是 int、embstr、raw，Set 的常见编码是 intset 和哈希表，都不包含 listpack。[原文§讲一下Redis底层的数据结构](https://xiaolincoding.com/interview/redis.html#%E8%AE%B2%E4%B8%80%E4%B8%8Bredis%E5%BA%95%E5%B1%82%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)"
+      },
+      "after": {
+        "typed": {
+          "id": "O1-14",
+          "type": "single",
+          "stem": "以 Redis 7.0 为例，在 String、Hash、Set、Zset 这四种类型中，哪一组的常见底层编码都包含 listpack？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hash、Zset",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "String、Zset",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Hash、Set",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "String、Set",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "以 Redis 7.0 为例，在 String、Hash、Set、Zset 这四种类型中，哪一组的常见底层编码都包含 listpack？",
+        "answer": "正确的是 Hash 和 Zset。Hash 在字段少且小的时候用 listpack，Zset 在小型有序集合时用 listpack。String 的常见编码是 int、embstr、raw，Set 的常见编码是 intset 和哈希表，都不包含 listpack。[原文§讲一下Redis底层的数据结构](https://xiaolincoding.com/interview/redis.html#%E8%AE%B2%E4%B8%80%E4%B8%8Bredis%E5%BA%95%E5%B1%82%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)"
+      }
+    },
+    {
+      "id": "O1-24",
+      "reasons": [
+        "解析按内容解释，不依赖旧选项位置"
+      ],
+      "before": {
+        "typed": {
+          "id": "O1-24",
+          "type": "multiple",
+          "stem": "按原文，相比基于 List 类型实现的消息队列，Stream 有哪些优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "支持消息确认和待处理消息追踪",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不同 Stream 之间的消息 ID 保证全局唯一",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "支持消费组",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "可以自动生成同一个 Stream 内唯一且递增的消息 ID",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，相比基于 List 类型实现的消息队列，Stream 有哪些优势？",
+        "answer": "正确的是：可以自动生成同一个 Stream 内唯一且递增的消息 ID、支持消费组、支持消息确认和待处理消息追踪。不同 Stream 之间的 ID 不保证全局唯一，所以最后一项不对。[原文§讲一下Redis底层的数据结构](https://xiaolincoding.com/interview/redis.html#%E8%AE%B2%E4%B8%80%E4%B8%8Bredis%E5%BA%95%E5%B1%82%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)"
+      },
+      "after": {
+        "typed": {
+          "id": "O1-24",
+          "type": "multiple",
+          "stem": "按原文，相比基于 List 类型实现的消息队列，Stream 有哪些优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "支持消息确认和待处理消息追踪",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不同 Stream 之间的消息 ID 保证全局唯一",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "支持消费组",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "可以自动生成同一个 Stream 内唯一且递增的消息 ID",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，相比基于 List 类型实现的消息队列，Stream 有哪些优势？",
+        "answer": "正确的是：可以自动生成同一个 Stream 内唯一且递增的消息 ID、支持消费组、支持消息确认和待处理消息追踪。不同 Stream 之间的 ID 不保证全局唯一，因此“不同 Stream 之间的消息 ID 保证全局唯一”不成立。[原文§讲一下Redis底层的数据结构](https://xiaolincoding.com/interview/redis.html#%E8%AE%B2%E4%B8%80%E4%B8%8Bredis%E5%BA%95%E5%B1%82%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)"
+      }
+    },
+    {
+      "id": "O1-51",
+      "reasons": [
+        "补默认配置和构建历史，排除降回阈值仍保留 skiplist 的反例",
+        "解析同步限定编码历史"
+      ],
+      "before": {
+        "typed": {
+          "id": "O1-51",
+          "type": "single",
+          "stem": "按原文，Redis 7.0 中一个 Zset 恰好有 128 个元素，且每个成员长度都不超过 64 字节，它使用哪种编码？",
+          "options": [
+            {
+              "key": "A",
+              "text": "跳表 + 哈希表",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "listpack",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "quicklist",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "压缩列表（ziplist）",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，Redis 7.0 中一个 Zset 恰好有 128 个元素，且每个成员长度都不超过 64 字节，它使用哪种编码？",
+        "answer": "listpack。默认的元素数量上限 128 和成员长度上限 64 字节都包含边界值，恰好等于上限时仍用 listpack，超过后才转换为跳表 + 哈希表。压缩列表是 Redis 7.0 之前的做法，Zset 也不经过 quicklist。[原文§Zset 底层是怎么实现的？](https://xiaolincoding.com/interview/redis.html#zset-%E5%BA%95%E5%B1%82%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      },
+      "after": {
+        "typed": {
+          "id": "O1-51",
+          "type": "single",
+          "stem": "Redis 7.0 默认配置下，从空 Zset 逐个插入 128 个成员，每个成员不超过 64 字节，期间未超过任何紧凑编码限制。此时使用哪种编码？",
+          "options": [
+            {
+              "key": "A",
+              "text": "跳表 + 哈希表",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "listpack",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "quicklist",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "压缩列表（ziplist）",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "Redis 7.0 默认配置下，从空 Zset 逐个插入 128 个成员，每个成员不超过 64 字节，期间未超过任何紧凑编码限制。此时使用哪种编码？",
+        "answer": "listpack。默认的元素数量上限 128 和成员长度上限 64 字节都包含边界值，在题设从空集合构建且期间未超限的前提下，恰好等于上限时仍用 listpack，超过后才转换为跳表 + 哈希表。压缩列表是 Redis 7.0 之前的做法，Zset 也不经过 quicklist。[原文§Zset 底层是怎么实现的？](https://xiaolincoding.com/interview/redis.html#zset-%E5%BA%95%E5%B1%82%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      }
+    },
+    {
+      "id": "O1-54",
+      "reasons": [
+        "删除旧选项排列指代"
+      ],
+      "before": {
+        "typed": {
+          "id": "O1-54",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Zset 两种编码查询复杂度的说法哪些成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "listpack 编码按成员查询的复杂度为 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "跳表 + 哈希表编码下，ZSCORE 这类按成员查分值的查询平均 O(1)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "跳表 + 哈希表编码下，范围查询是 O(log N + M)，M 为返回元素数",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "跳表 + 哈希表编码下，插入、删除、排名定位平均 O(1)",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "listpack 编码按成员查询需要遍历，复杂度为 O(N)",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，下列关于 Zset 两种编码查询复杂度的说法哪些成立？",
+        "answer": "成立的是前三项：哈希表使 ZSCORE 平均 O(1)；跳表支持 O(log N + M) 的范围查询；listpack 按成员查询要遍历，是 O(N)。跳表的插入、删除和排名定位是平均 O(log N) 而不是 O(1)，listpack 按成员查询也不是 O(1)。[原文§Zset 底层是怎么实现的？](https://xiaolincoding.com/interview/redis.html#zset-%E5%BA%95%E5%B1%82%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      },
+      "after": {
+        "typed": {
+          "id": "O1-54",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Zset 两种编码查询复杂度的说法哪些成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "listpack 编码按成员查询的复杂度为 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "跳表 + 哈希表编码下，ZSCORE 这类按成员查分值的查询平均 O(1)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "跳表 + 哈希表编码下，范围查询是 O(log N + M)，M 为返回元素数",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "跳表 + 哈希表编码下，插入、删除、排名定位平均 O(1)",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "listpack 编码按成员查询需要遍历，复杂度为 O(N)",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，下列关于 Zset 两种编码查询复杂度的说法哪些成立？",
+        "answer": "成立的说法是：哈希表使 ZSCORE 平均 O(1)；跳表支持 O(log N + M) 的范围查询；listpack 按成员查询要遍历，是 O(N)。跳表的插入、删除和排名定位是平均 O(log N) 而不是 O(1)，listpack 按成员查询也不是 O(1)。[原文§Zset 底层是怎么实现的？](https://xiaolincoding.com/interview/redis.html#zset-%E5%BA%95%E5%B1%82%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      }
+    },
+    {
+      "id": "O1-59",
+      "reasons": [
+        "同源编码结论同步限定；不把当前大小作为编码充分条件"
+      ],
+      "before": {
+        "typed": {
+          "id": "O1-59",
+          "type": "short"
+        },
+        "paper": "Zset 底层是怎么实现的？",
+        "answer": "以 Redis 7.0 为例，Zset 有两种底层编码：listpack，以及跳表 + 哈希表（dict）。小型有序集合使用 listpack，成员和分值成对保存在同一个紧凑容器中，不额外维护 dict；默认元素数量上限是 128，单个成员长度上限是 64 字节，可通过 zset-max-listpack-entries 和 zset-max-listpack-value 调整，两个上限都包含边界值。超过限制后转换为跳表 + 哈希表：跳表按分值组织成员，支持平均 O(log N) 的插入、删除和排名定位，以及 O(log N + M) 的范围查询（M 为返回元素数）；哈希表按成员查找分值，使 ZSCORE 这类查询平均 O(1)。所以“跳表编码”不是只有一张跳表，而是同时维护跳表和哈希表；listpack 编码按成员查询要遍历，复杂度 O(N)，用一定的查询开销换取小集合的内存节省。Redis 7.0 之前小型 Zset 用压缩列表（ziplist），7.0 起替换为 listpack，Zset 直接使用 listpack，不需要经过 quicklist。[原文§Zset 底层是怎么实现的？](https://xiaolincoding.com/interview/redis.html#zset-%E5%BA%95%E5%B1%82%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      },
+      "after": {
+        "typed": {
+          "id": "O1-59",
+          "type": "short"
+        },
+        "paper": "Zset 底层是怎么实现的？",
+        "answer": "以 Redis 7.0 为例，Zset 有两种底层编码：listpack，以及跳表 + 哈希表（dict）。默认配置下，从空集合构建且期间未超过紧凑编码限制的小型有序集合使用 listpack，成员和分值成对保存在同一个紧凑容器中，不额外维护 dict；默认元素数量上限是 128，单个成员长度上限是 64 字节，可通过 zset-max-listpack-entries 和 zset-max-listpack-value 调整，两个上限都包含边界值。超过限制后转换为跳表 + 哈希表：跳表按分值组织成员，支持平均 O(log N) 的插入、删除和排名定位，以及 O(log N + M) 的范围查询（M 为返回元素数）；哈希表按成员查找分值，使 ZSCORE 这类查询平均 O(1)。所以“跳表编码”不是只有一张跳表，而是同时维护跳表和哈希表；listpack 编码按成员查询要遍历，复杂度 O(N)，用一定的查询开销换取小集合的内存节省。Redis 7.0 之前小型 Zset 用压缩列表（ziplist），7.0 起替换为 listpack，Zset 直接使用 listpack，不需要经过 quicklist。[原文§Zset 底层是怎么实现的？](https://xiaolincoding.com/interview/redis.html#zset-%E5%BA%95%E5%B1%82%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      }
+    },
+    {
+      "id": "O1-85",
+      "reasons": [
+        "两类树维护操作组成互斥组合"
+      ],
+      "before": {
+        "typed": {
+          "id": "O1-85",
+          "type": "multiple",
+          "stem": "按原文，跳表在插入、删除时，下列哪些是它不需要做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "像红黑树那样维护颜色和旋转规则",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "通过随机方式为新节点生成层高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "调整搜索路径上的指针和跨度",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "像 B+ 树那样处理节点分裂、合并",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，跳表在插入、删除时，下列哪些是它不需要做的？",
+        "answer": "不需要做的是处理节点分裂、合并（B+ 树的做法）和维护颜色与旋转规则（红黑树的做法）。跳表通过随机层高维护多层链表，插入、删除时主要调整搜索路径上的指针和跨度，所以实现比较简单。[原文§Redis为什么使用跳表而不是用B+树?](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E8%B7%B3%E8%A1%A8%E8%80%8C%E4%B8%8D%E6%98%AF%E7%94%A8b-%E6%A0%91)"
+      },
+      "after": {
+        "typed": {
+          "id": "O1-85",
+          "type": "single",
+          "stem": "与 B+ 树和红黑树相比，哪一组维护操作是跳表在插入、删除时不需要做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "随机生成层高、调整路径指针",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "节点分裂合并、调整路径指针",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "节点分裂合并、维护颜色和旋转规则",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "随机生成层高、维护颜色和旋转规则",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "与 B+ 树和红黑树相比，哪一组维护操作是跳表在插入、删除时不需要做的？",
+        "answer": "不需要做的是处理节点分裂、合并（B+ 树的做法）和维护颜色与旋转规则（红黑树的做法）。跳表通过随机层高维护多层链表，插入、删除时主要调整搜索路径上的指针和跨度，所以实现比较简单。[原文§Redis为什么使用跳表而不是用B+树?](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E8%B7%B3%E8%A1%A8%E8%80%8C%E4%B8%8D%E6%98%AF%E7%94%A8b-%E6%A0%91)"
+      }
+    },
+    {
+      "id": "O1-101",
+      "reasons": [
+        "修改与只读操作的两项组合辨认"
+      ],
+      "before": {
+        "typed": {
+          "id": "O1-101",
+          "type": "multiple",
+          "stem": "按原文，下列哪些变化会导致压缩列表内存重新分配，最糟糕时还会触发连锁更新？",
+          "options": [
+            {
+              "key": "A",
+              "text": "元素变大",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只是读取 zlbytes 获取占用字节数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "保存的元素数量增加",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只是通过 zltail 定位尾部节点",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，下列哪些变化会导致压缩列表内存重新分配，最糟糕时还会触发连锁更新？",
+        "answer": "正确的是保存的元素数量增加和元素变大，它们会导致内存重新分配，最糟糕的是出现连锁更新。通过 zltail 定位尾部节点、读取 zlbytes 都只是读取，不会引起内存重新分配。[原文§压缩列表是怎么实现的？](https://xiaolincoding.com/interview/redis.html#%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      },
+      "after": {
+        "typed": {
+          "id": "O1-101",
+          "type": "single",
+          "stem": "下列哪一组变化都可能引起压缩列表内存重新分配，最糟糕时触发连锁更新？",
+          "options": [
+            {
+              "key": "A",
+              "text": "读取 zlbytes、通过 zltail 定位尾节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "增加元素数量、读取 zlbytes",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "元素变大、通过 zltail 定位尾节点",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "增加元素数量、元素变大",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "下列哪一组变化都可能引起压缩列表内存重新分配，最糟糕时触发连锁更新？",
+        "answer": "正确的是保存的元素数量增加和元素变大，它们会导致内存重新分配，最糟糕的是出现连锁更新。通过 zltail 定位尾部节点、读取 zlbytes 都只是读取，不会引起内存重新分配。[原文§压缩列表是怎么实现的？](https://xiaolincoding.com/interview/redis.html#%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      }
+    },
+    {
+      "id": "O1-112",
+      "reasons": [
+        "两项设计特征的互斥组合"
+      ],
+      "before": {
+        "typed": {
+          "id": "O1-112",
+          "type": "multiple",
+          "stem": "按原文，下列哪些是 listpack 沿用压缩列表的设计？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用双向链表串起多个小容器",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用一块连续的内存空间紧凑地保存数据",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每个节点记录前一个节点的长度",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用不同的编码方式保存不同大小的数据，以节省内存",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，下列哪些是 listpack 沿用压缩列表的设计？",
+        "answer": "沿用的是：用一块连续的内存空间紧凑地保存数据，并采用不同的编码方式保存不同大小的数据来节省内存。每个节点记录前一个节点长度是压缩列表的做法，正是 listpack 去掉的；用双向链表串起多个小容器是 quicklist 的做法。[原文§介绍一下 Redis 中的 listpack](https://xiaolincoding.com/interview/redis.html#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-redis-%E4%B8%AD%E7%9A%84-listpack)"
+      },
+      "after": {
+        "typed": {
+          "id": "O1-112",
+          "type": "single",
+          "stem": "listpack 沿用压缩列表的哪一组设计？",
+          "options": [
+            {
+              "key": "A",
+              "text": "连续内存紧凑存储、按数据大小采用不同编码",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "连续内存紧凑存储、记录前一个节点长度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "双向链表串联容器、按数据大小采用不同编码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "双向链表串联容器、记录前一个节点长度",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "listpack 沿用压缩列表的哪一组设计？",
+        "answer": "沿用的是：用一块连续的内存空间紧凑地保存数据，并采用不同的编码方式保存不同大小的数据来节省内存。每个节点记录前一个节点长度是压缩列表的做法，正是 listpack 去掉的；用双向链表串起多个小容器是 quicklist 的做法。[原文§介绍一下 Redis 中的 listpack](https://xiaolincoding.com/interview/redis.html#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-redis-%E4%B8%AD%E7%9A%84-listpack)"
+      }
+    },
+    {
+      "id": "O2-4",
+      "reasons": [
+        "限定单次执行开销，不绝对排除高 QPS 普通查询",
+        "去掉无条件否定"
+      ],
+      "before": {
+        "typed": {
+          "id": "O2-4",
+          "type": "multiple",
+          "stem": "按原文，下列哪些情形也可能让 Redis 的 CPU 成为瓶颈？",
+          "options": [
+            {
+              "key": "A",
+              "text": "复杂命令",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "大 key",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "长时间运行的 Lua 脚本",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "普通的键值查询",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，下列哪些情形也可能让 Redis 的 CPU 成为瓶颈？",
+        "answer": "正确的是复杂命令、大 key 和长时间运行的 Lua 脚本。原文说普通键值查询的开销很小，不会因此让 CPU 成为瓶颈。[原文§Redis为什么快？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%AB)"
+      },
+      "after": {
+        "typed": {
+          "id": "O2-4",
+          "type": "multiple",
+          "stem": "按原文，下列哪些是单次执行可能占用较多 CPU 的典型情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "复杂命令",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "大 key",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "长时间运行的 Lua 脚本",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "低请求量、小 value 的简单 GET 查询",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，下列哪些是单次执行可能占用较多 CPU 的典型情况？",
+        "answer": "正确的是复杂命令、大 key 和长时间运行的 Lua 脚本。原文说普通键值查询的开销很小，这里比较单次执行开销；不能据此断言普通查询在任意请求量下都不会遇到 CPU 瓶颈。[原文§Redis为什么快？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%AB)"
+      }
+    },
+    {
+      "id": "O2-21",
+      "reasons": [
+        "原文硬性规则改为官方调优建议"
+      ],
+      "before": {
+        "typed": {
+          "id": "O2-21",
+          "type": "multiple",
+          "stem": "按原文，关于 io-threads 的线程数设置，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "官方建议 4 核 CPU 设置为 2 或 3",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "线程数越大越好，应尽量设成和核数相等",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "官方建议 8 核 CPU 设置为 8，以便每个核各跑一个 I/O 线程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "官方建议 8 核 CPU 设置为 6",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "线程数一定要小于机器核数",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "官方建议 4 核 CPU 设置为 4",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，关于 io-threads 的线程数设置，下列哪些说法正确？",
+        "answer": "正确的是：线程数一定要小于机器核数；官方建议 4 核 CPU 设置为 2 或 3，8 核 CPU 设置为 6。线程数并不是越大越好，设成和核数相等（4 核设 4、8 核设 8）都违背“一定要小于机器核数”。[原文§Redis哪些地方使用了多线程?](https://xiaolincoding.com/interview/redis.html#redis%E5%93%AA%E4%BA%9B%E5%9C%B0%E6%96%B9%E4%BD%BF%E7%94%A8%E4%BA%86%E5%A4%9A%E7%BA%BF%E7%A8%8B)"
+      },
+      "after": {
+        "typed": {
+          "id": "O2-21",
+          "type": "multiple",
+          "stem": "按原文，关于 io-threads 的线程数设置，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "官方建议 4 核 CPU 设置为 2 或 3",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "线程数越大越好，应尽量设成和核数相等",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "官方建议 8 核 CPU 设置为 8，以便每个核各跑一个 I/O 线程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "官方建议 8 核 CPU 设置为 6",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "官方建议预留至少一个 CPU 核，并根据压测调优线程数",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "官方建议 4 核 CPU 设置为 4",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，关于 io-threads 的线程数设置，下列哪些说法正确？",
+        "answer": "官方配置注释建议预留至少一个 CPU 核，4 核可尝试 2 或 3，8 核可尝试 6，具体按压测调优；线程数并非越多越好。原文说“线程数一定要小于机器核数”，这里应理解为调优建议，并非参数合法性的硬性规则。[原文§Redis哪些地方使用了多线程?](https://xiaolincoding.com/interview/redis.html#redis%E5%93%AA%E4%BA%9B%E5%9C%B0%E6%96%B9%E4%BD%BF%E7%94%A8%E4%BA%86%E5%A4%9A%E7%BA%BF%E7%A8%8B) [核对来源：Redis 6.0 配置注释](https://github.com/redis/redis/blob/6.0/redis.conf)"
+      }
+    },
+    {
+      "id": "O2-25",
+      "reasons": [
+        "同源线程建议同步核对"
+      ],
+      "before": {
+        "typed": {
+          "id": "O2-25",
+          "type": "short"
+        },
+        "paper": "Redis哪些地方使用了多线程?",
+        "answer": "Redis 单线程主要指普通命令由主线程串行执行，但 Redis 程序并不是单线程的。一是后台线程（BIO）：2.6 版本启动 2 个后台线程，分别处理关闭文件和 AOF 刷盘；4.0 之后新增 lazyfree 线程异步释放内存，unlink / flushdb async / flushall async 会把删除交给后台线程，所以删大 key 应使用 unlink 而不是在主线程处理的 del。这些任务耗时，放在主线程会阻塞它。二是 Redis 6.0 起可选的 I/O 多线程：因为网络 I/O 有时成为瓶颈，网络读写可以交给 I/O 线程，但命令执行仍是单线程。该特性默认关闭（io-threads 默认值为 1），开启后默认只处理发送响应，读请求需把 io-threads-do-reads 设为 yes；线程数要小于核数，4 核建议 2 或 3，8 核建议 6。不手动开启时，6.0 只有主线程和 3 个 BIO 线程；设置 io-threads N 时再额外创建 N-1 个 I/O 线程。[原文§Redis哪些地方使用了多线程?](https://xiaolincoding.com/interview/redis.html#redis%E5%93%AA%E4%BA%9B%E5%9C%B0%E6%96%B9%E4%BD%BF%E7%94%A8%E4%BA%86%E5%A4%9A%E7%BA%BF%E7%A8%8B)"
+      },
+      "after": {
+        "typed": {
+          "id": "O2-25",
+          "type": "short"
+        },
+        "paper": "Redis哪些地方使用了多线程?",
+        "answer": "Redis 单线程主要指普通命令由主线程串行执行，但 Redis 程序并不是单线程的。一是后台线程（BIO）：2.6 版本启动 2 个后台线程，分别处理关闭文件和 AOF 刷盘；4.0 之后新增 lazyfree 线程异步释放内存，unlink / flushdb async / flushall async 会把删除交给后台线程，所以删大 key 应使用 unlink 而不是在主线程处理的 del。这些任务耗时，放在主线程会阻塞它。二是 Redis 6.0 起可选的 I/O 多线程：因为网络 I/O 有时成为瓶颈，网络读写可以交给 I/O 线程，但命令执行仍是单线程。该特性默认关闭（io-threads 默认值为 1），开启后默认只处理发送响应，读请求需把 io-threads-do-reads 设为 yes；官方建议预留至少一个 CPU 核，4 核可尝试 2 或 3，8 核可尝试 6，具体按压测调优（原文说“线程数一定要小于机器核数”，这是调优建议，不是参数合法性的硬性规则）。不手动开启时，6.0 只有主线程和 3 个 BIO 线程；设置 io-threads N 时再额外创建 N-1 个 I/O 线程。[原文§Redis哪些地方使用了多线程?](https://xiaolincoding.com/interview/redis.html#redis%E5%93%AA%E4%BA%9B%E5%9C%B0%E6%96%B9%E4%BD%BF%E7%94%A8%E4%BA%86%E5%A4%9A%E7%BA%BF%E7%A8%8B) [核对来源：Redis 6.0 配置注释](https://github.com/redis/redis/blob/6.0/redis.conf)"
+      }
+    },
+    {
+      "id": "O2-30",
+      "reasons": [
+        "两种就绪状态与解析执行完成的组合辨认"
+      ],
+      "before": {
+        "typed": {
+          "id": "O2-30",
+          "type": "multiple",
+          "stem": "按原文，以 epoll 为例，内核会在哪些情况下通知 Redis？",
+          "options": [
+            {
+              "key": "A",
+              "text": "某个连接有数据可读",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "内核已经替 Redis 执行完了某个连接发来的命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "某个连接的发送缓冲区可以继续写入",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "内核已经替 Redis 解析完了某个连接发来的命令",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，以 epoll 为例，内核会在哪些情况下通知 Redis？",
+        "answer": "正确的是：某个连接有数据可读，或发送缓冲区可以继续写入时，内核会通知 Redis。epoll 通知的是 Socket 的就绪状态，不会替 Redis 解析命令，也不会替 Redis 执行命令。[原文§Redis怎么实现的io多路复用？](https://xiaolincoding.com/interview/redis.html#redis%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8)"
+      },
+      "after": {
+        "typed": {
+          "id": "O2-30",
+          "type": "single",
+          "stem": "以 epoll 为例，内核通知 Redis 的是哪一组 Socket 就绪状态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "命令解析完成、命令执行完成",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "有数据可读、发送缓冲区可继续写入",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "有数据可读、命令执行完成",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "命令解析完成、发送缓冲区可继续写入",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "以 epoll 为例，内核通知 Redis 的是哪一组 Socket 就绪状态？",
+        "answer": "正确的是：某个连接有数据可读，或发送缓冲区可以继续写入时，内核会通知 Redis。epoll 通知的是 Socket 的就绪状态，不会替 Redis 解析命令，也不会替 Redis 执行命令。[原文§Redis怎么实现的io多路复用？](https://xiaolincoding.com/interview/redis.html#redis%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8)"
+      }
+    },
+    {
+      "id": "O2-38",
+      "reasons": [
+        "两项缺点需解释性能影响，改简答",
+        "简答解析改为自然直接回答，不再依赖已移除的选项"
+      ],
+      "before": {
+        "typed": {
+          "id": "O2-38",
+          "type": "multiple",
+          "stem": "按原文，下列哪些是单 Reactor 单进程方案的缺点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Handler 对象在业务处理时整个进程无法处理其他连接的事件，业务处理耗时长就会造成响应延迟",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只有一个进程，无法充分利用多核 CPU 的性能",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "必须处理进程间通信，实现起来比较复杂",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "存在多进程竞争，需要额外加锁来避免",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，下列哪些是单 Reactor 单进程方案的缺点？",
+        "answer": "正确的是：只有一个进程，无法充分利用多核 CPU；Handler 业务处理耗时长时，整个进程无法处理其他连接的事件，造成响应延迟。需要进程间通信、多进程竞争是这个方案不需要考虑的问题，不是它的缺点。[原文§Redis的网络模型是怎样的？](https://xiaolincoding.com/interview/redis.html#redis%E7%9A%84%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84)"
+      },
+      "after": {
+        "typed": {
+          "id": "O2-38",
+          "type": "short"
+        },
+        "paper": "单 Reactor 单进程方案有哪些主要缺点？分别说明对 CPU 利用和响应延迟的影响。",
+        "answer": "单 Reactor 单进程只有一个进程，无法充分利用多核 CPU。Handler 业务处理耗时长时，整个进程无法处理其他连接的事件，造成响应延迟。这个方案无需考虑进程间通信和多进程竞争。[原文§Redis的网络模型是怎样的？](https://xiaolincoding.com/interview/redis.html#redis%E7%9A%84%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84)"
+      }
+    },
+    {
+      "id": "O3-34",
+      "reasons": [
+        "两个布尔性质用四种互斥组合考查"
+      ],
+      "before": {
+        "typed": {
+          "id": "O3-34",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Pipeline 的说法，哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "整批命令执行期间不会被其他客户端的请求穿插",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "整批命令不保证不被其他客户端的请求穿插",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Pipeline 不提供失败回滚",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "某条命令失败时，已成功执行的修改会被回滚",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，下列关于 Pipeline 的说法，哪些正确？",
+        "answer": "正确的是：整批命令不保证不被其他客户端的请求穿插，Pipeline 也不提供失败回滚。Pipeline 不是事务，说成执行期间不会被穿插、失败时会回滚，都不是原文的说法。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)"
+      },
+      "after": {
+        "typed": {
+          "id": "O3-34",
+          "type": "single",
+          "stem": "关于 Pipeline 的整批命令，哪一组对“是否会被其他客户端请求穿插”和“失败回滚”的描述正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "保证不被穿插；提供失败回滚",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "保证不被穿插；不提供失败回滚",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不保证不被穿插；提供失败回滚",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不保证不被穿插；不提供失败回滚",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "关于 Pipeline 的整批命令，哪一组对“是否会被其他客户端请求穿插”和“失败回滚”的描述正确？",
+        "answer": "正确的是：整批命令不保证不被其他客户端的请求穿插，Pipeline 也不提供失败回滚。Pipeline 不是事务，说成执行期间不会被穿插、失败时会回滚，都不是原文的说法。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)"
+      }
+    },
+    {
+      "id": "O4-4",
+      "reasons": [
+        "限定纯命令格式，避免和混合持久化矛盾",
+        "保留原文简化说明并官方核对"
+      ],
+      "before": {
+        "typed": {
+          "id": "O4-4",
+          "type": "single",
+          "stem": "按原文，Redis 重启时是怎样用 AOF 日志恢复数据的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "读取该文件记录的命令，然后逐一执行这些命令",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把文件内容作为实际数据直接读入内存，不需要再执行命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "fork 一个子进程，由子进程把文件复制到另一个 Redis 实例",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只执行文件中最后一条命令，因为它代表最新状态",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，Redis 重启时是怎样用 AOF 日志恢复数据的？",
+        "answer": "Redis 重启时会读取 AOF 文件记录的命令，然后逐一执行命令来恢复数据。直接把文件读入内存是 RDB 的恢复方式。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)"
+      },
+      "after": {
+        "typed": {
+          "id": "O4-4",
+          "type": "single",
+          "stem": "按原文，Redis 启动时如何利用纯命令格式的 AOF（不含 RDB 前导或 RDB base）恢复数据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "读取该文件记录的命令，然后逐一执行这些命令",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把文件内容作为实际数据直接读入内存，不需要再执行命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "fork 一个子进程，由子进程把文件复制到另一个 Redis 实例",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只执行文件中最后一条命令，因为它代表最新状态",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，Redis 启动时如何利用纯命令格式的 AOF（不含 RDB 前导或 RDB base）恢复数据？",
+        "answer": "对纯命令格式的 AOF，Redis 启动时读取其记录的命令并逐一执行以恢复数据。混合格式需要先加载 RDB 基础数据，再回放增量命令。（原文传统对比段泛称 AOF 回放命令，但同节也说明并非所有 AOF 都只有命令；这里补齐格式限定。）[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88) [核对来源：Redis AOF 基础文件格式](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/#append-only-file)"
+      }
+    },
+    {
+      "id": "O4-10",
+      "reasons": [
+        "补 appendfsync no 例外及原文说明"
+      ],
+      "before": {
+        "typed": {
+          "id": "O4-10",
+          "type": "single",
+          "stem": "按原文，Redis 执行完一条写命令后，AOF 内容首先会被追加到哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户态的 aof_buf 缓冲区",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "内核的 page cache",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "磁盘上的 AOF 文件，并立即 fsync",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "磁盘上的 dump.rdb 快照文件",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，Redis 执行完一条写命令后，AOF 内容首先会被追加到哪里？",
+        "answer": "Redis 执行写命令后，会先把命令追加到用户态的 aof_buf 缓冲区，然后调用 write() 把内容写入内核 page cache，最后由 fsync() 决定何时真正落盘。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)"
+      },
+      "after": {
+        "typed": {
+          "id": "O4-10",
+          "type": "single",
+          "stem": "按原文，Redis 执行完一条写命令后，AOF 内容首先会被追加到哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户态的 aof_buf 缓冲区",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "内核的 page cache",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "磁盘上的 AOF 文件，并立即 fsync",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "磁盘上的 dump.rdb 快照文件",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，Redis 执行完一条写命令后，AOF 内容首先会被追加到哪里？",
+        "answer": "Redis 执行写命令后，先将命令追加到用户态 aof_buf，再通过 write() 写入内核 page cache。always/everysec 按策略主动调用 fsync()；appendfsync no 不主动调用，由操作系统决定刷盘。（原文总述把 fsync 写作最后阶段，同节 No 策略给出例外；这里补齐边界。）[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88) [核对来源：Redis AOF 同步策略](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/#how-durable-is-the-append-only-file)"
+      }
+    },
+    {
+      "id": "O4-11",
+      "reasons": [
+        "限定主动 fsync 策略；三空有序不变",
+        "三空答案保留，补策略边界和原文说明"
+      ],
+      "before": {
+        "typed": {
+          "id": "O4-11",
+          "type": "fill",
+          "stem": "按原文，Redis 执行写命令后，AOF 内容的写入过程依次是：先追加到用户态的 ____，再通过 write() 写入内核的 ____，最后由 ____ 决定何时真正落盘。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        "paper": "[填空题·有序] 按原文，Redis 执行写命令后，AOF 内容的写入过程依次是：先追加到用户态的 ____，再通过 write() 写入内核的 ____，最后由 ____ 决定何时真正落盘。",
+        "answer": "3 个空依次是 aof_buf（缓冲区）、page cache、fsync()。Redis 先把命令追加到用户态的 aof_buf，再用 write() 写入内核 page cache，最后由 fsync() 决定何时真正落盘。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)"
+      },
+      "after": {
+        "typed": {
+          "id": "O4-11",
+          "type": "fill",
+          "stem": "采用主动 fsync 的 AOF 策略时，Redis 执行写命令后，先追加到用户态的 ____，再通过 write() 写入内核的 ____，最后通过 ____ 主动要求同步落盘。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        "paper": "[填空题·有序] 采用主动 fsync 的 AOF 策略时，Redis 执行写命令后，先追加到用户态的 ____，再通过 write() 写入内核的 ____，最后通过 ____ 主动要求同步落盘。",
+        "answer": "3 个空依次是 aof_buf（缓冲区）、page cache、fsync()。always 在确认写入前同步，everysec 通常由后台线程每秒同步；no 不主动调用 fsync，由操作系统刷盘。（原文流程总述未限定策略，但同节明确给出 No 例外；题干据此加限定。）[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88) [核对来源：Redis AOF 同步策略](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/#how-durable-is-the-append-only-file)"
+      }
+    },
+    {
+      "id": "O4-14",
+      "reasons": [
+        "恢复用户态缓冲区到 write 再 fsync 的步骤；保留 C 正确",
+        "解析补批处理说明"
+      ],
+      "before": {
+        "typed": {
+          "id": "O4-14",
+          "type": "single",
+          "stem": "按原文，appendfsync 的 Always 策略有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每隔 1 秒由后台线程调用一次 fsync()，通常把故障时的数据丢失控制在约 1 秒的范围，对主线程影响很小",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不主动调用 fsync()，由操作系统自行决定何时刷盘，写入性能最好，但数据丢失窗口难以控制",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次写入 AOF 缓冲区后，主线程都调用 fsync() 同步刷盘才确认写入；数据安全性高，磁盘同步开销也大",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只在 Redis 正常关闭时才调用一次 fsync()，运行期间完全依赖 RDB 快照来保证数据安全",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，appendfsync 的 Always 策略有什么特点？",
+        "answer": "Always 策略每次把 AOF 缓冲区写入文件后，主线程都会调用 fsync()，在确认写入结果前完成同步刷盘，数据安全性高，但磁盘同步开销也大。每隔 1 秒后台 fsync() 的是 Everysec，不主动 fsync() 的是 No。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)"
+      },
+      "after": {
+        "typed": {
+          "id": "O4-14",
+          "type": "single",
+          "stem": "按原文，appendfsync 的 Always 策略有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每隔 1 秒由后台线程调用一次 fsync()，通常把故障时的数据丢失控制在约 1 秒的范围，对主线程影响很小",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不主动调用 fsync()，由操作系统自行决定何时刷盘，写入性能最好，但数据丢失窗口难以控制",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次将 AOF 缓冲区内容写入文件后，主线程调用 fsync()，完成同步后再确认写入；同批命令可合并写入和刷盘",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只在 Redis 正常关闭时才调用一次 fsync()，运行期间完全依赖 RDB 快照来保证数据安全",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，appendfsync 的 Always 策略有什么特点？",
+        "answer": "Always 策略每次把 AOF 缓冲区写入文件后，主线程都会调用 fsync()，在确认写入结果前完成同步刷盘，数据安全性高，但磁盘同步开销也大；同批命令可以合并为一次 write 和一次 fsync。每隔 1 秒后台 fsync() 的是 Everysec，不主动 fsync() 的是 No。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)"
+      }
+    },
+    {
+      "id": "O4-19",
+      "reasons": [
+        "限定对比所用 AOF 格式",
+        "解释原文前后简化并核对"
+      ],
+      "before": {
+        "typed": {
+          "id": "O4-19",
+          "type": "single",
+          "stem": "按原文，RDB 快照和 AOF 文件各自记录的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "RDB 记录的是命令操作的日志，AOF 文件记录的是某一瞬间内存中的实际数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者记录的都是实际数据，只是写入时机不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "RDB 记录的是某一瞬间内存中的实际数据，AOF 文件记录的是命令操作的日志",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者记录的都是命令操作的日志，只是文件格式不同",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，RDB 快照和 AOF 文件各自记录的是什么？",
+        "answer": "RDB 快照记录的是某一个瞬间的内存数据，也就是实际数据；而 AOF 文件记录的是命令操作的日志，不是实际的数据。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)"
+      },
+      "after": {
+        "typed": {
+          "id": "O4-19",
+          "type": "single",
+          "stem": "按原文，RDB 快照和纯命令格式的 AOF（不含 RDB 前导或 RDB base）各自记录什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "RDB 记录的是命令操作的日志，AOF 文件记录的是某一瞬间内存中的实际数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者记录的都是实际数据，只是写入时机不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "RDB 记录的是某一瞬间内存中的实际数据，AOF 文件记录的是命令操作的日志",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者记录的都是命令操作的日志，只是文件格式不同",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，RDB 快照和纯命令格式的 AOF（不含 RDB 前导或 RDB base）各自记录什么？",
+        "answer": "RDB 快照记录某个时间点的实际数据；纯命令格式的 AOF 记录命令日志。（原文传统对比段泛称 AOF 不记录实际数据，但同节混合持久化的 RDB 基础部分也保存实际数据，因此不能把该说法推广到全部 AOF。）[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88) [核对来源：Redis AOF 基础文件格式](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/#append-only-file)"
+      }
+    },
+    {
+      "id": "O4-32",
+      "reasons": [
+        "触发命令与自动条件的四种组合"
+      ],
+      "before": {
+        "typed": {
+          "id": "O4-32",
+          "type": "multiple",
+          "stem": "按原文，AOF 重写有哪些触发方式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 BGREWRITEAOF 手动触发",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "根据文件大小和增长比例自动触发",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只能通过 bgsave 命令间接触发",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每执行一条写命令就自动触发一次",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，AOF 重写有哪些触发方式？",
+        "answer": "AOF 重写可以用 BGREWRITEAOF 手动触发，也可以根据文件大小和增长比例自动触发。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      },
+      "after": {
+        "typed": {
+          "id": "O4-32",
+          "type": "single",
+          "stem": "哪一组是 AOF 重写的手动触发方式和自动触发依据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "BGREWRITEAOF；文件大小和增长比例",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "BGSAVE；文件大小和增长比例",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "BGREWRITEAOF；每执行一条写命令",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "BGSAVE；每执行一条写命令",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "哪一组是 AOF 重写的手动触发方式和自动触发依据？",
+        "answer": "AOF 重写可以用 BGREWRITEAOF 手动触发，也可以根据文件大小和增长比例自动触发。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      }
+    },
+    {
+      "id": "O4-38",
+      "reasons": [
+        "正确项含重叠概括，合并为完整机制解释",
+        "简答解析改为自然直接回答，不再依赖已移除的选项"
+      ],
+      "before": {
+        "typed": {
+          "id": "O4-38",
+          "type": "multiple",
+          "stem": "按原文，关于 AOF 重写对性能的影响，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能因为重写在后台执行，就认为完全没有性能影响",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "重写在子进程中进行，所以对性能没有任何影响",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Redis 7.0 起重写不再需要 fork 子进程，所以不需要关注写时复制",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "无论 base 采用哪种格式，重写都要关注 fork、写时复制、磁盘空间和子进程 I/O",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，关于 AOF 重写对性能的影响，下列哪些说法正确？",
+        "answer": "正确的是：无论 base 采用哪种格式，重写都要关注 fork、写时复制、磁盘空间和子进程 I/O，不能因为在后台执行就认为完全没有性能影响。重写仍由子进程完成，需要关注 fork 和写时复制。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      },
+      "after": {
+        "typed": {
+          "id": "O4-38",
+          "type": "short"
+        },
+        "paper": "AOF 重写在后台子进程进行，为什么仍需要关注性能影响？有哪些主要代价？",
+        "answer": "AOF 重写仍由子进程完成，无论 base 采用哪种格式，都要关注 fork、写时复制、磁盘空间和子进程 I/O，不能因为在后台执行就认为完全没有性能影响。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)"
+      }
+    },
+    {
+      "id": "O5-24",
+      "reasons": [
+        "将过期键统一为设置了过期时间的键，避免误解为已到期"
+      ],
+      "before": {
+        "typed": {
+          "id": "O5-24",
+          "type": "single",
+          "stem": "按原文，选择了 volatile 系列策略，但没有可淘汰的过期键时，会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "无法通过淘汰腾出空间，写入仍然可能报 OOM",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "自动改为在所有 key 中选择淘汰对象，包括没有过期时间的 key",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自动开始淘汰没有设置过期时间的 key",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "自动调大 maxmemory 以容纳新写入",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，选择了 volatile 系列策略，但没有可淘汰的过期键时，会怎样？",
+        "answer": "无法通过淘汰腾出空间，写入仍然可能报 OOM。volatile 系列只在设置了过期时间的键值里选淘汰对象，没有这类 key 时淘汰无从进行。[原文§介绍一下Redis 内存淘汰策略](https://xiaolincoding.com/interview/redis.html#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8Bredis-%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5)"
+      },
+      "after": {
+        "typed": {
+          "id": "O5-24",
+          "type": "single",
+          "stem": "按原文，选择了 volatile 系列策略，但没有设置过期时间的 key 可供淘汰时，可能出现什么情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "无法通过淘汰腾出空间，写入仍然可能报 OOM",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "自动改为在所有 key 中选择淘汰对象，包括没有过期时间的 key",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自动开始淘汰没有设置过期时间的 key",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "自动调大 maxmemory 以容纳新写入",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，选择了 volatile 系列策略，但没有设置过期时间的 key 可供淘汰时，可能出现什么情况？",
+        "answer": "无法通过淘汰腾出空间，写入仍然可能报 OOM。volatile 系列只在设置了过期时间的键值里选淘汰对象，没有这类 key 时淘汰无从进行。[原文§介绍一下Redis 内存淘汰策略](https://xiaolincoding.com/interview/redis.html#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8Bredis-%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5)"
+      }
+    },
+    {
+      "id": "O5-47",
+      "reasons": [
+        "两个退出条件组成封闭组合"
+      ],
+      "before": {
+        "typed": {
+          "id": "O5-47",
+          "type": "multiple",
+          "stem": "按原文，定期删除的一轮检查在哪些情况下会退出？",
+          "options": [
+            {
+              "key": "A",
+              "text": "检查到第一个已过期的 key",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "过期数据的比例已经下降到足够低",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "客户端发来了第一个读请求",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "已经遍历完数据库中的所有 key",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "用完了本轮的时间预算",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，定期删除的一轮检查在哪些情况下会退出？",
+        "answer": "正确的是：过期数据比例下降到足够低，或者用完本轮的时间预算，都会退出，把时间留给客户端请求。错误的是：定期删除不会遍历所有 key，也不会因为找到第一个过期 key 或来了读请求就退出。[原文§介绍一下Redis过期删除策略](https://xiaolincoding.com/interview/redis.html#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8Bredis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5)"
+      },
+      "after": {
+        "typed": {
+          "id": "O5-47",
+          "type": "single",
+          "stem": "哪一组都能使定期删除的一轮检查退出？",
+          "options": [
+            {
+              "key": "A",
+              "text": "找到首个过期 key、收到首个读请求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "过期比例足够低、用完本轮时间预算",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "找到首个过期 key、遍历完所有 key",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "收到首个读请求、遍历完所有 key",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "哪一组都能使定期删除的一轮检查退出？",
+        "answer": "正确的是：过期数据比例下降到足够低，或者用完本轮的时间预算，都会退出，把时间留给客户端请求。错误的是：定期删除不会遍历所有 key，也不会因为找到第一个过期 key 或来了读请求就退出。[原文§介绍一下Redis过期删除策略](https://xiaolincoding.com/interview/redis.html#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8Bredis%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5)"
+      }
+    },
+    {
+      "id": "O5-72",
+      "reasons": [
+        "区分清除与重设 TTL，两个操作组合单选"
+      ],
+      "before": {
+        "typed": {
+          "id": "O5-72",
+          "type": "multiple",
+          "stem": "下列哪些操作会让一个带过期时间的 key 不再有原来的过期时间？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对它执行 PERSIST",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "对它执行 EXPIRE 重设有效期",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对它执行 LPUSH",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "对它执行 INCR",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "用不带 KEEPTTL 的普通 SET 覆盖它的值",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "对它执行 HSET",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "下列哪些操作会让一个带过期时间的 key 不再有原来的过期时间？",
+        "answer": "正确的是：不带 KEEPTTL 的普通 SET 会清除原来的过期时间；PERSIST 会移除过期时间。错误的是：INCR、HSET、LPUSH 这类原地修改通常保留已有过期时间；EXPIRE 是重新设置有效期，key 仍然有新的过期时间。[原文§修改 key 的值，会不会影响过期时间？](https://xiaolincoding.com/interview/redis.html#%E4%BF%AE%E6%94%B9-key-%E7%9A%84%E5%80%BC-%E4%BC%9A%E4%B8%8D%E4%BC%9A%E5%BD%B1%E5%93%8D%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4)"
+      },
+      "after": {
+        "typed": {
+          "id": "O5-72",
+          "type": "single",
+          "stem": "对仍存在且带 TTL 的 key，哪一组成功操作都会清除 TTL，使 key 变为没有过期时间？",
+          "options": [
+            {
+              "key": "A",
+              "text": "PERSIST；EXPIRE 重设正数有效期",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不带 KEEPTTL 的普通 SET；INCR",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "PERSIST；不带 KEEPTTL 的普通 SET",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "HSET；LPUSH",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "对仍存在且带 TTL 的 key，哪一组成功操作都会清除 TTL，使 key 变为没有过期时间？",
+        "answer": "正确的是：不带 KEEPTTL 的普通 SET 会清除原来的过期时间；PERSIST 会移除过期时间。错误的是：INCR、HSET、LPUSH 这类原地修改通常保留已有过期时间；EXPIRE 是重新设置有效期，key 仍然有新的过期时间。[原文§修改 key 的值，会不会影响过期时间？](https://xiaolincoding.com/interview/redis.html#%E4%BF%AE%E6%94%B9-key-%E7%9A%84%E5%80%BC-%E4%BC%9A%E4%B8%8D%E4%BC%9A%E5%BD%B1%E5%93%8D%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4)"
+      }
+    },
+    {
+      "id": "O6-22",
+      "reasons": [
+        "补 ID 前提，两分支配对单选",
+        "同步两分支解析，补复制 ID 兼容前提"
+      ],
+      "before": {
+        "typed": {
+          "id": "O6-22",
+          "type": "multiple",
+          "stem": "按原文，主服务器根据 repl_backlog_buffer 决定同步方式时，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从服务器要读取的数据还在 repl_backlog_buffer 里，就采用增量同步",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只要从服务器断连过，不论所需数据是否还在缓冲区里，就一定采用全量同步",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只要复制 ID 兼容，不用再看偏移量是否还在 backlog 范围内，就一定采用增量同步",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从服务器要读取的数据已经不在 repl_backlog_buffer 里，就采用全量同步",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，主服务器根据 repl_backlog_buffer 决定同步方式时，下列哪些说法正确？",
+        "answer": "正确的是：数据还在 repl_backlog_buffer 里就增量同步；数据已不在就全量同步。错误的是：断连过不一定全量，只要所需数据还在就能增量；复制 ID 兼容还不够，还要检查偏移量是否仍在 backlog 范围内。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)"
+      },
+      "after": {
+        "typed": {
+          "id": "O6-22",
+          "type": "single",
+          "stem": "主节点已确认复制 ID 兼容。所需数据仍在 backlog 和已不在 backlog 时，分别采用哪种同步？",
+          "options": [
+            {
+              "key": "A",
+              "text": "全量；全量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "增量；增量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "全量；增量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "增量；全量",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "主节点已确认复制 ID 兼容。所需数据仍在 backlog 和已不在 backlog 时，分别采用哪种同步？",
+        "answer": "在复制 ID 兼容的前提下，所需数据仍在 repl_backlog_buffer 中可增量同步；已不在时需全量同步。断连不必然要求全量，但仅复制 ID 兼容也不够，还要检查偏移量对应的数据是否仍可续传。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)"
+      }
+    },
+    {
+      "id": "O6-61",
+      "reasons": [
+        "补优先级相同的独立作答前提",
+        "解析同步选主排序前提"
+      ],
+      "before": {
+        "typed": {
+          "id": "O6-61",
+          "type": "single",
+          "stem": "按原文，偏移量也相同时，Sentinel Leader 怎样决出新主节点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "选 run ID 字典序更大的，让选择结果是确定的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "随机选择其中一个节点晋升",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "选 run ID 字典序更小的，让选择结果是确定的",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "重新开始新一轮的 Leader 选举再比较",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，偏移量也相同时，Sentinel Leader 怎样决出新主节点？",
+        "answer": "偏移量也相同，再比较 run ID，选择 run ID 字典序更小的节点，让选择结果是确定的。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      },
+      "after": {
+        "typed": {
+          "id": "O6-61",
+          "type": "single",
+          "stem": "过滤不合适的从节点后，若候选节点的 replica-priority 和复制偏移量均相同，Sentinel Leader 怎样决出新主节点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "选 run ID 字典序更大的，让选择结果是确定的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "随机选择其中一个节点晋升",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "选 run ID 字典序更小的，让选择结果是确定的",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "重新开始新一轮的 Leader 选举再比较",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "过滤不合适的从节点后，若候选节点的 replica-priority 和复制偏移量均相同，Sentinel Leader 怎样决出新主节点？",
+        "answer": "replica-priority 和复制偏移量均相同，再比较 run ID，选择 run ID 字典序更小的节点，让选择结果是确定的。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      }
+    },
+    {
+      "id": "O6-75",
+      "reasons": [
+        "修客户端集群管理命令",
+        "补全三个干扰命令的语法及职责，使选项长度不泄露正确项"
+      ],
+      "before": {
+        "typed": {
+          "id": "O6-75",
+          "type": "single",
+          "stem": "按原文，用哪个命令创建 Redis 集群时，会自动把所有哈希槽平均分布到集群节点上？",
+          "options": [
+            {
+              "key": "A",
+              "text": "cluster meet",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "cluster create",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "cluster addslots",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "CLUSTER SHARDS",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，用哪个命令创建 Redis 集群时，会自动把所有哈希槽平均分布到集群节点上？",
+        "answer": "cluster create。cluster meet 用于手动建立节点间的连接，cluster addslots 用于手动指定每个节点上的哈希槽，CLUSTER SHARDS 是客户端获取槽位映射的命令。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)"
+      },
+      "after": {
+        "typed": {
+          "id": "O6-75",
+          "type": "single",
+          "stem": "按原文，用哪个命令创建 Redis 集群时，会自动把所有哈希槽平均分布到集群节点上？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CLUSTER MEET ip port（手动建立节点连接）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "redis-cli --cluster create ...",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "CLUSTER ADDSLOTS slot [slot ...]（手动分配槽）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "CLUSTER SHARDS（查询集群节点和哈希槽的映射）",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，用哪个命令创建 Redis 集群时，会自动把所有哈希槽平均分布到集群节点上？",
+        "answer": "使用 redis-cli --cluster create 加节点地址等参数创建集群并分配槽。CLUSTER MEET 建立节点间连接，CLUSTER ADDSLOTS 手动分配指定槽号，CLUSTER SHARDS 获取槽位映射。（原文简写为 cluster create，实际是 redis-cli 的客户端管理选项，不是服务端 CLUSTER CREATE 子命令。）[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97) [核对来源：Redis 创建集群](https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/#create-a-redis-cluster)"
+      }
+    },
+    {
+      "id": "O6-76",
+      "reasons": [
+        "ADDSLOTS 参数是槽号列表，不是槽个数",
+        "注明原文参数错误并核对"
+      ],
+      "before": {
+        "typed": {
+          "id": "O6-76",
+          "type": "fill",
+          "stem": "按原文，手动分配哈希槽时，先用 ____ 命令手动建立节点间的连接、组成集群，再用 ____ 命令指定每个节点上的哈希槽个数。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        "paper": "[填空题·有序] 按原文，手动分配哈希槽时，先用 ____ 命令手动建立节点间的连接、组成集群，再用 ____ 命令指定每个节点上的哈希槽个数。",
+        "answer": "2 个空依次是 cluster meet、cluster addslots。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)"
+      },
+      "after": {
+        "typed": {
+          "id": "O6-76",
+          "type": "fill",
+          "stem": "按原文，手动分配哈希槽时，先用 ____ 命令手动建立节点间的连接、组成集群，再用 ____ 命令将指定槽号列表分配给当前节点。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        "paper": "[填空题·有序] 按原文，手动分配哈希槽时，先用 ____ 命令手动建立节点间的连接、组成集群，再用 ____ 命令将指定槽号列表分配给当前节点。",
+        "answer": "2 个空依次是 CLUSTER MEET、CLUSTER ADDSLOTS。ADDSLOTS 参数是具体槽号列表，例如 ADDSLOTS 2 分配的是槽号 2，而不是两个槽。（原文称“哈希槽个数”，这里按官方语法修正。）[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97) [核对来源：CLUSTER ADDSLOTS 语法](https://redis.io/docs/latest/commands/cluster-addslots/)"
+      }
+    },
+    {
+      "id": "O6-89",
+      "reasons": [
+        "同源命令与槽参数同步修订"
+      ],
+      "before": {
+        "typed": {
+          "id": "O6-89",
+          "type": "short"
+        },
+        "paper": "Redis集群的模式了解吗 优缺点了解吗",
+        "answer": "当缓存数据量大到一台服务器无法缓存时，就用 Redis 切片集群（Redis Cluster）：数据分布在不同服务器上，降低对单主节点的依赖，提高读写性能。它采用哈希槽处理数据和节点的映射：一个集群共有 16384 个哈希槽，key 先用 CRC16 算出 16 bit 的值，再对 16384 取模，得到 0~16383 的槽号。槽映射到节点有两种方式：用 cluster create 创建集群时自动平均分配，或用 cluster meet 建立连接后再用 cluster addslots 手动指定。槽只分配给主节点，从节点复制对应主节点的数据，不独立分配槽；真实集群固定 16384 个槽，默认 cluster-require-full-coverage 为 yes，需要全部槽可服务。优点：容量和吞吐量可以扩展，支持故障转移（前提是有可用副本并满足选举条件），可以通过迁移哈希槽及其数据在线扩缩容。缺点：维护更复杂，要管理主从关系、槽位、迁移、客户端路由以及数据和请求分布是否均衡；多 key 操作受限制，事务、Lua 脚本和许多多 key 命令要求相关 key 在同一个槽，同节点的两个 key 也不一定同槽；不能解决所有热点问题，一个 key 仍只属于一个槽、由一个主节点处理；存在复制延迟和数据丢失窗口，主从异步复制，故障切换不能保证强一致，并且 Cluster 只支持数据库 0。另外，原生 Redis Cluster 节点不充当代理转发普通请求，而是让客户端根据槽位路由，必要时返回重定向。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)"
+      },
+      "after": {
+        "typed": {
+          "id": "O6-89",
+          "type": "short"
+        },
+        "paper": "Redis集群的模式了解吗 优缺点了解吗",
+        "answer": "当缓存数据量大到一台服务器无法缓存时，就用 Redis 切片集群（Redis Cluster）：数据分布在不同服务器上，降低对单主节点的依赖，提高读写性能。它采用哈希槽处理数据和节点的映射：一个集群共有 16384 个哈希槽，key 先用 CRC16 算出 16 bit 的值，再对 16384 取模，得到 0~16383 的槽号。槽映射到节点有两种方式：用 redis-cli --cluster create 加节点地址等参数创建集群时自动分配，或用 CLUSTER MEET 建立连接后再用 CLUSTER ADDSLOTS 指定槽号列表。（原文把创建命令简写为 cluster create，并将 ADDSLOTS 参数称为“槽个数”；实际分别是客户端管理选项和具体槽号列表。）槽只分配给主节点，从节点复制对应主节点的数据，不独立分配槽；真实集群固定 16384 个槽，默认 cluster-require-full-coverage 为 yes，需要全部槽可服务。优点：容量和吞吐量可以扩展，支持故障转移（前提是有可用副本并满足选举条件），可以通过迁移哈希槽及其数据在线扩缩容。缺点：维护更复杂，要管理主从关系、槽位、迁移、客户端路由以及数据和请求分布是否均衡；多 key 操作受限制，事务、Lua 脚本和许多多 key 命令要求相关 key 在同一个槽，同节点的两个 key 也不一定同槽；不能解决所有热点问题，一个 key 仍只属于一个槽、由一个主节点处理；存在复制延迟和数据丢失窗口，主从异步复制，故障切换不能保证强一致，并且 Cluster 只支持数据库 0。另外，原生 Redis Cluster 节点不充当代理转发普通请求，而是让客户端根据槽位路由，必要时返回重定向。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97) [核对来源：Redis 创建集群](https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/#create-a-redis-cluster) [核对来源：CLUSTER ADDSLOTS 语法](https://redis.io/docs/latest/commands/cluster-addslots/)"
+      }
+    },
+    {
+      "id": "O7-31",
+      "reasons": [
+        "补完整场景，移除这类的前文依赖"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-31",
+          "type": "single",
+          "stem": "按原文，面对这类并发量问题，更合适的回答思路是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接按服务器的 CPU 核数和内存大小，给出一个固定的并发上限数值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按 Redis 的 QPS 固定是 MySQL 的 10 倍来推算，不需要再做压测",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先按访问模型和命中率估算，再用接近真实业务的数据压测并观察吞吐量、P99 延迟等指标",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只要缓存命中率足够高，就可以直接承诺某个硬件配置一定能扛多少流量",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，面对这类并发量问题，更合适的回答思路是什么？",
+        "answer": "先按访问模型和命中率估算，再用接近真实业务的数据压测并观察吞吐量、P99 延迟等指标。原文说，实际还要看数据库写入量、每个请求执行多少条命令、SQL 是否有索引、数据大小、连接池、网络带宽以及 Redis 持久化配置，所以应先根据访问模型和命中率估算，再使用接近真实业务的数据压测，观察吞吐量、P99 延迟、CPU、带宽和数据库连接数，而不是直接承诺某个硬件配置一定能扛多少。原文反对直接给固定数值、不压测，也不认可固定的 10 倍关系；命中率关键但不是唯一因素，不能据此承诺硬件配置的承载量。[原文§高并发场景，Redis单节点+MySQL单节点能有多大的并发量？](https://xiaolincoding.com/interview/redis.html#%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF-redis%E5%8D%95%E8%8A%82%E7%82%B9-mysql%E5%8D%95%E8%8A%82%E7%82%B9%E8%83%BD%E6%9C%89%E5%A4%9A%E5%A4%A7%E7%9A%84%E5%B9%B6%E5%8F%91%E9%87%8F)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-31",
+          "type": "single",
+          "stem": "面对“Redis 单节点 + MySQL 单节点能承受多大并发量”的问题，更合适的回答思路是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接按服务器的 CPU 核数和内存大小，给出一个固定的并发上限数值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按 Redis 的 QPS 固定是 MySQL 的 10 倍来推算，不需要再做压测",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先按访问模型和命中率估算，再用接近真实业务的数据压测并观察吞吐量、P99 延迟等指标",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只要缓存命中率足够高，就可以直接承诺某个硬件配置一定能扛多少流量",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "面对“Redis 单节点 + MySQL 单节点能承受多大并发量”的问题，更合适的回答思路是什么？",
+        "answer": "先按访问模型和命中率估算，再用接近真实业务的数据压测并观察吞吐量、P99 延迟等指标。原文说，实际还要看数据库写入量、每个请求执行多少条命令、SQL 是否有索引、数据大小、连接池、网络带宽以及 Redis 持久化配置，所以应先根据访问模型和命中率估算，再使用接近真实业务的数据压测，观察吞吐量、P99 延迟、CPU、带宽和数据库连接数，而不是直接承诺某个硬件配置一定能扛多少。原文反对直接给固定数值、不压测，也不认可固定的 10 倍关系；命中率关键但不是唯一因素，不能据此承诺硬件配置的承载量。[原文§高并发场景，Redis单节点+MySQL单节点能有多大的并发量？](https://xiaolincoding.com/interview/redis.html#%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF-redis%E5%8D%95%E8%8A%82%E7%82%B9-mysql%E5%8D%95%E8%8A%82%E7%82%B9%E8%83%BD%E6%9C%89%E5%A4%9A%E5%A4%A7%E7%9A%84%E5%B9%B6%E5%8F%91%E9%87%8F)"
+      }
+    },
+    {
+      "id": "O7-76",
+      "reasons": [
+        "两类保护措施各需一句解释，改简答",
+        "简答解析改为自然直接回答，不再依赖已移除的选项"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-76",
+          "type": "multiple",
+          "stem": "按原文，使用分布式锁时有哪些需要注意的地方？",
+          "options": [
+            {
+              "key": "A",
+              "text": "加锁失败的请求应当一直阻塞等待，直到获得锁为止",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "有了 Redis 分布式锁，就不再需要数据库约束",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "加锁失败的请求要有超时、退避或者降级逻辑，不能无限等待",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "涉及资金、库存等重要数据时，数据库约束和幂等仍然需要兜底",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，使用分布式锁时有哪些需要注意的地方？",
+        "answer": "正确的是：加锁失败的请求要有超时、退避或者降级逻辑，不能无限等待；涉及资金、库存等重要数据时，数据库约束和幂等仍然需要兜底。原文说，加锁失败的请求要有超时、退避或者降级逻辑，不能无限等待；涉及资金、库存等重要数据时，数据库约束和幂等仍然需要兜底。原文明确反对无限等待，也明确说重要数据仍需数据库约束和幂等兜底。[原文§Redis分布式锁的实现原理？什么场景下用到分布式锁？](https://xiaolincoding.com/interview/redis.html#redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-76",
+          "type": "short"
+        },
+        "paper": "使用 Redis 分布式锁时，加锁失败的请求和重要业务数据分别需要哪些保护措施？",
+        "answer": "加锁失败的请求要有超时、退避或者降级逻辑，不能无限等待。涉及资金、库存等重要数据时，数据库约束和幂等仍然需要兜底，不能只依赖 Redis 分布式锁。[原文§Redis分布式锁的实现原理？什么场景下用到分布式锁？](https://xiaolincoding.com/interview/redis.html#redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81)"
+      }
+    },
+    {
+      "id": "O7-80",
+      "reasons": [
+        "将绝对保证改为降低风险",
+        "解析同步续期局限"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-80",
+          "type": "single",
+          "stem": "按原文，业务耗时不确定时，可以怎么保证锁不会提前过期？",
+          "options": [
+            {
+              "key": "A",
+              "text": "使用续期机制，定期检查锁仍然属于自己，再延长有效期",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不设置过期时间，让锁一直保留",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在锁过期后由其他客户端强制把锁转给原持有者",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让客户端在业务开始前一次性把 TTL 设为 0",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，业务耗时不确定时，可以怎么保证锁不会提前过期？",
+        "answer": "使用续期机制，定期检查锁仍然属于自己，再延长有效期。原文说，如果业务耗时比较稳定，可以根据耗时设置合理 TTL；如果耗时不确定，可以使用续期机制，定期检查锁仍然属于自己，再延长有效期。不设置过期时间会让异常后的锁无法释放；原文没有提到强制转移锁，TTL 设为 0 也不是续期。[原文§分布式锁过期了，但业务还没执行完，怎么办？](https://xiaolincoding.com/interview/redis.html#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E8%BF%87%E6%9C%9F%E4%BA%86-%E4%BD%86%E4%B8%9A%E5%8A%A1%E8%BF%98%E6%B2%A1%E6%89%A7%E8%A1%8C%E5%AE%8C-%E6%80%8E%E4%B9%88%E5%8A%9E)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-80",
+          "type": "single",
+          "stem": "按原文，业务耗时不确定时，可以采用什么机制降低锁在业务完成前过期的风险？",
+          "options": [
+            {
+              "key": "A",
+              "text": "使用续期机制，定期检查锁仍然属于自己，再延长有效期",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不设置过期时间，让锁一直保留",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在锁过期后由其他客户端强制把锁转给原持有者",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让客户端在业务开始前一次性把 TTL 设为 0",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，业务耗时不确定时，可以采用什么机制降低锁在业务完成前过期的风险？",
+        "answer": "使用续期机制，定期检查锁仍然属于自己，再延长有效期。业务耗时稳定时可据此设置合理 TTL；耗时不确定时可用续期降低提前过期风险。续期可能因网络中断或客户端长暂停而失败，不能保证锁始终有效；业务还需防止旧持有者在锁失效后继续写入。不设置过期时间会让异常后的锁无法释放，TTL 设为 0 也不是续期。[原文§分布式锁过期了，但业务还没执行完，怎么办？](https://xiaolincoding.com/interview/redis.html#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E8%BF%87%E6%9C%9F%E4%BA%86-%E4%BD%86%E4%B8%9A%E5%8A%A1%E8%BF%98%E6%B2%A1%E6%89%A7%E8%A1%8C%E5%AE%8C-%E6%80%8E%E4%B9%88%E5%8A%9E)"
+      }
+    },
+    {
+      "id": "O7-128",
+      "reasons": [
+        "可能返回改为保证返回，明确完整扫描和过滤条件",
+        "解析明确可能与保证的区别"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-128",
+          "type": "single",
+          "stem": "按原文，SCAN 完整扫描期间，哪类 key 能被返回？",
+          "options": [
+            {
+              "key": "A",
+              "text": "扫描过程中途新增加进来的 key",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "扫描过程中途被删除掉的 key",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "完整扫描期间一直存在的 key",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "扫描过程中途被删除之后又重建的 key",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，SCAN 完整扫描期间，哪类 key 能被返回？",
+        "answer": "完整扫描期间一直存在的 key。原文说，完整扫描期间一直存在的 key 能被返回；中途新增、删除或者删除后重建的 key，是否被返回不保证。中途变化的 key 是否被返回不保证，所以只有一直存在的 key 能确定被返回。[原文§KEYS 和 SCAN 有什么区别？SCAN 会漏数据吗？](https://xiaolincoding.com/interview/redis.html#keys-%E5%92%8C-scan-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB-scan-%E4%BC%9A%E6%BC%8F%E6%95%B0%E6%8D%AE%E5%90%97)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-128",
+          "type": "single",
+          "stem": "SCAN 从游标 0 开始直到再次返回 0 的完整扫描中，不使用会排除目标 key 的 MATCH/TYPE 条件时，哪类 key 保证会被返回？",
+          "options": [
+            {
+              "key": "A",
+              "text": "扫描过程中途新增加进来的 key",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "扫描过程中途被删除掉的 key",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "完整扫描期间一直存在的 key",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "扫描过程中途被删除之后又重建的 key",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "SCAN 从游标 0 开始直到再次返回 0 的完整扫描中，不使用会排除目标 key 的 MATCH/TYPE 条件时，哪类 key 保证会被返回？",
+        "answer": "完整扫描期间一直存在的 key 保证会被返回。中途新增、删除或删除后重建的 key 可能返回，也可能不返回，不能将“不保证返回”理解为“不能返回”。[原文§KEYS 和 SCAN 有什么区别？SCAN 会漏数据吗？](https://xiaolincoding.com/interview/redis.html#keys-%E5%92%8C-scan-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB-scan-%E4%BC%9A%E6%BC%8F%E6%95%B0%E6%8D%AE%E5%90%97)"
+      }
+    },
+    {
+      "id": "O7-161",
+      "reasons": [
+        "事务任务表和 binlog 机制较长，简答保留完整考点",
+        "简答解析改为自然直接回答，不再依赖已移除的选项"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-161",
+          "type": "multiple",
+          "stem": "按原文，要避免把可靠性完全依赖在一次同步删除或一次发送消息上，可以怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通过订阅 binlog 捕获已提交的变更",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把需要失效的缓存 key 写入数据库的任务表并和业务更新放在同一个事务里，再由后台任务可靠地投递消息和重试删除",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "取消缓存的过期时间，避免出现失效窗口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "删除失败后只发送一次 MQ 消息，之后不再处理",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "把需要失效的缓存 key 只保存在应用内存里，宕机后重新计算",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，要避免把可靠性完全依赖在一次同步删除或一次发送消息上，可以怎么做？",
+        "answer": "正确的是：把需要失效的缓存 key 写入数据库的任务表并和业务更新放在同一个事务里，由后台任务投递消息和重试删除；以及订阅 binlog 捕获已提交的变更。只发一次消息不再处理，依然把可靠性压在一次发送上；原文要求缓存一定要设置过期时间，不是取消；只放在应用内存里的 key 在宕机后就丢了。[原文§如何保证 redis 和 mysql 数据缓存一致性问题？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81-redis-%E5%92%8C-mysql-%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-161",
+          "type": "short"
+        },
+        "paper": "怎样避免缓存失效的可靠性只依赖一次同步删除或一次消息发送？说明原文给出的两种做法。",
+        "answer": "可以把需要失效的缓存 key 写入数据库任务表，并和业务更新放在同一事务里，再由后台任务可靠地投递消息和重试删除；也可以订阅 binlog 捕获已提交的变更。只发送一次消息后不再处理，仍把可靠性压在一次发送上；key 只放在应用内存里会在宕机时丢失。缓存还应设置过期时间。[原文§如何保证 redis 和 mysql 数据缓存一致性问题？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81-redis-%E5%92%8C-mysql-%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98)"
+      }
+    },
+    {
+      "id": "O7-209",
+      "reasons": [
+        "补过滤器对数据库的覆盖前提",
+        "解析同步数据库覆盖前提"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-209",
+          "type": "single",
+          "stem": "按原文，用布隆过滤器查询数据是否在数据库时，如果查询到数据没有被标记，说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "说明数据一定在数据库中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "说明数据正在被写入数据库",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "说明数据不在数据库中",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "说明数据已经被数据库删除",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，用布隆过滤器查询数据是否在数据库时，如果查询到数据没有被标记，说明什么？",
+        "answer": "说明数据不在数据库中。布隆过滤器在写入数据库数据时做标记，之后查询只需要查布隆过滤器，没被标记就说明不在数据库中。[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-209",
+          "type": "single",
+          "stem": "假设过滤器已正确覆盖数据库中所有待判断数据，且不存在同步滞后。用布隆过滤器查询时，如果数据没有被标记，说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "说明数据一定在数据库中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "说明数据正在被写入数据库",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "说明数据不在数据库中",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "说明数据已经被数据库删除",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "假设过滤器已正确覆盖数据库中所有待判断数据，且不存在同步滞后。用布隆过滤器查询时，如果数据没有被标记，说明什么？",
+        "answer": "在过滤器已正确覆盖数据库中所有待判断数据，且不存在同步滞后的前提下，过滤器否定说明数据不在数据库中。数据库已新增而过滤器尚未更新时，不能直接得出该结论。[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      }
+    },
+    {
+      "id": "O7-211",
+      "reasons": [
+        "删除已标记的冲突状态，并补覆盖前提",
+        "解析同步覆盖前提"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-211",
+          "type": "single",
+          "stem": "位图数组长度为 8、哈希函数有 3 个的布隆过滤器中，数据 x 的 3 个哈希值对 8 取模后得到 1、4、6，并已被标记。按原文，查询数据 x 是否在数据库中时，怎样判断它不在数据库中？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只要第 1、4、6 位中有一个为 0",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "第 1、4、6 位全部为 1",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "第 1、4、6 位中至少有一个为 1",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "第 1、4、6 位全部为 0 才能判断",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "位图数组长度为 8、哈希函数有 3 个的布隆过滤器中，数据 x 的 3 个哈希值对 8 取模后得到 1、4、6，并已被标记。按原文，查询数据 x 是否在数据库中时，怎样判断它不在数据库中？",
+        "answer": "只要第 1、4、6 位中有一个为 0，就认为数据 x 不在数据库中；全为 1 则只能认为可能存在。把条件改成全部为 1、至少有一个为 1 或必须全部为 0，都不是原文的判断方式。[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-211",
+          "type": "single",
+          "stem": "位图长度为 8、哈希函数有 3 个的布隆过滤器中，待查询数据 x 的哈希位置为 1、4、6。假设过滤器已正确覆盖数据库中所有待判断数据，且不存在同步滞后，哪种判据足以判断 x 不在数据库中？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只要第 1、4、6 位中有一个为 0",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "第 1、4、6 位全部为 1",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "第 1、4、6 位中至少有一个为 1",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "第 1、4、6 位全部为 0 才能判断",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "位图长度为 8、哈希函数有 3 个的布隆过滤器中，待查询数据 x 的哈希位置为 1、4、6。假设过滤器已正确覆盖数据库中所有待判断数据，且不存在同步滞后，哪种判据足以判断 x 不在数据库中？",
+        "answer": "在题设覆盖前提下，只要第 1、4、6 位中有一个为 0，就认为数据 x 不在数据库中；全为 1 则只能认为可能存在。把条件改成全部为 1、至少有一个为 1 或必须全部为 0，都不是原文的判断方式。[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      }
+    },
+    {
+      "id": "O7-213",
+      "reasons": [
+        "统一同源覆盖条件，避免已加入元素却被否定的表述",
+        "纠正原文同源措辞并说明原说法"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-213",
+          "type": "single",
+          "stem": "按原文，布隆过滤器判断“存在”和判断“不存在”各意味着什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "判断“存在”就一定存在，而判断“不存在”则只是可能不存在",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "判断“存在”只是可能存在；对已正确加入过滤器的数据，判断“不存在”则一定不存在",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "判断“存在”和判断“不存在”对任何数据来说都一定是准确的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "判断“存在”和判断“不存在”都只是可能，没有一个是确定的结论",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，布隆过滤器判断“存在”和判断“不存在”各意味着什么？",
+        "answer": "判断“存在”只是可能存在；判断“不存在”，对于已经正确加入过滤器的数据来说，一定不存在。其余选项把两种判断的可靠性说反或说成同等可靠。[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-213",
+          "type": "single",
+          "stem": "假设过滤器已正确覆盖数据库中所有待判断数据，且不存在同步滞后。布隆过滤器判断“存在”和判断“不存在”各意味着什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "判断“存在”就一定存在，而判断“不存在”则只是可能不存在",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "判断“存在”只是可能在数据库中；判断“不存在”则一定不在数据库中",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "判断“存在”和判断“不存在”对任何数据来说都一定是准确的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "判断“存在”和判断“不存在”都只是可能，没有一个是确定的结论",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "假设过滤器已正确覆盖数据库中所有待判断数据，且不存在同步滞后。布隆过滤器判断“存在”和判断“不存在”各意味着什么？",
+        "answer": "在过滤器已正确覆盖数据库中所有待判断数据，且不存在同步滞后的前提下，判断“存在”只是可能在数据库中，判断“不存在”则一定不在数据库中。（原文写“对已正确加入过滤器的数据”容易误解；准确含义是过滤器正确表示待判断集合，已正确加入的元素本身不会被算法否定。）[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B) [核对来源：Redis Bloom filter 的集合语义](https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/)"
+      }
+    },
+    {
+      "id": "O7-216",
+      "reasons": [
+        "两种处理方案及原因适合简答",
+        "简答解析改为自然直接回答，不再依赖已移除的选项"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-216",
+          "type": "multiple",
+          "stem": "按原文，数据库中删除的数据较多时，对布隆过滤器可以怎么处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "定期重建",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "增加哈希函数个数，让误判完全消失",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "考虑支持删除的其他过滤器方案",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "直接把被删除元素对应的位清零",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，数据库中删除的数据较多时，对布隆过滤器可以怎么处理？",
+        "answer": "正确的是定期重建，或者考虑支持删除的其他过滤器方案。直接清零会影响共用这些位的其他元素；原文并没有说增加哈希函数个数能让误判消失，反而提醒容量和哈希函数数量要合理设置。[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-216",
+          "type": "short"
+        },
+        "paper": "数据库删除数据较多时，可以怎样维护布隆过滤器？为什么不应直接清零对应位？",
+        "answer": "可以定期重建布隆过滤器，或者考虑支持删除的其他过滤器方案。不能直接清零被删除元素对应的位，因为其他元素也可能使用这些位。容量和哈希函数数量应合理设置，增加哈希函数数量不能保证误判完全消失。[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      }
+    },
+    {
+      "id": "O7-218",
+      "reasons": [
+        "同源数据库否定结论补覆盖前提",
+        "修原文已加入数据的歧义"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-218",
+          "type": "short"
+        },
+        "paper": "布隆过滤器原理介绍一下",
+        "answer": "布隆过滤器由「初始值都为 0 的位图数组」和「N 个哈希函数」两部分组成。写入数据库数据时在布隆过滤器里做标记：先用 N 个哈希函数分别对数据做哈希计算得到 N 个哈希值，再把每个哈希值对位图数组的长度取模得到对应位置，最后把这些位置的值设置为 1。查询时检查这些位置的值是否全为 1，只要有一个为 0，就认为数据不在数据库中。例如位图数组长度为 8、哈希函数 3 个，数据 x 的位置为 1、4、6，就把这三位设为 1。由于基于哈希函数，存在哈希冲突的可能（数据 x 和 y 可能落在相同位置），会出现误判，所以判断“存在”只是可能存在，判断“不存在”对已正确加入过滤器的数据来说一定不存在；如果数据库新增了数据但过滤器还没更新而被拦截，是同步延迟造成的，不是算法误判。普通布隆过滤器不能把删除元素对应的位清零，因为其他元素可能也使用这些位，删除较多时可以定期重建或考虑支持删除的其他方案；容量和哈希函数数量要合理设置，写入远超设计容量后误判率会升高。[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-218",
+          "type": "short"
+        },
+        "paper": "布隆过滤器原理介绍一下",
+        "answer": "布隆过滤器由「初始值都为 0 的位图数组」和「N 个哈希函数」两部分组成。写入数据库数据时在布隆过滤器里做标记：先用 N 个哈希函数分别对数据做哈希计算得到 N 个哈希值，再把每个哈希值对位图数组的长度取模得到对应位置，最后把这些位置的值设置为 1。在过滤器已正确覆盖数据库中所有待判断数据，且不存在同步滞后的前提下，查询时检查这些位置是否全为 1，只要有一个为 0，就可判断数据不在数据库中。例如位图数组长度为 8、哈希函数 3 个，数据 x 的位置为 1、4、6，就把这三位设为 1。由于基于哈希函数，存在哈希冲突的可能（数据 x 和 y 可能落在相同位置），会出现误判，所以判断“存在”只是可能存在，判断“不存在”表示不属于过滤器所表示的集合，在正确完整覆盖数据库且无同步滞后时才能推出数据库不存在（原文写“对已正确加入过滤器的数据”，这里澄清其所指的集合覆盖前提）；如果数据库新增了数据但过滤器还没更新而被拦截，是同步延迟造成的，不是算法误判。普通布隆过滤器不能把删除元素对应的位清零，因为其他元素可能也使用这些位，删除较多时可以定期重建或考虑支持删除的其他方案；容量和哈希函数数量要合理设置，写入远超设计容量后误判率会升高。[原文§布隆过滤器原理介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B) [核对来源：Redis Bloom filter 的集合语义](https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/)"
+      }
+    },
+    {
+      "id": "O7-237",
+      "reasons": [
+        "修滑动窗口等号边界并注明原文说法"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-237",
+          "type": "single",
+          "stem": "按原文，用 Zset 实现滑动窗口时，每次请求的处理顺序是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先记录当前请求，再统计数量，超过阈值时再删除窗口外的数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先统计窗口内的数量，再删除窗口外的数据，不论是否超限都记录当前请求",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先删除全部历史数据，再记录当前请求，不统计数量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先删除窗口外的数据，再统计数量，没有超过阈值才记录当前请求",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，用 Zset 实现滑动窗口时，每次请求的处理顺序是什么？",
+        "answer": "先删除窗口外的数据，再统计数量，没有超过阈值才记录当前请求，并且删除、计数和添加需要放在 Lua 中一起完成。其他顺序会让超限请求也被记录，或让窗口内的数据被误删。[原文§Redis 怎么实现限流？](https://xiaolincoding.com/interview/redis.html#redis-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E9%99%90%E6%B5%81)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-237",
+          "type": "single",
+          "stem": "按原文，用 Zset 实现滑动窗口时，每次请求的处理顺序是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先记录当前请求，再统计数量，超过阈值时再删除窗口外的数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先统计窗口内的数量，再删除窗口外的数据，不论是否超限都记录当前请求",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先删除全部历史数据，再记录当前请求，不统计数量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先删除窗口外的数据，再统计现有数量，严格小于阈值时才记录并放行当前请求",
+              "correct": true
+            }
+          ]
+        },
+        "paper": "按原文，用 Zset 实现滑动窗口时，每次请求的处理顺序是什么？",
+        "answer": "先删除窗口外的数据，再统计数量，现有数量严格小于阈值时才记录并放行当前请求；达到阈值就拒绝（原文说“没有超过阈值才记录”，这里明确新增前的比较边界），并且删除、计数和添加需要放在 Lua 中一起完成。其他顺序会让超限请求也被记录，或让窗口内的数据被误删。[原文§Redis 怎么实现限流？](https://xiaolincoding.com/interview/redis.html#redis-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E9%99%90%E6%B5%81) [核对来源：Redis 滑动窗口日志示例](https://redis.io/docs/latest/develop/use-cases/rate-limiter/rust/#sliding-window-log)"
+      }
+    },
+    {
+      "id": "O7-241",
+      "reasons": [
+        "故障策略与统一时间需解释，改简答",
+        "简答解析改为自然直接回答，不再依赖已移除的选项"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-241",
+          "type": "multiple",
+          "stem": "按原文，不论采用哪种限流方案，都要注意哪些问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "统一时间来源，避免不同应用机器的时间差影响窗口判断",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每台应用机器使用各自的本地时间，以减少对 Redis 的依赖",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "明确 Redis 不可用时是放行、拒绝还是降级",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Redis 不可用时默认放行，无需提前约定",
+              "correct": false
+            }
+          ]
+        },
+        "paper": "按原文，不论采用哪种限流方案，都要注意哪些问题？",
+        "answer": "正确的是：要明确 Redis 不可用时是放行、拒绝还是降级，并统一时间来源以避免机器时间差影响窗口判断。不提前约定、或各机器各用本地时间，都与原文相反。[原文§Redis 怎么实现限流？](https://xiaolincoding.com/interview/redis.html#redis-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E9%99%90%E6%B5%81)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-241",
+          "type": "short"
+        },
+        "paper": "无论采用哪种 Redis 限流方案，对 Redis 不可用和时间来源分别要做什么约定？",
+        "answer": "应提前明确 Redis 不可用时是放行、拒绝还是降级，并统一时间来源，避免不同应用机器的时间差影响窗口判断。[原文§Redis 怎么实现限流？](https://xiaolincoding.com/interview/redis.html#redis-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E9%99%90%E6%B5%81)"
+      }
+    },
+    {
+      "id": "O7-242",
+      "reasons": [
+        "同源滑动窗口边界同步修订"
+      ],
+      "before": {
+        "typed": {
+          "id": "O7-242",
+          "type": "short"
+        },
+        "paper": "Redis 怎么实现限流？",
+        "answer": "常见的有固定窗口、滑动窗口和令牌桶，主要看是否允许边界突发，以及想限制的是一段时间内的总量还是平滑速率。固定窗口：例如每个用户每分钟最多请求 100 次，用“用户 ID + 当前分钟”作 key，用 INCR 计数，第一次写入时设置过期时间，INCR 和设置过期时间要放在同一个 Lua 脚本里，避免客户端宕机后 key 没有 TTL；窗口由 key 中的时间段划分，TTL 用来回收旧窗口计数；实现简单，但窗口边界可能出现突发，上一分钟末尾请求 100 次、下一分钟开头又请求 100 次，短时间内就放过 200 次。滑动窗口：用 Zset 保存最近一段时间的请求，时间戳作 score，唯一请求 ID 作 member，每次先删除窗口外的数据，再统计数量，没超阈值才记录当前请求，删除、计数和添加要放在 Lua 中一起完成；可以控制最近 60 秒最多 100 次，但每条请求占一条记录，要考虑内存和脚本执行成本，也可以用分桶计数减少开销。令牌桶：按固定速率补充令牌，桶有容量上限，请求先拿令牌，拿不到就拒绝或等待，允许容量范围内的短时突发，同时控制长期速率，可在 Redis 中保存剩余令牌和更新时间，用 Lua 根据时间差计算补充量再扣减。无论哪种方案，都要明确 Redis 不可用时是放行、拒绝还是降级，并统一时间来源。[原文§Redis 怎么实现限流？](https://xiaolincoding.com/interview/redis.html#redis-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E9%99%90%E6%B5%81)"
+      },
+      "after": {
+        "typed": {
+          "id": "O7-242",
+          "type": "short"
+        },
+        "paper": "Redis 怎么实现限流？",
+        "answer": "常见的有固定窗口、滑动窗口和令牌桶，主要看是否允许边界突发，以及想限制的是一段时间内的总量还是平滑速率。固定窗口：例如每个用户每分钟最多请求 100 次，用“用户 ID + 当前分钟”作 key，用 INCR 计数，第一次写入时设置过期时间，INCR 和设置过期时间要放在同一个 Lua 脚本里，避免客户端宕机后 key 没有 TTL；窗口由 key 中的时间段划分，TTL 用来回收旧窗口计数；实现简单，但窗口边界可能出现突发，上一分钟末尾请求 100 次、下一分钟开头又请求 100 次，短时间内就放过 200 次。滑动窗口：用 Zset 保存最近一段时间的请求，时间戳作 score，唯一请求 ID 作 member，每次先删除窗口外的数据，再统计数量，现有数量严格小于阈值时才记录并放行当前请求，达到阈值就拒绝（原文说“没有超过阈值才记录”，这里明确比较的是新增前数量），删除、计数和添加要放在 Lua 中一起完成；可以控制最近 60 秒最多 100 次，但每条请求占一条记录，要考虑内存和脚本执行成本，也可以用分桶计数减少开销。令牌桶：按固定速率补充令牌，桶有容量上限，请求先拿令牌，拿不到就拒绝或等待，允许容量范围内的短时突发，同时控制长期速率，可在 Redis 中保存剩余令牌和更新时间，用 Lua 根据时间差计算补充量再扣减。无论哪种方案，都要明确 Redis 不可用时是放行、拒绝还是降级，并统一时间来源。[原文§Redis 怎么实现限流？](https://xiaolincoding.com/interview/redis.html#redis-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E9%99%90%E6%B5%81) [核对来源：Redis 滑动窗口日志示例](https://redis.io/docs/latest/develop/use-cases/rate-limiter/rust/#sliding-window-log)"
+      }
+    }
+  ]
+}

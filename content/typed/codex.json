@@ -1,0 +1,2619 @@
+{
+  "prefix": "N",
+  "chapters": {
+    "N1": {
+      "status": "draft",
+      "questions": [
+        { "id": "N1-1", "type": "short" },
+        {
+          "id": "N1-2",
+          "type": "fill",
+          "stem": "原文介绍的创建 AGENTS.md 的两种方式是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "N1-3", "type": "short" },
+        {
+          "id": "N1-4",
+          "type": "single",
+          "stem": "为什么“注意文档质量”这类规则对 Agent 的约束力很弱？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这类规则只在子目录里才会生效",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "什么叫质量好，模型还得自己猜",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "这类规则会被 override 文件覆盖掉",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这类规则超出了规则文件的大小上限",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-5",
+          "type": "single",
+          "stem": "个人级的规则文件放在哪里，适合放什么内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "放在 ~/.codex/AGENTS.md，适合所有项目通用的偏好",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "放在项目根目录的 AGENTS.md，适合团队的共识",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "放在 ~/.agents/skills/，适合跨项目使用的流程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "放在子目录的 AGENTS.md，适合模块专属的规则",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-6",
+          "type": "single",
+          "stem": "多层规则文件发生冲突时，谁的优先级更高？",
+          "options": [
+            {
+              "key": "A",
+              "text": "个人级的规则优先级最高，项目里的规则都排在它前面",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "各层规则优先级相同，冲突时由 Codex 逐条询问用户",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "离项目根目录越近的规则，排在越后面，优先级越高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "离当前工作目录越近的规则，排在越后面，优先级越高",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N1-7",
+          "type": "single",
+          "stem": "同一层同时存在 AGENTS.override.md 和 AGENTS.md 时，Codex 怎样取舍？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两份都读进来，冲突时以 override 文件为准",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只读 AGENTS.md，override 文件要显式点名才读",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "优先选择 override 文件，这一层只取这一份",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两份都读进来，冲突时以 AGENTS.md 为准",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-8",
+          "type": "single",
+          "stem": "在仓库根目录打开项目后再去改子目录，更深处的 AGENTS.md 会自动生效吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会，但只有子目录里放的是 override 文件时才会被自动补进来",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不会，可以把这个子目录作为本地项目打开，或者把规则写到根目录",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "会，Codex 读到子目录里的文档时就会把那里的规则补进规则链",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不会，子目录里的规则文件在任何打开方式下都不会被读取",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-9",
+          "type": "single",
+          "stem": "项目规则合并后的总大小有默认上限，这对内容组织有什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只放每次都要遵守的内容，架构文档和专项说明用引用的方式带上",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把架构文档和专项说明全文放进来，超出的部分会被自动摘要",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把低频的长流程也写进来，只要排在文件的最后面即可",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把规则平均拆到每个子目录，让每一层都刚好用满上限",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N1-10", "type": "short" },
+        {
+          "id": "N1-11",
+          "type": "single",
+          "stem": "在任务里显式点名一个 Skill，写法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "井号加 Skill 名",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "@ 加 Skill 名",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "斜杠加 Skill 名",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "美元符号加 Skill 名",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N1-12",
+          "type": "fill",
+          "stem": "Skill 的 description 要写清三点：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "N1-13", "type": "short" },
+        {
+          "id": "N1-14",
+          "type": "single",
+          "stem": "项目共享的 Skill 与个人跨项目的 Skill 分别放在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "项目共享的放在项目的 .codex/skills/ 下，个人跨项目的放在 ~/.codex/skills/ 下",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "项目共享的放在 ~/.agents/skills/ 下，个人跨项目的放在项目的 .agents/skills/ 下",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "项目共享的放在项目的 .agents/skills/ 下，个人跨项目的放在 ~/.agents/skills/ 下",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "项目共享的放在项目的 .codex/agents/ 下，个人跨项目的放在 ~/.codex/AGENTS.md 里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-15",
+          "type": "fill",
+          "stem": "Codex Skill 渐进式加载的三个阶段依次读取什么内容：____ → ____ → ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "N1-16", "type": "short" },
+        {
+          "id": "N1-17",
+          "type": "single",
+          "stem": "Subagent 与自定义 Agent 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subagent 是写在 .codex/agents/ 下、可反复使用的岗位模板，自定义 Agent 是临时派出去执行子任务的独立线程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Subagent 提供文件层面的隔离，自定义 Agent 提供上下文层面的隔离，两者都必须先写配置才能使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Subagent 连接仓库外的数据和工具，自定义 Agent 在固定的生命周期节点自动执行动作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Subagent 是临时派出去执行子任务的独立线程，自定义 Agent 是写在 .codex/agents/ 下、可反复使用的岗位模板",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N1-18",
+          "type": "single",
+          "stem": "什么情况下才值得把分工写成自定义 Agent 配置？",
+          "options": [
+            {
+              "key": "A",
+              "text": "任何一次需要并行的任务开始之前",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "某类分工经常出现，需要以后重复使用时",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "多个任务要同时修改同一批文件时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "子任务的中间资料挤占主上下文时",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-19",
+          "type": "fill",
+          "stem": "原文描述的 Subagent 协作五个阶段依次是：____ → ____ → ____ → ____ → ____。",
+          "blankCount": 5,
+          "blankOrder": "ordered"
+        },
+        { "id": "N1-20", "type": "short" },
+        {
+          "id": "N1-21",
+          "type": "single",
+          "stem": "下列哪种情况下，多个 Subagent 并行容易产生冲突？",
+          "options": [
+            {
+              "key": "A",
+              "text": "同时修改同一批文件",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "各自做问题归类",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "各自做代码探索",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "各自做资料整理",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-22",
+          "type": "single",
+          "stem": "Worktree 与 Subagent 分别提供哪种隔离？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都提供上下文层面的隔离，区别只在 Worktree 可以并行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都提供文件层面的隔离，区别只在 Subagent 不需要配置",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Worktree 提供文件层面的隔离，Subagent 提供上下文和分工层面的拆分",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Worktree 提供上下文和分工层面的拆分，Subagent 提供文件层面的隔离",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N1-23", "type": "short" },
+        { "id": "N1-24", "type": "short" },
+        { "id": "N1-25", "type": "short" },
+        {
+          "id": "N1-26",
+          "type": "fill",
+          "stem": "Codex 通过 MCP 调用外部工具时，负责理解任务和选择工具的是 ____，负责发送请求和取回结果的是 ____，负责真正执行查找、读取或写入的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "N1-27",
+          "type": "fill",
+          "stem": "MCP Server 除了可执行的 Tools，还可以提供两类能力：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "N1-28",
+          "type": "multiple",
+          "stem": "按原文，下列哪些动作更适合交给 Hooks，而不是写进提示词或 AGENTS.md？",
+          "options": [
+            {
+              "key": "A",
+              "text": "规定修改约束",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "运行测试",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "说明项目背景",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "格式化",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "约定代码规范",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "安全扫描",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N1-29",
+          "type": "fill",
+          "stem": "Hook 配置主要说明的三件事是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "N1-30",
+          "type": "single",
+          "stem": "Stop 这个生命周期事件在什么时机触发？",
+          "options": [
+            {
+              "key": "A",
+              "text": "任务准备结束时",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用户提交任务时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "任务会话启动时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "工具执行之后",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-31",
+          "type": "single",
+          "stem": "Handler 执行完成后，怎样把处理结果告诉 Codex？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通过新建一个 Subagent",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "通过标准输入",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "通过改写 AGENTS.md",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "通过退出码或 JSON 结果",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N1-32",
+          "type": "single",
+          "stem": "按原文的例子，Stop Hook 运行的文档检查失败时会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自动回滚本次任务的全部修改",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把摘要交给 Codex 继续处理",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "任务照常结束，下次再检查",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "弹出提示让用户重新提交任务",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-33",
+          "type": "single",
+          "stem": "五件套里，负责连接仓库外的数据、工具和外部系统的是哪一个？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hooks",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Skills",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "MCP",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Subagents",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-34",
+          "type": "single",
+          "stem": "通过插件市场装好一个 MCP 工具后，调用它还要输入额外命令吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不需要，在提示词里说明要用它做什么，Codex 会自动选择它提供的工具",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "需要，每次都要先打开 Plugins 页面手动启用一次",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不需要，但只有把工具说明写进 AGENTS.md 之后才会被选中",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要，每次都要在任务开头用美元符号加工具名显式点名",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N1-35",
+          "type": "fill",
+          "stem": "Codex 的生命周期事件：任务会话启动时触发的是 ____，用户提交任务时触发的是 ____，工具执行之前触发的是 ____，工具执行之后触发的是 ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        { "id": "N1-36", "type": "short" }
+      ]
+    },
+    "N2": {
+      "status": "draft",
+      "questions": [
+        { "id": "N2-1", "type": "short" },
+        {
+          "id": "N2-2",
+          "type": "single",
+          "stem": "Skills 装得过多、描述又很长时，为什么模型更难选对 Skill？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Codex 会把所有 Skill 的正文一次读入，上下文被占满",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Codex 会停止自动匹配，只接受显式点名的调用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Codex 会按安装顺序只保留最早装的那几个 Skill",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Codex 为了把介绍放进上下文会把描述截短，介绍看不全",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N2-3",
+          "type": "single",
+          "stem": "数据库迁移 Skill 的描述写成“涉及数据库、查询、数据模型或持久化时使用”，会造成什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户真的要新增迁移时，它反而因为描述太长而找不到这个 Skill",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "描述和其他 Skill 重复，Codex 会要求用户每次都手动选择",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用户只是让它查一条数据，它也可能把修改表结构的那套流程翻出来",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "描述里的触发条件太多，这个 Skill 会被系统判定为无效而不加载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N2-4",
+          "type": "single",
+          "stem": "怎样改写 description，才能收窄触发场景而不改变职责？",
+          "options": [
+            {
+              "key": "A",
+              "text": "描述保持不变，改成在 AGENTS.md 里禁止它自动触发",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "说明职责的前半句不动，只把后半句的触发条件缩小到具体场景",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把说明职责的前半句删掉，只留下一个尽量宽泛的触发条件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把描述写得更长，把所有可能相关的场景都列进去",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N2-5",
+          "type": "single",
+          "stem": "一个多用途 Skill 的详细说明应怎样存放？",
+          "options": [
+            {
+              "key": "A",
+              "text": "各种操作的说明全部写进 AGENTS.md，保证每个任务都带上",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "各种操作的说明全部写进 description，保证启动时就能看到",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "各种操作的说明全部写进 SKILL.md 正文，保证模型一次就能读全",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "各种操作的说明分开放进各自的参考文件，SKILL.md 指明按本次任务读对应的那一份",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N2-6", "type": "short" },
+        {
+          "id": "N2-7",
+          "type": "single",
+          "stem": "给 Agent 写步骤时，结果要求与具体做法应怎样区别对待？",
+          "options": [
+            {
+              "key": "A",
+              "text": "结果和做法都要写死，任何任务开始前都先读完全部资料",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "结果和做法都不必写，新模型能从任务名里自己推断出来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "要什么结果得说清楚，具体怎么做有些步骤可以让模型自己判断",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "具体怎么做得写成几十步让它照做，要什么结果可以让模型自己判断",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N2-8", "type": "short" },
+        {
+          "id": "N2-9",
+          "type": "single",
+          "stem": "“每次修改前必须读完全部文档”这类规则，原文建议怎样改写？",
+          "options": [
+            {
+              "key": "A",
+              "text": "改成每次修改前先让用户确认要读哪些文档",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "改成按情况查阅：写明什么情况下该看哪一份文档",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "整条删除，文档由模型决定永远不必看",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "原样保留，再加一句强调它是最高优先级",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N2-10",
+          "type": "single",
+          "stem": "对本身就会主动检查的新模型反复强调“必须测试”，可能有什么副作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它可能多跑一些没必要的测试，在检查上花太多时间",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它可能把这句话当成噪声，从此不再运行任何测试",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它可能每跑一次测试都停下来问是否继续",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它可能把测试结果写进 AGENTS.md，让文件越来越长",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N2-11",
+          "type": "multiple",
+          "stem": "精简 AGENTS.md 时，按原文下列哪些内容必须保留？",
+          "options": [
+            {
+              "key": "A",
+              "text": "订单金额怎么计算",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "同一个要求的多处重复",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不管改什么都要从头走一遍的流程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "哪些操作不能碰生产数据",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "早就不适用的规定",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "代码按什么格式写",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N2-12", "type": "short" },
+        { "id": "N2-13", "type": "short" },
+        {
+          "id": "N2-14",
+          "type": "single",
+          "stem": "Agent 干几步就停下来问“是否继续”，原文建议检查是否写过哪类规则？",
+          "options": [
+            {
+              "key": "A",
+              "text": "“写完后运行相关测试”这类完成标准",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "“执行任何操作前都必须获得确认”这类要求",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "“修改表结构时查数据库文档”这类查阅指引",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "“只读取本次任务需要的部分”这类加载说明",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N2-15",
+          "type": "multiple",
+          "stem": "按原文的写法，下列哪些操作应单独写明要先确认？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给别人发消息",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "修复本次修改导致的问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "部署上线",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "删除重要数据",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "运行使用临时数据的本地测试",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N2-16",
+          "type": "single",
+          "stem": "照搬“本地测试可以直接运行”这句授权，有什么前提？",
+          "options": [
+            {
+              "key": "A",
+              "text": "测试的数量不超过规定上限",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "测试由 Stop Hook 自动触发",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "测试确实不会连接生产环境",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "测试结果会先交给用户确认",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N2-17",
+          "type": "single",
+          "stem": "模型写完第一版代码就停下等检查，原文建议怎样改进提示词？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一开始就告诉它做到什么程度才算完成",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "要求它每写完一个函数就先问一次",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "等它停下来之后再补一句“继续优化”",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "删掉所有检查要求，让它尽快结束",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N2-18", "type": "short" },
+        { "id": "N2-19", "type": "short" },
+        {
+          "id": "N2-20",
+          "type": "single",
+          "stem": "为什么“继续优化”这类追加指令效果差？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它会触发所有已安装的 Skill，把上下文占满",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它会被当成新的任务，模型会把之前写好的代码全部重写",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它与“必须先确认”的规则冲突，模型会停下来等待用户同意",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它没有说明还要改什么、改到什么时候，模型不知道接下来检查什么",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N2-21",
+          "type": "single",
+          "stem": "让模型帮忙审查现有规则时，怎样防止它擅自修改？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只让它审查 Skills，不让它看 AGENTS.md",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "要求它先列出建议，等人看过之后再修改",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "让它改完之后再解释每一处改动的原因",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把规则文件设成只读，再让它直接改",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "N3": {
+      "status": "draft",
+      "questions": [
+        { "id": "N3-1", "type": "short" },
+        {
+          "id": "N3-2",
+          "type": "single",
+          "stem": "模型、Harness 与执行环境三者怎样分工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型和 Harness 都只生成文本，文件修改和命令运行全部由用户在执行环境里手工完成",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型直接读写项目文件并运行命令，Harness 只负责把过程显示到界面上，执行环境负责保存会话历史",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型组织上下文并安排工具执行、收集结果，Harness 决定下一步做什么，执行环境存放文件并运行命令",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型决定下一步做什么，Harness 组织上下文并安排工具执行、收集结果，执行环境存放文件并运行命令",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N3-3", "type": "short" },
+        {
+          "id": "N3-4",
+          "type": "single",
+          "stem": "多种客户端共用的 App Server 起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "为每个界面各实现一套 Agent 循环，让它们按各自的流程执行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "代替模型决定下一步做什么，并直接执行工具调用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "统一把各界面的需求转交给 Agent 引擎，再把输出和进度传回界面",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "保存长期记忆，并在每次请求前把它全部加载进上下文",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-5", "type": "short" },
+        { "id": "N3-6", "type": "short" },
+        {
+          "id": "N3-7",
+          "type": "single",
+          "stem": "Agent 为什么需要多次请求模型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "很多信息无法靠模型猜出来，只能先行动，再根据环境反馈决定下一步",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每次请求只能携带一条项目规则，规则多了就要分多次发送",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型第一次请求只用来建立前缀缓存，第二次请求才真正开始工作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型服务每次只允许返回固定长度的文字，长回答必须分多次取回",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-8", "type": "short" },
+        {
+          "id": "N3-9",
+          "type": "single",
+          "stem": "工具结果为什么必须带回原来的调用标识？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型一次可能提出多个动作，带上标识才能对应每段返回属于哪次调用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "调用标识决定工具结果要不要写进长期记忆",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "调用标识决定这个工具有没有权限访问指定的目录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "调用标识用来判断这次请求能不能命中前缀缓存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-10",
+          "type": "fill",
+          "stem": "Codex 的会话结构分三层：同一段会话叫 ____，一次用户输入发起的一轮工作叫 ____，这一轮里的消息、工具执行和审批记录叫 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "N3-11",
+          "type": "single",
+          "stem": "能不能把一个 Turn 理解成一次模型 API 调用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，一个 Turn 只包含一条用户消息和一条模型回复",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能，每次模型 API 调用都会新开一个 Turn",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能，一个 Turn 里包含多段会话，每段会话各调用一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，一个 Turn 里可以请求模型很多次",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N3-12", "type": "short" },
+        {
+          "id": "N3-13",
+          "type": "single",
+          "stem": "StepContext 解决的是什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把运行中追加的用户输入立刻插进已经发出的模型请求，保证模型马上看到",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把整个文件系统和外部服务一起冻结，保证一次请求期间不会有任何文件被别人修改",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "工具调用返回后仍按同一份上下文分发，不会因配置中途刷新而让刚才可见的工具突然找不到",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把已经介绍过的环境说明记录下来，保证之后的请求不再重复追加相同内容",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-14",
+          "type": "single",
+          "stem": "StepContext 不会固定下列哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这一步使用的项目规则",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文件系统和外部服务的状态",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "这一步使用的模型设置",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这一步使用的工具路由",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-15", "type": "short" },
+        {
+          "id": "N3-16",
+          "type": "single",
+          "stem": "任务运行中用户追加的输入，什么时候才会被模型看到？",
+          "options": [
+            {
+              "key": "A",
+              "text": "立刻插进已经发出去的那次模型请求，模型马上就能看到",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只有 Stop Hook 把它补进来时才看到，否则会被直接丢弃",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先进入输入队列，主循环在合适的边界取走后，后续的请求才看到",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "要等当前 Thread 结束、用户新开一段会话之后才能看到",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-17",
+          "type": "single",
+          "stem": "取消任务后，已经写入的文件会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由仍在运行的子 Agent 负责恢复",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "自动恢复到上一次模型请求之前",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自动恢复到任务开始之前",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不会自动恢复",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N3-18",
+          "type": "single",
+          "stem": "命令退出失败时，Harness 通常怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把它作为工具结果交给模型分析",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不告知模型，自动把命令重跑一遍",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "立即结束这一轮并清理运行状态",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "等一会儿再重新连接模型服务",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-19", "type": "short" },
+        {
+          "id": "N3-20",
+          "type": "multiple",
+          "stem": "模型不再调用工具时，主循环结束前还要确认哪些事？",
+          "options": [
+            {
+              "key": "A",
+              "text": "有没有尚未处理的错误",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "规则文件有没有读满预算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "有没有用户刚补充的要求",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "停止前的检查是否允许结束",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "这次请求有没有命中前缀缓存",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-21", "type": "short" },
+        { "id": "N3-22", "type": "short" },
+        { "id": "N3-23", "type": "short" },
+        { "id": "N3-24", "type": "short" },
+        {
+          "id": "N3-25",
+          "type": "single",
+          "stem": "规则文件里写“允许访问某个目录”，为什么不能扩大实际权限？",
+          "options": [
+            {
+              "key": "A",
+              "text": "规则文件受读取预算限制，写在后面的授权语句通常不会被读进请求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "规则只能要求模型怎样做，工具能否访问仍由 Harness 的权限策略和执行环境决定",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "规则文件里的授权只对子 Agent 生效，主 Agent 需要另外的规则文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "规则文件里的授权要等下一个 Turn 开始时才会被 Harness 采纳",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-26",
+          "type": "single",
+          "stem": "上下文基线怎样避免重复追加相同的环境说明？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把环境说明写进长期记忆，之后的请求不再携带任何历史",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "记下已经向模型介绍过的规则和环境信息，以后只补充发生变化的部分",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每次请求前把之前的对话和工具结果全部删除，只保留环境说明",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次请求都重新排列前文，把环境说明挪到最后面",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-27",
+          "type": "single",
+          "stem": "保持请求前文稳定，对前缀缓存有什么意义？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前文稳定之后，每次请求一定能命中缓存，与服务和请求条件无关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "前文稳定之后，Harness 可以跳过模型直接复用上一次的回答",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "连续的请求拥有相同的前缀时，模型服务才有机会复用已有的前缀缓存",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "前文稳定之后，工具定义就不必再随请求发送给模型",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-28", "type": "short" },
+        {
+          "id": "N3-29",
+          "type": "single",
+          "stem": "历史里出现缺失结果的调用时，发送前怎样规范化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "补出中止等状态，告诉模型这次调用没有正常完成",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把这次调用从历史里整条删除，不让模型看到",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "补出一个成功的结果，让模型可以继续往下做",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把这次调用重新执行一遍，用新的结果补上",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-30", "type": "short" },
+        {
+          "id": "N3-31",
+          "type": "multiple",
+          "stem": "总结式压缩留下的交接说明，按原文应包含哪些内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "试过哪些失败的方法",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "接下来还要做什么",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "哪些地方已经改完",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "目标是什么",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "之前每一步的完整输出",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "全部工具定义的原文",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-32",
+          "type": "single",
+          "stem": "压缩之后为什么还要把初始上下文重新放回？",
+          "options": [
+            {
+              "key": "A",
+              "text": "摘要会占用太多上下文，需要用初始上下文把它替换掉",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型服务要求每次请求都以完全相同的初始上下文结尾",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "初始上下文里保存着每一步工具调用的完整日志和代码细节",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "仅有一段任务摘要，未必包含当前的项目规则、工作环境和需要遵循的全部要求",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N3-33", "type": "short" },
+        {
+          "id": "N3-34",
+          "type": "single",
+          "stem": "为什么不把所有工具定义都塞进每次请求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工具定义一旦发送，就无法再按调用标识对应结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型看到工具定义之后会绕过审批直接执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "会占用上下文，也会增加模型的选择负担",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "工具定义超过一定数量，沙箱会拒绝启动进程",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-35", "type": "short" },
+        { "id": "N3-36", "type": "short" },
+        {
+          "id": "N3-37",
+          "type": "single",
+          "stem": "审批与沙箱分别回答什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "审批回答这个动作要不要额外获得许可，沙箱限制进程能够接触哪些资源",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "审批决定哪些工具向模型展示，沙箱决定工具调用能不能并行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "审批限制进程能够接触哪些资源，沙箱回答这个动作要不要额外获得许可",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "审批决定命令失败后是否重跑，沙箱决定模型连接中断后是否重连",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-38", "type": "short" },
+        {
+          "id": "N3-39",
+          "type": "single",
+          "stem": "Unified Exec 怎样处理长时间运行的命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "第一次调用只返回进程标识，输出全部写入长期记忆，由整理 Agent 之后汇总",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "第一次调用超过固定时长就结束进程，后续调用从头重新启动同一条命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "第一次调用一直阻塞到进程退出，再把全部输出和退出状态一次性返回给模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "第一次调用先返回当前输出和一个进程标识，进程继续运行，后续调用用标识读取新输出或发送输入",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N3-40", "type": "short" },
+        {
+          "id": "N3-41",
+          "type": "single",
+          "stem": "多个工具调用能否并行，由什么决定？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户在审批时的选择",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工具注册时声明的能力",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "沙箱允许访问的目录范围",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型在调用里指定的顺序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-42",
+          "type": "single",
+          "stem": "App Server 与 Exec Server 的职责有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "App Server 连接工具和执行环境，Exec Server 连接客户端和 Agent 运行核心",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "App Server 负责审批，Exec Server 负责向模型展示工具定义",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "App Server 负责上下文压缩，Exec Server 负责整理长期记忆",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "App Server 连接客户端和 Agent 运行核心，Exec Server 连接工具和执行环境",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N3-43",
+          "type": "fill",
+          "stem": "三类状态各有分工：服务下一次模型请求的是 ____，服务原会话恢复的是 ____，把跨任务仍有价值的信息带进全新会话的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "N3-44",
+          "type": "multiple",
+          "stem": "按原文，会话恢复时，下列哪些内容可能因为只存在于当时的进程内而无法从记录中还原？",
+          "options": [
+            {
+              "key": "A",
+              "text": "已经返回的工具结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "已经产生的模型回复",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "已经发生的用户消息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "当时等待中的审批",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "当时正在运行的进程",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N3-45",
+          "type": "multiple",
+          "stem": "后台记忆任务真正启动前，要确认哪些条件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "当前会话已经做过一次上下文压缩",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "长期记忆功能已开启",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "账号剩余调用量高于系统阈值",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "状态数据库可用",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "当前不是临时会话或子 Agent 会话",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N3-46",
+          "type": "single",
+          "stem": "整理记忆的内部 Agent 为什么要关闭生成和读取记忆、递归协作等能力？",
+          "options": [
+            {
+              "key": "A",
+              "text": "节省账号剩余的调用量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "防止它读取用户的项目文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "避免整理过程再次触发自己",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让多个整理 Agent 可以同时改写",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-47",
+          "type": "single",
+          "stem": "一条记忆的使用次数很高，说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只说明它被引用过，不构成事实校验",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "说明它已经被验证为正确",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "说明它应当直接放进每次请求",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "说明它应当永久保留、不再整理",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N3-48", "type": "short" },
+        {
+          "id": "N3-49",
+          "type": "single",
+          "stem": "Hooks 在 Harness 中提供的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "告诉模型某类任务应该怎么做，并提供需要的说明和资源",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让程序在指定时机介入，例如工具执行前后或任务准备停止时",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把外部服务的工具接进来，让模型可以请求调用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让子任务在独立的会话里运行，状态与父 Agent 分开",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-50",
+          "type": "single",
+          "stem": "子 Agent 拥有独立会话，为什么文件环境仍可能不隔离？",
+          "options": [
+            {
+              "key": "A",
+              "text": "父子 Agent 如果指向同一个工作目录，仍可能看到或修改相同的文件",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "子 Agent 结束时会把自己的文件改动自动覆盖到父目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "子 Agent 会继承父 Agent 的全部对话历史和工具结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "子 Agent 的工具调用不经过审批，也不受沙箱限制",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-51",
+          "type": "fill",
+          "stem": "按原文的面试答法，Codex 整体分为五部分：____、____、____、____、____。",
+          "blankCount": 5,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "N3-52",
+          "type": "single",
+          "stem": "新任务读取长期记忆的方式是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先把全部记忆放进上下文，再由模型自己删掉与任务无关的部分",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先搜索详细记忆，搜不到时才把记忆导航注入开发者指令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先注入有限长度的记忆导航，需要细节时再用专用工具搜索详细记忆",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "先让整理 Agent 把记忆重写一遍，再把重写结果整份发给模型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N3-53",
+          "type": "single",
+          "stem": "当前的本地记忆搜索有什么局限？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次都要读入整份记忆，上下文很快就被占满",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "主要按语义匹配，用词完全相同的内容反而可能搜不到",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能搜到当前会话里产生的记忆，跨任务的搜不到",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "主要按文字匹配，两段话意思相近、用词不同时可能搜不到",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N3-54", "type": "short" },
+        {
+          "id": "N3-55",
+          "type": "fill",
+          "stem": "当前本地实现保存会话历史的方式：用 ____ 保存事件历史，状态数据库可用时再用 ____ 保存便于查询的元数据。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        { "id": "N3-56", "type": "short" }
+      ]
+    },
+    "N4": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "N4-1",
+          "type": "single",
+          "stem": "模型能接住上文，靠的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型在两次推理之间保存了任务状态，Codex 每次只需要发送新的用户需求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Codex 每次请求前重新组装输入，模型在两次推理之间并没有保存任务状态",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "模型服务端保留着完整的会话，Codex 只负责把结果显示到界面上",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型把上一次的回答写进了长期记忆，下一次推理时自己读取回来",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N4-2",
+          "type": "fill",
+          "stem": "Codex 的三套机制各管一件事：让眼前的任务继续执行的是 ____，让关闭后的同一任务能够恢复的是 ____，让新任务复用旧任务经验的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "N4-3", "type": "short" },
+        { "id": "N4-4", "type": "short" },
+        {
+          "id": "N4-5",
+          "type": "single",
+          "stem": "工具结果的限长策略在什么时候生效？",
+          "options": [
+            {
+              "key": "A",
+              "text": "等任务关闭、写入档案时才应用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工具结果写进模型历史时就先应用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "等自动压缩生成摘要时才应用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "等历史塞满上下文窗口时才应用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N4-6",
+          "type": "single",
+          "stem": "同一份工具结果，在模型历史和 Rollout 里的保存有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两份完全相同，Rollout 只是把发给模型的内容原样复制一遍",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "准备发给模型的那份保留更多内容，写进 Rollout 的那份会限制长度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两份都会限制长度，区别只在 Rollout 里的那份还要再做一次摘要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "准备发给模型的那份会限制长度，写进 Rollout 的那份保留更多内容",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N4-7",
+          "type": "single",
+          "stem": "为什么用 Token 用量而不是消息条数判断上下文压力？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每条消息的 Token 数量都是固定的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型服务按消息条数而不是 Token 收费",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一条工具结果可能比几十轮普通对话还长",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "消息条数在压缩之后无法再准确统计",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N4-8",
+          "type": "single",
+          "stem": "Codex 怎样得到当前上下文的 Token 用量？",
+          "options": [
+            {
+              "key": "A",
+              "text": "优先采用服务端的反馈，必要时再根据历史估算",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只按消息条数乘以固定的系数来推算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次请求前让模型自己报告已经用了多少",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "优先根据历史估算，必要时再采用服务端的反馈",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N4-9", "type": "short" },
+        {
+          "id": "N4-10",
+          "type": "fill",
+          "stem": "自动压缩可能发生在两个位置：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "N4-11", "type": "short" },
+        {
+          "id": "N4-12",
+          "type": "multiple",
+          "stem": "本地压缩生成的交接摘要，按原文要覆盖哪些内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "当前进度",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用户偏好和限制",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "关键决定",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "基础指令和项目规则的原文",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "旧工具调用的完整结果",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "剩余工作",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N4-13", "type": "short" },
+        {
+          "id": "N4-14",
+          "type": "single",
+          "stem": "本地压缩保留用户原话时，空间有限该怎么取舍？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不保留任何原话，全部交给模型二次转述",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "优先保留最早的消息，再把交接摘要接在后面",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按消息长度从短到长保留，直到空间用完",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "优先保留最近的消息，再把交接摘要接在后面",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N4-15", "type": "short" },
+        {
+          "id": "N4-16",
+          "type": "single",
+          "stem": "交接摘要漏掉了某条项目规则，模型为什么仍能看到它？",
+          "options": [
+            {
+              "key": "A",
+              "text": "压缩时旧的工具调用和中间过程都原样留在当前窗口里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "项目规则、开发者要求和环境信息由 Codex 单独提供，会重新补上",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "长期记忆会在每次请求时把全部规则重新加载一遍",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型在压缩之前已经把这条规则记进了自己的参数里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N4-17",
+          "type": "single",
+          "stem": "启用 Token 预算策略时，达到预算后 Codex 怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接建立新窗口，不再生成摘要",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "暂停任务，等待用户手动压缩",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用本地模型生成交接摘要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "交给服务端做远程压缩",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N4-18",
+          "type": "single",
+          "stem": "压缩触发得过早或过晚，各有什么代价？",
+          "options": [
+            {
+              "key": "A",
+              "text": "过早会丢失项目规则，过晚会让长期记忆被重复写入",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "过早和过晚没有区别，阈值只影响界面上显示的用量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "过早会增加成本和信息损失，过晚可能没有足够的空间生成摘要",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "过早可能没有足够的空间生成摘要，过晚会增加成本和信息损失",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N4-19", "type": "short" },
+        {
+          "id": "N4-20",
+          "type": "single",
+          "stem": "压缩发生时写入的压缩记录 CompactedItem 保存了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "替代历史，以及恢复这个上下文窗口所需的元数据",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "压缩之前全部工具调用的完整原始结果",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "供新任务查阅的长期记忆导航摘要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户要求更正或删除记忆的纠正说明",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N4-21",
+          "type": "single",
+          "stem": "恢复任务时，Codex 怎样重建继续执行所需的上下文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只取任务关闭前的最后一条用户消息，其余内容全部丢弃",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把整份 JSONL 从头到尾重放一遍，把全部记录重新交给模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "找到最近一次有效的压缩恢复点，取出精简历史，再把之后新增的记录按顺序补回",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让模型根据长期记忆里的任务摘要，重新推断当时的上下文",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N4-22",
+          "type": "single",
+          "stem": "用“快照加增量日志”来理解恢复过程，两者各对应什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "长期记忆相当于快照，当前上下文相当于增量日志",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "checkpoint 相当于快照，恢复点之后的记录相当于增量日志",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "checkpoint 相当于增量日志，恢复点之后的记录相当于快照",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "交接摘要相当于增量日志，项目规则相当于快照",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N4-23", "type": "short" },
+        {
+          "id": "N4-24",
+          "type": "single",
+          "stem": "长期记忆是不是在每项任务结束时立刻总结写入？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，每项任务一结束就由当前模型立刻总结并写入记忆文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，长期记忆只在用户手动输入记忆命令时才会写入",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，每次上下文压缩生成的交接摘要都会直接成为长期记忆",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，新轮次成功启动后才尝试调度后台记忆流程，条件都满足才真正开始",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "N4-25", "type": "short" },
+        {
+          "id": "N4-26",
+          "type": "fill",
+          "stem": "Codex 记忆提炼第一阶段从单项旧任务生成的两类产物是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "N4-27",
+          "type": "multiple",
+          "stem": "按原文，哪类信息值得进入长期记忆？",
+          "options": [
+            {
+              "key": "A",
+              "text": "失败原因和避坑方式",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "已经验证过的工作流",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "难找的项目入口",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "稳定的用户偏好",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "每一步操作的流水账",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "结论还在变化的当前任务细节",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N4-28",
+          "type": "single",
+          "stem": "租约怎样防止同一份历史被重复处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "领取任务时加一把有时间限制的锁，有效期内其他后台任务不能重复处理",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每份历史只允许被引用一次，引用次数达到上限就不再处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "处理完成后把这份历史从 Rollout 里删除，其他任务无法再读到",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把历史复制给每个后台任务各一份，最后只保留最先完成的结果",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N4-29", "type": "short" },
+        {
+          "id": "N4-30",
+          "type": "multiple",
+          "stem": "第二阶段的跨任务整理具体做哪些事？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把全部记忆加载进新任务的上下文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把每项任务的 Rollout 原样追加进记忆",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "补上各自的适用范围",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "重复的合并",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "已经失效的删除",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "互相矛盾的核对",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N4-31",
+          "type": "single",
+          "stem": "全局租约和前后文件对比分别提供什么保护？",
+          "options": [
+            {
+              "key": "A",
+              "text": "全局租约防止新任务读取记忆，前后对比防止用户删除记忆文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "全局租约防止工具结果过长，前后对比防止交接摘要漏掉项目规则",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "全局租约避免材料没变时浪费一次模型调用，前后对比保证同一时间只有一个整理流程修改共享记忆",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "全局租约保证同一时间只有一个整理流程修改共享记忆，前后对比避免材料没变时浪费一次模型调用",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N4-32",
+          "type": "fill",
+          "stem": "记忆的三层查找路径：先告诉模型有哪些经验可查的目录是 ____，需要具体做法时再读的是 ____ 和 skills，还要核对结论来源时才查看的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "N4-33",
+          "type": "single",
+          "stem": "raw_memories.md 起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "作为新任务日常查询记忆的第一入口",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "汇集第一阶段提炼出的材料，交给第二阶段继续整理",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "记录用户要求更正或删除记忆的说明",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "保存每次压缩时生成的替代历史",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "N4-34",
+          "type": "single",
+          "stem": "为什么每条记忆经验都要记录自己的适用范围？",
+          "options": [
+            {
+              "key": "A",
+              "text": "记忆文件有 token 上限，记录适用范围可以压缩每条经验的长度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "记忆只按文本子串搜索，没有适用范围的经验无法被搜到",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "记忆根目录是跨任务共享的，并非每个项目各有一套隔离的记忆库",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "记忆的使用次数按适用范围统计，没有范围就无法淘汰",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N4-35", "type": "short" },
+        { "id": "N4-36", "type": "short" },
+        {
+          "id": "N4-37",
+          "type": "single",
+          "stem": "用文本子串搜索而不是向量数据库检索记忆，有什么利弊？",
+          "options": [
+            {
+              "key": "A",
+              "text": "优点是精确、可解释，缺点是可能漏掉文字不同但语义相近的内容",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "优点是能找到文字不同但语义相近的内容，缺点是结果难以解释",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "优点是能跨项目隔离，缺点是无法记录使用次数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "优点是不占用上下文，缺点是每次都要读入整份记忆文件",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N4-38", "type": "short" },
+        {
+          "id": "N4-39",
+          "type": "single",
+          "stem": "用户直接要求更正或删除记忆时，Codex 怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让当前模型立刻改写 MEMORY.md 里对应的那几行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "忽略这个要求，记忆只能由后台流程自动淘汰",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "单独写一份用户纠正说明，等后续整理流程把它与现有证据一起合并",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把整份 MEMORY.md 清空，等下一次任务重新生成",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "N4-40", "type": "short" },
+        {
+          "id": "N4-41",
+          "type": "single",
+          "stem": "清理掉长期没用的原始材料后，MEMORY.md 和 memory_summary.md 何时更新？",
+          "options": [
+            {
+              "key": "A",
+              "text": "下一个新任务启动时更新",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "清理的同时立即更新",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不会再更新",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "要等下一次整理才更新",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N4-42",
+          "type": "single",
+          "stem": "没有启用 Token 预算策略时，Codex 怎样选择压缩路径？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接建立新窗口，不再生成摘要",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "优先使用本地总结，本地失败才交给服务端",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "远程压缩和本地总结同时执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "服务端支持远程压缩就交给服务端，不支持才用本地总结",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "N4-43",
+          "type": "single",
+          "stem": "在原文分析的版本中，长期记忆这套机制默认是什么状态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "默认开启，每项任务结束时立刻总结写入",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "默认开启，需要时可以在设置里关闭",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "默认关闭，需要在设置里打开启用本地记忆",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "默认关闭，而且没有可以启用它的设置",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "hashes": {
+    "interview-practice/git.md": "77145844eb9f63f1a88905cd409eb88c4a9b796f357595039a4ada0f036bc99c",
+    "interview-practice/answers-xiaolin/git.md": "16ca3d5226a4d206a1c7f5d69171bf31011b31f750b2256cef33bd7c9fddaa79",
+    "content/typed/git.json": "ff136b148e772eaf972c616b45dbac2833cf97e5a544edb040cce531317539a4"
+  },
+  "questionCount": 252,
+  "counts": {
+    "single": 170,
+    "multiple": 30,
+    "fill": 28,
+    "short": 24,
+    "code": 0
+  },
+  "chapters": [
+    {
+      "id": "X1",
+      "title": "基础与工作区域",
+      "status": "draft",
+      "count": 55,
+      "counts": {
+        "single": 37,
+        "multiple": 5,
+        "fill": 7,
+        "short": 6,
+        "code": 0
+      }
+    },
+    {
+      "id": "X2",
+      "title": "撤销与回退",
+      "status": "draft",
+      "count": 61,
+      "counts": {
+        "single": 40,
+        "multiple": 8,
+        "fill": 7,
+        "short": 6,
+        "code": 0
+      }
+    },
+    {
+      "id": "X3",
+      "title": "分支与合并",
+      "status": "draft",
+      "count": 63,
+      "counts": {
+        "single": 39,
+        "multiple": 11,
+        "fill": 7,
+        "short": 6,
+        "code": 0
+      }
+    },
+    {
+      "id": "X4",
+      "title": "协作与排查",
+      "status": "draft",
+      "count": 73,
+      "counts": {
+        "single": 54,
+        "multiple": 6,
+        "fill": 7,
+        "short": 6,
+        "code": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "sequences": [
+    {
+      "id": "X1",
+      "contiguous": true,
+      "typedOrderMatches": true
+    },
+    {
+      "id": "X2",
+      "contiguous": true,
+      "typedOrderMatches": true
+    },
+    {
+      "id": "X3",
+      "contiguous": true,
+      "typedOrderMatches": true
+    },
+    {
+      "id": "X4",
+      "contiguous": true,
+      "typedOrderMatches": true
+    }
+  ],
+  "fillMismatches": [],
+  "leaks": [],
+  "singlePositions": {
+    "B": 42,
+    "D": 42,
+    "A": 44,
+    "C": 42
+  },
+  "multipleKeys": [
+    {
+      "id": "X1-15",
+      "keys": "ABC"
+    },
+    {
+      "id": "X1-28",
+      "keys": "ABC"
+    },
+    {
+      "id": "X1-35",
+      "keys": "ABC"
+    },
+    {
+      "id": "X1-45",
+      "keys": "ABC"
+    },
+    {
+      "id": "X1-50",
+      "keys": "AB"
+    },
+    {
+      "id": "X2-9",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-18",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-28",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-38",
+      "keys": "AB"
+    },
+    {
+      "id": "X2-39",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-49",
+      "keys": "AB"
+    },
+    {
+      "id": "X2-50",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-59",
+      "keys": "ABCD"
+    },
+    {
+      "id": "X3-7",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-8",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-18",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-28",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-29",
+      "keys": "ABCD"
+    },
+    {
+      "id": "X3-38",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-39",
+      "keys": "ABCD"
+    },
+    {
+      "id": "X3-48",
+      "keys": "AB"
+    },
+    {
+      "id": "X3-49",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-59",
+      "keys": "AB"
+    },
+    {
+      "id": "X3-60",
+      "keys": "AB"
+    },
+    {
+      "id": "X4-10",
+      "keys": "BCDE"
+    },
+    {
+      "id": "X4-21",
+      "keys": "ACEF"
+    },
+    {
+      "id": "X4-35",
+      "keys": "BCF"
+    },
+    {
+      "id": "X4-50",
+      "keys": "ABEF"
+    },
+    {
+      "id": "X4-53",
+      "keys": "CDE"
+    },
+    {
+      "id": "X4-72",
+      "keys": "ACDF"
+    }
+  ],
+  "multiplePrefixPattern": [
+    {
+      "id": "X1-15",
+      "keys": "ABC"
+    },
+    {
+      "id": "X1-28",
+      "keys": "ABC"
+    },
+    {
+      "id": "X1-35",
+      "keys": "ABC"
+    },
+    {
+      "id": "X1-45",
+      "keys": "ABC"
+    },
+    {
+      "id": "X1-50",
+      "keys": "AB"
+    },
+    {
+      "id": "X2-9",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-18",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-28",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-38",
+      "keys": "AB"
+    },
+    {
+      "id": "X2-39",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-49",
+      "keys": "AB"
+    },
+    {
+      "id": "X2-50",
+      "keys": "ABC"
+    },
+    {
+      "id": "X2-59",
+      "keys": "ABCD"
+    },
+    {
+      "id": "X3-7",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-8",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-18",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-28",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-29",
+      "keys": "ABCD"
+    },
+    {
+      "id": "X3-38",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-39",
+      "keys": "ABCD"
+    },
+    {
+      "id": "X3-48",
+      "keys": "AB"
+    },
+    {
+      "id": "X3-49",
+      "keys": "ABC"
+    },
+    {
+      "id": "X3-59",
+      "keys": "AB"
+    },
+    {
+      "id": "X3-60",
+      "keys": "AB"
+    }
+  ],
+  "sourceTitle": "Git面试题 | 小林coding",
+  "anchorCount": 23,
+  "missingAnchors": [],
+  "sectionCount": 23
+}

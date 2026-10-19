@@ -1,0 +1,2235 @@
+{
+  "prefix": "M",
+  "chapters": {
+    "M1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "M1-1",
+          "type": "single",
+          "stem": "Mitchell Hashimoto 给 Engineer the Harness 下的定义是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次发现 Agent 犯了一个错误，就换一个更强的模型，直到同样的错误不再出现为止",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每次发现 Agent 犯了一个错误，就工程化一个解决方案，让它永远不会再犯同样的错误",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每次开始新任务之前，把所有可能用到的资料一次性整理好，全部放进模型的上下文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次写提示词时都给模型设定角色、提供示例并强调约束，把输出推向想要的方向",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M1-2", "type": "short" },
+        {
+          "id": "M1-3",
+          "type": "multiple",
+          "stem": "按原文，Agent 犯错之后的修复可以沉淀成哪些形式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给 AGENTS.md 加一条规则",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "记在人的脑子里，下次口头提醒",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "搞一个 Git Hook",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "补一个自动化测试",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "加一个 linter",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "M1-4", "type": "short" },
+        {
+          "id": "M1-5",
+          "type": "single",
+          "stem": "同样的大模型，为什么有的团队做出的 Agent 稳定、有的一跑就偏？",
+          "options": [
+            {
+              "key": "A",
+              "text": "差的往往不是模型，而是围绕模型搭起来的 Harness 有没有做到位",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "差的主要是提示词的措辞，稳定的团队提示词写得更长",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "差的主要是上下文窗口的大小，稳定的团队用了更大的窗口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "差的主要是接入的工具数量，稳定的团队接入的工具更多",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-6",
+          "type": "single",
+          "stem": "AI 工程的重心换过三次，各自解决什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Prompt 解决让模型知道该用什么信息，Context 解决让模型听懂想干啥，Harness 解决让模型在真实执行里持续做对一连串的事",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Prompt 解决让模型在真实执行里持续做对一连串的事，Context 解决让模型知道该用什么信息，Harness 解决让模型听懂想干啥",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Prompt 解决让模型听懂想干啥，Context 解决让模型知道该用什么信息，Harness 解决让模型在真实执行里持续做对一连串的事",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "三者解决的是同一个问题，后一个阶段完全取代了前一个阶段，前面的做法不再需要",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M1-7", "type": "short" },
+        { "id": "M1-8", "type": "short" },
+        {
+          "id": "M1-9",
+          "type": "fill",
+          "stem": "原文介绍的正式提示词六个组成部分是：____、____、____、____、____、____。",
+          "blankCount": 6,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M1-10",
+          "type": "multiple",
+          "stem": "按原文，下列哪些是提示词不擅长的事？",
+          "options": [
+            {
+              "key": "A",
+              "text": "管理一大堆动态变化的信息",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把约束讲明白",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "凭空补出模型不知道的知识",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把任务表达清楚",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "在长链路任务里维持稳定的状态",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M1-11",
+          "type": "single",
+          "stem": "Context Engineering 要解决的核心问题是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在提示词里设定角色和示例，把模型的输出往某个方向推",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在模型跑偏的时候，用一整套机制持续观测、纠正并最终验收",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在模型能力不足的时候，用自己的数据进一步训练模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在上下文窗口有限的前提下，把最相关的信息以最合理的方式送给模型",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "M1-12", "type": "short" },
+        {
+          "id": "M1-13",
+          "type": "single",
+          "stem": "什么是“上下文腐化”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "上下文被压缩成摘要之后，原始的对话记录再也无法恢复",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "上下文里的资料过期之后，模型仍然按照旧的资料回答问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上下文塞得太满时，模型记不住前面的内容、前后矛盾、忽略最初定下的规则",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "上下文超过窗口上限之后，模型服务直接拒绝这次请求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-14",
+          "type": "fill",
+          "stem": "Context Engineering 的三个实践步骤依次是：____ → ____ → ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "M1-15",
+          "type": "single",
+          "stem": "为什么同一个模型在不同 AI IDE 里效果差别很大？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每家工具向用户收取的费用不同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每家工具给模型设置的上下文窗口上限不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每家工具用的其实是不同版本的模型参数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每家工具的召回、压缩、组装策略不一样",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M1-16",
+          "type": "single",
+          "stem": "Agent Skills 的“渐进式披露”说明上下文优化的本质是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是分层给，而是把目录和正文合并成一份完整的文档",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是给得更多，而是按需给、分层给、在正确的时机给",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不是给得更少，而是把所有工具的详细说明都提前加载",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是按需给，而是按固定的顺序把每个能力轮流加载一遍",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-17",
+          "type": "fill",
+          "stem": "原文称三代工程是一层包一层的关系：Prompt 是对 ____ 的工程化，Context 是对 ____ 的工程化，Harness 是对 ____ 的工程化。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "M1-18", "type": "short" },
+        { "id": "M1-19", "type": "short" },
+        {
+          "id": "M1-20",
+          "type": "single",
+          "stem": "划定 Harness 边界的那个等式是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Agent = Model + Harness",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Harness = Model + Agent",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Agent = Prompt + Context",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Model = Agent + Harness",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-21",
+          "type": "single",
+          "stem": "在派新人拜访重要客户的例子里，“带 checklist、关键节点实时汇报、录音复盘、跑偏了马上纠正、拜访后按标准验收”对应的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Prompt Engineering",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Context Engineering",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Agent Skills",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Harness",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M1-22",
+          "type": "fill",
+          "stem": "原文所述 Harness 的六层核心组成是：____、____、____、____、____、____。",
+          "blankCount": 6,
+          "blankOrder": "unordered"
+        },
+        { "id": "M1-23", "type": "short" },
+        {
+          "id": "M1-24",
+          "type": "single",
+          "stem": "Harness 的第一层和第四层怎么区分？",
+          "options": [
+            {
+              "key": "A",
+              "text": "第一层管空间：这一轮上下文装了什么、怎么排布；第四层管时间：上一轮的事怎么流到下一轮",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "第一层管执行：下一步执行什么；第四层管恢复：失败之后怎么恢复",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "第一层管工具：给模型哪些工具；第四层管校验：用什么标准衡量效果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "第一层管时间：上一轮的事怎么流到下一轮；第四层管空间：这一轮上下文装了什么、怎么排布",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-25",
+          "type": "fill",
+          "stem": "Harness 上下文精细化管理的三项核心工作是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M1-26",
+          "type": "single",
+          "stem": "Anthropic 对 context rot 给出的解法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把全部历史对话压成一句话总结，只保留最近一轮原文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "just-in-time retrieval，让 Agent 边干活边按需抓信息",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把上下文窗口扩大到足以装下项目的全部资料和历史",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一开始就把所有可能有用的信息一股脑全部塞进上下文里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-27",
+          "type": "single",
+          "stem": "工具是不是接得越多越好？OpenAI 做 Codex 时的经验是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，只要每个工具的说明写得够长，数量多少没有影响",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，工具越多选择越多，Codex 靠不断增加工具才稳定下来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，早期接了一堆工具后 Agent 频繁用错，砍掉一大半效果反而上去了",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不是，Codex 最后把工具全部去掉，只保留了模型本身",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-28",
+          "type": "fill",
+          "stem": "Harness 工具系统要明确的三个问题是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M1-29",
+          "type": "single",
+          "stem": "MCP 在 Harness 的工具层里扮演什么角色？",
+          "options": [
+            {
+              "key": "A",
+              "text": "做任务执行的编排，告诉模型现在在哪一步、下一步干什么",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "做工具结果的提炼，把几十条匹配压缩成核心的几条再喂回模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "做跨轮状态的保存，把上一轮发生的事情带到下一轮",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "做工具层的标准化，让任何工具都能用同一种方式接到任何 Agent 上",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M1-30",
+          "type": "single",
+          "stem": "Harness 第三层“任务执行的全局编排”的职责是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给模型一条明确的工作轨道，让它知道自己在哪一步、下一步该干什么",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "给模型只配完成任务必需的那几件工具，并规定什么时候用哪个",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "给模型的输出设立验收标准，由另一个环节判断做得对不对",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "给模型把角色和目标钉死，只把当前相关的信息拉进上下文",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-31",
+          "type": "single",
+          "stem": "原文提到的编排模式里，Reflexion 是怎么做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "同时探索多条思路，再选出最好的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每次失败都让 Agent 反思一下再重试",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "思考一步、行动一步、观察结果再思考",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先规划完整的计划，再按计划执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-32",
+          "type": "fill",
+          "stem": "Harness 第四层要管的三类状态是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M1-33",
+          "type": "single",
+          "stem": "关于 Agent 的状态该放在哪里，原文引用的核心洞察是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "应该写进系统提示词，每一轮都原样注入",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "应该交给模型自己记住，不需要任何外部介质",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不应该放在上下文窗口里，而应该外化到文件系统",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "应该全部留在上下文窗口里，保证模型随时看得到",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-34",
+          "type": "fill",
+          "stem": "Harness 评估与观测需要建立的两类机制是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "M1-35", "type": "short" },
+        { "id": "M1-36", "type": "short" },
+        {
+          "id": "M1-37",
+          "type": "fill",
+          "stem": "Harness 第六层要做的三件事是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M1-38",
+          "type": "single",
+          "stem": "Harness 的六层是一张必须一次搭完的清单吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，必须按第一层到第六层的顺序依次搭完才能上线",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，它是一张路标，告诉你下次 Agent 犯错时修复应该落到哪一层",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不是，实际项目里只需要搭第一层和第二层就够了",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，六层缺了任何一层，Agent 都无法启动和运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-39",
+          "type": "single",
+          "stem": "什么是上下文焦虑？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型不确定该用哪个工具，于是把所有工具都调用一遍",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型担心检索到的资料已经过时，于是反复重新检索同一份资料",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型的上下文塞得太满，记不住前面的内容，开始前后矛盾",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型常以为上下文快用完了，于是简化方案、跳过验证、急着宣布完成",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "M1-40", "type": "short" },
+        {
+          "id": "M1-41",
+          "type": "single",
+          "stem": "长任务里首轮 initializer 与后续 coding 阶段，变的是什么、不变的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每轮的初始 user prompt 不变，变的是系统提示词、工具集和 harness",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "首轮和后续各用一个不同的 Agent，两者之间通过对话历史交接",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "系统提示词、工具集和 harness 都不变，变的只是每轮的初始 user prompt",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "首轮和后续完全相同，连初始 user prompt 也一字不改",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M1-42", "type": "short" },
+        { "id": "M1-43", "type": "short" },
+        {
+          "id": "M1-44",
+          "type": "single",
+          "stem": "只做上下文压缩不够时，Anthropic 给出的解法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Context Reset：把旧的上下文窗口整个换掉，再从外部文件恢复状态",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "换用上下文窗口更大的模型，把触发压缩的时机尽量往后推迟",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在提示词里反复提醒模型不要着急，告诉它上下文还剩很多空间",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "提高压缩的频率，每隔几步就把历史再压缩一次，让摘要始终最短",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-45",
+          "type": "single",
+          "stem": "为什么不能让 Agent 自己给自己打分？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它对自己过于苛刻，总是给出偏低的分数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它永远觉得自己干得不错，会自动忽略做得不好的部分",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它自评需要的 token 比完成任务本身还多",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它自评时无法读取自己刚才的输出",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-46",
+          "type": "fill",
+          "stem": "Anthropic 的三角分工里，把模糊需求扩展成完整规格说明的是 ____，一步一步去实现的是 ____，像 QA 一样真实测试的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "M1-47", "type": "short" },
+        {
+          "id": "M1-48",
+          "type": "single",
+          "stem": "Agent 反复失败时，原文给出的原则是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先让工程师手动纠正，等积累多了再统一处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先换一个更强的模型，再看失败是否消失",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先把提示词再调一调，要求它更仔细地检查",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "别问模型能不能更努力，要问环境还缺什么",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "M1-49", "type": "short" },
+        { "id": "M1-50", "type": "short" },
+        {
+          "id": "M1-51",
+          "type": "single",
+          "stem": "OpenAI 后来怎样改造 AGENTS.md？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从百科全书改成目录页：主文件只留核心索引，细节拆到主题清晰的子文档里",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把它拆成很多小文件，每次任务把所有小文件一起注入",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "从目录页改成百科全书：把所有子文档的细节规则合并进一个主文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把它整个删除，规则全部改成由工程师在每次任务里口头交代",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-52",
+          "type": "single",
+          "stem": "原文所说的 AI slop 是怎样形成的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Agent 用了刚发布的新框架，训练数据里只见过零星的文档",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Agent 不看仓库里已有的代码，每次都按训练数据里的写法重新发明一套",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Agent 大量模仿仓库里已有的代码模式，早期写歪的代码被当成惯例越堆越多",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Agent 引入了流行的第三方包，里面有它看不懂的黑盒行为",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M1-53", "type": "short" },
+        { "id": "M1-54", "type": "short" },
+        {
+          "id": "M1-55",
+          "type": "single",
+          "stem": "每周拿整个周五人工集中清理技术债的做法，为什么失败？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Agent 的产出比人清理得快",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "修复 PR 无法自动合并",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "后台 Agent 找不到偏离的代码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "工程师不愿意在周五加班",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M1-56", "type": "short" },
+        {
+          "id": "M1-57",
+          "type": "fill",
+          "stem": "原文认为成熟技术更适合 Agent 自动开发的三个原因是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M1-58",
+          "type": "single",
+          "stem": "为什么有时宁愿让 Agent 自己实现小工具函数，也不引入第三方包？",
+          "options": [
+            {
+              "key": "A",
+              "text": "第三方包会让规则文件越来越长，稀释模型的注意力",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "自己写的代码在训练数据里出现得更多，Agent 更熟悉",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自己写的代码 Agent 能完全理解和控制，第三方包里有它看不懂的黑盒行为",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "第三方包的 API 太稳定，Agent 找不到可以改进的地方",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M1-59",
+          "type": "multiple",
+          "stem": "下列哪些属于原文总结的 Harness Engineering 原则？",
+          "options": [
+            {
+              "key": "A",
+              "text": "技术债攒到一起集中还",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "与其催模型不如改环境",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "规则宁缺毋滥",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "工具接得越多越好",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "生产验收分家",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "重启胜过修补",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M1-60",
+          "type": "single",
+          "stem": "Agent 用“老技术”更稳这个发现，对技术选型有什么启发？",
+          "options": [
+            {
+              "key": "A",
+              "text": "应当优先选刚发布的新框架，因为模型对最新的技术掌握得最好",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不要一味追新，越老、文档越齐全、社区沉淀越久的技术，Agent 越容易做对",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "技术栈的新旧对 Agent 没有影响，只需要看团队成员是否熟悉",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "应当尽量多引入第三方包，减少 Agent 自己需要写的代码",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "M2": {
+      "status": "draft",
+      "questions": [
+        { "id": "M2-1", "type": "short" },
+        {
+          "id": "M2-2",
+          "type": "single",
+          "stem": "Prompt、Context、Harness 三道坎都迈过之后，原文认为最后的瓶颈是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工具：模型没有可以执行命令的运行装备",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "上下文窗口：对的资料无法在对的时机放进窗口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型：它仍然只会一问一答，无法连续工作几个小时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "人自己：整条流水线上只剩人坐在屏幕前敲下一条 prompt",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M2-3",
+          "type": "fill",
+          "stem": "模型每变强一截，瓶颈就往外移一层：提示词工程阶段卡在 ____，上下文工程阶段卡在 ____，harness 阶段卡在 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "M2-4", "type": "short" },
+        { "id": "M2-5", "type": "short" },
+        {
+          "id": "M2-6",
+          "type": "single",
+          "stem": "按 Osmani 的定义，做 Loop Engineering 的人的角色发生了什么变化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不再设计系统，而是专心把每一条 prompt 写得更好",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不再是 prompt 的作者，而是 prompt 生产系统的设计师",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不再需要理解代码，而是只负责在收件箱里点确认",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不再检查产出，而是把验证完全交给负责检查的 agent",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M2-7", "type": "short" },
+        {
+          "id": "M2-8",
+          "type": "fill",
+          "stem": "作为 loop 心跳的两类触发方式是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M2-9",
+          "type": "single",
+          "stem": "一个每次都要手动启动的工作流脚本算不算 loop？",
+          "options": [
+            {
+              "key": "A",
+              "text": "算，只要脚本最后会把结果写进状态文件就是 loop",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不算，只有同时派出多个 sub-agent 并行才是 loop",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不算，有了定时或事件触发这个心跳，循环才算活着",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "算，只要脚本里的步骤能自动串起来执行就是 loop",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M2-10",
+          "type": "single",
+          "stem": "多个 agent 同时改同一个文件的麻烦，worktree 怎么解决？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给每个 agent 一个独立的工作目录和独立分支，共享同一份仓库历史",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "给每个 agent 各复制一份完整的仓库，历史互相独立",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让另一个干净上下文的 agent 逐个合并各自的改动",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让所有 agent 排队，同一时间只允许一个 agent 修改仓库",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M2-11", "type": "short" },
+        {
+          "id": "M2-12",
+          "type": "single",
+          "stem": "loop 的 connector 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给每个 agent 独立工作目录和独立分支的隔离机制",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "写成文件放在仓库里、让 agent 该用时自己读的项目知识",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "记录做完了什么、下一步是什么的磁盘文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "基于 MCP 协议、把工单、监控、消息等外部系统接进来的桥",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M2-13",
+          "type": "single",
+          "stem": "为什么要把写代码的 agent 和检查代码的 agent 分开？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写代码的模型没有读取测试结果的权限，只有检查的 agent 才能运行测试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "写代码的模型给自己打分太手下留情，干净上下文的另一个 agent 没有“希望自己是对的”的包袱",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两个 agent 同时改同一个文件会互相覆盖，分开之后才能各开各的 PR",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "检查的 agent 用的模型更便宜，分开之后每轮循环的 token 开销更低",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M2-14", "type": "short" },
+        {
+          "id": "M2-15",
+          "type": "single",
+          "stem": "loop 的记忆为什么不能放在上下文里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "上下文里的记忆每一轮都要重新计费，放进文件之后就不再消耗 token",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "上下文窗口无法保存文字以外的内容，而记忆主要是代码和日志",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上下文里的记忆会被其他 agent 看到，造成多个 agent 之间互相干扰",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型在两次运行之间会忘掉一切，记忆要放在活在单次对话之外的文件或看板里",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "M2-16", "type": "short" },
+        { "id": "M2-17", "type": "short" },
+        { "id": "M2-18", "type": "short" },
+        { "id": "M2-19", "type": "short" },
+        {
+          "id": "M2-20",
+          "type": "single",
+          "stem": "普通循环与 /goal 类能力，在何时结束上有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "普通循环跑到写好的条件为真才停；/goal 类按固定节奏重复跑，跑完一轮就结束，对不对另说",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都跑到条件为真才停，区别只在普通循环由人来判断条件是否达成",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "普通循环按节奏重复跑、跑完就结束；/goal 类跑到写好的条件为真才停，并由独立的模型判断是否达成",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都按固定节奏重复跑，区别只在 /goal 类的间隔由模型自己决定",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M2-21", "type": "short" },
+        {
+          "id": "M2-22",
+          "type": "single",
+          "stem": "当前会话中的 /loop 与云端 Routines，在关闭本机后有什么差别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "/loop 依赖当前会话，本机关掉就停止；云端 Routines 在本机之外执行，可以继续运行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都在云端执行，本机关掉之后都能继续运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都依赖当前会话，本机关掉之后都会停止",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "/loop 在本机之外执行，可以继续运行；云端 Routines 依赖当前会话，本机关掉就停止",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M2-23",
+          "type": "fill",
+          "stem": "一条 /loop 命令由三部分组成：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M2-24",
+          "type": "single",
+          "stem": "/loop 不写时间间隔、直接加任务，会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只跑一轮就结束",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "命令报错，无法启动",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "默认每分钟跑一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "节奏由模型自己定",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M2-25",
+          "type": "single",
+          "stem": "最小的 loop 没有 worktree 和写查分离，这算缺陷吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不算，这是起点，部件是一件一件长出来的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不算，因为这两个部件对 loop 没有用处",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "算，没有写查分离的 loop 不会停止",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "算，五大件必须一次配齐才能启动",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M2-26",
+          "type": "single",
+          "stem": "Codex 和 Claude Code 两家产品的 loop 部件几乎一一对应，说明了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两家产品其实共用同一套底层代码，所以选哪一家在功能上没有任何差别",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "loop 的设计高度依赖具体产品，换一家工具就要把整套设计推倒重来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "loop 的设计正在变得工具无关，值得积累的是设计图纸，而不是对某家工具的肌肉记忆",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "loop 的部件还没有产品化，搭建时仍然要自己写一堆 bash 脚本",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M2-27", "type": "short" },
+        {
+          "id": "M2-28",
+          "type": "single",
+          "stem": "为什么说“验证仍然归你”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "loop 每一轮都会停下来等人确认，否则不会开始下一轮",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "就算配了负责检查的 sub-agent，它说的 done 也只是一个声明，不是一个证明",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "负责检查的 sub-agent 只在循环的第一轮运行一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "负责检查的 sub-agent 没有读取代码的权限，只能由人来读",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M2-29",
+          "type": "single",
+          "stem": "原文所说的理解债是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "仓库里实际存在的东西与人脑中真正理解的东西之间的鸿沟",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "仓库里越堆越多、迟早要重写的烂代码",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每多一个 sub-agent 就多出的一份模型和工具开销",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "人不再对产出有自己的观点，给什么就收什么",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M2-30", "type": "short" },
+        { "id": "M2-31", "type": "short" },
+        {
+          "id": "M2-32",
+          "type": "single",
+          "stem": "loop 按循环烧 token，原文建议怎样控制？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给每一个步骤都配上检查的 sub-agent，保证万无一失",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把定时触发的间隔调到最短，尽快跑完",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把 sub-agent 用在值得买第二意见的地方，不要处处双保险",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "去掉状态文件，让每一轮循环都从头推导",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M2-33",
+          "type": "single",
+          "stem": "原文所说的认知投降指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "代码不烂，但不知道它为什么是对的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把重复的劳动交给自动化去完成",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "带着判断力去设计 loop 的每个环节",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不再对产出有自己的观点，它给什么就收什么",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M2-34",
+          "type": "fill",
+          "stem": "原文泼的三盆冷水是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M2-35",
+          "type": "fill",
+          "stem": "原文概括 loop 由五大件加一份磁盘记忆组成，这五大件是：____、____、____、____、____。",
+          "blankCount": 5,
+          "blankOrder": "unordered"
+        }
+      ]
+    },
+    "M3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "M3-1",
+          "type": "single",
+          "stem": "一个任务很重复，却没法客观判断产出好坏，为什么不宜直接进入无人值守 loop？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有裁判的任务无法定时触发，只能靠人每次手动启动",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "没有能自动告诉你“活砸了”的裁判，产出还得人逐行读 diff 去验，没替人省下什么",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "没有裁判的任务不会重复出现，搭好的 loop 只会运行一次，花的时间收不回来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有裁判的任务不允许接入外部工具，loop 无法开 PR",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M3-2",
+          "type": "single",
+          "stem": "按原文，什么样的工作才值得搭一个 loop？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只做一次的一锤子买卖",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一出事就是大事的架构改动",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每周要干好几遍的活",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要人全程盯着的生产部署",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M3-3", "type": "short" },
+        {
+          "id": "M3-4",
+          "type": "multiple",
+          "stem": "按原文，下列哪几类活不适合交给 loop？",
+          "options": [
+            {
+              "key": "A",
+              "text": "等 CI 跑完",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "支付",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "依赖升级",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "架构",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "生产部署",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "鉴权",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M3-5",
+          "type": "fill",
+          "stem": "第一个 loop 的“最小四件套”是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M3-6",
+          "type": "single",
+          "stem": "状态文件放在仓库里的 STATE.md 与接到外部系统，各适合什么情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "STATE.md 能跨仓库、全员可见，更适合上生产的 loop；接到外部系统跟代码一起管，个人或小团队够用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "STATE.md 只能记目标，外部系统只能记进度，两者必须同时使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者没有区别，选哪个只取决于 agent 更熟悉哪种文件格式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "STATE.md 跟代码一起管，个人或小团队够用；接到外部系统能跨仓库、全员可见，更适合上生产的 loop",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M3-7",
+          "type": "fill",
+          "stem": "一个极简的 STATE.md 大致分四块：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M3-8",
+          "type": "single",
+          "stem": "状态文件和目标文件有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "状态文件记它现在做到哪了，目标文件管它最终要去哪",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "状态文件管它最终要去哪，目标文件记它现在做到哪了",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "状态文件给人看，目标文件给 agent 看，内容完全相同",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "状态文件每轮清空，目标文件每轮由 agent 重写",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M3-9",
+          "type": "fill",
+          "stem": "搭 loop 的正确顺序依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        { "id": "M3-10", "type": "short" },
+        { "id": "M3-11", "type": "short" },
+        {
+          "id": "M3-12",
+          "type": "single",
+          "stem": "内层 loop 与外层 loop 分别负责什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "内层吸收人每次 review 的反馈，外层负责干活",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "内层负责干活，外层吸收人每次 review 的反馈，拿去改进下一轮怎么干",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "内层负责定时触发，外层负责给每个 agent 分配工作目录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "内层负责写代码，外层负责把代码部署到生产环境",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M3-13", "type": "short" },
+        { "id": "M3-14", "type": "short" },
+        { "id": "M3-15", "type": "short" },
+        { "id": "M3-16", "type": "short" },
+        { "id": "M3-17", "type": "short" },
+        {
+          "id": "M3-18",
+          "type": "single",
+          "stem": "一个 loop 的单位成本怎样计算？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只算被合并的那些改动所消耗的 token，被拒绝的不计入",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把 token、算力和人 review 的时间全部加起来，除以真正被合并的改动数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把 token、算力和人 review 的时间全部加起来，除以 loop 运行的总轮数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用一次模型调用的价格，乘以这段时间里调用的总次数",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M3-19", "type": "short" },
+        { "id": "M3-20", "type": "short" },
+        { "id": "M3-21", "type": "short" },
+        {
+          "id": "M3-22",
+          "type": "fill",
+          "stem": "无人值守 loop 的闸门里，除了测试和构建，还要加入三类安全检查：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M3-23",
+          "type": "single",
+          "stem": "按原文引用的研究，skill 泄露凭证的头号途径是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最终提交的代码 diff 里直接写入了密钥",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "状态文件里记录了每一轮使用的凭证",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "负责检查的 sub-agent 把凭证写进了 PR 描述",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "调试日志，即 print、console.log 这类打到标准输出的操作",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M3-24",
+          "type": "single",
+          "stem": "怎样避免 loop 的权限持续膨胀？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每 30 天把它的权限拉出来复审一遍，不再需要的收回",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "让负责检查的 sub-agent 自己决定收回哪些权限",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次加权限时关掉 verbose 日志",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一开始就给足全部权限，之后不再增加",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M3-25", "type": "short" },
+        { "id": "M3-26", "type": "short" },
+        {
+          "id": "M3-27",
+          "type": "single",
+          "stem": "原文提醒 Ralph Wiggum loop 会怎样失败？",
+          "options": [
+            {
+              "key": "A",
+              "text": "权限今天加一个、明天加一个，一个月后说不清它能动什么",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "loop 交付的代码越多，人真正理解的部分越少",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "没有硬 gate 时，loop 半途装作完工，还在那儿空烧钱",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "多个 agent 同时改同一个文件，互相覆盖对方的改动",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M3-28",
+          "type": "multiple",
+          "stem": "“30 秒清单”要对着具体任务检查哪几项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不可逆操作前有人把关",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "有 gate 能拒掉坏活",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "有硬性 stop",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每周至少干一次",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "agent 跑得了代码",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "已经接好全部外部工具",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M3-29", "type": "short" },
+        {
+          "id": "M3-30",
+          "type": "single",
+          "stem": "回看 14 步清单，原文认为真正难的是哪部分？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把背景沉淀成 skill 的那一步，因为项目知识无法写成文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "中间搭建构件的那一段，因为相关工具还没有准备好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "接上自动调度的那一步，因为定时任务很难写对",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "头一段的“要不要做”和尾一段的“守不守得住”，全是关于人的判断",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "M4": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "M4-1",
+          "type": "single",
+          "stem": "loop 和 graph 各管什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "loop 只管定时触发，graph 只管把状态存进数据库，两者没有交集",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "loop 管节点之间的拆分、并行、汇合和返工，graph 管节点内部的反复思考、调用工具和修正",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "loop 管节点内部的反复思考、调用工具和修正，graph 管节点之间的拆分、并行、汇合和返工",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "loop 和 graph 管的是同一件事，用了 graph 之后节点内部就不再需要 loop",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M4-2", "type": "short" },
+        { "id": "M4-3", "type": "short" },
+        {
+          "id": "M4-4",
+          "type": "single",
+          "stem": "原文认为现在真正容易翻车的是哪一层？",
+          "options": [
+            {
+              "key": "A",
+              "text": "提示词的表达，缺的是更清楚的任务描述",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一百个步骤怎么协作起来，缺的是任务调度和流程管理能力",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "上下文的供给，缺的是更大的上下文窗口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型完成单个步骤的可靠性，缺的是更强的模型",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M4-5", "type": "short" },
+        { "id": "M4-6", "type": "short" },
+        {
+          "id": "M4-7",
+          "type": "fill",
+          "stem": "一张分工示意图要变成可执行的工作流，原文要求定义三样东西：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "M4-8",
+          "type": "single",
+          "stem": "用 graph 来编排，流程会自动存档吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不会，还得靠运行框架，或者自己把状态写进数据库、文件",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "会，状态会自动写进主会话的聊天记录里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "会，只要定义了节点和边，每一步的状态就自动保存",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不会，graph 编排本身不支持中断后继续",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M4-9",
+          "type": "multiple",
+          "stem": "按原文，下列哪些可以充当 graph 里的节点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "做审批的人",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一次数据库查询",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一个跑着完整思考循环的 agent",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "决定下一步去哪的一条连线",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "记录进度和产物的状态对象",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "一段按固定规则运行的普通代码",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M4-10",
+          "type": "single",
+          "stem": "确定性边和模型决策边，设计时怎样取舍？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能交给模型的尽量交给模型，只把少数涉及安全的分支写死在代码里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有的边都交给模型判断，代码只负责保存状态",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能写死的尽量写死，把模型的判断留给少数确实需要理解语义的分支",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "所有的边都写死在代码里，模型只负责节点内部的工作",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M4-11",
+          "type": "single",
+          "stem": "状态对象为什么要做成字段结构固定的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "程序能直接读取字段来判断下一步，谁要看进度也不用翻聊天记录",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "结构化对象不需要存档，中断之后会自动恢复",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "结构化对象只有模型能读懂，可以防止人为篡改进度",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "结构化对象占用的 token 比聊天记录少，可以放进每次请求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M4-12",
+          "type": "single",
+          "stem": "什么是 fan-out 和 fan-in？",
+          "options": [
+            {
+              "key": "A",
+              "text": "流程暂停等人确认叫 fan-out，人确认后继续执行叫 fan-in",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个节点同时分出多条边、启动多个节点叫 fan-out，干完再汇合叫 fan-in",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "多个节点干完后汇合到一个节点叫 fan-out，一个节点分出多条边叫 fan-in",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "测试失败后回到返工节点叫 fan-out，测试通过后继续往下叫 fan-in",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M4-13", "type": "short" },
+        { "id": "M4-14", "type": "short" },
+        { "id": "M4-15", "type": "short" },
+        { "id": "M4-16", "type": "short" },
+        {
+          "id": "M4-17",
+          "type": "single",
+          "stem": "用 graph 编排“加一个数据导出功能”时，规划节点做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把三个开发分支各自提交的代码合并起来，再跑一遍全量测试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "读取状态对象里的测试结果字段，决定去人工确认还是去返工",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "暂停整个流程，等本人看过 diff 点头之后才合入主干",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把需求拆成后端、前端、测试三份任务，同时确定一份三方共用的 API 契约",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M4-18",
+          "type": "single",
+          "stem": "示例流程最后的人工确认节点做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把失败模块的任务标记成返工并交回开发节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把需求拆成三份任务并写进状态对象",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不执行自动化任务，只暂停流程等人看 diff 点头",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "自动合并三个分支并运行全量测试",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M4-19", "type": "short" },
+        {
+          "id": "M4-20",
+          "type": "single",
+          "stem": "LangGraph 示例里，add_conditional_edges 做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把三个开发节点连到集成节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "读取测试结果，决定去人工确认还是去返工",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把节点和边组装成可执行的 graph",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把规划、开发、集成等注册成节点",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M4-21", "type": "short" },
+        {
+          "id": "M4-22",
+          "type": "single",
+          "stem": "在 Claude Code 里，subagent 和 hook 分别对应 graph 的什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一次 hook 执行可以充当一个节点，subagent 在特定时机强制执行固定检查",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "subagent 对应人工确认节点，hook 对应模型决策边",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "subagent 对应状态对象，hook 对应把状态写进数据库的存档",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一次 subagent 执行可以充当一个节点，hook 在特定时机强制执行固定检查",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "M4-23",
+          "type": "single",
+          "stem": "使用 Claude Code 内置的 workflow 时，人要做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在对话框里把目标讲清楚，等它写出调度脚本、展示编排方案后确认",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把每个 subagent 的中间输出复制回主会话",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自己写好负责拆任务、派 agent 和处理分支的调度脚本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "逐个手动启动每一个 subagent，并盯着它们跑完",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M4-24", "type": "short" },
+        {
+          "id": "M4-25",
+          "type": "fill",
+          "stem": "在原文的实测里，/deep-research 把调研拆成五个阶段，依次是：____ → ____ → ____ → ____ → ____。",
+          "blankCount": 5,
+          "blankOrder": "ordered"
+        },
+        { "id": "M4-26", "type": "short" },
+        {
+          "id": "M4-27",
+          "type": "single",
+          "stem": "Graph Engineering 与 LangGraph 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Graph Engineering 是设计方法，LangGraph 是实现这套方法的一种框架",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者是同一个东西的两种叫法，不用 LangGraph 就做不了 graph 编排",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "LangGraph 是设计方法，Graph Engineering 是实现这套方法的一种框架",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者互不相关，一个讲数据结构，一个讲提示词写法",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "M4-28",
+          "type": "single",
+          "stem": "graph 这套技术是最近才出现的吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，在这个词出现之前没有任何框架支持节点和边",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，新的是这个名字，以及注意力转向多个 agent 怎么协作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是的，它是随着最新一代模型发布才第一次出现的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，它在大模型出现之前就一直用于编排 agent",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "M4-29", "type": "short" },
+        { "id": "M4-30", "type": "short" },
+        { "id": "M4-31", "type": "short" }
+      ]
+    }
+  }
+}

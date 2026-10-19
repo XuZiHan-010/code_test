@@ -1,0 +1,107 @@
+{
+  "V2-34": {
+    "questionLine": 98,
+    "answerLine": 98,
+    "type": "multiple"
+  },
+  "V2-104": {
+    "questionLine": 192,
+    "answerLine": 192,
+    "type": "multiple"
+  },
+  "V2-107": {
+    "questionLine": 198,
+    "answerLine": 198,
+    "type": "single"
+  },
+  "V2-113": {
+    "questionLine": 204,
+    "answerLine": 204,
+    "type": "multiple"
+  },
+  "V2-136": {
+    "questionLine": 233,
+    "answerLine": 233,
+    "type": "single"
+  },
+  "V2-159": {
+    "questionLine": 262,
+    "answerLine": 262,
+    "type": "multiple"
+  },
+  "V2-189": {
+    "questionLine": 301,
+    "answerLine": 301,
+    "type": "multiple"
+  },
+  "V2-216": {
+    "questionLine": 337,
+    "answerLine": 337,
+    "type": "single"
+  },
+  "V2-240": {
+    "questionLine": 361,
+    "answerLine": 361,
+    "type": "short"
+  },
+  "V3-8": {
+    "questionLine": 380,
+    "answerLine": 380,
+    "type": "single"
+  },
+  "V3-9": {
+    "questionLine": 381,
+    "answerLine": 381,
+    "type": "single"
+  },
+  "V3-21": {
+    "questionLine": 393,
+    "answerLine": 393,
+    "type": "short"
+  },
+  "V4-35": {
+    "questionLine": 520,
+    "answerLine": 520,
+    "type": "single"
+  },
+  "V4-123": {
+    "questionLine": 647,
+    "answerLine": 647,
+    "type": "single"
+  },
+  "V4-135": {
+    "questionLine": 659,
+    "answerLine": 659,
+    "type": "short"
+  },
+  "V4-143": {
+    "questionLine": 670,
+    "answerLine": 670,
+    "type": "fill"
+  },
+  "V4-154": {
+    "questionLine": 681,
+    "answerLine": 681,
+    "type": "short"
+  },
+  "V6-43": {
+    "questionLine": 823,
+    "answerLine": 823,
+    "type": "single"
+  },
+  "V6-44": {
+    "questionLine": 824,
+    "answerLine": 824,
+    "type": "multiple"
+  },
+  "V6-45": {
+    "questionLine": 825,
+    "answerLine": 825,
+    "type": "single"
+  },
+  "V6-47": {
+    "questionLine": 827,
+    "answerLine": 827,
+    "type": "short"
+  }
+}

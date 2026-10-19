@@ -1,0 +1,2064 @@
+[
+  {
+    "id": "V1-7",
+    "before": {
+      "question": "用户程序无法直接访问硬件资源，从而避免了恶意程序对系统资源的破坏，这是划分内核态和用户态带来的哪一方面好处？",
+      "typed": {
+        "id": "V1-7",
+        "type": "single",
+        "stem": "用户程序无法直接访问硬件资源，从而避免了恶意程序对系统资源的破坏，这是划分内核态和用户态带来的哪一方面好处？",
+        "options": [
+          {
+            "key": "A",
+            "text": "稳定性",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "隔离性",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "易维护性",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "安全性",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "通过对权限的划分，用户程序无法直接访问硬件资源，避免恶意程序破坏系统资源，这体现的是安全性。稳定性指用户态的普通错误通常被限制在进程内；隔离性指内核与用户程序之间有明确的边界，有利于模块化和维护。[原文§用户态和内核态的区别？](https://xiaolincoding.com/interview/os.html#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%E7%9A%84%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "用户程序不能未经授权直接访问硬件资源，从而降低恶意程序破坏系统资源的风险，这是划分内核态和用户态带来的哪一方面好处？",
+      "typed": {
+        "id": "V1-7",
+        "type": "single",
+        "stem": "用户程序不能未经授权直接访问硬件资源，从而降低恶意程序破坏系统资源的风险，这是划分内核态和用户态带来的哪一方面好处？",
+        "options": [
+          {
+            "key": "A",
+            "text": "稳定性",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "隔离性",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "易维护性",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "安全性",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "通过对权限的划分，用户程序不能未经授权直接访问硬件资源，降低恶意程序破坏系统资源的风险，这体现的是安全性。稳定性指用户态的普通错误通常被限制在进程内；隔离性指内核与用户程序之间有明确的边界，有利于模块化和维护。[原文§用户态和内核态的区别？](https://xiaolincoding.com/interview/os.html#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%E7%9A%84%E5%8C%BA%E5%88%AB)"
+    }
+  },
+  {
+    "id": "V1-11",
+    "before": {
+      "question": "请说明用户态和内核态的区别，以及为什么要做这样的划分。",
+      "typed": {
+        "id": "V1-11",
+        "type": "short"
+      },
+      "answer": "内核态和用户态是 CPU 的两种运行模式，核心区别是执行权限不同。以 x86 为例，内核通常运行在 Ring 0，用户程序通常运行在 Ring 3。内核态可以执行特权指令，管理页表、中断和设备等资源，主要用于内核的运行；用户态不能执行特权指令，也不能随意访问内核内存和其他进程的内存，需要通过操作系统提供的接口申请服务，主要用于运行用户程序。做这样的划分主要有三点原因：安全性（用户程序无法直接访问硬件，避免恶意程序破坏系统资源）、稳定性（用户态的普通错误通常被限制在进程内，减少系统崩溃风险）、隔离性（内核与用户程序有明确边界，利于模块化和维护）。此外，root 用户运行的普通程序也处于用户态，root 是操作系统管理的用户权限，内核态是 CPU 的执行权限，两者不是一回事。[原文§用户态和内核态的区别？](https://xiaolincoding.com/interview/os.html#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%E7%9A%84%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "请说明用户态和内核态的区别，以及为什么要做这样的划分。",
+      "typed": {
+        "id": "V1-11",
+        "type": "short"
+      },
+      "answer": "内核态和用户态是 CPU 的两种运行模式，核心区别是执行权限不同。以 x86 为例，内核通常运行在 Ring 0，用户程序通常运行在 Ring 3。内核态可以执行特权指令，管理页表、中断和设备等资源，主要用于内核的运行；用户态不能执行特权指令，也不能随意访问内核内存和其他进程的内存，需要通过操作系统提供的接口申请服务，主要用于运行用户程序。做这样的划分主要有三点原因：安全性（用户程序不能未经授权直接访问硬件，降低恶意程序破坏系统资源的风险）、稳定性（用户态的普通错误通常被限制在进程内，减少系统崩溃风险）、隔离性（内核与用户程序有明确边界，利于模块化和维护）。此外，root 用户运行的普通程序也处于用户态，root 是操作系统管理的用户权限，内核态是 CPU 的执行权限，两者不是一回事。[原文§用户态和内核态的区别？](https://xiaolincoding.com/interview/os.html#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%E7%9A%84%E5%8C%BA%E5%88%AB)"
+    }
+  },
+  {
+    "id": "V2-34",
+    "before": {
+      "question": "按原文，单进程、单线程顺序执行的方式存在哪些问题？",
+      "typed": {
+        "id": "V2-34",
+        "type": "multiple",
+        "stem": "按原文，单进程、单线程顺序执行的方式存在哪些问题？",
+        "options": [
+          {
+            "key": "A",
+            "text": "进程之间如何通信、共享数据是个难题",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "各个函数之间不是并发执行，影响资源的使用效率",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "创建进程时要分配资源、建立 PCB，开销较大",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "画面和声音可能不连贯，因为 Read 时进程可能一直等在这里",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "单进程单线程的问题是画面声音不连贯、各函数之间不能并发执行影响资源使用效率。后两项是改成多进程之后才出现的问题。[原文§讲下为什么进程之下还要设计线程？](https://xiaolincoding.com/interview/os.html#%E8%AE%B2%E4%B8%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%9B%E7%A8%8B%E4%B9%8B%E4%B8%8B%E8%BF%98%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%BA%BF%E7%A8%8B)"
+    },
+    "after": {
+      "question": "按原文，单进程、单线程顺序执行的方式存在哪些问题？",
+      "typed": {
+        "id": "V2-34",
+        "type": "multiple",
+        "stem": "按原文，单进程、单线程顺序执行的方式存在哪些问题？",
+        "options": [
+          {
+            "key": "A",
+            "text": "进程之间如何通信、共享数据是个难题",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "各个函数之间不是并发执行，影响资源的使用效率",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "创建进程时要分配资源、建立 PCB，开销较大",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "画面和声音可能不连贯，因为 Read 时进程可能一直等在这里",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "单进程单线程的问题是画面声音不连贯、各函数之间不能并发执行影响资源使用效率。A、C 两项是改成多进程之后才出现的问题。[原文§讲下为什么进程之下还要设计线程？](https://xiaolincoding.com/interview/os.html#%E8%AE%B2%E4%B8%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%9B%E7%A8%8B%E4%B9%8B%E4%B8%8B%E8%BF%98%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%BA%BF%E7%A8%8B)"
+    }
+  },
+  {
+    "id": "V2-38",
+    "before": {
+      "question": "按原文，满足“实体之间可以并发运行”且“共享相同的地址空间”的新实体是什么？",
+      "typed": {
+        "id": "V2-38",
+        "type": "single",
+        "stem": "按原文，满足“实体之间可以并发运行”且“共享相同的地址空间”的新实体是什么？",
+        "options": [
+          {
+            "key": "A",
+            "text": "线程（Thread）",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "进程（Process）",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "协程（Coroutine）",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "信号量（Semaphore）",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "这个新的实体就是线程，线程之间可以并发运行且共享相同的地址空间。进程之间不共享地址空间，协程、信号量都不是该节要引出的实体。[原文§讲下为什么进程之下还要设计线程？](https://xiaolincoding.com/interview/os.html#%E8%AE%B2%E4%B8%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%9B%E7%A8%8B%E4%B9%8B%E4%B8%8B%E8%BF%98%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%BA%BF%E7%A8%8B)"
+    },
+    "after": {
+      "question": "原文为解决多进程开销和共享数据问题，引入了同一进程内可并发运行、共享地址空间的哪种操作系统执行实体？",
+      "typed": {
+        "id": "V2-38",
+        "type": "single",
+        "stem": "原文为解决多进程开销和共享数据问题，引入了同一进程内可并发运行、共享地址空间的哪种操作系统执行实体？",
+        "options": [
+          {
+            "key": "A",
+            "text": "线程（Thread）",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "进程（Process）",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "协程（Coroutine）",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "信号量（Semaphore）",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "这个新的实体就是线程，线程之间可以并发运行且共享相同的地址空间。进程之间不共享地址空间，协程、信号量都不是该节要引出的实体。[原文§讲下为什么进程之下还要设计线程？](https://xiaolincoding.com/interview/os.html#%E8%AE%B2%E4%B8%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%9B%E7%A8%8B%E4%B9%8B%E4%B8%8B%E8%BF%98%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%BA%BF%E7%A8%8B)"
+    }
+  },
+  {
+    "id": "V2-104",
+    "before": {
+      "question": "关于僵尸进程，下列说法符合原文的有哪些？",
+      "typed": {
+        "id": "V2-104",
+        "type": "multiple",
+        "stem": "关于僵尸进程，下列说法符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "对僵尸进程发送 kill 信号可以将其清除",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "子进程大部分资源已释放，但内核还保留 PID、退出状态等信息",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "大量僵尸进程会占用进程表项和 PID 等资源",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "僵尸进程仍在继续执行代码",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "前两项符合原文；僵尸进程已经退出、不再执行代码，发 kill 信号也没有用，要靠父进程调用 wait/waitpid 回收。[原文§僵尸进程和孤儿进程有什么区别？](https://xiaolincoding.com/interview/os.html#%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "关于僵尸进程，下列说法符合原文的有哪些？",
+      "typed": {
+        "id": "V2-104",
+        "type": "multiple",
+        "stem": "关于僵尸进程，下列说法符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "对僵尸进程发送 kill 信号可以将其清除",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "子进程大部分资源已释放，但内核还保留 PID、退出状态等信息",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "大量僵尸进程会占用进程表项和 PID 等资源",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "僵尸进程仍在继续执行代码",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "B、C 两项符合原文；僵尸进程已经退出、不再执行代码，发 kill 信号也没有用，要靠父进程调用 wait/waitpid 回收。[原文§僵尸进程和孤儿进程有什么区别？](https://xiaolincoding.com/interview/os.html#%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    }
+  },
+  {
+    "id": "V2-107",
+    "before": {
+      "question": "按原文，fork 之后，父进程的地址空间会被继承，其中也包含什么状态？",
+      "typed": {
+        "id": "V2-107",
+        "type": "single",
+        "stem": "按原文，fork 之后，父进程的地址空间会被继承，其中也包含什么状态？",
+        "options": [
+          {
+            "key": "A",
+            "text": "互斥锁等同步对象的状态",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "其他线程的运行栈内容",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "其他线程的寄存器上下文",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "父进程中所有线程的 TCB",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "父进程的地址空间会被继承，其中也包含互斥锁等同步对象的状态。[原文§多线程进程调用 fork，有什么需要注意的？](https://xiaolincoding.com/interview/os.html#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E8%B0%83%E7%94%A8-fork-%E6%9C%89%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84)"
+    },
+    "after": {
+      "question": "按原文，fork 之后，父进程的地址空间会被继承，其中也包含什么状态？",
+      "typed": {
+        "id": "V2-107",
+        "type": "single",
+        "stem": "按原文，fork 之后，父进程的地址空间会被继承，其中也包含什么状态？",
+        "options": [
+          {
+            "key": "A",
+            "text": "互斥锁等同步对象的状态",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "其他线程继续运行的调度实体",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "其他线程继续执行的寄存器上下文",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "可调度父进程全部线程的线程控制块",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "父进程的地址空间会被继承，其中也包含互斥锁等同步对象的状态。子进程只保留调用 fork 的线程，其他线程不会作为继续执行的实体被复制；这不表示其他线程的用户栈内存消失，普通 fork 仍会复制这些内存所在的地址空间。B、C、D 描述的是其他线程继续执行的实体或上下文，不是栈内存内容。[核对来源：Linux fork(2)](https://man7.org/linux/man-pages/man2/fork.2.html)[原文§多线程进程调用 fork，有什么需要注意的？](https://xiaolincoding.com/interview/os.html#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E8%B0%83%E7%94%A8-fork-%E6%9C%89%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84)"
+    }
+  },
+  {
+    "id": "V2-113",
+    "before": {
+      "question": "关于多线程进程调用 fork，下列说法符合原文的有哪些？",
+      "typed": {
+        "id": "V2-113",
+        "type": "multiple",
+        "stem": "关于多线程进程调用 fork，下列说法符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "只要代码里没有直接加锁，子进程就不会遇到锁的问题",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "父进程的其他线程会在子进程里继续运行",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "子进程只保留调用 fork 的那个线程",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "子进程可能继承“已加锁”的互斥锁状态，却没有负责解锁的线程",
+            "correct": true
+          },
+          {
+            "key": "E",
+            "text": "fork 后子进程可以随意调用 malloc、printf 等函数",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "前两项符合原文。其他线程不会出现在子进程里；即使没有直接加锁，malloc、printf 等库函数内部也可能有锁，所以 exec 前应只调用异步信号安全的函数。[原文§多线程进程调用 fork，有什么需要注意的？](https://xiaolincoding.com/interview/os.html#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E8%B0%83%E7%94%A8-fork-%E6%9C%89%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84)"
+    },
+    "after": {
+      "question": "关于多线程进程调用 fork，下列说法符合原文的有哪些？",
+      "typed": {
+        "id": "V2-113",
+        "type": "multiple",
+        "stem": "关于多线程进程调用 fork，下列说法符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "只要代码里没有直接加锁，子进程就不会遇到锁的问题",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "父进程的其他线程会在子进程里继续运行",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "子进程只保留调用 fork 的那个线程",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "子进程可能继承“已加锁”的互斥锁状态，却没有负责解锁的线程",
+            "correct": true
+          },
+          {
+            "key": "E",
+            "text": "fork 后子进程可以随意调用 malloc、printf 等函数",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "C、D 两项符合原文。其他线程不会出现在子进程里；即使没有直接加锁，malloc、printf 等库函数内部也可能有锁，所以 exec 前应只调用异步信号安全的函数。[原文§多线程进程调用 fork，有什么需要注意的？](https://xiaolincoding.com/interview/os.html#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E8%B0%83%E7%94%A8-fork-%E6%9C%89%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84)"
+    }
+  },
+  {
+    "id": "V2-131",
+    "before": {
+      "question": "按原文，匿名管道有什么特点？",
+      "typed": {
+        "id": "V2-131",
+        "type": "single",
+        "stem": "按原文，匿名管道有什么特点？",
+        "options": [
+          {
+            "key": "A",
+            "text": "在文件系统中有一个类型为 p 的设备文件，无关进程可通过路径名打开使用",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "必须由毫无亲缘关系的进程通过同一个路径名打开，才能互相通信",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "没有文件系统中的路径名，通常由 pipe 创建，shell 的「|」就是匿名管道",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "通常由 shmget 创建，创建后可被任意不相关的进程读写使用",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "匿名管道没有文件系统中的路径名，通常通过 pipe 创建，shell 命令中的「|」竖线就是匿名管道。[原文§进程间通讯有哪些方式？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E5%BC%8F)"
+    },
+    "after": {
+      "question": "按原文，匿名管道有什么特点？",
+      "typed": {
+        "id": "V2-131",
+        "type": "single",
+        "stem": "按原文，匿名管道有什么特点？",
+        "options": [
+          {
+            "key": "A",
+            "text": "在文件系统中有类型为 p 的 FIFO 特殊文件，无关进程可通过路径名打开使用",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "必须由毫无亲缘关系的进程通过同一个路径名打开，才能互相通信",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "没有文件系统中的路径名，通常由 pipe 创建，shell 的「|」就是匿名管道",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "通常由 shmget 创建，创建后可被任意不相关的进程读写使用",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "匿名管道没有文件系统中的路径名，通常通过 pipe 创建，shell 命令中的「|」竖线就是匿名管道。[原文§进程间通讯有哪些方式？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E5%BC%8F)"
+    }
+  },
+  {
+    "id": "V2-136",
+    "before": {
+      "question": "按原文，命名管道是怎样突破匿名管道只能在亲缘关系进程间通信的限制的？",
+      "typed": {
+        "id": "V2-136",
+        "type": "single",
+        "stem": "按原文，命名管道是怎样突破匿名管道只能在亲缘关系进程间通信的限制的？",
+        "options": [
+          {
+            "key": "A",
+            "text": "需要在文件系统创建类型为 p 的设备文件，无关进程通过它通信",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "通过 fork 继承文件描述符，使无关进程也能获得管道",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "通过消息体自定义数据类型，使无关进程也能识别",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "通过把双方的虚拟地址映射到同一块物理内存实现通信",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "命名管道需要在文件系统创建一个类型为 p 的设备文件，那么毫无关系的进程就可以通过这个设备文件进行通信。[原文§进程间通讯有哪些方式？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E5%BC%8F)"
+    },
+    "after": {
+      "question": "命名管道怎样方便没有亲缘关系的进程通信？",
+      "typed": {
+        "id": "V2-136",
+        "type": "single",
+        "stem": "命名管道怎样方便没有亲缘关系的进程通信？",
+        "options": [
+          {
+            "key": "A",
+            "text": "创建类型为 p 的 FIFO 特殊文件，无关进程通过路径名打开通信",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "通过 fork 继承文件描述符，使无关进程也能获得管道",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "通过消息体自定义数据类型，使无关进程也能识别",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "通过把双方的虚拟地址映射到同一块物理内存实现通信",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "命名管道在文件系统中具有路径名，没有亲缘关系的进程可以通过路径名打开同一个 FIFO（命名管道）特殊文件进行通信。（原文把类型为 p 的命名管道误称为“设备文件”；这里应为 FIFO 特殊文件。）[核对来源：Linux fifo(7)](https://man7.org/linux/man-pages/man7/fifo.7.html)[原文§进程间通讯有哪些方式？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E5%BC%8F)"
+    }
+  },
+  {
+    "id": "V2-159",
+    "before": {
+      "question": "关于信号和信号量，下列说法符合原文的有哪些？",
+      "typed": {
+        "id": "V2-159",
+        "type": "multiple",
+        "stem": "关于信号和信号量，下列说法符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "信号是一种处理异步事件的方式",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "信号用于协调多个任务对资源的使用",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "信号量用于通知进程发生了某个事件",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "信号量可以理解为一个资源计数器",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "信号处理异步事件、通知事件发生；信号量是资源计数器、用于同步与互斥。后两项把二者的用途说反了。[原文§信号和信号量有什么区别？](https://xiaolincoding.com/interview/os.html#%E4%BF%A1%E5%8F%B7%E5%92%8C%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "关于信号和信号量，下列说法符合原文的有哪些？",
+      "typed": {
+        "id": "V2-159",
+        "type": "multiple",
+        "stem": "关于信号和信号量，下列说法符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "信号是一种处理异步事件的方式",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "信号用于协调多个任务对资源的使用",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "信号量用于通知进程发生了某个事件",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "信号量可以理解为一个资源计数器",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "信号处理异步事件、通知事件发生；信号量是资源计数器、用于同步与互斥。B、C 两项把二者的用途说反了。[原文§信号和信号量有什么区别？](https://xiaolincoding.com/interview/os.html#%E4%BF%A1%E5%8F%B7%E5%92%8C%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    }
+  },
+  {
+    "id": "V2-181",
+    "before": {
+      "question": "关于读写锁的工作原理，下列说法符合原文的有哪些？",
+      "typed": {
+        "id": "V2-181",
+        "type": "multiple",
+        "stem": "关于读写锁的工作原理，下列说法符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "写锁被线程持有后，读线程获取读锁的操作会被阻塞",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "写锁被持有期间，其他写线程仍可以同时获取写锁",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "写锁没有被线程持有时，多个线程能够并发地持有读锁",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "读锁是独占锁，同一时刻只能有一个线程持有",
+            "correct": false
+          },
+          {
+            "key": "E",
+            "text": "写锁被线程持有后，其他写线程获取写锁的操作也会被阻塞",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "写锁没被持有时多个线程可并发持有读锁；一旦写锁被持有，读线程获取读锁和其他写线程获取写锁都会被阻塞。写锁是独占锁，读锁是共享锁。[原文§线程间通讯有什么方式？](https://xiaolincoding.com/interview/os.html#%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F)"
+    },
+    "after": {
+      "question": "关于读写锁的工作原理，下列说法符合原文的有哪些？",
+      "typed": {
+        "id": "V2-181",
+        "type": "multiple",
+        "stem": "关于读写锁的工作原理，下列说法符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "写锁被线程持有后，读线程获取读锁的操作会被阻塞",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "写锁被持有期间，其他写线程仍可以同时获取写锁",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "读锁允许多个线程并发持有，但不能与写锁同时持有",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "读锁是独占锁，同一时刻只能有一个线程持有",
+            "correct": false
+          },
+          {
+            "key": "E",
+            "text": "写锁被线程持有后，其他写线程获取写锁的操作也会被阻塞",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "读锁是共享锁，允许多个线程并发持有；写锁是独占锁，被持有时其他线程获取读锁或写锁都会被阻塞。这里描述读锁的共享能力，不表示只要当前无写锁持有者，新读者就必定立即获准；具体准入还取决于实现策略。[原文§线程间通讯有什么方式？](https://xiaolincoding.com/interview/os.html#%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F)"
+    }
+  },
+  {
+    "id": "V2-189",
+    "before": {
+      "question": "下列锁与适用场景的对应，符合原文的有哪些？",
+      "typed": {
+        "id": "V2-189",
+        "type": "multiple",
+        "stem": "下列锁与适用场景的对应，符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "自旋锁适合持锁时间很长的临界区",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "读写锁适合无法区分读操作和写操作的场景",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "自旋锁适合临界区很小、持锁时间很短的场景",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "读写锁适合读操作频繁、写操作较少的场景",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "读写锁适合读多写少、且能区分读写的场景；自旋锁适合临界区小、持锁时间很短的场景。后两项与原文相反。[原文§除了互斥锁你还知道什么锁？分别应用于什么场景？](https://xiaolincoding.com/interview/os.html#%E9%99%A4%E4%BA%86%E4%BA%92%E6%96%A5%E9%94%81%E4%BD%A0%E8%BF%98%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E9%94%81-%E5%88%86%E5%88%AB%E5%BA%94%E7%94%A8%E4%BA%8E%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF)"
+    },
+    "after": {
+      "question": "下列锁与适用场景的对应，符合原文的有哪些？",
+      "typed": {
+        "id": "V2-189",
+        "type": "multiple",
+        "stem": "下列锁与适用场景的对应，符合原文的有哪些？",
+        "options": [
+          {
+            "key": "A",
+            "text": "自旋锁适合持锁时间很长的临界区",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "读写锁适合无法区分读操作和写操作的场景",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "自旋锁适合临界区很小、持锁时间很短的场景",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "读写锁适合读操作频繁、写操作较少的场景",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "读写锁适合读多写少、且能区分读写的场景；自旋锁适合临界区小、持锁时间很短的场景。A、B 两项与原文相反。[原文§除了互斥锁你还知道什么锁？分别应用于什么场景？](https://xiaolincoding.com/interview/os.html#%E9%99%A4%E4%BA%86%E4%BA%92%E6%96%A5%E9%94%81%E4%BD%A0%E8%BF%98%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E9%94%81-%E5%88%86%E5%88%AB%E5%BA%94%E7%94%A8%E4%BA%8E%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF)"
+    }
+  },
+  {
+    "id": "V2-199",
+    "before": {
+      "question": "按原文，生产者在放入数据和发送通知时应该怎么做？",
+      "typed": {
+        "id": "V2-199",
+        "type": "single",
+        "stem": "按原文，生产者在放入数据和发送通知时应该怎么做？",
+        "options": [
+          {
+            "key": "A",
+            "text": "不需要加锁，直接修改队列并发送通知",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "先发送通知，再另外加一把锁修改队列",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "只在修改队列时加锁，通知必须由消费者发送",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "要在同一把锁保护下修改队列，并发送通知",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "生产者也要在同一把锁保护下修改队列，并发送通知。[原文§条件变量为什么要配合互斥锁，还要用 while 判断条件？](https://xiaolincoding.com/interview/os.html#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E5%90%88%E4%BA%92%E6%96%A5%E9%94%81-%E8%BF%98%E8%A6%81%E7%94%A8-while-%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6)"
+    },
+    "after": {
+      "question": "按原文，生产者在放入数据和发送通知时应该怎么做？",
+      "typed": {
+        "id": "V2-199",
+        "type": "single",
+        "stem": "按原文，生产者在放入数据和发送通知时应该怎么做？",
+        "options": [
+          {
+            "key": "A",
+            "text": "不需要加锁，直接修改队列并发送通知",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "先发送通知，再另外加一把锁修改队列",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "只在修改队列时加锁，通知必须由消费者发送",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "用同一把锁保护队列修改，并通知消费者检查条件",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "生产者应在与消费者相同的互斥锁保护下修改共享队列，并发送条件变量通知；本例可以在持锁时通知。（原文写“在同一把锁保护下修改队列，并发送通知”，这是本例的常见写法；POSIX 并不强制所有通知调用都持有关联互斥锁，共享条件的同步保护与通知调用的持锁要求应区分。）[核对来源：POSIX pthread_cond_broadcast/signal](https://man7.org/linux/man-pages/man3/pthread_cond_broadcast.3p.html)[原文§条件变量为什么要配合互斥锁，还要用 while 判断条件？](https://xiaolincoding.com/interview/os.html#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E5%90%88%E4%BA%92%E6%96%A5%E9%94%81-%E8%BF%98%E8%A6%81%E7%94%A8-while-%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6)"
+    }
+  },
+  {
+    "id": "V2-200",
+    "before": {
+      "question": "条件变量为什么要配合互斥锁，等待条件时为什么要用 while 而不是 if？",
+      "typed": {
+        "id": "V2-200",
+        "type": "short"
+      },
+      "answer": "条件变量负责等待和唤醒，互斥锁负责保护真正的共享条件（如“队列不为空”）。pthread_cond_wait 把释放互斥锁和进入等待作为一个原子过程，避免消费者刚检查完队列、生产者就放入数据并通知，而消费者随后才睡下去，错过这次通知；被唤醒后 wait 先重新获取互斥锁再返回。用 while 是因为可能出现虚假唤醒（没有通知 wait 也可能返回），而且多个消费者被唤醒后其他线程可能先取走数据，当前线程拿到锁时队列又空了。所以唤醒只代表可以重新检查条件，不代表条件一定成立；生产者也要在同一把锁保护下修改队列并发送通知。[原文§条件变量为什么要配合互斥锁，还要用 while 判断条件？](https://xiaolincoding.com/interview/os.html#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E5%90%88%E4%BA%92%E6%96%A5%E9%94%81-%E8%BF%98%E8%A6%81%E7%94%A8-while-%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6)"
+    },
+    "after": {
+      "question": "条件变量为什么要配合互斥锁，等待条件时为什么要用 while 而不是 if？",
+      "typed": {
+        "id": "V2-200",
+        "type": "short"
+      },
+      "answer": "条件变量负责等待和唤醒，互斥锁负责保护真正的共享条件（如“队列不为空”）。pthread_cond_wait 把释放互斥锁和进入等待作为一个原子过程，避免消费者刚检查完队列、生产者就放入数据并通知，而消费者随后才睡下去，错过这次通知；被唤醒后 wait 先重新获取互斥锁再返回。用 while 是因为可能出现虚假唤醒（没有通知 wait 也可能返回），而且多个消费者被唤醒后其他线程可能先取走数据，当前线程拿到锁时队列又空了。所以唤醒只代表可以重新检查条件，不代表条件一定成立；生产者应在与消费者相同的互斥锁保护下修改共享队列，并发送条件变量通知；本例可以在持锁时通知。（原文写“在同一把锁保护下修改队列，并发送通知”，这是本例的常见写法；POSIX 并不强制所有通知调用都持有关联互斥锁，共享条件的同步保护与通知调用的持锁要求应区分。）[核对来源：POSIX pthread_cond_broadcast/signal](https://man7.org/linux/man-pages/man3/pthread_cond_broadcast.3p.html)[原文§条件变量为什么要配合互斥锁，还要用 while 判断条件？](https://xiaolincoding.com/interview/os.html#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E5%90%88%E4%BA%92%E6%96%A5%E9%94%81-%E8%BF%98%E8%A6%81%E7%94%A8-while-%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6)"
+    }
+  },
+  {
+    "id": "V2-215",
+    "before": {
+      "question": "按原文，高响应比优先算法每次调度时怎么选择进程？",
+      "typed": {
+        "id": "V2-215",
+        "type": "single",
+        "stem": "按原文，高响应比优先算法每次调度时怎么选择进程？",
+        "options": [
+          {
+            "key": "A",
+            "text": "选择最先进入就绪队列的进程，让它一直运行到结束或阻塞",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "选择要求运行时间最短的进程，让它优先运行到结束",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "计算每个进程的响应比优先级，把响应比最高的进程投入运行",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "选择当前时间片还没用完的进程，让它继续运行下去",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "每次进行进程调度时，先计算「响应比优先级」，然后把「响应比优先级」最高的进程投入运行。[原文§进程调度算法有哪些？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B)"
+    },
+    "after": {
+      "question": "高响应比优先（HRRN）算法的响应比计算公式是什么，每次调度如何选择进程？",
+      "typed": {
+        "id": "V2-215",
+        "type": "single",
+        "stem": "高响应比优先（HRRN）算法的响应比计算公式是什么，每次调度如何选择进程？",
+        "options": [
+          {
+            "key": "A",
+            "text": "响应比 = 等待时间 / 服务时间；选择响应比最低的就绪进程运行",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "响应比 = 服务时间 / (等待时间 + 服务时间)；选择响应比最高者运行",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "响应比 = (等待时间 + 服务时间) / 服务时间；选择响应比最高者运行",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "响应比 = (等待时间 + 服务时间) / 等待时间；选择响应比最低者运行",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "响应比 =（等待时间 + 要求的服务时间）/ 要求的服务时间，其中服务时间大于 0。每次调度先计算各就绪进程的响应比，再选择响应比最高的进程投入运行。[原文§进程调度算法有哪些？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B)"
+    }
+  },
+  {
+    "id": "V2-216",
+    "before": {
+      "question": "按原文，两个进程的等待时间相同时，高响应比优先算法中要求的服务时间越短，响应比怎样？",
+      "typed": {
+        "id": "V2-216",
+        "type": "single",
+        "stem": "按原文，两个进程的等待时间相同时，高响应比优先算法中要求的服务时间越短，响应比怎样？",
+        "options": [
+          {
+            "key": "A",
+            "text": "响应比越低，短作业的进程不容易被选中运行",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "响应比不变，与服务时间无关",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "响应比越高，短作业的进程容易被选中运行",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "响应比为零，短作业的进程不会被选中",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "如果两个进程的等待时间相同，要求的服务时间越短，响应比就越高，这样短作业的进程容易被选中运行。[原文§进程调度算法有哪些？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B)"
+    },
+    "after": {
+      "question": "两个进程的等待时间相同且大于 0、要求的服务时间均大于 0 时，高响应比优先算法中服务时间越短，响应比怎样？",
+      "typed": {
+        "id": "V2-216",
+        "type": "single",
+        "stem": "两个进程的等待时间相同且大于 0、要求的服务时间均大于 0 时，高响应比优先算法中服务时间越短，响应比怎样？",
+        "options": [
+          {
+            "key": "A",
+            "text": "响应比越低，短作业的进程不容易被选中运行",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "响应比不变，与服务时间无关",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "响应比越高，短作业的进程容易被选中运行",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "响应比为零，短作业的进程不会被选中",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "当两个进程的等待时间相同且大于 0、服务时间均大于 0 时，由响应比 = 1 + 等待时间 / 服务时间可知，服务时间越短，响应比越高，短作业越容易被选中运行。（原文只写“等待时间相同”，省略了正等待时间条件；等待时间同为 0 时响应比均为 1，不存在严格高低。）[原文§进程调度算法有哪些？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B)[核对来源：原文同节响应比公式](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B)"
+    }
+  },
+  {
+    "id": "V2-240",
+    "before": {
+      "question": "请简述先来先服务、最短作业优先、高响应比优先、时间片轮转、最高优先级和多级反馈队列这几种进程调度算法。",
+      "typed": {
+        "id": "V2-240",
+        "type": "short"
+      },
+      "answer": "先来先服务（FCFS）是非抢占式的，每次选就绪队列里最先进入的进程运行到退出或阻塞，对长作业有利、不利于短作业，适用于 CPU 繁忙型作业。最短作业优先（SJF）优先选运行时间最短的进程，有助于提高吞吐量，但对长作业不利，可能长期不被运行。高响应比优先（HRRN）每次计算响应比优先级并选最高者，服务时间越短、等待时间越长响应比越高，兼顾长短作业。时间片轮转（RR）给每个进程分配一个时间片，用完就让出 CPU，时间片太短切换过多、太长则响应变慢并接近 FCFS。最高优先级（HPF）选优先级最高的进程，优先级分静态和动态，处理方式分非抢占式和抢占式，缺点是低优先级进程可能永远不运行。多级反馈队列综合 RR 和 HPF：多个队列优先级从高到低、优先级越高时间片越短，新进程进第一级队列，用不完时间片就逐级下移，较高队列为空才调度较低队列，并可定期提升等待任务的优先级，兼顾长短作业和交互任务的响应。[原文§进程调度算法有哪些？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B)"
+    },
+    "after": {
+      "question": "请简述先来先服务、最短作业优先、高响应比优先、时间片轮转、最高优先级和多级反馈队列这几种进程调度算法。",
+      "typed": {
+        "id": "V2-240",
+        "type": "short"
+      },
+      "answer": "先来先服务（FCFS）是非抢占式的，每次选就绪队列里最先进入的进程运行到退出或阻塞，对长作业有利、不利于短作业，适用于 CPU 繁忙型作业。最短作业优先（SJF）优先选运行时间最短的进程，有助于提高吞吐量，但对长作业不利，可能长期不被运行。高响应比优先（HRRN）每次计算响应比优先级并选最高者，等待时间相同且大于 0 时服务时间越短响应比越高；服务时间相同时等待越久响应比越高，兼顾长短作业。时间片轮转（RR）给每个进程分配一个时间片，用完就让出 CPU，时间片太短切换过多、太长则响应变慢并接近 FCFS。最高优先级（HPF）选优先级最高的进程，优先级分静态和动态，处理方式分非抢占式和抢占式，缺点是低优先级进程可能永远不运行。多级反馈队列综合 RR 和 HPF：多个队列优先级从高到低、优先级越高时间片越短，新进程进第一级队列，用完该级时间片仍未完成的任务逐级下移，较高队列为空才调度较低队列，并可定期提升等待任务的优先级，兼顾长短作业和交互任务的响应。[原文§进程调度算法有哪些？](https://xiaolincoding.com/interview/os.html#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B)"
+    }
+  },
+  {
+    "id": "V3-8",
+    "before": {
+      "question": "自旋锁加锁失败后，线程会怎么做？",
+      "typed": {
+        "id": "V3-8",
+        "type": "single",
+        "stem": "自旋锁加锁失败后，线程会怎么做？",
+        "options": [
+          {
+            "key": "A",
+            "text": "进入睡眠并发生线程切换，等待被唤醒",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "立即放弃，释放自己已经持有的全部锁",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "把锁的状态改回空闲后直接返回",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "进行忙等待，直到它拿到锁",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "自旋锁加锁失败后，线程会忙等待，直到拿到锁，而不是进入睡眠。睡眠并发生线程切换是互斥锁应对加锁失败的方式。[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)"
+    },
+    "after": {
+      "question": "自旋锁加锁失败后，线程会怎么做？",
+      "typed": {
+        "id": "V3-8",
+        "type": "single",
+        "stem": "自旋锁加锁失败后，线程会怎么做？",
+        "options": [
+          {
+            "key": "A",
+            "text": "进入睡眠并发生线程切换，等待被唤醒",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "立即放弃，释放自己已经持有的全部锁",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "把锁的状态改回空闲后直接返回",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "进行忙等待，直到它拿到锁",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "自旋锁加锁失败后，线程会忙等待，直到拿到锁。以阻塞等待的互斥锁为例，持续竞争时可阻塞并让出 CPU。（原文把互斥锁竞争失败与线程切换直接对应，这是以阻塞等待为例的简化比较；具体实现也可能先自旋再阻塞，例如 glibc 自适应互斥锁。）[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)[核对来源：glibc POSIX Thread Tunables](https://sourceware.org/glibc/manual/latest/html_node/POSIX-Thread-Tunables.html)"
+    }
+  },
+  {
+    "id": "V3-9",
+    "before": {
+      "question": "自旋锁与互斥锁在“加锁失败”时的应对方式有什么不同？",
+      "typed": {
+        "id": "V3-9",
+        "type": "single",
+        "stem": "自旋锁与互斥锁在“加锁失败”时的应对方式有什么不同？",
+        "options": [
+          {
+            "key": "A",
+            "text": "互斥锁用“线程切换”来应对，自旋锁用“忙等待”来应对",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "互斥锁用“忙等待”来应对，自旋锁用“线程切换”来应对",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "两者都用“忙等待”，只是实现的指令不同",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "两者都用“线程切换”，只是等待的时长不同",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "两者使用层面相似但实现完全不同：加锁失败时，互斥锁用线程切换，自旋锁用忙等待。把两者的做法对调、或说成两者做法相同，都不符合原文。[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)"
+    },
+    "after": {
+      "question": "以阻塞等待的互斥锁为例，在竞争持续、无法获得锁时，它与纯自旋锁的等待方式有什么不同？",
+      "typed": {
+        "id": "V3-9",
+        "type": "single",
+        "stem": "以阻塞等待的互斥锁为例，在竞争持续、无法获得锁时，它与纯自旋锁的等待方式有什么不同？",
+        "options": [
+          {
+            "key": "A",
+            "text": "互斥锁可阻塞并让出 CPU，自旋锁继续忙等待",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "互斥锁用“忙等待”来应对，自旋锁用“线程切换”来应对",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "两者都用“忙等待”，只是实现的指令不同",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "两者都用“线程切换”，只是等待的时长不同",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "以阻塞等待的互斥锁为例，持续竞争时可阻塞并让出 CPU，纯自旋锁则忙等待。其余选项不符合此处比较的前提。（原文把互斥锁竞争失败与线程切换直接对应，这是以阻塞等待为例的简化比较；具体实现也可能先自旋再阻塞，例如 glibc 自适应互斥锁。）[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)[核对来源：glibc POSIX Thread Tunables](https://sourceware.org/glibc/manual/latest/html_node/POSIX-Thread-Tunables.html)"
+    }
+  },
+  {
+    "id": "V3-13",
+    "before": {
+      "question": "CAS 函数在自旋锁的加锁过程中起什么作用？",
+      "typed": {
+        "id": "V3-13",
+        "type": "single",
+        "stem": "CAS 函数在自旋锁的加锁过程中起什么作用？",
+        "options": [
+          {
+            "key": "A",
+            "text": "把查看锁状态和设置锁合并成一条原子指令",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "把查看锁状态拆成多条指令，让每步可被打断",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "让线程拿不到锁时自动睡眠，等待被唤醒",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "让多个线程同时拿到同一把锁以提高并行度",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "CAS 把两个步骤合并成一条硬件级的原子指令，保证这两个步骤不可分割，要么一次性执行完两个步骤，要么都不执行。其余说法与 CAS 的作用相反或无关。[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)"
+    },
+    "after": {
+      "question": "CAS 函数在自旋锁的加锁过程中起什么作用？",
+      "typed": {
+        "id": "V3-13",
+        "type": "single",
+        "stem": "CAS 函数在自旋锁的加锁过程中起什么作用？",
+        "options": [
+          {
+            "key": "A",
+            "text": "把查看锁状态和设置锁合并成一条原子指令",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "把查看锁状态拆成多条指令，让每步可被打断",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "让线程拿不到锁时自动睡眠，等待被唤醒",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "让多个线程同时拿到同一把锁以提高并行度",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "CAS 将比较锁状态与条件更新合并为不可分割的原子操作：比较匹配时更新锁值，比较不匹配时不更新锁值，但比较仍然执行。（原文“要么两个步骤都不执行”是简化表述，不能理解为失败时连比较也没有执行。）其余选项与 CAS 的作用相反或无关。[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)[核对来源：GCC 原子比较交换操作](https://gcc.gnu.org/onlinedocs/gcc/_005f_005fatomic-Builtins.html)"
+    }
+  },
+  {
+    "id": "V3-16",
+    "before": {
+      "question": "下列哪些情况适合使用自旋锁？",
+      "typed": {
+        "id": "V3-16",
+        "type": "multiple",
+        "stem": "下列哪些情况适合使用自旋锁？",
+        "options": [
+          {
+            "key": "A",
+            "text": "多核环境",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "持锁时间很短",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "持锁线程能继续运行",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "只有一个核心",
+            "correct": false
+          },
+          {
+            "key": "E",
+            "text": "持锁线程已经被调度出去",
+            "correct": false
+          },
+          {
+            "key": "F",
+            "text": "持锁时间较长或可能阻塞",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "自旋适合多核环境、持锁时间很短，而且持锁线程能继续运行的情况。只有一个核心，或持锁线程已被调度出去时，等待线程一直自旋会浪费大量 CPU 时间；持锁较长或可能阻塞时通常更适合互斥锁。[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)"
+    },
+    "after": {
+      "question": "下列哪些因素组合起来有利于使用自旋锁？",
+      "typed": {
+        "id": "V3-16",
+        "type": "multiple",
+        "stem": "下列哪些因素组合起来有利于使用自旋锁？",
+        "options": [
+          {
+            "key": "A",
+            "text": "多核环境",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "持锁时间很短",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "持锁线程能继续运行",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "只有一个核心",
+            "correct": false
+          },
+          {
+            "key": "E",
+            "text": "持锁线程已经被调度出去",
+            "correct": false
+          },
+          {
+            "key": "F",
+            "text": "持锁时间较长或可能阻塞",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "A、B、C 是应组合考虑的有利因素：多核环境、持锁时间很短，而且持锁线程能继续运行；不能仅凭其中一项就断言适合自旋。只有一个核心，或持锁线程已被调度出去时，等待线程一直自旋会浪费大量 CPU 时间；持锁较长或可能阻塞时通常更适合互斥锁。[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)"
+    }
+  },
+  {
+    "id": "V3-21",
+    "before": {
+      "question": "自旋锁和互斥锁有什么区别？各自更适合什么情况？",
+      "typed": {
+        "id": "V3-21",
+        "type": "short"
+      },
+      "answer": "两者使用层面相似，但实现层面完全不同：加锁失败时，互斥锁用“线程切换”来应对，自旋锁用“忙等待”来应对。自旋锁适合多核环境、持锁时间很短，而且持锁线程能继续运行的情况；如果只有一个核心，或持锁线程已被调度出去，等待线程一直自旋会浪费大量 CPU 时间。短临界区可以考虑自旋锁，持锁时间较长或可能阻塞时通常更适合互斥锁，但最终还要看核心数量、竞争程度和具体实现。[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)"
+    },
+    "after": {
+      "question": "自旋锁和互斥锁有什么区别？各自更适合什么情况？",
+      "typed": {
+        "id": "V3-21",
+        "type": "short"
+      },
+      "answer": "两者使用层面相似。以阻塞等待的互斥锁为例，持续竞争时可阻塞并让出 CPU；纯自旋锁竞争失败后忙等待。（原文把互斥锁竞争失败与线程切换直接对应，这是以阻塞等待为例的简化比较；具体实现也可能先自旋再阻塞，例如 glibc 自适应互斥锁。）自旋锁适合多核环境、持锁时间很短，而且持锁线程能继续运行的情况；如果只有一个核心，或持锁线程已被调度出去，等待线程一直自旋会浪费大量 CPU 时间。短临界区可以考虑自旋锁，持锁时间较长或可能阻塞时通常更适合互斥锁，但最终还要看核心数量、竞争程度和具体实现。[原文§自旋锁是什么？应用在哪些场景？](https://xiaolincoding.com/interview/os.html#%E8%87%AA%E6%97%8B%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF)[核对来源：glibc POSIX Thread Tunables](https://sourceware.org/glibc/manual/latest/html_node/POSIX-Thread-Tunables.html)"
+    }
+  },
+  {
+    "id": "V4-35",
+    "before": {
+      "question": "按原文的例子，假设每个页表项占 4 字节，上面的单级页表要占用多少内存？",
+      "typed": {
+        "id": "V4-35",
+        "type": "single",
+        "stem": "按原文的例子，假设每个页表项占 4 字节，上面的单级页表要占用多少内存？",
+        "options": [
+          {
+            "key": "A",
+            "text": "4KB",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "16MB",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "1MB",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "4MB",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "2^20 个虚拟页，每个页表项占 4 字节，单级页表就要占用 4MB。[原文§为什么要用多级页表？](https://xiaolincoding.com/interview/os.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8)"
+    },
+    "after": {
+      "question": "假设虚拟地址为 32 位、页大小为 4KB（2^12 字节）、每个页表项占 4 字节，覆盖整个虚拟地址空间的单级页表要占用多少内存？（选项中的 KB、MB 按 2 的幂计。）",
+      "typed": {
+        "id": "V4-35",
+        "type": "single",
+        "stem": "假设虚拟地址为 32 位、页大小为 4KB（2^12 字节）、每个页表项占 4 字节，覆盖整个虚拟地址空间的单级页表要占用多少内存？（选项中的 KB、MB 按 2 的幂计。）",
+        "options": [
+          {
+            "key": "A",
+            "text": "4KB",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "16MB",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "1MB",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "4MB",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "32 位虚拟地址空间共有 2^32 字节，页大小为 2^12 字节，因此有 2^20 个虚拟页。每项占 4 字节，单级页表占 2^20 × 4 = 2^22 字节，即 4MiB（原文及选项记作 4MB）。[原文§为什么要用多级页表？](https://xiaolincoding.com/interview/os.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8)"
+    }
+  },
+  {
+    "id": "V4-53",
+    "before": {
+      "question": "[填空题·有序] 按原文，用户空间内存从低到高分别是 6 种内存段：代码段、____、BSS 段、____、____、栈段。",
+      "typed": {
+        "id": "V4-53",
+        "type": "fill",
+        "stem": "按原文，用户空间内存从低到高分别是 6 种内存段：代码段、____、BSS 段、____、____、栈段。",
+        "blankCount": 3,
+        "blankOrder": "ordered"
+      },
+      "answer": "三个空依次是：数据段、堆段、文件映射段。[原文§程序的内存布局是怎么样的？](https://xiaolincoding.com/interview/os.html#%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84)"
+    },
+    "after": {
+      "question": "[填空题·有序] 按原文的典型布局图，用户空间内存从低到高分别是 6 种内存段：代码段、____、BSS 段、____、____、栈段。",
+      "typed": {
+        "id": "V4-53",
+        "type": "fill",
+        "stem": "按原文的典型布局图，用户空间内存从低到高分别是 6 种内存段：代码段、____、BSS 段、____、____、栈段。",
+        "blankCount": 3,
+        "blankOrder": "ordered"
+      },
+      "answer": "三个空依次是：数据段、堆段、文件映射段。[原文§程序的内存布局是怎么样的？](https://xiaolincoding.com/interview/os.html#%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84)"
+    }
+  },
+  {
+    "id": "V4-63",
+    "before": {
+      "question": "按原文，为什么不能在函数返回后继续使用指向其局部变量的指针？",
+      "typed": {
+        "id": "V4-63",
+        "type": "single",
+        "stem": "按原文，为什么不能在函数返回后继续使用指向其局部变量的指针？",
+        "options": [
+          {
+            "key": "A",
+            "text": "栈上的函数调用信息通常随函数返回自动回收",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "局部变量放在堆里，函数返回时必须手动 free",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "栈空间的回收需要程序员显式调用释放函数",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "栈上的数据在函数返回后会被自动搬到堆上保存",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "栈上的函数调用信息通常随函数返回自动回收，所以不能在函数返回后继续使用指向其局部变量的指针。[原文§堆和栈的区别？](https://xiaolincoding.com/interview/os.html#%E5%A0%86%E5%92%8C%E6%A0%88%E7%9A%84%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "按原文讨论的栈上普通自动存储期局部变量，为什么不能在函数返回后继续使用指向该变量的指针？",
+      "typed": {
+        "id": "V4-63",
+        "type": "single",
+        "stem": "按原文讨论的栈上普通自动存储期局部变量，为什么不能在函数返回后继续使用指向该变量的指针？",
+        "options": [
+          {
+            "key": "A",
+            "text": "栈上的函数调用信息通常随函数返回自动回收",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "局部变量放在堆里，函数返回时必须手动 free",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "栈空间的回收需要程序员显式调用释放函数",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "栈上的数据在函数返回后会被自动搬到堆上保存",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "栈上的普通自动存储期局部变量随函数返回结束生命周期，其占用的栈空间通常自动回收，所以不能在函数返回后继续使用指向该变量的指针。[原文§堆和栈的区别？](https://xiaolincoding.com/interview/os.html#%E5%A0%86%E5%92%8C%E6%A0%88%E7%9A%84%E5%8C%BA%E5%88%AB)"
+    }
+  },
+  {
+    "id": "V4-123",
+    "before": {
+      "question": "按原文，什么情况下内核会触发 OOM（Out of Memory）机制？",
+      "typed": {
+        "id": "V4-123",
+        "type": "single",
+        "stem": "按原文，什么情况下内核会触发 OOM（Out of Memory）机制？",
+        "options": [
+          {
+            "key": "A",
+            "text": "空闲内存刚刚低于一定水位、后台回收尚未开始之前",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "kswapd 内核线程被唤醒并开始后台回收内存的时候",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "进程第一次访问新申请的匿名页并触发缺页异常的时候",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "直接内存回收后，空闲物理内存仍然无法满足此次申请",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "如果直接内存回收后，空闲的物理内存仍然无法满足此次物理内存的申请，那么内核就会触发 OOM（Out of Memory）机制。[原文§操作系统内存不足的时候会发生什么？](https://xiaolincoding.com/interview/os.html#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E7%9A%84%E6%97%B6%E5%80%99%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)"
+    },
+    "after": {
+      "question": "按原文描述的常见可触发 OOM 的内存分配路径，直接回收后的哪种情况可能使内核进入 OOM（Out of Memory）处理？",
+      "typed": {
+        "id": "V4-123",
+        "type": "single",
+        "stem": "按原文描述的常见可触发 OOM 的内存分配路径，直接回收后的哪种情况可能使内核进入 OOM（Out of Memory）处理？",
+        "options": [
+          {
+            "key": "A",
+            "text": "空闲内存刚刚低于一定水位、后台回收尚未开始之前",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "kswapd 内核线程被唤醒并开始后台回收内存的时候",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "进程第一次访问新申请的匿名页并触发缺页异常的时候",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "直接内存回收后，空闲物理内存仍然无法满足此次申请",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "直接内存回收后，空闲物理内存仍无法满足此次申请时，内核可能进入 OOM 处理；部分分配也可能直接失败，具体取决于分配方式和系统配置。[原文§操作系统内存不足的时候会发生什么？](https://xiaolincoding.com/interview/os.html#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E7%9A%84%E6%97%B6%E5%80%99%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)"
+    }
+  },
+  {
+    "id": "V4-129",
+    "before": {
+      "question": "按原文，匿名页指的是哪些内存？",
+      "typed": {
+        "id": "V4-129",
+        "type": "single",
+        "stem": "按原文，匿名页指的是哪些内存？",
+        "options": [
+          {
+            "key": "A",
+            "text": "没有硬盘文件作为载体的内存，比如堆、栈数据等",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "内核缓存的磁盘数据和内核缓存的文件数据",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "可以随时从原文件重新读取的只读页面",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "已经写入 Swap 且不再占用物理内存的页面",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "匿名页这部分内存没有实际载体，不像文件缓存有硬盘文件这样一个载体，比如堆、栈数据等。[原文§操作系统内存不足的时候会发生什么？](https://xiaolincoding.com/interview/os.html#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E7%9A%84%E6%97%B6%E5%80%99%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)"
+    },
+    "after": {
+      "question": "按原文，匿名页指的是哪些内存？",
+      "typed": {
+        "id": "V4-129",
+        "type": "single",
+        "stem": "按原文，匿名页指的是哪些内存？",
+        "options": [
+          {
+            "key": "A",
+            "text": "没有硬盘文件作为载体的内存，比如堆、栈数据等",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "内核缓存的磁盘数据和内核缓存的文件数据",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "可以随时从原文件重新读取的只读页面",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "只有已经换出到 Swap 的页面才是匿名页，仍驻留物理内存的页面都不是匿名页",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "匿名页没有普通硬盘文件作为载体，比如堆、栈数据等。匿名页可以仍驻留物理内存，也可以被换出到 Swap；是否驻留不是匿名页的分类依据，因此 D 把换出状态误当成匿名页定义是错误的。[原文§操作系统内存不足的时候会发生什么？](https://xiaolincoding.com/interview/os.html#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E7%9A%84%E6%97%B6%E5%80%99%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)"
+    }
+  },
+  {
+    "id": "V4-135",
+    "before": {
+      "question": "按原文，操作系统内存不足的时候会发生什么？",
+      "typed": {
+        "id": "V4-135",
+        "type": "short"
+      },
+      "answer": "应用程序通过 malloc 申请的是可用的虚拟地址范围，物理内存通常在访问时按需提供；访问尚未建立物理映射的合法页面时，CPU 产生缺页异常，内核尝试分配页面。如果没有空闲物理内存，内核开始回收内存，方式主要有两种：后台内存回收（kswapd）在空闲内存低于一定水位时唤醒内核线程回收，不由申请线程同步完成；直接内存回收在后台回收跟不上时开始，是同步的，会阻塞进程。如果直接回收后仍无法满足申请，就触发 OOM 机制，OOM Killer 根据内存占用、oom_score_adj 等因素选择进程终止，不一定杀死占用内存最多的进程。可回收的内存主要有两类：文件页（干净页直接释放，脏页先写回磁盘再释放）和匿名页（通过 Swap 换出到磁盘再释放）。回收时参考页面的访问活跃程度，传统实现采用近似 LRU 思路，用 active 和 inactive 链表来理解；Swap 没有启用或空间不足时，匿名页难以回收，内存压力更难缓解。[原文§操作系统内存不足的时候会发生什么？](https://xiaolincoding.com/interview/os.html#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E7%9A%84%E6%97%B6%E5%80%99%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)"
+    },
+    "after": {
+      "question": "按原文，操作系统内存不足的时候会发生什么？",
+      "typed": {
+        "id": "V4-135",
+        "type": "short"
+      },
+      "answer": "应用程序通过 malloc 申请的是可用的虚拟地址范围，物理内存通常在访问时按需提供；访问尚未建立物理映射的合法页面时，CPU 产生缺页异常，内核尝试分配页面。如果没有空闲物理内存，内核开始回收内存，方式主要有两种：后台内存回收（kswapd）在空闲内存低于一定水位时唤醒内核线程回收，不由申请线程同步完成；直接内存回收在后台回收跟不上时开始，是同步的，会阻塞进程。如果直接回收后仍无法满足申请，可能进入 OOM 处理；部分分配也可能直接失败，具体取决于分配方式和系统配置。触发 OOM 时，OOM Killer 根据内存占用、oom_score_adj 等因素选择进程终止，不一定杀死占用内存最多的进程。可回收的内存主要有两类：文件页（干净页直接释放，脏页先写回磁盘再释放）和匿名页（通过 Swap 换出到磁盘再释放）。回收时参考页面的访问活跃程度，传统实现采用近似 LRU 思路，用 active 和 inactive 链表来理解；Swap 没有启用或空间不足时，匿名页难以回收，内存压力更难缓解。[原文§操作系统内存不足的时候会发生什么？](https://xiaolincoding.com/interview/os.html#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E7%9A%84%E6%97%B6%E5%80%99%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)"
+    }
+  },
+  {
+    "id": "V4-143",
+    "before": {
+      "question": "[填空题·有序] 按原文的例子（同一请求页面序列、3 个物理页），缺页次数分别是：最佳页面置换算法 ____ 次，先进先出置换算法 ____ 次，最近最久未使用置换算法 ____ 次。",
+      "typed": {
+        "id": "V4-143",
+        "type": "fill",
+        "stem": "按原文的例子（同一请求页面序列、3 个物理页），缺页次数分别是：最佳页面置换算法 ____ 次，先进先出置换算法 ____ 次，最近最久未使用置换算法 ____ 次。",
+        "blankCount": 3,
+        "blankOrder": "ordered"
+      },
+      "answer": "三个空依次是：7、10、9。最佳页面置换算法缺页共 7 次（空闲页换入 3 次加最优页面置换 4 次），先进先出置换算法缺页共 10 次（页面置换 7 次），最近最久未使用置换算法缺页共 9 次（页面置换 6 次）。[原文§页面置换有哪些算法？](https://xiaolincoding.com/interview/os.html#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E6%9C%89%E5%93%AA%E4%BA%9B%E7%AE%97%E6%B3%95)"
+    },
+    "after": {
+      "question": "[填空题·有序] 请求页面序列依次为 7、0、1、2、0、3、0、4、2、3、0、3、2，进程可用 3 个物理页，初始均为空闲；将首次装入也计为缺页。缺页次数分别是：最佳页面置换算法 ____ 次，先进先出置换算法 ____ 次，最近最久未使用置换算法 ____ 次。",
+      "typed": {
+        "id": "V4-143",
+        "type": "fill",
+        "stem": "请求页面序列依次为 7、0、1、2、0、3、0、4、2、3、0、3、2，进程可用 3 个物理页，初始均为空闲；将首次装入也计为缺页。缺页次数分别是：最佳页面置换算法 ____ 次，先进先出置换算法 ____ 次，最近最久未使用置换算法 ____ 次。",
+        "blankCount": 3,
+        "blankOrder": "ordered"
+      },
+      "answer": "三个空依次是：7、10、9。最佳页面置换算法缺页共 7 次（空闲页换入 3 次加最优页面置换 4 次），先进先出置换算法缺页共 10 次（页面置换 7 次），最近最久未使用置换算法缺页共 9 次（页面置换 6 次）。[原文§页面置换有哪些算法？](https://xiaolincoding.com/interview/os.html#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E6%9C%89%E5%93%AA%E4%BA%9B%E7%AE%97%E6%B3%95)"
+    }
+  },
+  {
+    "id": "V4-154",
+    "before": {
+      "question": "按原文，比较 OPT、FIFO 和 LRU 三种置换算法的思路，以及它们在原文例子中的表现。",
+      "typed": {
+        "id": "V4-154",
+        "type": "short"
+      },
+      "answer": "OPT 置换在“未来”最长时间不访问的页面，缺页共 7 次、页面置换 4 次，很理想但实际系统中无法实现，作用是衡量其他算法的效率。FIFO 选择最早进入内存的页面置换，缺页共 10 次、页面置换 7 次，性能比 OPT 差很多。LRU 选择最长时间没有被访问的页面置换，通过“历史”使用情况推测，缺页共 9 次、页面置换 6 次，比 FIFO 性能提高了一些，近似 OPT，但严格实现的开销比较大，实际应用中比较少使用。[原文§页面置换有哪些算法？](https://xiaolincoding.com/interview/os.html#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E6%9C%89%E5%93%AA%E4%BA%9B%E7%AE%97%E6%B3%95)"
+    },
+    "after": {
+      "question": "请求页面序列依次为 7、0、1、2、0、3、0、4、2、3、0、3、2，进程可用 3 个物理页，初始均为空闲。比较 OPT、FIFO 和 LRU 三种置换算法的思路，并给出这一序列下的缺页次数和页面置换次数（首次装入计缺页，不计置换）。",
+      "typed": {
+        "id": "V4-154",
+        "type": "short"
+      },
+      "answer": "OPT 置换在未来最长时间不访问的页面；在题设序列和 3 个初始空闲物理页下，缺页共 7 次、页面置换 4 次。实际系统无法预知未来访问序列，因此 OPT 用于衡量其他算法的效率。FIFO 选择最早进入内存的页面置换，本例缺页共 10 次、页面置换 7 次。LRU 选择最长时间没有被访问的页面置换，通过历史使用情况推测，本例缺页共 9 次、页面置换 6 次，表现好于 FIFO、接近 OPT；这里的数值与排序针对本例。严格实现 LRU 的开销比较大，实际应用中比较少使用。[原文§页面置换有哪些算法？](https://xiaolincoding.com/interview/os.html#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E6%9C%89%E5%93%AA%E4%BA%9B%E7%AE%97%E6%B3%95)"
+    }
+  },
+  {
+    "id": "V6-43",
+    "before": {
+      "question": "按原文，工作队列（workqueue）是怎样执行任务的？",
+      "typed": {
+        "id": "V6-43",
+        "type": "single",
+        "stem": "按原文，工作队列（workqueue）是怎样执行任务的？",
+        "options": [
+          {
+            "key": "A",
+            "text": "把任务交给工作线程，在进程上下文执行，允许使用可以睡眠的操作",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "在中断返回路径中直接执行，不允许睡眠",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "在设备发出请求时由硬件直接执行",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "交给 ksoftirqd 承接，处理函数不能睡眠",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "工作队列把任务交给工作线程，在进程上下文执行，允许使用可以睡眠的操作，适合需要等待或执行较重工作的场景。[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "线程工作队列（threaded workqueue）怎样执行任务？",
+      "typed": {
+        "id": "V6-43",
+        "type": "single",
+        "stem": "线程工作队列（threaded workqueue）怎样执行任务？",
+        "options": [
+          {
+            "key": "A",
+            "text": "把任务交给工作线程，在进程上下文执行，允许使用可以睡眠的操作",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "在中断返回路径中直接执行，不允许睡眠",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "在设备发出请求时由硬件直接执行",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "交给 ksoftirqd 承接，处理函数不能睡眠",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "线程工作队列把任务交给工作线程，在进程上下文执行，允许使用可以睡眠的操作，适合需要等待或执行较重工作的场景。（原文泛称“工作队列”把任务交给工作线程并允许睡眠；这里限定为线程工作队列，WQ_BH 工作项在 softirq 上下文执行，不能睡眠。）[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux Workqueue 的 WQ_BH 标志](https://docs.kernel.org/core-api/workqueue.html#flags)"
+    }
+  },
+  {
+    "id": "V6-44",
+    "before": {
+      "question": "按原文，下列哪些情形下的处理函数不能随意睡眠？",
+      "typed": {
+        "id": "V6-44",
+        "type": "multiple",
+        "stem": "按原文，下列哪些情形下的处理函数不能随意睡眠？",
+        "options": [
+          {
+            "key": "A",
+            "text": "硬中断的处理",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "软中断的处理",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "软中断由 ksoftirqd 内核线程承接时的处理函数",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "工作队列的任务",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "硬中断不能调用可能睡眠的操作；软中断即使由 ksoftirqd 内核线程承接，处理函数仍然不能随意睡眠；只有工作队列在进程上下文执行，允许使用可以睡眠的操作。[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "比较硬中断、软中断和线程工作队列（threaded workqueue），下列哪些处理函数不能随意睡眠？",
+      "typed": {
+        "id": "V6-44",
+        "type": "multiple",
+        "stem": "比较硬中断、软中断和线程工作队列（threaded workqueue），下列哪些处理函数不能随意睡眠？",
+        "options": [
+          {
+            "key": "A",
+            "text": "硬中断的处理",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "软中断的处理",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "软中断由 ksoftirqd 内核线程承接时的处理函数",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "线程工作队列（threaded workqueue）的任务",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "A、B、C 正确：硬中断不能调用可能睡眠的操作；软中断即使由 ksoftirqd 内核线程承接，处理函数仍然不能随意睡眠。D 指线程工作队列，其任务在进程上下文执行，允许使用可以睡眠的操作，因此不选。（原文泛称“工作队列”把任务交给工作线程并允许睡眠；这里限定为线程工作队列，WQ_BH 工作项在 softirq 上下文执行，不能睡眠。）[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux Workqueue 的 WQ_BH 标志](https://docs.kernel.org/core-api/workqueue.html#flags)"
+    }
+  },
+  {
+    "id": "V6-45",
+    "before": {
+      "question": "按原文，三者中哪一种适合需要等待或执行较重工作的场景？",
+      "typed": {
+        "id": "V6-45",
+        "type": "single",
+        "stem": "按原文，三者中哪一种适合需要等待或执行较重工作的场景？",
+        "options": [
+          {
+            "key": "A",
+            "text": "硬中断",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "软中断",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "由 ksoftirqd 承接的软中断",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "工作队列",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "工作队列在进程上下文执行，允许使用可以睡眠的操作，适合需要等待或执行较重工作的场景。[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "比较硬中断、软中断和线程工作队列（threaded workqueue），哪一种适合需要等待或执行较重工作的场景？",
+      "typed": {
+        "id": "V6-45",
+        "type": "single",
+        "stem": "比较硬中断、软中断和线程工作队列（threaded workqueue），哪一种适合需要等待或执行较重工作的场景？",
+        "options": [
+          {
+            "key": "A",
+            "text": "硬中断",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "软中断",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "由 ksoftirqd 承接的软中断",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "线程工作队列",
+            "correct": true
+          }
+        ]
+      },
+      "answer": "线程工作队列在进程上下文执行，允许使用可以睡眠的操作，适合需要等待或执行较重工作的场景；硬中断和软中断处理函数不能随意睡眠。（原文泛称“工作队列”把任务交给工作线程并允许睡眠；这里限定为线程工作队列，WQ_BH 工作项在 softirq 上下文执行，不能睡眠。）[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux Workqueue 的 WQ_BH 标志](https://docs.kernel.org/core-api/workqueue.html#flags)"
+    }
+  },
+  {
+    "id": "V6-47",
+    "before": {
+      "question": "硬中断、软中断和工作队列有什么区别？",
+      "typed": {
+        "id": "V6-47",
+        "type": "short"
+      },
+      "answer": "硬中断先处理紧急且必要的工作，软中断和工作队列再承担可以推后的工作。硬中断响应设备事件，处理时间应尽量短，不能调用可能睡眠的操作。软中断是内核的一种延后处理机制，常用于网络收发等高频工作，可以在中断返回路径等位置处理，工作较多时也可能由 ksoftirqd 内核线程承接，但处理函数仍然不能随意睡眠。工作队列把任务交给工作线程，在进程上下文执行，允许使用可以睡眠的操作，适合需要等待或执行较重工作的场景。比如网卡中断先确认设备事件，后续网络数据处理再交给软中断等机制完成，这样能减少硬中断处理时间，让 CPU 更快恢复其他工作。[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "硬中断、软中断和线程工作队列（threaded workqueue）有什么区别？",
+      "typed": {
+        "id": "V6-47",
+        "type": "short"
+      },
+      "answer": "硬中断先处理紧急且必要的工作，软中断和线程工作队列再承担可以推后的工作。硬中断响应设备事件，处理时间应尽量短，不能调用可能睡眠的操作。软中断是内核的一种延后处理机制，常用于网络收发等高频工作，可以在中断返回路径等位置处理，工作较多时也可能由 ksoftirqd 内核线程承接，但处理函数仍然不能随意睡眠。线程工作队列把任务交给工作线程，在进程上下文执行，允许使用可以睡眠的操作，适合需要等待或执行较重工作的场景。比如网卡中断先确认设备事件，后续网络数据处理再交给软中断等机制完成，这样能减少硬中断处理时间，让 CPU 更快恢复其他工作。（原文泛称“工作队列”把任务交给工作线程并允许睡眠；这里限定为线程工作队列，WQ_BH 工作项在 softirq 上下文执行，不能睡眠。）[原文§硬中断、软中断和工作队列有什么区别？](https://xiaolincoding.com/interview/os.html#%E7%A1%AC%E4%B8%AD%E6%96%AD%E3%80%81%E8%BD%AF%E4%B8%AD%E6%96%AD%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux Workqueue 的 WQ_BH 标志](https://docs.kernel.org/core-api/workqueue.html#flags)"
+    }
+  },
+  {
+    "id": "V7-66",
+    "before": {
+      "question": "读数据时 read 返回 0，通常表示什么？",
+      "typed": {
+        "id": "V7-66",
+        "type": "single",
+        "stem": "读数据时 read 返回 0，通常表示什么？",
+        "options": [
+          {
+            "key": "A",
+            "text": "当前暂时没有数据，应当稍后继续重试",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "通常表示对端已有序关闭发送方向",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "发生了 EAGAIN，需要等待下一次通知",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "接收缓冲区已满，需要扩大缓冲区",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "如果 read 返回 0，通常表示对端已经有序关闭发送方向；返回其他错误时也要按错误类型处理，不能一律继续重试。[原文§epoll 的 边缘触发和水平触发有什么区别？](https://xiaolincoding.com/interview/os.html#epoll-%E7%9A%84-%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "对流式 Socket 调用 read，请求读取字节数大于 0，返回 0 通常表示什么？",
+      "typed": {
+        "id": "V7-66",
+        "type": "single",
+        "stem": "对流式 Socket 调用 read，请求读取字节数大于 0，返回 0 通常表示什么？",
+        "options": [
+          {
+            "key": "A",
+            "text": "当前暂时没有数据，应当稍后继续重试",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "通常表示对端已有序关闭发送方向",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "发生了 EAGAIN，需要等待下一次通知",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "接收缓冲区已满，需要扩大缓冲区",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "对流式 Socket 调用 read，且请求读取字节数大于 0 时，返回 0 通常表示对端已经有序关闭发送方向；返回其他错误时也要按错误类型处理，不能一律继续重试。[原文§epoll 的 边缘触发和水平触发有什么区别？](https://xiaolincoding.com/interview/os.html#epoll-%E7%9A%84-%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    }
+  },
+  {
+    "id": "V7-67",
+    "before": {
+      "question": "边缘触发下处理写入时，需要注意什么？",
+      "typed": {
+        "id": "V7-67",
+        "type": "single",
+        "stem": "边缘触发下处理写入时，需要注意什么？",
+        "options": [
+          {
+            "key": "A",
+            "text": "一次 write 必然写完全部数据，不需要特殊处理",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "要处理部分写入，保存尚未发送的数据，等可写时继续发送",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "发现写不完就丢弃剩余数据",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "应该一直监听可写事件，没数据要发也不例外",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "写入也一样，要处理部分写入，保存尚未发送的数据，等可写时继续发送。[原文§epoll 的 边缘触发和水平触发有什么区别？](https://xiaolincoding.com/interview/os.html#epoll-%E7%9A%84-%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "边缘触发下，使用非阻塞 Socket 处理写入时，需要注意什么？",
+      "typed": {
+        "id": "V7-67",
+        "type": "single",
+        "stem": "边缘触发下，使用非阻塞 Socket 处理写入时，需要注意什么？",
+        "options": [
+          {
+            "key": "A",
+            "text": "一次 write 必然写完全部数据，不需要特殊处理",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "保存未发送数据；完成前继续尝试，仅当前不可写时等待",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "发现写不完就丢弃剩余数据",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "应该一直监听可写事件，没数据要发也不例外",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "要处理部分写入，保存尚未发送的数据；通常继续尝试发送，直到全部发送完成，或返回 EAGAIN/EWOULDBLOCK 表示当前不可写；只有仍有待发送数据且当前不可写时，才等待后续可写通知，发送完成后不继续等待可写通知。不能把“部分写入”理解为每次 write 后都无条件重新等待。（原文简写为“保存尚未发送的数据，等可写时继续发送”；Linux epoll(7) 也允许对流式 fd 根据短写判断当前写入空间已耗尽，因此并非一律必须等到 EAGAIN。）[原文§epoll 的 边缘触发和水平触发有什么区别？](https://xiaolincoding.com/interview/os.html#epoll-%E7%9A%84-%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux epoll(7) 的 ET 使用与流式 fd 耗尽判断](https://man7.org/linux/man-pages/man7/epoll.7.html)"
+    }
+  },
+  {
+    "id": "V7-71",
+    "before": {
+      "question": "epoll 的水平触发和边缘触发有什么区别？使用边缘触发时读数据要注意什么？",
+      "typed": {
+        "id": "V7-71",
+        "type": "short"
+      },
+      "answer": "水平触发（LT，默认模式）下，只要 fd 仍然满足就绪条件，再调用 epoll_wait 时就仍可能返回这个事件，比如接收缓冲区里还有数据就能继续收到可读通知。边缘触发（ET）侧重通知新的就绪变化，不能指望尚未处理完的旧数据像 LT 一样反复提醒，但也不是一个连接一生只通知一次。例如缓冲区有 2KB 数据只读了 1KB：LT 下下一次等待还能得到可读通知，ET 下如果没有新事件，剩余的 1KB 可能一直留在那里。所以 ET 通常要配合非阻塞 I/O，循环读到 EAGAIN/EWOULDBLOCK 表示当前没有数据可读；read 返回 0 通常表示对端已有序关闭发送方向，其他错误要按类型处理。写入时要处理部分写入。ET 可减少重复通知，但实现要求更高，也不一定比 LT 快，还要兼顾公平性。[原文§epoll 的 边缘触发和水平触发有什么区别？](https://xiaolincoding.com/interview/os.html#epoll-%E7%9A%84-%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)"
+    },
+    "after": {
+      "question": "epoll 的水平触发和边缘触发有什么区别？使用边缘触发读取流式 Socket（每次请求读取字节数大于 0）时要注意什么？",
+      "typed": {
+        "id": "V7-71",
+        "type": "short"
+      },
+      "answer": "水平触发（LT，默认模式）下，只要 fd 仍然满足就绪条件，再调用 epoll_wait 时就仍可能返回这个事件，比如接收缓冲区里还有数据就能继续收到可读通知。边缘触发（ET）侧重通知新的就绪变化，不能指望尚未处理完的旧数据像 LT 一样反复提醒，但也不是一个连接一生只通知一次。例如缓冲区有 2KB 数据只读了 1KB：LT 下下一次等待还能得到可读通知，ET 下如果没有新事件，剩余的 1KB 可能一直留在那里。所以 ET 通常要配合非阻塞 I/O，常用做法是循环读到 EAGAIN/EWOULDBLOCK，表示当前没有数据可读；对流式 Socket 且请求读取字节数大于 0 时，read 返回 0 通常表示对端已有序关闭发送方向，其他错误要按类型处理。写入时要处理部分写入，保存剩余数据并继续发送到完成或当前不可写；只有仍有待发送数据且当前不可写时，才等待后续可写通知，发送完成后不继续等待可写通知。ET 可减少重复通知，但实现要求更高，也不一定比 LT 快，还要兼顾公平性。（原文以循环读到 EAGAIN/EWOULDBLOCK 说明耗尽处理；Linux epoll(7) 也允许对流式 fd 通过短读／短写判断当前 I/O 空间已耗尽，并非所有情况都必须等到 EAGAIN。）[原文§epoll 的 边缘触发和水平触发有什么区别？](https://xiaolincoding.com/interview/os.html#epoll-%E7%9A%84-%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E5%92%8C%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB) [核对来源：Linux epoll(7) 的 ET 使用与流式 fd 耗尽判断](https://man7.org/linux/man-pages/man7/epoll.7.html)"
+    }
+  },
+  {
+    "id": "V7-73",
+    "before": {
+      "question": "多个线程操作同一个 Socket，其他线程先把数据读走了，当前线程再读会怎样？",
+      "typed": {
+        "id": "V7-73",
+        "type": "single",
+        "stem": "多个线程操作同一个 Socket，其他线程先把数据读走了，当前线程再读会怎样？",
+        "options": [
+          {
+            "key": "A",
+            "text": "可能得到 EAGAIN",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "一定读到完整的数据",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "read 返回 0，表示对端关闭",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "程序会收到错误导致 Socket 被关闭",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "多个线程操作同一个 Socket，其他线程先把数据读走了，当前线程再读就可能得到 EAGAIN。[原文§epoll 返回可读后，read 就一定能读到数据吗？](https://xiaolincoding.com/interview/os.html#epoll-%E8%BF%94%E5%9B%9E%E5%8F%AF%E8%AF%BB%E5%90%8E-read-%E5%B0%B1%E4%B8%80%E5%AE%9A%E8%83%BD%E8%AF%BB%E5%88%B0%E6%95%B0%E6%8D%AE%E5%90%97)"
+    },
+    "after": {
+      "question": "多个线程操作同一个非阻塞 Socket，其他线程先把可读数据读完了，当前线程再读会怎样？",
+      "typed": {
+        "id": "V7-73",
+        "type": "single",
+        "stem": "多个线程操作同一个非阻塞 Socket，其他线程先把可读数据读完了，当前线程再读会怎样？",
+        "options": [
+          {
+            "key": "A",
+            "text": "可能得到 EAGAIN",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "一定读到完整的数据",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "只要暂时没有数据，read 就返回 0 表示对端关闭",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "只要暂时没有数据，Socket 就会被自动关闭",
+            "correct": false
+          }
+        ]
+      },
+      "answer": "多个线程操作同一个非阻塞 Socket，其他线程先把可读数据读完后，当前线程再读可能因暂时无数据而得到 EAGAIN/EWOULDBLOCK，不能保证这次一定读到数据；暂时无数据也不等于 read 返回 0 或 Socket 被关闭。[原文§epoll 返回可读后，read 就一定能读到数据吗？](https://xiaolincoding.com/interview/os.html#epoll-%E8%BF%94%E5%9B%9E%E5%8F%AF%E8%AF%BB%E5%90%8E-read-%E5%B0%B1%E4%B8%80%E5%AE%9A%E8%83%BD%E8%AF%BB%E5%88%B0%E6%95%B0%E6%8D%AE%E5%90%97)"
+    }
+  }
+]

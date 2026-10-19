@@ -1,0 +1,178 @@
+[
+  {
+    "id": "Y1-M1",
+    "status": "addressed",
+    "requiredIds": [
+      "Y1-24",
+      "Y1-36"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y1-M2",
+    "status": "addressed",
+    "requiredIds": [
+      "Y1-62",
+      "Y1-60",
+      "Y1-64",
+      "Y1-65"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y1-M3",
+    "status": "addressed",
+    "requiredIds": [
+      "Y1-61",
+      "Y1-60",
+      "Y1-65"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y2-M1",
+    "status": "addressed",
+    "requiredIds": [
+      "Y2-15",
+      "Y2-13",
+      "Y2-16",
+      "Y2-23"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y2-M2",
+    "status": "addressed",
+    "requiredIds": [
+      "Y2-25",
+      "Y2-26",
+      "Y2-34"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y2-M3",
+    "status": "addressed",
+    "requiredIds": [
+      "Y2-37",
+      "Y2-43",
+      "Y2-44"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y2-M4",
+    "status": "addressed",
+    "requiredIds": [
+      "Y2-43"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y2-M7",
+    "status": "addressed",
+    "requiredIds": [
+      "Y2-58",
+      "Y2-62"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y2-M8",
+    "status": "addressed",
+    "requiredIds": [
+      "Y2-62"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y3Y4-M1",
+    "status": "addressed",
+    "requiredIds": [
+      "Y3-1",
+      "Y3-2",
+      "Y3-12",
+      "Y3-13",
+      "Y3-5",
+      "Y3-28"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y3Y4-M2",
+    "status": "addressed",
+    "requiredIds": [
+      "Y3-24",
+      "Y3-27"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y3Y4-M3",
+    "status": "addressed",
+    "requiredIds": [
+      "Y3-25"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y3Y4-M4",
+    "status": "addressed",
+    "requiredIds": [
+      "Y4-4"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y3Y4-M5",
+    "status": "addressed",
+    "requiredIds": [
+      "Y4-19",
+      "Y4-20",
+      "Y4-22",
+      "Y4-23",
+      "Y4-21"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y3Y4-M6",
+    "status": "addressed",
+    "requiredIds": [
+      "Y4-27",
+      "Y4-26",
+      "Y4-36"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  },
+  {
+    "id": "Y3Y4-M7",
+    "status": "addressed",
+    "requiredIds": [
+      "Y4-54",
+      "Y4-55",
+      "Y4-57",
+      "Y4-61",
+      "Y4-51",
+      "Y4-52",
+      "Y4-56"
+    ],
+    "semanticReview": "review-after.md",
+    "structuralChecks": "checks-after.json"
+  }
+]

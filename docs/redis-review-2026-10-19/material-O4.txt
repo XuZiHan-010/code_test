@@ -1,0 +1,219 @@
+O4-1 [single] 按原文，Redis 为什么需要实现数据持久化的机制？
+A Redis 的读写都在磁盘上，持久化是为了把热点数据提前加载到内存中，从而提高读写速度 | B * Redis 读写都在内存中，重启后内存数据会丢失，持久化把数据存到磁盘，重启后可从磁盘恢复 | C Redis 的内存容量有限，持久化是为了在内存写满时把数据换出到磁盘上继续保存 | D 持久化是为了让多个客户端同时读写同一份数据时互不冲突，保证并发访问的正确性
+Answer (L347): Redis 的读写操作都在内存中，所以性能高，但重启后内存中的数据会丢失；持久化机制把数据存储到磁盘，Redis 重启时就能从磁盘恢复原有的数据。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-2 [fill] 按原文，Redis 为防止内存数据在重启后丢失而提供的三种持久化方式是：____、____、____。
+
+Answer (L348): 3 个空是 AOF 日志、RDB 快照、混合持久化（顺序不限）。其中混合持久化是 Redis 4.0 新增的，集成了 AOF 和 RDB 的优点。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-3 [single] 按原文，AOF 日志是怎样记录数据的？
+A 把某一时刻的内存数据以二进制的方式整体写入磁盘文件 | B 把所有读命令和写命令都记录到文件里，用于审计和排查问题 | C 每隔一段时间用新数据整体覆盖旧文件，只保留最新的一份快照内容 | D * 每执行一条写操作命令，就把该命令以追加的方式写入到一个文件里
+Answer (L349): AOF 日志是每执行一条写操作命令，就把该命令以追加的方式写入到一个文件里；以二进制方式写入某一时刻内存数据的是 RDB 快照。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-4 [single] 按原文，Redis 重启时是怎样用 AOF 日志恢复数据的？
+A * 读取该文件记录的命令，然后逐一执行这些命令 | B 把文件内容作为实际数据直接读入内存，不需要再执行命令 | C fork 一个子进程，由子进程把文件复制到另一个 Redis 实例 | D 只执行文件中最后一条命令，因为它代表最新状态
+Answer (L350): Redis 重启时会读取 AOF 文件记录的命令，然后逐一执行命令来恢复数据。直接把文件读入内存是 RDB 的恢复方式。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-5 [single] 按原文，RDB 快照是怎样保存数据的？
+A 每执行一条写操作命令，就把该命令追加写入一个文件 | B * 将某一时刻的内存数据以二进制的方式写入磁盘 | C 把 AOF 重写生成的基础数据和后续命令分开保存 | D 把所有历史写命令按时间顺序整理后一次性写入磁盘
+Answer (L351): RDB 快照是将某一时刻的内存数据以二进制的方式写入磁盘，保存的是实际数据而不是命令。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-6 [single] 按原文，要开启混合持久化，应通过哪项配置？
+A appendfsync always，每次写入都同步刷盘 | B appendfsync everysec，每秒刷盘一次 | C * aof-use-rdb-preamble yes | D aof-use-rdb-preamble no
+Answer (L352): 混合持久化是 Redis 4.0 新增的方式，开启后（通过配置 aof-use-rdb-preamble yes），AOF 重写生成的基础数据采用 RDB 格式。appendfsync 的 always、everysec 是 AOF 的刷盘策略，aof-use-rdb-preamble 设为 no 则不是开启。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-7 [single] 按原文，开启混合持久化后，AOF 重写生成的基础数据和后续变化分别采用什么格式？
+A 基础数据采用 AOF 命令格式，后续变化采用 RDB 格式 | B 基础数据和后续变化都采用 RDB 格式 | C * 基础数据采用 RDB 格式，后续变化采用 AOF 命令格式 | D 基础数据和后续变化都采用 AOF 命令格式
+Answer (L353): 开启混合持久化后，AOF 重写生成的基础数据采用 RDB 格式，后续变化采用 AOF 命令格式。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-8 [single] 按原文，混合持久化的基础数据和增量命令在 Redis 7.0 前后是怎样保存的？
+A * 7.0 之前保存在同一个 AOF 文件中；7.0 起分开保存，由 manifest 文件管理 | B 7.0 之前分开保存，由 manifest 文件管理；7.0 起保存在同一个 AOF 文件中 | C 7.0 之前和 7.0 起都保存在同一个 AOF 文件中 | D 7.0 之前和 7.0 起都分开保存，由 dump.rdb 管理
+Answer (L354): Redis 7.0 之前，混合持久化的基础数据和增量命令保存在同一个 AOF 文件中；Redis 7.0 起分开保存，由 manifest 文件管理。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-9 [single] 按原文，混合持久化在重启恢复时是怎样做的？
+A 先回放增量命令，再加载基础数据 | B 只加载基础数据，增量命令直接丢弃 | C 同时并行加载基础数据和增量命令，谁先完成用谁 | D * 先加载基础数据，再回放增量命令
+Answer (L355): 重启恢复时先加载基础数据，再回放增量命令，兼顾恢复速度和数据安全性。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-10 [single] 按原文，Redis 执行完一条写命令后，AOF 内容首先会被追加到哪里？
+A * 用户态的 aof_buf 缓冲区 | B 内核的 page cache | C 磁盘上的 AOF 文件，并立即 fsync | D 磁盘上的 dump.rdb 快照文件
+Answer (L356): Redis 执行写命令后，会先把命令追加到用户态的 aof_buf 缓冲区，然后调用 write() 把内容写入内核 page cache，最后由 fsync() 决定何时真正落盘。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-11 [fill] 按原文，Redis 执行写命令后，AOF 内容的写入过程依次是：先追加到用户态的 ____，再通过 write() 写入内核的 ____，最后由 ____ 决定何时真正落盘。
+
+Answer (L357): 3 个空依次是 aof_buf（缓冲区）、page cache、fsync()。Redis 先把命令追加到用户态的 aof_buf，再用 write() 写入内核 page cache，最后由 fsync() 决定何时真正落盘。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-12 [single] 按原文，appendfsync 的三种写回策略，区别在于什么？
+A 调用 write() 写入 aof_buf 的时机 | B 是否把命令追加到 aof_buf 缓冲区 | C * 调用 fsync() 的时机 | D 是否生成 RDB 快照文件
+Answer (L358): 三种写回策略的区别就在于 fsync() 的时机；写命令都会先追加到 aof_buf，再由 write() 写入内核 page cache。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-13 [fill] 按原文，Redis.conf 中 appendfsync 配置项的三种写回策略是：____、____、____。
+
+Answer (L359): 3 个空是 Always、Everysec、No（顺序不限）。三种策略的区别在于调用 fsync() 的时机。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-14 [single] 按原文，appendfsync 的 Always 策略有什么特点？
+A 每隔 1 秒由后台线程调用一次 fsync()，通常把故障时的数据丢失控制在约 1 秒的范围，对主线程影响很小 | B 不主动调用 fsync()，由操作系统自行决定何时刷盘，写入性能最好，但数据丢失窗口难以控制 | C * 每次写入 AOF 缓冲区后，主线程都调用 fsync() 同步刷盘才确认写入；数据安全性高，磁盘同步开销也大 | D 只在 Redis 正常关闭时才调用一次 fsync()，运行期间完全依赖 RDB 快照来保证数据安全
+Answer (L360): Always 策略每次把 AOF 缓冲区写入文件后，主线程都会调用 fsync()，在确认写入结果前完成同步刷盘，数据安全性高，但磁盘同步开销也大。每隔 1 秒后台 fsync() 的是 Everysec，不主动 fsync() 的是 No。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-15 [single] 按原文，appendfsync 的 Everysec 策略有什么特点？
+A 每次写入后由主线程调用 fsync()，在确认写入结果之前就完成同步刷盘，数据丢失窗口几乎为零，磁盘同步开销也更大 | B 不主动调用 fsync()，由操作系统自行决定何时刷盘，并且 Redis 不保证具体的落盘时间 | C 每隔 1 秒由主线程生成一次 RDB 快照，并把这一秒内的增量命令追加到快照末尾 | D * 先 write() 到内核 page cache，再每隔 1 秒由后台线程 fsync()，故障时通常把数据丢失控制在约 1 秒内
+Answer (L361): Everysec 策略先把命令写入 aof_buf，再由主线程调用 write() 写到内核 page cache，然后每隔 1 秒由后台线程调用一次 fsync() 刷盘，通常把故障时的数据丢失控制在约 1 秒的范围。每次都同步刷盘的是 Always，交给操作系统的是 No。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-16 [single] 按原文，在 Everysec 策略下，能不能把“1 秒”当成数据丢失的绝对上限？
+A 能，Everysec 策略保证故障时最多只丢失 1 秒的数据 | B 能，因为 Everysec 由主线程同步刷盘，不会受磁盘状态影响 | C 不能，但原因是 Everysec 策略不调用 fsync()，只依赖操作系统刷盘 | D * 不能，如果磁盘卡顿、后台刷盘延迟，丢失的数据可能超过 1 秒的范围
+Answer (L362): Everysec 通常把故障时的数据丢失控制在约 1 秒的范围，但如果磁盘卡顿、后台刷盘延迟，就不能把 1 秒当成绝对上限。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-17 [single] 按原文，appendfsync 的 No 策略有什么特点？
+A 每次写入后主线程都调用 fsync()，完成同步刷盘后才确认写入结果，数据丢失窗口极小，但磁盘开销较大 | B * 不主动调用 fsync()，只 write() 到内核 page cache，由操作系统决定刷盘时机，Redis 不保证落盘时间 | C 每隔 1 秒由后台线程调用一次 fsync()，故障时通常最多丢失约 1 秒的数据 | D 既不 write() 也不 fsync()，只在 Redis 正常关闭时才把缓冲区里的内容一次性写出到磁盘中
+Answer (L363): No 策略不主动调用 fsync()，只负责 write() 到内核 page cache，由操作系统自行决定何时刷盘，Redis 不保证具体落盘时间，数据丢失窗口也更难控制。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-18 [single] 按原文，RDB 和 AOF 相比，哪个恢复数据的效率通常更高，原因是什么？
+A AOF 通常更高，因为 AOF 保存的是实际数据，可以直接读入内存，不需要执行命令 | B AOF 通常更高，因为重放命令比直接加载数据更快，也不需要读取完整的数据文件 | C 两者恢复效率基本相同，因为恢复时都需要先逐条执行文件中记录的命令 | D * RDB 通常更高，因为它保存的是某一时刻的实际数据，可直接读入内存，不用再执行命令
+Answer (L364): AOF 记录的是写入操作，恢复时需要重新执行这些命令，日志很多时恢复就会比较慢；RDB 保存的是某一时刻的数据快照，可以直接加载数据，所以通常恢复更快。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-19 [single] 按原文，RDB 快照和 AOF 文件各自记录的是什么？
+A RDB 记录的是命令操作的日志，AOF 文件记录的是某一瞬间内存中的实际数据 | B 两者记录的都是实际数据，只是写入时机不同 | C * RDB 记录的是某一瞬间内存中的实际数据，AOF 文件记录的是命令操作的日志 | D 两者记录的都是命令操作的日志，只是文件格式不同
+Answer (L365): RDB 快照记录的是某一个瞬间的内存数据，也就是实际数据；而 AOF 文件记录的是命令操作的日志，不是实际的数据。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-20 [single] 按原文，执行 save 命令生成 RDB 文件会怎样？
+A fork 一个子进程生成 RDB 文件，主线程不受任何影响 | B * 在主线程生成 RDB 文件，如果写入时间太长，会阻塞主线程 | C 由后台线程生成 RDB 文件，主线程只负责在写完后读取它 | D 只在内存中生成快照，不会把数据写入磁盘
+Answer (L366): 执行 save 命令会在主线程生成 RDB 文件，由于和执行操作命令在同一个线程，所以如果写入 RDB 文件的时间太长，会阻塞主线程。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-21 [single] 按原文，执行 bgsave 命令生成 RDB 文件，对主线程有什么影响？
+A fork 子进程生成 RDB 文件，fork 以及后续整个生成过程都不会对主线程造成任何影响，也不占用额外内存 | B * fork 子进程生成 RDB，快照写入由子进程完成，但 fork 本身仍会短暂阻塞主线程，数据量大时要关注延迟 | C 在主线程中生成 RDB 文件，如果写入时间太长，会阻塞主线程，期间无法处理其他客户端的请求 | D 会暂停处理所有写命令，直到子进程把快照完整生成完毕为止，读命令不受影响
+Answer (L367): bgsave 会 fork 一个子进程生成 RDB 文件，快照写入由子进程完成；不过 fork 本身仍会短暂阻塞主线程，数据量大时需要关注这部分延迟。在主线程生成 RDB 的是 save。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-22 [multiple] 按原文，下列哪些属于 AOF 的优点？
+A AOF 损坏后用 redis-check-aof 修复，一定不会丢失任何数据 | B * 可以通过 always、everysec、no 等刷盘策略，在数据安全性和性能之间进行取舍 | C * 可以通过后台重写压缩日志体积 | D 纯命令格式的 AOF 文件通常比 RDB 更小 | E * 相比两次 RDB 快照之间的丢失窗口，everysec 通常能保留更多近期写入
+Answer (L368): AOF 的优点是：可以用 always、everysec、no 等刷盘策略取舍安全性和性能；everysec 通常比两次 RDB 快照之间的丢失窗口保留更多近期写入；可以通过后台重写压缩日志体积。纯命令格式的 AOF 通常比 RDB 大，AOF 修复可能截掉部分数据，也不是无损恢复。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-23 [multiple] 按原文，下列哪些属于 AOF 的缺点？
+A * 纯命令格式的 AOF 通常比 RDB 大，恢复时需要重放命令，耗时可能更长 | B * 主线程的 write、always 策略下的 fsync，以及重写时的 fork，都可能带来延迟 | C * AOF 损坏时可以用 redis-check-aof 检查和修复，但修复可能截掉部分数据，并不是无损恢复 | D 不能选择刷盘策略，只能每执行一条写命令就同步刷盘一次，无法在性能和安全之间取舍 | E 恢复时不需要重放命令，直接把文件内容读入内存即可，所以恢复总是比 RDB 更快 | F AOF 文件一旦损坏就没有任何工具可以检查或修复，只能删除后重新生成
+Answer (L369): AOF 的缺点是：纯命令格式通常比 RDB 大，恢复时要重放命令、耗时可能更长；主线程的 write、always 下的 fsync、重写时的 fork 都可能带来延迟；AOF 损坏时 redis-check-aof 可以检查修复，但修复可能截掉部分数据。AOF 可以选择刷盘策略，纯命令格式的 AOF 恢复时需要重放命令，AOF 损坏时也可以用 redis-check-aof 检查和修复。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-24 [multiple] 按原文，下列哪些属于 RDB 的优点？
+A 通过 everysec 之类的策略，可以把故障时的数据丢失控制在约 1 秒 | B 恢复时需要逐条重放文件中记录的写命令 | C * 文件紧凑，适合做备份和传输 | D * 恢复时直接加载数据，通常比重放大量 AOF 命令快 | E * 使用 BGSAVE 时，写快照的工作主要在子进程里完成
+Answer (L370): RDB 的优点是：文件紧凑，适合备份和传输；恢复时直接加载数据，通常比重放大量 AOF 命令快；使用 BGSAVE 时，写快照的工作主要在子进程里完成。按策略控制丢失窗口是 AOF 的特点，RDB 恢复时也不需要逐条重放命令。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-25 [multiple] 按原文，下列哪些属于 RDB 的缺点？
+A * 生成快照期间如果写入频繁，写时复制会增加内存占用 | B * fork 会带来短暂阻塞 | C 文件通常比纯命令格式的 AOF 更大 | D 不能用来做备份和传输 | E * 故障时可能丢失最近一次成功快照之后的修改
+Answer (L371): RDB 的缺点是：故障时可能丢失最近一次成功快照之后的修改；fork 会带来短暂阻塞；生成快照期间如果写入频繁，写时复制还会增加内存占用。RDB 文件紧凑，适合做备份和传输，通常比纯命令格式的 AOF 小。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-26 [single] 按原文，如果 Redis 只是缓存，数据能从数据库重建，该怎么决定是否持久化？
+A * 可以根据恢复成本决定是否持久化 | B 必须开启 appendfsync always，否则缓存数据无法使用 | C 必须关闭持久化，否则会拖慢缓存性能 | D 必须同时开启 RDB 和 AOF，缓存数据才算安全
+Answer (L372): 如果 Redis 只是缓存，数据能够从数据库重建，可以根据恢复成本决定是否持久化。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-27 [single] 按原文，如果 Redis 中保存的是不能轻易重建的数据，选择持久化方案时应该怎么做？
+A 只看性能，选择开销最小、写入最快的那种持久化策略，不去考虑数据丢失 | B 关闭持久化，只依靠内存本身的读写速度来保证数据一直可用 | C 只依赖操作系统自行决定刷盘，不需要再额外做配置和备份工作 | D * 结合允许的数据丢失范围，选择持久化、备份和复制方案，不能只看性能
+Answer (L373): 如果保存的是不能轻易重建的数据，就要结合允许的数据丢失范围，选择持久化、备份和复制方案，不能只看性能。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-28 [short] Redis有哪些持久化方式？分别的优缺点是什么？
+
+Answer (L374): Redis 的读写都在内存中，重启后数据会丢失，所以提供持久化把数据存到磁盘。主要有 AOF 和 RDB 两种，也可以使用混合持久化：AOF 日志是每执行一条写命令就以追加方式写入文件，重启时读取并逐一执行命令恢复，可通过 appendfsync 的 always、everysec、no 取舍安全性和性能；RDB 快照是将某一时刻的内存数据以二进制方式写入磁盘，用 save（在主线程执行，会阻塞）或 bgsave（fork 子进程生成，但 fork 本身仍会短暂阻塞主线程）生成，恢复时直接加载，通常比重放 AOF 快；混合持久化是 Redis 4.0 新增的，开启后 AOF 重写的基础数据采用 RDB 格式，后续变化采用 AOF 命令格式，恢复时先加载基础数据再回放增量命令。AOF 的优点是刷盘策略可选、everysec 通常保留更多近期写入、可后台重写压缩，缺点是文件通常比 RDB 大、恢复耗时可能更长、write/always 的 fsync/重写时的 fork 会带来延迟、损坏修复可能截掉部分数据；RDB 的优点是文件紧凑便于备份传输、恢复通常更快、BGSAVE 主要在子进程写，缺点是可能丢失最近一次快照之后的修改、fork 短暂阻塞、写入频繁时写时复制增加内存占用。如果只是可重建的缓存，可按恢复成本决定是否持久化；不能轻易重建的数据则要结合允许的丢失范围，选择持久化、备份和复制方案，不能只看性能。[原文§Redis有哪些持久化方式？分别的优缺点是什么？](https://xiaolincoding.com/interview/redis.html#redis%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F-%E5%88%86%E5%88%AB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O4-29 [single] 按原文，Redis 为什么要提供 AOF 重写？
+A AOF 文件追加写入速度太慢，需要用重写把它整体转换成恢复速度更快的 RDB 文件 | B AOF 文件中的命令格式不正确，需要重写后 Redis 才能读取 | C * AOF 一直追加写命令，文件会越来越大，而恢复当前数据并不需要重放所有历史操作 | D AOF 文件只能保留最近 1 秒的命令，需要重写来补全其余部分
+Answer (L378): AOF 一直追加写命令，文件会越来越大，但恢复当前数据并不需要重放所有历史操作，所以 Redis 提供了 AOF 重写。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-30 [single] 先 SET counter 0，再 INCR 100 次，此时内存里 counter 的值是 100。按原文，AOF 重写时需要怎么处理这个 key？
+A 必须完整保留 SET 和 100 条 INCR 命令，才能保证恢复结果正确 | B * 只需生成能恢复“counter 等于 100”的数据，不需要保留前面所有自增命令 | C 只保留最后一条 INCR 命令，其余命令丢弃 | D 把 counter 从重写结果中删除，等重启后重新计数
+Answer (L379): 重写时只需要生成能够恢复“counter 等于 100”的数据，不需要保留前面所有自增命令。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-31 [single] 按原文，AOF 重写是根据什么生成新的持久化内容的？
+A * 根据当前内存中的数据生成，不是读取旧 AOF 再逐条合并命令 | B 读取旧 AOF 文件，再把其中可以相互抵消的命令逐条合并起来 | C 读取最近一次 RDB 快照，再拼接旧 AOF 中的命令 | D 读取从节点上的 AOF 文件，再同步回主节点
+Answer (L380): AOF 重写是根据当前内存数据生成新的持久化内容，不是读取旧 AOF 再逐条合并命令。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-32 [multiple] 按原文，AOF 重写有哪些触发方式？
+A * 用 BGREWRITEAOF 手动触发 | B * 根据文件大小和增长比例自动触发 | C 只能通过 bgsave 命令间接触发 | D 每执行一条写命令就自动触发一次
+Answer (L381): AOF 重写可以用 BGREWRITEAOF 手动触发，也可以根据文件大小和增长比例自动触发。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-33 [single] 按原文，AOF 重写由谁执行？重写期间主进程怎样？
+A 由主线程完成，期间暂停处理客户端请求 | B 由主进程和子进程同时完成，各写一半文件 | C 由子进程完成，但主进程必须暂停处理请求直到重写结束 | D * 由子进程完成，主进程继续处理请求
+Answer (L382): 重写由子进程完成，主进程继续处理请求。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-34 [single] 按原文，Redis 7.0 之前，AOF 重写期间的新写入是怎么处理的？
+A 主进程暂停写 AOF，等重写完成后再统一补写重写期间的写入 | B 子进程把重写期间的新写入直接写入新 AOF，主进程不记录这些写入 | C * 主进程继续写原 AOF，同时把重写期间的增量写入保存到重写缓冲区，最后补到新文件再切换 | D 主进程把重写期间的新写入写到新的 incr 文件，完成后通过 manifest 文件切换到新的文件组合
+Answer (L383): Redis 7.0 之前：主进程继续写原 AOF，同时把重写期间的增量写入保存到 AOF 重写缓冲区，最后补到新文件，再切换到新 AOF。写新的 incr 文件并通过 manifest 切换是 7.0 起的多部分 AOF 做法。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-35 [fill] 按原文，Redis 7.0 起使用多部分 AOF 重写：子进程生成新的 ____ 文件，主进程把重写期间的变化写到新的 ____ 文件，完成后通过 ____ 文件切换到新的文件组合。
+
+Answer (L384): 3 个空依次是 base、incr、manifest。子进程生成新的 base 文件，主进程把重写期间的变化写到新的 incr 文件，完成后通过 manifest 切换到新的文件组合。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-36 [single] 按原文，相比 Redis 7.0 之前的方案，7.0 起的多部分 AOF 有什么好处？
+A * 减少了旧方案中重写缓冲区和补写带来的开销 | B 不再需要 fork 子进程，重写完全在主线程完成 | C 不再需要 AOF 重写，AOF 文件不会再变大 | D 把所有写命令改为同步写入 RDB 文件
+Answer (L385): 多部分 AOF 减少了旧方案重写缓冲区和补写带来的开销；重写仍由子进程完成。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-37 [single] 按原文，AOF 重写时，base 数据采用什么格式？
+A 无论是否开启混合持久化，都采用 RDB 格式 | B 无论是否开启混合持久化，都采用 AOF 命令格式 | C 开启混合持久化时采用 AOF 命令格式，否则采用 RDB 格式 | D * 开启混合持久化时采用 RDB 格式，否则采用 AOF 命令格式
+Answer (L386): 如果开启混合持久化，base 数据采用 RDB 格式；否则采用 AOF 命令格式。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-38 [multiple] 按原文，关于 AOF 重写对性能的影响，下列哪些说法正确？
+A * 不能因为重写在后台执行，就认为完全没有性能影响 | B 重写在子进程中进行，所以对性能没有任何影响 | C Redis 7.0 起重写不再需要 fork 子进程，所以不需要关注写时复制 | D * 无论 base 采用哪种格式，重写都要关注 fork、写时复制、磁盘空间和子进程 I/O
+Answer (L387): 正确的是：无论 base 采用哪种格式，重写都要关注 fork、写时复制、磁盘空间和子进程 I/O，不能因为在后台执行就认为完全没有性能影响。重写仍由子进程完成，需要关注 fork 和写时复制。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-39 [short] AOF 重写是怎么实现的？
+
+Answer (L388): AOF 一直追加写命令，文件会越来越大，但恢复当前数据不需要重放所有历史操作，所以提供 AOF 重写：例如先 SET counter 0 再 INCR 100 次，重写时只需生成能恢复“counter 等于 100”的数据。AOF 重写是根据当前内存数据生成新的持久化内容，不是读取旧 AOF 再逐条合并命令，可用 BGREWRITEAOF 手动触发，也可根据文件大小和增长比例自动触发。重写由子进程完成，主进程继续处理请求。重写期间的新写入要区分版本：Redis 7.0 之前，主进程继续写原 AOF，同时把增量写入保存到 AOF 重写缓冲区，最后补到新文件再切换；Redis 7.0 起使用多部分 AOF，子进程生成新的 base 文件，主进程把重写期间的变化写到新的 incr 文件，完成后通过 manifest 切换，减少了重写缓冲区和补写的开销。开启混合持久化时 base 采用 RDB 格式，否则采用 AOF 命令格式；无论哪种，都要关注 fork、写时复制、磁盘空间和子进程 I/O。[原文§AOF 重写是怎么实现的？](https://xiaolincoding.com/interview/redis.html#aof-%E9%87%8D%E5%86%99%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+O4-40 [single] 按原文，BGSAVE 生成快照期间，主进程还能处理客户端的修改请求吗？
+A * 可以，BGSAVE 会 fork 一个子进程生成快照，主进程仍然处理客户端请求 | B 不可以，BGSAVE 期间主进程会暂停处理所有写请求，直到快照生成完毕 | C 不可以，BGSAVE 期间只允许读请求，写请求会被拒绝 | D 可以，但只能修改快照中不存在的新 key，已有 key 的修改会被丢弃
+Answer (L392): 可以。BGSAVE 会 fork 一个子进程生成快照，主进程仍然处理客户端请求，这里用到的是操作系统的写时复制（Copy On Write，COW）。[原文§BGSAVE 时还能修改数据吗？什么是写时复制？](https://xiaolincoding.com/interview/redis.html#bgsave-%E6%97%B6%E8%BF%98%E8%83%BD%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6)
+
+O4-41 [single] 按原文，BGSAVE 期间主进程可以继续修改数据，这里用到的是什么机制？
+A * 操作系统的写时复制（Copy On Write，COW） | B Redis 为 AOF 重写准备的 AOF 重写缓冲区 | C Redis 的混合持久化（aof-use-rdb-preamble）机制 | D AOF 重写时通过 manifest 文件切换新旧文件组合的机制
+Answer (L393): BGSAVE 用到的是操作系统的写时复制（COW）。AOF 重写缓冲区是 AOF 重写在 7.0 之前使用的，混合持久化决定的是基础数据的格式，manifest 切换是 7.0 起多部分 AOF 的做法，都不是 BGSAVE 允许主进程继续修改数据的机制。[原文§BGSAVE 时还能修改数据吗？什么是写时复制？](https://xiaolincoding.com/interview/redis.html#bgsave-%E6%97%B6%E8%BF%98%E8%83%BD%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6)
+
+O4-42 [single] 按原文，fork 之后，父子进程的内存是怎样的？
+A 操作系统立即把所有数据完整复制一份，父子进程各自使用独立的内存 | B * 父子进程最初共享已有的物理内存页，操作系统不会立即把所有数据完整复制一份 | C 子进程不占用任何内存，只在需要时读取主进程的内存 | D 父进程把所有数据移交给子进程，自己重新从磁盘加载
+Answer (L394): fork 之后，父子进程最初共享已有的物理内存页，操作系统不会立即把所有数据完整复制一份。[原文§BGSAVE 时还能修改数据吗？什么是写时复制？](https://xiaolincoding.com/interview/redis.html#bgsave-%E6%97%B6%E8%BF%98%E8%83%BD%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6)
+
+O4-43 [single] 按原文，主进程要修改某个共享内存页时，会发生什么？
+A * 才会复制这个页，让父子进程各自使用不同的物理页 | B 直接在共享页上修改，子进程也会看到新数据 | C 拒绝修改，等到子进程结束后才允许修改 | D 复制整个进程的全部内存，再进行修改
+Answer (L395): 主进程要修改某个共享页时，才会复制这个页，让父子进程各自使用不同的物理页。[原文§BGSAVE 时还能修改数据吗？什么是写时复制？](https://xiaolincoding.com/interview/redis.html#bgsave-%E6%97%B6%E8%BF%98%E8%83%BD%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6)
+
+O4-44 [single] 按原文，写时复制的单位通常是什么？
+A 被改动的那个 key，只复制这一个 key 的数据 | B 整个数据库，只要有修改就复制整个数据库 | C 单个字节，只复制被改动的那个字节 | D * 内存页，而不是只复制被改动的那个 key
+Answer (L396): 写时复制的单位通常是内存页，不是只复制被改动的那个 key。[原文§BGSAVE 时还能修改数据吗？什么是写时复制？](https://xiaolincoding.com/interview/redis.html#bgsave-%E6%97%B6%E8%BF%98%E8%83%BD%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6)
+
+O4-45 [single] BGSAVE 的子进程生成快照期间，主进程把 name 从 xiaolin 改成了 coding。按原文，子进程生成的快照里 name 是什么？
+A coding，因为快照总是反映最新的数据 | B 一部分数据是 xiaolin，一部分是 coding，取决于写入顺序 | C * xiaolin，因为子进程看到的仍然是 fork 时的数据视图 | D name 会被排除在快照之外，因为它在快照期间被修改
+Answer (L397): 子进程看到的仍然是 fork 时的数据视图，所以生成的快照对应之前的 xiaolin，不会一半使用新数据、一半使用旧数据。[原文§BGSAVE 时还能修改数据吗？什么是写时复制？](https://xiaolincoding.com/interview/redis.html#bgsave-%E6%97%B6%E8%BF%98%E8%83%BD%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6)
+
+O4-46 [multiple] 按原文，BGSAVE 利用写时复制时需要注意哪些问题？
+A * 内存预留不足可能导致子进程失败，甚至触发系统 OOM | B * 快照期间修改的共享页越多，写时复制产生的额外内存越多 | C * fork 本身有成本，数据量大时会短暂阻塞主线程 | D 写时复制只复制被改动的 key，所以不会增加内存占用 | E fork 几乎没有成本，不会阻塞主线程
+Answer (L398): 需要注意：fork 本身有成本（创建进程、复制页表等），数据量大时会短暂阻塞主线程；写入会增加内存占用，快照期间修改的共享页越多，额外内存越多，内存预留不足可能导致子进程失败甚至触发系统 OOM。写时复制的单位是内存页，不是只复制被改动的 key。[原文§BGSAVE 时还能修改数据吗？什么是写时复制？](https://xiaolincoding.com/interview/redis.html#bgsave-%E6%97%B6%E8%BF%98%E8%83%BD%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6)
+
+O4-47 [single] 按原文，AOF 后台重写与写时复制是什么关系，由此在持久化时要注意什么？
+A AOF 后台重写不使用写时复制，所以持久化时只需要关注磁盘空间，不需要再关注主线程延迟 | B * AOF 后台重写也使用类似机制，所以要同时看主线程延迟和额外内存，不能只看当前 key 占用了多少内存 | C AOF 后台重写使用写时复制，所以持久化时只需要关注主线程延迟，而不需要再关注额外占用的内存 | D AOF 后台重写只用到写时复制来合并 RDB 快照，与内存占用无关
+Answer (L399): AOF 后台重写也会使用类似机制，所以持久化时要同时看主线程延迟和额外内存，不能只看当前 key 占用了多少内存。[原文§BGSAVE 时还能修改数据吗？什么是写时复制？](https://xiaolincoding.com/interview/redis.html#bgsave-%E6%97%B6%E8%BF%98%E8%83%BD%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6)
+
+O4-48 [short] BGSAVE 时还能修改数据吗？什么是写时复制？
+
+Answer (L400): 可以。BGSAVE 会 fork 一个子进程生成快照，主进程仍然处理客户端请求，用到的是操作系统的写时复制（COW）。fork 之后父子进程最初共享已有的物理内存页，不会立即完整复制；主进程要修改某个共享页时才复制这个页，让父子进程各用不同的物理页，因此子进程看到的仍是 fork 时的数据视图，快照不会一半新一半旧（例如 fork 时 name 是 xiaolin，主进程之后改成 coding，快照里仍是 xiaolin）。写时复制的单位通常是内存页，不是只复制被改动的 key。需要注意：fork 本身有成本，数据量大时会短暂阻塞主线程；快照期间修改的共享页越多，额外内存越多，内存预留不足可能导致子进程失败甚至触发系统 OOM。AOF 后台重写也使用类似机制，所以要同时看主线程延迟和额外内存。[原文§BGSAVE 时还能修改数据吗？什么是写时复制？](https://xiaolincoding.com/interview/redis.html#bgsave-%E6%97%B6%E8%BF%98%E8%83%BD%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6)
+
+O4-49 [single] 按原文，同时开启 RDB 和 AOF 时，正常情况下 Redis 重启会优先用哪个恢复数据？
+A RDB，因为 RDB 恢复速度更快 | B * AOF，而不是把 dump.rdb 和 AOF 各加载一次 | C 先加载 dump.rdb，再加载 AOF，两个都完整加载一次 | D 由 Redis 随机选择其中一个
+Answer (L404): 正常情况下，开启 AOF 后，Redis 重启会优先使用 AOF 恢复数据，而不是把 dump.rdb 和 AOF 各加载一次。[原文§同时开启 RDB 和 AOF，重启时加载哪个？](https://xiaolincoding.com/interview/redis.html#%E5%90%8C%E6%97%B6%E5%BC%80%E5%90%AF-rdb-%E5%92%8C-aof-%E9%87%8D%E5%90%AF%E6%97%B6%E5%8A%A0%E8%BD%BD%E5%93%AA%E4%B8%AA)
+
+O4-50 [single] 按原文，同时开启 RDB 和 AOF 时，重启优先使用 AOF 的原因是什么？
+A * AOF 通常比独立的 RDB 快照保留更多近期变化 | B AOF 恢复数据的速度总是比 RDB 更快 | C AOF 文件总是比 RDB 文件更小 | D AOF 不需要重放命令，可以直接读入内存
+Answer (L405): 原文给出的原因是 AOF 通常比独立的 RDB 快照保留更多近期变化。恢复速度方面，RDB 通常更快；AOF 文件通常比 RDB 大，也需要重放命令。[原文§同时开启 RDB 和 AOF，重启时加载哪个？](https://xiaolincoding.com/interview/redis.html#%E5%90%8C%E6%97%B6%E5%BC%80%E5%90%AF-rdb-%E5%92%8C-aof-%E9%87%8D%E5%90%AF%E6%97%B6%E5%8A%A0%E8%BD%BD%E5%93%AA%E4%B8%AA)
+
+O4-51 [single] 按原文，使用混合持久化时，重启后是怎样恢复数据的？
+A 先回放全部增量命令，再加载 RDB 格式的基础部分，顺序与保存顺序正好相反 | B 只加载 RDB 格式的基础部分，后面的增量命令不再回放，以免重复恢复 | C * AOF 基础部分本身可能就是 RDB 格式，先加载这部分，再回放后面的增量命令 | D 分别完整加载 dump.rdb 和 AOF 两份文件，再取其中数据更新的一份作为结果
+Answer (L406): 使用混合持久化时，AOF 的基础部分本身可能就是 RDB 格式，恢复时先加载这部分，再回放后面的增量命令。[原文§同时开启 RDB 和 AOF，重启时加载哪个？](https://xiaolincoding.com/interview/redis.html#%E5%90%8C%E6%97%B6%E5%BC%80%E5%90%AF-rdb-%E5%92%8C-aof-%E9%87%8D%E5%90%AF%E6%97%B6%E5%8A%A0%E8%BD%BD%E5%93%AA%E4%B8%AA)
+
+O4-52 [single] 按原文，Redis 7.0 的多部分 AOF 按什么顺序恢复数据？
+A 先加载所有 incr 文件，再加载 base 文件，最后用 manifest 做一次校验 | B 只加载 base 文件，incr 文件仅用于备份而不参与恢复 | C 按文件名的字母顺序，依次加载 AOF 目录下的所有文件，不看 manifest | D * 按照 manifest 指定的 base 和 incr 文件顺序恢复
+Answer (L407): Redis 7.0 的多部分 AOF 按照 manifest 指定的 base 和 incr 文件顺序恢复。[原文§同时开启 RDB 和 AOF，重启时加载哪个？](https://xiaolincoding.com/interview/redis.html#%E5%90%8C%E6%97%B6%E5%BC%80%E5%90%AF-rdb-%E5%92%8C-aof-%E9%87%8D%E5%90%AF%E6%97%B6%E5%8A%A0%E8%BD%BD%E5%93%AA%E4%B8%AA)
+
+O4-53 [single] 按原文，如果 AOF 损坏，能不能直接认为 Redis 一定会自动退回旧的 dump.rdb？
+A 能，AOF 损坏时 Redis 一定会自动退回旧的 dump.rdb | B * 不能，需要根据损坏情况、截断加载配置和备份做恢复 | C 能，但只有在开启混合持久化时才会退回 dump.rdb | D 不能，因为 AOF 损坏后 Redis 会直接丢弃所有数据，不再恢复
+Answer (L408): 如果 AOF 损坏，也不能直接认为 Redis 一定会自动退回旧的 dump.rdb。需要根据损坏情况、截断加载配置和备份做恢复。[原文§同时开启 RDB 和 AOF，重启时加载哪个？](https://xiaolincoding.com/interview/redis.html#%E5%90%8C%E6%97%B6%E5%BC%80%E5%90%AF-rdb-%E5%92%8C-aof-%E9%87%8D%E5%90%AF%E6%97%B6%E5%8A%A0%E8%BD%BD%E5%93%AA%E4%B8%AA)
+
+O4-54 [single] 按原文，处理 AOF 损坏的恢复时要避免什么？
+A 把 dump.rdb 当成唯一可靠的恢复来源 | B 在恢复完成之前继续对外提供写服务 | C 把 AOF 重写当成一次必须执行的恢复步骤 | D * 把不完整的数据恢复当成正常启动
+Answer (L409): 原文提醒，要根据损坏情况、截断加载配置和备份做恢复，避免把不完整的数据恢复当成正常启动。[原文§同时开启 RDB 和 AOF，重启时加载哪个？](https://xiaolincoding.com/interview/redis.html#%E5%90%8C%E6%97%B6%E5%BC%80%E5%90%AF-rdb-%E5%92%8C-aof-%E9%87%8D%E5%90%AF%E6%97%B6%E5%8A%A0%E8%BD%BD%E5%93%AA%E4%B8%AA)
+
+O4-55 [short] 同时开启 RDB 和 AOF，重启时加载哪个？
+
+Answer (L410): 正常情况下，开启 AOF 后 Redis 重启会优先使用 AOF 恢复数据，因为它通常比独立的 RDB 快照保留更多近期变化，而不是把 dump.rdb 和 AOF 各加载一次。如果使用混合持久化，AOF 的基础部分本身可能就是 RDB 格式，恢复时先加载这部分，再回放后面的增量命令；Redis 7.0 的多部分 AOF 则按照 manifest 指定的 base 和 incr 文件顺序恢复。如果 AOF 损坏，不能直接认为 Redis 一定会自动退回旧的 dump.rdb，需要根据损坏情况、截断加载配置和备份做恢复，避免把不完整的数据恢复当成正常启动。[原文§同时开启 RDB 和 AOF，重启时加载哪个？](https://xiaolincoding.com/interview/redis.html#%E5%90%8C%E6%97%B6%E5%BC%80%E5%90%AF-rdb-%E5%92%8C-aof-%E9%87%8D%E5%90%AF%E6%97%B6%E5%8A%A0%E8%BD%BD%E5%93%AA%E4%B8%AA)

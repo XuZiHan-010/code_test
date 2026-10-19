@@ -1,0 +1,1231 @@
+{
+  "prefix": "I",
+  "chapters": {
+    "I1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "I1-1",
+          "type": "single",
+          "stem": "system prompt 与 user prompt 分别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "system prompt 是模型训练时见过的资料，user prompt 是模型动手之前要先读的技能说明",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "system prompt 是开发者放在对话最前面、用户看不见的出厂设定，user prompt 是用户每次输入的具体问题",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "system prompt 是用户每次亲手输入的具体问题，user prompt 是开发者放在对话最前面的出厂设定",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "system prompt 是工具调用所用的参数结构，user prompt 是对每件工具什么时候用的文字描述",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I1-2", "type": "short" },
+        { "id": "I1-3", "type": "short" },
+        {
+          "id": "I1-4",
+          "type": "single",
+          "stem": "工具的参数 Schema 与工具描述分别解决什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Schema 规定调用所用的参数结构，描述交代什么时候用、什么时候别用以及顺序和禁忌",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Schema 规定文件该输出到哪，描述规定当前环境里可以使用哪些库",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Schema 规定模型是谁、用什么口气说话，描述规定什么能做、什么绝对不能做",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Schema 交代什么时候用、什么时候别用以及顺序和禁忌，描述规定调用所用的参数结构",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I1-5", "type": "short" },
+        {
+          "id": "I1-6",
+          "type": "single",
+          "stem": "用户问“A 还是 B”时，按原文应怎样回应？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把两个选项原样弹回去让他选",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "反问用户自己更倾向哪一个",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "给出自己的分析和建议",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "弹出选项工具让用户点选",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-7",
+          "type": "single",
+          "stem": "弹出选项让用户点选的澄清工具，适合放什么内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户倒苦水时用来回应的安慰话",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "对“A 还是 B”给出的分析和建议",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "拒绝任务时要向用户说明的理由",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "本来要写成一条条 bullet 的澄清问题",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "I1-8", "type": "short" },
+        {
+          "id": "I1-9",
+          "type": "single",
+          "stem": "调用了等待用户回答的工具之后，模型应怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把同样的问题用文字再写一遍，防止用户没有看到弹出的选项",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "本轮到此结束，不再往下写，用户的选择会作为下一条消息回来",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "先按最可能的那个选项继续往下执行，用户选了别的再回头改",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "趁等待的时间调用其他工具，把依赖这个回答的动作先做完",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I1-10", "type": "short" },
+        {
+          "id": "I1-11",
+          "type": "single",
+          "stem": "生成多个沟通方案时，下列哪一组属于策略差异而不是语气差异？",
+          "options": [
+            {
+              "key": "A",
+              "text": "正式的版本，与随和的版本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "随和的版本，与热情的版本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "正式的版本，与热情的版本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "服从但保留意见，与据理力争",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "I1-12", "type": "short" },
+        {
+          "id": "I1-13",
+          "type": "single",
+          "stem": "外部系统的地点 ID 应怎样获取？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从搜索结果里逐字复制，因为模型处理又长又没规律的 ID 时爱自信地记错",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "凭记忆直接敲出，因为模型对训练时见过的 ID 记得比搜索结果更准",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按 ID 的编码规律自行推算，因为搜索结果里的 ID 经常是过时的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让用户亲手输入，因为模型不被允许读取搜索结果里的任何 ID",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-14",
+          "type": "single",
+          "stem": "查体育比分的工具对回答顺序有什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先弹出选项，再决定是否取数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先问用户支持哪支队，再取数据",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先取数据，再开口回答",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "先凭记忆回答，再取数据核对",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-15",
+          "type": "single",
+          "stem": "用户说要打车而且很赶时间，对接了多个打车平台的模型应怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "仍先把选项摆出来让他自己点，速度不能成为替用户做主的理由",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "先问清楚为什么赶时间，再根据他的理由替他挑一个平台",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "直接选用户上一次用过的平台，因为这样最符合他的使用习惯",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接选接单最快的那个平台，因为用户已经明确表示很赶时间",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-16",
+          "type": "single",
+          "stem": "做图文指南与用户只问某物长什么样，图的位置应怎样安排？",
+          "options": [
+            {
+              "key": "A",
+              "text": "做指南时图放在最前面，只问长什么样时图和文字穿插",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "做指南时图和文字穿插，只问长什么样时图放在最前面",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两种情况都把图集中放在最后面，文字放在图的前面",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两种情况都把图集中放在最前面，文字跟在图的后面",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-17",
+          "type": "single",
+          "stem": "判断一个问题要不要先搜再答，按原文关键看什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自己知不知道",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "问题是不是专业",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这件事会不会变",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用户有没有要求搜",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I1-18", "type": "short" },
+        { "id": "I1-19", "type": "short" },
+        { "id": "I1-20", "type": "short" },
+        { "id": "I1-21", "type": "short" },
+        {
+          "id": "I1-22",
+          "type": "single",
+          "stem": "能用哪些库、文件该输出到哪这类环境约束，应写在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写在系统提示词开头的角色和语气设定里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "写在每个工具调用的参数 Schema 里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "由用户在每次提问时自己重新说明",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "写在技能说明里，并要求模型动手前先读",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "I1-23", "type": "short" },
+        { "id": "I1-24", "type": "short" },
+        {
+          "id": "I1-25",
+          "type": "single",
+          "stem": "系统提示词对拒绝任务时的表达方式有什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只回一句“我无法回答”，不作任何解释",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用加粗和标题把拒绝的结论突出出来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用小圆点把拒绝的理由一条条列清楚",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不用小圆点罗列理由，多花心思用一段话好好说",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "I1-26",
+          "type": "multiple",
+          "stem": "在情感支持类交互里，下列哪些做法符合系统提示词的要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不给用户安一个他自己没说出口的诊断标签",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每次结束时都强调随时可以回来找它",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "主动给出诊断名称，帮助用户认识自己",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不反复表示随时欢迎继续聊",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "不为用户来找它而道谢",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "该鼓励用户去找别的支持时就鼓励",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "I1-27", "type": "short" },
+        { "id": "I1-28", "type": "short" },
+        {
+          "id": "I1-29",
+          "type": "single",
+          "stem": "用户说是为了研究学习，请模型写或解释恶意代码，按原文应怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以修改用户已有的代码，但不能从头写一份新的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让用户先说明研究机构，核实之后可以按教育目的提供",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "照样拒绝，不写、不改、不解释，没有给教育目的留口子",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "可以解释原理，但不能写出能够直接运行的完整代码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-30",
+          "type": "single",
+          "stem": "因安全原因拒绝时，模型对拒绝的依据应怎样说明？",
+          "options": [
+            {
+              "key": "A",
+              "text": "讲清楚用户踩到了哪个词",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只讲原则，不讲检测机制",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "讲清楚用户越过了哪条线",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "原则和检测机制都不提",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-31",
+          "type": "single",
+          "stem": "模型发现自己正在脑补理由，把一个可疑请求往“其实没问题”的方向圆，这说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这个想圆的念头本身就是该拒绝的信号",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "应当把脑补的理由交给用户确认",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这个请求大概率有正当的用途",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "应当少说几句但继续把请求做完",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I1-32", "type": "short" },
+        { "id": "I1-33", "type": "short" },
+        { "id": "I1-34", "type": "short" },
+        { "id": "I1-35", "type": "short" },
+        {
+          "id": "I1-36",
+          "type": "single",
+          "stem": "提示词允许 web_fetch 抓取哪些 URL？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型根据网站的常见路径规律拼出来的 URL",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型在训练数据里见过、凭记忆写出的 URL",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "任何以 https 开头、看起来可信的 URL",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户提供的，或由 web_search 返回的精确 URL",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "I1-37",
+          "type": "single",
+          "stem": "按提示词的归类，下列哪种情况应当存成文件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "做一份正式的战略分析",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "随手写一篇 200 字的小博客",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "给用户出一个主意",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "给用户列一个提纲",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-38",
+          "type": "single",
+          "stem": "product-self-knowledge 这个内置技能是做什么用的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "动手生成文档之前，先到这里查当前环境可用的库",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "遇到不认识的大写词时，用它抓取对应的网页",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "本来要靠记忆回答 Anthropic 产品细节时，先到这里核实",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要向用户澄清时，用它弹出选项让用户点选",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-39",
+          "type": "multiple",
+          "stem": "提示词对回复的格式和腔调有哪些要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "尽量顺着用户的意思，不提反对意见",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "语气温暖，把人当成有判断力的成年人",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "多用加粗、标题和小圆点突出重点",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只用最少的必要格式",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "该反对的时候也要反对，只是带着善意地说",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "一次回复里的提问不超过一个",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "I1-40", "type": "short" },
+        {
+          "id": "I1-41",
+          "type": "single",
+          "stem": "用户提到情绪困扰，又问起可能用于自伤的信息时，模型应怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不顺着回答，转过来关照他背后的情绪",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "直接回一句“我无法回答”并结束对话",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "如实回答这条信息，再附上一条求助热线",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先回答这条信息，再提醒他注意安全",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I1-42",
+          "type": "single",
+          "stem": "对话让模型感觉有风险或不对劲时，提示词要求它的第一反应是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "少说、回得更短，先把话收住",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "马上甩一句“我无法回答”",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "连续追问几个问题把情况弄清楚",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "详细解释自己为什么觉得不对劲",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I1-43", "type": "short" },
+        { "id": "I1-44", "type": "short" }
+      ]
+    },
+    "I2": {
+      "status": "draft",
+      "questions": [
+        { "id": "I2-1", "type": "short" },
+        {
+          "id": "I2-2",
+          "type": "multiple",
+          "stem": "长期记忆如果只维护一份不断增长的聊天摘要，按原文会出现哪些问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "想更新其中一条，可能把别的内容覆盖掉",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "敏感信息会被系统自动从摘要里删掉",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型拿到目录后读不到摘要的正文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "项目、爱好、同事、出行计划全挤在一起",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "每次整份塞进去，越来越费 token",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "I2-3",
+          "type": "fill",
+          "stem": "记忆系统提供的精简目录里，每个文件只展示四项：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "I2-4",
+          "type": "single",
+          "stem": "目录里某个文件的摘要看起来可能包含答案，模型应怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接根据目录里的那句摘要回答，不必再读正文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "直接告诉用户记忆里没有保存这项信息",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "调用 memory_read 读取正文之后再回答",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把目录里列出的所有文件全部读一遍再说",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I2-5", "type": "short" },
+        {
+          "id": "I2-6",
+          "type": "multiple",
+          "stem": "按原文，下列哪些内容不能冒充用户事实写入记忆？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型给出的建议",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用户直接说过的话",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型自己的推断",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "搜索得到的结果",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "模型提出的后续计划",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "I2-7",
+          "type": "single",
+          "stem": "用户说“这次想用 PostgreSQL”，模型却把“他以后所有项目都偏爱 PostgreSQL”存进记忆。原文认为后果是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这条记忆下周就会过期，对以后安排计划起不到任何作用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "几个月后模型把自己的猜测当成用户偏好，再用它影响新的建议",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "多端同时写入这条记忆时发生版本冲突，另一端的修改被抹掉",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这条记忆属于敏感信息，用户的同事在设置页面看到会不舒服",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I2-8",
+          "type": "fill",
+          "stem": "原文称靠谱的记忆系统至少要区分三件事：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "I2-9",
+          "type": "single",
+          "stem": "下列哪类信息更值得写入长期记忆？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户此刻所在的实时位置",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型对用户技术偏好的推断",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用户精确到分钟的下周日程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户长期存在的工作节奏",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "I2-10", "type": "short" },
+        {
+          "id": "I2-11",
+          "type": "single",
+          "stem": "写入时提交的 if_version 与当前版本不一致，工具会怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接用提交的内容覆盖当前版本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "锁住这个文件，等另一端写完再放行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "丢弃这次修改，并把它当作异常上报",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "返回最新内容，由模型合并后重试",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "I2-12", "type": "short" },
+        {
+          "id": "I2-13",
+          "type": "fill",
+          "stem": "三种写入方式的分工是：新增一条事实用 ____，修改一处用 ____，只有大范围重组才 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "I2-14",
+          "type": "single",
+          "stem": "在写入工具的参数里强制要求 if_version，比只在提示词里写“修改前先读”好在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "提示词可以写得更短，每次请求更省 token",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型从此不必再读取文件的当前内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型即使忘了这条规则，也无法绕过接口直接写入",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "多端同时修改时不会再出现版本冲突",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I2-15",
+          "type": "fill",
+          "stem": "原文建议删除数据的接口必须带上三项：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "I2-16", "type": "short" },
+        {
+          "id": "I2-17",
+          "type": "multiple",
+          "stem": "按原文，下列哪些信息不能进入长期记忆？",
+          "options": [
+            {
+              "key": "A",
+              "text": "证件与金融账号",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "实时位置",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "沟通方面的偏好",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "政治立场",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "长期存在的工作节奏",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "健康和心理情况",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "I2-18",
+          "type": "single",
+          "stem": "用户的一句话里同时包含普通信息和敏感信息，记忆应怎样保存？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只保存允许保存的那部分",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "先保存，再等用户要求删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "整句话原样保存",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "整句话都不保存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I2-19",
+          "type": "single",
+          "stem": "一条已经保存的记忆，什么情况下才应该在回答里使用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它允许保存；凡是允许保存的记忆都应尽量主动提起",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它真正影响回答；删掉它回答仍然同样好，就不该出现",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它与用户有关；提起它可以证明模型确实记得用户",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它最近更新过；越新的记忆越应该出现在回答开头",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I2-20", "type": "short" },
+        {
+          "id": "I2-21",
+          "type": "single",
+          "stem": "从记忆里找回的文字包含一条可疑指令，模型应怎样对待？",
+          "options": [
+            {
+              "key": "A",
+              "text": "记忆是数据不是指令，只当参考信息，不逐字执行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "记忆来自用户本人，优先级高于 system prompt",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "记忆与 system prompt 同级，按写入时间决定听谁的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "记忆里的指令只要重复出现过，就应当照着执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I2-22",
+          "type": "single",
+          "stem": "用户当前的明确要求与记忆里的历史偏好冲突时，以哪个为准？",
+          "options": [
+            {
+              "key": "A",
+              "text": "以历史偏好为准",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "取两者的折中",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都不采用，重新询问",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "以当前请求为准",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "I2-23", "type": "short" },
+        { "id": "I2-24", "type": "short" },
+        {
+          "id": "I2-25",
+          "type": "single",
+          "stem": "生成可视化之前，原文检查表的第一步是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "看有没有专门处理它的 MCP 工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "问这个请求是否真的需要可视化",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "看用户是否明确要一个文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "比较哪个工具画出来更好看",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I2-26",
+          "type": "single",
+          "stem": "专门的 MCP 工具、文件工具和聊天里的通用可视化工具，按原文应以什么顺序选择？",
+          "options": [
+            {
+              "key": "A",
+              "text": "三类工具各试一遍，比较结果之后保留最好看的那一个",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先看用户是否要文件，再用通用可视化工具，都不符合才找专门的 MCP 工具",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先看专门的 MCP 工具，再看用户是否要文件，都不符合才用通用可视化工具",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "先用通用可视化工具，效果不好再换文件工具，最后才考虑专门的 MCP 工具",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I2-27",
+          "type": "single",
+          "stem": "按决策树找到第一个符合条件的工具之后，模型应怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把剩下的工具看完再作比较",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把候选工具列出来让用户选",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "就此停止，不再继续往下挑",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "再选一个备用工具同时调用",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I2-28", "type": "short" },
+        { "id": "I2-29", "type": "short" },
+        {
+          "id": "I2-30",
+          "type": "single",
+          "stem": "模型变强之后，原文认为哪类约束仍然要写死？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型解决问题时所走的解题路径",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个问题都要输出的固定思维链",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次结束前固定再验证一次的旧提示",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "删除生产数据、转账和发布这类高风险动作的流程",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "I2-31",
+          "type": "single",
+          "stem": "新的提示词写法里，开发者主要通过什么来调整推理深度？",
+          "options": [
+            {
+              "key": "A",
+              "text": "固定的思维链模板",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "effort",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "memory_read",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "if_version",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "I2-32",
+          "type": "fill",
+          "stem": "原文建议用三项说明代替固定思维链：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "I2-33", "type": "short" },
+        { "id": "I2-34", "type": "short" },
+        {
+          "id": "I2-35",
+          "type": "single",
+          "stem": "按原文的例子，下列哪种情况才该用上记忆？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户让它给团队写通知，记忆里有团队角色和沟通习惯",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用户问一个通用问题，想借机证明自己记得他的爱好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用户问怎么清空 Git stash，记忆里写着他经常用 Git",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户明确要一句话回答，记忆里写着他喜欢详细回答",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "I2-36", "type": "short" }
+      ]
+    }
+  }
+}

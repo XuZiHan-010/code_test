@@ -1,0 +1,4581 @@
+{
+  "prefix": "C",
+  "chapters": {
+    "C1": {
+      "status": "draft",
+      "questions": [
+        { "id": "C1-1", "type": "short" },
+        {
+          "id": "C1-2",
+          "type": "fill",
+          "stem": "工具定义的三部分各管一件事：模型在 tool_calls 里用来指定工具的唯一标识是 ____，影响是否调用与怎样填参的是 ____，约束参数字段、类型和必填项的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C1-3",
+          "type": "single",
+          "stem": "模型返回 tool call 之后，实际的函数由谁执行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由用户在终端里手动执行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "由宿主程序的代码执行，模型只是下指令",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "由模型厂商的服务器代为执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "由模型自己直接执行，再把结果返回",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C1-4",
+          "type": "single",
+          "stem": "为什么工具执行结果还要作为消息交回模型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型有了工具结果、信息充分了，才能给出最终的自然语言答案",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "交回模型是为了让它重新执行一遍工具",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "工具结果必须经过模型签名才能展示给用户",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型需要用工具结果来更新自己的参数权重",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C1-5",
+          "type": "single",
+          "stem": "一个回合里并行调用多个工具，前提是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这几个工具必须是同一个工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这几个工具都不需要返回结果",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这几个工具的参数必须完全相同",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这几个工具之间没有依赖关系",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C1-6", "type": "short" },
+        { "id": "C1-7", "type": "short" },
+        {
+          "id": "C1-8",
+          "type": "single",
+          "stem": "下列哪种工具调用只能串行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两个调用的结果都不会被对方用到",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "分别查询北京和上海两地的天气",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先查订单号，再用订单号去查物流",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两个调用互不影响、各查各的数据",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C2-1",
+          "type": "single",
+          "stem": "只受普通文本预训练的模型，为什么不会可靠地生成工具调用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "预训练的模型没有阅读理解能力，读不懂提示词里的工具说明",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "预训练时见过太多工具调用，模型学会了过度调用，所以输出不稳定",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "预训练全程在文本空间里进行，从未见过工具调用，它只会生成一段自然语言描述",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "预训练的模型被禁止输出 JSON，只能输出纯文本",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C2-2", "type": "short" },
+        {
+          "id": "C2-3",
+          "type": "single",
+          "stem": "模型已经会生成调用格式，为什么仍可能“逢问必调”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型在推理时被强制要求每一轮都至少调用一次工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "SFT 样本里该调的场景占了绝大多数，模型没见过足够多不该调的反例",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "奖励模型给不调用工具的回答打了高分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "SFT 样本里不该调的场景占了绝大多数，模型学反了",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C2-4", "type": "short" },
+        { "id": "C2-5", "type": "short" },
+        {
+          "id": "C2-6",
+          "type": "fill",
+          "stem": "工具调用训练数据通常来自两种途径：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "C2-7", "type": "short" },
+        {
+          "id": "C2-8",
+          "type": "single",
+          "stem": "RLHF 里奖励模型的打分能力从哪里来？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从工具的 JSON schema 里自动推导出来，不需要任何人工数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "从主模型自己的输出里学来，不需要任何外部反馈",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "从预训练语料的统计规律里直接得到",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从人类标注员的偏好数据里学来，标注标准不一致时它会学到歪的打分标准",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C2-9",
+          "type": "single",
+          "stem": "RLAIF 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "RLHF 的变体，用另一个 AI 代替人类标注员打分",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一种推理时的技巧，让模型一次输出多个调用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "SFT 的变体，用另一个 AI 代替人类编写示范对话",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "预训练的变体，用工具调用日志代替文本语料",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C2-10", "type": "short" },
+        {
+          "id": "C2-11",
+          "type": "single",
+          "stem": "“模型决策、代码执行”的分工为什么合理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "LLM 执行工具的速度比宿主程序慢，分工只是为了提高性能",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "LLM 擅长理解意图和推理，但不应有直接操作系统资源的权限；宿主程序执行时可以做权限控制、参数校验和沙箱",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "LLM 擅长执行代码，但不擅长理解意图；宿主程序负责理解意图并告诉模型该做什么",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "LLM 厂商不允许模型输出结构化数据，所以只能由代码执行",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C3": {
+      "status": "draft",
+      "questions": [
+        { "id": "C3-1", "type": "short" },
+        { "id": "C3-2", "type": "short" },
+        {
+          "id": "C3-3",
+          "type": "multiple",
+          "stem": "工具调用的训练数据，按原文应覆盖哪些场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型自己直接执行工具代码",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "多工具并行调用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "单工具调用",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不需要调用而直接回答",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "工具调用失败后的处理",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "多轮对话中引用已有工具结果",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C3-4", "type": "short" },
+        {
+          "id": "C3-5",
+          "type": "single",
+          "stem": "SFT 和 RLHF 两个训练阶段，分别解决工具调用的什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "SFT 解决会不会调，RLHF 解决该不该调",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "SFT 解决该不该调，RLHF 解决会不会调",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两个阶段都解决会不会调",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两个阶段都解决该不该调",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C3-6", "type": "short" },
+        {
+          "id": "C3-7",
+          "type": "single",
+          "stem": "SFT 阶段，模型是通过什么机制学会输出正确调用格式的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "规则匹配：用正则表达式修正模型输出的 JSON",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "提示工程：把正确格式写进系统提示词，模型每次照抄",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "强化学习：奖励模型给每个回答打分，主模型朝高分方向调整",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "反向传播：输出偏离正确答案时损失函数产生惩罚信号，梯度回传并调整参数权重",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C3-8", "type": "short" },
+        {
+          "id": "C3-9",
+          "type": "single",
+          "stem": "用强模型自动生成训练数据，有什么隐患？",
+          "options": [
+            {
+              "key": "A",
+              "text": "强模型生成数据的成本比人工标注更高，无法大规模使用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "强模型生成的数据无法用于监督微调，只能用于预训练",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上游模型生成的错误样本会被下游模型一起学进去，所以人工抽查不能省",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "强模型生成的数据量太少，不够覆盖常见的场景",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C3-10", "type": "short" },
+        {
+          "id": "C3-11",
+          "type": "multiple",
+          "stem": "RLHF 为什么常选 PPO 算法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相对稳定，训练过程不容易崩",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只需要一条训练样本就能收敛",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能限制每步更新的幅度，新旧模型的输出分布不会差太远",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不需要奖励模型的打分信号",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C3-12",
+          "type": "single",
+          "stem": "RLAIF 的代价是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "速度比人工标注慢得多，训练周期被明显拉长",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "打分 AI 的偏见和盲区会传递给被训练的模型",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "成本比人工标注高出很多倍，难以大规模使用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "无法与 RLHF 混合使用，两者只能二选一",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C4": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C4-1",
+          "type": "single",
+          "stem": "MCP 要解决不同 AI 应用重复对接外部工具的什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让外部服务不再需要认证，任何应用都可以直接访问",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让模型学会输出结构化的调用请求，不再需要解析自然语言",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让每个 AI 应用各自定义一套工具注册方式和返回格式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把能力封装成 MCP Server，兼容的应用可以复用同一份实现，M×N 套适配变成 M+N",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C4-2",
+          "type": "fill",
+          "stem": "MCP 的三个角色：负责与模型交互、管理上下文并落实用户授权的 AI 应用是 ____，在它内部负责协议通信的组件是 ____，提供能力并处理请求的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C4-3",
+          "type": "single",
+          "stem": "一个 Host 为什么可能维护多个 MCP Client？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个 Client 与一个 Server 是一对一的对接关系，每接入一个 Server 就要再创建一个 Client",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个模型需要一个专属的 Client，换模型就要换 Client",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个用户需要一个专属的 Client，用户越多 Client 越多",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个 Client 只能发送一次请求，发送之后就必须销毁重建",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C4-4",
+          "type": "single",
+          "stem": "MCP 的 Prompts 向 Host 提供什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 URI 标识的上下文数据，由 Host 放进模型上下文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可调用的功能，获取它的同时就会执行对应的外部操作",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可复用的消息模板，获取它只是拿到消息，不会自动执行其中提到的工具操作",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型的系统提示词，获取之后会覆盖 Host 原有的指令",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C4-5", "type": "short" },
+        {
+          "id": "C4-6",
+          "type": "fill",
+          "stem": "JSON-RPC 2.0 规定的三类消息是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "C4-7",
+          "type": "single",
+          "stem": "MCP 接通之后，为什么仍要注意结果的可信度？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Server 返回的内容只会展示给用户，不会进入模型的上下文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Server 返回的内容都经过协议加密和签名，可以直接当作系统指令执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Server 返回的文档、工具说明和提示模板可能含不可信内容，不能当成高优先级指令照办",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Server 返回的内容格式固定，不可能包含任何指令",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C4-8", "type": "short" },
+        { "id": "C4-9", "type": "short" },
+        {
+          "id": "C4-10",
+          "type": "single",
+          "stem": "同一份 README 既可以作为 Resource 也可以用 Tool 读取，两者有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有任何不同，两个名字可以随意互换",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "内容相同，接口职责不同：Resource 提供上下文，Tool 执行一次调用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "内容不同：Resource 返回全文，Tool 只返回摘要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "权限不同：Resource 一定可以自由开放，Tool 一定需要用户确认",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C4-11",
+          "type": "fill",
+          "stem": "按官方设计的常见交互方式，通常由模型根据任务选择的是 ____，由应用决定如何加入上下文的是 ____，由用户主动选择使用的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C4-12",
+          "type": "single",
+          "stem": "一次工具调用里，Function Calling 和 MCP 各管哪一段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Function Calling 帮模型用结构化格式表达调用意图，MCP 规范 Host 通过 Client 与 Server 发现和调用工具的过程",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "MCP 帮模型用结构化格式表达调用意图，Function Calling 规范 Host 通过 Client 与 Server 发现和调用工具的过程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者管的是同一段，用了 MCP 就不再需要 Function Calling",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都规定模型如何推理，并保证模型每次都能选对工具",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C4-13",
+          "type": "single",
+          "stem": "MCP 的两种标准传输方式各是怎样传递消息的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都通过进程的输入输出传递消息，区别只在消息是否压缩",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "stdio 通过 POST 获得 JSON 或 SSE 响应，适合独立服务部署；Streamable HTTP 通过进程的输入输出传递消息，适合本地进程通信",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都必须使用 SSE，并且端点必须固定命名为 /mcp",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "stdio 通过进程的输入输出传递消息，适合本地进程通信；Streamable HTTP 通过 POST 获得 JSON 或 SSE 响应，适合独立服务部署",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C4-14",
+          "type": "single",
+          "stem": "早期的 HTTP+SSE 传输方式现在是什么状态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "已被弃用，新实现应优先采用 Streamable HTTP",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "已成为唯一的标准传输方式，stdio 已被移除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "仍是推荐的首选方式，Streamable HTTP 只用于测试",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "与 Streamable HTTP 完全相同，只是换了名字",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C4-15",
+          "type": "single",
+          "stem": "MCP 的授权应该围绕什么来设计？",
+          "options": [
+            {
+              "key": "A",
+              "text": "围绕传输方式，stdio 一律免授权，HTTP 一律需要授权",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "围绕能力类型，Tools 一律需要确认，Resources 一律自由开放",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "围绕具体操作和具体数据，不能简单规定 Tools 都高风险、Resources 都可自由开放",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "围绕模型，由模型自己判断哪些操作需要用户确认",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C5": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C5-1",
+          "type": "fill",
+          "stem": "原文把 MCP 拆成三层来讲：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "C5-2", "type": "short" },
+        { "id": "C5-3", "type": "short" },
+        {
+          "id": "C5-4",
+          "type": "single",
+          "stem": "为什么协议消息格式与传输方式需要分别讨论？",
+          "options": [
+            {
+              "key": "A",
+              "text": "消息格式由 Host 决定，传输方式由模型决定，所以要分开讨论",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者是解耦的：同一套 JSON-RPC 消息可以跑在任意传输层上，切换传输方式不影响上层的工具调用逻辑",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者是绑定的：每种传输方式都有自己专用的消息格式，切换传输方式就要重写全部工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "传输方式只影响安全性，消息格式只影响速度，两者互不相关",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C5-5", "type": "short" },
+        {
+          "id": "C5-6",
+          "type": "fill",
+          "stem": "MCP Client 的三项职责是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "C5-7",
+          "type": "single",
+          "stem": "MCP Server 体现了 MCP 的什么核心价值？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Server 只能被启动它的那一个 Host 使用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Server 需要了解上层是哪个 Host 才能响应请求",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Server 必须为每个 Host 各写一个专用版本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Server 写一次，任何支持 MCP 的 Host 都能直接用",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C5-8", "type": "short" },
+        { "id": "C5-9", "type": "short" },
+        {
+          "id": "C5-10",
+          "type": "single",
+          "stem": "MCP 的 Prompts 解决什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不同传输方式消息格式不一致的问题，它统一了消息的结构",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每次都要手写重复 prompt 的问题，它把固定的提示词封装成带参数占位符的模板",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "模型无法调用外部 API 的问题，它让模型能够执行有副作用的操作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型读不到外部数据的问题，它把只读数据提供给模型看",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C5-11",
+          "type": "single",
+          "stem": "MCP 的 JSON-RPC 消息里，请求和响应靠什么对应起来？",
+          "options": [
+            {
+              "key": "A",
+              "text": "请求和响应的消息长度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "请求和响应使用的方法名",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "请求里的 ID，响应带上相同的 ID",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "请求和响应发送的先后顺序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C5-12",
+          "type": "single",
+          "stem": "Streamable HTTP 相比早期的 HTTP+SSE 做了什么改动？",
+          "options": [
+            {
+              "key": "A",
+              "text": "彻底抛弃了 SSE，所有响应都只能用普通 JSON 一次返回",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "改用进程的输入输出传递消息，不再使用 HTTP",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "从单端点改成双端点：一个 GET 端点接收推送，一个 POST 端点发送请求",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从双端点改成单端点：Client 用 POST 发请求，短请求直接回 JSON，长请求把响应升级为 SSE 流",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "C6": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C6-1",
+          "type": "single",
+          "stem": "Function Calling 和 MCP 分别标准化了哪一层？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Function Calling 管一次函数调用请求长什么样，MCP 管一堆工具怎样被组织、发现和跨项目复用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "MCP 管一次函数调用请求长什么样，Function Calling 管一堆工具怎样被组织、发现和跨项目复用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者标准化的是同一层，只是由不同的厂商提出",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都只规定传输方式，不涉及消息格式",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C6-2",
+          "type": "multiple",
+          "stem": "只靠 Function Calling，多应用复用工具时会遇到哪些问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工具的执行结果无法交回模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工具接口一变，要去每个项目逐一更新",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不同模型的格式不完全一样，要各自适配",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型无法输出结构化的调用请求",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "schema 和对接逻辑写在各个项目里，换项目要复制重写",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C6-3", "type": "short" },
+        { "id": "C6-4", "type": "short" },
+        { "id": "C6-5", "type": "short" },
+        { "id": "C6-6", "type": "short" },
+        {
+          "id": "C6-7",
+          "type": "single",
+          "stem": "MCP 在工具生态上带来的质变是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工具只需要实现一次，所有 AI 客户端都能用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "工具不再需要描述和参数说明",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "工具只能被官方客户端使用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "工具可以由模型自己直接执行",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C6-8", "type": "short" },
+        {
+          "id": "C6-9",
+          "type": "single",
+          "stem": "什么情况下值得从 Function Calling 换成 MCP？",
+          "options": [
+            {
+              "key": "A",
+              "text": "部署环境不允许启动任何子进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工具只为一个应用服务，而且以后也不打算复用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要跨项目复用，或想直接用社区已有的成熟 Server",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只是做一个快速原型，希望尽量少的配置",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C7": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C7-1",
+          "type": "single",
+          "stem": "单应用只调用一两个内部函数时，为什么直接用 Function Calling 可能更简单？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Function Calling 的工具由模型直接执行，不需要自己写调用逻辑",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Function Calling 不需要给工具写 schema 和描述",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Function Calling 的工具可以被任何支持 MCP 的客户端直接复用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不用启动额外进程和配置，调用逻辑都在自己的代码里，加权限校验和错误处理也更方便",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C7-2", "type": "short" },
+        {
+          "id": "C7-3",
+          "type": "single",
+          "stem": "MCP 相比直接使用 Function Calling，有什么额外的限制？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Server 的工具不能带参数，只能执行固定的操作",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Server 是独立进程，不允许启动子进程的受限环境里 stdio 模式用不了",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Server 只能用一种编程语言实现，团队必须统一技术栈",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Server 每次调用都必须经过人工确认，无法自动执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C7-4",
+          "type": "single",
+          "stem": "“工具数量多”本身是否足以决定使用 MCP？",
+          "options": [
+            {
+              "key": "A",
+              "text": "足以，超过五个工具就必须改用 MCP",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "足以，工具数量是唯一需要考虑的因素",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不足以，要综合看工具的复杂度、团队规模和变更频率",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不足以，只需要看项目的代码行数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C7-5",
+          "type": "single",
+          "stem": "选 Function Calling 还是 MCP，判断的核心问题是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这个工具一共有多少个参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这个工具用哪种编程语言实现",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这个工具调用一次要花多长时间",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这个工具会不会在这个应用之外被用到",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C7-6", "type": "short" },
+        {
+          "id": "C7-7",
+          "type": "single",
+          "stem": "Function Calling 与 MCP 是竞争关系吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，两者解决的是完全无关的两个问题，没有任何联系",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，MCP 工具通常靠 Function Calling 交给模型调用，选哪个取决于工程需求",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是的，两者互不兼容，同一个系统里只能选一个",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，MCP 出现之后 Function Calling 已经被淘汰",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C7-8",
+          "type": "fill",
+          "stem": "原文总结的更适合 Function Calling 的四种场景是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        }
+      ]
+    },
+    "C8": {
+      "status": "draft",
+      "questions": [
+        { "id": "C8-1", "type": "short" },
+        {
+          "id": "C8-2",
+          "type": "single",
+          "stem": "一个模型不能稳定输出 tool call，问题一定出在 MCP 协议吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不一定，模型能力、工具定义、宿主适配都可能是原因，需分别排查",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是的，只要换一个 MCP Server 的实现，模型就能稳定输出 tool call",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，问题一定出在宿主程序没有正确执行工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，MCP 协议规定了模型应当怎样推理，协议有缺陷模型就无法调用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C8-3",
+          "type": "single",
+          "stem": "按原文，早期推理模型用什么折中方案解决思考阶段与工具调用的配合问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "彻底去掉思考阶段，退回普通模型的生成方式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在思考到一半时暂停并保存全部状态，工具返回后原样恢复",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让工具调用发生在思考阶段结束之后，进入输出答案阶段才触发",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让工具调用发生在思考阶段开始之前，先拿到全部结果再思考",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C8-4",
+          "type": "single",
+          "stem": "让工具调用发生在思考结束之后，这个折中方案有什么局限？",
+          "options": [
+            {
+              "key": "A",
+              "text": "思考阶段会被工具结果反复打断，推理链无法保持完整",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "思考阶段感知不到工具结果，对需要先查到数据再做深度推理的任务不够用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "工具调用的次数被限制为一次，无法连续调用多个工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型输出的调用请求不再是结构化的 JSON",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C8-5", "type": "short" },
+        {
+          "id": "C8-6",
+          "type": "single",
+          "stem": "按原文的解释，推理中途暂停、保存状态再恢复，为什么代价很大？",
+          "options": [
+            {
+              "key": "A",
+              "text": "恢复之后模型只能用英文继续思考，中文任务无法完成",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "暂停期间模型会继续消耗输出 token，费用成倍上涨",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "中间状态无法保存，暂停之后模型的参数权重会全部丢失",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "中间状态 KV Cache 体积庞大，暂停期间要一直占着 GPU 显存，吞吐量大幅下降",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C8-7", "type": "short" },
+        {
+          "id": "C8-8",
+          "type": "single",
+          "stem": "按原文的解释，推理能力和工具调用在训练目标上为什么冲突？",
+          "options": [
+            {
+              "key": "A",
+              "text": "推理训练奖励一直想、想到底，工具调用训练要模型在合适的时机打断自己输出 JSON，方向相反",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "推理训练要模型尽量少思考，工具调用训练要模型尽量多思考，方向相反",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都要求模型不调用任何外部工具，训练目标重复",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者使用完全相同的训练数据，模型无法区分当前在训练哪一种能力",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C8-9", "type": "short" },
+        { "id": "C8-10", "type": "short" },
+        { "id": "C8-12", "type": "short" }
+      ]
+    },
+    "C9": {
+      "status": "draft",
+      "questions": [
+        { "id": "C9-1", "type": "short" },
+        {
+          "id": "C9-2",
+          "type": "single",
+          "stem": "一个 Skill 文件夹里必须有什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "scripts 目录，里面放着可以直接执行的脚本文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "assets 目录，里面放着输出用的模板和资源文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "SKILL.md，顶部是含 name 和 description 的 frontmatter",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "references 目录，里面放着正文放不下的参考文档",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C9-3", "type": "short" },
+        {
+          "id": "C9-4",
+          "type": "single",
+          "stem": "Skill 与 Tool 分别提供什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都提供流程，区别只在 Tool 的流程写在代码里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Tool 提供能力，让 Agent 能查数据库、调 API；Skill 提供知识和流程，教它按什么步骤和标准完成工作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Skill 提供能力，让 Agent 能查数据库、调 API；Tool 提供知识和流程，教它按什么步骤和标准完成工作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都提供能力，区别只在 Skill 的能力不需要授权",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C9-5",
+          "type": "single",
+          "stem": "Skill 采用开放格式，对跨平台复用有什么价值和限制？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它需要专用的运行时才能加载，所以只能在 Claude 生态里使用，无法移植到其他平台",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它已经被所有 Agent 平台原生支持，写一份就能保证在任何平台上完全一致地运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它是一种编译后的二进制格式，跨平台时必须重新编译",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它只是文件夹加 Markdown、不需要特殊运行时，有机会跨平台复用，但目前主要还是 Claude 生态在用",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C9-6", "type": "short" },
+        { "id": "C9-7", "type": "short" },
+        { "id": "C9-8", "type": "short" },
+        {
+          "id": "C9-9",
+          "type": "single",
+          "stem": "Skill 与 Slash Command 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slash Command 必须由用户手动触发，Skill 可以被 Agent 自动发现和调用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都只能由用户手动触发，区别只在名字不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Skill 必须由用户手动触发，Slash Command 可以被 Agent 自动发现和调用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都是一次性的临时指令，说完就没了",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C10": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C10-1",
+          "type": "single",
+          "stem": "MCP 和 Agent Skill 解决的问题为什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都解决怎么获得外部能力，区别只在传输方式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "MCP 解决 Agent 怎么获得外部能力，Skill 解决有了这些能力之后该怎么用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都解决该怎么用，区别只在文件格式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Skill 解决 Agent 怎么获得外部能力，MCP 解决有了这些能力之后该怎么用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C10-2",
+          "type": "single",
+          "stem": "以代码审查为例，Skill 与 MCP 工具在协作中各扮演什么角色？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Skill 是编排者，MCP 是执行者",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "MCP 是编排者，Skill 是执行者",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都是编排者，执行由用户完成",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都是执行者，编排由用户完成",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C10-3", "type": "short" },
+        {
+          "id": "C10-4",
+          "type": "single",
+          "stem": "为什么说 MCP 的粒度是“原子操作”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个 Tool 只在启动时加载名字，正文按需读取",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个 Tool 只能被调用一次，之后自动失效",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个 Tool 每次调用只做一件明确完整的事，执行结果立刻返回",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每个 Tool 都包含一整套工作流程和输出模板",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C10-5", "type": "short" },
+        { "id": "C10-6", "type": "short" },
+        { "id": "C10-7", "type": "short" }
+      ]
+    },
+    "C11": {
+      "status": "draft",
+      "questions": [
+        { "id": "C11-1", "type": "short" },
+        { "id": "C11-2", "type": "short" },
+        { "id": "C11-3", "type": "short" },
+        {
+          "id": "C11-4",
+          "type": "single",
+          "stem": "按本篇的说法，三者之间是什么层级依赖？",
+          "options": [
+            {
+              "key": "A",
+              "text": "三者互相独立，可以任意跳过其中一层而不影响能力",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "三者是互相替代的关系，用了其中一个就不需要另外两个",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Function Calling 定义流程，Skill 提供工具，MCP 由模型触发调用，三层缺一不可",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Skill 定义流程，MCP 提供工具，Function Calling 由模型触发调用，三层缺一不可",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C11-5",
+          "type": "fill",
+          "stem": "三者各自发生的位置不同：发生在模型和函数之间的是 ____，发生在 AI 客户端与工具服务之间的是 ____，发生在 Agent 和知识模块之间的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C11-6",
+          "type": "single",
+          "stem": "原文做菜的类比里，MCP 相当于什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "菜谱，告诉你先后步骤",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "手，能拿刀、点火、翻锅",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "食客，负责品尝结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "厨房，里面有各种厨具和食材",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C11-7", "type": "short" }
+      ]
+    },
+    "C12": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C12-1",
+          "type": "single",
+          "stem": "A2A 解决的通信问题与 MCP 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "MCP 是 Agent 向下连工具的纵向连接，A2A 是 Agent 向外连其他 Agent 的横向连接",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都是 Agent 连 Agent，区别只在消息格式",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "MCP 是 Agent 向外连其他 Agent 的横向连接，A2A 是 Agent 向下连工具的纵向连接",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都是 Agent 连工具，A2A 是用来替代 MCP 的新协议",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C12-2", "type": "short" },
+        {
+          "id": "C12-3",
+          "type": "fill",
+          "stem": "A2A 的 Task 有完整的生命周期状态：创建时是 ____，执行中是 ____，成功结束时是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C12-4",
+          "type": "single",
+          "stem": "调度 Agent 提交 Task 之后，怎样得到进度和最终结果？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接读取对方 Agent 的上下文窗口，从中间过程里找出结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "通过轮询或 push notification 得知进展，completed 后再取 artifacts",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一直同步阻塞等待，直到对方把内部用到的所有工具调用记录全部返回",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "重新提交一遍相同的 Task，以最后一次的返回为准",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C12-5", "type": "short" },
+        {
+          "id": "C12-6",
+          "type": "multiple",
+          "stem": "单个 Agent 的天花板体现在哪些方面？",
+          "options": [
+            {
+              "key": "A",
+              "text": "无法调用任何 MCP 工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "上下文窗口的限制",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "专业能力的限制",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "无法输出结构化的调用请求",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "工具数量的限制",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C12-7",
+          "type": "single",
+          "stem": "多 Agent 协作在上下文层面的核心收益是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有 Agent 共用同一个上下文窗口，中间过程可以互相直接读取",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "子 Agent 不需要上下文窗口，所有内容都保存在调度 Agent 里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "子 Agent 的搜索、草稿等中间过程都留在它自己的上下文里，只把最终结论返回给调度 Agent",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "调度 Agent 的上下文窗口会随子 Agent 的数量成倍扩大",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C12-8",
+          "type": "single",
+          "stem": "Agent 之间互相认识，为什么不能靠写死配置？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对方的能力一变，自己的代码就得改，根本没法维护",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "写死的配置无法通过网络传输",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "写死的配置会占用太多上下文窗口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "写死的配置会让模型拒绝调用对方",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C12-9", "type": "short" },
+        {
+          "id": "C12-10",
+          "type": "single",
+          "stem": "把 A2A 当成 MCP 的竞品，原文怎么看？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这是误区，因为两者其实是同一个协议的两个版本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这是正确的理解，同一个系统里两者只能选择一个",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这是最大的误区，两者互补，在复杂的多 Agent 系统里通常同时使用",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "这是正确的理解，A2A 出现之后 MCP 会被逐步淘汰",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C13": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C13-1",
+          "type": "single",
+          "stem": "MCP 里，JSON-RPC、stdio、Streamable HTTP 分别属于哪一层？",
+          "options": [
+            {
+              "key": "A",
+              "text": "stdio 是消息格式，JSON-RPC 2.0 和 Streamable HTTP 是在它之上定义的两种传输层实现",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "JSON-RPC 2.0 是消息格式，stdio 和 Streamable HTTP 是在它之上定义的两种传输层实现",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "三者都是传输层实现，可以任选其一",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "三者都是消息格式，传输由 WebSocket 负责",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C13-2",
+          "type": "single",
+          "stem": "本地子进程通过 stdio 通信，边界是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只能有一个 Client 连接云端",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "必须开放一个公网端口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "必须处理认证和网络重连",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两个进程要在同一台机器上运行",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C13-3",
+          "type": "single",
+          "stem": "远程共享的 MCP Server 使用 Streamable HTTP，代价是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Server 的生命周期必须随 Client 自动管理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Server 只能和 Client 运行在同一台机器上",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "多了网络开销，还要处理认证和网络中断重连",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "多个 Client 无法共享同一个 Server",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C13-4", "type": "short" },
+        {
+          "id": "C13-5",
+          "type": "single",
+          "stem": "MCP 为什么选 JSON-RPC 2.0 作为消息格式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "MCP 的通信模式本质上是远程过程调用，而 JSON-RPC 2.0 是现成的、足够轻量的 RPC 规范",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "JSON-RPC 2.0 是二进制格式，传输体积比 JSON 小很多",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "JSON-RPC 2.0 自带传输层，不需要再定义 stdio 或 HTTP",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "JSON-RPC 2.0 只能用一种语言实现，便于统一技术栈",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C13-6",
+          "type": "single",
+          "stem": "stdio 传输为什么延迟低？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数据通过专用的高速网卡传输",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "数据在发送前会被缓存到磁盘",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数据经过压缩后再通过网络发送",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "数据走内存里的管道，不经过网卡和协议栈",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C13-7",
+          "type": "single",
+          "stem": "早期的 HTTP+SSE 传输为什么被替换？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它不支持服务端向客户端推送数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "同一个对话被拆成两条通道，状态管理变复杂",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它只能传输二进制数据，无法传输 JSON 文本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它要求 Client 和 Server 必须在同一台机器上",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C13-8",
+          "type": "single",
+          "stem": "关于 MCP 的通信方式，原文指出最常见的误区是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "以为 MCP 有 stdio 和 Streamable HTTP 两种传输",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "以为 MCP 的消息格式和传输方式是解耦的",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "以为 MCP 用 JSON-RPC 2.0 作为消息格式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "以为 MCP 用的是 WebSocket 或 HTTP REST 接口",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C13-9", "type": "short" }
+      ]
+    },
+    "C14": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C14-1",
+          "type": "single",
+          "stem": "SSE 和 WebSocket 在通信方向上有什么根本区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都只有客户端能主动发，服务端只能被动响应",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都是全双工，区别只在 SSE 更省流量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "SSE 只有服务端能主动推，WebSocket 是全双工，两边都可以随时主动发消息",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "SSE 是全双工，两边都可以随时主动发消息，WebSocket 只有服务端能主动推",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C14-2",
+          "type": "single",
+          "stem": "普通 LLM 文字流式回答为什么常使用 SSE？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文字对话天然是单向推，SSE 轻量、HTTP 原生支持、运维简单",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "SSE 基于 UDP，延迟比 WebSocket 更低",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "文字对话需要频繁的双向实时消息，SSE 是全双工",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "SSE 可以直接传输二进制的语音和图片",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C14-3",
+          "type": "single",
+          "stem": "用户在生成过程中想随时发送停止指令，WebSocket 有什么优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须先关掉当前连接，才能传递任何控制消息",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可在同一条双向连接里直接发控制消息，无需另发 HTTP 请求",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "可以让浏览器自动重连并重放之前的消息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "可以绕过企业代理对长连接的限制",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C14-4",
+          "type": "multiple",
+          "stem": "SSE 有哪些限制？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只能传文本，语音或图片要先做 Base64 编码",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "完全没有断线重连机制，断线后只能刷新页面",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "HTTP/1.1 下同一域名连接数有限，它占着一条长连接",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "无法穿透企业代理，兼容性比 WebSocket 差",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C14-5",
+          "type": "single",
+          "stem": "WebSocket 的有状态连接，会给负载均衡和横向扩展带来什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每条消息都要重新建立连接，负载均衡器的压力成倍增加",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "连接状态保存在某一台后端，该用户的消息都必须发到同一台，扩容时新机器接不到老连接",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "连接只能建立在同一个局域网内，无法跨机房扩展",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "连接没有状态，任意后端都能处理，所以无法统计在线人数",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C14-6", "type": "short" },
+        {
+          "id": "C14-7",
+          "type": "single",
+          "stem": "SSE 是一种新协议吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，它是基于 UDP 的实时传输协议",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，它是 WebSocket 的一个子协议",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，它是建立在 TCP 之上、需要升级握手的独立协议",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，它是 HTTP/1.1 里本来就有的特性",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C14-8", "type": "short" },
+        { "id": "C14-9", "type": "short" },
+        {
+          "id": "C14-10",
+          "type": "single",
+          "stem": "WebSocket 连接是怎样建立的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "客户端通过 STUN 服务器发现公网地址，再与服务端打洞建立连接",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "客户端发一个普通的 GET 请求并声明 Accept: text/event-stream，服务端保持连接持续写入数据",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "客户端先发一个像普通 HTTP 的升级请求，服务端同意后返回 101 Switching Protocols，之后变成全双工信道",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "客户端把服务端作为子进程启动，通过管道传递消息",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C14-11",
+          "type": "single",
+          "stem": "SSE 断线重连要做到不丢消息，需要什么支持？",
+          "options": [
+            {
+              "key": "A",
+              "text": "服务端必须支持 Last-Event-ID，从断点之后重放",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "客户端必须改用 WebSocket 重新建立连接",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "服务端必须把所有消息做 Base64 编码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "客户端必须把连接数限制提高到 6 条以上",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C14-12",
+          "type": "single",
+          "stem": "WebSocket 为什么容易被企业网络环境拦截？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它基于 UDP，而企业防火墙通常只放行 TCP 流量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "很多企业代理、老 CDN 和安全网关不支持它的 Upgrade 握手",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它占用的带宽太大，会被企业网络限速",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它传输的数据没有加密，会被安全网关直接丢弃",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C14-13",
+          "type": "single",
+          "stem": "WebSocket 没有内置的请求-响应配对机制，意味着什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "客户端每发一条消息都要重新握手一次",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "服务端无法向客户端主动发送任何消息",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "要自己在消息里加请求 ID 并维护映射表",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每条消息发出后都会自动收到一条对应的响应",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C14-14",
+          "type": "fill",
+          "stem": "三种场景各有适合的传输方式：多人协同编辑适合 ____，实时语音对话适合 ____，MCP 远程 Server 使用 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C14-15",
+          "type": "single",
+          "stem": "SSE 与 WebSocket 的选型原则是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "单向推送用 SSE，真正需要双向实时交互才上 WebSocket",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "WebSocket 功能更强，所有场景都应优先使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "文字对话用 WebSocket，多人协同用 SSE",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "SSE 更新，所有场景都应优先使用",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C15": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C15-1",
+          "type": "single",
+          "stem": "为什么实时语音宁可容忍少量丢包，也不愿等待 TCP 重传？",
+          "options": [
+            {
+              "key": "A",
+              "text": "丢包会让音频完全无法播放，所以必须靠降低音质来避免重传",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "语音数据量太小，不值得为它建立 TCP 连接",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "TCP 重传的数据是加密的，语音设备无法解码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "丢一小段音频人耳感知不到，等重传却会堵住后续音频",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C15-2",
+          "type": "fill",
+          "stem": "WebRTC 是一套协议组合：UDP 提供低延迟传输，负责密钥协商和加密的是 ____，负责媒体传输的是 ____，处理 NAT 穿透的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C15-3",
+          "type": "single",
+          "stem": "SDP 在建立实时连接时协商什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "双方支持的编解码格式、网络地址和加密参数",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "中转服务器向双方收取多少费用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "信令消息应当通过哪种通道传递",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "音频帧丢失之后由谁负责重传",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C15-4",
+          "type": "single",
+          "stem": "STUN 打洞失败时，流量由什么来中转？",
+          "options": [
+            {
+              "key": "A",
+              "text": "STUN 服务器",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "DTLS",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "SDP",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "TURN 服务器",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C15-5",
+          "type": "fill",
+          "stem": "WebRTC 自带的四项适合语音通话的处理能力是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        { "id": "C15-6", "type": "short" },
+        { "id": "C15-7", "type": "short" },
+        {
+          "id": "C15-8",
+          "type": "single",
+          "stem": "为什么用 WebSocket 传语音会有延迟堆积？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它每发一个音频帧都要重新握手，握手时间不断累加",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它只能传文本，音频要先转成文字再传输",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它底层是 TCP，网络抖动导致丢包时会触发重传等待，整条流的延迟随之堆积",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它底层是 UDP，丢包之后无法恢复，只能整段重发",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C15-9",
+          "type": "single",
+          "stem": "WebRTC 最核心的设计决策是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "取消信令，由浏览器自动发现对方",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把底层从 TCP 换成 UDP，主动放弃可靠性",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "取消加密，以换取更低的延迟",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把底层从 UDP 换成 TCP，保证不丢包",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C15-10",
+          "type": "single",
+          "stem": "音频帧丢失时，WebRTC 怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "断开连接，重新协商编解码格式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "暂停播放，等丢失的帧重传到达后再继续",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不等重传，用前后帧插值生成音频来填补",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把丢失的帧替换成一段静音并通知用户",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C15-11",
+          "type": "single",
+          "stem": "RTP 在 WebRTC 里起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "负责发现自己的公网 IP 和端口并打洞",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "负责在双方之间协商密钥并加密媒体数据",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "负责描述双方支持的编解码格式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个包都带时间戳和序列号，用来判断时序和丢失",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C15-12",
+          "type": "single",
+          "stem": "什么情况下 STUN 打洞最容易失败？",
+          "options": [
+            {
+              "key": "A",
+              "text": "遇到对称 NAT 的时候",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "信令通道使用了 WebSocket",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "双方处在同一个局域网内",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "双方都有固定的公网 IP",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C15-13", "type": "short" },
+        { "id": "C15-14", "type": "short" },
+        { "id": "C15-15", "type": "short" }
+      ]
+    },
+    "C16": {
+      "status": "draft",
+      "questions": [
+        { "id": "C16-1", "type": "short" },
+        {
+          "id": "C16-2",
+          "type": "single",
+          "stem": "多模型统一接口对业务代码屏蔽了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型的回答内容：业务代码只能拿到一个是否成功的状态码",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "底层实际用哪个模型：业务代码只把 base_url 指向网关，换模型由路由配置决定",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "网络协议：业务代码不再通过 HTTP 发送请求",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户的身份信息：业务代码不再需要知道是谁在调用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C16-3",
+          "type": "single",
+          "stem": "网关怎样按团队执行配额限制？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由模型厂商按团队名称自动拆分账单并限流",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给每个团队的虚拟 Key 设独立预算，超出后返回 429",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "让每个团队在自己的业务代码里各写一套限流逻辑",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "给所有团队共用一个真实的 API Key，超出总额度后全部停止服务",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C16-4",
+          "type": "single",
+          "stem": "网关怎样实现故障转移？",
+          "options": [
+            {
+              "key": "A",
+              "text": "主路由失败时直接返回缓存里相似问题的历史答案",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把失败的请求写进队列，等人工排查后再重放",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "给同一个模型名配置主备路由，主路由连续失败达到阈值时自动切到备用路由",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让业务代码捕获异常后自己改写 base_url 重新请求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C16-5",
+          "type": "single",
+          "stem": "哪些请求不宜直接复用语义缓存里的答案？",
+          "options": [
+            {
+              "key": "A",
+              "text": "产品 FAQ 这类稳定的知识",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "技术文档里的固定说明",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不同用户反复提出的同一个通用问题",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要个性化或强实时性的问答",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C16-6", "type": "short" },
+        { "id": "C16-7", "type": "short" },
+        { "id": "C16-8", "type": "short" },
+        {
+          "id": "C16-9",
+          "type": "fill",
+          "stem": "原文归纳的缺少 LLM 网关时四类痛点是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "C16-10",
+          "type": "multiple",
+          "stem": "在网关层可以统一做哪些输入输出的安全校验？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把真实的 API Key 分发给每个业务服务",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "内容安全审核",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "过滤身份证号、手机号等个人隐私信息",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "检测 prompt 注入攻击",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "让每个业务服务各自实现一套过滤逻辑",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C16-11",
+          "type": "single",
+          "stem": "语义缓存要解决普通缓存的什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "普通缓存是精确匹配，语义相近、说法不同的问题全部落空，每次都要完整调用模型",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "普通缓存无法设置有效期，语义缓存的内容永不过期",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "普通缓存占用内存太大，语义缓存不需要保存任何历史答案",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "普通缓存只能缓存图片，语义缓存只能缓存文字",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C16-12",
+          "type": "single",
+          "stem": "语义缓存的相似度阈值设得太高或太低，各有什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "太高和太低没有区别，阈值只影响向量的维度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "太高可能让不同的问题命中同一个答案；太低只有几乎一样的问题才命中，缓存形同虚设",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "太高会让缓存永不过期；太低会让缓存立刻失效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "太高只有几乎一样的问题才命中，缓存形同虚设；太低可能让不同的问题命中同一个答案",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C16-13",
+          "type": "single",
+          "stem": "原文对 One API 的描述是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Go 写的开源项目，国内社区活跃，对国产模型支持好，部署简单",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "2026 年新兴的高性能网关，主打低延迟和高吞吐",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最活跃的开源 Python 项目，支持一百多个模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "发生过供应链安全事件，生产使用要锁定版本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C16-14",
+          "type": "single",
+          "stem": "面试回答 LLM 网关时，要避免什么误区？",
+          "options": [
+            {
+              "key": "A",
+              "text": "提到 prompt 安全过滤可以集中处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "提到 token 配额管理这类 LLM 场景特有的问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把它等同于普通的负载均衡器或反向代理，只说负载均衡和统一接口",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "提到语义缓存可以跳过重复的模型调用",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C17": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C17-1",
+          "type": "multiple",
+          "stem": "把数百个工具 Schema 全塞给模型，会带来哪些问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把无权使用的工具暴露给模型，扩大攻击面",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "输入更长、候选空间更大，延迟上升",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "工具定义占用上下文并增加输入成本",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "相似工具的描述重叠，导致选择混淆",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "模型会因此拒绝输出任何调用请求",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C17-2", "type": "short" },
+        {
+          "id": "C17-3",
+          "type": "single",
+          "stem": "为什么权限、租户和风险等级过滤必须早于语义检索？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先过滤之后，执行时就不再需要任何鉴权",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "检索器只能在当前请求有权看到的工具集合里搜索",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "权限过滤需要用到检索的相似度分数，所以两者必须连在一起",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "语义检索的速度太慢，先过滤可以省掉向量化这一步",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C17-4",
+          "type": "fill",
+          "stem": "工具路由分三步：把请求分到业务域或工具类别的是 ____，在相关类别内召回少量 Top-K 工具的是 ____，只把候选工具的完整描述和 Schema 交给 LLM 的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C17-5",
+          "type": "single",
+          "stem": "Tool Routing 和 Multi-Agent Routing 路由的对象有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Tool Routing 决定当前 Agent 用哪些工具，Multi-Agent Routing 决定任务交给哪个 Agent",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都只决定请求发往哪个模型厂商，与工具和 Agent 无关",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Tool Routing 决定任务交给哪个 Agent，Multi-Agent Routing 决定当前 Agent 用哪些工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者路由的对象完全相同，只是一个用规则实现、另一个用模型实现",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C17-6", "type": "short" },
+        {
+          "id": "C17-7",
+          "type": "single",
+          "stem": "多个相似工具分数接近，且涉及付款、删除等高风险动作时，系统应怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "随机选择其中一个并记录日志",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "进入确定性规则或人工审批，不能靠相似度直接执行",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "直接执行相似度分数最高的那个工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把分数接近的几个工具全部执行一遍",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C17-8", "type": "short" },
+        { "id": "C17-9", "type": "short" },
+        {
+          "id": "C17-10",
+          "type": "single",
+          "stem": "Tool Routing 和 Multi-Agent Routing 同时使用时，要注意什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "拆出的 Agent 越多越好，切换和调试成本会随之下降",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者不能同时使用，选了 Agent 之后就不能再选工具",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能为了规避工具过多就无原则地拆出几十个 Agent，否则只是把工具目录变成 Agent 目录",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "必须给每个工具单独配一个 Agent，这样就不再需要工具路由",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C17-11", "type": "short" },
+        { "id": "C17-12", "type": "short" },
+        {
+          "id": "C17-13",
+          "type": "single",
+          "stem": "确定性过滤里的静态过滤和动态过滤分别处理什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都只在工具注册时执行一次，区别只在名单的格式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "动态过滤处理长期不变的边界，静态过滤跟每次运行的上下文有关，如租户、角色和会话阶段",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都由模型在推理时自行判断，不需要写规则",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "静态过滤处理长期不变的边界，动态过滤跟每次运行的上下文有关，如租户、角色和会话阶段",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C17-14",
+          "type": "single",
+          "stem": "粗分类阶段，什么样的请求应优先用规则？",
+          "options": [
+            {
+              "key": "A",
+              "text": "边界很清楚的请求",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "涉及多个业务域、难以归类的请求",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "表述模糊、需要理解语义的请求",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有请求都不应使用规则",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C17-15",
+          "type": "single",
+          "stem": "在候选域里检索工具时，关键词检索和 Embedding 各擅长什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Embedding 适合匹配产品名、接口名、字段名和缩写，关键词或 BM25 更擅长语义匹配",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "关键词或 BM25 适合匹配产品名、接口名、字段名和缩写，Embedding 更擅长语义匹配",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者擅长的完全相同，实际项目里只需要任选其一",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都不适合检索工具，只能把全部工具交给模型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C17-16",
+          "type": "single",
+          "stem": "哪些工具可以常驻，哪些应该按需加载？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有工具都应常驻，避免额外的检索",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "长尾工具常驻，高频、低风险的工具按需加载",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "少数高频、低风险的工具可以常驻，长尾工具按需加载",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "所有工具都应按需加载，包括最常用的只读搜索",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C17-17",
+          "type": "single",
+          "stem": "两个工具总是被混淆时，应该怎么办？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只在 Prompt 里多强调几遍两者的区别",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把其中一个工具改成随机触发",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把两个工具的描述写得更加相似",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先检查职责是否重叠，能否合并或拆分",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C17-18",
+          "type": "single",
+          "stem": "参数 Schema 收紧之后，还需要业务校验吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要，Schema 约束解决的是格式合法性，业务合法性仍要在工具内部校验",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不需要，业务校验应当交给模型自己完成",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要，但只在开发环境里校验，生产环境可以跳过",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不需要，Schema 通过就说明业务上一定合法",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C18": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C18-1",
+          "type": "single",
+          "stem": "工具名错误、JSON 非法和参数缺失，应在哪一层拦截？",
+          "options": [
+            {
+              "key": "A",
+              "text": "熔断器进入 Open 之后",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "人工审批环节",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "调用前的结构校验",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "调用后的状态查询",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C18-2",
+          "type": "single",
+          "stem": "Schema 校验通过后，为什么还要检查身份、权限和业务约束？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Schema 校验只检查工具名，不检查参数的类型和必填项",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "格式正确不等于业务合法，权限要由宿主程序依据已认证的身份在服务端计算",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "业务约束会随模型版本变化，每次调用都要重新训练",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "身份和权限写在 Prompt 里，需要再让模型确认一遍",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C18-3",
+          "type": "single",
+          "stem": "下列哪类错误才适合做有界重试？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写请求超时，执行结果处于未知状态",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型填错了参数，结构校验没有通过",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "请求越权，被服务端明确拒绝",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "连接失败、429 限流这类瞬时故障",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C18-4",
+          "type": "single",
+          "stem": "重试时加入随机抖动，起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让重试次数不受时间预算限制",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让重试间隔逐步拉长并设置上限",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让大量实例不在同一时刻再次冲击下游",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让调用方遵守下游返回的等待时间",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C18-5",
+          "type": "single",
+          "stem": "什么条件下才能自动故障转移到备用服务？",
+          "options": [
+            {
+              "key": "A",
+              "text": "备用服务语义等价，并满足相同的权限、数据一致性和副作用约束",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "备用服务的响应速度比主服务更快",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只要主服务出现一次失败，就可以切到任意备用服务",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "备用服务返回的是缓存数据或只读结果",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C18-6",
+          "type": "single",
+          "stem": "付款或发邮件超时、结果未知时，应怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "默认它已经失败，直接重试到成功为止",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先用幂等键查询下游状态，结果未知时不能直接重跑",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "立刻换一个新的幂等键重新发起一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "默认它已经成功，直接继续后面的步骤",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C18-7",
+          "type": "single",
+          "stem": "Checkpoint 为什么要在第一次有副作用的调用之前写入？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写入之后，后续重试就不再需要幂等键",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "写入之后，这次调用就一定不会再失败",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "写入可以让下游服务的响应速度更快",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "重启后恢复器才能区分步骤已成功还是结果未知",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C18-8", "type": "short" },
+        { "id": "C18-9", "type": "short" },
+        {
+          "id": "C18-10",
+          "type": "single",
+          "stem": "工具调用容错真正的难点是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在每个调用外面多写几层 try/except",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把重试次数设得尽可能多",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把所有错误都统一成同一条提示",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "判断故障在哪一层，以及失败有没有产生副作用",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C18-11",
+          "type": "single",
+          "stem": "工具返回 retryable 为 true 时，调度器就一定该重试吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不一定，无法安全重放、时限耗尽或已取消时不应重试",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一定，而且每一层都应各自重试三次",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一定，retryable 为 true 就必须重试到成功为止",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不一定，只有模型同意时才重试",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C18-12",
+          "type": "single",
+          "stem": "重试为什么要放在一个明确的层级？",
+          "options": [
+            {
+              "key": "A",
+              "text": "多层重试会让熔断器永远保持关闭",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "多层重试会让幂等键失效",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "各层都重试的话，请求次数会成倍放大",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "重试只能在 SDK 里实现，其他层没有能力重试",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C18-13", "type": "short" },
+        {
+          "id": "C18-14",
+          "type": "single",
+          "stem": "状态查询后仍无法确认执行结果时，系统应怎么办？",
+          "options": [
+            {
+              "key": "A",
+              "text": "假定失败并立刻重新执行一次",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "暂停运行、保存现场并交给人工处理",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "假定成功并继续执行后面的步骤",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "丢弃这次任务且不留任何记录",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C18-15", "type": "short" }
+      ]
+    },
+    "C19": {
+      "status": "draft",
+      "questions": [
+        { "id": "C19-1", "type": "short" },
+        { "id": "C19-2", "type": "short" },
+        { "id": "C19-3", "type": "short" },
+        { "id": "C19-4", "type": "short" },
+        {
+          "id": "C19-5",
+          "type": "single",
+          "stem": "为什么有些函数加了一层 CLI 仍然不能独立使用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CLI 只能被人手动执行，另一个程序无法启动它",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "加了 CLI 之后，函数的业务逻辑会被自动删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它的依赖没有变，调用方仍要补齐整个 Agent 环境",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "CLI 不支持传入文件路径，只能处理很短的文本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C19-6",
+          "type": "fill",
+          "stem": "可复用的工具内部分成三部分：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "C19-7",
+          "type": "single",
+          "stem": "CLI 方便跨语言调用，是否也意味着跨平台、免安装？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，目标机器仍要有可执行程序、所需的运行时和依赖",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是的，只要有 CLI 入口，任何机器都不需要安装任何东西",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，通过本地 CLI 调用会自动变成远程服务调用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，CLI 只能被与它相同语言的程序调用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C19-8",
+          "type": "single",
+          "stem": "模型输出调用请求之后，真正启动 CLI 进程的是谁？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CLI 自己",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用户",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "宿主",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C19-9",
+          "type": "single",
+          "stem": "给模型结构化业务工具，和给它通用命令执行工具，有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通用命令执行把请求映射到固定的可执行程序；结构化业务工具让模型直接选命令，宿主要控制更大的执行范围",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "结构化业务工具把请求映射到固定的可执行程序；通用命令执行让模型直接选命令，宿主要控制更大的执行范围",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者暴露给模型的能力完全相同，区别只在名字",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都不需要宿主做任何访问范围的控制",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C19-10",
+          "type": "single",
+          "stem": "CLI 和 shell 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "shell 程序解析自己的参数；CLI 是命令解释器，会处理管道、重定向、变量展开等语法",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都不解析参数，参数由模型直接传给操作系统",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "CLI 程序解析自己的参数；shell 是命令解释器，会处理管道、重定向、变量展开等语法",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者是同一个东西，固定业务工具必须通过 shell 才能运行",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C19-11", "type": "short" },
+        {
+          "id": "C19-12",
+          "type": "single",
+          "stem": "stdout 和 stderr 通常怎样分工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "stdout 返回结构化结果，stderr 记录错误和诊断信息",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "stderr 返回结构化结果，stdout 记录错误和诊断信息",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都只记录日志，结果通过退出码返回",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都返回结构化结果，内容完全相同",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C19-13", "type": "short" },
+        {
+          "id": "C19-14",
+          "type": "single",
+          "stem": "退出码能说明什么，不能说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它能完整说明处理了哪些数据和产生了哪些警告，所以不必再看业务结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它便于脚本控制分支，但不能代替业务结果检查",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "非零退出码一律表示可以安全重试",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "零退出码一律表示所有后台任务都已经完成",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C19-15",
+          "type": "single",
+          "stem": "CLI 返回成功或进程退出，是否代表工作已经完成？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一定，返回成功就不需要再核对任何结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一定，进程退出就说明它启动的所有工作都已经结束",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不一定，但只要输出里有 completed 字段，任务就真的完成了",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不一定，只提交了后台任务时，返回成功只表示提交完成，要用任务标识查询实际状态",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C19-16",
+          "type": "fill",
+          "stem": "宿主判断一次 CLI 调用结果的顺序是：先取得 ____，再解析 ____，最后按当前操作核对 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C19-17",
+          "type": "single",
+          "stem": "CLI 入口怎样帮助调试 Agent 的失败？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以隐藏工具内部的错误，只把成功的结果交给模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可以让工具的结果自动变成确定的，不再受实时数据影响",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可以让模型自动重试，直到工具返回成功为止",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "可以跳过模型决策，用保存的参数直接运行那段流程，先看工具本身能否完成",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C19-18", "type": "short" },
+        {
+          "id": "C19-19",
+          "type": "single",
+          "stem": "什么情况下不值得封装成 CLI？",
+          "options": [
+            {
+              "key": "A",
+              "text": "同一份能力要给 Agent、脚本和定时任务复用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只在当前程序里使用的简单计算，直接调用函数更省事",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "需要让另一种语言的程序也能调用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要拿对应的输入单独运行来定位故障",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C19-20",
+          "type": "single",
+          "stem": "把工具做成独立进程，是否就有了权限隔离？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有，因为子进程的权限一定比宿主更大",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "有，独立进程无法访问宿主能访问的任何文件和网络",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "没有，子进程通常继承宿主的身份和权限",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "有，加一层 CLI 会自动限制文件和网络访问",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C20": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "C20-1",
+          "type": "single",
+          "stem": "Agent 接入工具时，CLI 和 MCP 怎么选？",
+          "options": [
+            {
+              "key": "A",
+              "text": "主要看调用方的接入需求和维护成本，不能按“本地用 CLI、远程用 MCP”来选",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者互斥，已有 CLI 的能力不能再提供 MCP 接入",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "工具数量超过固定的门槛就用 MCP，否则用 CLI",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "本地运行的工具一律用 CLI，远程运行的工具一律用 MCP",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C20-2",
+          "type": "single",
+          "stem": "CLI 和 MCP 分别处在哪个层次？",
+          "options": [
+            {
+              "key": "A",
+              "text": "MCP 是程序的执行入口，CLI 是它外面规范客户端与能力服务交互的接入层",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都只是传输方式，不涉及工具的发现和调用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者处在同一层，只能二选一",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "CLI 是程序的执行入口，MCP 是它外面规范客户端与能力服务交互的接入层",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C20-3",
+          "type": "single",
+          "stem": "宿主和模型怎样分工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "宿主负责根据材料选择动作，模型负责把动作请求送到实际实现",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "宿主既选择动作也执行，模型只负责润色文字",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型负责根据材料选择动作，宿主负责把动作请求送到实际实现",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型既选择动作也启动进程，宿主只负责显示结果",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C20-4", "type": "short" },
+        { "id": "C20-5", "type": "short" },
+        {
+          "id": "C20-6",
+          "type": "fill",
+          "stem": "MCP 的工具发现和调用：客户端通过 ____ 获取可用工具，通过 ____ 发送工具名和参数。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "C20-7",
+          "type": "single",
+          "stem": "MCP 统一了接入格式之后，是否就不需要任何适配了？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，标准化不等于零适配，宿主和服务端仍各有责任，双方的兼容性也要确认",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不是，因为 MCP 没有规定工具的任何信息",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，服务端不再需要做参数校验和权限检查",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，只要支持 MCP，宿主不再需要决定展示哪些工具",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C20-8",
+          "type": "single",
+          "stem": "本地还是远程部署，和选 CLI 还是 MCP 是一回事吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，CLI 只能访问本地资源",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，部署位置是独立的选择",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是的，stdio 传输只能用于远程服务",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，MCP 只能部署在远程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C20-9",
+          "type": "single",
+          "stem": "一个 CLI 向 stdout 打印 JSON，就等于实现了 stdio 方式的 MCP 吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不等于，因为 MCP 不允许使用标准输入输出",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "等于，stdio MCP 服务本来就是打印一份结果后退出",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不等于，通道相同不代表协议相同，stdio MCP 服务要收发符合协议的消息",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "等于，只要输出是 JSON 就符合 MCP 协议",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C20-10", "type": "short" },
+        { "id": "C20-11", "type": "short" },
+        {
+          "id": "C20-12",
+          "type": "single",
+          "stem": "宿主标注“支持 MCP”，是否就能保证复用收益？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能，它可能只支持部分功能或传输方式，仍要在目标宿主上验证",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "能，标注支持就意味着所有功能和传输方式都兼容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，身份配置和结果呈现在所有宿主上都相同",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，因为 MCP Server 无法被第二个宿主使用",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C20-13", "type": "short" },
+        {
+          "id": "C20-14",
+          "type": "single",
+          "stem": "MCP Server 是否必须包装 CLI？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，不包装 CLI 就无法返回结构化结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，有业务函数就复用函数，能力已在后台 API 里就直接访问 API",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不是，但直接调用业务函数会违反 MCP 协议",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，MCP Server 只能通过启动 CLI 来执行业务",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C20-15",
+          "type": "single",
+          "stem": "选了 MCP 或 CLI，权限和可靠性问题就解决了吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "解决了，标注支持 MCP 会自动带来更严格的资源边界",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "解决了，协议请求失败就说明写操作一定没有发生",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "解决了，CLI 子进程无法访问宿主的任何资源",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有，能访问什么取决于执行身份、具体实现和业务权限",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C20-16",
+          "type": "single",
+          "stem": "CLI 和 MCP 哪个更省 Token？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能简单比，取决于宿主怎样向模型提供信息",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者完全相同，Token 成本与接入方式无关",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "MCP 一定更省，因为它的工具定义不占上下文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "CLI 一定更省，因为它没有任何说明文字",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "C21": {
+      "status": "draft",
+      "questions": [
+        { "id": "C21-1", "type": "short" },
+        {
+          "id": "C21-2",
+          "type": "single",
+          "stem": "为什么只检查代码或只写 Prompt 还不够，必须限制运行环境？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型生成的代码都是可信的，限制运行环境只是为了节省内存",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "代码审查的速度太慢，限制运行环境只是为了加快任务启动",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "程序能做什么取决于运行时拥有的能力，真实访问发生时必须有执行环境能拒绝越界操作",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Prompt 里写的限制会被操作系统自动转换成访问权限",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C21-3",
+          "type": "fill",
+          "stem": "代码执行沙箱的边界包含两方面：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "C21-4", "type": "short" },
+        {
+          "id": "C21-5",
+          "type": "single",
+          "stem": "设置了工作目录，是否就有了文件边界？",
+          "options": [
+            {
+              "key": "A",
+              "text": "有，程序无法访问工作目录之外的任何文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "有，工作目录之外的文件会自动变成只读",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "没有，因为工作目录里的文件默认不可读",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有，工作目录只决定相对路径从哪里算",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C21-6",
+          "type": "single",
+          "stem": "文件权限和网络权限为什么要一起考虑？",
+          "options": [
+            {
+              "key": "A",
+              "text": "网络隔离之后文件就会自动变成只读，不需要再单独设置",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文件只读防不了数据外传，有任意网络访问就可能把内容发出去",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "文件只读之后代码就无法读取内容，所以网络可以完全放开",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者互不相关，分别配置成最宽松即可",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C21-7",
+          "type": "single",
+          "stem": "宿主的凭据应该怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "启动子进程时把宿主的全部环境变量原样传给代码环境",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把数据库密码和云端密钥写进代码里，方便代码直接使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "由生成的代码自己声明需要哪些凭据，执行环境照单提供",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不应无差别继承，必须使用的外部能力由沙箱外的工具代理，用受限身份执行",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C21-8",
+          "type": "single",
+          "stem": "资源限制为什么要作用于整项任务，而不是单个进程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "整项任务的资源限制不需要运行器管理，可以省掉管理成本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "主程序可能创建后台进程后自己退出，要把它们归入同一个受控执行单元一起计量和终止",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "单个进程无法被操作系统计量资源，只能按任务统计",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "后台进程不消耗任何资源，只需要限制主程序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C21-9",
+          "type": "single",
+          "stem": "限制 CPU 和限制总运行时间有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CPU 配额限制从启动到结束可以持续多久，总运行时限限制一段时间内占用多少计算资源",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者是同一个限制的两种叫法，设置其中一个即可",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "CPU 配额限制一段时间内占用多少计算资源，总运行时限限制从启动到结束可以持续多久",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都只限制内存，区别只在统计的单位",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C21-10", "type": "short" },
+        { "id": "C21-11", "type": "short" },
+        {
+          "id": "C21-12",
+          "type": "single",
+          "stem": "什么时候应该考虑虚拟机等更强的隔离？",
+          "options": [
+            {
+              "key": "A",
+              "text": "执行任意用户提交的代码，或需要更强的任务间隔离时",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "任何任务都应默认使用，成本可以忽略",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只运行团队自己写的可信脚本时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "任务不需要访问任何文件和网络时",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C21-13",
+          "type": "single",
+          "stem": "运行器为什么要放在沙箱之外？",
+          "options": [
+            {
+              "key": "A",
+              "text": "否则运行器会占用任务的 CPU 配额",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "否则运行器无法读取任务的输出文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "否则生成的代码可以改变自己的限制或回收逻辑",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "否则运行器无法访问外部网络",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C21-14",
+          "type": "single",
+          "stem": "沙箱配置没有成功应用时，能否退回到宿主直接执行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，只要这次任务的代码量很小",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能，那等于直接绕过边界",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "能，只要用户没有明确表示反对",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能，只要事后清理掉临时文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C21-15",
+          "type": "single",
+          "stem": "代码运行结束后，产物应该怎样导出？",
+          "options": [
+            {
+              "key": "A",
+              "text": "运行器按约定检查真实产物，只导出允许范围内的文件",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只检查路径文字的前缀是否在输出目录下即可",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "直接按代码返回的路径去宿主上读取对应的文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把整个任务空间连同临时数据一起复制给用户",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C21-16",
+          "type": "single",
+          "stem": "沙箱能证明计算结果正确吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，文件生成成功就说明内容一定正确",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能，因为沙箱里的代码永远无法生成文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，没有触发资源限制就说明结果正确",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，它验证的是操作是否在能力和资源边界内",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "C21-17", "type": "short" }
+      ]
+    },
+    "C22": {
+      "status": "draft",
+      "questions": [
+        { "id": "C22-1", "type": "short" },
+        {
+          "id": "C22-2",
+          "type": "single",
+          "stem": "Skill 文件已经在磁盘上了，为什么还需要“加载”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文件在磁盘上时是加密的，加载是为了解密",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文件存在不会自动改变模型这次看到的内容",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "加载是为了把 Skill 里的脚本全部执行一遍",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "加载会把 Skill 的内容训练进模型的参数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C22-3",
+          "type": "single",
+          "stem": "加载 Skill 正文和程序导入一个代码库有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "加载正文会更新模型的权重，之后的会话不需要再次加载",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者完全相同，加载正文就是把代码导入模型的进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "加载正文会立刻执行其中写到的全部操作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型得到的是怎样处理任务的信息，权重没有更新，指令也没有被执行",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C22-4",
+          "type": "fill",
+          "stem": "Agent Skills 格式在 SKILL.md 顶部的 frontmatter 里，最基本的两个字段是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "C22-5", "type": "short" },
+        {
+          "id": "C22-6",
+          "type": "single",
+          "stem": "“发现”一个 Skill，是否等于它的正文已经加载？",
+          "options": [
+            {
+              "key": "A",
+              "text": "等于，发现之后模型就可以直接按正文工作",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不等于，因为发现阶段宿主无法读取 SKILL.md",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不等于，只有实际交给模型的部分才占用本轮输入",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "等于，发现阶段就会把全文放进模型的上下文",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C22-7",
+          "type": "single",
+          "stem": "模型输出“使用某个 Skill”之后，是否就具备了按它工作的材料？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有，这只表达了选择，只有正文真正进入上下文才具备",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "具备了，宿主会自动按名字执行全部脚本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "没有，必须先重新训练模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "具备了，说出名字就等于读完了正文",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "C22-8", "type": "short" },
+        {
+          "id": "C22-9",
+          "type": "fill",
+          "stem": "Skill 渐进式加载中，用于选择能力的是 ____ 层，提供主流程的是 ____ 层，提供详细参考、模板与脚本的是 ____ 层。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "C22-10", "type": "short" },
+        {
+          "id": "C22-11",
+          "type": "single",
+          "stem": "Skill 里引用的相对路径从哪里解析？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户项目的根目录",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "当前的工作目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "宿主程序的安装目录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Skill 的根目录",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "C22-12",
+          "type": "single",
+          "stem": "Skill 正文写着“运行某个脚本”，模型读到这句话脚本就执行了吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有，模型得到的只是操作指令，真正执行要经过工具调用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "没有，脚本只能由用户手动在终端里运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "执行了，而且包里的其他程序也会连带执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "执行了，正文被读取的同时脚本会自动运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C22-13",
+          "type": "single",
+          "stem": "允许加载一个 Skill，是否等于允许它执行任何操作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不等于，因为 Skill 永远不能触发任何操作",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "等于，正文声明需要更高权限就会自动获得",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不等于，加载权限与执行权限不同",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "等于，能读取手册就能修改任意文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C22-14",
+          "type": "single",
+          "stem": "长任务整理上下文之后，已加载的 Skill 关键细节丢了，应怎么处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不用处理，加载过一次就永久有效",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按来源重新读取，加载标记不能代替具体规则",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把这个 Skill 从可用目录里删除",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让模型凭印象把规则重新写出来",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "C22-15",
+          "type": "fill",
+          "stem": "遇到“Skill 没生效”，应依次检查四个环节：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        { "id": "C22-16", "type": "short" }
+      ]
+    }
+  }
+}

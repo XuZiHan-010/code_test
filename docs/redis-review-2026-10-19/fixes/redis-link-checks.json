@@ -1,0 +1,52 @@
+[
+  {
+    "url": "https://github.com/redis/redis/blob/6.0/redis.conf",
+    "status": 200,
+    "anchorFound": true,
+    "title": "redis/redis.conf at 6.0 · redis/redis · GitHub",
+    "checkedBaseUrl": "https://github.com/redis/redis/blob/6.0/redis.conf",
+    "note": "Canonical file page is used; dynamic GitHub line fragment removed."
+  },
+  {
+    "url": "https://redis.io/docs/latest/commands/cluster-addslots/",
+    "status": 200,
+    "anchorFound": true,
+    "title": "CLUSTER ADDSLOTS | Docs"
+  },
+  {
+    "url": "https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/",
+    "status": 200,
+    "anchorFound": true,
+    "title": "Bloom filter | Docs"
+  },
+  {
+    "url": "https://redis.io/docs/latest/develop/use-cases/rate-limiter/rust/#sliding-window-log",
+    "status": 200,
+    "anchorFound": true,
+    "title": "Token bucket rate limiter with Redis and Rust | Docs"
+  },
+  {
+    "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/#append-only-file",
+    "status": 200,
+    "anchorFound": true,
+    "title": "Redis persistence | Docs"
+  },
+  {
+    "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/#how-durable-is-the-append-only-file",
+    "status": 200,
+    "anchorFound": true,
+    "title": "Redis persistence | Docs"
+  },
+  {
+    "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/#create-a-redis-cluster",
+    "status": 200,
+    "anchorFound": true,
+    "title": "Scale with Redis Cluster | Docs"
+  },
+  {
+    "url": "https://xiaolincoding.com/interview/redis.html",
+    "status": 200,
+    "anchorFound": true,
+    "title": "Redis面试题 | 小林coding"
+  }
+]

@@ -1,0 +1,647 @@
+[
+  {
+    "id": "U8-1",
+    "typed": {
+      "id": "U8-1",
+      "type": "short"
+    },
+    "question": "FastAPI 里的 `APIRouter` 是什么？为什么大应用要用它来拆分代码？",
+    "answer": "`APIRouter` 可以视为一个“迷你 FastAPI”类，支持相同的 parameters、responses、dependencies、tags 等选项。它让你把某一类路径操作（例如与用户相关的）放进各自的模块，与其他代码分开、井井有条，而它们仍是同一个 FastAPI 应用的一部分，最后用 `app.include_router()` 加进主应用。[原文§更大的应用 - 多个文件 · APIRouter](https://fastapi.tiangolo.com/zh/tutorial/bigger-applications/#apirouter)"
+  },
+  {
+    "id": "U8-2",
+    "typed": {
+      "id": "U8-2",
+      "type": "fill",
+      "stem": "按官方文档，创建 `APIRouter` 时可以统一设置、并应用到该路由器所有路径操作的四个参数是：____、____、____、____。",
+      "blankCount": 4,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档，创建 `APIRouter` 时可以统一设置、并应用到该路由器所有路径操作的四个参数是：____、____、____、____。",
+    "answer": "四个参数是 `prefix`（路径前缀，例如 `/items`）、`tags`、`dependencies`、`responses`，它们帮助你避免在每个路径操作里重复声明。[原文§更大的应用 - 多个文件 · 其他使用 APIRouter 的模块](https://fastapi.tiangolo.com/zh/tutorial/bigger-applications/#another-module-with-apirouter)"
+  },
+  {
+    "id": "U8-3",
+    "typed": {
+      "id": "U8-3",
+      "type": "single",
+      "stem": "在 `APIRouter(dependencies=[Depends(get_token_header)])` 里声明的路由器级依赖项，对路由器中的路径操作有什么影响？",
+      "options": [
+        {
+          "key": "A",
+          "text": "只有路径操作函数自己声明了同名参数时，这个依赖项才会被执行",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "依赖项的返回值会作为参数自动传给路由器里每个路径操作函数",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "针对每个请求，在路径操作之前执行，但不会把值传给路径操作函数",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "只在把路由器包含进主应用的那一刻执行一次，之后的请求不再执行",
+          "correct": false
+        }
+      ]
+    },
+    "question": "在 `APIRouter(dependencies=[Depends(get_token_header)])` 里声明的路由器级依赖项，对路由器中的路径操作有什么影响？",
+    "answer": "路由器的 `dependencies` 会加到它所有的路径操作上，并针对向它们发起的每个请求先于路径操作执行；和路径操作装饰器里的依赖项一样，没有值会传给路径操作函数。它可用来对一整组路径操作要求身份认证。[原文§更大的应用 - 多个文件 · 其他使用 APIRouter 的模块](https://fastapi.tiangolo.com/zh/tutorial/bigger-applications/#another-module-with-apirouter)"
+  },
+  {
+    "id": "U8-4",
+    "typed": {
+      "id": "U8-4",
+      "type": "single",
+      "stem": "一个路径操作同时受到三种依赖项影响：所在路由器的 `dependencies`、路径操作装饰器里的 `dependencies`、函数参数里声明的普通依赖项。按官方文档，它们的执行顺序是？",
+      "options": [
+        {
+          "key": "A",
+          "text": "路由器的依赖项 → 装饰器中的依赖项 → 普通的参数依赖项",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "装饰器中的依赖项 → 路由器的依赖项 → 普通的参数依赖项",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "普通的参数依赖项 → 装饰器中的依赖项 → 路由器的依赖项",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "路由器的依赖项 → 普通的参数依赖项 → 装饰器中的依赖项",
+          "correct": false
+        }
+      ]
+    },
+    "question": "一个路径操作同时受到三种依赖项影响：所在路由器的 `dependencies`、路径操作装饰器里的 `dependencies`、函数参数里声明的普通依赖项。按官方文档，它们的执行顺序是？",
+    "answer": "路由器的依赖项最先执行，然后是路径操作装饰器中的 `dependencies`，再然后是普通的参数依赖项。[原文§更大的应用 - 多个文件 · 其他使用 APIRouter 的模块](https://fastapi.tiangolo.com/zh/tutorial/bigger-applications/#another-module-with-apirouter)"
+  },
+  {
+    "id": "U8-5",
+    "typed": {
+      "id": "U8-5",
+      "type": "single",
+      "stem": "`FastAPI(dependencies=[Depends(get_query_token)])` 声明的全局依赖项，与各个 `APIRouter` 自己的依赖项是什么关系？",
+      "options": [
+        {
+          "key": "A",
+          "text": "全局依赖项会被路由器自己的依赖项覆盖，同一个路径操作只执行路由器上的那个",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "全局依赖项会和每个 `APIRouter` 的依赖项组合在一起，一并作用于路由器里的路径操作",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "全局依赖项只作用于直接写在 `app` 上的路径操作，对包含进来的路由器无效",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "全局依赖项必须同时写在每个 `APIRouter` 上才会生效，只写在 `app` 上不起作用",
+          "correct": false
+        }
+      ]
+    },
+    "question": "`FastAPI(dependencies=[Depends(get_query_token)])` 声明的全局依赖项，与各个 `APIRouter` 自己的依赖项是什么关系？",
+    "answer": "在 `FastAPI(dependencies=[...])` 里声明的全局依赖项，会和每个 `APIRouter` 的依赖项组合在一起；它既不是被路由器的依赖项覆盖，也不是只管 `app` 自己的路径操作，更不必在每个路由器上重复声明。[原文§更大的应用 - 多个文件 · 导入 FastAPI](https://fastapi.tiangolo.com/zh/tutorial/bigger-applications/#import-fastapi)"
+  },
+  {
+    "id": "U8-6",
+    "typed": {
+      "id": "U8-6",
+      "type": "short"
+    },
+    "question": "组织共享的 `admin.router` 不能修改，主应用怎样给它加上 `/admin` 前缀、tags、依赖项和 responses？这样做对其他项目有什么影响？",
+    "answer": "把 `prefix`、`tags`、`dependencies`、`responses` 作为参数传给 `app.include_router(admin.router, ...)`，不必修改原始的 `APIRouter`。这些设置只影响本应用中包含的这个路由器，原来的 `app/internal/admin.py` 仍可与组织内其他项目共享，其他项目甚至可以用不同的身份认证方法使用同一个 `APIRouter`。[原文§更大的应用 - 多个文件 · 包含一个有自定义 prefix、tags、responses 和 dependencies 的 APIRouter](https://fastapi.tiangolo.com/zh/tutorial/bigger-applications/#include-an-apirouter-with-a-custom-prefix-tags-responses-and-dependencies)"
+  },
+  {
+    "id": "U8-7",
+    "typed": {
+      "id": "U8-7",
+      "type": "fill",
+      "stem": "按官方文档，SQLModel 是基于____和____构建的，由 FastAPI 的同一作者制作。",
+      "blankCount": 2,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档，SQLModel 是基于____和____构建的，由 FastAPI 的同一作者制作。",
+    "answer": "SQLModel 基于 SQLAlchemy 和 Pydantic 构建，旨在完美匹配需要使用 SQL 数据库的 FastAPI 应用程序。[原文§SQL（关系型）数据库](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#sql-relational-databases)"
+  },
+  {
+    "id": "U8-8",
+    "typed": {
+      "id": "U8-8",
+      "type": "single",
+      "stem": "SQLModel 里，类声明中的 `table=True` 表示什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "这个类只是请求和响应用的数据模型，不对应数据库里的表",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "这个类的所有字段都必须由客户端在请求体中提供",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "这个类会被 FastAPI 自动当作路径操作的 `response_model` 使用",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "这是一个表模型，表示 SQL 数据库中的一个表，而不仅仅是数据模型",
+          "correct": true
+        }
+      ]
+    },
+    "question": "SQLModel 里，类声明中的 `table=True` 表示什么？",
+    "answer": "`table=True` 告诉 SQLModel 这是一个表模型，它要表示 SQL 数据库中的一个表；不含 `table=True` 的类只是数据模型，实际上就是普通的 Pydantic 模型（附带一些小的额外功能）。[原文§SQL（关系型）数据库 · 创建模型](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#create-models)[原文§SQL（关系型）数据库 · 创建多个模型](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#create-multiple-models)"
+  },
+  {
+    "id": "U8-9",
+    "typed": {
+      "id": "U8-9",
+      "type": "single",
+      "stem": "SQLModel 示例里的 `engine` 和 `Session` 各自负责什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "`engine` 保持与数据库的连接，全代码共用一个；`Session` 在内存中存对象、跟踪改动，经 engine 与数据库通信",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "`engine` 在内存中保存对象并跟踪改动，每个请求各用一个；`Session` 保持与数据库的连接，所有请求共用同一个",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "`engine` 负责声明表模型的各个字段，建表前使用；`Session` 负责在应用启动时创建所有表，请求中不再使用",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "`engine` 为每个请求新建一个，保证请求之间互不干扰；`Session` 在整个应用中只创建一个，所有请求共用",
+          "correct": false
+        }
+      ]
+    },
+    "question": "SQLModel 示例里的 `engine` 和 `Session` 各自负责什么？",
+    "answer": "`engine`（本质是 SQLAlchemy 的 engine）用来与数据库保持连接，只需构建一个，让所有代码连接到同一个数据库；`Session` 会存储内存中的对象并跟踪数据中所需的更改，再用 engine 与数据库通信，并且每个请求使用单独的一个。[原文§SQL（关系型）数据库 · 创建引擎（Engine）](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#create-an-engine)[原文§SQL（关系型）数据库 · 创建会话（Session）依赖项](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#create-a-session-dependency)"
+  },
+  {
+    "id": "U8-10",
+    "typed": {
+      "id": "U8-10",
+      "type": "short"
+    },
+    "question": "官方示例的 `get_session` 依赖项是怎样写的？为什么要用 `yield`、为每个请求提供一个新的 `Session`？",
+    "answer": "`get_session` 用 `with Session(engine) as session:` 打开会话并 `yield session`，是一个带 `yield` 的 FastAPI 依赖项，为每个请求提供一个新的 `Session`，确保每个请求使用一个单独的会话。再用 `Annotated[Session, Depends(get_session)]` 定义 `SessionDep`，简化其他要用到它的代码。[原文§SQL（关系型）数据库 · 创建会话（Session）依赖项](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#create-a-session-dependency)"
+  },
+  {
+    "id": "U8-11",
+    "typed": {
+      "id": "U8-11",
+      "type": "single",
+      "stem": "官方示例在应用启动时用 `SQLModel.metadata.create_all(engine)` 建表，对生产环境有什么说法？",
+      "options": [
+        {
+          "key": "A",
+          "text": "生产环境同样应该在每次启动时调用 `create_all`，这样表结构始终是最新的",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "生产环境不需要建表，SQLModel 会在第一次写入数据时自动创建",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "生产环境可能会改用在启动应用之前运行的迁移脚本，目前可直接使用 Alembic",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "生产环境应该把建表放进会话依赖项里，每个请求开始时执行一次",
+          "correct": false
+        }
+      ]
+    },
+    "question": "官方示例在应用启动时用 `SQLModel.metadata.create_all(engine)` 建表，对生产环境有什么说法？",
+    "answer": "示例在应用启动事件里创建表；官方说在生产环境你可能会使用一个在启动应用程序之前运行的迁移脚本，SQLModel 将会拥有封装 Alembic 的迁移工具，但目前你可以直接使用 Alembic。[原文§SQL（关系型）数据库 · 在启动时创建数据库表](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#create-database-tables-on-startup)"
+  },
+  {
+    "id": "U8-12",
+    "typed": {
+      "id": "U8-12",
+      "type": "short"
+    },
+    "question": "只有单一 `Hero` 表模型的版本有什么问题？为什么要改成多个模型？",
+    "answer": "只用一个 `Hero` 模型时，客户端可以自己决定要创建的 Hero 的 `id`，可能覆盖数据库里已分配的 id，而 id 应由后端或数据库来决定；同时 `secret_name` 被到处返回，就不再保密。所以增加了几个数据模型，并借助继承避免重复字段，以提高安全性和多功能性。[原文§SQL（关系型）数据库 · 使用多个模型更新应用](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#update-the-app-with-multiple-models)"
+  },
+  {
+    "id": "U8-13",
+    "typed": {
+      "id": "U8-13",
+      "type": "multiple",
+      "stem": "按官方文档，关于 `HeroBase`、`HeroPublic`、`HeroCreate`、`HeroUpdate` 这些模型，下列哪些说法正确？",
+      "options": [
+        {
+          "key": "A",
+          "text": "`HeroPublic` 是表模型，所以需要写 `table=True`",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "`HeroBase` 放着所有模型共享的字段，其他模型靠继承避免重复声明",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "`HeroPublic` 与 `HeroBase` 字段相同因此不含 `secret_name`，并重新声明 `id: int` 使客户端总能期待 `id` 是整数",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "`HeroCreate` 含有 `secret_name`，创建后它会通过 API 原样返回给客户端",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "`HeroUpdate` 的所有字段都有默认值 `None`，更新时可以只发送想修改的字段",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，关于 `HeroBase`、`HeroPublic`、`HeroCreate`、`HeroUpdate` 这些模型，下列哪些说法正确？",
+    "answer": "正确的是 B、C、E：`HeroBase` 放共享字段，其他模型靠继承避免重复；`HeroPublic` 不含 `secret_name` 且 `id` 声明为 `int`（不会是 `None`）；`HeroUpdate` 的字段全是可选的，更新时只发想改的字段。A 错在 `HeroPublic` 是不带 `table=True` 的数据模型；D 错在 `HeroCreate` 的 `secret_name` 会存入数据库，但不会通过 API 返回给客户端。[原文§SQL（关系型）数据库 · HeroBase - 基类](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#herobase-the-base-class)[原文§SQL（关系型）数据库 · HeroPublic - 公共数据模型](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#heropublic-the-public-data-model)[原文§SQL（关系型）数据库 · HeroCreate - 用于创建 hero 的数据模型](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#herocreate-the-data-model-to-create-a-hero)[原文§SQL（关系型）数据库 · HeroUpdate - 用于更新 hero 的数据模型](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#heroupdate-the-data-model-to-update-a-hero)"
+  },
+  {
+    "id": "U8-14",
+    "typed": {
+      "id": "U8-14",
+      "type": "single",
+      "stem": "创建 Hero 的路径操作为什么写 `response_model=HeroPublic`，而不是用返回类型注解 `-> HeroPublic`？",
+      "options": [
+        {
+          "key": "A",
+          "text": "因为返回类型注解只对 `list` 之类的容器生效，对单个对象的返回值完全不生效",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "因为写了 `-> HeroPublic` 之后，FastAPI 就会跳过对返回数据的验证和序列化，直接原样返回",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "因为只有通过 `response_model` 声明，`HeroPublic` 才能显示在自动生成的 API 文档界面里",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "因为实际返回的是 `Hero` 而非 `HeroPublic`，写返回注解会被编辑器抱怨，`response_model` 不会",
+          "correct": true
+        }
+      ]
+    },
+    "question": "创建 Hero 的路径操作为什么写 `response_model=HeroPublic`，而不是用返回类型注解 `-> HeroPublic`？",
+    "answer": "路径操作函数里实际返回的是表模型 `Hero`，不是 `HeroPublic`；若声明 `-> HeroPublic`，编辑器和代码检查工具会（理所应当地）抱怨。用 `response_model=HeroPublic`，FastAPI 会用它验证和序列化数据，而不干扰类型注解以及编辑器和其他工具提供的帮助。[原文§SQL（关系型）数据库 · 使用 HeroCreate 创建并返回 HeroPublic](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#create-with-herocreate-and-return-a-heropublic)"
+  },
+  {
+    "id": "U8-15",
+    "typed": {
+      "id": "U8-15",
+      "type": "short"
+    },
+    "question": "用 `HeroUpdate` 实现“只更新客户端发送的字段”时，关键技巧是什么？",
+    "answer": "使用 HTTP 的 PATCH 操作。取数据时用 `exclude_unset=True` 得到一个 dict，其中只含客户端发送的数据，排除仅作为默认值存在的值，这是最主要的技巧；再用 `hero_db.sqlmodel_update(hero_data)` 用这些数据更新数据库里的 hero。因为 `HeroUpdate` 的字段都是可选的，客户端只需发送想更新的字段。[原文§SQL（关系型）数据库 · 使用 HeroUpdate 更新单个 Hero](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#update-a-hero-with-heroupdate)"
+  },
+  {
+    "id": "U8-16",
+    "typed": {
+      "id": "U8-16",
+      "type": "single",
+      "stem": "按官方文档，从环境变量读到 Python 里的值是什么类型？类型转换和验证由谁来做？",
+      "options": [
+        {
+          "key": "A",
+          "text": "会按内容自动转成 `int`、`bool` 等对应类型，不需要自己处理",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "一律是 `str`，任何转换或验证都必须在代码中完成",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "一律是 `str`，但操作系统会在读取时完成转换和验证",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "数字内容是 `int`，其余是 `str`，转换由路径操作自动完成",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，从环境变量读到 Python 里的值是什么类型？类型转换和验证由谁来做？",
+    "answer": "环境变量存在于 Python 之外，只能处理文本字符串，所以从中读到的任何值都是 `str`，到其他类型的转换和任何验证都必须在代码中完成；这正是要用 Pydantic 的 Settings 来处理的原因。[原文§设置和环境变量 · 类型和验证](https://fastapi.tiangolo.com/zh/advanced/settings/#types-and-validation)"
+  },
+  {
+    "id": "U8-17",
+    "typed": {
+      "id": "U8-17",
+      "type": "single",
+      "stem": "`class Settings(BaseSettings)` 里声明了 `items_per_user: int = 50`。创建 `Settings()` 时，Pydantic 怎样读取环境变量？",
+      "options": [
+        {
+          "key": "A",
+          "text": "区分大小写，只读取名为 `items_per_user` 的环境变量，值保持字符串",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "区分大小写，只读取名为 `items_per_user` 的环境变量，并把值转换为 `int`",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "不区分大小写，读到的值保持 `str`，使用时由你自己转换",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "不区分大小写（`ITEMS_PER_USER` 也行），并把值转换、验证成声明的 `int`",
+          "correct": true
+        }
+      ]
+    },
+    "question": "`class Settings(BaseSettings)` 里声明了 `items_per_user: int = 50`。创建 `Settings()` 时，Pydantic 怎样读取环境变量？",
+    "answer": "Pydantic 会以不区分大小写的方式读取环境变量（大写的 `APP_NAME` 也会用于属性 `app_name`），接着转换并验证数据，所以 `items_per_user` 会是 `int`；没有提供的设置则保持默认值。[原文§设置和环境变量 · 创建 Settings 对象](https://fastapi.tiangolo.com/zh/advanced/settings/#create-the-settings-object)"
+  },
+  {
+    "id": "U8-18",
+    "typed": {
+      "id": "U8-18",
+      "type": "single",
+      "stem": "官方文档为什么说在依赖项（如 `get_settings`）里提供设置，有时比到处使用一个全局 `settings` 对象更好？",
+      "options": [
+        {
+          "key": "A",
+          "text": "因为全局 `settings` 对象读不到环境变量",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "因为依赖项会让设置在每个请求里自动重新读取一遍环境变量",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "因为这在测试期间尤其有用，可以很容易地用自定义设置覆盖该依赖项",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "因为 `BaseSettings` 只有放在依赖项里才会校验字段类型",
+          "correct": false
+        }
+      ]
+    },
+    "question": "官方文档为什么说在依赖项（如 `get_settings`）里提供设置，有时比到处使用一个全局 `settings` 对象更好？",
+    "answer": "在某些情况下从依赖项中提供设置更有用，这在测试期间尤其有用：可以很容易地用自己的自定义设置覆盖该依赖项，例如创建依赖项覆盖，返回把 `admin_email` 换成测试值的 `Settings` 对象。[原文§设置和环境变量 · 在依赖项中提供设置](https://fastapi.tiangolo.com/zh/advanced/settings/#settings-in-a-dependency)[原文§设置和环境变量 · 设置与测试](https://fastapi.tiangolo.com/zh/advanced/settings/#settings-and-testing)"
+  },
+  {
+    "id": "U8-19",
+    "typed": {
+      "id": "U8-19",
+      "type": "short"
+    },
+    "question": "依赖项 `get_settings` 为什么要加 `@lru_cache`？加了之后测试里还能覆盖它吗？",
+    "answer": "每次执行 `Settings()` 都会创建新对象并再次读取 `.env`，而读磁盘文件通常代价较高；不加缓存就会为每个请求都创建对象并读文件。加上 `@lru_cache` 后，`Settings` 对象只在第一次调用时创建，之后一遍遍返回同一个对象。`get_settings` 不接受参数，所以始终返回同一个值，行为几乎像全局变量，但它仍是依赖项函数，测试时可以很容易地覆盖。[原文§设置和环境变量 · 使用 lru_cache 仅创建一次 Settings](https://fastapi.tiangolo.com/zh/advanced/settings/#creating-the-settings-only-once-with-lru-cache)[原文§设置和环境变量 · lru_cache 技术细节](https://fastapi.tiangolo.com/zh/advanced/settings/#lru-cache-technical-details)"
+  },
+  {
+    "id": "U8-20",
+    "typed": {
+      "id": "U8-20",
+      "type": "single",
+      "stem": "按官方文档，`TestClient` 是基于哪个库构建的？使用它之前要额外安装哪个包？",
+      "options": [
+        {
+          "key": "A",
+          "text": "基于 Requests，要先安装 `requests`",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "基于 Starlette 自带的网络层，不需要额外安装任何包",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "基于 HTTPX，要先安装 `httpx`",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "基于 AnyIO，要先安装 `anyio`",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，`TestClient` 是基于哪个库构建的？使用它之前要额外安装哪个包？",
+    "answer": "`TestClient` 基于 HTTPX（HTTPX 又是基于 Requests 设计的，所以用法相似），使用前要先 `uv add httpx` 安装 `httpx`；有了它就可以直接与 FastAPI 一起使用 pytest。[原文§测试](https://fastapi.tiangolo.com/zh/tutorial/testing/#testing)[原文§测试 · 使用 TestClient](https://fastapi.tiangolo.com/zh/tutorial/testing/#using-testclient)"
+  },
+  {
+    "id": "U8-21",
+    "typed": {
+      "id": "U8-21",
+      "type": "single",
+      "stem": "用 `TestClient` 写测试时，测试函数应该写成 `def` 还是 `async def`？`client` 的调用要不要 `await`？",
+      "options": [
+        {
+          "key": "A",
+          "text": "必须写成 `async def`，并且 `client.get(...)` 前要 `await`",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "必须写成 `async def`，但 `client.get(...)` 不需要 `await`",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "写成 `def`，但 `client.get(...)` 前要 `await`",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "写成普通的 `def`，`client` 的调用也是普通调用，不用 `await`",
+          "correct": true
+        }
+      ]
+    },
+    "question": "用 `TestClient` 写测试时，测试函数应该写成 `def` 还是 `async def`？`client` 的调用要不要 `await`？",
+    "answer": "测试函数是普通的 `def`，不是 `async def`；`client` 的调用也是普通调用，不用 `await`。这让你可以直接使用 pytest，而不会遇到麻烦。[原文§测试 · 使用 TestClient](https://fastapi.tiangolo.com/zh/tutorial/testing/#using-testclient)"
+  },
+  {
+    "id": "U8-22",
+    "typed": {
+      "id": "U8-22",
+      "type": "short"
+    },
+    "question": "什么场景需要在测试中覆盖依赖项？怎样用 `app.dependency_overrides` 覆盖？",
+    "answer": "例如依赖项要调用外部第三方身份验证服务：对方可能按请求收费、耗时也更长，而测试不必每次都真的去调用，这时可以覆盖该依赖项，换成返回模拟测试用户的自定义依赖项。做法是：`app.dependency_overrides` 是一个字典，键是原依赖项（函数），值是覆盖依赖项（另一个函数），之后 FastAPI 就会调用覆盖依赖项，不再调用原依赖项。[原文§使用覆盖测试依赖项 · 用例：外部服务](https://fastapi.tiangolo.com/zh/advanced/testing-dependencies/#use-cases-external-service)[原文§使用覆盖测试依赖项 · 使用 app.dependency_overrides 属性](https://fastapi.tiangolo.com/zh/advanced/testing-dependencies/#use-the-app-dependency-overrides-attribute)"
+  },
+  {
+    "id": "U8-23",
+    "typed": {
+      "id": "U8-23",
+      "type": "single",
+      "stem": "`app.dependency_overrides` 可以覆盖应用中哪些位置声明的依赖项？",
+      "options": [
+        {
+          "key": "A",
+          "text": "路径操作函数、路径操作装饰器、`.include_router()` 调用等位置的依赖项都能覆盖",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "只能覆盖路径操作函数参数里声明的依赖项，写在装饰器或 `.include_router()` 里的覆盖不了",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "只能覆盖直接写在 `FastAPI(dependencies=[...])` 里的全局依赖项，其他位置的覆盖不了",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只能覆盖路径操作函数和路径操作装饰器里的依赖项，不包括 `.include_router()` 调用里的",
+          "correct": false
+        }
+      ]
+    },
+    "question": "`app.dependency_overrides` 可以覆盖应用中哪些位置声明的依赖项？",
+    "answer": "FastAPI 应用中的任何位置都可以覆盖依赖项：原依赖项可用于路径操作函数、路径操作装饰器（不需要返回值时）、`.include_router()` 调用等，FastAPI 都可以覆盖这些位置的依赖项。[原文§使用覆盖测试依赖项 · 使用 app.dependency_overrides 属性](https://fastapi.tiangolo.com/zh/advanced/testing-dependencies/#use-the-app-dependency-overrides-attribute)"
+  },
+  {
+    "id": "U8-24",
+    "typed": {
+      "id": "U8-24",
+      "type": "single",
+      "stem": "只想在某些测试里覆盖依赖项时，官方文档建议怎么设置覆盖、怎么重置？",
+      "options": [
+        {
+          "key": "A",
+          "text": "在模块顶层设置一次覆盖，之后无需重置，因为每个测试结束后框架会自动清除它",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "在每个测试结束时把 `app.dependency_overrides` 设为 `None`，表示不再覆盖",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "测试结束时重新创建一个新的 `TestClient` 实例，之前的覆盖就会随之被清除",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "在测试函数开头设置覆盖，结尾用 `app.dependency_overrides = {}` 重置",
+          "correct": true
+        }
+      ]
+    },
+    "question": "只想在某些测试里覆盖依赖项时，官方文档建议怎么设置覆盖、怎么重置？",
+    "answer": "用 `app.dependency_overrides = {}` 把覆盖依赖项重置为空字典；如果只在某些测试时覆盖，可以在测试函数内开头设置覆盖，并在测试函数结尾重置覆盖依赖项。[原文§使用覆盖测试依赖项 · 使用 app.dependency_overrides 属性](https://fastapi.tiangolo.com/zh/advanced/testing-dependencies/#use-the-app-dependency-overrides-attribute)"
+  },
+  {
+    "id": "U8-25",
+    "typed": {
+      "id": "U8-25",
+      "type": "short"
+    },
+    "question": "为什么异步测试里要用 `AsyncClient` 而不是 `TestClient`？",
+    "answer": "当测试里需要调用 async 函数（例如用异步数据库库验证后端是否写入了正确数据）时，测试函数本身必须是异步的。`TestClient` 内部靠一些“魔法”让你能在普通 `def` 测试里调用异步的 FastAPI 应用，但在异步函数里这种魔法不再生效，所以无法继续用它。`TestClient` 基于 HTTPX，可以直接用 HTTPX 的 `AsyncClient`（配合 `ASGITransport(app=app)`），用 `await` 发送请求来测试 API。[原文§异步测试 · HTTPX](https://fastapi.tiangolo.com/zh/advanced/async-tests/#httpx)[原文§异步测试 · 示例](https://fastapi.tiangolo.com/zh/advanced/async-tests/#example)"
+  },
+  {
+    "id": "U8-26",
+    "typed": {
+      "id": "U8-26",
+      "type": "single",
+      "stem": "异步测试函数上的 `@pytest.mark.anyio` 标记起什么作用？",
+      "options": [
+        {
+          "key": "A",
+          "text": "让 FastAPI 应用本身改以异步方式运行，而不再是同步的应用",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "让应用的生命周期（startup）事件在测试开始前自动被触发",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "告诉 pytest 这个测试函数应该被异步调用（AnyIO 插件提供）",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "让测试里的 `TestClient` 支持用 `await` 发送请求，不再是同步调用",
+          "correct": false
+        }
+      ]
+    },
+    "question": "异步测试函数上的 `@pytest.mark.anyio` 标记起什么作用？",
+    "answer": "AnyIO 提供了一个插件，允许我们指定某些测试函数要异步调用；`@pytest.mark.anyio` 标记就是告诉 pytest 该测试函数应该被异步调用，这样测试函数才能写成 `async def` 并在里面使用 `await`。[原文§异步测试 · pytest.mark.anyio](https://fastapi.tiangolo.com/zh/advanced/async-tests/#pytest-mark-anyio)[原文§异步测试 · 详细说明](https://fastapi.tiangolo.com/zh/advanced/async-tests/#in-detail)"
+  },
+  {
+    "id": "U8-27",
+    "typed": {
+      "id": "U8-27",
+      "type": "single",
+      "stem": "用 `AsyncClient` 做异步测试时，如果应用依赖生命周期事件，需要注意什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "会自动触发这些事件，不需要在测试里做任何额外处理或安装额外的库",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "不会触发这些事件，要用 `asgi-lifespan` 的 `LifespanManager` 来触发",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "只要把测试函数写成 `async def`，就会自动触发这些生命周期事件",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只有应用的路径操作函数使用普通 `def` 时，这些事件才会被触发",
+          "correct": false
+        }
+      ]
+    },
+    "question": "用 `AsyncClient` 做异步测试时，如果应用依赖生命周期事件，需要注意什么？",
+    "answer": "`AsyncClient` 不会触发应用的生命周期事件；为了确保它们被触发，要使用 florimondmanca/asgi-lifespan 中的 `LifespanManager`。[原文§异步测试 · 详细说明](https://fastapi.tiangolo.com/zh/advanced/async-tests/#in-detail)"
+  }
+]

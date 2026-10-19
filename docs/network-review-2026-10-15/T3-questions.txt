@@ -1,0 +1,1708 @@
+T3-1 [fill]
+Original: [填空题·无序] 原文所述，通常确定一条 TCP 连接的四个字段是：____、____、____、____。
+Stem: 原文所述，通常确定一条 TCP 连接的四个字段是：____、____、____、____。
+Blanks/order: 4/unordered
+Answer: 通常由源 IP、源端口、目的 IP、目的端口这四个字段确定，也就是四元组。[原文§一条 TCP 连接是由什么唯一确定的？](https://xiaolincoding.com/interview/network.html#%E4%B8%80%E6%9D%A1-tcp-%E8%BF%9E%E6%8E%A5%E6%98%AF%E7%94%B1%E4%BB%80%E4%B9%88%E5%94%AF%E4%B8%80%E7%A1%AE%E5%AE%9A%E7%9A%84)
+
+T3-2 [single]
+Original: 一个服务监听 443 端口，为什么内核能同时区分很多个客户端连接？
+Stem: 一个服务监听 443 端口，为什么内核能同时区分很多个客户端连接？
+A [incorrect] 内核会为每条连接额外分配一个不同的服务端端口，靠这个端口号来区分它们
+B [incorrect] 内核只能依据目的端口来区分连接，所以同一时刻 443 端口上只能存在一条连接
+C [correct] 这些连接的服务端 IP 和端口相同，但客户端的 IP 或端口不同，四元组不同，内核就能区分
+D [incorrect] 内核依据客户端发送的应用数据内容来区分不同的连接，而不是依据地址和端口
+Answer: 服务监听 443 端口可以同时接受很多客户端连接。虽然它们的服务端 IP 和端口相同，但客户端的 IP 或端口不同，也就是四元组不同，内核就能区分不同连接。[原文§一条 TCP 连接是由什么唯一确定的？](https://xiaolincoding.com/interview/network.html#%E4%B8%80%E6%9D%A1-tcp-%E8%BF%9E%E6%8E%A5%E6%98%AF%E7%94%B1%E4%BB%80%E4%B9%88%E5%94%AF%E4%B8%80%E7%A1%AE%E5%AE%9A%E7%9A%84)
+
+T3-3 [single]
+Original: 有人说“端口号只有 16 位，所以一台服务器最多只能建立约 6 万条 TCP 连接”，原文怎样看待这个说法？
+Stem: 有人说“端口号只有 16 位，所以一台服务器最多只能建立约 6 万条 TCP 连接”，原文怎样看待这个说法？
+A [incorrect] 可以这样说，因为服务端监听的每个端口号只能对应一条 TCP 连接
+B [incorrect] 可以这样说，但只限于连接经过 NAT 的场景，不经过 NAT 时没有这个限制
+C [incorrect] 不能这样说，连接数完全不受文件描述符和内存限制，只取决于四元组的组合数量
+D [correct] 不能这样说；连接数取决于四元组组合，还受文件描述符、内存和应用处理能力等限制
+Answer: 不能因为端口号只有 16 位，就说一台服务器最多只能建立约 6 万条 TCP 连接。连接数还取决于四元组组合、文件描述符、内存和应用处理能力。[原文§一条 TCP 连接是由什么唯一确定的？](https://xiaolincoding.com/interview/network.html#%E4%B8%80%E6%9D%A1-tcp-%E8%BF%9E%E6%8E%A5%E6%98%AF%E7%94%B1%E4%BB%80%E4%B9%88%E5%94%AF%E4%B8%80%E7%A1%AE%E5%AE%9A%E7%9A%84)
+
+T3-4 [multiple]
+Original: 关于一台机器能建立多少条 TCP 连接，下列哪些说法符合原文？
+Stem: 关于一台机器能建立多少条 TCP 连接，下列哪些说法符合原文？
+A [incorrect] 端口号只有 16 位，所以服务器最多只能建立约 6 万条 TCP 连接
+B [correct] 连接数还取决于文件描述符、内存和应用处理能力
+C [correct] 客户端向固定目标主动建连时，可用的源端口可能成为限制
+D [incorrect] 只要四元组不同，连接数就不再受系统资源的任何限制
+Answer: 连接数取决于四元组组合、文件描述符、内存和应用处理能力，而不是简单地被 16 位端口号限制在约 6 万条；客户端向固定目标主动建连时，可用源端口则可能成为限制。因此“最多约 6 万条”和“不再受系统资源限制”这两种说法都不成立。[原文§一条 TCP 连接是由什么唯一确定的？](https://xiaolincoding.com/interview/network.html#%E4%B8%80%E6%9D%A1-tcp-%E8%BF%9E%E6%8E%A5%E6%98%AF%E7%94%B1%E4%BB%80%E4%B9%88%E5%94%AF%E4%B8%80%E7%A1%AE%E5%AE%9A%E7%9A%84)
+
+T3-5 [single]
+Original: 如果 TCP 连接经过 NAT，对可建立的连接数量会有什么额外影响？
+Stem: 如果 TCP 连接经过 NAT，对可建立的连接数量会有什么额外影响？
+A [correct] 转换设备需要维护对应的映射，NAT 的端口和状态表也可能限制连接数量
+B [incorrect] NAT 设备不需要维护任何映射，所以不会影响连接数量
+C [incorrect] NAT 会让经过它的所有连接共用同一个四元组，连接数因此不再受任何限制
+D [incorrect] NAT 会取消源端口的作用，连接数只取决于目的端口的取值范围
+Answer: 如果连接经过 NAT，转换设备还需要维护对应的映射，NAT 的端口和状态表也可能限制连接数量。[原文§一条 TCP 连接是由什么唯一确定的？](https://xiaolincoding.com/interview/network.html#%E4%B8%80%E6%9D%A1-tcp-%E8%BF%9E%E6%8E%A5%E6%98%AF%E7%94%B1%E4%BB%80%E4%B9%88%E5%94%AF%E4%B8%80%E7%A1%AE%E5%AE%9A%E7%9A%84)
+
+T3-6 [fill]
+Original: [填空题·有序] TCP 首部最少是____字节，带选项时最多是____字节。
+Stem: TCP 首部最少是____字节，带选项时最多是____字节。
+Blanks/order: 2/ordered
+Answer: TCP 首部最少是 20 字节，带选项时最多是 60 字节。[原文§说一下tcp的头部](https://xiaolincoding.com/interview/network.html#%E8%AF%B4%E4%B8%80%E4%B8%8Btcp%E7%9A%84%E5%A4%B4%E9%83%A8)
+
+T3-7 [single]
+Original: TCP 首部中的窗口大小字段有什么作用？
+Stem: TCP 首部中的窗口大小字段有什么作用？
+A [incorrect] 检测报文在传输中是否发生损坏，用于发现数据错误
+B [correct] 接收方通告自己还能接收多少数据，用于流量控制
+C [incorrect] 在建立连接时设定序列号的初始值，用于解决网络包乱序问题
+D [incorrect] 标识下一次期望收到的数据的序列号，用于解决丢包问题
+Answer: 窗口大小是接收方通告还能接收多少数据，用于流量控制。[原文§说一下tcp的头部](https://xiaolincoding.com/interview/network.html#%E8%AF%B4%E4%B8%80%E4%B8%8Btcp%E7%9A%84%E5%A4%B4%E9%83%A8)
+
+T3-8 [single]
+Original: TCP 首部中的校验和字段用来做什么？
+Stem: TCP 首部中的校验和字段用来做什么？
+A [incorrect] 通告接收方还能接收多少数据，用于流量控制
+B [correct] 检测报文在传输中是否发生损坏，不是密码学校验
+C [incorrect] 抵抗攻击者对报文的篡改，是一种密码学校验
+D [incorrect] 表示连接出现异常时必须强制断开连接
+Answer: 校验和用来检测报文在传输中是否发生损坏，它不是用于抵抗攻击的密码学校验。[原文§说一下tcp的头部](https://xiaolincoding.com/interview/network.html#%E8%AF%B4%E4%B8%80%E4%B8%8Btcp%E7%9A%84%E5%A4%B4%E9%83%A8)
+
+T3-9 [short]
+Original: TCP 首部中的序列号字段，初始值是怎么产生的？之后怎样变化？它用来解决什么问题？
+Stem: TCP 首部中的序列号字段，初始值是怎么产生的？之后怎样变化？它用来解决什么问题？
+Answer: 序列号的初始值是建立连接时由计算机生成的随机数，通过 SYN 包传给接收端主机；之后每发送一次数据，就累加一次该数据字节数的大小。它用来解决网络包乱序问题。[原文§说一下tcp的头部](https://xiaolincoding.com/interview/network.html#%E8%AF%B4%E4%B8%80%E4%B8%8Btcp%E7%9A%84%E5%A4%B4%E9%83%A8)
+
+T3-10 [single]
+Original: TCP 首部中的确认应答号表示什么？它用来解决什么问题？
+Stem: TCP 首部中的确认应答号表示什么？它用来解决什么问题？
+A [incorrect] 表示本次发送的数据的起始序列号，接收方据此重新排列报文，用来解决网络包乱序问题
+B [incorrect] 表示接收方当前还能接收的数据量，发送方据此控制发送速度，用来实现流量控制
+C [correct] 表示下一次期望收到的数据的序列号，收到后可认为此前的数据都已接收，用来解决丢包问题
+D [incorrect] 表示已经发送出去的数据总字节数，接收方据此判断报文在传输中是否损坏
+Answer: 确认应答号指下一次期望收到的数据的序列号，发送端收到这个确认应答以后可以认为在这个序号以前的数据都已经被正常接收，用来解决丢包的问题。[原文§说一下tcp的头部](https://xiaolincoding.com/interview/network.html#%E8%AF%B4%E4%B8%80%E4%B8%8Btcp%E7%9A%84%E5%A4%B4%E9%83%A8)
+
+T3-11 [fill]
+Original: [填空题·有序] TCP 首部控制位中，表示连接出现异常、必须强制断开连接的是____，表示希望建立连接并在序列号字段设定序列号初始值的是____，表示今后不会再有数据发送、希望断开连接的是____。
+Stem: TCP 首部控制位中，表示连接出现异常、必须强制断开连接的是____，表示希望建立连接并在序列号字段设定序列号初始值的是____，表示今后不会再有数据发送、希望断开连接的是____。
+Blanks/order: 3/ordered
+Answer: RST 位为 1 表示 TCP 连接中出现异常必须强制断开连接；SYN 位为 1 表示希望建立连接，并在其序列号字段进行序列号初始值的设定；FIN 位为 1 表示今后不会再有数据发送，希望断开连接。答案依次是 RST、SYN、FIN。[原文§说一下tcp的头部](https://xiaolincoding.com/interview/network.html#%E8%AF%B4%E4%B8%80%E4%B8%8Btcp%E7%9A%84%E5%A4%B4%E9%83%A8)
+
+T3-12 [single]
+Original: 关于 TCP 首部的 ACK 位，下列说法符合原文的是哪一项？
+Stem: 关于 TCP 首部的 ACK 位，下列说法符合原文的是哪一项？
+A [correct] 该位为 1 时确认应答字段有效；连接建立后的数据报文通常带 ACK，但某些 RST 报文可以不带
+B [incorrect] 该位为 1 时表示希望建立连接，并在序列号字段设定序列号的初始值，之后的报文都不再需要它
+C [incorrect] 除 SYN 报文外，所有 TCP 报文都必须带 ACK，包括任何 RST 报文，没有例外
+D [incorrect] 该位为 1 时表示连接中出现了异常，通信双方必须立即强制断开这条连接
+Answer: ACK 位为 1 时，确认应答字段变为有效，连接建立后的数据报文通常会带 ACK，但不能说所有其他报文都必须带 ACK，比如某些 RST 报文就可以不带。[原文§说一下tcp的头部](https://xiaolincoding.com/interview/network.html#%E8%AF%B4%E4%B8%80%E4%B8%8Btcp%E7%9A%84%E5%A4%B4%E9%83%A8)
+
+T3-13 [single]
+Original: 三次握手中，客户端发出的第一个 SYN 报文有什么特点？
+Stem: 三次握手中，客户端发出的第一个 SYN 报文有什么特点？
+A [incorrect] 序号字段填入 0，SYN 和 ACK 标志位同时置为 1，并携带应用层数据
+B [incorrect] 确认应答号字段填入 server_isn + 1，发出后客户端进入 ESTABLISHED 状态
+C [incorrect] 序号字段填入随机初始化的 client_isn，SYN 标志位置为 0，发出后客户端进入 SYN-RCVD 状态
+D [correct] 序号字段填入随机初始化的 client_isn，SYN 标志位置为 1，不包含应用层数据，发出后客户端进入 SYN-SENT 状态
+Answer: 客户端随机初始化序号 client_isn，填入 TCP 首部的序号字段，同时把 SYN 标志位置为 1，发送第一个 SYN 报文向服务端发起连接；该报文不包含应用层数据，之后客户端处于 SYN-SENT 状态。[原文§TCP三次握手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-14 [single]
+Original: 三次握手中，服务端回复的第二个报文是怎样设置的？
+Stem: 三次握手中，服务端回复的第二个报文是怎样设置的？
+A [incorrect] 序号字段填入 client_isn，确认应答号填入 server_isn + 1，只把 ACK 标志位置为 1
+B [correct] 序号字段填入随机初始化的 server_isn，确认应答号填入 client_isn + 1，SYN 和 ACK 标志位都置为 1，不包含应用层数据
+C [incorrect] 序号字段填入随机初始化的 server_isn，确认应答号填入 client_isn，只把 SYN 标志位置为 1
+D [incorrect] 序号字段填入 server_isn，确认应答号填入 client_isn + 1，SYN 和 ACK 都置为 1，并携带应用层数据
+Answer: 服务端收到客户端的 SYN 报文后，也随机初始化自己的序号 server_isn 填入序号字段，把确认应答号字段填入 client_isn + 1，并把 SYN 和 ACK 标志位置为 1，该报文也不包含应用层数据，之后服务端处于 SYN-RCVD 状态。[原文§TCP三次握手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-15 [single]
+Original: 三次握手中，客户端发出的最后一个应答报文，ACK 标志位和确认应答号是怎样设置的？
+Stem: 三次握手中，客户端发出的最后一个应答报文，ACK 标志位和确认应答号是怎样设置的？
+A [incorrect] ACK 标志位置为 1，确认应答号填入 client_isn + 1
+B [incorrect] SYN 标志位置为 1，确认应答号填入 server_isn + 1
+C [incorrect] ACK 标志位置为 0，确认应答号填入 server_isn
+D [correct] ACK 标志位置为 1，确认应答号填入 server_isn + 1
+Answer: 客户端收到服务端报文后，还要向服务端回应最后一个应答报文：该报文 TCP 首部的 ACK 标志位置为 1，确认应答号字段填入 server_isn + 1，然后发送给服务端，之后客户端处于 ESTABLISHED 状态。[原文§TCP三次握手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-16 [single]
+Original: 普通 TCP 三次握手的三个报文里，哪些通常可以携带应用数据？
+Stem: 普通 TCP 三次握手的三个报文里，哪些通常可以携带应用数据？
+A [incorrect] 通常第一个 SYN 报文必须携带应用数据，第二个和第三个报文都不能携带数据
+B [incorrect] 三个报文都绝对不能携带应用数据，即使使用 TCP Fast Open 也没有任何例外
+C [correct] 通常前两个报文不携带数据，第三次握手可以携带；TCP Fast Open 满足条件时允许 SYN 携带数据
+D [incorrect] 通常第二个 SYN + ACK 报文必须携带应用数据，第一个和第三个报文都不能携带
+Answer: 普通 TCP 三次握手通常不在前两个报文里携带应用数据，第三次握手可以携带数据。不过这不是绝对限制，比如 TCP Fast Open 就允许在满足条件时让 SYN 携带数据。[原文§TCP三次握手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-17 [fill]
+Original: [填空题·有序] 三次握手开始时，服务端先主动监听某个端口，进入____状态；客户端发出第一个 SYN 报文后进入____状态；服务端发出 SYN + ACK 报文后进入____状态；客户端发出最后一个应答报文后进入____状态。
+Stem: 三次握手开始时，服务端先主动监听某个端口，进入____状态；客户端发出第一个 SYN 报文后进入____状态；服务端发出 SYN + ACK 报文后进入____状态；客户端发出最后一个应答报文后进入____状态。
+Blanks/order: 4/ordered
+Answer: 服务端主动监听端口后处于 LISTEN 状态；客户端发出第一个 SYN 后处于 SYN-SENT 状态；服务端发出 SYN + ACK 后处于 SYN-RCVD 状态（也写作 SYN_RCVD）；客户端发出最后一个应答报文后处于 ESTABLISHED 状态，服务端收到该应答后也进入 ESTABLISHED。答案依次是 LISTEN、SYN-SENT、SYN-RCVD、ESTABLISHED。[原文§TCP三次握手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-18 [single]
+Original: 关于序列号的消耗，下列说法符合原文的是哪一项？
+Stem: 关于序列号的消耗，下列说法符合原文的是哪一项？
+A [correct] SYN 会消耗一个序列号，确认号是初始序列号加 1；单纯的 ACK 不消耗序列号
+B [incorrect] 单纯的 ACK 和 SYN 一样，每个报文都会消耗一个序列号，所以每次确认号都要加 1
+C [incorrect] SYN 不消耗序列号，确认号加 1 只是一种习惯写法，并没有实际含义
+D [incorrect] 确认号总是等于对方的初始序列号本身，三次握手中的确认号都不需要加 1
+Answer: SYN 会消耗一个序列号，所以确认号是初始序列号加 1；单纯的 ACK 不消耗序列号。[原文§TCP三次握手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-19 [fill]
+Original: [填空题·有序] 原文所述，TCP 使用三次握手的三个原因是：阻止____的初始化、同步双方的____、避免____。
+Stem: 原文所述，TCP 使用三次握手的三个原因是：阻止____的初始化、同步双方的____、避免____。
+Blanks/order: 3/ordered
+Answer: 三次握手的原因：可以阻止重复历史连接的初始化（主要原因）、可以同步双方的初始序列号、可以避免资源浪费。答案依次是：重复历史连接、初始序列号、资源浪费。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)
+
+T3-20 [single]
+Original: 原文认为 TCP 使用三次握手的最主要原因是什么？
+Stem: 原文认为 TCP 使用三次握手的最主要原因是什么？
+A [correct] 防止旧的重复连接初始化造成混乱，即阻止历史连接初始化了连接
+B [incorrect] 保证第三次握手的 ACK 丢失后，客户端一定会超时重传这个 ACK
+C [incorrect] 避免服务端在握手阶段占用任何半连接资源，从而消除 SYN Flood 的风险
+D [incorrect] 让第三次握手必须携带应用数据，以便服务端尽快开始处理请求
+Answer: 原文引用 RFC 793 指出，三次握手的首要原因是为了防止旧的重复连接初始化造成混乱，也就是防止“历史连接”初始化了连接；这是主要原因，同步初始序列号和避免资源浪费是另外两个原因。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)
+
+T3-21 [short]
+Original: 客户端先发送了 SYN（seq = 90）报文，随后宕机，且这个 SYN 被网络阻塞；客户端重启后重新建立连接，发送了 SYN（seq = 100）报文（不是重传）。若旧 SYN 比最新的 SYN 先到达服务端，三次握手是怎样阻止这个历史连接的？
+Stem: 客户端先发送了 SYN（seq = 90）报文，随后宕机，且这个 SYN 被网络阻塞；客户端重启后重新建立连接，发送了 SYN（seq = 100）报文（不是重传）。若旧 SYN 比最新的 SYN 先到达服务端，三次握手是怎样阻止这个历史连接的？
+Answer: 旧 SYN 先到达服务端时，服务端会回一个 SYN + ACK 报文，确认号是 91（90 + 1）；客户端收到后发现自己期望的确认号应该是 100 + 1，而不是 90 + 1，于是回 RST 报文；服务端收到 RST 报文后释放连接；后续最新的 SYN 抵达服务端后，双方就可以正常完成三次握手。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)
+
+T3-22 [single]
+Original: 为什么两次握手无法阻止历史连接？
+Stem: 为什么两次握手无法阻止历史连接？
+A [incorrect] 客户端收到 SYN + ACK 后无法判断这是历史连接，所以客户端不会回 RST 报文来断开连接
+B [incorrect] 服务端永远收不到客户端回复的 RST 报文，因此历史连接一旦建立就永远不会被断开
+C [correct] 服务端没有中间状态，发出 SYN + ACK 就进入 ESTABLISHED，可能白白发送数据，收到 RST 才断开
+D [incorrect] 旧 SYN 与最新 SYN 的序列号总是完全相同，所以服务端无法把它们区分开来
+Answer: 两次握手的情况下，服务端收到 SYN 报文后就进入 ESTABLISHED 状态，这时它可以发送数据，但客户端若判断出这是历史连接会回 RST 断开；服务端没有中间状态来提前阻止历史连接，也不知道这是历史连接，只有收到 RST 后才断开，导致服务端建立了历史连接、白白发送数据，浪费资源。要在服务端发送数据前阻止历史连接，就需要三次握手。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)
+
+T3-23 [multiple]
+Original: 序列号在 TCP 可靠传输中有哪些作用？
+Stem: 序列号在 TCP 可靠传输中有哪些作用？
+A [correct] 接收方可以去除重复的数据
+B [correct] 接收方可以根据数据包的序列号按序接收
+C [correct] 可以标识发送出去的数据包中，哪些已经被对方收到（通过 ACK 报文中的确认号知道）
+D [incorrect] 接收方可以检测报文在传输中是否发生损坏
+E [incorrect] 接收方可以向发送方通告自己还能接收多少数据
+Answer: 序列号是可靠传输的关键因素，它的作用有：接收方可以去除重复的数据；接收方可以根据数据包的序列号按序接收；可以标识发送出去的数据包中哪些已经被对方收到（通过 ACK 报文中的确认号知道）。检测报文损坏是校验和的作用，通告可接收数据量是窗口大小的作用。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)
+
+T3-24 [single]
+Original: 为什么两次握手无法可靠地同步双方的初始序列号？
+Stem: 为什么两次握手无法可靠地同步双方的初始序列号？
+A [incorrect] 两次握手中的报文不携带任何序列号，所以双方无法交换初始序列号
+B [correct] 两次握手只保证了一方的初始序列号能被对方成功接收，无法保证双方的初始序列号都被确认接收
+C [incorrect] 两次握手中服务端的初始序列号会被客户端的初始序列号覆盖，所以只剩下一个序列号
+D [incorrect] 两次握手不能阻止历史连接，所以双方的初始序列号总是不一致
+Answer: 客户端发送带初始序列号的 SYN 后需要服务端回 ACK 确认，服务端发送初始序列号时也要得到客户端的应答，这样一来一回才能确保双方的初始序列号被可靠同步。两次握手只保证了一方的初始序列号能被对方成功接收，没办法保证双方的初始序列号都能被确认接收。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)
+
+T3-25 [single]
+Original: 四次握手也能可靠地同步双方的初始序列号，为什么 TCP 最终采用三次握手？
+Stem: 四次握手也能可靠地同步双方的初始序列号，为什么 TCP 最终采用三次握手？
+A [incorrect] 因为四次握手无法可靠地同步双方的初始序列号，而三次握手可以做到
+B [incorrect] 因为四次握手无法阻止历史连接，而三次握手可以阻止历史连接
+C [incorrect] 因为四次握手中服务端没有中间状态，会白白占用服务端的资源
+D [correct] 因为四次握手里的第二步和第三步可以优化成一步，所以就成了三次握手
+Answer: 四次握手其实也能够可靠地同步双方的初始化序号，但由于第二步和第三步可以优化成一步，所以就成了三次握手。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)
+
+T3-26 [short]
+Original: 三次握手怎样帮助避免资源浪费？它能不能直接消除 SYN Flood 的风险？
+Stem: 三次握手怎样帮助避免资源浪费？它能不能直接消除 SYN Flood 的风险？
+Answer: 如果只有两次握手，服务端发出 SYN + ACK 后就认为连接已建立，却不知道客户端是否收到并接受了这个响应；比如一个旧 SYN 在网络里绕了很久才到达服务端，客户端已不需要这条连接，服务端若直接建立完整连接并发送业务数据，就会白白占用资源。三次握手让服务端在得到客户端的确认之后再建立正常的完整连接。不过第三次握手到达前，服务端通常仍要占用半连接资源，所以三次握手不能直接消除 SYN Flood 的风险。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)
+
+T3-27 [single]
+Original: 客户端重启后重新建立连接时发送的 SYN，和重传的 SYN 有什么区别？
+Stem: 客户端重启后重新建立连接时发送的 SYN，和重传的 SYN 有什么区别？
+A [incorrect] 两者序列号都与原来的 SYN 相同，没有区别
+B [incorrect] 重传的 SYN 会重新随机生成序列号，而重启后重新建连的 SYN 沿用旧序列号
+C [correct] 重传的 SYN 序列号与原来的一样，而重启后重新建连发送的 SYN 序列号不同
+D [incorrect] 两者序列号都会重新随机生成，只是重传的 SYN 带有 ACK 标志位
+Answer: 客户端重启后又重新向服务端建立连接，发送的是新的 SYN（如 seq = 100），不是重传 SYN，因为重传的 SYN 的序列号是一样的。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)
+
+T3-28 [single]
+Original: 三次握手中客户端第三次发送的 ACK 丢失，服务端迟迟收不到时，会发生什么？
+Stem: 三次握手中客户端第三次发送的 ACK 丢失，服务端迟迟收不到时，会发生什么？
+A [correct] 服务端会触发超时重传机制，重传 SYN-ACK 报文，直到收到第三次握手或者达到最大重传次数
+B [incorrect] 客户端会为这个纯 ACK 启动超时重传定时器，由客户端重传该 ACK
+C [incorrect] 服务端会立即重传第一次握手的 SYN 报文，等待客户端重新发起连接
+D [incorrect] 服务端认为连接已经建立完成，直接进入 ESTABLISHED 状态，不再等待
+Answer: 第三次握手的 ACK 是对第二次握手的 SYN 的确认报文，所以当它丢失、服务端迟迟收不到时，服务端会触发超时重传机制，重传 SYN-ACK 报文，直到收到第三次握手，或者达到最大重传次数。[原文§TCP 三次握手，客户端第三次发送的确认包丢失了发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AC%AC%E4%B8%89%E6%AC%A1%E5%8F%91%E9%80%81%E7%9A%84%E7%A1%AE%E8%AE%A4%E5%8C%85%E4%B8%A2%E5%A4%B1%E4%BA%86%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-29 [multiple]
+Original: 第三次握手的 ACK 丢失时，下列哪些说法符合原文？
+Stem: 第三次握手的 ACK 丢失时，下列哪些说法符合原文？
+A [correct] 纯 ACK 不会像数据或 SYN 那样启动自己的超时重传定时器
+B [correct] 服务端重传 SYN-ACK 后，客户端会再次回复 ACK
+C [correct] 如果第三次握手携带了数据，那么数据仍然受重传机制保护
+D [incorrect] 客户端会不断重传这个纯 ACK，直到服务端确认收到为止
+E [incorrect] 服务端发现第三次握手丢失后会立即断开连接，不做任何重传
+Answer: 纯 ACK 不会像数据或 SYN 那样启动自己的超时重传定时器，丢失后是服务端因收不到确认而重传 SYN-ACK，客户端收到后会再次回复 ACK；如果第三次握手携带了数据，那么数据仍然受重传机制保护。[原文§TCP 三次握手，客户端第三次发送的确认包丢失了发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AC%AC%E4%B8%89%E6%AC%A1%E5%8F%91%E9%80%81%E7%9A%84%E7%A1%AE%E8%AE%A4%E5%8C%85%E4%B8%A2%E5%A4%B1%E4%BA%86%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-30 [single]
+Original: 客户端已经进入 ESTABLISHED 并发送了数据，但最开始的纯 ACK 丢失了，服务端能否完成握手？
+Stem: 客户端已经进入 ESTABLISHED 并发送了数据，但最开始的纯 ACK 丢失了，服务端能否完成握手？
+A [incorrect] 不可以：服务端必须收到最开始的那个纯 ACK 才能完成握手，携带数据的报文无法替代这个纯 ACK
+B [incorrect] 不可以：服务端会直接丢弃这个携带数据的报文，并重传 SYN 报文，等待客户端重新发起连接
+C [incorrect] 可以：服务端只要收到这个数据报文就完成握手，不需要再检查报文里的 ACK 是否有效
+D [correct] 可以：数据报文携带有效 ACK，服务端收到的报文满足握手完成条件时，可据此完成握手，不必等那个纯 ACK
+Answer: 客户端已进入 ESTABLISHED 并发送了数据时，数据报文也会携带有效 ACK。如果服务端收到的报文满足握手完成条件，也可以据此完成握手，不一定非要等最开始的那个纯 ACK。[原文§TCP 三次握手，客户端第三次发送的确认包丢失了发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AC%AC%E4%B8%89%E6%AC%A1%E5%8F%91%E9%80%81%E7%9A%84%E7%A1%AE%E8%AE%A4%E5%8C%85%E4%B8%A2%E5%A4%B1%E4%BA%86%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-31 [single]
+Original: 假设 tcp_synack_retries 参数值为 2，第三次握手一直丢失，服务端会怎样？
+Stem: 假设 tcp_synack_retries 参数值为 2，第三次握手一直丢失，服务端会怎样？
+A [incorrect] 超时重传 2 次 SYN-ACK 后立即断开连接，不再等待客户端的第三次握手
+B [correct] 重传 2 次 SYN-ACK 后，再等上一次超时时间的 2 倍，仍没收到第三次握手的 ACK 就断开连接
+C [incorrect] 超时重传 2 次 SYN-ACK 后，再等待上一次超时时间的一半，仍没收到就断开连接
+D [incorrect] 超时重传 2 次 SYN-ACK 后，把连接放入全连接队列，等待应用程序调用 accept
+Answer: 服务端超时重传 2 次 SYN-ACK 后，由于 tcp_synack_retries 为 2，已达到最大重传次数，于是再等待一段时间（时间为上一次超时时间的 2 倍），如果还是没能收到客户端的第三次握手（ACK 报文），服务端就会断开连接。[原文§TCP 三次握手，客户端第三次发送的确认包丢失了发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AC%AC%E4%B8%89%E6%AC%A1%E5%8F%91%E9%80%81%E7%9A%84%E7%A1%AE%E8%AE%A4%E5%8C%85%E4%B8%A2%E5%A4%B1%E4%BA%86%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-32 [single]
+Original: 服务端发送 SYN + ACK 报文后，连接进入什么状态？这个状态表示什么？
+Stem: 服务端发送 SYN + ACK 报文后，连接进入什么状态？这个状态表示什么？
+A [incorrect] SYN_SENT，表示已经发出自己的 SYN 报文，正在等待对方回复 SYN + ACK
+B [incorrect] ESTABLISHED，表示三次握手已经全部完成，双方可以相互发送数据了
+C [incorrect] LISTEN，表示服务端正在监听某个端口，目前尚未收到任何 SYN 报文
+D [correct] SYN_RCVD，表示已收到客户端的 SYN 并发出 SYN + ACK，正在等待客户端确认
+Answer: 服务端发送第二个报文（SYN + ACK）后进入 SYN_RCVD，表示已经收到了客户端的 SYN，并发出了自己的 SYN + ACK，正在等待客户端确认。[原文§服务端发送第二个报文后连接的状态进入什么状态](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%91%E9%80%81%E7%AC%AC%E4%BA%8C%E4%B8%AA%E6%8A%A5%E6%96%87%E5%90%8E%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%8A%B6%E6%80%81%E8%BF%9B%E5%85%A5%E4%BB%80%E4%B9%88%E7%8A%B6%E6%80%81)
+
+T3-33 [single]
+Original: 服务端刚发出 SYN + ACK 并进入 SYN_RCVD 时，客户端处于什么状态？
+Stem: 服务端刚发出 SYN + ACK 并进入 SYN_RCVD 时，客户端处于什么状态？
+A [correct] 可能还在 SYN_SENT，也可能已收到 SYN + ACK 进入 ESTABLISHED，两端状态不一定同步变化
+B [incorrect] 一定仍处于 SYN_SENT 状态，因为通信双方的状态总是同步变化的
+C [incorrect] 一定已经进入 ESTABLISHED 状态，因为 SYN + ACK 一发出就视为客户端已经收到
+D [incorrect] 一定处于 LISTEN 状态，正在等待服务端发来第三次握手的报文
+Answer: 客户端此时可能还在 SYN_SENT，也可能已经收到 SYN + ACK 并进入 ESTABLISHED，不能认为两端状态总是同步变化。[原文§服务端发送第二个报文后连接的状态进入什么状态](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%91%E9%80%81%E7%AC%AC%E4%BA%8C%E4%B8%AA%E6%8A%A5%E6%96%87%E5%90%8E%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%8A%B6%E6%80%81%E8%BF%9B%E5%85%A5%E4%BB%80%E4%B9%88%E7%8A%B6%E6%80%81)
+
+T3-34 [single]
+Original: 三次握手和 accept 是什么关系？
+Stem: 三次握手和 accept 是什么关系？
+A [incorrect] 三次握手由应用程序调用 accept 来完成，accept 返回时握手才结束
+B [incorrect] accept 负责发送第一次握手的 SYN 报文，内核负责后两次握手
+C [correct] 三次握手由内核完成，accept 负责取出已经建立的连接，不负责发起或完成握手
+D [incorrect] accept 负责在全连接队列中创建连接并完成第三次握手
+Answer: 三次握手由内核完成，accept 负责取出已经建立的连接，不负责发起或完成握手。[原文§三次握手和 accept 是什么关系？ accept 做了哪些事情？](https://xiaolincoding.com/interview/network.html#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C-accept-%E6%98%AF%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB-accept-%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85)
+
+T3-35 [single]
+Original: 服务端调用 listen 后，正常完成三次握手的连接会进入哪个队列等待应用程序取走？
+Stem: 服务端调用 listen 后，正常完成三次握手的连接会进入哪个队列等待应用程序取走？
+A [incorrect] 半连接队列，握手完成后一直留在其中
+B [correct] 全连接队列，也叫 accept 队列
+C [incorrect] 发送缓冲区，等待内核逐个发送出去
+D [incorrect] 监听 socket 的接收缓冲区，由 read 直接读取
+Answer: 服务端调用 listen 后，内核开始处理连接请求。正常完成三次握手的连接会进入全连接队列，也叫 accept 队列，等待应用程序取走。[原文§三次握手和 accept 是什么关系？ accept 做了哪些事情？](https://xiaolincoding.com/interview/network.html#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C-accept-%E6%98%AF%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB-accept-%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85)
+
+T3-36 [single]
+Original: 应用调用 accept 取出一条连接时，返回的是什么？原来的监听 socket 之后怎样？
+Stem: 应用调用 accept 取出一条连接时，返回的是什么？原来的监听 socket 之后怎样？
+A [incorrect] 返回原来的监听 socket 本身，后续继续用它收发数据
+B [incorrect] 返回一个新的已连接 socket 文件描述符，同时原来的监听 socket 被关闭，不再接收其他连接
+C [incorrect] 只返回这条连接的四元组，应用需要自己再创建 socket 来收发数据
+D [correct] 返回一个新的已连接 socket 文件描述符，后续用它收发数据；原来的监听 socket 继续接收其他连接
+Answer: 应用调用 accept 时，会从队列中取出连接，返回一个新的已连接 socket 文件描述符，后续用这个描述符收发数据。原来的监听 socket 继续接收其他连接。[原文§三次握手和 accept 是什么关系？ accept 做了哪些事情？](https://xiaolincoding.com/interview/network.html#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C-accept-%E6%98%AF%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB-accept-%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85)
+
+T3-37 [single]
+Original: 全连接队列为空时调用 accept，会怎样？
+Stem: 全连接队列为空时调用 accept，会怎样？
+A [incorrect] 阻塞 accept 会立即返回 0；而非阻塞 accept 则会一直等待到有连接为止
+B [correct] 阻塞 accept 会等待；非阻塞 accept 返回 EAGAIN 或 EWOULDBLOCK
+C [incorrect] 无论是否阻塞，accept 都会立即成功返回一个没有任何连接的空 socket
+D [incorrect] accept 会主动向客户端重新发起一次新的三次握手，用来补充队列
+Answer: 队列为空时，阻塞 accept 会等待；非阻塞 accept 会返回 EAGAIN 或 EWOULDBLOCK。[原文§三次握手和 accept 是什么关系？ accept 做了哪些事情？](https://xiaolincoding.com/interview/network.html#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C-accept-%E6%98%AF%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB-accept-%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85)
+
+T3-38 [single]
+Original: 应用暂时没有调用 accept 时，内核有没有可能已经完成了三次握手？
+Stem: 应用暂时没有调用 accept 时，内核有没有可能已经完成了三次握手？
+A [incorrect] 不可能，只有应用调用 accept 之后，内核才会开始三次握手
+B [incorrect] 有可能，但握手完成的连接不占用任何队列，所以不会被占满
+C [correct] 有可能，内核也可能已经接收数据，只是应用长期不取连接时，全连接队列可能被占满
+D [incorrect] 不可能，在 accept 之前内核不会接收任何客户端发来的报文
+Answer: 即使应用暂时没有调用 accept，内核也可能已经完成握手并接收数据，只是如果应用长期不取连接，全连接队列可能被占满。[原文§三次握手和 accept 是什么关系？ accept 做了哪些事情？](https://xiaolincoding.com/interview/network.html#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C-accept-%E6%98%AF%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB-accept-%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85)
+
+T3-39 [single]
+Original: 客户端发送 SYN 后进入 SYN_SENT，一直没有收到服务端的 SYN + ACK，会怎样？同一次连接重传 SYN 时初始序列号怎么处理？
+Stem: 客户端发送 SYN 后进入 SYN_SENT，一直没有收到服务端的 SYN + ACK，会怎样？同一次连接重传 SYN 时初始序列号怎么处理？
+A [correct] 会超时重传 SYN，同一次连接的 SYN 重传使用相同的初始序列号
+B [incorrect] 会超时重传 SYN，而且每次重传都重新随机生成新的初始序列号
+C [incorrect] 不会重传，直接放弃连接并返回错误
+D [incorrect] 会改为重传 ACK 报文，等待服务端回应
+Answer: 客户端发送 SYN 后进入 SYN_SENT。如果一直没有收到服务端的 SYN + ACK，就会超时重传 SYN，同一次连接的 SYN 重传使用相同的初始序列号。[原文§客户端发送的第一个 SYN 报文，服务器没有收到怎么办？](https://xiaolincoding.com/interview/network.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B2%A1%E6%9C%89%E6%94%B6%E5%88%B0%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-40 [single]
+Original: 在 Linux 中，通过哪个内核参数可以查看主动建连时 SYN 的重试配置？
+Stem: 在 Linux 中，通过哪个内核参数可以查看主动建连时 SYN 的重试配置？
+A [incorrect] tcp_synack_retries
+B [incorrect] tcp_syncookies
+C [correct] tcp_syn_retries
+D [incorrect] tcp_max_syn_backlog
+Answer: 在 Linux 中，可以通过 cat /proc/sys/net/ipv4/tcp_syn_retries 查看主动建连的 SYN 重试配置。[原文§客户端发送的第一个 SYN 报文，服务器没有收到怎么办？](https://xiaolincoding.com/interview/network.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B2%A1%E6%9C%89%E6%94%B6%E5%88%B0%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-41 [single]
+Original: 关于 SYN 的重试次数和间隔，下列说法符合原文的是哪一项？
+Stem: 关于 SYN 的重试次数和间隔，下列说法符合原文的是哪一项？
+A [incorrect] 所有 Linux 系统都默认一定重传 5 次、总共等待 63 秒，与配置无关
+B [incorrect] 只由应用层设置的超时时间决定，与内核版本和内核参数配置完全无关
+C [incorrect] 只由对端服务器上的 tcp_synack_retries 决定，与客户端的配置无关
+D [correct] 要看内核版本、系统配置及 socket 选项，不能把“一定重传 5 次、等 63 秒”当成所有系统的规则
+Answer: 具体重试次数和间隔要看内核版本、系统配置及 socket 选项，不能把“默认一定重传 5 次、一定等 63 秒”当成所有系统的规则。[原文§客户端发送的第一个 SYN 报文，服务器没有收到怎么办？](https://xiaolincoding.com/interview/network.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B2%A1%E6%9C%89%E6%94%B6%E5%88%B0%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-42 [short]
+Original: 按“初始超时 1 秒、指数退避、最多重传 5 次”的简化模型，SYN 重传前的各轮等待时间是多少？总共等多久？这些数字表示的是什么？
+Stem: 按“初始超时 1 秒、指数退避、最多重传 5 次”的简化模型，SYN 重传前的各轮等待时间是多少？总共等多久？这些数字表示的是什么？
+Answer: 重传前的等待时间依次是 1、2、4、8、16 秒，最后再等 32 秒，总共 63 秒。这些是每一轮的等待时长，不是从第一次发包起算的重传时刻。[原文§客户端发送的第一个 SYN 报文，服务器没有收到怎么办？](https://xiaolincoding.com/interview/network.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B2%A1%E6%9C%89%E6%94%B6%E5%88%B0%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-43 [single]
+Original: 关于部分较新 Linux 内核支持的 tcp_syn_linear_timeouts，下列说法符合原文的是哪一项？
+Stem: 关于部分较新 Linux 内核支持的 tcp_syn_linear_timeouts，下列说法符合原文的是哪一项？
+A [incorrect] 所有 Linux 内核都支持，并且从第一次重传起就严格按指数退避
+B [correct] 可能先使用若干次相同间隔，再进入指数退避；实际排查应以本机配置和抓包时间为准
+C [incorrect] 它让 SYN 永远不会超时，connect 因而不会失败
+D [incorrect] 它把重传间隔固定为 63 秒，排查时无需再看本机配置
+Answer: 部分较新的 Linux 内核还支持 tcp_syn_linear_timeouts，可能先使用若干次相同间隔，再进入指数退避。实际排查应该以本机配置和抓包时间为准。[原文§客户端发送的第一个 SYN 报文，服务器没有收到怎么办？](https://xiaolincoding.com/interview/network.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B2%A1%E6%9C%89%E6%94%B6%E5%88%B0%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-44 [single]
+Original: SYN 重试超过限制后，客户端的 connect 会怎样？应用能不能缩短建连等待？
+Stem: SYN 重试超过限制后，客户端的 connect 会怎样？应用能不能缩短建连等待？
+A [correct] connect 会失败；应用也可以设置更短的建连超时
+B [incorrect] connect 会一直阻塞到服务端响应为止，应用无法设置更短的超时
+C [incorrect] connect 会返回成功，连接停留在 SYN_SENT 状态
+D [incorrect] connect 会失败，但应用无法改变建连的等待时间
+Answer: 最终超过重试或超时限制，connect 会失败；应用也可以设置更短的建连超时。[原文§客户端发送的第一个 SYN 报文，服务器没有收到怎么办？](https://xiaolincoding.com/interview/network.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B2%A1%E6%9C%89%E6%94%B6%E5%88%B0%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-45 [single]
+Original: 第二次握手的 SYN-ACK 报文里，ACK 和 SYN 分别起什么作用？
+Stem: 第二次握手的 SYN-ACK 报文里，ACK 和 SYN 分别起什么作用？
+A [correct] ACK 是对第一次握手的确认，SYN 是服务端发起建立 TCP 连接的报文
+B [incorrect] ACK 是服务端发起建立 TCP 连接的报文，SYN 是对第一次握手的确认
+C [incorrect] ACK 是对第三次握手的确认，SYN 用来通告服务端还能接收多少数据
+D [incorrect] ACK 和 SYN 都只是对第一次握手的确认，服务端并不发起自己的连接
+Answer: 第二次握手的 SYN-ACK 报文有两个目的：其中的 ACK 是对第一次握手的确认报文；其中的 SYN 是服务端发起建立 TCP 连接的报文。[原文§服务器收到第一个 SYN 报文，回复的 SYN + ACK 报文丢失了怎么办？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%B6%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E5%9B%9E%E5%A4%8D%E7%9A%84-syn-ack-%E6%8A%A5%E6%96%87%E4%B8%A2%E5%A4%B1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-46 [short]
+Original: 服务端回复的第二次握手 SYN-ACK 报文丢失后，客户端和服务端分别会怎么做？为什么双方都会重传？
+Stem: 服务端回复的第二次握手 SYN-ACK 报文丢失后，客户端和服务端分别会怎么做？为什么双方都会重传？
+Answer: 第二次握手里包含对第一次握手的 ACK 确认，客户端迟迟收不到，会认为自己的 SYN（第一次握手）可能丢失，于是触发超时重传，重传 SYN 报文。第二次握手里还包含服务端的 SYN，客户端收到后需要回 ACK（第三次握手），服务端才会认为该 SYN 被客户端收到；第二次握手丢了，服务端就收不到第三次握手，于是服务端触发超时重传，重传 SYN-ACK 报文。所以客户端和服务端都会重传。[原文§服务器收到第一个 SYN 报文，回复的 SYN + ACK 报文丢失了怎么办？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%B6%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E5%9B%9E%E5%A4%8D%E7%9A%84-syn-ack-%E6%8A%A5%E6%96%87%E4%B8%A2%E5%A4%B1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-47 [fill]
+Original: [填空题·有序] 客户端重传 SYN 的最大次数由内核参数____决定，服务端重传 SYN-ACK 的最大次数由内核参数____决定。
+Stem: 客户端重传 SYN 的最大次数由内核参数____决定，服务端重传 SYN-ACK 的最大次数由内核参数____决定。
+Blanks/order: 2/ordered
+Answer: 客户端会重传 SYN 报文，也就是第一次握手，最大重传次数由 tcp_syn_retries 内核参数决定；服务端会重传 SYN-ACK 报文，也就是第二次握手，最大重传次数由 tcp_synack_retries 内核参数决定。答案依次是 tcp_syn_retries、tcp_synack_retries。[原文§服务器收到第一个 SYN 报文，回复的 SYN + ACK 报文丢失了怎么办？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%B6%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E5%9B%9E%E5%A4%8D%E7%9A%84-syn-ack-%E6%8A%A5%E6%96%87%E4%B8%A2%E5%A4%B1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-48 [single]
+Original: 原文给出的 Linux 下 tcp_synack_retries 内核参数的默认值是多少？
+Stem: 原文给出的 Linux 下 tcp_synack_retries 内核参数的默认值是多少？
+A [incorrect] 1
+B [correct] 5
+C [incorrect] 2
+D [incorrect] 3
+Answer: 原文写明，在 Linux 下，SYN-ACK 报文的最大重传次数由 tcp_synack_retries 内核参数决定，默认值是 5。[原文§服务器收到第一个 SYN 报文，回复的 SYN + ACK 报文丢失了怎么办？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%B6%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E5%9B%9E%E5%A4%8D%E7%9A%84-syn-ack-%E6%8A%A5%E6%96%87%E4%B8%A2%E5%A4%B1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-49 [single]
+Original: 假设 tcp_syn_retries 为 1、tcp_synack_retries 为 2，第二次握手一直丢失，会发生什么？
+Stem: 假设 tcp_syn_retries 为 1、tcp_synack_retries 为 2，第二次握手一直丢失，会发生什么？
+A [incorrect] 客户端重传 2 次 SYN、服务端重传 1 次 SYN-ACK，各自达到最大重传次数后再等待上一次超时时间的 2 倍，仍未收到就断开连接
+B [incorrect] 客户端重传 1 次 SYN 后立即断开连接，服务端重传 2 次 SYN-ACK 后立即断开连接，都不再等待
+C [incorrect] 只有客户端会重传 SYN，服务端不会重传 SYN-ACK，因为它已经处于 ESTABLISHED 状态
+D [correct] 客户端重传 1 次 SYN、服务端重传 2 次 SYN-ACK，各自达到最大重传次数后再等待上一次超时时间的 2 倍，仍未收到对方报文就断开连接
+Answer: 客户端超时重传 1 次 SYN 后，由于 tcp_syn_retries 为 1，已达到最大重传次数，再等待一段时间（上一次超时时间的 2 倍），仍没收到 SYN-ACK 就断开连接；服务端超时重传 2 次 SYN-ACK 后，由于 tcp_synack_retries 为 2，已达到最大重传次数，再等待一段时间（上一次超时时间的 2 倍），仍没收到 ACK 就断开连接。[原文§服务器收到第一个 SYN 报文，回复的 SYN + ACK 报文丢失了怎么办？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%B6%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E5%9B%9E%E5%A4%8D%E7%9A%84-syn-ack-%E6%8A%A5%E6%96%87%E4%B8%A2%E5%A4%B1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-50 [single]
+Original: 服务端仍处于 SYN_RCVD，又收到同一个连接、相同初始序列号的 SYN 重传，通常会怎么处理？
+Stem: 服务端仍处于 SYN_RCVD，又收到同一个连接、相同初始序列号的 SYN 重传，通常会怎么处理？
+A [incorrect] 通常会再创建一条新的完整连接，并把它加入全连接队列等待 accept
+B [incorrect] 通常会直接丢弃这个 SYN，不做任何回复，也不再等待第三次握手
+C [correct] 通常继续回复 SYN + ACK，等待第三次握手，不是再创建一条完整连接
+D [incorrect] 通常会回复 RST 报文，强制断开这条尚未建立完成的连接
+Answer: 如果服务端仍然处于 SYN_RCVD，并且收到的是同一个连接、相同初始序列号的 SYN 重传，通常会继续回复 SYN + ACK，等待第三次握手。这不是再创建一条完整连接。[原文§假设客户端重传了 SYN 报文，服务端这边又收到重复的 SYN 报文怎么办？](https://xiaolincoding.com/interview/network.html#%E5%81%87%E8%AE%BE%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%87%8D%E4%BC%A0%E4%BA%86-syn-%E6%8A%A5%E6%96%87-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%BF%99%E8%BE%B9%E5%8F%88%E6%94%B6%E5%88%B0%E9%87%8D%E5%A4%8D%E7%9A%84-syn-%E6%8A%A5%E6%96%87%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-51 [single]
+Original: 如果服务端收到 SYN 时连接已经建立，或者新 SYN 的序列号不同，应该怎么处理？
+Stem: 如果服务端收到 SYN 时连接已经建立，或者新 SYN 的序列号不同，应该怎么处理？
+A [incorrect] 一律当作 SYN 重传处理，不看状态和序列号，直接回复 SYN + ACK
+B [incorrect] 一律直接丢弃，不看状态和序列号，也不再做任何其他处理
+C [incorrect] 一律立即创建一条新的完整连接，不看状态和序列号的差别
+D [correct] 要根据当前状态和序列号等规则处理，不能把所有 SYN 都当成相同的重传
+Answer: 如果连接已经建立，或者新 SYN 的序列号不同，就要根据当前状态和序列号等规则处理，不能把所有 SYN 都当成相同的重传。[原文§假设客户端重传了 SYN 报文，服务端这边又收到重复的 SYN 报文怎么办？](https://xiaolincoding.com/interview/network.html#%E5%81%87%E8%AE%BE%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%87%8D%E4%BC%A0%E4%BA%86-syn-%E6%8A%A5%E6%96%87-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%BF%99%E8%BE%B9%E5%8F%88%E6%94%B6%E5%88%B0%E9%87%8D%E5%A4%8D%E7%9A%84-syn-%E6%8A%A5%E6%96%87%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T3-52 [fill]
+Original: [填空题·有序] 服务端内核收到 SYN 后，先把该连接存入____队列并回复 SYN + ACK；收到第三次握手的 ACK 后，把连接从该队列移除，创建新的完全连接并加入____队列，等待进程调用 accept 取出。
+Stem: 服务端内核收到 SYN 后，先把该连接存入____队列并回复 SYN + ACK；收到第三次握手的 ACK 后，把连接从该队列移除，创建新的完全连接并加入____队列，等待进程调用 accept 取出。
+Blanks/order: 2/ordered
+Answer: 服务端收到客户端的 SYN 后，内核会把该连接存储到半连接队列，并向客户端响应 SYN + ACK；收到第三次握手的 ACK 后，内核把连接从半连接队列移除，创建新的完全连接并添加到 accept 队列（全连接队列），等待进程调用 accept 函数时取出。答案依次是半连接、accept（全连接）。[原文§第一次握手，服务端收到 SYN 并回复 SYN + ACK 时，内部做了哪些工作？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%A1%E6%89%8B-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%94%B6%E5%88%B0-syn-%E5%B9%B6%E5%9B%9E%E5%A4%8D-syn-ack-%E6%97%B6-%E5%86%85%E9%83%A8%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E5%B7%A5%E4%BD%9C)
+
+T3-53 [single]
+Original: 半连接队列和全连接队列分别保存什么？
+Stem: 半连接队列和全连接队列分别保存什么？
+A [incorrect] 半连接队列保存已经建立、等待 accept 的连接，全连接队列保存握手尚未完成的请求
+B [incorrect] 两个队列保存的内容相同，只是名字不同；它们的容量都没有限制
+C [correct] 半连接队列保存握手尚未完成的请求，全连接队列保存已经建立、等待 accept 的连接；它们都有容量限制
+D [incorrect] 半连接队列保存已经关闭的连接，全连接队列保存正在 TIME_WAIT 的连接
+Answer: 半连接队列保存握手尚未完成的请求，全连接队列保存已经建立、等待 accept 的连接，它们都有容量限制。[原文§第一次握手，服务端收到 SYN 并回复 SYN + ACK 时，内部做了哪些工作？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%A1%E6%89%8B-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%94%B6%E5%88%B0-syn-%E5%B9%B6%E5%9B%9E%E5%A4%8D-syn-ack-%E6%97%B6-%E5%86%85%E9%83%A8%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E5%B7%A5%E4%BD%9C)
+
+T3-54 [single]
+Original: 半连接队列满时，服务端可能怎样处理新到的 SYN？
+Stem: 半连接队列满时，服务端可能怎样处理新到的 SYN？
+A [correct] 可能丢弃 SYN，也可能在开启 SYN Cookies 后使用 Cookie 响应
+B [incorrect] 一定直接把这个连接放入全连接队列，等待应用调用 accept 取走
+C [incorrect] 一定回复 RST 报文，无论系统是否开启了 SYN Cookies 功能
+D [incorrect] 一定无限扩大半连接队列的容量，不会丢弃任何一个 SYN 报文
+Answer: 半连接队列满时，可能丢弃 SYN，也可能在开启 SYN Cookies 后使用 Cookie 响应。[原文§第一次握手，服务端收到 SYN 并回复 SYN + ACK 时，内部做了哪些工作？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%A1%E6%89%8B-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%94%B6%E5%88%B0-syn-%E5%B9%B6%E5%9B%9E%E5%A4%8D-syn-ack-%E6%97%B6-%E5%86%85%E9%83%A8%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E5%B7%A5%E4%BD%9C)
+
+T3-55 [single]
+Original: 全连接队列满时，Linux 的处理方式是怎样的？
+Stem: 全连接队列满时，Linux 的处理方式是怎样的？
+A [incorrect] 一律立即返回 RST，与 tcp_abort_on_overflow 的配置无关，也与半连接队列满时相同
+B [correct] 取决于 tcp_abort_on_overflow 等配置，可能暂时忽略握手确认，也可能返回 RST，与半连接队列满时不同
+C [incorrect] 一律使用 SYN Cookies 做出响应，行为与半连接队列满时的处理方式完全相同
+D [incorrect] 一律把新到的连接直接放入半连接队列暂存，不做任何其他处理，也不返回 RST
+Answer: 全连接队列满时，Linux 的处理还取决于 tcp_abort_on_overflow 等配置，可能暂时忽略握手确认，也可能返回 RST，不能把两种队列的行为混为一谈。[原文§第一次握手，服务端收到 SYN 并回复 SYN + ACK 时，内部做了哪些工作？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%A1%E6%89%8B-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%94%B6%E5%88%B0-syn-%E5%B9%B6%E5%9B%9E%E5%A4%8D-syn-ack-%E6%97%B6-%E5%86%85%E9%83%A8%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E5%B7%A5%E4%BD%9C)
+
+T3-56 [single]
+Original: 大量 SYN 请求一直没有完成第三次握手，会造成什么影响？
+Stem: 大量 SYN 请求一直没有完成第三次握手，会造成什么影响？
+A [incorrect] 会把应用程序的 accept 队列取空，导致服务端因此主动关闭监听的 socket
+B [incorrect] 只会增加这些客户端的重传次数，对服务端本身以及正常用户都没有任何影响
+C [incorrect] 服务端会立即对所有这些 SYN 回复 RST 报文，因此不会占用任何队列资源
+D [correct] 可能把 TCP 半连接队列占满，正常用户的请求难以建立连接，这是 SYN Flood 的典型影响
+Answer: 如果大量 SYN 请求没有完成第三次握手，就可能把 TCP 半连接队列占满，正常用户的请求也就难以建立连接，这就是 SYN Flood 的典型影响。[原文§大量SYN包发送给服务端服务端会发生什么事情？](https://xiaolincoding.com/interview/network.html#%E5%A4%A7%E9%87%8Fsyn%E5%8C%85%E5%8F%91%E9%80%81%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85)
+
+T3-57 [single]
+Original: 握手都已完成，但应用来不及 accept 时，压力主要在哪里？它和 SYN Flood 是同一个问题吗？
+Stem: 握手都已完成，但应用来不及 accept 时，压力主要在哪里？它和 SYN Flood 是同一个问题吗？
+A [incorrect] 压力主要在半连接队列，和 SYN Flood 是同一个问题
+B [correct] 压力主要在全连接队列和应用处理能力，不是同一个问题
+C [incorrect] 压力主要在带宽，和 SYN Flood 是同一个问题
+D [incorrect] 压力主要在 SYN Cookies 的计算上，和 SYN Flood 是同一个问题
+Answer: 如果握手都完成了，但应用来不及 accept，压力主要在全连接队列和应用处理能力，不是 SYN Flood 那种半连接队列被占满的问题。[原文§大量SYN包发送给服务端服务端会发生什么事情？](https://xiaolincoding.com/interview/network.html#%E5%A4%A7%E9%87%8Fsyn%E5%8C%85%E5%8F%91%E9%80%81%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85)
+
+T3-58 [single]
+Original: SYN Cookies 是怎样缓解半连接队列压力的？
+Stem: SYN Cookies 是怎样缓解半连接队列压力的？
+A [incorrect] 为每个请求额外保存更多半连接状态，收到第三次握手后再对照这些状态逐条核对并建连
+B [incorrect] 把必要信息编码进客户端 SYN 的目的端口字段，服务端据此在第一次握手时直接建立完整连接
+C [correct] 把必要信息编码进 SYN + ACK 的初始序列号，不保存半连接状态，第三次握手后验证 Cookie 并建连
+D [incorrect] 收到第三次握手后不再验证 Cookie，直接建立连接并把它加入全连接队列等待 accept
+Answer: Linux 可以在半连接队列压力较大时，把必要信息编码进 SYN + ACK 的初始序列号，不为这次请求保存常规半连接状态。收到第三次握手后，再验证 Cookie 并尝试建立连接。[原文§大量SYN包发送给服务端服务端会发生什么事情？](https://xiaolincoding.com/interview/network.html#%E5%A4%A7%E9%87%8Fsyn%E5%8C%85%E5%8F%91%E9%80%81%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85)
+
+T3-59 [fill]
+Original: [填空题·有序] net.ipv4.tcp_syncookies 取值为 0 时表示____，取值为 1 时表示____，取值为 2 时表示____（具体支持情况要看内核版本）。
+Stem: net.ipv4.tcp_syncookies 取值为 0 时表示____，取值为 1 时表示____，取值为 2 时表示____（具体支持情况要看内核版本）。
+Blanks/order: 3/ordered
+Answer: net.ipv4.tcp_syncookies 常见取值：0 表示关闭；1 表示半连接队列溢出时启用；2 表示无条件使用，具体支持情况要看内核版本。答案依次是：关闭、半连接队列溢出时启用、无条件使用。[原文§大量SYN包发送给服务端服务端会发生什么事情？](https://xiaolincoding.com/interview/network.html#%E5%A4%A7%E9%87%8Fsyn%E5%8C%85%E5%8F%91%E9%80%81%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85)
+
+T3-60 [single]
+Original: 关于 SYN Cookies 的局限，下列说法符合原文的是哪一项？
+Stem: 关于 SYN Cookies 的局限，下列说法符合原文的是哪一项？
+A [correct] 只是缓解半连接资源耗尽，不保证任何攻击下都能建连；带宽、CPU 或全连接队列被打满仍受影响
+B [incorrect] 开启后可以保证在任何 SYN 攻击下都能正常建连，不会再影响正常用户的服务
+C [incorrect] 它只在带宽被耗尽的时候才有用，对半连接队列资源耗尽的情况没有任何帮助
+D [incorrect] 开启后全连接队列不会再被占满，因此带宽或 CPU 被打满也不会影响服务
+Answer: SYN Cookies 只是缓解半连接资源耗尽，不保证任何攻击下都能正常建连。如果带宽、CPU 或全连接队列也被打满，仍然会影响服务。[原文§大量SYN包发送给服务端服务端会发生什么事情？](https://xiaolincoding.com/interview/network.html#%E5%A4%A7%E9%87%8Fsyn%E5%8C%85%E5%8F%91%E9%80%81%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85)
+
+T3-61 [multiple]
+Original: 关于通过调整队列和处理能力来应对大量连接请求，下列哪些说法符合原文？
+Stem: 关于通过调整队列和处理能力来应对大量连接请求，下列哪些说法符合原文？
+A [correct] tcp_max_syn_backlog 与半连接容量相关
+B [correct] listen 的 backlog 和 somaxconn 主要限制全连接队列
+C [correct] 扩大队列并不能替代提升 accept 和业务处理速度
+D [incorrect] 只要调大 somaxconn，就可以替代提升 accept 和业务处理速度
+E [incorrect] tcp_max_syn_backlog 主要限制全连接队列的长度
+Answer: tcp_max_syn_backlog 与半连接容量相关；listen 的 backlog 和 somaxconn 主要限制全连接队列。可以结合丢包和队列指标调整，但扩大队列并不能替代提升 accept 和业务处理速度。[原文§大量SYN包发送给服务端服务端会发生什么事情？](https://xiaolincoding.com/interview/network.html#%E5%A4%A7%E9%87%8Fsyn%E5%8C%85%E5%8F%91%E9%80%81%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85)
+
+T3-62 [single]
+Original: 关于 netdev_max_backlog，下列说法符合原文的是哪一项？
+Stem: 关于 netdev_max_backlog，下列说法符合原文的是哪一项？
+A [incorrect] 它是 TCP 半连接队列的容量参数，调大它就是应对 SYN Flood 的通用解法
+B [correct] 管的是部分接收路径上来不及处理的数据包队列，不是半连接队列，不能作为 SYN Flood 的通用解法
+C [incorrect] 它是 TCP 全连接队列的容量参数，其大小由 listen 的 backlog 直接决定
+D [incorrect] 它控制 SYN + ACK 的最大重传次数，把它调小可以更快地释放半连接资源
+Answer: netdev_max_backlog 管的是部分接收路径上来不及处理的数据包队列，不是 TCP 半连接队列，不能把它作为 SYN Flood 的通用解法。[原文§大量SYN包发送给服务端服务端会发生什么事情？](https://xiaolincoding.com/interview/network.html#%E5%A4%A7%E9%87%8Fsyn%E5%8C%85%E5%8F%91%E9%80%81%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85)
+
+T3-63 [multiple]
+Original: 关于通过控制异常流量来应对 SYN Flood，下列哪些说法符合原文？
+Stem: 关于通过控制异常流量来应对 SYN Flood，下列哪些说法符合原文？
+A [correct] 可以结合接入层限速、SYN 代理、上游流量清洗等手段过滤攻击
+B [incorrect] 只要调整服务器自身的内核参数，就能解决带宽被耗尽的问题
+C [correct] 如果带宽已经在服务器之前被耗尽，只调服务器参数解决不了问题
+D [incorrect] 控制异常流量只能在服务器本机的内核参数里完成，不能借助接入层
+Answer: 可以结合接入层限速、SYN 代理、上游流量清洗等手段过滤攻击。如果带宽已经在服务器之前被耗尽，只调服务器参数解决不了问题。[原文§大量SYN包发送给服务端服务端会发生什么事情？](https://xiaolincoding.com/interview/network.html#%E5%A4%A7%E9%87%8Fsyn%E5%8C%85%E5%8F%91%E9%80%81%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85)
+
+T3-64 [single]
+Original: 适当减少 SYN + ACK 的重试次数，有什么好处和代价？
+Stem: 适当减少 SYN + ACK 的重试次数，有什么好处和代价？
+A [incorrect] 可以让高延迟、丢包环境下正常用户更容易建连成功，代价是半连接资源释放得更慢
+B [incorrect] 可以彻底消除 SYN Flood 的风险，没有任何代价
+C [correct] 可以更快释放半连接资源，但会降低高延迟、丢包环境下正常用户的建连成功率，要结合实际情况调整
+D [incorrect] 好处是提高全连接队列的容量，代价是 SYN Cookies 失效
+Answer: 适当减少 SYN + ACK 重试可以更快释放半连接资源，但也会降低高延迟、丢包环境下正常用户的建连成功率，要结合实际情况调整。[原文§大量SYN包发送给服务端服务端会发生什么事情？](https://xiaolincoding.com/interview/network.html#%E5%A4%A7%E9%87%8Fsyn%E5%8C%85%E5%8F%91%E9%80%81%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85)
+
+T3-65 [short]
+Original: 客户端主动关闭连接时，TCP 四次挥手的过程是怎样的？
+Stem: 客户端主动关闭连接时，TCP 四次挥手的过程是怎样的？
+Answer: 客户端主动调用关闭连接的函数，发送 FIN 报文（表示不再发送数据），进入 FIN_WAIT_1；服务端收到 FIN 后回复 ACK，进入 CLOSE_WAIT，客户端收到这个 ACK 后进入 FIN_WAIT_2；服务端应用读完 FIN 之前的所有数据后 read 返回 0，如果有数据要发送就发完数据后再调用关闭连接的函数，没有就可以直接调用，这时服务端发出 FIN，进入 LAST_ACK；客户端收到服务端的 FIN 后发送 ACK，进入 TIME_WAIT；服务端收到 ACK 后进入 CLOSED；客户端经过 2MSL 时间后也进入 CLOSED。[原文§TCP 四次挥手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-66 [fill]
+Original: [填空题·有序] 客户端主动关闭连接时，四次挥手过程中客户端依次经历的状态是：____ → ____ → ____ → ____。
+Stem: 客户端主动关闭连接时，四次挥手过程中客户端依次经历的状态是：____ → ____ → ____ → ____。
+Blanks/order: 4/ordered
+Answer: 客户端发送 FIN 后进入 FIN_WAIT_1；收到服务端的 ACK 后进入 FIN_WAIT_2；收到服务端的 FIN 并回复 ACK 后进入 TIME_WAIT；经过 2MSL 时间后进入 CLOSED。答案依次是 FIN_WAIT_1、FIN_WAIT_2、TIME_WAIT、CLOSED。[原文§TCP 四次挥手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-67 [fill]
+Original: [填空题·有序] 客户端主动关闭连接时，服务端收到 FIN 并回复 ACK 后，依次经历的状态是：____ → ____ → ____。
+Stem: 客户端主动关闭连接时，服务端收到 FIN 并回复 ACK 后，依次经历的状态是：____ → ____ → ____。
+Blanks/order: 3/ordered
+Answer: 服务端收到 FIN 后回复 ACK，进入 CLOSE_WAIT；之后发出自己的 FIN，进入 LAST_ACK；收到客户端的 ACK 后进入 CLOSED。答案依次是 CLOSE_WAIT、LAST_ACK、CLOSED。[原文§TCP 四次挥手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-68 [single]
+Original: 服务端收到客户端的 FIN 后，应用调用 read 时会看到什么？
+Stem: 服务端收到客户端的 FIN 后，应用调用 read 时会看到什么？
+A [correct] 服务端应用先读完 FIN 之前的所有数据，之后 read 才返回 0，表示这个方向不会再有数据
+B [incorrect] FIN 会作为一个普通的 EOF 字符放进缓冲区，read 读到这个字符才知道对端已结束
+C [incorrect] read 会立即返回 0，缓冲区里尚未读取的数据会被丢弃
+D [incorrect] read 会一直阻塞，直到服务端自己也发出 FIN
+Answer: FIN 表示对端的发送方向结束，并不是在缓冲区里放入一个普通的 EOF 字符。服务端应用先读完 FIN 之前的所有数据，之后 read 才会返回 0，表示这个方向不会再有数据。[原文§TCP 四次挥手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-69 [single]
+Original: 服务端应用 read 返回 0 之后，什么时候发出自己的 FIN？
+Stem: 服务端应用 read 返回 0 之后，什么时候发出自己的 FIN？
+A [incorrect] 内核在 read 返回 0 的同一时刻就自动发出 FIN，应用程序无法推迟这一动作
+B [incorrect] 无论是否还有数据要发送，都必须等客户端的 TIME_WAIT 结束后才能发出 FIN
+C [incorrect] 必须先把缓冲区里所有未发送的数据全部丢弃，再调用关闭连接的函数
+D [correct] 有数据要发送就发完再调用关闭连接的函数，没有就可直接调用，调用后发出 FIN 并进入 LAST_ACK
+Answer: 服务端在 read 到 EOF（read 返回 0）后，如果应用程序有数据要发送，就发完数据后才调用关闭连接的函数；如果没有数据要发送，可以直接调用关闭连接的函数。调用后服务端会发一个 FIN 包，之后处于 LAST_ACK 状态。[原文§TCP 四次挥手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-70 [single]
+Original: 客户端收到服务端的 FIN 并回复 ACK 之后，双方的最终状态变化是怎样的？
+Stem: 客户端收到服务端的 FIN 并回复 ACK 之后，双方的最终状态变化是怎样的？
+A [incorrect] 服务端进入 TIME_WAIT，经过 2MSL 后进入 CLOSED；客户端发出 ACK 后随即直接进入 CLOSED 状态
+B [incorrect] 客户端进入 TIME_WAIT 经过 2MSL 后进入 CLOSED；服务端收到 ACK 后同样要经过 2MSL 才进入 CLOSED
+C [correct] 客户端进入 TIME_WAIT，经过 2MSL 后进入 CLOSED；服务端收到 ACK 后直接进入 CLOSED
+D [incorrect] 客户端发出 ACK 后立即进入 CLOSED，服务端收到 ACK 后进入 TIME_WAIT 并等待 2MSL
+Answer: 客户端接收到服务端的 FIN 包并发送 ACK 后进入 TIME_WAIT 状态；服务端收到 ACK 确认包后进入最后的 CLOSED 状态；客户端经过 2MSL 时间之后也进入 CLOSED 状态。[原文§TCP 四次挥手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T3-71 [single]
+Original: 服务端收到客户端的 FIN 后，内核会马上回 ACK，为什么不能马上也发出 FIN？
+Stem: 服务端收到客户端的 FIN 后，内核会马上回 ACK，为什么不能马上也发出 FIN？
+A [correct] 服务端应用程序可能还有数据要发送，所以发送 FIN 的控制权交给应用程序
+B [incorrect] 因为服务端必须先等客户端经过 2MSL 进入 CLOSED，才允许发出 FIN
+C [incorrect] 因为 FIN 报文只能由客户端发出，服务端只能回复 ACK
+D [incorrect] 因为内核发出 ACK 后，会自动等待固定时间后才发 FIN，应用无法干预
+Answer: 服务器收到客户端的 FIN 报文时，内核会马上回一个 ACK 应答报文，但是服务端应用程序可能还有数据要发送，所以并不能马上发送 FIN 报文，而是将发送 FIN 报文的控制权交给服务端应用程序。[原文§为什么 TCP 关闭连接通常需要四次挥手？](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88-tcp-%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%E9%80%9A%E5%B8%B8%E9%9C%80%E8%A6%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B)
+
+T3-72 [single]
+Original: 第三次挥手（被动关闭方发 FIN）什么时候发出，由谁决定？
+Stem: 第三次挥手（被动关闭方发 FIN）什么时候发出，由谁决定？
+A [incorrect] 由被动关闭方的内核在回 ACK 的同时决定，应用程序无法干预，所以 ACK 和 FIN 总是一起发送
+B [correct] 由被动关闭方的应用程序决定，应用调用关闭连接的函数后内核才发送 FIN，所以 ACK 和 FIN 一般会分开发送
+C [incorrect] 由主动关闭方决定，主动关闭方发出 FIN 后会同时通知被动关闭方何时回 FIN
+D [incorrect] 由主动关闭方的 TIME_WAIT 计时结束来决定
+Answer: 是否要发送第三次挥手的控制权不在内核，而在被动关闭方的应用程序，因为应用程序可能还有数据要发送，由应用程序决定什么时候调用关闭连接的函数；当调用了关闭连接的函数，内核就会发送 FIN 报文，所以服务端的 ACK 和 FIN 一般都会分开发送。[原文§为什么 TCP 关闭连接通常需要四次挥手？](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88-tcp-%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%E9%80%9A%E5%B8%B8%E9%9C%80%E8%A6%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B)
+
+T3-73 [single]
+Original: TCP 四次挥手中的第二次和第三次挥手能合并吗？
+Stem: TCP 四次挥手中的第二次和第三次挥手能合并吗？
+A [incorrect] 不可以：协议规定四次挥手必须发送四个独立的报文，第二次和第三次挥手不能合并在一起
+B [incorrect] 可以：但只有服务端应用仍有大量数据要发送时，内核才会把 ACK 和 FIN 合并在一个报文里
+C [incorrect] 不可以：内核回复 ACK 之后，FIN 只能等客户端进入 TIME_WAIT 之后才允许发送出去
+D [correct] 可以：服务端已无数据要发送且应用及时关闭发送方向时，内核有机会合并成 FIN + ACK 发出
+Answer: 可以合并，四次挥手不是固定必须发四个独立报文。服务端收到 FIN 后，如果已经没有数据要发送，应用也及时关闭了发送方向，内核就有机会把对客户端 FIN 的确认和自己的 FIN 放在同一个报文中，发送 FIN + ACK。[原文§第二次和第三次挥手能合并嘛](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%92%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%83%BD%E5%90%88%E5%B9%B6%E5%98%9B)
+
+T3-74 [single]
+Original: 关于延迟确认与第二次、第三次挥手的合并，下列说法符合原文的是哪一项？
+Stem: 关于延迟确认与第二次、第三次挥手的合并，下列说法符合原文的是哪一项？
+A [incorrect] 延迟确认是协议规定合并必须开启的开关，如果不开启延迟确认就一定不能合并
+B [correct] 延迟确认可能给合并提供机会，但不是必须满足的开关条件；关键是发 ACK 时自己的发送方向是否也可结束
+C [incorrect] 只要关闭了延迟确认，第二次和第三次挥手就一定会合并成一个报文发出去
+D [incorrect] 关键在于客户端是否已经进入 TIME_WAIT 状态，与服务端的发送方向是否可以结束无关
+Answer: 能不能合并，要看关闭时机和具体实现。延迟确认可能给合并提供机会，但不是协议规定必须满足的开关条件。关键是发送这个 ACK 的时候，自己的发送方向是否也已经可以结束。[原文§第二次和第三次挥手能合并嘛](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%92%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%83%BD%E5%90%88%E5%B9%B6%E5%98%9B)
+
+T3-75 [single]
+Original: 主动关闭方收到对自己 FIN 的确认后，会进入什么状态？此时它在等什么？
+Stem: 主动关闭方收到对自己 FIN 的确认后，会进入什么状态？此时它在等什么？
+A [incorrect] 进入 TIME_WAIT，等待 2MSL 后释放连接
+B [incorrect] 进入 CLOSE_WAIT，等待本端应用关闭连接
+C [correct] 进入 FIN_WAIT_2，等待对方的 FIN
+D [incorrect] 进入 FIN_WAIT_1，等待对方对自己 FIN 的确认
+Answer: 主动关闭方收到自己 FIN 的确认后进入 FIN_WAIT_2，等待对方的 FIN；此时被动关闭方可能还在 CLOSE_WAIT，继续处理剩余数据。[原文§第三次挥手一直没发，会发生什么？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B8%80%E7%9B%B4%E6%B2%A1%E5%8F%91-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-76 [single]
+Original: 应用只调用 shutdown(SHUT_WR) 关闭连接后，本端处于什么能力状态？
+Stem: 应用只调用 shutdown(SHUT_WR) 关闭连接后，本端处于什么能力状态？
+A [correct] 不能继续发送数据，但仍保留接收能力，可以继续读取对端发来的内容
+B [incorrect] 既不能发送也不能接收数据，对端发来的内容会被直接丢弃
+C [incorrect] 可以继续发送数据，但不能再读取对端发来的内容
+D [incorrect] 连接立即被释放，socket 引用归零而成为孤儿连接
+Answer: 应用只调用 shutdown(SHUT_WR) 时，本端不能继续发送数据，但还保留接收能力，可以继续读取对端发来的内容。因此其余三种说法（既不能收也不能发、还能发但不能收、立即成为孤儿连接）都不对：成为孤儿连接要求应用关闭了最后一个 socket 引用，而不是仅调用 shutdown。[原文§第三次挥手一直没发，会发生什么？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B8%80%E7%9B%B4%E6%B2%A1%E5%8F%91-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-77 [single]
+Original: 应用只调用 shutdown(SHUT_WR)，对端一直不发 FIN，且没有其他超时机制时，主动关闭方的等待会怎样？
+Stem: 应用只调用 shutdown(SHUT_WR)，对端一直不发 FIN，且没有其他超时机制时，主动关闭方的等待会怎样？
+A [incorrect] 内核会在 60 秒后一律强制关闭该连接
+B [incorrect] 等待最多持续 2MSL，之后自动进入 CLOSE_WAIT
+C [incorrect] 本端会自动代替对端发出 FIN 完成关闭
+D [correct] 等待可能持续很久，因为本端仍保留接收能力
+Answer: 应用只调用 shutdown(SHUT_WR) 时，本端仍保留接收能力；如果没有其他超时，等待可能持续很久。不能认为所有 FIN_WAIT_2 都在 60 秒后关闭，60 秒的说法只与孤儿连接有关。[原文§第三次挥手一直没发，会发生什么？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B8%80%E7%9B%B4%E6%B2%A1%E5%8F%91-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-78 [single]
+Original: 应用关闭了最后一个 socket 引用、连接成为孤儿连接后，内核对它的 FIN_WAIT_2 等待是怎样处理的？
+Stem: 应用关闭了最后一个 socket 引用、连接成为孤儿连接后，内核对它的 FIN_WAIT_2 等待是怎样处理的？
+A [incorrect] 与只调用 shutdown 的情况相同，内核会一直保留资源，无限期等待对端发来 FIN
+B [correct] 内核不能一直保留资源，Linux 的 tcp_fin_timeout 会影响等待时长，TCP_LINGER2 等设置也可能影响
+C [incorrect] 等待时长由 nginx 的 keepalive_timeout 决定，与任何内核参数和 socket 设置都无关
+D [incorrect] 孤儿连接会立刻进入 TIME_WAIT 状态，不再经历 FIN_WAIT_2 的等待过程
+Answer: 应用关闭最后一个 socket 引用后，连接成为孤儿连接，内核不能一直为它保留资源。Linux 的 tcp_fin_timeout 会影响这类 FIN_WAIT_2 连接的等待时长，socket 的 TCP_LINGER2 等设置也可能影响实际行为。[原文§第三次挥手一直没发，会发生什么？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B8%80%E7%9B%B4%E6%B2%A1%E5%8F%91-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-79 [fill]
+Original: [填空题·有序] Linux 中影响孤儿连接 FIN_WAIT_2 等待时长的内核参数是 ____，原文所述的常见默认值是 ____ 秒。
+Stem: Linux 中影响孤儿连接 FIN_WAIT_2 等待时长的内核参数是 ____，原文所述的常见默认值是 ____ 秒。
+Blanks/order: 2/ordered
+Answer: 影响孤儿连接 FIN_WAIT_2 等待时长的参数是 tcp_fin_timeout，常见默认值为 60 秒；socket 的 TCP_LINGER2 等设置也可能影响实际行为。标准答案：tcp_fin_timeout、60。[原文§第三次挥手一直没发，会发生什么？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B8%80%E7%9B%B4%E6%B2%A1%E5%8F%91-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-80 [multiple]
+Original: 第三次挥手迟迟没有发出时，下列说法符合原文的有哪些？
+Stem: 第三次挥手迟迟没有发出时，下列说法符合原文的有哪些？
+A [correct] 不能把「对端不发 FIN，就一定一直等待」当成通用结论
+B [correct] 不能把「所有 FIN_WAIT_2 都在 60 秒后关闭」当成通用结论
+C [correct] 还要回头检查被动关闭方的应用为什么没有完成关闭
+D [incorrect] 应用调用 shutdown(SHUT_WR) 之后，本端既不能发送也不能接收数据
+Answer: 原文的结论是：不能把「对端不发 FIN，就一定一直等待」或者「所有 FIN_WAIT_2 都在 60 秒后关闭」当成通用结论，还要回头检查被动关闭方的应用为什么没有完成关闭。第四项错误：只调用 shutdown(SHUT_WR) 时，本端不能继续发送，但仍保留接收能力。[原文§第三次挥手一直没发，会发生什么？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B8%80%E7%9B%B4%E6%B2%A1%E5%8F%91-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-81 [single]
+Original: 主动断开的一方调用 shutdown 且只选择关闭发送能力、没有关闭接收能力时，它在第二次和第三次挥手之间还能做什么？
+Stem: 主动断开的一方调用 shutdown 且只选择关闭发送能力、没有关闭接收能力时，它在第二次和第三次挥手之间还能做什么？
+A [incorrect] 还可以继续发送新的数据
+B [correct] 还可以接收数据
+C [incorrect] 不能接收任何数据，只能等待第三次挥手
+D [incorrect] 必须立即重传第一次挥手的 FIN
+Answer: 如果主动断开的一方调用 shutdown 函数来关闭连接，并且只选择了关闭发送能力且没有关闭接收能力，那么它在第二次和第三次挥手之间还可以接收数据。[原文§第二次和第三次挥手之间，主动断开的那端能干什么](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%92%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E9%97%B4-%E4%B8%BB%E5%8A%A8%E6%96%AD%E5%BC%80%E7%9A%84%E9%82%A3%E7%AB%AF%E8%83%BD%E5%B9%B2%E4%BB%80%E4%B9%88)
+
+T3-82 [fill]
+Original: [填空题·有序] 主动断开的一方调用 shutdown 时，只关闭了 ____ 能力、没有关闭 ____ 能力，才能在第二次和第三次挥手之间继续接收数据。
+Stem: 主动断开的一方调用 shutdown 时，只关闭了 ____ 能力、没有关闭 ____ 能力，才能在第二次和第三次挥手之间继续接收数据。
+Blanks/order: 2/ordered
+Answer: 只关闭发送能力、没有关闭接收能力时，主动断开的一方在第二次和第三次挥手之间还可以接收数据。标准答案：发送、接收。[原文§第二次和第三次挥手之间，主动断开的那端能干什么](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%92%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E9%97%B4-%E4%B8%BB%E5%8A%A8%E6%96%AD%E5%BC%80%E7%9A%84%E9%82%A3%E7%AB%AF%E8%83%BD%E5%B9%B2%E4%BB%80%E4%B9%88)
+
+T3-83 [single]
+Original: 断开连接时，客户端的第一次挥手 FIN 一直没有到达服务端，服务端通常处于什么状态？为什么？
+Stem: 断开连接时，客户端的第一次挥手 FIN 一直没有到达服务端，服务端通常处于什么状态？为什么？
+A [incorrect] 进入 CLOSE_WAIT，因为客户端已经发出了 FIN
+B [incorrect] 进入 FIN_WAIT_2，等待客户端重新发送 FIN
+C [incorrect] 进入 LAST_ACK，等待客户端的最后一个 ACK
+D [correct] 仍处于 ESTABLISHED，因为它还不知道客户端已决定关闭发送方向
+Answer: 如果第一次挥手的 FIN 一直没有到达服务端，服务端通常仍然处于 ESTABLISHED，因为它还不知道客户端已经决定关闭发送方向。[原文§断开连接时客户端 FIN 包丢失，服务端的状态是什么？](https://xiaolincoding.com/interview/network.html#%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E6%97%B6%E5%AE%A2%E6%88%B7%E7%AB%AF-fin-%E5%8C%85%E4%B8%A2%E5%A4%B1-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E7%8A%B6%E6%80%81%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-84 [single]
+Original: 断开连接时，客户端发送 FIN 后迟迟收不到确认，会怎样？
+Stem: 断开连接时，客户端发送 FIN 后迟迟收不到确认，会怎样？
+A [correct] 客户端处于 FIN_WAIT_1，并重传 FIN
+B [incorrect] 客户端直接进入 TIME_WAIT 等待 2MSL
+C [incorrect] 客户端进入 FIN_WAIT_2 等待服务端的 FIN
+D [incorrect] 客户端立即释放连接，不再重传
+Answer: 客户端发送 FIN 后进入 FIN_WAIT_1，迟迟收不到确认就会重传 FIN。[原文§断开连接时客户端 FIN 包丢失，服务端的状态是什么？](https://xiaolincoding.com/interview/network.html#%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E6%97%B6%E5%AE%A2%E6%88%B7%E7%AB%AF-fin-%E5%8C%85%E4%B8%A2%E5%A4%B1-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E7%8A%B6%E6%80%81%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-85 [single]
+Original: 断开连接时，客户端重传的 FIN 中，只要有某一次到达了服务端，服务端会怎样？
+Stem: 断开连接时，客户端重传的 FIN 中，只要有某一次到达了服务端，服务端会怎样？
+A [incorrect] 回复 FIN，并直接进入 TIME_WAIT
+B [incorrect] 回复 ACK，并进入 FIN_WAIT_2
+C [correct] 回复 ACK，并进入 CLOSE_WAIT
+D [incorrect] 保持 ESTABLISHED，不处理重传的 FIN
+Answer: 只要某次重传的 FIN 到达服务端，服务端就能回复 ACK，并进入 CLOSE_WAIT。[原文§断开连接时客户端 FIN 包丢失，服务端的状态是什么？](https://xiaolincoding.com/interview/network.html#%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E6%97%B6%E5%AE%A2%E6%88%B7%E7%AB%AF-fin-%E5%8C%85%E4%B8%A2%E5%A4%B1-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E7%8A%B6%E6%80%81%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-86 [single]
+Original: 客户端的 FIN 一直无法得到确认时，客户端最终可能怎样？
+Stem: 客户端的 FIN 一直无法得到确认时，客户端最终可能怎样？
+A [incorrect] 会无限重传，直到服务端回复为止
+B [incorrect] 会自动转入 CLOSE_WAIT 继续等待
+C [incorrect] 会进入 TIME_WAIT 并保持 2MSL 后再释放
+D [correct] 可能因为重传超时而释放连接
+Answer: 如果一直无法得到确认，客户端最终可能因为重传超时而释放连接。[原文§断开连接时客户端 FIN 包丢失，服务端的状态是什么？](https://xiaolincoding.com/interview/network.html#%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E6%97%B6%E5%AE%A2%E6%88%B7%E7%AB%AF-fin-%E5%8C%85%E4%B8%A2%E5%A4%B1-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E7%8A%B6%E6%80%81%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-87 [fill]
+Original: [填空题·有序] 原文提到，对于 Linux 中已经没有应用持有的孤儿连接，____ 等配置会影响 FIN 重传的处理，但不能把它当成所有 FIN 重传场景的统一次数限制。
+Stem: 原文提到，对于 Linux 中已经没有应用持有的孤儿连接，____ 等配置会影响 FIN 重传的处理，但不能把它当成所有 FIN 重传场景的统一次数限制。
+Blanks/order: 1/ordered
+Answer: 对于 Linux 中已经没有应用持有的孤儿连接，tcp_orphan_retries 等配置会影响处理，但不能把它当成所有 FIN 重传场景的统一次数限制。标准答案：tcp_orphan_retries。[原文§断开连接时客户端 FIN 包丢失，服务端的状态是什么？](https://xiaolincoding.com/interview/network.html#%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E6%97%B6%E5%AE%A2%E6%88%B7%E7%AB%AF-fin-%E5%8C%85%E4%B8%A2%E5%A4%B1-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E7%8A%B6%E6%80%81%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-88 [multiple]
+Original: 客户端因 FIN 重传超时释放连接后，服务端可能在什么时候感知这条连接已经失效？下列符合原文的有哪些？
+Stem: 客户端因 FIN 重传超时释放连接后，服务端可能在什么时候感知这条连接已经失效？下列符合原文的有哪些？
+A [correct] 服务端后续发送数据时
+B [correct] 服务端收到 RST 时
+C [correct] 服务端自己的超时机制触发时
+D [incorrect] 客户端超时释放连接的同一时刻，服务端会同步关闭连接
+Answer: 客户端超时，不代表服务端同时关闭。服务端可能要到后续发送数据、收到 RST，或者自己的超时机制触发时，才能感知这条连接已经失效。[原文§断开连接时客户端 FIN 包丢失，服务端的状态是什么？](https://xiaolincoding.com/interview/network.html#%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E6%97%B6%E5%AE%A2%E6%88%B7%E7%AB%AF-fin-%E5%8C%85%E4%B8%A2%E5%A4%B1-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E7%8A%B6%E6%80%81%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-89 [single]
+Original: 四次挥手结束后，通常是哪一方进入 TIME_WAIT 并等待 2MSL？
+Stem: 四次挥手结束后，通常是哪一方进入 TIME_WAIT 并等待 2MSL？
+A [correct] 主动关闭连接的一方
+B [incorrect] 被动关闭连接的一方
+C [incorrect] 先发送 ACK 的一方
+D [incorrect] 总是服务端，与谁主动关闭无关
+Answer: 通常由主动关闭连接的一方进入 TIME_WAIT，等待 2MSL。以客户端主动关闭为例，它收到服务端的 FIN 并回复最后一个 ACK 后，并不会立即删除连接状态。[原文§为什么四次挥手之后要等2MSL?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E5%90%8E%E8%A6%81%E7%AD%892msl)
+
+T3-90 [single]
+Original: MSL 指的是什么？
+Stem: MSL 指的是什么？
+A [incorrect] 最大报文段长度（Maximum Segment Size）
+B [incorrect] 最大传输单元（Maximum Transmission Unit）
+C [correct] 报文最大生存时间（Maximum Segment Lifetime）
+D [incorrect] 最大重传超时时间
+Answer: MSL 是 Maximum Segment Lifetime，也就是报文最大生存时间。它是时间概念，不要与 MSS（最大报文段长度）、MTU（最大传输单元）混淆。[原文§为什么四次挥手之后要等2MSL?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E5%90%8E%E8%A6%81%E7%AD%892msl)
+
+T3-91 [multiple]
+Original: 等待 2MSL 的目的，下列符合原文的有哪些？
+Stem: 等待 2MSL 的目的，下列符合原文的有哪些？
+A [correct] 让被动关闭方有机会收到最后的 ACK：ACK 丢失时，服务端重传的 FIN 仍能被识别并再次回复 ACK
+B [correct] 让旧连接的报文在网络里消失，降低它们混入使用相同四元组的新连接的干扰
+C [incorrect] 借助 IP 的 TTL 倒计时，保证 TTL 为 64 时旧报文在 30 秒内一定消失
+D [incorrect] 给主动关闭方留出时间重传自己已被确认的 FIN
+Answer: 等待 2MSL 主要有两个目的：一是让被动关闭方有机会收到最后的 ACK，如果 ACK 丢失，服务端会重传 FIN，客户端保留 TIME_WAIT 状态就还能识别这个 FIN 并再次回复 ACK；二是让旧连接的报文在网络里消失，降低它们混入相同四元组新连接的干扰。原文还指出 MSL 是时间概念、TTL 主要限制跳数，不能说「TTL 为 64，所以 30 秒内一定消失」。[原文§为什么四次挥手之后要等2MSL?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E5%90%8E%E8%A6%81%E7%AD%892msl)
+
+T3-92 [single]
+Original: 最后一个 ACK 丢失时，被动关闭方会怎么做？保留 TIME_WAIT 的主动关闭方此时能做什么？
+Stem: 最后一个 ACK 丢失时，被动关闭方会怎么做？保留 TIME_WAIT 的主动关闭方此时能做什么？
+A [incorrect] 被动关闭方会重传 ACK，主动关闭方会回复 FIN
+B [correct] 被动关闭方会重传 FIN，主动关闭方仍能识别它并再次回复 ACK
+C [incorrect] 被动关闭方直接释放连接，主动关闭方无需处理
+D [incorrect] 被动关闭方会发送 RST，主动关闭方回复 ACK
+Answer: 如果最后的 ACK 丢失，服务端会重传 FIN。客户端保留 TIME_WAIT 状态，就还能识别这个 FIN，再次回复 ACK；否则服务端可能无法正常结束关闭过程。[原文§为什么四次挥手之后要等2MSL?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E5%90%8E%E8%A6%81%E7%AD%892msl)
+
+T3-93 [single]
+Original: TIME_WAIT 状态收到被动关闭方重传的 FIN 并再次回复 ACK 后，TIME_WAIT 的计时通常怎样？
+Stem: TIME_WAIT 状态收到被动关闭方重传的 FIN 并再次回复 ACK 后，TIME_WAIT 的计时通常怎样？
+A [incorrect] 保持原有剩余时间继续计时
+B [correct] 通常会重新开始计时
+C [incorrect] 立即结束，连接马上释放
+D [incorrect] 计时翻倍，变为 4MSL
+Answer: 收到重传 FIN 并再次回复 ACK 后，TIME_WAIT 计时通常会重新开始。[原文§为什么四次挥手之后要等2MSL?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E5%90%8E%E8%A6%81%E7%AD%892msl)
+
+T3-94 [single]
+Original: 四次挥手后，如果主动关闭方不在 TIME_WAIT 状态等待，立即用相同的四元组建立新连接，可能带来什么风险？
+Stem: 四次挥手后，如果主动关闭方不在 TIME_WAIT 状态等待，立即用相同的四元组建立新连接，可能带来什么风险？
+A [incorrect] 被动关闭方会收到重复的 ACK 而无法关闭
+B [incorrect] 新连接会自动继承旧连接的拥塞窗口
+C [correct] 旧连接遗留在网络里的报文可能混入新连接
+D [incorrect] 旧连接的序列号会被新连接直接复用而不会出错
+Answer: 如果立即用相同的四元组建立新连接，旧报文可能混入新连接。等待一段时间，可以降低这种干扰。[原文§为什么四次挥手之后要等2MSL?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E5%90%8E%E8%A6%81%E7%AD%892msl)
+
+T3-95 [single]
+Original: 关于 MSL 与 IP 的 TTL 的关系，下列说法符合原文的是哪一项？
+Stem: 关于 MSL 与 IP 的 TTL 的关系，下列说法符合原文的是哪一项？
+A [correct] MSL 是时间概念，TTL 主要限制跳数，两者不能直接换算
+B [incorrect] TTL 为 64 就意味着旧报文一定在 30 秒内消失
+C [incorrect] TTL 与 MSL 都是时间概念，可以直接换算
+D [incorrect] MSL 限制跳数，TTL 限制报文存活的秒数
+Answer: MSL 是时间概念，IP 的 TTL 主要限制跳数，两者不能直接换算，不能说「TTL 为 64，所以 30 秒内一定消失」。[原文§为什么四次挥手之后要等2MSL?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E5%90%8E%E8%A6%81%E7%AD%892msl)
+
+T3-96 [single]
+Original: 关于 Linux 中常见的 TIME_WAIT 等待时长，下列说法符合原文的是哪一项？
+Stem: 关于 Linux 中常见的 TIME_WAIT 等待时长，下列说法符合原文的是哪一项？
+A [incorrect] 所有系统都统一规定为 60 秒
+B [incorrect] 常见为 30 秒，由 IP 的 TTL 换算得出
+C [incorrect] 常见为 60 秒，由 tcp_fin_timeout 直接控制
+D [correct] 常见为 60 秒，但这是实现选择，不是所有系统统一的值
+Answer: Linux 中常见的 TIME_WAIT 等待时长是 60 秒，但这是实现选择，不是所有系统都统一的值。[原文§为什么四次挥手之后要等2MSL?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E5%90%8E%E8%A6%81%E7%AD%892msl)
+
+T3-97 [single]
+Original: 调整 tcp_fin_timeout 能不能直接缩短 TIME_WAIT 的时间？
+Stem: 调整 tcp_fin_timeout 能不能直接缩短 TIME_WAIT 的时间？
+A [incorrect] 能，它是 TIME_WAIT 的计时参数
+B [incorrect] 能，它同时决定 FIN_WAIT_2 和 TIME_WAIT 两个状态的时长
+C [correct] 不能，它主要影响孤儿连接在 FIN_WAIT_2 的等待时间
+D [incorrect] 不能，它只影响 CLOSE_WAIT 状态的连接
+Answer: 不能直接这样理解：tcp_fin_timeout 主要影响孤儿连接在 FIN_WAIT_2 的等待时间，不是 TIME_WAIT 的计时参数。[原文§为什么四次挥手之后要等2MSL?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B9%8B%E5%90%8E%E8%A6%81%E7%AD%892msl)
+
+T3-98 [multiple]
+Original: 下列哪些属于服务端主动断开连接、从而在服务端出现大量 TIME_WAIT 的场景？
+Stem: 下列哪些属于服务端主动断开连接、从而在服务端出现大量 TIME_WAIT 的场景？
+A [correct] HTTP 没有使用长连接
+B [correct] HTTP 长连接超时
+C [correct] HTTP 长连接的请求数量达到上限
+D [incorrect] 客户端先发出 FIN，服务端回复 ACK 后因应用漏掉关闭而长期停留
+E [incorrect] 服务端从未收到过任何请求
+Answer: 服务端主动断开连接的三个场景是：HTTP 没有使用长连接、HTTP 长连接超时、HTTP 长连接的请求数量达到上限。主动关闭的一方才会进入 TIME_WAIT，所以这三种情况都会让服务端出现 TIME_WAIT。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-99 [single]
+Original: HTTP/1.0 中的长连接（Keep-Alive）默认是否开启？浏览器要开启应怎么做？
+Stem: HTTP/1.0 中的长连接（Keep-Alive）默认是否开启？浏览器要开启应怎么做？
+A [correct] 默认关闭，浏览器要在请求头中添加 Connection: Keep-Alive，服务器回应时也加上
+B [incorrect] 默认开启，不需要在请求头中添加任何内容，服务器回应时也不用处理
+C [incorrect] 默认关闭，浏览器要在请求头中添加 Connection: close，服务器回应时也加上
+D [incorrect] 默认开启，服务器要在响应头中添加 Connection: close 才能让连接保持
+Answer: 在 HTTP/1.0 中长连接默认是关闭的，如果浏览器要开启 Keep-Alive，必须在请求的 header 中添加 Connection: Keep-Alive；服务器作出回应时，也把它添加到响应的 header 里。这样 TCP 连接就不会中断，客户端再发请求时会使用同一个 TCP 连接。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-100 [single]
+Original: 关于 HTTP/1.1 的连接管理，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP/1.1 的连接管理，下列说法符合原文的是哪一项？
+A [incorrect] HTTP/1.1 默认关闭持久连接，每次都要显式发送 Connection: Keep-Alive
+B [incorrect] HTTP/1.1 的做法同样适用于 HTTP/2、HTTP/3，三者的连接管理完全相同
+C [incorrect] HTTP/1.1 不支持持久连接，只有 HTTP/1.0 才支持长连接机制
+D [correct] HTTP/1.1 默认使用持久连接，不必每次显式发送 Connection: Keep-Alive
+Answer: HTTP/1.1 默认使用持久连接，不需要每次显式发送 Connection: Keep-Alive。这里讨论的是 HTTP/1.x，HTTP/2、HTTP/3 的连接管理不能直接套用这个头字段。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-101 [single]
+Original: 如何关闭 HTTP 长连接（Keep-Alive）？
+Stem: 如何关闭 HTTP 长连接（Keep-Alive）？
+A [incorrect] 必须客户端和服务端的 header 里同时有 Connection:close 才会关闭
+B [correct] 在 HTTP 请求或响应的 header 里添加 Connection:close，任意一方有就无法使用长连接
+C [incorrect] 在 header 里去掉 Connection: Keep-Alive 即可，与另一方无关
+D [incorrect] 只能由服务端在响应的 header 里添加 Connection:close
+Answer: 如果要关闭 HTTP Keep-Alive，需要在 HTTP 请求或者响应的 header 里添加 Connection:close 信息，也就是说，只要客户端和服务端任意一方的 HTTP header 中有 Connection:close 信息，就无法使用 HTTP 长连接机制。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-102 [fill]
+Original: [填空题·有序] 关闭 HTTP 长连接机制后，每次请求依次要经历：____ → ____ → ____ → ____，这就是 HTTP 短连接。
+Stem: 关闭 HTTP 长连接机制后，每次请求依次要经历：____ → ____ → ____ → ____，这就是 HTTP 短连接。
+Blanks/order: 4/ordered
+Answer: 关闭 HTTP 长连接机制后，每次请求都要经历：建立 TCP → 请求资源 → 响应资源 → 释放连接，这种方式就是 HTTP 短连接。标准答案：建立 TCP、请求资源、响应资源、释放连接。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-103 [single]
+Original: HTTP 短连接场景下，由客户端还是服务端主动关闭 TCP 连接？
+Stem: HTTP 短连接场景下，由客户端还是服务端主动关闭 TCP 连接？
+A [incorrect] RFC 明确规定由客户端主动关闭，服务端只能被动关闭连接
+B [correct] RFC 未明确规定，双方皆可；但多数 Web 服务实现里由服务端主动关闭
+C [incorrect] RFC 明确规定由服务端主动关闭，客户端只能被动关闭连接
+D [incorrect] RFC 未明确规定，双方皆可；但多数 Web 服务实现里由客户端主动关闭
+Answer: 在 RFC 文档中，并没有明确由谁来关闭连接，请求和响应的双方都可以主动关闭 TCP 连接。不过，根据大多数 Web 服务的实现，不管哪一方禁用了 HTTP Keep-Alive，都是由服务端主动关闭连接，所以服务端上就会出现 TIME_WAIT 状态的连接。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-104 [single]
+Original: HTTP 长连接相比短连接，好处是什么？
+Stem: HTTP 长连接相比短连接，好处是什么？
+A [incorrect] 每个请求都使用独立的 TCP 连接，请求之间互不影响、互不复用
+B [incorrect] 可以保证连接永远不会被服务端或中间代理主动关闭
+C [incorrect] 可以省去 HTTP 请求头，从而减少每个报文的首部开销
+D [correct] 同一 TCP 连接上可收发多个请求/应答，避免连接建立和释放开销
+Answer: HTTP 长连接可以在同一个 TCP 连接上接收和发送多个 HTTP 请求/应答，避免了连接建立和释放的开销。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-105 [fill]
+Original: [填空题·有序] nginx 中，指定 HTTP 长连接超时时间的参数是 ____，限定一条 HTTP 长连接上最多处理请求数量的参数是 ____。
+Stem: nginx 中，指定 HTTP 长连接超时时间的参数是 ____，限定一条 HTTP 长连接上最多处理请求数量的参数是 ____。
+Blanks/order: 2/ordered
+Answer: nginx 提供 keepalive_timeout 参数指定 HTTP 长连接的超时时间；keepalive_requests 参数则是一条 HTTP 长连接上最多能处理的请求数量，达到后 nginx 会主动关闭该连接。标准答案：keepalive_timeout、keepalive_requests。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-106 [single]
+Original: nginx 将 HTTP 长连接超时设为 60 秒，客户端完成一个 HTTP 请求后 60 秒内没有再发新请求，会发生什么？
+Stem: nginx 将 HTTP 长连接超时设为 60 秒，客户端完成一个 HTTP 请求后 60 秒内没有再发新请求，会发生什么？
+A [correct] nginx 的定时器到时触发回调关闭连接，服务端上出现 TIME_WAIT
+B [incorrect] 客户端会先关闭连接，因此服务端上不会出现 TIME_WAIT 状态的连接
+C [incorrect] nginx 会一直保持该连接不变，直到客户端再次发起新的请求为止
+D [incorrect] nginx 会主动向客户端发送新的请求，用来保活这条空闲连接
+Answer: 设置了 60 秒的长连接超时时间后，nginx 会启动一个「定时器」，如果客户端在完成一个 HTTP 请求后的 60 秒内都没有再发起新请求，定时器时间一到，nginx 就会触发回调函数来关闭该连接，此时服务端上就会出现 TIME_WAIT 状态的连接。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-107 [single]
+Original: 服务端出现大量 TIME_WAIT，且现象是大量客户端建立完 TCP 连接后很长一段时间没有发送数据，大概率是什么原因？
+Stem: 服务端出现大量 TIME_WAIT，且现象是大量客户端建立完 TCP 连接后很长一段时间没有发送数据，大概率是什么原因？
+A [incorrect] HTTP 没有使用长连接，每个请求单独建立连接
+B [incorrect] HTTP 长连接的请求数量达到上限
+C [correct] HTTP 长连接超时，导致服务端主动关闭连接
+D [incorrect] 应用漏掉关闭 socket，导致连接停留在 CLOSE_WAIT
+Answer: 如果现象是有大量的客户端建立完 TCP 连接后，很长一段时间没有发送数据，那么大概率就是因为 HTTP 长连接超时，导致服务端主动关闭连接，产生大量处于 TIME_WAIT 状态的连接。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-108 [single]
+Original: 服务端出现大量 TIME_WAIT，且大量客户端建立 TCP 连接后很长一段时间没有发送数据（判断为 HTTP 长连接超时），原文建议往哪个方向排查？
+Stem: 服务端出现大量 TIME_WAIT，且大量客户端建立 TCP 连接后很长一段时间没有发送数据（判断为 HTTP 长连接超时），原文建议往哪个方向排查？
+A [incorrect] 应用代码漏掉了 close 调用
+B [incorrect] nginx 的 keepalive_requests 设得过小
+C [incorrect] 接收方的接收窗口长期为 0
+D [correct] 网络问题，例如客户端发送的数据一直没有被服务端接收到，以至于长连接超时
+Answer: 原文建议可以往网络问题的方向排查，比如是否因为网络问题，导致客户端发送的数据一直没有被服务端接收到，以至于 HTTP 长连接超时。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-109 [single]
+Original: nginx 的 keepalive_requests 参数起什么作用？
+Stem: nginx 的 keepalive_requests 参数起什么作用？
+A [correct] 为每条长连接计数，请求数达到最大值时 nginx 主动关闭该连接
+B [incorrect] 限制同时能建立的长连接总数，超过后拒绝新的连接请求
+C [incorrect] 规定一条长连接空闲多长时间后被 nginx 主动关闭
+D [incorrect] 限制客户端每秒能发起的请求数，超过则直接丢弃请求
+Answer: keepalive_requests 指一个 HTTP 长连接建立之后，nginx 会为这个连接设置一个计数器，记录这个长连接上已经接收并处理的客户端请求数量；达到参数设置的最大值时，nginx 会主动关闭这个长连接，服务端上就会出现 TIME_WAIT 状态的连接。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-110 [fill]
+Original: [填空题·有序] 按原文所述，nginx 的 keepalive_requests 默认值在 Nginx 1.19.10 之前是 ____，之后改为 ____。
+Stem: 按原文所述，nginx 的 keepalive_requests 默认值在 Nginx 1.19.10 之前是 ____，之后改为 ____。
+Blanks/order: 2/ordered
+Answer: keepalive_requests 的默认值与版本有关，Nginx 1.19.10 之前是 100，之后改为 1000。实际排查时要看运行版本和生效配置，不能只记一个固定默认值。标准答案：100、1000。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-111 [single]
+Original: QPS 很高（如超过 10000）时，如果 keepalive_requests 为 100，会出现什么情况？
+Stem: QPS 很高（如超过 10000）时，如果 keepalive_requests 为 100，会出现什么情况？
+A [incorrect] nginx 会拒绝超出 100 的连接请求，服务端出现大量 CLOSE_WAIT
+B [incorrect] 连接会被长期保持，不会出现 TIME_WAIT
+C [correct] nginx 会很频繁地关闭连接，服务端上出现大量 TIME_WAIT
+D [incorrect] 客户端会频繁主动关闭连接，服务端不会出现 TIME_WAIT
+Answer: 对于一些 QPS 比较高的场景（超过 10000 QPS，甚至 30000、50000 或更高），如果 keepalive_requests 是 100，nginx 就会很频繁地关闭连接，此时服务端上就会出现大量 TIME_WAIT 状态。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-112 [multiple]
+Original: 关于调整 keepalive_requests，下列说法符合原文的有哪些？
+Stem: 关于调整 keepalive_requests，下列说法符合原文的有哪些？
+A [correct] 确认连接因请求次数限制而频繁关闭时，可以适当调大
+B [correct] 不是越大越好，连接周期性关闭也有释放相关内存的作用
+C [correct] 还要结合连接数量和内存占用来判断
+D [incorrect] 应调到尽可能大，以彻底避免服务端出现 TIME_WAIT
+Answer: 如果确认连接因为请求次数限制频繁关闭，可以适当调大 keepalive_requests。不过它不是越大越好，连接周期性关闭也有释放相关内存的作用，还要结合连接数量和内存占用判断。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-113 [multiple]
+Original: 关于服务端 TIME_WAIT 过多，下列说法符合原文的有哪些？
+Stem: 关于服务端 TIME_WAIT 过多，下列说法符合原文的有哪些？
+A [correct] TIME_WAIT 多不等于一定有故障
+B [correct] 要看是否造成端口、内存等资源压力
+C [correct] 可以从减少短连接、改善连接复用和调整连接生命周期入手
+D [incorrect] 服务端作为监听方时，TIME_WAIT 的数量可以直接等同于临时端口被耗尽
+Answer: TIME_WAIT 多不等于一定有故障，要看是否造成端口、内存等资源压力，再从减少短连接、改善连接复用和调整连接生命周期入手。服务端作为监听方时，也不能简单把 TIME_WAIT 数量等同于临时端口被耗尽。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)
+
+T3-114 [single]
+Original: CLOSE_WAIT 状态表示什么？
+Stem: CLOSE_WAIT 状态表示什么？
+A [incorrect] 本端已经发出 FIN，正在等待对端对这个 FIN 的确认应答并释放资源
+B [correct] 对端已关闭发送方向且本端已确认，但本端应用尚未关闭自己的发送方向
+C [incorrect] 本端已经关闭发送方向，正在等待 2MSL 之后释放这条连接
+D [incorrect] 对端还没有发出 FIN，本端正在等待对端把 FIN 发送过来
+Answer: CLOSE_WAIT 表示对端已经关闭发送方向，本端也已经确认，但本端应用还没有关闭自己的发送方向。[原文§服务端出现大量 CLOSE_WAIT 是什么原因？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F-close-wait-%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0)
+
+T3-115 [fill]
+Original: [填空题·有序] 客户端发送 FIN，服务端内核回复 ACK 后，服务端进入 ____ 状态；服务端把剩余数据发完并关闭对应 socket 后发送 FIN，进入 ____ 状态。
+Stem: 客户端发送 FIN，服务端内核回复 ACK 后，服务端进入 ____ 状态；服务端把剩余数据发完并关闭对应 socket 后发送 FIN，进入 ____ 状态。
+Blanks/order: 2/ordered
+Answer: 客户端发送 FIN，服务端内核回复 ACK 后进入 CLOSE_WAIT；服务端把剩余数据发送完，并关闭对应 socket 后，才会继续发送 FIN，进入 LAST_ACK。标准答案：CLOSE_WAIT、LAST_ACK。[原文§服务端出现大量 CLOSE_WAIT 是什么原因？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F-close-wait-%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0)
+
+T3-116 [single]
+Original: 关于 CLOSE_WAIT 的数量，下列说法符合原文的是哪一项？
+Stem: 关于 CLOSE_WAIT 的数量，下列说法符合原文的是哪一项？
+A [incorrect] 只要出现 CLOSE_WAIT 就说明服务端有故障
+B [correct] 短暂的 CLOSE_WAIT 很正常，但大量连接长期停在这里就需要排查应用
+C [incorrect] 大量 CLOSE_WAIT 通常是网络丢包造成的，应用无需检查
+D [incorrect] CLOSE_WAIT 会在 60 秒后被内核自动清理，无需关注
+Answer: 短暂的 CLOSE_WAIT 很正常，但如果大量连接长期停在这里，就需要排查应用为什么没有关闭连接。调小 tcp_fin_timeout 也不能直接清掉 CLOSE_WAIT。[原文§服务端出现大量 CLOSE_WAIT 是什么原因？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F-close-wait-%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0)
+
+T3-117 [multiple]
+Original: 服务端大量连接长期停在 CLOSE_WAIT，原文列出的常见原因有哪些？
+Stem: 服务端大量连接长期停在 CLOSE_WAIT，原文列出的常见原因有哪些？
+A [correct] 程序发现 read 返回 0 后，没有关闭连接
+B [correct] 异常分支（如超时、解析失败时直接返回）漏掉了连接释放
+C [correct] 业务线程卡住了，一直没有执行到关闭逻辑
+D [correct] 连接池、流对象或 socket 的引用没有正确释放
+E [incorrect] 服务端内核没有对客户端的 FIN 回复 ACK
+Answer: 大量连接长期停在 CLOSE_WAIT，常见原因是：程序发现 read 返回 0 后没有关闭连接；异常分支漏掉了连接释放（比如超时、解析失败时直接返回）；业务线程卡住了，一直没有执行到关闭逻辑；连接池、流对象或 socket 的引用没有正确释放。CLOSE_WAIT 本身就表示本端已经对对端的 FIN 做了确认，所以「内核没有回复 ACK」不是原因。[原文§服务端出现大量 CLOSE_WAIT 是什么原因？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F-close-wait-%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0)
+
+T3-118 [fill]
+Original: [填空题·有序] 排查大量 CLOSE_WAIT 时，原文建议先用命令 ____ 找到对应进程，再结合文件描述符、线程栈和业务日志检查。
+Stem: 排查大量 CLOSE_WAIT 时，原文建议先用命令 ____ 找到对应进程，再结合文件描述符、线程栈和业务日志检查。
+Blanks/order: 1/ordered
+Answer: 排查时可以用 ss -tanp 找到对应进程，再结合文件描述符、线程栈和业务日志检查。标准答案：ss -tanp。[原文§服务端出现大量 CLOSE_WAIT 是什么原因？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F-close-wait-%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0)
+
+T3-119 [single]
+Original: 要解决服务端大量 CLOSE_WAIT，原文的处理思路是什么？
+Stem: 要解决服务端大量 CLOSE_WAIT，原文的处理思路是什么？
+A [incorrect] 调小 tcp_fin_timeout，让内核自动清掉 CLOSE_WAIT
+B [incorrect] 重启对端客户端，让它重新发送 FIN
+C [correct] 修复应用的资源释放逻辑，调小 tcp_fin_timeout 不能直接清掉 CLOSE_WAIT
+D [incorrect] 调大 keepalive_timeout，让连接保持更久
+Answer: 排查 CLOSE_WAIT 问题通常要修复应用的资源释放逻辑；调小 tcp_fin_timeout 不能直接清掉 CLOSE_WAIT。[原文§服务端出现大量 CLOSE_WAIT 是什么原因？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F-close-wait-%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0)
+
+T3-120 [single]
+Original: 关于 TCP 与 UDP 在连接上的区别，下列说法符合原文的是哪一项？
+Stem: 关于 TCP 与 UDP 在连接上的区别，下列说法符合原文的是哪一项？
+A [correct] TCP 是面向连接的协议，通常先握手再传数据；UDP 本身不需要握手
+B [incorrect] TCP 与 UDP 都需要先握手再传数据
+C [incorrect] UDP 是面向连接的协议，TCP 不需要握手
+D [incorrect] UDP 在调用 connect 之后就与 TCP 一样成为面向连接的协议
+Answer: TCP 是面向连接的协议，通常先握手再传数据；UDP 本身不需要握手。UDP socket 也可以调用 connect，但这主要是设置默认对端等，并不会变成 TCP 式的连接。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-121 [single]
+Original: UDP socket 调用 connect 之后，会发生什么？
+Stem: UDP socket 调用 connect 之后，会发生什么？
+A [incorrect] 会像 TCP 一样先进行三次握手来建立一条真正的连接
+B [incorrect] 会自动开启确认和重传机制，使数据可靠地到达对端
+C [incorrect] 会自动开启流量控制和拥塞控制来调整发送量大小
+D [correct] 主要是设置默认对端等，并不会变成 TCP 式的连接
+Answer: UDP socket 也可以调用 connect，但这主要是设置默认对端等，并不会变成 TCP 式的连接。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-122 [single]
+Original: 关于 TCP 的可靠性，下列说法符合原文的是哪一项？
+Stem: 关于 TCP 的可靠性，下列说法符合原文的是哪一项？
+A [incorrect] 保证数据一定发送成功，即使连接失败也不会向应用报告错误
+B [incorrect] 提供可靠的数据报服务，每个数据报都独立确认和重传
+C [correct] 提供有序、不重复的可靠字节流，连接最终失败时仍会通知应用
+D [incorrect] 只提供确认而不提供重传，丢包只能由应用层自行处理
+Answer: TCP 提供有序、不重复的可靠字节流，通过确认和重传应对丢包。如果连接最终失败，仍然会向应用报告错误，并不是永远保证发送成功。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-123 [multiple]
+Original: UDP 本身不提供下列哪些能力？
+Stem: UDP 本身不提供下列哪些能力？
+A [correct] 确认
+B [correct] 重传
+C [correct] 按序交付
+D [incorrect] 保留数据报边界
+Answer: UDP 本身不提供确认、重传和按序交付；但 UDP 按数据报传输，会保留数据报边界。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-124 [single]
+Original: TCP 和 UDP 在消息边界上有什么区别？
+Stem: TCP 和 UDP 在消息边界上有什么区别？
+A [correct] TCP 是字节流，没有应用消息边界；UDP 按数据报传输，会保留数据报边界
+B [incorrect] TCP 按数据报传输，保留边界；UDP 是字节流，没有边界
+C [incorrect] 两者都按数据报传输，都保留边界
+D [incorrect] 两者都是字节流，都没有消息边界
+Answer: TCP 是字节流，没有应用消息边界；UDP 按数据报传输，会保留数据报边界。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-125 [single]
+Original: 关于流量控制和拥塞控制，TCP 与 UDP 的区别是什么？
+Stem: 关于流量控制和拥塞控制，TCP 与 UDP 的区别是什么？
+A [incorrect] UDP 内置了这些机制，而 TCP 本身没有这些机制
+B [incorrect] TCP 与 UDP 都内置这些机制，两者在这方面没有区别
+C [incorrect] UDP 本身没有，而且上层协议也无法再补上这些机制
+D [correct] TCP 有这些机制，UDP 本身没有，但上层协议（如 QUIC）可以实现
+Answer: TCP 有流量控制和拥塞控制，UDP 本身没有，但上层协议可以实现，比如 QUIC。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-126 [fill]
+Original: [填空题·有序] 原文所述，TCP 首部通常是 ____ 到 ____ 字节，UDP 首部固定为 ____ 字节。
+Stem: 原文所述，TCP 首部通常是 ____ 到 ____ 字节，UDP 首部固定为 ____ 字节。
+Blanks/order: 3/ordered
+Answer: TCP 首部通常是 20～60 字节，UDP 首部固定为 8 字节。标准答案：20、60、8。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-127 [single]
+Original: 关于 TCP 与 UDP 的通信方式，下列说法符合原文的是哪一项？
+Stem: 关于 TCP 与 UDP 的通信方式，下列说法符合原文的是哪一项？
+A [incorrect] TCP 可配合 IP 做组播，IPv4 下也可广播；UDP 一条连接对应两个端点
+B [correct] TCP 一条连接对应两个端点；UDP 还可配合 IP 做组播，IPv4 下也可广播
+C [incorrect] UDP 一条连接对应两个端点，TCP 与 UDP 都不能配合 IP 做组播
+D [incorrect] TCP 与 UDP 都只能一对一通信，既不能组播也不能广播
+Answer: TCP 一条连接对应两个端点；UDP 还可以配合 IP 实现组播，IPv4 下也可以广播。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-128 [single]
+Original: 「要快就用 UDP，要可靠就用 TCP」这种说法，原文怎么看？
+Stem: 「要快就用 UDP，要可靠就用 TCP」这种说法，原文怎么看？
+A [incorrect] 完全正确，这是选择 TCP 或 UDP 时唯一需要考虑的标准
+B [correct] 不能这样简单概括；DNS、实时媒体常用 UDP，还要考虑重试、实时性、拥塞控制
+C [incorrect] 完全错误，实时媒体等场景从来不会使用 UDP 来传输
+D [incorrect] 只有 DNS 查询适合 UDP，其他任何场景都应该使用 TCP
+Answer: 选择时不能简单说「要快就用 UDP，要可靠就用 TCP」。DNS 查询、实时媒体等场景经常使用 UDP，但还要考虑重试、实时性、拥塞控制等需求。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-129 [single]
+Original: 使用 UDP 的应用能不能做到可靠传输？
+Stem: 使用 UDP 的应用能不能做到可靠传输？
+A [incorrect] 不能，UDP 无法做到可靠传输
+B [incorrect] 不能，必须改用 TCP 才行
+C [incorrect] 可以，由 UDP 自己完成确认和重传
+D [correct] 可以，只是确认、重传等能力要由上层负责
+Answer: 使用 UDP 不等于应用就不能可靠传输，只是这些能力要由上层负责。[原文§TCP和UDP区别是什么？](https://xiaolincoding.com/interview/network.html#tcp%E5%92%8Cudp%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T3-130 [fill]
+Original: [填空题·无序] TCP 提供可靠字节流的机制，除流量控制和拥塞控制外，原文还列出了：____、____、____、____。
+Stem: TCP 提供可靠字节流的机制，除流量控制和拥塞控制外，原文还列出了：____、____、____、____。
+Blanks/order: 4/unordered
+Answer: TCP 主要通过序列号、确认应答、重传、校验和，以及流量控制和拥塞控制来提供可靠字节流。标准答案：序列号、确认应答、重传、校验和。[原文§TCP为什么可靠传输](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+
+T3-131 [single]
+Original: TCP 序列号的作用是什么？
+Stem: TCP 序列号的作用是什么？
+A [correct] 对字节编号，接收方据此重组乱序数据、识别重复数据，保证按序交付
+B [incorrect] 检测传输过程中报文是否发生损坏，出错的报文会被丢弃并重传
+C [incorrect] 通告接收方还剩多少缓冲区空间，防止发送方把缓冲区写满
+D [incorrect] 根据网络反馈调整发送量，避免不断重传让网络更加拥堵
+Answer: 序列号对字节编号，接收方据此重组乱序数据、识别重复数据，保证交给应用的字节按顺序排列。[原文§TCP为什么可靠传输](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+
+T3-132 [single]
+Original: TCP 的 ACK=1001 表示什么？
+Stem: TCP 的 ACK=1001 表示什么？
+A [incorrect] 序号 1001 的这一个字节已经被接收方收到并且确认
+B [incorrect] 接收方一共收到了 1001 个字节，其中允许包含不连续的部分
+C [correct] 1001 之前的字节已连续收到，确认号是下一个期望收到的字节序号
+D [incorrect] 接收方要求发送方从序号 1001 开始重新发送全部数据
+Answer: ACK 里的确认号表示下一次期望收到的字节序号。比如 ACK=1001，表示序号 1001 之前的字节已经连续收到，这叫累计确认。[原文§TCP为什么可靠传输](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+
+T3-133 [single]
+Original: TCP 的 ACK 丢失时，发送方一定会因此重传对应数据吗？
+Stem: TCP 的 ACK 丢失时，发送方一定会因此重传对应数据吗？
+A [incorrect] 一定会，每丢一个 ACK，发送方都必须对应重传一次数据
+B [incorrect] 一定不会，ACK 丢失不会影响发送方任何的重传行为判断
+C [incorrect] 一定会，且要等所有数据发完之后再统一进行重传
+D [correct] 不一定，后续累计 ACK 可能确认前面的数据，不必每丢一个就重传
+Answer: 发送方在超时或者判断某段数据丢失后重发。如果 ACK 丢失，后续累计 ACK 也可能确认前面的数据，不一定每丢一个 ACK 就重传一次。[原文§TCP为什么可靠传输](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+
+T3-134 [single]
+Original: TCP 校验和的作用是什么？
+Stem: TCP 校验和的作用是什么？
+A [correct] 检测传输损坏，出错报文会被丢弃，再由重传补上
+B [incorrect] 为每个字节编号，让接收方重组乱序到达的数据
+C [incorrect] 让接收方通告自己的窗口，防止发送方撑满缓冲区
+D [incorrect] 让发送方根据网络反馈来调整自己的发送量大小
+Answer: 校验和用来检测传输损坏，出错的报文会被丢弃，再由重传补上。[原文§TCP为什么可靠传输](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+
+T3-135 [single]
+Original: 在 TCP 可靠传输的机制中，流量控制解决的是什么问题？
+Stem: 在 TCP 可靠传输的机制中，流量控制解决的是什么问题？
+A [incorrect] 检测报文在传输中是否损坏
+B [incorrect] 根据网络反馈调整发送量，避免网络拥堵
+C [correct] 接收方通过通告窗口，防止发送方把接收缓冲区撑满
+D [incorrect] 对字节编号，识别重复数据
+Answer: 流量控制：接收方通告窗口，防止发送方把接收缓冲区撑满。[原文§TCP为什么可靠传输](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+
+T3-136 [single]
+Original: 在 TCP 可靠传输的机制中，拥塞控制解决的是什么问题？
+Stem: 在 TCP 可靠传输的机制中，拥塞控制解决的是什么问题？
+A [incorrect] 让接收方通告窗口，防止其接收缓冲区被撑满
+B [correct] 根据网络反馈调整发送量，避免不断重传使网络更拥堵
+C [incorrect] 检测传输中的损坏，并丢弃校验出错的报文
+D [incorrect] 对连续收到的字节做累计确认，告知下一个期望序号
+Answer: 拥塞控制：根据网络反馈调整发送量，避免不断重传让网络更加拥堵。[原文§TCP为什么可靠传输](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+
+T3-137 [single]
+Original: 发送方收到 TCP ACK，说明了什么？
+Stem: 发送方收到 TCP ACK，说明了什么？
+A [incorrect] 说明对端应用已经成功处理了这份数据并返回了结果
+B [correct] 数据到达对端 TCP 接收端，不代表应用已处理或已写入数据库
+C [incorrect] 说明这份数据已经被对端写入了数据库并完成持久化
+D [incorrect] 说明对端业务逻辑已经执行完毕，订单等操作已经成功
+Answer: 收到 TCP ACK，说明数据到了对端的 TCP 接收端，不代表对端应用已经处理成功，更不代表数据已经写入数据库。[原文§TCP为什么可靠传输](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+
+T3-138 [single]
+Original: 下单接口收到请求数据后服务端宕机，订单是否创建成功，原文认为应靠什么判断？
+Stem: 下单接口收到请求数据后服务端宕机，订单是否创建成功，原文认为应靠什么判断？
+A [incorrect] 只要客户端收到了 TCP ACK，就说明订单一定创建成功
+B [incorrect] 只要 TCP 没有报错，就说明订单一定没有创建
+C [correct] 靠业务响应、查询和幂等机制来判断，而不是只看 TCP 是否收到 ACK
+D [incorrect] 交给 TCP 的重传机制自动保证订单只创建一次
+Answer: TCP ACK 只说明数据到了对端的 TCP 接收端。比如下单接口收到数据后宕机，订单是否创建成功，还要靠业务响应、查询和幂等机制判断。[原文§TCP为什么可靠传输](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93)
+
+T3-139 [single]
+Original: HTTP/3 是怎样基于 UDP 实现 HTTP 的？
+Stem: HTTP/3 是怎样基于 UDP 实现 HTTP 的？
+A [correct] 在 UDP 上实现 QUIC，再在 QUIC 上传输 HTTP
+B [incorrect] 把原来的 HTTP/1.1 报文直接换成 UDP 发送
+C [incorrect] 在 UDP 上直接实现 TCP，再在其上传输 HTTP/1.1
+D [incorrect] 在 QUIC 上实现 UDP，再在 UDP 上传输 HTTP
+Answer: HTTP/3 的做法是：在 UDP 上实现 QUIC，再在 QUIC 上传输 HTTP，而不是直接把原来的 HTTP/1.1 报文换成 UDP 发送。[原文§怎么用udp实现http？](https://xiaolincoding.com/interview/network.html#%E6%80%8E%E4%B9%88%E7%94%A8udp%E5%AE%9E%E7%8E%B0http)
+
+T3-140 [fill]
+Original: [填空题·无序] UDP 不提供的能力由 QUIC 补上，原文列出的有：____、____、____、____、____。
+Stem: UDP 不提供的能力由 QUIC 补上，原文列出的有：____、____、____、____、____。
+Blanks/order: 5/unordered
+Answer: QUIC 补上的能力有：可靠传输、有序交付、流量控制和拥塞控制、安全通信、连接迁移。标准答案：可靠传输、有序交付、流量控制和拥塞控制、安全通信、连接迁移。[原文§怎么用udp实现http？](https://xiaolincoding.com/interview/network.html#%E6%80%8E%E4%B9%88%E7%94%A8udp%E5%AE%9E%E7%8E%B0http)
+
+T3-141 [single]
+Original: QUIC 的可靠传输中，丢包后重传的是什么？新包使用什么编号？
+Stem: QUIC 的可靠传输中，丢包后重传的是什么？新包使用什么编号？
+A [incorrect] 原样重发丢失的那个包，沿用原来的包编号
+B [incorrect] 重传该连接此前已经发送过的全部数据
+C [incorrect] 不重传，而是用前向纠错来恢复丢失的数据
+D [correct] 重传仍需发送的帧信息，新包用新的包编号
+Answer: QUIC 利用包编号、ACK、丢包检测和重传等机制保证流数据交付。丢失的是包，但重传的是仍然需要发送的帧信息，新包使用新的包编号。[原文§怎么用udp实现http？](https://xiaolincoding.com/interview/network.html#%E6%80%8E%E4%B9%88%E7%94%A8udp%E5%AE%9E%E7%8E%B0http)
+
+T3-142 [single]
+Original: QUIC 的有序交付是怎样做的？
+Stem: QUIC 的有序交付是怎样做的？
+A [incorrect] 整个连接只有一个全局顺序，所有数据必须依次交付给应用
+B [incorrect] 完全不保证任何顺序，所有数据都由应用自行排序
+C [correct] 每个 Stream 有自己的偏移量和顺序，不同 Stream 可独立处理
+D [incorrect] 依靠 TCP 序列号来保证数据的顺序，QUIC 自身不负责
+Answer: 有序交付：每个 Stream 有自己的偏移量和顺序，不同 Stream 之间可以独立处理。[原文§怎么用udp实现http？](https://xiaolincoding.com/interview/network.html#%E6%80%8E%E4%B9%88%E7%94%A8udp%E5%AE%9E%E7%8E%B0http)
+
+T3-143 [single]
+Original: QUIC 在安全通信方面是怎么做的？
+Stem: QUIC 在安全通信方面是怎么做的？
+A [correct] 集成 TLS 1.3，为数据提供加密和完整性保护
+B [incorrect] 不提供加密，需要在 QUIC 之上另行叠加加密
+C [incorrect] 集成 TLS 1.0，只提供完整性保护而不加密
+D [incorrect] 依靠 UDP 首部校验和提供加密
+Answer: 安全通信：QUIC 集成 TLS 1.3，为数据提供加密和完整性保护。[原文§怎么用udp实现http？](https://xiaolincoding.com/interview/network.html#%E6%80%8E%E4%B9%88%E7%94%A8udp%E5%AE%9E%E7%8E%B0http)
+
+T3-144 [single]
+Original: QUIC 的连接迁移主要借助什么实现？
+Stem: QUIC 的连接迁移主要借助什么实现？
+A [incorrect] 用四元组固定标识连接，网络切换后必须重新建立连接
+B [incorrect] 用 TCP 序列号识别连接，网络切换后序列号会自动延续
+C [incorrect] 用 TTL 在网络切换时重置连接，使旧连接重新生效
+D [correct] 用 Connection ID，在符合条件的网络切换中继续用原连接
+Answer: 连接迁移：使用 Connection ID 等机制，在符合条件的网络切换中继续使用原连接。[原文§怎么用udp实现http？](https://xiaolincoding.com/interview/network.html#%E6%80%8E%E4%B9%88%E7%94%A8udp%E5%AE%9E%E7%8E%B0http)
+
+T3-145 [single]
+Original: 标准 QUIC 是否依赖前向纠错来保证可靠性？
+Stem: 标准 QUIC 是否依赖前向纠错来保证可靠性？
+A [incorrect] 依赖，前向纠错是标准 QUIC 必备的功能
+B [correct] 不依赖，面试里把确认、丢包检测和重传讲清楚即可
+C [incorrect] 依赖，它取代了确认和重传机制
+D [incorrect] 依赖，且需要为每个包额外发送多份拷贝
+Answer: 标准 QUIC 并不依赖前向纠错来保证可靠性。面试里把确认、丢包检测和重传讲清楚就可以，不要把早期实验方案当成必备功能。[原文§怎么用udp实现http？](https://xiaolincoding.com/interview/network.html#%E6%80%8E%E4%B9%88%E7%94%A8udp%E5%AE%9E%E7%8E%B0http)
+
+T3-146 [single]
+Original: TCP 的一次 send 与一次 read 是什么关系？由此会出现什么现象？
+Stem: TCP 的一次 send 与一次 read 是什么关系？由此会出现什么现象？
+A [incorrect] 一一对应：一次 send 的内容总会被一次 read 完整地读到
+B [correct] 不一一对应：多次发送的内容可能一次读到，一条消息也可能分多次读完
+C [incorrect] 一次 send 一定会被拆成多次 read，绝不会被合并读取
+D [incorrect] 一次 read 只会读到半条消息，不可能一次读到多条消息
+Answer: TCP 是字节流，一次 send 不对应一次 read。两次发送的内容可能被一次读到，一条消息也可能分多次才能读完，这就是应用里常说的粘包和拆包。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-147 [short]
+Original: TCP 粘包的本质是什么？应该怎样解决？
+Stem: TCP 粘包的本质是什么？应该怎样解决？
+Answer: 它不是 TCP 传错了数据，而是应用没有正确处理消息边界。所以解决办法是在应用层定义消息格式，并持续解析接收到的字节。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-148 [fill]
+Original: [填空题·无序] 解决粘包问题的三种分包方式是：____、____、____。
+Stem: 解决粘包问题的三种分包方式是：____、____、____。
+Blanks/order: 3/unordered
+Answer: 三种分包方式：固定长度的消息、特殊字符作为边界、自定义消息结构。标准答案：固定长度的消息、特殊字符作为边界、自定义消息结构。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-149 [single]
+Original: 固定长度的消息这种分包方式，特点是什么？
+Stem: 固定长度的消息这种分包方式，特点是什么？
+A [incorrect] 最灵活，消息长度可以随意变化，因此实际中最为常用
+B [incorrect] 最复杂，需要在包头里写明后续数据的长度字段才行
+C [incorrect] 依靠特殊字符划分消息，需要对消息内容进行转义处理
+D [correct] 最简单，接满固定字节数即为一条消息，但灵活性不高、很少用
+Answer: 固定长度的消息是最简单的方法：每个用户消息都是固定长度的（如 64 字节），接收方接满 64 个字节就认为是一个完整有效的消息。但这种方式灵活性不高，实际中很少用。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-150 [single]
+Original: 用特殊字符作为消息边界时，如果消息内容里恰好含有这个特殊字符，应该怎么办？
+Stem: 用特殊字符作为消息边界时，如果消息内容里恰好含有这个特殊字符，应该怎么办？
+A [correct] 对该字符转义，避免被接收方当作消息边界
+B [incorrect] 不用处理，接收方会自动区分消息内容与边界字符
+C [incorrect] 直接丢弃含有该特殊字符的所有消息，不再处理它们
+D [incorrect] 改用固定长度的分包方式，因为这种字符无法转义
+Answer: 作为边界点的特殊字符，如果刚好消息内容里有这个特殊字符，要对这个字符转义，避免被接收方当作消息的边界点而解析到无效的数据。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-151 [single]
+Original: HTTP/1.1 的头部以 \r\n\r\n 结束，是否表示整个报文已经结束？
+Stem: HTTP/1.1 的头部以 \r\n\r\n 结束，是否表示整个报文已经结束？
+A [incorrect] 是，看到 \r\n\r\n 就说明整个报文已经全部结束了
+B [incorrect] 是，正文的长度由 TCP 首部中的字段直接给出，无需额外规则
+C [correct] 不是，正文还要按 Content-Length 或 chunked 规则读取
+D [incorrect] 不是，正文一定固定为 64 个字节，读满之后就可以结束了
+Answer: HTTP/1.1 的头字段用回车换行分隔，头部以 \r\n\r\n 结束，但这不等于整个报文都结束了。正文还要结合 Content-Length 或 chunked 等规则读取，不能在正文里看到回车换行就当作消息结束。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-152 [single]
+Original: 自定义消息结构的分包方式是怎样设计的？
+Stem: 自定义消息结构的分包方式是怎样设计的？
+A [incorrect] 由若干个固定长度的数据块组成，消息里没有包头
+B [incorrect] 用特殊字符串分隔各条消息，包头里不含任何长度字段
+C [incorrect] 消息长度由 TCP 首部中的某个字段直接给出，无需包头
+D [correct] 由固定大小的包头和数据组成，包头里有字段说明后面数据多大
+Answer: 可以自定义一个消息结构，由包头和数据组成，其中包头是固定大小的，包头里有一个字段来说明紧随其后的数据有多大。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-153 [single]
+Original: 消息结构为「4 字节长度字段 + 数据」时，接收方应怎样组装一条完整消息？
+Stem: 消息结构为「4 字节长度字段 + 数据」时，接收方应怎样组装一条完整消息？
+A [correct] 先收齐 4 字节包头并解析出长度，再读满该长度的数据，才是一条完整消息
+B [incorrect] 一读到 4 字节就认为已经得到了一条完整的消息
+C [incorrect] 一直读取直到出现某个特殊字符，才认为消息已经结束
+D [incorrect] 每次 read 到的数据，都直接视为一条完整的用户消息
+Answer: 当接收方接收到包头的大小（比如 4 个字节）后，就解析包头的内容，于是就可以知道数据的长度，然后继续读取数据，直到读满数据的长度，就可以组装成一个完整的用户消息来处理了。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-154 [multiple]
+Original: 按自定义消息结构（包头加数据）实现分包时，实际写代码还要处理哪些情况？
+Stem: 按自定义消息结构（包头加数据）实现分包时，实际写代码还要处理哪些情况？
+A [correct] 包头只读到一部分
+B [correct] 一次读到多条消息
+C [correct] 校验长度字段并限制最大消息大小
+D [incorrect] 只要一次 read 的字节数不为 0，就可以认为读到了一条完整消息
+Answer: 实际写代码时，还要处理包头只读到一部分、一次读到多条消息等情况，并校验长度字段，限制最大消息大小。TCP 是字节流，一次 read 读到的字节不一定恰好是一条完整消息。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-155 [single]
+Original: 关闭 Nagle 或者改成一次 send 发送，能否替代应用层分包？
+Stem: 关闭 Nagle 或者改成一次 send 发送，能否替代应用层分包？
+A [incorrect] 能，关闭 Nagle 后一次 send 恰好对应一次 read
+B [incorrect] 能，改成一次 send 后就不会出现拆包
+C [correct] 不能，它们只影响发送行为，不能替代应用层分包
+D [incorrect] 不能，因为这会让 TCP 传错数据
+Answer: 关闭 Nagle 或改成一次 send，只会影响发送行为，不能替代应用层分包。[原文§tcp粘包怎么解决？](https://xiaolincoding.com/interview/network.html#tcp%E7%B2%98%E5%8C%85%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3)
+
+T3-156 [single]
+Original: TCP 的流量控制和拥塞控制，各管什么？
+Stem: TCP 的流量控制和拥塞控制，各管什么？
+A [incorrect] 流量控制管网络承不承受得住，拥塞控制管接收方来不来得及收
+B [correct] 流量控制管接收方来不来得及收，拥塞控制管网络承不承受得住
+C [incorrect] 两者都只管接收方来不来得及收
+D [incorrect] 两者都只管网络承不承受得住
+Answer: 流量控制管「接收方来不来得及收」，拥塞控制管「网络承不承受得住」。[原文§TCP 流量控制和拥塞控制有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-157 [fill]
+Original: [填空题·有序] 流量控制由接收方通过 ____ 通告自己还能接收多少数据，拥塞控制由发送方维护 ____ 来控制在网络里的数据量。
+Stem: 流量控制由接收方通过 ____ 通告自己还能接收多少数据，拥塞控制由发送方维护 ____ 来控制在网络里的数据量。
+Blanks/order: 2/ordered
+Answer: 流量控制由接收方通过接收窗口 rwnd 通告自己还能接收多少数据；拥塞控制由发送方维护拥塞窗口 cwnd。标准答案：接收窗口 rwnd、拥塞窗口 cwnd。[原文§TCP 流量控制和拥塞控制有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-158 [single]
+Original: 拥塞控制中发送方维护的 cwnd 是根据哪些反馈来判断网络情况的？
+Stem: 拥塞控制中发送方维护的 cwnd 是根据哪些反馈来判断网络情况的？
+A [incorrect] 仅根据接收方通告的 rwnd
+B [correct] ACK、丢包、ECN 等反馈
+C [incorrect] 仅根据 TCP 校验和是否出错
+D [incorrect] 仅根据序列号是否连续
+Answer: 拥塞控制：发送方维护拥塞窗口 cwnd，根据 ACK、丢包、ECN 等反馈判断网络情况，控制在网络里的数据量。[原文§TCP 流量控制和拥塞控制有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-159 [single]
+Original: 发送方在途、尚未确认的数据量，近似受什么约束？
+Stem: 发送方在途、尚未确认的数据量，近似受什么约束？
+A [incorrect] 只受接收窗口 rwnd 约束，与拥塞窗口 cwnd 没有任何关系
+B [incorrect] 只受拥塞窗口 cwnd 约束，与接收窗口 rwnd 没有任何关系
+C [correct] 同时受 rwnd 与 cwnd 约束，约为 min(rwnd, cwnd)
+D [incorrect] 取 rwnd 与 cwnd 之和作为在途数据的上限，两个窗口相加
+Answer: 发送方在途、尚未确认的数据量，通常要同时受接收窗口和拥塞窗口约束，可以近似理解为：允许的在途数据上限 = min(rwnd, cwnd)。[原文§TCP 流量控制和拥塞控制有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-160 [single]
+Original: 允许的在途数据上限是 10 KB，已有 6 KB 数据尚未确认，发送方大约还能再发多少？
+Stem: 允许的在途数据上限是 10 KB，已有 6 KB 数据尚未确认，发送方大约还能再发多少？
+A [correct] 大约 4 KB
+B [incorrect] 大约 10 KB
+C [incorrect] 大约 6 KB
+D [incorrect] 大约 16 KB
+Answer: 如果上限是 10 KB，但已经有 6 KB 尚未确认，就不能再直接发 10 KB，而是还剩大约 4 KB 的空间。[原文§TCP 流量控制和拥塞控制有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-161 [single]
+Original: 接收方处理很快，但网络链路已经拥堵，此时发送主要受哪个窗口限制？
+Stem: 接收方处理很快，但网络链路已经拥堵，此时发送主要受哪个窗口限制？
+A [incorrect] 主要受 rwnd（接收窗口）限制
+B [incorrect] 主要受 ssthresh 限制
+C [incorrect] 不受任何窗口限制
+D [correct] 主要受 cwnd（拥塞窗口）限制
+Answer: 接收方处理很快，但网络链路已经拥堵，这时主要受 cwnd 限制。[原文§TCP 流量控制和拥塞控制有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-162 [single]
+Original: 网络很空闲，但接收方的业务线程不读数据，此时发送主要受哪个窗口限制？
+Stem: 网络很空闲，但接收方的业务线程不读数据，此时发送主要受哪个窗口限制？
+A [incorrect] 主要受 cwnd（拥塞窗口）限制
+B [incorrect] 主要受 MSS 限制
+C [correct] 主要受 rwnd（接收窗口）限制
+D [incorrect] 不受任何窗口限制
+Answer: 网络很空闲，但接收方业务线程不读数据，这时主要受 rwnd 限制。[原文§TCP 流量控制和拥塞控制有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-163 [single]
+Original: TCP 接收方来不及读取数据、缓冲区没有空间时，可以怎样？
+Stem: TCP 接收方来不及读取数据、缓冲区没有空间时，可以怎样？
+A [correct] 可以通告零窗口
+B [incorrect] 直接发送 RST 断开连接
+C [incorrect] 丢弃缓冲区里已有的数据
+D [incorrect] 通告一个比实际更大的窗口
+Answer: 接收方来不及读取数据，缓冲区没有空间时，可以通告零窗口。[原文§TCP 接收窗口变成 0，会发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3%E5%8F%98%E6%88%90-0-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-164 [single]
+Original: TCP 发送方收到接收方的零窗口通告后，会怎样？
+Stem: TCP 发送方收到接收方的零窗口通告后，会怎样？
+A [incorrect] 立刻断开连接，不再允许发送任何数据
+B [incorrect] 继续按原来的速度发送，不受零窗口的影响
+C [incorrect] 把已发送的数据全部重传一遍后再继续发送
+D [correct] 暂停发送新的普通数据，但连接不会立即断开
+Answer: 发送方收到零窗口后，会暂停发送新的普通数据，但连接不会因此立即断开。[原文§TCP 接收窗口变成 0，会发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3%E5%8F%98%E6%88%90-0-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-165 [single]
+Original: 接收方腾出空间后发送的窗口更新报文如果丢了，会出现什么问题？
+Stem: 接收方腾出空间后发送的窗口更新报文如果丢了，会出现什么问题？
+A [incorrect] 发送方会不断重传所有数据，进而造成网络严重拥塞
+B [correct] 发送方一直等窗口打开，接收方一直等新数据，互相等待
+C [incorrect] 接收方会自动关闭这条连接并通知发送方重新建立
+D [incorrect] 发送方会立即沿用上一次的窗口大小继续发送数据
+Answer: 等接收方腾出空间，会发送窗口更新。如果这个更新报文丢了，发送方一直等窗口打开，接收方一直等新数据，就可能互相等下去。[原文§TCP 接收窗口变成 0，会发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3%E5%8F%98%E6%88%90-0-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-166 [fill]
+Original: [填空题·无序] 为避免窗口更新丢失而一直卡住，TCP 设有 ____ 和 ____。
+Stem: 为避免窗口更新丢失而一直卡住，TCP 设有 ____ 和 ____。
+Blanks/order: 2/unordered
+Answer: TCP 有持续计时器和零窗口探测，发送方隔一段时间发出探测，让接收方回复当前窗口，避免因为窗口更新丢失而一直卡住。标准答案：持续计时器、零窗口探测。[原文§TCP 接收窗口变成 0，会发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3%E5%8F%98%E6%88%90-0-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-167 [single]
+Original: 零窗口探测是怎么做的？
+Stem: 零窗口探测是怎么做的？
+A [incorrect] 接收方每隔一段时间主动重发全部已确认的数据
+B [correct] 发送方隔一段时间发探测，让接收方回复当前窗口
+C [incorrect] 发送方立即把窗口视为最大值并继续发送数据
+D [incorrect] 双方断开当前连接后重新进行一次三次握手
+Answer: 发送方隔一段时间发出探测，让接收方回复当前窗口，避免因为窗口更新丢失而一直卡住。[原文§TCP 接收窗口变成 0，会发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3%E5%8F%98%E6%88%90-0-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-168 [multiple]
+Original: 抓包时经常出现 Zero Window，原文建议先检查哪些方面？
+Stem: 抓包时经常出现 Zero Window，原文建议先检查哪些方面？
+A [correct] 接收端是不是没有及时读数据
+B [correct] 接收端的业务线程是不是卡住了
+C [correct] 接收端的处理能力是不是不足
+D [incorrect] 直接判断为网络拥堵
+Answer: 排障时，如果抓包经常出现 Zero Window，要先看接收端是不是没及时读数据、业务线程卡住了，或者处理能力不足，不能一看到传输慢就判断网络拥堵。[原文§TCP 接收窗口变成 0，会发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3%E5%8F%98%E6%88%90-0-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+
+T3-169 [single]
+Original: 超时重传、快速重传和 SACK 的主要区别在哪里？
+Stem: 超时重传、快速重传和 SACK 的主要区别在哪里？
+A [incorrect] 使用的传输层协议不同，有的基于 TCP，有的基于 UDP
+B [incorrect] 是否需要经过三次握手之后才能够使用该重传机制
+C [incorrect] 报文首部的长度不同，所占用的字节数各不相同
+D [correct] 什么时候判断丢包，以及怎么知道需要补哪些数据
+Answer: 它们主要区别在于什么时候判断丢包，以及怎么知道需要补哪些数据。[原文§TCP 超时重传、快速重传和 SACK 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E3%80%81%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0%E5%92%8C-sack-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-170 [single]
+Original: 超时重传在什么情况下触发？
+Stem: 超时重传在什么情况下触发？
+A [correct] 发出数据后超过 RTO 仍未收到对应确认
+B [incorrect] 连续收到 3 个针对同一序号的重复 ACK 时触发
+C [incorrect] 接收方通告的接收窗口变为 0 的时候就触发
+D [incorrect] 收到对端发来的 FIN 报文之后立即触发
+Answer: 超时重传：发出数据之后，超过 RTO 仍未收到对应确认，就重传。[原文§TCP 超时重传、快速重传和 SACK 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E3%80%81%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0%E5%92%8C-sack-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-171 [single]
+Original: 关于 RTO，下列说法符合原文的是哪一项？
+Stem: 关于 RTO，下列说法符合原文的是哪一项？
+A [incorrect] 是固定不变的值，不会随网络状况的变化而变化
+B [incorrect] 与 RTT 无关，由对端在握手时通告给发送方，不会变化
+C [correct] 按 RTT 及其波动估算，非固定值，连续超时通常退避
+D [incorrect] 连续发生超时之后，该值通常会越来越短，重传更频繁
+Answer: RTO 根据往返时间 RTT 及其波动估算，不是固定不变的值，连续超时通常还会退避。[原文§TCP 超时重传、快速重传和 SACK 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E3%80%81%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0%E5%92%8C-sack-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-172 [single]
+Original: 经典机制里，快速重传在什么情况下触发？
+Stem: 经典机制里，快速重传在什么情况下触发？
+A [incorrect] 发送方只要收到 1 个重复 ACK，就立即重传缺失的那段数据
+B [incorrect] 发送方一直等到 RTO 到期之后，才会重传缺失的数据
+C [incorrect] 接收方收到 3 个重复 ACK 之后，通知发送方进行重传
+D [correct] 收到 3 个重复 ACK 就认为可能丢失，不等 RTO 到期便重传缺失数据
+Answer: 快速重传：经典机制里，发送方收到 3 个重复 ACK，就认为可能有数据丢失，不等 RTO 到期便重传缺失的数据。[原文§TCP 超时重传、快速重传和 SACK 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E3%80%81%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0%E5%92%8C-sack-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-173 [single]
+Original: SACK（选择性确认）的作用是什么？
+Stem: SACK（选择性确认）的作用是什么？
+A [correct] 接收方告知还收到了哪些不连续的数据块，让发送方更准确地补缺口
+B [incorrect] 让发送方在超过 RTO 仍未收到确认之后才进行重传
+C [incorrect] 让接收方通告自己当前的接收窗口大小，限制发送量
+D [incorrect] 让发送方在收到 3 个重复 ACK 之后触发一次重传
+Answer: SACK，选择性确认：接收方在 ACK 选项中告诉发送方，除了连续收到的部分，还收到了哪些不连续的数据块，让发送方更准确地补缺口。[原文§TCP 超时重传、快速重传和 SACK 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E3%80%81%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0%E5%92%8C-sack-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-174 [single]
+Original: 第 2 段数据丢了，第 3、4、5 段都到了，接收方如何确认？使用 SACK 有什么好处？
+Stem: 第 2 段数据丢了，第 3、4、5 段都到了，接收方如何确认？使用 SACK 有什么好处？
+A [incorrect] 直接累计确认到第 5 段，发送方因此不再重传第 2 段
+B [incorrect] 不发送任何 ACK，一直等到发送方超时之后再重传
+C [correct] 累计确认第 2 段之前，并用 SACK 告知后面已收到的区间
+D [incorrect] 只确认第 3、4、5 段，对第 2 段之前的内容不再确认
+Answer: 第 2 段丢了而第 3、4、5 段都到了，接收方仍然累计确认第 2 段之前的内容，但可以通过 SACK 告诉发送方后面哪些区间已经收到，减少重复发送。[原文§TCP 超时重传、快速重传和 SACK 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E3%80%81%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0%E5%92%8C-sack-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-175 [single]
+Original: 收到重复 ACK 是否一定说明报文丢失了？
+Stem: 收到重复 ACK 是否一定说明报文丢失了？
+A [incorrect] 一定，重复 ACK 只会由丢包产生
+B [correct] 不一定，重复 ACK 也可能由乱序等情况造成
+C [incorrect] 一定，且丢失的是最后一个报文
+D [incorrect] 一定不是，重复 ACK 只表示窗口更新
+Answer: 重复 ACK 也可能由乱序等情况造成，不一定是报文真的丢了。实际协议栈还可能使用更丰富的丢包检测机制，面试时先把经典机制讲清楚。[原文§TCP 超时重传、快速重传和 SACK 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E3%80%81%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0%E5%92%8C-sack-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-176 [single]
+Original: MTU 和 MSS 分别限制什么？
+Stem: MTU 和 MSS 分别限制什么？
+A [incorrect] MTU 限制一个 TCP 段能携带的数据，MSS 限制一层能装下的包
+B [correct] MTU 限制一层能装下多大的包，MSS 限制一个 TCP 段能携带多大的 TCP 数据
+C [incorrect] MTU 和 MSS 都只限制 TCP 首部的长度，与一个段能携带多少数据无关
+D [incorrect] MTU 和 MSS 都用来限制接收方在报文里通告的接收窗口大小
+Answer: MTU 限制一层能装下多大的包，MSS 限制一个 TCP 段能携带多大的 TCP 数据。[原文§TCP 的 MSS 和 MTU 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E7%9A%84-mss-%E5%92%8C-mtu-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-177 [single]
+Original: 以太网 MTU 为 1500 字节，表示什么？
+Stem: 以太网 MTU 为 1500 字节，表示什么？
+A [incorrect] TCP 数据部分通常不能超过 1500 字节
+B [incorrect] 每个 TCP 段首部固定为 1500 字节
+C [correct] IP 包通常不能超过 1500 字节
+D [incorrect] 接收窗口最大为 1500 字节
+Answer: 以常见以太网为例，MTU 为 1500 字节，表示 IP 包通常不能超过 1500 字节。[原文§TCP 的 MSS 和 MTU 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E7%9A%84-mss-%E5%92%8C-mtu-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-178 [fill]
+Original: [填空题·有序] 以常见以太网为例，MTU 为 1500 字节，假设 IPv4 首部 20 字节、TCP 首部 20 字节，则 TCP 数据通常最多为 ____ 字节，这就是常见的 MSS 值。
+Stem: 以常见以太网为例，MTU 为 1500 字节，假设 IPv4 首部 20 字节、TCP 首部 20 字节，则 TCP 数据通常最多为 ____ 字节，这就是常见的 MSS 值。
+Blanks/order: 1/ordered
+Answer: 1500 - 20 - 20 = 1460 字节，这个 1460 就是常见的 MSS 值。标准答案：1460。[原文§TCP 的 MSS 和 MTU 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E7%9A%84-mss-%E5%92%8C-mtu-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-179 [single]
+Original: 为什么不能把 MSS 永远记成 1460？
+Stem: 为什么不能把 MSS 永远记成 1460？
+A [correct] IPv6、TCP 选项、隧道封装和路径都可能影响有效载荷
+B [incorrect] 因为 MSS 完全由接收窗口的大小来决定
+C [incorrect] 因为 MSS 与 MTU 之间完全没有任何关系
+D [incorrect] 因为 MSS 只在握手阶段有意义，之后会自动失效
+Answer: 1460 是以 IPv4 首部、TCP 首部各 20 字节为例得到的。IPv6、TCP 选项、隧道封装和实际路径都可能影响有效载荷大小，不能把 MSS 永远记成 1460。[原文§TCP 的 MSS 和 MTU 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E7%9A%84-mss-%E5%92%8C-mtu-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-180 [single]
+Original: TCP 握手时关于 MSS，双方会怎么做？
+Stem: TCP 握手时关于 MSS，双方会怎么做？
+A [incorrect] 只有客户端通告 MSS，服务端必须无条件接受该值
+B [incorrect] 双方都不通告，由内核固定使用 1460 作为 MSS
+C [incorrect] 只需考虑对端接收窗口，不用再考虑路径 MTU 了
+D [correct] 双方分别通告自己愿意接收的 MSS，发送方还要考虑路径 MTU
+Answer: 握手时，双方可以分别通告自己愿意接收的 MSS；发送方还需要考虑路径 MTU。[原文§TCP 的 MSS 和 MTU 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E7%9A%84-mss-%E5%92%8C-mtu-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-181 [single]
+Original: TCP 一次携带的数据是不是越大越好？
+Stem: TCP 一次携带的数据是不是越大越好？
+A [incorrect] 是，数据越大越好，因为分片越多越高效
+B [incorrect] 是，只要不超过接收窗口就行
+C [correct] 不是，减少 IP 分片通常有利于传输
+D [incorrect] 不是，因为 TCP 数据必须固定为 1460 字节
+Answer: 减少 IP 分片通常有利于传输，不能认为 TCP 数据越大越好。[原文§TCP 的 MSS 和 MTU 有什么区别？](https://xiaolincoding.com/interview/network.html#tcp-%E7%9A%84-mss-%E5%92%8C-mtu-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T3-182 [short]
+Original: 网络出现拥堵时如果继续发送大量数据，会怎样？这说明为什么需要拥塞控制？
+Stem: 网络出现拥堵时如果继续发送大量数据，会怎样？这说明为什么需要拥塞控制？
+Answer: 网络出现拥堵时，如果继续发送大量数据包，可能导致数据包时延、丢失，TCP 就会重传，但一重传就会让网络负担更重，导致更大的延迟和更多的丢包，形成恶性循环。所以 TCP 被设计成一个「无私」的协议，网络拥塞时会自我牺牲，降低发送的数据量，这就是拥塞控制。拥塞控制的目的是避免「发送方」的数据填满整个网络。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-183 [single]
+Original: 拥塞窗口 cwnd 是什么？它如何变化？
+Stem: 拥塞窗口 cwnd 是什么？它如何变化？
+A [correct] 发送方维护的状态变量，无拥塞时增大，出现拥塞时减小
+B [incorrect] 接收方通告的窗口大小，网络出现拥塞时会增大
+C [incorrect] 发送方维护的固定常量，不会随网络状况变化
+D [incorrect] 接收方维护的状态变量，网络没有拥塞时会减小
+Answer: 拥塞窗口 cwnd 是发送方维护的状态变量，会根据网络反馈动态变化：只要网络中没有出现拥塞，cwnd 就会增大；网络中出现了拥塞，cwnd 就减少。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-184 [single]
+Original: 发送窗口 swnd 与拥塞窗口 cwnd、接收窗口 rwnd 的近似关系是什么？
+Stem: 发送窗口 swnd 与拥塞窗口 cwnd、接收窗口 rwnd 的近似关系是什么？
+A [incorrect] swnd = max(cwnd, rwnd)，取两个窗口中较大的那个
+B [incorrect] swnd = cwnd + rwnd，两个窗口大小直接相加
+C [incorrect] swnd = cwnd - rwnd，两个窗口大小直接相减
+D [correct] swnd = min(cwnd, rwnd)，已发未确认数据占用该窗口
+Answer: 发送窗口可以近似理解为 swnd = min(cwnd, rwnd)，也就是拥塞窗口和接收窗口中的较小值。已经发送但尚未确认的数据，会占用这部分窗口。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-185 [single]
+Original: 原文的基本模型里，怎样判断网络出现了拥塞？
+Stem: 原文的基本模型里，怎样判断网络出现了拥塞？
+A [incorrect] 接收方通告的接收窗口大小变成了 0 字节
+B [correct] 发送方没在规定时间内收到 ACK，即发生超时重传
+C [incorrect] 发送方收到了对端发来的 SYN 报文
+D [incorrect] TCP 校验和计算出错而报文被丢弃
+Answer: 怎么知道当前网络是否出现了拥塞？只要「发送方」没有在规定时间内接收到 ACK 应答报文，也就是发生了超时重传，就会认为网络出现了拥塞。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-186 [fill]
+Original: [填空题·无序] 面试里通常先讲的经典 Reno 拥塞控制的四个机制是：____、____、____、____。
+Stem: 面试里通常先讲的经典 Reno 拥塞控制的四个机制是：____、____、____、____。
+Blanks/order: 4/unordered
+Answer: 经典 Reno 的四个机制：慢启动、拥塞避免、快速重传、快速恢复。实际系统也可能使用 CUBIC、BBR 等算法，增长和退让规则并不完全相同。标准答案：慢启动、拥塞避免、快速重传、快速恢复。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-187 [single]
+Original: 慢启动阶段发送数据的思路是什么？
+Stem: 慢启动阶段发送数据的思路是什么？
+A [incorrect] 一开始就发送最大窗口的数据，然后再逐步地降低
+B [correct] 一点一点提高发送数据包的数量，避免一上来就给网络添堵
+C [incorrect] 保持固定数量发送，不随 ACK 的到来而发生变化
+D [incorrect] 先停止发送，等所有 ACK 都到齐之后再继续发送
+Answer: TCP 在刚建立连接完成后，首先有个慢启动的过程，意思就是一点一点地提高发送数据包的数量；如果一上来就发大量数据，这不是给网络添堵吗？[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-188 [single]
+Original: 慢启动阶段，cwnd 如何增长？
+Stem: 慢启动阶段，cwnd 如何增长？
+A [incorrect] 每个 RTT 只增加 1 个 MSS，属于线性增长，而不是指数增长
+B [incorrect] 每收到一个 ACK，cwnd 增加 1/cwnd，属于线性增长
+C [incorrect] 保持不变，直到发生丢包之后才会开始增长
+D [correct] 每收到一个确认完整数据段的 ACK，cwnd 加 1 个 MSS，约每 RTT 翻倍
+Answer: 在简化例子里，以 MSS 为单位，并假设每个新 ACK 都确认一个完整数据段：慢启动时，每收到这样的 ACK，cwnd 增加 1 个 MSS，整体上约每个 RTT 翻倍，发包的个数是指数性增长。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-189 [single]
+Original: 慢启动中假设初始 cwnd = 1（以 MSS 为单位），依次能发 1 个、2 个、4 个，下一次能发几个？
+Stem: 慢启动中假设初始 cwnd = 1（以 MSS 为单位），依次能发 1 个、2 个、4 个，下一次能发几个？
+A [correct] 8 个
+B [incorrect] 5 个
+C [incorrect] 6 个
+D [incorrect] 16 个
+Answer: 收到 4 个 ACK 后，每个确认 cwnd 增加 1，共增加 4，于是可以比之前多发 4 个，所以这一次能够发送 8 个。需要说明的是，这里初始 cwnd = 1 只是为了方便说明，实际初始窗口不一定只有 1 个 MSS。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-190 [fill]
+Original: [填空题·有序] 慢启动门限 ssthresh 的作用是：当 cwnd < ssthresh 时使用 ____ 算法，当 cwnd >= ssthresh 时使用 ____ 算法。
+Stem: 慢启动门限 ssthresh 的作用是：当 cwnd < ssthresh 时使用 ____ 算法，当 cwnd >= ssthresh 时使用 ____ 算法。
+Blanks/order: 2/ordered
+Answer: 有一个叫慢启动门限 ssthresh 的状态变量：当 cwnd < ssthresh 时，使用慢启动算法；当 cwnd >= ssthresh 时，就会使用「拥塞避免算法」。标准答案：慢启动、拥塞避免。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-191 [single]
+Original: 关于 ssthresh，下列说法符合原文的是哪一项？
+Stem: 关于 ssthresh，下列说法符合原文的是哪一项？
+A [incorrect] 固定为 65535 字节，所有连接都使用同一个固定值
+B [incorrect] 是 TCP 首部里的接收窗口字段，由接收方来填写
+C [correct] 发送方维护的门限，不是固定 65535，也不是首部窗口字段
+D [incorrect] 由接收方维护，并通过 ACK 通告给发送方使用
+Answer: ssthresh 是发送方维护的慢启动门限，并不是固定的 65535 字节，也不是 TCP 首部里的接收窗口字段。它会受到实现和拥塞反馈等因素影响。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-192 [single]
+Original: 拥塞避免算法下，cwnd 如何增长？
+Stem: 拥塞避免算法下，cwnd 如何增长？
+A [incorrect] 每收到一个 ACK，cwnd 加 1 个 MSS，依然保持指数增长
+B [incorrect] 每收到一个 ACK，cwnd 就减半，直到不再发生丢包
+C [incorrect] 保持不变，一直到下一次发生丢包的时候才会改变
+D [correct] 每收到一个 ACK，cwnd 加 1/cwnd，线性增长，比慢启动缓慢
+Answer: 进入拥塞避免算法后，规则是：每当收到一个 ACK 时，cwnd 增加 1/cwnd。拥塞避免算法就是将原本慢启动算法的指数增长变成了线性增长，还是增长阶段，但增长速度缓慢了一些。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-193 [single]
+Original: 假定 ssthresh 为 8，cwnd 已达到 8 并进入拥塞避免，当 8 个 ACK 到来后，一共能发送多少个 MSS 大小的数据？
+Stem: 假定 ssthresh 为 8，cwnd 已达到 8 并进入拥塞避免，当 8 个 ACK 到来后，一共能发送多少个 MSS 大小的数据？
+A [correct] 9 个
+B [incorrect] 8 个
+C [incorrect] 16 个
+D [incorrect] 10 个
+Answer: 当 8 个 ACK 应答确认到来时，每个确认增加 1/8，8 个 ACK 确认 cwnd 一共增加 1，于是这一次能够发送 9 个 MSS 大小的数据，变成了线性增长。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-194 [single]
+Original: 拥塞发生时出现丢包，是否可以把丢包和拥塞完全画等号？
+Stem: 拥塞发生时出现丢包，是否可以把丢包和拥塞完全画等号？
+A [incorrect] 可以，丢包一定说明网络拥塞
+B [incorrect] 可以，丢包只会由接收窗口不足造成
+C [correct] 不能，丢包也可能来自链路错误或乱序
+D [incorrect] 不能，因为 TCP 从不根据丢包调整拥塞窗口
+Answer: 经典 Reno 会根据丢包反馈收缩拥塞窗口，不过丢包也可能来自链路错误或乱序，不能把丢包和拥塞完全画等号。拥塞发生时主要区分超时重传和快速重传两种情况，它们使用的拥塞处理方式不同。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-195 [fill]
+Original: [填空题·有序] 在原文假定 cwnd 初始值为 1 的模型中，发生超时重传时，ssthresh 设为 ____，cwnd 重置为 ____。
+Stem: 在原文假定 cwnd 初始值为 1 的模型中，发生超时重传时，ssthresh 设为 ____，cwnd 重置为 ____。
+Blanks/order: 2/ordered
+Answer: 发生超时重传时使用拥塞发生算法：ssthresh 设为 cwnd/2，cwnd 重置为初始值（原文假定为 1）。实际 ssthresh 通常按在途数据量计算，并有最小值限制。标准答案：cwnd/2、1。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-196 [short]
+Original: 超时重传触发拥塞发生算法后，接下来 TCP 怎么做？这种方式有什么问题？
+Stem: 超时重传触发拥塞发生算法后，接下来 TCP 怎么做？这种方式有什么问题？
+Answer: 发生超时重传后，cwnd 重置为 1 并重新开始慢启动，慢启动会突然减少数据流，一旦超时重传就马上回到解放前，这种方式太激进，反应也很强烈，会造成网络卡顿。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-197 [single]
+Original: 拥塞控制中，快速重传是怎样触发的？
+Stem: 拥塞控制中，快速重传是怎样触发的？
+A [incorrect] 发送方必须等 RTO 到期，才能够触发快速重传，不能提前触发它
+B [correct] 接收方重复发出指向缺口的累计 ACK，发送方收到 3 个重复 ACK 即触发
+C [incorrect] 接收方在收到 3 个重复 ACK 之后，通知发送方触发快速重传
+D [incorrect] 发送方只要收到 1 个重复 ACK，就立即触发快速重传机制
+Answer: 如果接收方连续收到缺口之后的数据，会重复发送指向缺口的累计 ACK。发送方收到 3 个重复 ACK 后，就可以触发快速重传，不必等到超时。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-198 [single]
+Original: TCP 为什么认为快速重传触发的情况「不严重」？
+Stem: TCP 为什么认为快速重传触发的情况「不严重」？
+A [incorrect] 因为所有数据都已丢失，只能重新开始
+B [correct] 因为大部分数据没丢，只丢了一小部分
+C [incorrect] 因为接收窗口为 0，发送方暂时不用发送
+D [incorrect] 因为网络已经完全恢复，不会再丢包
+Answer: TCP 认为这种情况不严重，因为大部分没丢，只丢了一小部分。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-199 [fill]
+Original: [填空题·有序] 快速重传触发的拥塞发生处理：cwnd 设置为原来的 ____，ssthresh 设为更新后的 ____ 值，然后进入 ____ 算法。
+Stem: 快速重传触发的拥塞发生处理：cwnd 设置为原来的 ____，ssthresh 设为更新后的 ____ 值，然后进入 ____ 算法。
+Blanks/order: 3/ordered
+Answer: 快速重传触发的拥塞发生：cwnd = cwnd/2，也就是设置为原来的一半；ssthresh = cwnd；然后进入快速恢复算法。标准答案：一半、cwnd、快速恢复。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-200 [single]
+Original: 快速恢复算法的思路是什么？
+Stem: 快速恢复算法的思路是什么？
+A [incorrect] 收到 3 个重复 ACK 说明网络已经彻底瘫痪，必须把 cwnd 重置为 1
+B [incorrect] 收到 3 个重复 ACK 说明接收窗口为 0，应暂停发送
+C [correct] 还能收到 3 个重复 ACK，说明网络也不那么糟糕，所以没有必要像 RTO 超时那样强烈地收缩
+D [incorrect] 收到 3 个重复 ACK 说明可以直接让 cwnd 翻倍
+Answer: 快速重传和快速恢复算法一般同时使用，快速恢复算法认为：你还能收到 3 个重复 ACK，说明网络也不那么糟糕，所以没有必要像 RTO 超时那么强烈。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-201 [single]
+Original: 进入快速恢复算法后，cwnd 怎么设置，并做什么？
+Stem: 进入快速恢复算法后，cwnd 怎么设置，并做什么？
+A [correct] cwnd = ssthresh + 3，并重传丢失的数据包
+B [incorrect] cwnd 重置为 1，并重新开始慢启动过程来恢复
+C [incorrect] cwnd = ssthresh - 3，并暂停发送等待恢复
+D [incorrect] cwnd 保持不变，只重传丢失的那一个数据包
+Answer: 进入快速恢复算法后：拥塞窗口 cwnd = ssthresh + 3（3 的意思是确认有 3 个数据包被收到）；重传丢失的数据包。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-202 [single]
+Original: 快速恢复算法中，再收到重复的 ACK，以及收到确认新数据的 ACK 时，cwnd 分别怎么处理？
+Stem: 快速恢复算法中，再收到重复的 ACK，以及收到确认新数据的 ACK 时，cwnd 分别怎么处理？
+A [incorrect] 重复 ACK 时 cwnd 减 1；收到新数据 ACK 后 cwnd 重置为 1，重新慢启动
+B [incorrect] 重复 ACK 时 cwnd 翻倍；收到新数据 ACK 后 cwnd 保持不变，继续恢复
+C [incorrect] 重复 ACK 时不处理；收到新数据 ACK 后重新进入慢启动重新增长
+D [correct] 重复 ACK 时 cwnd 加 1；收到新数据 ACK 后 cwnd 收缩到 ssthresh，进入拥塞避免
+Answer: 快速恢复中，如果再收到重复的 ACK，那么 cwnd 增加 1；在这个经典 Reno 的简化模型里，收到确认新数据的 ACK 后，把 cwnd 收缩到 ssthresh，退出快速恢复，进入拥塞避免。一次丢多个数据段时，NewReno、SACK 等机制还会采用更细致的恢复处理。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+T3-203 [single]
+Original: 与超时重传相比，快速恢复后的 cwnd 水平和增长方式有何不同？
+Stem: 与超时重传相比，快速恢复后的 cwnd 水平和增长方式有何不同？
+A [incorrect] 同样会被重置为 1，随后开始指数增长的慢启动
+B [incorrect] 同样会被重置为 1，随后线性增长，二者完全一致
+C [correct] 没有回到解放前，cwnd 仍处于较高值，后续线性增长
+D [incorrect] cwnd 会变为 0，需要重新握手之后才能继续发送
+Answer: 使用快速恢复时，没有像「超时重传」一夜回到解放前，而是 cwnd 还在比较高的值，后续呈线性增长。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)

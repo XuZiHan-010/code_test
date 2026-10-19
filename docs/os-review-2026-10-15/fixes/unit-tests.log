@@ -1,0 +1,13 @@
+﻿
+> xiaolin-quiz@0.1.0 test:unit
+> vitest run --project unit
+
+
+ RUN  v5.0.4 D:/vscode html/xiaolincoding_test
+
+
+ Test Files  9 passed (9)
+      Tests  103 passed (103)
+   Start at  16:04:14
+   Duration  1.85s (import 60%, tests 30%, transform 7%, worker 3%)
+

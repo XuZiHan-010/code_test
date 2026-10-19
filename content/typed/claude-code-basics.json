@@ -1,0 +1,2024 @@
+{
+  "prefix": "F",
+  "chapters": {
+    "F1": {
+      "status": "draft",
+      "questions": [
+        { "id": "F1-1", "type": "short" },
+        {
+          "id": "F1-2",
+          "type": "single",
+          "stem": "在项目目录下启动 Claude Code，它会自动读取什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "项目里的全部源码文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "上一次会话的完整对话历史",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "已安装的所有 Skill 的正文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "项目根目录的 CLAUDE.md",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F1-3", "type": "short" },
+        {
+          "id": "F1-4",
+          "type": "single",
+          "stem": "Normal 模式和 Auto-accept 模式有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Normal 只规划不写代码，Auto-accept 每一步都要用户同意",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Normal 在独立上下文里执行，Auto-accept 在主对话里执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Normal 每一步都要用户同意，Auto-accept 自动执行所有操作",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Normal 自动执行所有操作，Auto-accept 每一步都要用户同意",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F1-5",
+          "type": "single",
+          "stem": "Plan 模式下 Claude 做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先规划项目结构和开发步骤，不写代码",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每创建一个文件之前先问用户是否允许",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自动执行所有操作，不需要逐个确认",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在独立的上下文里审查已经写好的代码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F1-6",
+          "type": "single",
+          "stem": "原文建议新手先用哪种模式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Auto-accept 模式，让它自动执行所有操作",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Normal 模式，看清它的每一步操作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Plan 模式，全程只规划而不让它写代码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Auto-accept 模式，出了错再让它撤销",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F1-7",
+          "type": "fill",
+          "stem": "原文任务提示词示例明确交代的三点是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "F1-8", "type": "short" },
+        {
+          "id": "F1-9",
+          "type": "single",
+          "stem": "Plan 模式把计划写进一个 md 文档，对长任务有什么价值？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它会被交给独立子代理，在另一个上下文里执行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它会在每次启动时被自动读取，充当长期的项目背景",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "执行时不会做着做着就忘记做到哪了，还能用 ctrl+g 编辑它",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它会被压缩成一份摘要，替代之前的全部对话历史",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F1-10", "type": "short" },
+        { "id": "F1-11", "type": "short" },
+        { "id": "F1-12", "type": "short" },
+        { "id": "F1-13", "type": "short" },
+        { "id": "F1-14", "type": "short" },
+        {
+          "id": "F1-15",
+          "type": "single",
+          "stem": "安装插件后，怎样确认其中的 Skill 已启用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 /plugin 命令的 Installed 选项里看到它处于 enabled 状态",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "打开项目根目录的 CLAUDE.md，看里面是否写入了它",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 /context 命令查看各部分上下文占用里是否出现了它",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 /init 命令重新扫描项目，看生成的说明里是否有它",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F1-16", "type": "short" },
+        { "id": "F1-17", "type": "short" },
+        { "id": "F1-18", "type": "short" },
+        {
+          "id": "F1-19",
+          "type": "single",
+          "stem": "用 @ 引用文件，对 Claude 的修改范围有什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Claude 会把被引用的文件写进 CLAUDE.md 长期保留",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Claude 会先在独立上下文里审查这个文件再修改",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Claude 会把该文件所在目录的全部文件一起修改",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Claude 知道只改指定的文件，不会去动其他代码",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F1-20", "type": "short" },
+        { "id": "F1-21", "type": "short" },
+        {
+          "id": "F1-22",
+          "type": "single",
+          "stem": "ultrathink 与用 /effort 调整的努力等级有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ultrathink 是全局设置，后续对话都生效，/effort 只让这一轮想得更深",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ultrathink 只让这一轮想得更深，/effort 是全局设置，后续对话都生效",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都是全局设置，区别只在 /effort 要在 /model 里才能打开",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都只对这一轮生效，区别只在 ultrathink 要写在提示词的最前面",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F1-23",
+          "type": "single",
+          "stem": "按原文，新版本里哪个思考关键词真正生效？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ultrathink",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "think",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "think harder",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "think hard",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F1-24",
+          "type": "single",
+          "stem": "提高思考深度会带来什么变化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "消耗的 token 更少，响应也更快",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "消耗的 token 不变，只是响应更慢",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "消耗的 token 更多，响应也更慢",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "消耗的 token 更多，但响应更快",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F1-25", "type": "short" },
+        { "id": "F1-26", "type": "short" },
+        {
+          "id": "F1-27",
+          "type": "multiple",
+          "stem": "按原文，下列哪些内容适合写进 CLAUDE.md？",
+          "options": [
+            {
+              "key": "A",
+              "text": "“写好代码”这类泛泛的描述",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "项目的代码规范",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "项目的技术栈",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "详细的 API 文档",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "一句话的项目简介",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "每次都在变的临时需求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F1-28",
+          "type": "single",
+          "stem": "详细的 API 文档太长，原文建议怎样让 Claude 用到它？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 /init 重新生成一份",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 /compact 压缩后保留",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "整份写进 CLAUDE.md",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 @ 引用具体文件",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F1-29", "type": "short" },
+        {
+          "id": "F1-30",
+          "type": "single",
+          "stem": "判断一条信息值不值得写进 CLAUDE.md，原文给的原则是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这条是不是 /init 自动生成的，不是就不写",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "删掉这条会不会让 Claude 犯错，不会就不写",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "这条写得够不够详细，不够详细就不写",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这条是不是每次任务都在变，不变就不写",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F1-31", "type": "short" },
+        { "id": "F1-32", "type": "short" },
+        {
+          "id": "F1-33",
+          "type": "single",
+          "stem": "直接让 Claude 撤销修改，与用 /rewind 回到某个节点，有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让 Claude 撤销文件和对话都回滚，/rewind 只回滚文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让 Claude 撤销只回滚文件，/rewind 文件和对话都回滚",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都只回滚对话，文件要靠 Git 才能还原",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都只回滚文件，区别只在 /rewind 可以选择节点",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F1-34",
+          "type": "single",
+          "stem": "执行 npm install 生成的 node_modules，Rewind 能撤销吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能，除非事先用 /compact 把这次命令压进摘要",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能，但只有在 Auto-accept 模式下执行的命令才可以",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，Rewind 会把文件和对话一起回滚到选定的节点",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，Rewind 只能回滚 Claude Code 直接创建或编辑的文件",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F1-35", "type": "short" },
+        { "id": "F1-36", "type": "short" },
+        {
+          "id": "F1-37",
+          "type": "single",
+          "stem": "/context 命令显示的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "之前的对话被压缩之后保留下来的关键信息摘要",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "已安装的插件列表和其中每个 Skill 的启用状态",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "当前上下文占用了多少、还剩多少，以及各部分的占比",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "可以恢复的历史会话列表和每个会话改过的文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F1-38",
+          "type": "single",
+          "stem": "/compact 与 /clear 分别适合什么情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "继续做同一个功能用 /compact，切换到不相关的任务用 /clear",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "继续做同一个功能用 /clear，切换到不相关的任务用 /compact",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上下文占用不高时用 /compact，占用很高时才用 /clear",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "想保留文件改动用 /compact，想回滚文件改动用 /clear",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F1-39", "type": "short" },
+        {
+          "id": "F1-40",
+          "type": "single",
+          "stem": "claude --continue 做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把当前会话压缩之后继续",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "从列表里选一个历史会话恢复",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "打开一个不带历史的全新会话",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接恢复最近一次会话",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "F1-41",
+          "type": "single",
+          "stem": "为什么可以把代码审查交给独立的子代理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它在独立的上下文里审查，不受写代码时思维惯性的影响",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它审查完之后会自动把发现的问题全部修复掉",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它加载的指南和读取的文件都占用主会话的上下文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它每一步操作都要用户确认，所以结果更加可靠",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F1-42", "type": "short" },
+        {
+          "id": "F1-43",
+          "type": "single",
+          "stem": "Skill 与子代理在上下文使用方式上有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都在主对话里工作，区别只在子代理读取的文件不计入上下文占用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Skill 在主对话里工作并占用主会话上下文，子代理有独立的上下文窗口，只汇报结果摘要",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Skill 有独立的上下文窗口，只汇报结果摘要，子代理在主对话里工作并占用主会话上下文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都有独立的上下文窗口，区别只在 Skill 结束后不汇报任何结果",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F1-44", "type": "short" },
+        { "id": "F1-45", "type": "short" }
+      ]
+    },
+    "F2": {
+      "status": "draft",
+      "questions": [
+        { "id": "F2-1", "type": "short" },
+        { "id": "F2-2", "type": "short" },
+        {
+          "id": "F2-3",
+          "type": "single",
+          "stem": "用 @ 引用单个文件和引用整个目录，Claude 拿到的内容有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都会读取完整正文，引用目录时逐个读入其中每个文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "引用单个文件拿到的是文件路径，引用目录读取的是全部正文",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "引用单个文件读取的是文件内容，引用目录拿到的是文件列表",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都只拿到路径，正文要等 Claude 确认之后才会读取",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-4",
+          "type": "single",
+          "stem": "怎样让 Claude 只关注一个文件里的特定行范围？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有特殊语法，直接在提示词里说清楚看第几行到第几行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "没有办法，Claude 每次只能把整个文件完整读一遍",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在 .claude/settings.json 里为这个文件配置可读的行范围",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在 @ 引用的文件路径后面加上专门的行号范围语法",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-5",
+          "type": "single",
+          "stem": "怎样限制 Claude 读取 .env 这类敏感文件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把这些文件的路径写进 CLAUDE.local.md 作为个人偏好",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在 .claude/settings.json 里用 permissions.deny 规则把路径挡住",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "在项目根目录的 CLAUDE.md 里写一句不要读取这些文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把这些文件加进 .gitignore，Claude 就不会再去读它们",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-6",
+          "type": "single",
+          "stem": "accept edits 模式的权限是怎样的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每一步操作都先征求同意",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "编辑和命令都不再问",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "改文件不再问，但执行命令仍要确认",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只看不改，先出方案",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-7", "type": "short" },
+        {
+          "id": "F2-8",
+          "type": "single",
+          "stem": "按原文，什么场景才考虑切到 auto 模式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "日常写代码的普通场景",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "新手刚开始上手的场景",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "复杂任务需要先出方案的场景",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "完全信任、任务又长又重复的场景",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F2-9", "type": "short" },
+        { "id": "F2-10", "type": "short" },
+        { "id": "F2-11", "type": "short" },
+        {
+          "id": "F2-12",
+          "type": "fill",
+          "stem": "/tasks 列出的后台任务有三种状态：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "F2-13",
+          "type": "multiple",
+          "stem": "按原文，下列哪些任务适合放到后台运行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数据库迁移",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "安装依赖",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "跑测试用例",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要人一直盯着确认的操作",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "项目构建",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "F2-14",
+          "type": "single",
+          "stem": "怎样让一条命令在后台运行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在命令末尾加 @",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在命令末尾加 &",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "在命令前面加 /tasks",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在命令前面加双横杠",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-15",
+          "type": "single",
+          "stem": "个人项目级的 CLAUDE.local.md 适合写什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "启动 MCP server 所用的命令和参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在所有项目里都生效的个人通用偏好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "技术栈、目录结构等供团队共享的项目信息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "临时调试偏好、sandbox 地址等只有自己用的内容",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F2-16", "type": "short" },
+        {
+          "id": "F2-17",
+          "type": "single",
+          "stem": "/memory 与 /init 的用途有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "/memory 打开编辑界面管理记忆文件和自动记忆，/init 扫描项目结构后生成项目级 CLAUDE.md",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "/memory 显示当前上下文各部分的占用情况，/init 把之前的对话压缩成一份摘要",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "/memory 扫描项目结构后生成项目级 CLAUDE.md，/init 打开编辑界面管理记忆文件和自动记忆",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "/memory 列出可以恢复的历史会话，/init 清空对话历史后开始一个全新的会话",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-18", "type": "short" },
+        {
+          "id": "F2-19",
+          "type": "single",
+          "stem": "多个层级的记忆文件合并进上下文时，优先级如何？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只读取项目级的文件，其他层级不会被合并",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "越通用的层级优先级越高，用户级高于项目级",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "越具体的层级优先级越高，项目级高于用户级",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "各层级优先级相同，后写入的内容覆盖先写入的",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-20", "type": "short" },
+        { "id": "F2-21", "type": "short" },
+        {
+          "id": "F2-22",
+          "type": "single",
+          "stem": "claude mcp add 命令里的双横杠前后，参数分别传给谁？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前面的是给 claude 的参数，后面的是启动 MCP server 的命令",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "前面的是 server 的名字，后面的是要卸载的工具",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "前面的是用户级配置，后面的是项目级配置",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "前面的是启动 MCP server 的命令，后面的是给 claude 的参数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-23",
+          "type": "single",
+          "stem": "需要让团队共享 MCP 配置时，原文建议把配置写到哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 user 作用域安装到本机",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "项目根目录的 .mcp.json，并提交到 Git",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "用户目录下的 ~/.claude/settings.json",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "个人项目级的 CLAUDE.local.md",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-24", "type": "short" },
+        { "id": "F2-25", "type": "short" },
+        {
+          "id": "F2-26",
+          "type": "single",
+          "stem": "怎样卸载一个不再需要的 MCP Server？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 /plugin 命令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 claude mcp add 命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 claude mcp remove 命令",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用 claude mcp list 命令",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-27",
+          "type": "single",
+          "stem": "Skill 与 plugin 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者互不相关，Skill 用来接入外部工具，plugin 用来在工具执行前后触发脚本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "plugin 是一个 SKILL.md 加可选的辅助文件，Skill 是更大的集合，可以带 plugins、hooks、命令等",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者是同一个东西的两种叫法，区别只在 plugin 放在用户目录而 Skill 放在项目目录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Skill 是一个 SKILL.md 加可选的辅助文件，plugin 是更大的集合，可以带 skills、hooks、命令等",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "F2-28",
+          "type": "single",
+          "stem": "~/.claude/skills/ 与项目的 .claude/skills/ 两个目录下的 Skill，可用范围有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前者只在当前项目可用，后者个人全局可用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都全局可用，区别只在后者会提交到 Git",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "前者个人全局可用，后者只在当前项目可用",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都只在当前项目可用，区别只在加载顺序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-29",
+          "type": "single",
+          "stem": "PreToolUse 与 PostToolUse 分别适合处理什么事？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都在工具执行后触发，区别只在 PreToolUse 从环境变量里读取被修改文件的路径",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "PreToolUse 在工具执行前触发，适合输入校验和拦截；PostToolUse 在执行后触发，适合自动格式化和测试",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都在工具执行前触发，区别只在 PostToolUse 匹配的是 Edit 和 Write 这两个工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "PreToolUse 在工具执行后触发，适合自动格式化和测试；PostToolUse 在执行前触发，适合输入校验和拦截",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-30", "type": "short" },
+        {
+          "id": "F2-31",
+          "type": "single",
+          "stem": "Hook 脚本怎样拿到被修改文件的路径？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从标准输入接收一段 JSON，解析出其中的 tool_input.file_path",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "从启动脚本时传入的第一个命令行参数里取得",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "直接读取 $CLAUDE_PROJECT_DIR 这个环境变量的值",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "读取 .claude/settings.json 里 matcher 字段的值",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-32",
+          "type": "multiple",
+          "stem": "原文举的 Hooks 典型应用场景有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次修改测试文件后自动跑相关测试",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把搜索网页、操作数据库等外部工具接入进来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次修改完代码后自动 git add 并 commit",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "在独立的上下文里读完某个库的文档再汇报要点",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "每次修改文件后自动运行 Prettier 或 ESLint",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "每次修改配置文件后检查是否有敏感信息泄露",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F2-33", "type": "short" },
+        {
+          "id": "F2-34",
+          "type": "fill",
+          "stem": "创建子代理的向导共五步，最后一步是选择标识颜色，前四步依次配置：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "F2-35",
+          "type": "fill",
+          "stem": "原文列出的适合交给子代理的四类场景是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "F2-36",
+          "type": "single",
+          "stem": "/remote-control 与 /teleport 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都是把网页会话拉回本地，区别只在 /remote-control 不带对话历史",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都是从浏览器遥控本地终端，区别只在 /teleport 需要订阅才能使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "/remote-control 把网页上的会话拉回本地终端，/teleport 从浏览器遥控本地终端里的会话",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "/remote-control 从浏览器遥控本地终端里的会话，/teleport 把网页上的会话拉回本地终端",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "F2-37",
+          "type": "single",
+          "stem": "用 /remote-control 远程控制时，Claude Code 实际跑在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "跑在用来遥控的浏览器里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "跑在一个独立的子代理里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "仍跑在本地电脑的终端里",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "跑在 claude.ai 的云端环境里",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-38", "type": "short" },
+        {
+          "id": "F2-39",
+          "type": "single",
+          "stem": "/model 与 /effort 调节的分别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "/model 切换用哪个模型，/effort 调节回答之前愿意花多少算力推敲",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "/model 切换工作模式，/effort 调节上下文窗口的大小",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "/model 管理 MCP server，/effort 管理后台任务的数量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "/model 调节回答之前愿意花多少算力推敲，/effort 切换用哪个模型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-40",
+          "type": "single",
+          "stem": "按原文的组合建议，快速的格式转换适合哪种配置？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Opus 配 low",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Haiku 配 low",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Opus 配 max",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Sonnet 配 xhigh",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-41",
+          "type": "single",
+          "stem": "关于思考档位的选择，原文的看法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "档位对结果没有影响，真正起作用的只有切换模型这一项调节",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "教程推荐的默认档位适合所有业务任务，不需要再做任何验证",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "档位越高效果越好，只要预算允许就应把 max 设为所有任务的默认档位",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是越高越好，max 容易过度思考，建议先小范围评测确认有提升再大规模用",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "F2-42",
+          "type": "single",
+          "stem": "claude --resume 做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把网页上的会话和对应分支带到当前终端",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "直接恢复最近一次对话，省去选择的步骤",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "列出已保存的历史对话，让你选择恢复哪一个",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "清空对话历史，给 Claude 一个全新的开始",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-43", "type": "short" },
+        { "id": "F2-44", "type": "short" },
+        {
+          "id": "F2-45",
+          "type": "single",
+          "stem": "一次想让 Claude 看多个文件时，@ 应该怎么写？",
+          "options": [
+            {
+              "key": "A",
+              "text": "连续写多个 @ 引用，用空格隔开",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每条消息只能写一个 @ 引用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能改为引用它们所在的整个目录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在一个 @ 后面用逗号列出所有文件",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-46", "type": "short" },
+        {
+          "id": "F2-47",
+          "type": "single",
+          "stem": "Claude Code 怎样在几个工作模式之间切换？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按 ctrl+g",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "输入 /model 命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "连按两次 Esc 键",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "按 Shift+Tab 循环切换",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F2-48", "type": "short" },
+        {
+          "id": "F2-49",
+          "type": "single",
+          "stem": "Claude Code 的回滚只恢复文件内容吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，对话上下文要用 /clear 另外清空",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，对话上下文也会一起回滚",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是的，对话上下文会原样保留",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，命令生成的文件也会一起撤销",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-50",
+          "type": "single",
+          "stem": "按原文，写 CLAUDE.md 的一条重要原则是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "越新越好，只保留临时需求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "越精准越好，不是越长越好",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "全部自动生成，不要手工修改",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "越长越好，内容多多益善",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-51", "type": "short" },
+        { "id": "F2-52", "type": "short" },
+        {
+          "id": "F2-53",
+          "type": "single",
+          "stem": "/effort 的哪个档位是一次性的，会话结束就自动失效？",
+          "options": [
+            {
+              "key": "A",
+              "text": "xhigh",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "high",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "max",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "low",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-54", "type": "short" },
+        {
+          "id": "F2-55",
+          "type": "single",
+          "stem": "medium 思考档位适合什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "成本敏感场景的折中档，适合日常修小 bug、写已有模式下的功能",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "推理要求最高的场景，适合复杂的架构设计和难缠的 bug",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "遇到硬骨头的场景，适合这一轮临时拉到最高档",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最轻量的场景，适合简单问答和快速的格式转换",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F2-56", "type": "short" },
+        {
+          "id": "F2-57",
+          "type": "single",
+          "stem": "已经把 xhigh 设为默认档时，ultrathink 还有多大作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "作用和在低档位时一样大，仍然能明显加深这一轮的思考",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "会把默认档位永久改成 max，直到手动用 /effort 切回来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "完全不起作用，因为 ultrathink 只在 low 档位下才生效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "边际作用被削弱了不少，因为 xhigh 本来就几乎总是深思考",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F2-58", "type": "short" },
+        {
+          "id": "F2-59",
+          "type": "single",
+          "stem": "上下文用到 70% 以上、Claude 开始顾此失彼时，原文建议怎么办？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 /model 切换到推理更强的模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 /rewind 回滚到更早的一个节点",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 /compact 把之前的对话压缩成摘要",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用 ultrathink 把思考档位临时拉到最高",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F2-60",
+          "type": "fill",
+          "stem": "按原文的使用方式，打开回滚菜单的两种操作是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "F2-61",
+          "type": "single",
+          "stem": "Sonnet、Opus、Haiku 三个模型，原文建议平时怎么选？",
+          "options": [
+            {
+              "key": "A",
+              "text": "默认用 Opus，只有简单问答才切到 Haiku",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "默认用 Haiku，出了错再切到 Sonnet 重做",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "始终用 Opus，因为它的推理能力最强",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "大多数情况用 Sonnet，遇到特别复杂的问题再切到 Opus",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F2-62", "type": "short" },
+        { "id": "F2-63", "type": "short" },
+        {
+          "id": "F2-64",
+          "type": "fill",
+          "stem": "原文列出的一份好的 CLAUDE.md 通常包含四类信息：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        { "id": "F2-65", "type": "short" }
+      ]
+    },
+    "F3": {
+      "status": "draft",
+      "questions": [
+        { "id": "F3-1", "type": "short" },
+        {
+          "id": "F3-2",
+          "type": "single",
+          "stem": "子目录里的 CLAUDE.md 什么时候被加载？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只有 Claude 把它写进自动记忆之后才加载",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "等 Claude 读到那个子目录下的文件时才带进来",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只有用户输入斜杠命令显式调用时才加载",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次开新会话时和根目录的那份一起加载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F3-3",
+          "type": "single",
+          "stem": "手写的 CLAUDE.md 与自动记忆怎样互补？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CLAUDE.md 是人定的规矩，自动记忆是 Claude 干活过程中自己记下的经验",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都由 Claude 自己写，区别只在 CLAUDE.md 会提交给团队共享",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "CLAUDE.md 是 Claude 干活过程中自己记下的经验，自动记忆是人定的规矩",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都由人手写，区别只在自动记忆放在子目录里按模块加载",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F3-4", "type": "short" },
+        {
+          "id": "F3-5",
+          "type": "single",
+          "stem": "启动时，Claude 会加载 Skill 的哪些内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只加载所有 Skill 的名字和一句话描述，正文不读",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "什么都不加载，等用户输入斜杠命令再说",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把所有 Skill 的正文完整读进上下文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只加载上一次会话用过的 Skill 的正文",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F3-6",
+          "type": "single",
+          "stem": "用户怎样显式调用一个 Skill？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在提示词里用 @ 引用它的 SKILL.md 文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把它的名字写进项目根目录的 CLAUDE.md",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "等 Claude 扫描描述列表之后自己加载",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "输入斜杠加 Skill 的名字，例如 /code-review",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F3-7", "type": "short" },
+        { "id": "F3-8", "type": "short" },
+        {
+          "id": "F3-9",
+          "type": "single",
+          "stem": "Subagent 干完活后，交回主对话的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "读过的每段文件内容",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只有汇总结果",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "全部的搜索结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "完整的试错过程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F3-10",
+          "type": "fill",
+          "stem": "原文举例，可以派给三个 Subagent 同时跑的三路检查是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "F3-11", "type": "short" },
+        {
+          "id": "F3-12",
+          "type": "single",
+          "stem": "子代理配置里的 tools 字段和 model 字段分别用来做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "tools 让体力活用便宜快速的模型，model 限制它能用哪些工具和权限",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "tools 列出它要连接的外部系统，model 指定它保存记忆的目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "tools 限制它能用哪些工具，model 让体力活用便宜快速的模型、深度推理再用贵的",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "tools 声明它什么时候被自动选中，model 声明它最终输出的格式",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F3-13", "type": "short" },
+        {
+          "id": "F3-14",
+          "type": "single",
+          "stem": "按原文，MCP 的价值主要在哪类系统上？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有现成命令行，或者需要保持长连接和鉴权状态的系统",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "要求某条规则必须百分之百执行的流程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只需要读写本地项目文件就能完成的任务",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "本来就有好用命令行的工具，例如 git 和 gh",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F3-15",
+          "type": "single",
+          "stem": "接入 GitHub 的 MCP 时，访问令牌放在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写进插件的 plugin.json",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "写进项目根目录的 CLAUDE.md",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "放在 Authorization 请求头里",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "写进 Hook 的 matcher 字段",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F3-16", "type": "short" },
+        {
+          "id": "F3-17",
+          "type": "single",
+          "stem": "Hook 的执行靠的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subagent 在独立上下文里判断",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型读懂规则之后自觉遵守",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用户每次手动输入斜杠命令",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "程序层面的强制触发，没有模型参与",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F3-18", "type": "short" },
+        {
+          "id": "F3-19",
+          "type": "single",
+          "stem": "Hook 的命令以退出码 2 退出，表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这次操作正常放行，Claude 继续往下执行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这次操作被拦截，报错信息会回传给 Claude",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "整个会话被终止，需要用户重新启动",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Hook 脚本自身出错，这次检查被直接忽略",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F3-20", "type": "short" },
+        {
+          "id": "F3-21",
+          "type": "single",
+          "stem": "Plugin 在六件套里承担什么角色？",
+          "options": [
+            {
+              "key": "A",
+              "text": "本身不提供新能力，只做打包和分发",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "在独立的上下文里完成搜索和试错",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在流程的关键节点上强制触发命令",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "给 AI 和外部工具之间提供统一的插口",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F3-22",
+          "type": "single",
+          "stem": "plugin.json 与 marketplace 分别承担什么职责？",
+          "options": [
+            {
+              "key": "A",
+              "text": "plugin.json 存放 Skill 的正文；marketplace 存放 Subagent 的系统提示",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "plugin.json 负责分发；marketplace 是插件的身份证，写清名字、版本和描述",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "plugin.json 是插件的身份证，写清名字、版本和描述；marketplace 负责分发",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "plugin.json 记录访问令牌；marketplace 记录每个 Hook 的退出码",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F3-23", "type": "short" },
+        {
+          "id": "F3-24",
+          "type": "single",
+          "stem": "为什么安装别人的 Plugin 之前要先看来源？",
+          "options": [
+            {
+              "key": "A",
+              "text": "里面的 Skill 没有版本号，装上之后就再也无法更新",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "里面的内容每次会话都全量加载，会把重要的规则稀释掉",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "里面的 Subagent 会和主对话共用上下文，把上下文灌满",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "里面的 Hook 能在你的机器上执行任意命令，MCP 配置能连外部服务",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "F3-25", "type": "short" },
+        { "id": "F3-26", "type": "short" },
+        { "id": "F3-27", "type": "short" },
+        { "id": "F3-28", "type": "short" },
+        {
+          "id": "F3-29",
+          "type": "single",
+          "stem": "按原文的速查表，“规则必须百分百执行”该用六件套里的哪一个？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Skills",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Hooks",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Subagents",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "CLAUDE.md",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "F3-30",
+          "type": "single",
+          "stem": "写 CLAUDE.md 时，命令和禁令应怎样表述？",
+          "options": [
+            {
+              "key": "A",
+              "text": "命令写成能直接复制执行的完整命令，禁令写“尽量不要改”",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "命令写成“跑一下测试”这样的概括，禁令直接写“不许改”",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "命令写成能直接复制执行的完整命令，禁令直接写“不许改”",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "命令和禁令都写得概括一些，具体怎么做留给模型判断",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "F3-31", "type": "short" },
+        { "id": "F3-32", "type": "short" },
+        {
+          "id": "F3-33",
+          "type": "single",
+          "stem": "规则明明写在上下文里却被无视，与每次新会话的“失忆”是同一个问题吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是，两者都可以靠把规则写进 CLAUDE.md 彻底解决",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是，两者都是因为规则没有被加载进当前会话的上下文",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，失忆是模型概率生成造成的，这里是规则没有被加载",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，失忆是规则没有进入会话，这里是规则摆在上下文里仍可能被漏掉",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

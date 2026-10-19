@@ -1,0 +1,9 @@
+{
+  "draftQuestions": 716,
+  "draftChapters": 7,
+  "warnings": [],
+  "answeringLeaks": 0,
+  "productionQuestions": 0,
+  "requireAllRejectedDraftChapters": 7,
+  "scope": "Pure buildBank/Catalog verification; no HTTP, browser, database, or model calls."
+}

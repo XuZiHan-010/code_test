@@ -1,0 +1,545 @@
+T5-1 [fill]
+Original: [填空题·有序] 以访问一个 HTTPS 页面、使用 HTTP/1.1 或 HTTP/2 为例，原文所述浏览器需要连接时，在发送 HTTP 请求之前依次经过的四步是：____ → ____ → ____ → ____。
+Stem: 以访问一个 HTTPS 页面、使用 HTTP/1.1 或 HTTP/2 为例，原文所述浏览器需要连接时，在发送 HTTP 请求之前依次经过的四步是：____ → ____ → ____ → ____。
+Blanks/order: 4/ordered
+Answer: 依次是：DNS 解析 → 确定下一跳 → 建立 TCP 连接 → TLS 握手。DNS 解析获取 IP；确定下一跳由操作系统根据路由表决定网卡和下一跳；建立 TCP 连接即完成三次握手；TLS 握手协商版本和密钥、验证服务端证书后建立加密通信。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-2 [single]
+Original: 访问页面时，浏览器根据缓存规则发现能直接使用有效缓存，原文认为会怎样？
+Stem: 访问页面时，浏览器根据缓存规则发现能直接使用有效缓存，原文认为会怎样？
+A [incorrect] 只能省掉 TLS 握手，其余网络步骤保持不变
+B [incorrect] 仍然要先完成 DNS 解析和 TCP 三次握手，再重新校验缓存
+C [incorrect] 仍然要发送 HTTP 请求，缓存只用来加快页面渲染
+D [correct] 可以省掉对应的网络请求
+Answer: 浏览器确定协议、主机、端口和资源路径后，会根据缓存规则判断是否需要请求网络；如果能直接使用有效缓存，就可以省掉对应的网络请求，不必再走后面的网络步骤。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-3 [single]
+Original: 关于浏览器在 DNS 解析这一步获取 IP 的路径，下列说法符合原文的是哪一项？
+Stem: 关于浏览器在 DNS 解析这一步获取 IP 的路径，下列说法符合原文的是哪一项？
+A [incorrect] 路径与浏览器加密 DNS、代理等配置无关，所有环境下都完全相同
+B [incorrect] 只会查询 hosts，不会再向任何 DNS 解析服务查询
+C [correct] 具体路径会受浏览器加密 DNS、代理等配置影响，不是固定经过路由器缓存、ISP 缓存
+D [incorrect] 路径是固定的：先后经过路由器缓存、ISP 缓存，最后才向 DNS 解析服务查询
+Answer: 浏览器会根据自己的配置、解析缓存、系统解析机制和 hosts 等获取 IP，没有可用结果时才向 DNS 解析服务查询。具体路径会受浏览器加密 DNS、代理等配置影响，不是固定经过「路由器缓存、ISP 缓存」。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-4 [single]
+Original: 打开页面的“确定下一跳”这一步，操作系统依据什么决定从哪个网卡、向哪个下一跳发送？
+Stem: 打开页面的“确定下一跳”这一步，操作系统依据什么决定从哪个网卡、向哪个下一跳发送？
+A [incorrect] 操作系统根据 TLS 协商出的密钥来决定
+B [incorrect] 操作系统根据 hosts 文件中的记录来决定
+C [incorrect] 操作系统根据浏览器的缓存规则来决定
+D [correct] 操作系统根据路由表来决定
+Answer: 确定下一跳时，操作系统根据路由表决定从哪个网卡、向哪个下一跳发送；hosts 属于 DNS 解析阶段可能用到的来源，缓存规则用于判断是否请求网络，TLS 密钥用于加密通信，都不是用来选下一跳的。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-5 [fill]
+Original: [填空题·有序] 以 IPv4 以太网为例，原文所述目标与本机在同一子网时通过____查目标 MAC；访问外网时通常查____的 MAC。
+Stem: 以 IPv4 以太网为例，原文所述目标与本机在同一子网时通过____查目标 MAC；访问外网时通常查____的 MAC。
+Blanks/order: 2/ordered
+Answer: 同一子网时通过 ARP 查目标 MAC；访问外网时通常查网关的 MAC。故第一空填 ARP，第二空填网关。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-6 [single]
+Original: 打开网页时，建立 TCP 连接这一步，原文提醒客户端完成三次握手的对端可能是什么？
+Stem: 打开网页时，建立 TCP 连接这一步，原文提醒客户端完成三次握手的对端可能是什么？
+A [incorrect] 一定是本机所在子网的网关，网关会替客户端完成握手
+B [incorrect] 只能是提供 DNS 解析服务的服务器
+C [incorrect] 一定是最终处理业务的服务器，不会是 CDN 或反向代理
+D [correct] 可能是 CDN 或反向代理，而不是最终的业务服务器
+Answer: 客户端和服务端完成三次握手，但这里可能连接到的是 CDN 或反向代理，而不是最终的业务服务器。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-7 [single]
+Original: 关于 TLS 握手的往返次数，下列说法符合原文的是哪一项？
+Stem: 关于 TLS 握手的往返次数，下列说法符合原文的是哪一项？
+A [correct] 具体往返次数取决于 TLS 版本和是否恢复会话，不能统一说成四次握手
+B [incorrect] 固定是三次握手，和 TCP 连接的握手次数相同，与会话是否恢复无关
+C [incorrect] 与是否恢复会话无关，每次访问都要完整重走一遍协商和验证流程
+D [incorrect] 固定是四次握手，无论 TLS 版本和是否恢复会话都可以统一这样说
+Answer: TLS 握手负责协商版本和密钥、验证服务端证书，再建立加密通信。具体往返次数取决于 TLS 版本和是否恢复会话，不能统一说成四次握手。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-8 [single]
+Original: 打开页面的“服务端返回响应”这一步，原文说响应可能来自哪里？
+Stem: 打开页面的“服务端返回响应”这一步，原文说响应可能来自哪里？
+A [correct] 缓存节点直接返回内容，或后端处理请求后返回状态码、响应头和响应体
+B [incorrect] 由浏览器直接读取本地缓存生成，不经过服务端
+C [incorrect] 只可能由后端处理请求后返回，缓存节点不会直接返回内容
+D [incorrect] 只返回响应体，不包含状态码和响应头
+Answer: 服务端返回响应有两种情况：缓存节点直接返回内容，或者后端处理请求后返回状态码、响应头和响应体。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-9 [fill]
+Original: [填空题·有序] 浏览器收到 HTML 后，原文所述的渲染过程是：解析 HTML，构建____，加载 CSS、JavaScript、图片等资源，再依次进行____、____和____。
+Stem: 浏览器收到 HTML 后，原文所述的渲染过程是：解析 HTML，构建____，加载 CSS、JavaScript、图片等资源，再依次进行____、____和____。
+Blanks/order: 4/ordered
+Answer: 依次填：DOM、样式计算、布局、绘制。浏览器解析 HTML 并构建 DOM，加载 CSS、JavaScript、图片等资源，再进行样式计算、布局和绘制；页面里的资源请求也可能复用现有连接。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-10 [multiple]
+Original: 原文提醒，打开页面的这些步骤不是每次都完整重走。下列哪些说法符合原文？
+Stem: 原文提醒，打开页面的这些步骤不是每次都完整重走。下列哪些说法符合原文？
+A [correct] 连接可以复用
+B [correct] DNS 结果和页面资源可以缓存
+C [incorrect] 每次访问页面都必须完整重走全部步骤
+D [incorrect] 使用 HTTP/3 时仍然必须先做 TCP 三次握手
+Answer: 原文补充的要点是：这些步骤不是每次都完整重走，连接可以复用，DNS 和资源可以缓存；使用 HTTP/3 时则通过 QUIC 建立安全连接，不再先做 TCP 三次握手。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-11 [single]
+Original: 使用 HTTP/3 时，原文说怎样建立安全连接？
+Stem: 使用 HTTP/3 时，原文说怎样建立安全连接？
+A [incorrect] 不需要建立任何连接，直接由 CDN 或反向代理返回内容
+B [correct] 通过 QUIC 建立安全连接，不再先做 TCP 三次握手
+C [incorrect] 先做 TCP 三次握手，再通过 QUIC 协商密钥
+D [incorrect] 仍然先做 TCP 三次握手，再按固定的四次握手完成 TLS 握手
+Answer: 面试时要补一句：使用 HTTP/3 时，通过 QUIC 建立安全连接，不再先做 TCP 三次握手。[原文§描述一下打开百度首页后发生的网络过程](https://xiaolincoding.com/interview/network.html#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%89%93%E5%BC%80%E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5%E5%90%8E%E5%8F%91%E7%94%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%87%E7%A8%8B)
+
+T5-12 [single]
+Original: 网页非常慢、一直转圈时，原文建议先做什么？
+Stem: 网页非常慢、一直转圈时，原文建议先做什么？
+A [incorrect] 先抓包逐个分析报文，再考虑浏览器开发者工具
+B [incorrect] 先判定是「网络不好」，再逐项排除其他原因
+C [incorrect] 先看状态码，状态码正常就可以认为没有问题
+D [correct] 先找时间花在了哪一段，而不是一上来就判断「网络不好」
+Answer: 页面慢可能是 DNS、建连、服务端处理、下载资源，也可能是浏览器渲染慢，所以先不要一上来就判断「网络不好」，而要先找时间花在哪一段；之后先定位阶段，再找原因。[原文§网页非常慢转圈圈的时候，要定位问题需要从哪些角度？](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E9%A1%B5%E9%9D%9E%E5%B8%B8%E6%85%A2%E8%BD%AC%E5%9C%88%E5%9C%88%E7%9A%84%E6%97%B6%E5%80%99-%E8%A6%81%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E4%BB%8E%E5%93%AA%E4%BA%9B%E8%A7%92%E5%BA%A6)
+
+T5-13 [fill]
+Original: [填空题·无序] 原文建议先打开浏览器开发者工具的 Network，查看请求的____和____来判断时间花在哪一段。
+Stem: 原文建议先打开浏览器开发者工具的 Network，查看请求的____和____来判断时间花在哪一段。
+Blanks/order: 2/unordered
+Answer: 填 Timing 和瀑布图：先看请求的 Timing 和瀑布图，找出时间花在哪一段。[原文§网页非常慢转圈圈的时候，要定位问题需要从哪些角度？](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E9%A1%B5%E9%9D%9E%E5%B8%B8%E6%85%A2%E8%BD%AC%E5%9C%88%E5%9C%88%E7%9A%84%E6%97%B6%E5%80%99-%E8%A6%81%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E4%BB%8E%E5%93%AA%E4%BA%9B%E8%A7%92%E5%BA%A6)
+
+T5-14 [single]
+Original: 页面慢时发现 DNS 这一段慢，原文建议怎样排查？
+Stem: 页面慢时发现 DNS 这一段慢，原文建议怎样排查？
+A [incorrect] 只要解析失败，就可以直接断定是域名写错了，无需再看解析服务器和缓存
+B [incorrect] 只检查服务端的网关日志、数据库和下游接口，不看解析结果
+C [correct] 检查解析服务器、缓存和网络情况，并确认解析到的 IP 是否正确
+D [incorrect] 只检查资源大小、压缩和 CDN 命中率，不看解析服务器和 IP
+Answer: DNS 慢要检查解析服务器、缓存和网络情况，确认解析到的 IP 是否正确；解析失败不一定代表域名写错。[原文§网页非常慢转圈圈的时候，要定位问题需要从哪些角度？](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E9%A1%B5%E9%9D%9E%E5%B8%B8%E6%85%A2%E8%BD%AC%E5%9C%88%E5%9C%88%E7%9A%84%E6%97%B6%E5%80%99-%E8%A6%81%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E4%BB%8E%E5%93%AA%E4%BA%9B%E8%A7%92%E5%BA%A6)
+
+T5-15 [multiple]
+Original: 连接或 TLS 握手慢时，原文建议检查哪些方面？
+Stem: 连接或 TLS 握手慢时，原文建议检查哪些方面？
+A [correct] 往返时延和丢包
+B [correct] 代理、防火墙和证书相关问题
+C [incorrect] 资源大小、压缩和 CDN 命中率
+D [incorrect] 脚本执行、长任务和布局开销
+E [correct] 必要时抓包查看 SYN、重传和 TLS 消息
+Answer: 连接或 TLS 握手慢，要检查往返时延、丢包、代理、防火墙和证书相关问题，必要时抓包看 SYN、重传和 TLS 消息；资源大小、CDN 命中率属于内容下载慢的检查项，长任务和布局开销属于页面渲染卡顿的检查项。[原文§网页非常慢转圈圈的时候，要定位问题需要从哪些角度？](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E9%A1%B5%E9%9D%9E%E5%B8%B8%E6%85%A2%E8%BD%AC%E5%9C%88%E5%9C%88%E7%9A%84%E6%97%B6%E5%80%99-%E8%A6%81%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E4%BB%8E%E5%93%AA%E4%BA%9B%E8%A7%92%E5%BA%A6)
+
+T5-16 [single]
+Original: 等待首字节时间（TTFB）很长时，下列说法符合原文的是哪一项？
+Stem: 等待首字节时间（TTFB）很长时，下列说法符合原文的是哪一项？
+A [incorrect] TTFB 很长说明请求还没有到达服务器，只需要检查客户端网络，不必看服务端
+B [correct] 请求可能已到服务器，要结合网关日志、调用链、数据库和下游接口排查；TTFB 也包含网络等待
+C [incorrect] TTFB 很长就说明后端代码执行慢，只需要优化后端代码，不必看网关日志和调用链
+D [incorrect] TTFB 只由数据库查询耗时决定，与网络等待无关，等同于后端代码执行时间
+Answer: TTFB 很长时，请求可能已经到了服务器，要结合网关日志、调用链、数据库和下游接口排查。TTFB 也包含网络等待，不能直接等同于后端代码执行时间。[原文§网页非常慢转圈圈的时候，要定位问题需要从哪些角度？](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E9%A1%B5%E9%9D%9E%E5%B8%B8%E6%85%A2%E8%BD%AC%E5%9C%88%E5%9C%88%E7%9A%84%E6%97%B6%E5%80%99-%E8%A6%81%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E4%BB%8E%E5%93%AA%E4%BA%9B%E8%A7%92%E5%BA%A6)
+
+T5-17 [multiple]
+Original: 内容下载慢时，原文建议查看哪些方面？
+Stem: 内容下载慢时，原文建议查看哪些方面？
+A [correct] 资源大小和带宽
+B [incorrect] 解析服务器和解析到的 IP 是否正确
+C [correct] 压缩和 CDN 命中率
+D [incorrect] 脚本执行和布局开销
+E [correct] 重传情况，尤其注意大图片、大脚本等资源
+Answer: 内容下载慢，要看资源大小、带宽、压缩、CDN 命中率和重传情况，尤其注意大图片、大脚本等资源；解析服务器和 IP 属于 DNS 慢的检查项，脚本执行和布局开销属于页面渲染卡顿的检查项。[原文§网页非常慢转圈圈的时候，要定位问题需要从哪些角度？](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E9%A1%B5%E9%9D%9E%E5%B8%B8%E6%85%A2%E8%BD%AC%E5%9C%88%E5%9C%88%E7%9A%84%E6%97%B6%E5%80%99-%E8%A6%81%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E4%BB%8E%E5%93%AA%E4%BA%9B%E8%A7%92%E5%BA%A6)
+
+T5-18 [single]
+Original: 请求已经结束、返回了 200，但页面仍然卡顿，原文怎么看？
+Stem: 请求已经结束、返回了 200，但页面仍然卡顿，原文怎么看？
+A [correct] 200 只说明请求成功，不代表页面已正常渲染，应看 Performance、控制台报错和长任务
+B [incorrect] 应回到 DNS 解析和连接建立阶段重新排查，因为渲染阶段不会造成页面卡顿
+C [incorrect] 200 说明页面已经正常渲染，问题一定出在网络上，不必再看控制台报错和脚本执行
+D [incorrect] 200 说明服务端没有问题，应只检查 CDN 命中率和带宽，不必看页面渲染
+Answer: 请求结束但页面仍然卡，要看 Performance、控制台报错、长任务、脚本执行和布局开销。返回 200 只说明请求成功，不代表页面已经正常渲染。[原文§网页非常慢转圈圈的时候，要定位问题需要从哪些角度？](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E9%A1%B5%E9%9D%9E%E5%B8%B8%E6%85%A2%E8%BD%AC%E5%9C%88%E5%9C%88%E7%9A%84%E6%97%B6%E5%80%99-%E8%A6%81%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E4%BB%8E%E5%93%AA%E4%BA%9B%E8%A7%92%E5%BA%A6)
+
+T5-19 [multiple]
+Original: 原文说比较哪些情况可以帮助缩小页面慢的排查范围？
+Stem: 原文说比较哪些情况可以帮助缩小页面慢的排查范围？
+A [correct] 所有网站都慢，还是只有这个网站慢
+B [correct] 所有用户都慢，还是某个地区或网络慢
+C [incorrect] 返回的状态码是不是 200
+D [incorrect] 域名是否写错
+Answer: 原文建议同时比较「所有网站都慢，还是只有这个网站慢」「所有用户都慢，还是某个地区或网络慢」，这能帮助缩小范围；状态码是 200 与否不能说明页面是否正常，域名是否写错也不是这里的比较维度。[原文§网页非常慢转圈圈的时候，要定位问题需要从哪些角度？](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E9%A1%B5%E9%9D%9E%E5%B8%B8%E6%85%A2%E8%BD%AC%E5%9C%88%E5%9C%88%E7%9A%84%E6%97%B6%E5%80%99-%E8%A6%81%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E4%BB%8E%E5%93%AA%E4%BA%9B%E8%A7%92%E5%BA%A6)
+
+T5-20 [fill]
+Original: [填空题·无序] 浏览器信息不够时，原文提到可以用____查看分段耗时，用____或____抓包，并把客户端时间和服务端日志对起来。
+Stem: 浏览器信息不够时，原文提到可以用____查看分段耗时，用____或____抓包，并把客户端时间和服务端日志对起来。
+Blanks/order: 3/unordered
+Answer: 填 curl、tcpdump、Wireshark（后两者顺序可互换）：先用 curl 看分段耗时，再用 tcpdump 或 Wireshark 抓包，并把客户端时间和服务端日志对起来。[原文§网页非常慢转圈圈的时候，要定位问题需要从哪些角度？](https://xiaolincoding.com/interview/network.html#%E7%BD%91%E9%A1%B5%E9%9D%9E%E5%B8%B8%E6%85%A2%E8%BD%AC%E5%9C%88%E5%9C%88%E7%9A%84%E6%97%B6%E5%80%99-%E8%A6%81%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E4%BB%8E%E5%93%AA%E4%BA%9B%E8%A7%92%E5%BA%A6)
+
+T5-21 [single]
+Original: TCP 连接建立后，客户端突然宕机或断网，而服务端一直不向客户端发送数据，服务端的这条连接会怎样？
+Stem: TCP 连接建立后，客户端突然宕机或断网，而服务端一直不向客户端发送数据，服务端的这条连接会怎样？
+A [incorrect] 服务端很快会收到对端发来的 RST 报文，这条连接随即被重置
+B [incorrect] 服务端内核会立即感知对端宕机，并主动关闭这条连接、释放系统资源
+C [incorrect] 连接会因为长时间没有数据而被内核自动释放，不再占用系统资源
+D [correct] 服务端无法感知，连接一直处于 ESTABLISHED 状态，占用系统资源
+Answer: 连接建立后，如果双方长时间没有数据交互，它们无法主动感知对端是否存活：客户端宕机或断网而服务端一直不发数据时，服务端永远感知不到，TCP 连接将一直处于 ESTABLISHED 状态，占用系统资源。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-22 [short]
+Original: TCP 保活机制的原理是什么？
+Stem: TCP 保活机制的原理是什么？
+Answer: 为了避免无数据交互时无法感知对端存活，TCP 搞了保活机制：定义一个时间段，在这个时间段内如果没有任何连接相关的活动，保活机制开始作用，每隔一个时间间隔发送一个探测报文（包含的数据非常少）；如果连续几个探测报文都没有得到响应，就认为当前的 TCP 连接已经死亡，系统内核将错误信息通知给上层应用程序。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-23 [fill]
+Original: [填空题·有序] 原文所述 Linux 内核中，设置保活时间、保活探测次数、保活探测时间间隔的参数依次是：net.ipv4.____、net.ipv4.____、net.ipv4.____。
+Stem: 原文所述 Linux 内核中，设置保活时间、保活探测次数、保活探测时间间隔的参数依次是：net.ipv4.____、net.ipv4.____、net.ipv4.____。
+Blanks/order: 3/ordered
+Answer: 依次是 tcp_keepalive_time（保活时间）、tcp_keepalive_probes（保活探测次数）、tcp_keepalive_intvl（保活探测的时间间隔）。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-24 [fill]
+Original: [填空题·有序] 按原文给出的 Linux 内核默认值，tcp_keepalive_time 为____秒，tcp_keepalive_intvl 为____秒，tcp_keepalive_probes 为____次。
+Stem: 按原文给出的 Linux 内核默认值，tcp_keepalive_time 为____秒，tcp_keepalive_intvl 为____秒，tcp_keepalive_probes 为____次。
+Blanks/order: 3/ordered
+Answer: 依次填 7200、75、9：tcp_keepalive_time=7200 表示 2 小时内没有任何连接相关活动就启动保活机制；tcp_keepalive_intvl=75 表示每次检测间隔 75 秒；tcp_keepalive_probes=9 表示检测 9 次无响应就认为对方不可达并中断连接。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-25 [single]
+Original: Linux 内核默认 tcp_keepalive_time 为 7200 秒、tcp_keepalive_intvl 为 75 秒、tcp_keepalive_probes 为 9 次时，按原文估算，要多久才可能判断一条保活 TCP 连接已经失效？
+Stem: Linux 内核默认 tcp_keepalive_time 为 7200 秒、tcp_keepalive_intvl 为 75 秒、tcp_keepalive_probes 为 9 次时，按原文估算，要多久才可能判断一条保活 TCP 连接已经失效？
+A [incorrect] 恰好 7200 秒，与运行系统和 socket 配置无关
+B [incorrect] 只需探测 1 次，几乎立刻就能判断连接失效
+C [correct] 大约 2 小时再加上数分钟，且不能把这个等待时间当成业务请求超时
+D [incorrect] 大约 75 秒，可以直接当作业务请求超时来用
+Answer: 按这组常见默认参数估算，要经过大约 2 小时（保活时间）再加上数分钟（9 次、每次间隔 75 秒的探测），才可能判断连接失效。实际耗时取决于运行系统、socket 配置和探测结果，不能把这个等待时间当成业务请求超时。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-26 [fill]
+Original: [填空题·无序] 应用程序若想使用 TCP 保活机制，需要通过 socket 接口设置____选项才能生效。
+Stem: 应用程序若想使用 TCP 保活机制，需要通过 socket 接口设置____选项才能生效。
+Blanks/order: 1/unordered
+Answer: 填 SO_KEEPALIVE：应用程序需要通过 socket 接口设置 SO_KEEPALIVE 选项，如果没有设置，就无法使用 TCP 保活机制。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-27 [single]
+Original: 开启 TCP 保活后，对端程序正常工作，对端正常响应了保活探测报文，会怎样？
+Stem: 开启 TCP 保活后，对端程序正常工作，对端正常响应了保活探测报文，会怎样？
+A [incorrect] 对端因没有该连接的有效信息，产生 RST 报文使连接被重置
+B [correct] TCP 保活时间被重置，等待下一个保活时间的到来
+C [incorrect] 立即关闭这条连接，并把错误信息通知上层应用程序
+D [incorrect] 探测次数用完后，连接被判定为已经死亡并通知应用程序
+Answer: 对端程序正常工作时会正常响应探测报文，这样 TCP 保活时间会被重置，等待下一个 TCP 保活时间的到来。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-28 [single]
+Original: 开启 TCP 保活后，对端主机宕机并重启，收到保活探测报文时会发生什么？
+Stem: 开启 TCP 保活后，对端主机宕机并重启，收到保活探测报文时会发生什么？
+A [correct] 对端可以响应，但没有该连接的有效信息，会产生 RST 报文，很快发现连接已被重置
+B [incorrect] 探测报文石沉大海，直到达到探测次数才报告连接死亡
+C [incorrect] 对端不响应，连接一直保持 ESTABLISHED，内核不会通知应用
+D [incorrect] 对端正常响应，保活时间被重置，连接继续使用
+Answer: 对端主机宕机并重启后，保活探测报文发过去，对端是可以响应的，但由于没有该连接的有效信息，会产生一个 RST 报文，这样很快就会发现 TCP 连接已经被重置。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-29 [single]
+Original: 开启 TCP 保活后，对端主机宕机或报文因其他原因不可达，保活探测报文没有任何响应，连续探测达到保活探测次数后会怎样？
+Stem: 开启 TCP 保活后，对端主机宕机或报文因其他原因不可达，保活探测报文没有任何响应，连续探测达到保活探测次数后会怎样？
+A [correct] TCP 会报告该连接已经死亡，系统内核将错误信息通知上层应用程序
+B [incorrect] 连接仍保持 ESTABLISHED，内核不会通知上层应用
+C [incorrect] 对端产生 RST 报文，连接被很快重置
+D [incorrect] 探测次数用完后重置保活时间，继续等待下一个保活时间
+Answer: 对端主机宕机或报文不可达时，探测报文石沉大海，没有响应；连续几次、达到保活探测次数后，TCP 会报告该 TCP 连接已经死亡。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-30 [single]
+Original: 为什么原文强调要靠 TCP 保活机制探测的是对端主机宕机，而不是进程崩溃？
+Stem: 为什么原文强调要靠 TCP 保活机制探测的是对端主机宕机，而不是进程崩溃？
+A [correct] 进程崩溃后操作系统会回收 socket，通常能发起关闭；而主机宕机是无法感知的
+B [incorrect] 进程崩溃后 socket 不会被回收，连接会一直停留在 ESTABLISHED
+C [incorrect] 主机宕机后操作系统会回收 socket 并主动发起关闭，保活机制没有用武之地
+D [incorrect] 进程崩溃后操作系统不会发出任何报文，只有保活机制才能发现
+Answer: 进程崩溃后，操作系统会回收 socket，通常能够发起关闭（也可能因未读数据等情况发送 RST）；而主机宕机是无法感知的，所以需要 TCP 保活机制来探测对方是不是发生了主机宕机。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-31 [single]
+Original: TCP 保活机制主要能判断什么？
+Stem: TCP 保活机制主要能判断什么？
+A [incorrect] 对端进程是否正在处理请求，因此可以直接代替请求超时和应用层心跳
+B [correct] 对端的协议栈能不能响应，检测间隔可能较长；判断业务服务是否正常还需应用层心跳和请求超时
+C [incorrect] 对端业务服务是否正常，因此无需再设置应用层心跳和请求超时，也无需看日志
+D [incorrect] 对端业务处理是否成功，并且检测间隔一般很短，因此不必再设置请求超时机制
+Answer: TCP 保活主要判断对端的协议栈能不能响应，检测间隔也可能比较长。如果要判断业务服务是否正常，还需要应用层心跳和请求超时。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-32 [multiple]
+Original: 关于用应用层心跳判断服务是否正常，下列哪些说法符合原文？
+Stem: 关于用应用层心跳判断服务是否正常，下列哪些说法符合原文？
+A [correct] 定期发送心跳请求，要求对端在约定时间内回复
+B [correct] 持续没有回复，就把连接或服务实例判为不可用
+C [incorrect] 只要有一次心跳超时，就足以断定服务进程已经崩溃
+D [correct] 心跳超时可能由网络抖动、进程暂停造成，要结合连续失败次数避免频繁误判
+Answer: 应用层心跳的做法是定期发送心跳请求，要求对端在约定时间内回复，持续没有回复就把连接或服务实例判为不可用；但心跳超时也可能由网络抖动、进程暂停等造成，要结合连续失败次数，避免频繁误判，所以一次超时不足以断定进程崩溃。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-33 [single]
+Original: HTTP 服务里的 keepalive_timeout 主要用于什么？
+Stem: HTTP 服务里的 keepalive_timeout 主要用于什么？
+A [incorrect] 限制单个请求的处理时间，超过即返回错误
+B [correct] 回收空闲的长连接，不是用来检测业务心跳
+C [incorrect] 检测对端业务服务是否正常，相当于业务心跳
+D [incorrect] 判断对端主机是否宕机，相当于 TCP 保活探测
+Answer: HTTP 服务里的 keepalive_timeout 主要用于回收空闲长连接，不是在检测业务心跳。比如设置为 60 秒，完成请求后 60 秒都没有新请求，就可以关闭连接。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-34 [single]
+Original: 发现连接不可用后，原文建议怎样处理？
+Stem: 发现连接不可用后，原文建议怎样处理？
+A [incorrect] 支付、下单这类请求更应该无条件重试，以免丢单，不必考虑幂等
+B [incorrect] 一律立即关闭整个服务，不再处理任何后续请求，也不再重连
+C [correct] 按业务决定重连、摘除节点或报错，不能把失败请求全部无条件重试
+D [incorrect] 对失败请求一律自动重试，直到成功为止，无需考虑操作是否已执行
+Answer: 发现连接不可用后，要按业务决定重连、摘除节点或报错。不能把失败请求全部无条件重试，尤其是支付、下单这类请求，要考虑操作是否已经执行以及是否支持幂等。[原文§server a和server b，如何判断两个服务器正常连接？出错怎么办？](https://xiaolincoding.com/interview/network.html#server-a%E5%92%8Cserver-b-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5-%E5%87%BA%E9%94%99%E6%80%8E%E4%B9%88%E5%8A%9E)
+
+T5-35 [single]
+Original: 服务端进程已经正常启动，客户端却请求不到，原文怎么看“进程启动成功”？
+Stem: 服务端进程已经正常启动，客户端却请求不到，原文怎么看“进程启动成功”？
+A [incorrect] 进程启动成功就说明客户端到服务端的整条链路都正常
+B [incorrect] 进程启动成功后，只要端口在监听，链路上的防火墙和代理就无需再检查
+C [correct] 进程启动成功不代表端口已经监听，更不代表整条链路都正常
+D [incorrect] 进程启动成功就说明端口已经在监听，只需要检查客户端
+Answer: 进程启动成功，不代表端口已经监听，更不代表客户端到服务端的整条链路都正常，所以要分几层检查。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-36 [multiple]
+Original: 在“地址和监听”这一层，原文建议检查哪些内容？
+Stem: 在“地址和监听”这一层，原文建议检查哪些内容？
+A [correct] 确认域名、IP、端口、协议和路径
+B [correct] 用 ss -lntp 查看服务是否在对应端口上监听
+C [correct] 容器内监听时，还要确认端口映射
+D [incorrect] 服务只监听 127.0.0.1 时，远程客户端也可以直接访问
+Answer: 这一层要确认域名、IP、端口、协议和路径，用 ss -lntp 查看服务是否在对应端口上监听；容器内监听还要确认端口映射。服务只监听 127.0.0.1 时，远程客户端无法直接访问。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-37 [single]
+Original: 排查客户端到服务端的连通性时，原文怎样看待 ping？
+Stem: 排查客户端到服务端的连通性时，原文怎样看待 ping？
+A [incorrect] ping 通就说明端口和应用都正常
+B [incorrect] 只要 ping 不通，就一定说明服务没有启动
+C [incorrect] ping 是替代端口探测的首选方法
+D [correct] ping 只能作参考，不能替代端口和应用探测
+Answer: 在 DNS 和路由这一层，要确认客户端解析到的是正确环境的地址，并检查客户端是否有到目标的路由；ping 只能作参考，不能替代端口和应用探测。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-38 [single]
+Original: 排查“DNS 和路由”这一层时，原文要确认什么？
+Stem: 排查“DNS 和路由”这一层时，原文要确认什么？
+A [incorrect] 服务端进程是否已经启动，容器的端口映射是否配置正确
+B [incorrect] 云安全组、防火墙和白名单是否放行对应来源和端口
+C [incorrect] 浏览器是否因 CORS 拒绝读取响应
+D [correct] 客户端解析到的是正确环境的地址，并且客户端有到目标的路由
+Answer: DNS 和路由这一层要确认客户端解析到的是正确环境的地址，并检查客户端是否有到目标的路由；端口映射属于地址和监听，安全组与防火墙属于访问策略，CORS 属于应用处理。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-39 [single]
+Original: 用 nc -vz 目标IP 端口 探测 TCP 连通性时，下列说法符合原文的是哪一项？
+Stem: 用 nc -vz 目标IP 端口 探测 TCP 连通性时，下列说法符合原文的是哪一项？
+A [incorrect] 一直超时说明服务端已经收到 SYN 并主动拒绝了连接
+B [correct] Connection refused 常见于没有监听或主动拒绝；一直超时则可能是丢包、策略丢弃或链路问题
+C [incorrect] Connection refused 常见于丢包、策略丢弃或链路问题；一直超时则说明没有监听
+D [incorrect] Connection refused 说明端口已经监听，问题只可能出在应用层
+Answer: TCP 连通性可以用 nc -vz 目标IP 端口 等工具探测。Connection refused 常见于没有监听或主动拒绝；一直超时则可能是丢包、策略丢弃或链路问题。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-40 [single]
+Original: 排查“访问策略”时，如果发现云安全组、防火墙等没有放行，原文建议怎么处理？
+Stem: 排查“访问策略”时，如果发现云安全组、防火墙等没有放行，原文建议怎么处理？
+A [correct] 检查来源、协议和端口是否被允许，并按需放行，而不是直接关闭防火墙
+B [incorrect] 只检查服务端进程是否启动，不再检查安全组和白名单
+C [incorrect] 为了快速恢复业务访问，先直接关闭防火墙，再慢慢排查
+D [incorrect] 只需放行 ICMP，来源、端口和协议无需逐项检查
+Answer: 访问策略这一层要检查云安全组、防火墙、网关和白名单是否允许对应的来源、协议和端口，按需放行，而不是直接关闭防火墙。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-41 [single]
+Original: 下列哪一项属于原文所说的“代理和 TLS”这一层的检查内容？
+Stem: 下列哪一项属于原文所说的“代理和 TLS”这一层的检查内容？
+A [incorrect] 客户端解析到的地址是否属于正确的环境，并有路由可达
+B [incorrect] 用 ss -lntp 查看服务是否在对应端口上监听
+C [correct] 反向代理到上游的连通性，以及 HTTPS 的证书、域名和协议配置
+D [incorrect] 云安全组是否放行对应来源、协议和端口的访问
+Answer: 代理和 TLS 这一层要检查客户端代理、反向代理到上游的连通性，以及 HTTPS 的证书、域名和协议配置；ss -lntp 属于地址和监听，安全组属于访问策略，解析地址属于 DNS 和路由。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-42 [single]
+Original: 在“应用处理”这一层排查时，原文提醒浏览器场景下还要检查什么？
+Stem: 在“应用处理”这一层排查时，原文提醒浏览器场景下还要检查什么？
+A [incorrect] 云安全组是否没有放行对应端口
+B [correct] 浏览器是否因 CORS 拒绝读取响应
+C [incorrect] ss -lntp 是否没有显示监听
+D [incorrect] 服务端是否只监听了 127.0.0.1
+Answer: 应用处理这一层用 curl 发起真实请求，再结合接入日志、应用日志和调用链确认请求到了哪一层；浏览器还要检查是否因 CORS 拒绝读取响应。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-43 [multiple]
+Original: 已经收到 HTTP 响应时，下列哪些排查说法符合原文？
+Stem: 已经收到 HTTP 响应时，下列哪些排查说法符合原文？
+A [correct] 400：检查请求格式、参数和 Content-Type
+B [incorrect] 401 / 403：只检查身份凭证和访问权限，不必看网关规则
+C [incorrect] 404：一定是客户端拼错了地址
+D [correct] 500：查看服务端异常日志
+Answer: 400 检查请求格式、参数和 Content-Type；500 查看服务端异常日志。401 / 403 要检查身份凭证和访问权限，也要看是否被网关规则拦截；404 要检查 URL、路由和部署版本，不一定只是客户端拼错地址。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-44 [single]
+Original: 收到 502 / 503 / 504 时，下列说法符合原文的是哪一项？
+Stem: 收到 502 / 503 / 504 时，下列说法符合原文的是哪一项？
+A [incorrect] 这些状态码都只表示客户端的请求格式或参数错误，与上游无关
+B [incorrect] 只要出现这些状态码，就可以直接认定是后端挂了，无需再检查配置和资源
+C [incorrect] 只需要查看服务端异常日志，不必再检查上游连接、可用性和超时
+D [correct] 要分别检查上游连接和响应、服务可用性以及超时，既可能是配置问题，也可能是资源耗尽
+Answer: 502 / 503 / 504 要分别检查上游连接和响应、服务可用性以及超时；既可能是配置问题，也可能是资源耗尽，不能只凭状态码就认定后端挂了。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-45 [single]
+Original: 必要时在客户端和服务端两端同时抓包，原文说可以看出什么？
+Stem: 必要时在客户端和服务端两端同时抓包，原文说可以看出什么？
+A [incorrect] 只能看出服务端进程是否已经启动，无法看出请求和响应走到了哪里
+B [incorrect] 只能确认浏览器是否因为 CORS 而拒绝了读取响应，看不到报文
+C [correct] 客户端是否发出 SYN，服务端是否收到并回复，HTTP 请求和响应分别走到了哪里
+D [incorrect] 只能确定域名是否解析到了正确环境的地址，看不到握手和请求过程
+Answer: 两端同时抓包，可以看客户端是否发出 SYN，服务端是否收到并回复，HTTP 请求和响应分别走到了哪里，从而把问题范围进一步缩小。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-46 [fill]
+Original: [填空题·无序] 原文把“服务端启动了但客户端请求不到”的排查分成六层：____、____、____、____、____、____。
+Stem: 原文把“服务端启动了但客户端请求不到”的排查分成六层：____、____、____、____、____、____。
+Blanks/order: 6/unordered
+Answer: 六层是：地址和监听、DNS 和路由、TCP 连通性、访问策略、代理和 TLS、应用处理。[原文§服务端正常启动了，但是客户端请求不到有哪些原因?如何排查?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E4%BA%86-%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5)
+
+T5-47 [single]
+Original: 接口调用超时了，原文怎么理解“超时”？
+Stem: 接口调用超时了，原文怎么理解“超时”？
+A [correct] 超时只代表客户端没有及时得到结果，不代表服务端一定没有执行
+B [incorrect] 超时说明服务端一定已经执行成功，只是响应变慢
+C [incorrect] 超时说明服务端一定没有收到请求，也没有执行
+D [incorrect] 超时说明服务端一定已经执行失败，可以放心重新执行
+Answer: 超时只代表客户端没有及时得到结果，不代表服务端一定没有执行。[原文§接口超时了，可以直接重试吗？](https://xiaolincoding.com/interview/network.html#%E6%8E%A5%E5%8F%A3%E8%B6%85%E6%97%B6%E4%BA%86-%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E9%87%8D%E8%AF%95%E5%90%97)
+
+T5-48 [single]
+Original: 客户端发起扣款，服务端已经扣款成功，但响应在网络上丢了，客户端因此看到超时。如果客户端立刻重新发起一次普通扣款，可能出现什么后果？
+Stem: 客户端发起扣款，服务端已经扣款成功，但响应在网络上丢了，客户端因此看到超时。如果客户端立刻重新发起一次普通扣款，可能出现什么后果？
+A [incorrect] 用户不会被扣款，因为第一次请求已经超时失败
+B [incorrect] 第二次请求一定会失败，因为服务端已经扣过款
+C [correct] 用户可能被扣两次
+D [incorrect] 服务端会自动识别为同一次扣款，用户只会被扣一次
+Answer: 超时不代表服务端没有执行：服务端已经扣款成功但响应丢了，客户端就会看到超时，这时如果立刻重新发起一次普通扣款，用户可能被扣两次。[原文§接口超时了，可以直接重试吗？](https://xiaolincoding.com/interview/network.html#%E6%8E%A5%E5%8F%A3%E8%B6%85%E6%97%B6%E4%BA%86-%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E9%87%8D%E8%AF%95%E5%90%97)
+
+T5-49 [single]
+Original: 对于查询这类符合幂等语义的操作，接口超时后能否重试？
+Stem: 对于查询这类符合幂等语义的操作，接口超时后能否重试？
+A [incorrect] 一律不能重试，必须由用户手动重新发起
+B [correct] 通常可以在合理范围内重试
+C [incorrect] 只有改成 POST 之后才能重试
+D [incorrect] 可以无限次、无间隔地重试，直到成功为止
+Answer: 是否重试要结合业务语义：查询等符合幂等语义的操作，通常可以在合理范围内重试。[原文§接口超时了，可以直接重试吗？](https://xiaolincoding.com/interview/network.html#%E6%8E%A5%E5%8F%A3%E8%B6%85%E6%97%B6%E4%BA%86-%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E9%87%8D%E8%AF%95%E5%90%97)
+
+T5-50 [multiple]
+Original: 创建订单、支付等操作在超时后要安全重试，原文提到可以使用哪些机制，让重复请求对应同一次业务操作？
+Stem: 创建订单、支付等操作在超时后要安全重试，原文提到可以使用哪些机制，让重复请求对应同一次业务操作？
+A [correct] 业务唯一请求号
+B [correct] 幂等键
+C [correct] 去重记录
+D [incorrect] 把超时时间调得足够长，保证一定能收到响应
+Answer: 创建订单、支付等操作需要使用业务唯一请求号、幂等键、去重记录等机制，让重复请求对应同一次业务操作；仅靠调长超时时间无法避免响应丢失。[原文§接口超时了，可以直接重试吗？](https://xiaolincoding.com/interview/network.html#%E6%8E%A5%E5%8F%A3%E8%B6%85%E6%97%B6%E4%BA%86-%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E9%87%8D%E8%AF%95%E5%90%97)
+
+T5-51 [single]
+Original: 接口超时后，如果无法确定原请求是否已经执行，原文建议怎么做？
+Stem: 接口超时后，如果无法确定原请求是否已经执行，原文建议怎么做？
+A [incorrect] 直接认为原请求已经成功，不再做任何处理
+B [incorrect] 直接重新发起一次相同的请求
+C [incorrect] 直接认为原请求没有执行，放弃处理
+D [correct] 可以先查询原请求的状态，再决定后续动作
+Answer: 不确定结果时，可以先查询原请求状态，再决定后续动作。[原文§接口超时了，可以直接重试吗？](https://xiaolincoding.com/interview/network.html#%E6%8E%A5%E5%8F%A3%E8%B6%85%E6%97%B6%E4%BA%86-%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E9%87%8D%E8%AF%95%E5%90%97)
+
+T5-52 [multiple]
+Original: 关于接口超时后的重试策略，下列哪些做法符合原文？
+Stem: 关于接口超时后的重试策略，下列哪些做法符合原文？
+A [correct] 限制重试次数和总时间
+B [correct] 结合退避和随机抖动，避免大量客户端同时重试
+C [incorrect] 所有客户端在同一时刻立即重试，以便尽快恢复
+D [incorrect] 重试不会增加服务端负载，可以放心多试几次
+Answer: 重试本身也会增加负载，应该限制次数和总时间，结合退避和随机抖动，避免大量客户端同时重试，把短暂故障放大。[原文§接口超时了，可以直接重试吗？](https://xiaolincoding.com/interview/network.html#%E6%8E%A5%E5%8F%A3%E8%B6%85%E6%97%B6%E4%BA%86-%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E9%87%8D%E8%AF%95%E5%90%97)
+
+T5-53 [single]
+Original: 对于用 POST 方式发送的请求，超时后能否安全重试？
+Stem: 对于用 POST 方式发送的请求，超时后能否安全重试？
+A [incorrect] POST 一律可以直接重试，不需要任何幂等设计
+B [incorrect] 只有查询类的 POST 才能重试，其余都不行
+C [incorrect] POST 一律不能重试
+D [correct] 只要业务实现了幂等，也可以设计成安全重试
+Answer: 是否可以安全重试取决于业务是否幂等，而不是请求方法本身：即使用 POST，只要业务实现了幂等，也可以设计成安全重试。[原文§接口超时了，可以直接重试吗？](https://xiaolincoding.com/interview/network.html#%E6%8E%A5%E5%8F%A3%E8%B6%85%E6%97%B6%E4%BA%86-%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E9%87%8D%E8%AF%95%E5%90%97)
+
+T5-54 [single]
+Original: TCP 连接里，send 调用成功通常说明什么？
+Stem: TCP 连接里，send 调用成功通常说明什么？
+A [incorrect] 对端应用已经读取了数据
+B [correct] 数据已经被本地协议栈接受
+C [incorrect] 对端已经收到了数据
+D [incorrect] 对端已经处理数据成功
+Answer: send 成功不等于对方收到数据，通常只说明数据已经被本地协议栈接受；对端是否收到、是否被应用读取、是否处理成功，是后面的事情。[原文§TCP 连接里，send 成功是不是说明对方收到数据了？](https://xiaolincoding.com/interview/network.html#tcp-%E8%BF%9E%E6%8E%A5%E9%87%8C-send-%E6%88%90%E5%8A%9F%E6%98%AF%E4%B8%8D%E6%98%AF%E8%AF%B4%E6%98%8E%E5%AF%B9%E6%96%B9%E6%94%B6%E5%88%B0%E6%95%B0%E6%8D%AE%E4%BA%86)
+
+T5-55 [multiple]
+Original: 下列哪些事情不能由 send 成功来保证？
+Stem: 下列哪些事情不能由 send 成功来保证？
+A [correct] 对端是否收到了数据
+B [correct] 对端应用是否读取了数据
+C [correct] 对端是否处理成功
+D [incorrect] 数据已经被本地协议栈接受
+Answer: send 成功通常只说明数据已经被本地协议栈接受；对端是否收到、是否被应用读取、是否处理成功，都不能由此保证。[原文§TCP 连接里，send 成功是不是说明对方收到数据了？](https://xiaolincoding.com/interview/network.html#tcp-%E8%BF%9E%E6%8E%A5%E9%87%8C-send-%E6%88%90%E5%8A%9F%E6%98%AF%E4%B8%8D%E6%98%AF%E8%AF%B4%E6%98%8E%E5%AF%B9%E6%96%B9%E6%94%B6%E5%88%B0%E6%95%B0%E6%8D%AE%E4%BA%86)
+
+T5-56 [single]
+Original: send 的返回值小于要发送的长度时，应用应该怎么做？
+Stem: send 的返回值小于要发送的长度时，应用应该怎么做？
+A [incorrect] 视为对端已经收到全部数据
+B [incorrect] 视为发送失败，丢弃整段数据
+C [correct] 继续发送剩余部分
+D [incorrect] 等待对端 ACK 后再决定是否发送
+Answer: send 的返回值可能小于要发送的长度，应用需要继续发送剩余部分。[原文§TCP 连接里，send 成功是不是说明对方收到数据了？](https://xiaolincoding.com/interview/network.html#tcp-%E8%BF%9E%E6%8E%A5%E9%87%8C-send-%E6%88%90%E5%8A%9F%E6%98%AF%E4%B8%8D%E6%98%AF%E8%AF%B4%E6%98%8E%E5%AF%B9%E6%96%B9%E6%94%B6%E5%88%B0%E6%95%B0%E6%8D%AE%E4%BA%86)
+
+T5-57 [fill]
+Original: [填空题·无序] 非阻塞发送时，如果缓冲区暂时没有空间，send 可能返回错误码____或____。
+Stem: 非阻塞发送时，如果缓冲区暂时没有空间，send 可能返回错误码____或____。
+Blanks/order: 2/unordered
+Answer: 填 EAGAIN 和 EWOULDBLOCK：非阻塞发送可能因为缓冲区暂时没有空间而返回 EAGAIN 或 EWOULDBLOCK。[原文§TCP 连接里，send 成功是不是说明对方收到数据了？](https://xiaolincoding.com/interview/network.html#tcp-%E8%BF%9E%E6%8E%A5%E9%87%8C-send-%E6%88%90%E5%8A%9F%E6%98%AF%E4%B8%8D%E6%98%AF%E8%AF%B4%E6%98%8E%E5%AF%B9%E6%96%B9%E6%94%B6%E5%88%B0%E6%95%B0%E6%8D%AE%E4%BA%86)
+
+T5-58 [single]
+Original: 发送方后来收到了 TCP ACK，这能说明什么？
+Stem: 发送方后来收到了 TCP ACK，这能说明什么？
+A [correct] 只能说明对端 TCP 层确认收到了相关字节
+B [incorrect] 说明对端应用已经把这些数据从缓冲区读取走了
+C [incorrect] 说明订单等业务数据已经在对端持久化，可以放心返回成功
+D [incorrect] 说明对端应用已经读取并处理成功了这些业务数据
+Answer: 即使后面收到了 TCP ACK，也只能说明对端 TCP 层确认收到了相关字节，不能说明应用已读取或业务已处理。[原文§TCP 连接里，send 成功是不是说明对方收到数据了？](https://xiaolincoding.com/interview/network.html#tcp-%E8%BF%9E%E6%8E%A5%E9%87%8C-send-%E6%88%90%E5%8A%9F%E6%98%AF%E4%B8%8D%E6%98%AF%E8%AF%B4%E6%98%8E%E5%AF%B9%E6%96%B9%E6%94%B6%E5%88%B0%E6%95%B0%E6%8D%AE%E4%BA%86)
+
+T5-59 [single]
+Original: 要确认业务成功（比如订单已创建），仅靠 TCP 层面的 send 成功和 ACK 够吗？
+Stem: 要确认业务成功（比如订单已创建），仅靠 TCP 层面的 send 成功和 ACK 够吗？
+A [incorrect] 够了，ACK 到达就说明订单已创建
+B [incorrect] 不需要业务响应，只要对端 TCP 层确认收到即可
+C [correct] 不够，仍然需要业务响应和对应的持久化、幂等设计
+D [incorrect] 够了，只要 send 返回成功，业务就一定成功
+Answer: 要知道业务成功，比如订单已创建，仍然需要业务响应和对应的持久化、幂等设计，不能只靠 send 成功或 TCP ACK。[原文§TCP 连接里，send 成功是不是说明对方收到数据了？](https://xiaolincoding.com/interview/network.html#tcp-%E8%BF%9E%E6%8E%A5%E9%87%8C-send-%E6%88%90%E5%8A%9F%E6%98%AF%E4%B8%8D%E6%98%AF%E8%AF%B4%E6%98%8E%E5%AF%B9%E6%96%B9%E6%94%B6%E5%88%B0%E6%95%B0%E6%8D%AE%E4%BA%86)
+
+T5-60 [single]
+Original: 服务器 ping 不通，但是 HTTP 请求能成功，会出现这种情况吗？
+Stem: 服务器 ping 不通，但是 HTTP 请求能成功，会出现这种情况吗？
+A [correct] 会，ping 不通和 HTTP 能不能访问不是同一件事
+B [incorrect] 只有使用 HTTP/3 时才可能出现
+C [incorrect] 不会，ping 不通就说明服务器网络不可达，HTTP 一定失败
+D [incorrect] 不会，HTTP 能访问就说明 ping 一定能通
+Answer: 会出现，ping 不通和 HTTP 能不能访问不是同一件事。[原文§服务器ping不通但是http能请求成功，会出现这种情况吗?什么原因造成的?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8ping%E4%B8%8D%E9%80%9A%E4%BD%86%E6%98%AFhttp%E8%83%BD%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F-%E4%BC%9A%E5%87%BA%E7%8E%B0%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E5%90%97-%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E9%80%A0%E6%88%90%E7%9A%84)
+
+T5-61 [fill]
+Original: [填空题·有序] ping 通常使用____，HTTP/1.1、HTTP/2 通常使用____。
+Stem: ping 通常使用____，HTTP/1.1、HTTP/2 通常使用____。
+Blanks/order: 2/ordered
+Answer: 依次填 ICMP Echo、TCP：ping 通常使用 ICMP Echo，HTTP/1.1、HTTP/2 通常使用 TCP。[原文§服务器ping不通但是http能请求成功，会出现这种情况吗?什么原因造成的?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8ping%E4%B8%8D%E9%80%9A%E4%BD%86%E6%98%AFhttp%E8%83%BD%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F-%E4%BC%9A%E5%87%BA%E7%8E%B0%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E5%90%97-%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E9%80%A0%E6%88%90%E7%9A%84)
+
+T5-62 [short]
+Original: 为什么服务器 ping 不通，HTTP 请求却可能成功？
+Stem: 为什么服务器 ping 不通，HTTP 请求却可能成功？
+Answer: 因为 ping 通常使用 ICMP Echo，而 HTTP/1.1、HTTP/2 通常使用 TCP。服务器或网络设备可能禁止、限速 ICMP，但允许 TCP 的 80、443 端口，所以 HTTP 仍然可以成功。[原文§服务器ping不通但是http能请求成功，会出现这种情况吗?什么原因造成的?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8ping%E4%B8%8D%E9%80%9A%E4%BD%86%E6%98%AFhttp%E8%83%BD%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F-%E4%BC%9A%E5%87%BA%E7%8E%B0%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E5%90%97-%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E9%80%A0%E6%88%90%E7%9A%84)
+
+T5-63 [single]
+Original: HTTP/3 使用的是什么协议，它能否依赖 ping 成功？
+Stem: HTTP/3 使用的是什么协议，它能否依赖 ping 成功？
+A [correct] 使用 QUIC/UDP，同样不依赖 ping 成功
+B [incorrect] 使用 TCP，所以必须先 ping 通再建立连接
+C [incorrect] 使用 QUIC/UDP，但必须 ping 通才能访问
+D [incorrect] 使用 ICMP，所以必须 ping 通才能访问
+Answer: HTTP/3 使用 QUIC/UDP，同样不依赖 ping 成功。[原文§服务器ping不通但是http能请求成功，会出现这种情况吗?什么原因造成的?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8ping%E4%B8%8D%E9%80%9A%E4%BD%86%E6%98%AFhttp%E8%83%BD%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F-%E4%BC%9A%E5%87%BA%E7%8E%B0%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E5%90%97-%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E9%80%A0%E6%88%90%E7%9A%84)
+
+T5-64 [multiple]
+Original: 除了服务器或网络设备禁止、限速 ICMP 之外，原文还提到哪些原因，使 ping 的结果和浏览器访问的结果不一致？
+Stem: 除了服务器或网络设备禁止、限速 ICMP 之外，原文还提到哪些原因，使 ping 的结果和浏览器访问的结果不一致？
+A [correct] 域名可能解析出多个地址，ping 和浏览器访问的不一定是同一个地址
+B [correct] 浏览器还可能通过代理访问
+C [incorrect] ping 和 HTTP 使用同一个协议，所以结果必然一致
+D [incorrect] HTTP 请求一定走和 ping 完全相同的路径
+Answer: 原文提到：域名可能解析出多个地址，ping 和浏览器访问的不一定是同一个地址；浏览器还可能通过代理访问，所以排查时要确认实际目标和路径。[原文§服务器ping不通但是http能请求成功，会出现这种情况吗?什么原因造成的?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8ping%E4%B8%8D%E9%80%9A%E4%BD%86%E6%98%AFhttp%E8%83%BD%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F-%E4%BC%9A%E5%87%BA%E7%8E%B0%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E5%90%97-%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E9%80%A0%E6%88%90%E7%9A%84)
+
+T5-65 [single]
+Original: ping 通了，能说明什么？
+Stem: ping 通了，能说明什么？
+A [incorrect] 说明业务端口一定有监听，只是接口不一定能正常返回
+B [correct] 只说明对应的 ICMP 探测有回应，不代表业务端口有监听，更不代表接口能正常返回
+C [incorrect] 说明业务端口有监听，接口也一定能够正常返回
+D [incorrect] 说明业务端口有监听，HTTP/3 的 QUIC 连接也一定可以建立
+Answer: 反过来也一样：ping 通只能说明对应的 ICMP 探测有回应，不代表业务端口有监听，更不代表接口能正常返回。[原文§服务器ping不通但是http能请求成功，会出现这种情况吗?什么原因造成的?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8ping%E4%B8%8D%E9%80%9A%E4%BD%86%E6%98%AFhttp%E8%83%BD%E8%AF%B7%E6%B1%82%E6%88%90%E5%8A%9F-%E4%BC%9A%E5%87%BA%E7%8E%B0%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E5%90%97-%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E9%80%A0%E6%88%90%E7%9A%84)

@@ -1,0 +1,199 @@
+S7-1 [single]
+??: EXPLAIN 有什么作用？
+??: {"id": "S7-1", "type": "single", "stem": "原文对 EXPLAIN 作用的概括是下列哪一项？", "options": [{"key": "A", "text": "真正执行查询并统计其耗时，用来对比各条 SQL 的实际快慢", "correct": false}, {"key": "B", "text": "列出表上已有的索引名称、索引类型和每个索引对应的字段", "correct": false}, {"key": "C", "text": "查看 SQL 的执行计划，分析有没有走索引、有没有额外排序、有没有索引覆盖等", "correct": true}, {"key": "D", "text": "更新表的统计信息，让优化器重新估算需要扫描的行数", "correct": false}]}
+??: explain 是查看 SQL 的执行计划，主要用来分析 SQL 语句的执行过程，比如有没有走索引，有没有额外排序，有没有索引覆盖等等。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-2 [fill]
+??: [填空题·有序] EXPLAIN 的执行计划中，表示可能用到的索引的字段是____，表示实际用的索引的字段是____，表示优化器估算需要扫描的行数的字段是____。
+??: {"id": "S7-2", "type": "fill", "stem": "EXPLAIN 的执行计划中，表示可能用到的索引的字段是____，表示实际用的索引的字段是____，表示优化器估算需要扫描的行数的字段是____。", "blankCount": 3, "blankOrder": "ordered"}
+??: possible_keys 字段表示可能用到的索引；key 字段表示实际用的索引，如果这一项为 NULL，说明没有使用索引；rows 表示优化器估算需要扫描的行数，不是实际扫描行数。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-3 [single]
+??: EXPLAIN 中的 key_len 表示什么？
+??: {"id": "S7-3", "type": "single", "stem": "关于 EXPLAIN 中的 key_len 字段，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "表示本次访问使用的索引键长度（单位是字节），可以辅助判断用了联合索引的哪些前缀列，但也受字符集、NULL 标记等影响", "correct": true}, {"key": "B", "text": "表示优化器估算需要扫描的行数，它不是实际扫描的行数，只能用来粗略判断扫描量", "correct": false}, {"key": "C", "text": "表示估算经过条件过滤后保留的百分比，可以用来辅助估算传递给下一步的行数", "correct": false}, {"key": "D", "text": "表示实际使用的索引名称，如果这一项为 NULL，就说明这次查询没有使用索引", "correct": false}]}
+??: key_len 表示本次访问使用的索引键长度，单位是字节，可以辅助判断用了联合索引的哪些前缀列，但也受字符集、NULL 标记等影响。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-4 [multiple]
+??: EXPLAIN 中的 rows 和 filtered 分别表示什么？两者怎样配合估算？
+??: {"id": "S7-4", "type": "multiple", "stem": "关于 EXPLAIN 中的 rows 和 filtered，下列说法符合原文的有哪些？", "options": [{"key": "A", "text": "rows 是这条 SQL 实际扫描的行数，可以用来精确统计查询耗时", "correct": false}, {"key": "B", "text": "rows 表示优化器估算需要扫描的行数，不是实际扫描行数", "correct": true}, {"key": "C", "text": "filtered 表示估算经过条件过滤后保留的百分比", "correct": true}, {"key": "D", "text": "普通 EXPLAIN 会真正执行查询，所以 filtered 是实际保留的百分比", "correct": false}, {"key": "E", "text": "rows × filtered / 100 可以辅助估算传递给下一步的行数", "correct": true}]}
+??: rows 表示优化器估算需要扫描的行数，不是实际扫描行数；filtered 表示估算经过条件过滤后保留的百分比，rows × filtered / 100 可以辅助估算传递给下一步的行数。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-5 [fill]
+??: [填空题·有序] 原文所述 EXPLAIN 的 type 字段中，常见扫描类型按定位范围从大到小大致依次是：____ → ____ → ____ → ____ → ____ → ____。
+??: {"id": "S7-5", "type": "fill", "stem": "原文所述 EXPLAIN 的 type 字段中，常见扫描类型按定位范围从大到小大致依次是：____ → ____ → ____ → ____ → ____ → ____。", "blankCount": 6, "blankOrder": "ordered"}
+??: 按定位范围从大到小依次是：ALL（全表扫描）、index（全索引扫描）、range（索引范围扫描）、ref（非唯一索引查找）、eq_ref（唯一索引扫描）、const（常量表访问）。这只是大致的理解，不能仅根据 type 就断言整条 SQL 谁快谁慢。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-6 [multiple]
+??: EXPLAIN 的 type 为 ALL、index、range 时分别意味着什么？能不能只凭 type 判断 SQL 快慢？
+??: {"id": "S7-6", "type": "multiple", "stem": "关于 EXPLAIN 中 type 为 ALL、index、range 的说法，下列符合原文的有哪些？", "options": [{"key": "A", "text": "只要一条 SQL 的 type 排在更靠后的类型，就能据此断言整条 SQL 一定比另一条 SQL 更快", "correct": false}, {"key": "B", "text": "index 扫描整棵选中的索引，仍可能扫描很多记录，但若能覆盖查询或提供所需顺序，也可能比全表扫描更划算", "correct": true}, {"key": "C", "text": "ALL 对少量记录的点查在大表上通常成本很高，但小表或需要读取大部分数据的查询中，全表扫描也可能是合理选择", "correct": true}, {"key": "D", "text": "index 属于全表扫描的一种，扫描的是整张表，所以任何情况下都应该避免", "correct": false}, {"key": "E", "text": "range 通过索引访问一个或多个范围，常见于 <、>、IN、BETWEEN 等条件，但范围过大时仍可能读取很多记录", "correct": true}]}
+??: ALL 是全表扫描，对少量记录的点查在大表上通常成本很高，不过小表或需要读取大部分数据的查询中也可能是合理选择；index 是全索引扫描，仍可能扫描很多记录，但如果能覆盖查询或提供所需顺序，也可能比全表扫描更划算，不能一概认为应该避免；range 是索引范围扫描，常见于 <、>、IN、BETWEEN 等条件，比扫描整个索引更有针对性，范围过大时仍可能读取很多记录。不能仅根据 type 就断言整条 SQL 谁快谁慢。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-7 [fill]
+??: [填空题·有序] 通过非唯一索引（或唯一索引的非唯一前缀）做等值查找的 type 是____；使用主键或唯一索引、通常用在多表联查中的 type 是____；通过完整主键或非空唯一键与常量比较、最多匹配一行的 type 是____。
+??: {"id": "S7-7", "type": "fill", "stem": "通过非唯一索引（或唯一索引的非唯一前缀）做等值查找的 type 是____；使用主键或唯一索引、通常用在多表联查中的 type 是____；通过完整主键或非空唯一键与常量比较、最多匹配一行的 type 是____。", "blankCount": 3, "blankOrder": "ordered"}
+??: ref 是通过非唯一索引，或者唯一索引的非唯一前缀做等值查找；eq_ref 是使用主键或唯一索引时产生的访问方式，通常使用在多表联查中；const 是通过完整主键或非空唯一键与常量比较，最多匹配一行。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-8 [multiple]
+??: ref、eq_ref 和 const 各是什么情况下的访问方式？有什么区别？
+??: {"id": "S7-8", "type": "multiple", "stem": "关于 EXPLAIN 中的 ref、eq_ref 和 const，下列说法符合原文的有哪些？", "options": [{"key": "A", "text": "ref 做等值查找可能匹配多条记录，匹配数量取决于数据分布，重复值很多时也可能扫描大量记录", "correct": true}, {"key": "B", "text": "const 通常出现在多表联查中，针对前面每一行组合做一次唯一键查找", "correct": false}, {"key": "C", "text": "const 通过完整主键或非空唯一键与常量比较，最多匹配一行，例如 SELECT name FROM product WHERE id = 1", "correct": true}, {"key": "D", "text": "ref 只能使用唯一索引，每次查找都只会匹配一行记录", "correct": false}, {"key": "E", "text": "eq_ref 通常用在关联查询中，针对前面每一行组合做一次唯一键查找", "correct": true}]}
+??: ref 是通过非唯一索引，或者唯一索引的非唯一前缀做等值查找，可能匹配多条记录，匹配数量取决于数据分布，重复值很多时也可能扫描大量记录；eq_ref 通常是在关联查询中，针对前面每一行组合做一次唯一键查找；const 是通过完整主键或非空唯一键与常量比较，最多匹配一行，比如 SELECT name FROM product WHERE id = 1。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-9 [fill]
+??: [填空题·有序] EXPLAIN 的 Extra 列中，表示需要额外排序的是____，表示需要临时表保存中间结果的是____，表示索引能提供查询所需的列（覆盖索引）的是____。
+??: {"id": "S7-9", "type": "fill", "stem": "EXPLAIN 的 Extra 列中，表示需要额外排序的是____，表示需要临时表保存中间结果的是____，表示索引能提供查询所需的列（覆盖索引）的是____。", "blankCount": 3, "blankOrder": "ordered"}
+??: Using filesort 表示需要额外排序，没能直接利用索引取得目标顺序，常见于 ORDER BY；Using temporary 表示需要临时表保存中间结果，常见于部分 GROUP BY、DISTINCT 等操作；Using index 表示索引可以提供查询所需的列，也就是覆盖索引。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-10 [multiple]
+??: Extra 中的 Using filesort 和 Using temporary 分别表示什么？是否一定意味着磁盘操作或性能瓶颈？
+??: {"id": "S7-10", "type": "multiple", "stem": "关于 Extra 中的 Using filesort 和 Using temporary，下列说法符合原文的有哪些？", "options": [{"key": "A", "text": "Using filesort 名字里虽然有 file，但排序可能完全在内存里完成，不代表一定发生磁盘排序", "correct": true}, {"key": "B", "text": "Using temporary 只会出现在 ORDER BY 中，与 GROUP BY、DISTINCT 等操作无关", "correct": false}, {"key": "C", "text": "Using filesort 表示需要额外排序，没能直接利用索引取得目标顺序，常见于 ORDER BY", "correct": true}, {"key": "D", "text": "Using temporary 的临时表可能在内存中，也可能落到磁盘，要结合数据量和实际耗时判断", "correct": true}, {"key": "E", "text": "只要出现 Using filesort，就说明排序一定落到了磁盘上，并且一定是查询的性能瓶颈", "correct": false}]}
+??: Using filesort 表示需要额外排序，没能直接利用索引取得目标顺序，常见于 ORDER BY；名字里虽然有 file，但排序可能完全在内存里完成，不代表一定发生磁盘排序，结果集较小时额外排序也不一定是瓶颈。Using temporary 表示需要临时表保存中间结果，常见于部分 GROUP BY、DISTINCT 等操作；临时表可能在内存中，也可能落到磁盘，要结合数据量和实际耗时判断。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-11 [single]
+??: Extra 中的 Using index 和 Using index condition 有什么区别？
+??: {"id": "S7-11", "type": "single", "stem": "关于 Extra 中的 Using index 与 Using index condition，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "两者含义相同，都表示索引可以提供查询所需的全部列，因此查询都不需要再回到表里读取数据", "correct": false}, {"key": "B", "text": "Using index 表示索引下推，查询仍可能需要回表；Using index condition 表示索引可以提供查询所需的列，即覆盖索引", "correct": false}, {"key": "C", "text": "Using index 表示需要额外排序，没能直接利用索引；Using index condition 表示需要用临时表保存中间结果", "correct": false}, {"key": "D", "text": "Using index 表示索引能提供查询所需的列，也就是覆盖索引；Using index condition 表示索引下推，查询仍可能需要回表", "correct": true}]}
+??: Using index 表示索引可以提供查询所需的列，也就是覆盖索引；它和 Using index condition 不同，后者表示索引下推，查询仍可能需要回表。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-12 [single]
+??: 普通 EXPLAIN 和 EXPLAIN ANALYZE 有什么区别？
+??: {"id": "S7-12", "type": "single", "stem": "关于普通 EXPLAIN 与 EXPLAIN ANALYZE，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "普通 EXPLAIN 会真正执行查询并统计实际耗时；MySQL 8.0.18 及之后的 EXPLAIN ANALYZE 只展示估算计划，不会执行被分析的查询", "correct": false}, {"key": "B", "text": "普通 EXPLAIN 主要展示估算计划，不会真正执行查询；MySQL 8.0.18 及之后的 EXPLAIN ANALYZE 能查看实际执行时间、行数和循环次数，但会真的执行被分析的查询", "correct": true}, {"key": "C", "text": "两者都不会真正执行查询，MySQL 8.0.18 及之后的 EXPLAIN ANALYZE 只是比普通 EXPLAIN 多显示了估算的行数和耗时", "correct": false}, {"key": "D", "text": "EXPLAIN ANALYZE 在任何 MySQL 版本中都可以使用，能查看实际执行时间，而且不会产生被分析查询本身的执行开销", "correct": false}]}
+??: 普通 EXPLAIN 主要展示估算计划，不会真正执行查询来统计耗时。MySQL 8.0.18 及之后可以用 EXPLAIN ANALYZE 查看实际执行时间、行数和循环次数，但它会真的执行被分析的查询，使用时要考虑查询本身的开销。[原文§mysql的explain有什么作用？](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84explain%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S7-13 [fill]
+??: [填空题·无序] 原文说明，用 EXPLAIN 判断一条 SQL 是否走索引时，重点看执行计划里的三个字段：____、____、____。
+??: {"id": "S7-13", "type": "fill", "stem": "原文说明，用 EXPLAIN 判断一条 SQL 是否走索引时，重点看执行计划里的三个字段：____、____、____。", "blankCount": 3, "blankOrder": "unordered"}
+??: 在 SQL 语句前加 EXPLAIN 关键字，执行后看 type、key 和 Extra：key 显示实际选择的索引名，type 描述扫描方式，Extra 给出额外信息。[原文§怎么查看是否有走索引？](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E6%9C%89%E8%B5%B0%E7%B4%A2%E5%BC%95)
+
+S7-14 [multiple]
+??: 怎样用 EXPLAIN 判断一条 SQL 有没有走索引？type 和 key 分别怎么看？
+??: {"id": "S7-14", "type": "multiple", "stem": "关于用 EXPLAIN 判断一条 SQL 是否走索引，下列说法符合原文的有哪些？", "options": [{"key": "A", "text": "type 为 index 是全索引扫描，虽然读了索引，也可能扫描很多记录", "correct": true}, {"key": "B", "text": "只要 key 为 NULL，就能直接推出一定扫描了整张表，不需要再看其他字段", "correct": false}, {"key": "C", "text": "key 显示实际选择的索引名，比如 PRIMARY", "correct": true}, {"key": "D", "text": "type 为 ALL 且 key 为 NULL，通常是全表扫描", "correct": true}, {"key": "E", "text": "type 为 const、eq_ref、ref、range，通常说明通过索引定位或范围扫描", "correct": true}]}
+??: key 显示实际选择的索引名，比如 PRIMARY；type 为 const、eq_ref、ref、range，通常说明通过索引定位或范围扫描，type 为 index 则是全索引扫描，虽然读了索引，也可能扫描很多记录。如果 type 为 ALL，且 key 为 NULL，通常是全表扫描；不过 key 为 NULL 本身不能直接推出一定扫描了整张表，还可能是优化器判断无需访问表。分析性能时还要看 rows、filtered，不能只看是否「走索引」。[原文§怎么查看是否有走索引？](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E6%9C%89%E8%B5%B0%E7%B4%A2%E5%BC%95)
+
+S7-15 [multiple]
+??: name 字段建了普通索引，但 EXPLAIN 里 key 为 NULL，可能是什么原因？
+??: {"id": "S7-15", "type": "multiple", "stem": "name 字段建了普通索引，执行 EXPLAIN SELECT * FROM user WHERE name = '张三' 后 key 为 NULL，原文给出的可能原因有哪些？", "options": [{"key": "A", "text": "type 显示为 ref，说明这条查询没有使用任何索引", "correct": false}, {"key": "B", "text": "查询条件对 name 字段做了函数操作，例如 WHERE SUBSTR(name,1,1) = '张'", "correct": true}, {"key": "C", "text": "name 上的是普通索引，而 EXPLAIN 只会显示主键索引和唯一索引的名称", "correct": false}, {"key": "D", "text": "name 字段的索引选择性太差，比如大部分值都相同", "correct": true}]}
+??: 如果 key 字段显示 name 对应的索引名、type 是 ref，就说明走了索引；如果 key 是 NULL，可能是因为 name 字段的索引选择性太差（比如大部分值都相同），或者查询条件导致索引失效（比如用了函数操作 name 字段，像 WHERE SUBSTR(name,1,1) = '张'）。[原文§怎么查看是否有走索引？](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E6%9C%89%E8%B5%B0%E7%B4%A2%E5%BC%95)
+
+S7-16 [fill]
+??: [填空题·有序] 查看表的索引最直接的命令是 SHOW ____ FROM 表名；与它功能完全一致、只是写法不同的命令是 SHOW ____ FROM 表名。
+??: {"id": "S7-16", "type": "fill", "stem": "查看表的索引最直接的命令是 SHOW ____ FROM 表名；与它功能完全一致、只是写法不同的命令是 SHOW ____ FROM 表名。", "blankCount": 2, "blankOrder": "ordered"}
+??: 最直接的是 SHOW INDEX 命令（如 SHOW INDEX FROM user），能列出表的所有索引信息；SHOW KEYS 和 SHOW INDEX 功能完全一致，只是写法不同（如 SHOW KEYS FROM user）。[原文§怎么查看表的索引？](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E6%9F%A5%E7%9C%8B%E8%A1%A8%E7%9A%84%E7%B4%A2%E5%BC%95)
+
+S7-17 [multiple]
+??: SHOW INDEX 的结果里，Key_name、Column_name、Index_type、Non_unique 分别表示什么？
+??: {"id": "S7-17", "type": "multiple", "stem": "关于 SHOW INDEX 返回结果中的字段，下列说法符合原文的有哪些？", "options": [{"key": "A", "text": "Non_unique 为 0 表示普通非唯一索引，为 1 表示唯一索引（包括主键索引）", "correct": false}, {"key": "B", "text": "Key_name 是索引名称，主键索引默认叫 PRIMARY", "correct": true}, {"key": "C", "text": "Index_type 是索引类型，比如 BTREE、HASH", "correct": true}, {"key": "D", "text": "Column_name 是索引对应的字段", "correct": true}]}
+??: Key_name 是索引名称，主键索引默认叫 PRIMARY；Column_name 是索引对应的字段；Index_type 是索引类型，比如 BTREE、HASH；Non_unique 字段为 0 表示唯一索引（主键索引也是唯一索引），为 1 表示普通非唯一索引。[原文§怎么查看表的索引？](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E6%9F%A5%E7%9C%8B%E8%A1%A8%E7%9A%84%E7%B4%A2%E5%BC%95)
+
+S7-18 [single]
+??: 通过 information_schema 的 STATISTICS 表怎样查看表的索引？它和 SHOW INDEX 相比有什么特点？
+??: {"id": "S7-18", "type": "single", "stem": "原文提到通过 information_schema 的 STATISTICS 表查看索引，它相比 SHOW INDEX 的特点是哪一项？", "options": [{"key": "A", "text": "查询时不需要写数据库名，也不能按条件筛选，只能原样返回所有表的全部索引", "correct": false}, {"key": "B", "text": "能获取更详细的索引信息，支持更灵活的条件查询，比如加 AND NON_UNIQUE = 0 只查唯一索引", "correct": true}, {"key": "C", "text": "返回的索引信息比 SHOW INDEX 更少，只适合查看主键索引的名称和对应的字段", "correct": false}, {"key": "D", "text": "它是 SHOW KEYS 的另一种写法，功能与 SHOW INDEX 完全一致，没有任何额外用途", "correct": false}]}
+??: MySQL 的 information_schema 数据库中存储了所有表的元数据，通过查询 STATISTICS 表能获取更详细的索引信息，适合需要筛选或批量查询的场景。需要替换成实际的数据库名，结果会和 SHOW INDEX 一致，但支持更灵活的条件查询，比如只查唯一索引（加 AND NON_UNIQUE = 0）。[原文§怎么查看表的索引？](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E6%9F%A5%E7%9C%8B%E8%A1%A8%E7%9A%84%E7%B4%A2%E5%BC%95)
+
+S7-19 [short]
+??: 拿到一张查询速度很慢的表，原文给出的排查和优化思路是什么？
+??: {"id": "S7-19", "type": "short"}
+??: 不会一上来就加索引或者分库分表，而是先定位耗时在哪，再决定优化方式。第一步确认慢在哪里：通过慢查询日志、Performance Schema 等找到具体 SQL，记录实际参数、执行频率、耗时和扫描行数；看是不是锁等待；检查 CPU、I/O、连接数和 Buffer Pool，判断是个别 SQL 问题还是整体资源已接近瓶颈。第二步分析执行计划和 SQL：用 EXPLAIN（必要时 EXPLAIN ANALYZE）看扫描方式、实际索引、估算行数、回表、排序和临时表；设计合适的联合索引和覆盖索引；只查需要的列和行；联表关注过滤后的数据量、连接算法和关联字段索引；深分页用游标分页或先查主键再回表；大批量更新分批处理；估算失真时评估更新统计信息。第三步考虑结构和架构：热点查询用缓存或汇总表，大字段和低频字段拆分，单机资源或写入吞吐成为瓶颈后再评估读写分离、数据归档、分库分表。优化后要用接近真实的数据和参数验证耗时、扫描量以及写入影响。[原文§给你张表，发现查询速度很慢，你有那些解决方案](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E4%BD%A0%E5%BC%A0%E8%A1%A8-%E5%8F%91%E7%8E%B0%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E5%BE%88%E6%85%A2-%E4%BD%A0%E6%9C%89%E9%82%A3%E4%BA%9B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
+
+S7-20 [multiple]
+??: 排查查询慢时，怎样先确认慢在哪里？
+??: {"id": "S7-20", "type": "multiple", "stem": "确认查询慢在哪里时，原文提到了哪些做法？", "options": [{"key": "A", "text": "只拿一个命中数据很少的参数做判断，以便尽快得出结论", "correct": false}, {"key": "B", "text": "通过慢查询日志、Performance Schema 等找到具体 SQL，并记录实际参数、执行频率、耗时和扫描行数", "correct": true}, {"key": "C", "text": "一上来就先加索引，再观察查询有没有变快，以此判断慢在哪里", "correct": false}, {"key": "D", "text": "检查 CPU、I/O、连接数和 Buffer Pool，判断是个别 SQL 的问题还是整体资源已接近瓶颈", "correct": true}, {"key": "E", "text": "结合进程状态、事务和锁等待信息，排查这条 SQL 是不是在等锁", "correct": true}]}
+??: 先确认慢在哪里：通过慢查询日志、Performance Schema 等找到具体 SQL，记录实际参数、执行频率、耗时和扫描行数，避免只拿一个命中数据很少的参数做判断；看是不是锁等待，结合进程状态、事务和锁等待信息排查，SQL 等锁很久和执行计划扫描很慢需要不同的处理方式；检查数据库当时的 CPU、I/O、连接数和 Buffer Pool 等情况，判断是个别 SQL 问题，还是整体资源已经接近瓶颈。不会一上来就加索引或者分库分表。[原文§给你张表，发现查询速度很慢，你有那些解决方案](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E4%BD%A0%E5%BC%A0%E8%A1%A8-%E5%8F%91%E7%8E%B0%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E5%BE%88%E6%85%A2-%E4%BD%A0%E6%9C%89%E9%82%A3%E4%BA%9B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
+
+S7-21 [multiple]
+??: 分析执行计划和 SQL 时，有哪些针对索引和 SQL 写法的优化做法？
+??: {"id": "S7-21", "type": "multiple", "stem": "分析执行计划和 SQL 时，原文提到的针对索引和 SQL 写法的做法有哪些？", "options": [{"key": "A", "text": "对普通索引列先做函数运算再比较，这样可以让索引被更好地利用", "correct": false}, {"key": "B", "text": "根据 WHERE、JOIN、ORDER BY 设计合适的联合索引，尽量使用覆盖索引", "correct": true}, {"key": "C", "text": "用 EXPLAIN ANALYZE 对比实际行数与估算，并且不必担心它会真正执行被分析的查询", "correct": false}, {"key": "D", "text": "只查询需要的列和行，避免无条件 SELECT *", "correct": true}, {"key": "E", "text": "避免对普通索引列做不必要的函数和类型转换", "correct": true}]}
+??: 根据 WHERE、JOIN、ORDER BY 设计合适的联合索引，尽量使用覆盖索引，避免对普通索引列做不必要的函数和类型转换；只查询需要的列和行，避免无条件 SELECT *。此外用 EXPLAIN 看扫描方式、实际索引、估算行数、回表、排序和临时表，必要时用 EXPLAIN ANALYZE 对比实际行数与估算，注意它会真正执行查询。[原文§给你张表，发现查询速度很慢，你有那些解决方案](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E4%BD%A0%E5%BC%A0%E8%A1%A8-%E5%8F%91%E7%8E%B0%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E5%BE%88%E6%85%A2-%E4%BD%A0%E6%9C%89%E9%82%A3%E4%BA%9B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
+
+S7-22 [single]
+??: 联表查询慢时要关注什么？能不能只靠「小表驱动大表」判断？
+??: {"id": "S7-22", "type": "single", "stem": "联表查询的优化，原文强调要关注什么？", "options": [{"key": "A", "text": "只要让总行数更少的那张表做驱动表，就一定是最优的联表方案，其余因素无需考虑", "correct": false}, {"key": "B", "text": "只需保证两张表的关联字段名字相同，连接算法和关联字段索引都不需要关注", "correct": false}, {"key": "C", "text": "主要看两张表的总行数之和，过滤后的数据量不影响联表查询的性能", "correct": false}, {"key": "D", "text": "过滤后的数据量、连接算法和关联字段索引，不能只根据表的总行数背「小表驱动大表」", "correct": true}]}
+??: 联表查询要关注过滤后的数据量、连接算法和关联字段索引，不能只根据表的总行数背「小表驱动大表」。[原文§给你张表，发现查询速度很慢，你有那些解决方案](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E4%BD%A0%E5%BC%A0%E8%A1%A8-%E5%8F%91%E7%8E%B0%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E5%BE%88%E6%85%A2-%E4%BD%A0%E6%9C%89%E9%82%A3%E4%BA%9B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
+
+S7-23 [multiple]
+??: 深分页、大批量更新以及统计信息失真时，各有什么处理办法？
+??: {"id": "S7-23", "type": "multiple", "stem": "针对深分页、大批量更新和估算失真，原文提到的做法有哪些？", "options": [{"key": "A", "text": "大批量更新可以在业务允许时分批处理", "correct": true}, {"key": "B", "text": "大批量更新应一次性全部处理，不要拆成多批", "correct": false}, {"key": "C", "text": "深分页可以使用游标分页，或者先通过覆盖索引定位少量主键再回表", "correct": true}, {"key": "D", "text": "估算明显失真时，可以评估更新统计信息，再对比计划和实际效果", "correct": true}]}
+??: 深分页可以使用游标分页，或者先通过覆盖索引定位少量主键再回表；大批量更新可以在业务允许时分批处理；如果估算明显失真，可以评估更新统计信息，再对比计划和实际效果。[原文§给你张表，发现查询速度很慢，你有那些解决方案](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E4%BD%A0%E5%BC%A0%E8%A1%A8-%E5%8F%91%E7%8E%B0%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E5%BE%88%E6%85%A2-%E4%BD%A0%E6%9C%89%E9%82%A3%E4%BA%9B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
+
+S7-24 [multiple]
+??: 从结构和架构层面，可以怎样优化慢查询？什么时候才该考虑分库分表？
+??: {"id": "S7-24", "type": "multiple", "stem": "在结构和架构层面，原文提到的做法有哪些？", "options": [{"key": "A", "text": "明确单机资源或写入吞吐已成为瓶颈后，再评估读写分离、数据归档、分库分表", "correct": true}, {"key": "B", "text": "高频热点查询可以考虑缓存或汇总表，同时设计缓存一致性、失效和热点保护方案", "correct": true}, {"key": "C", "text": "只要表的行数超过千万，就必须拆表，没有其他判断条件", "correct": false}, {"key": "D", "text": "大字段和低频字段可以结合访问模式拆分，减少常用查询读取的数据量", "correct": true}]}
+??: 高频热点查询可以考虑缓存或汇总表，同时设计缓存一致性、失效和热点保护方案；大字段和低频字段可以结合访问模式拆分，减少常用查询读取的数据量；明确单机资源或写入吞吐已经成为瓶颈后，再评估读写分离、数据归档、分库分表。不能仅因为「超过千万行」就认为必须拆表。[原文§给你张表，发现查询速度很慢，你有那些解决方案](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E4%BD%A0%E5%BC%A0%E8%A1%A8-%E5%8F%91%E7%8E%B0%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E5%BE%88%E6%85%A2-%E4%BD%A0%E6%9C%89%E9%82%A3%E4%BA%9B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
+
+S7-25 [single]
+??: 优化完成后，怎样验证优化效果？
+??: {"id": "S7-25", "type": "single", "stem": "优化完成后，原文要求怎样验证效果？", "options": [{"key": "A", "text": "用接近真实的数据和参数验证耗时、扫描量以及写入影响，防止一个查询变快却把其他高频查询或更新拖慢", "correct": true}, {"key": "B", "text": "只用一个命中数据很少的参数验证这条查询的耗时，变快了就说明优化有效，无需再看别的", "correct": false}, {"key": "C", "text": "只看 EXPLAIN 里 type 有没有变化，不需要再验证实际耗时、扫描量和写入影响", "correct": false}, {"key": "D", "text": "只要这条查询变快就够了，其他高频查询或更新有没有变慢不属于验证范围", "correct": false}]}
+??: 优化后要用接近真实的数据和参数验证耗时、扫描量以及写入影响，防止一个查询变快，却把其他高频查询或更新拖慢。[原文§给你张表，发现查询速度很慢，你有那些解决方案](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E4%BD%A0%E5%BC%A0%E8%A1%A8-%E5%8F%91%E7%8E%B0%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E5%BE%88%E6%85%A2-%E4%BD%A0%E6%9C%89%E9%82%A3%E4%BA%9B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
+
+S7-26 [short]
+??: SELECT * FROM orders ORDER BY id LIMIT 1000000, 20 这样的深分页查询为什么慢？
+??: {"id": "S7-26", "type": "short"}
+??: 即使按主键扫描，MySQL 也通常要读过前面的 100 万条候选记录，再丢弃它们，最后返回 20 条。偏移量越大，白做的扫描越多；如果还涉及回表和排序，成本可能更高。[原文§深分页为什么慢？怎么优化？](https://xiaolincoding.com/interview/mysql.html#%E6%B7%B1%E5%88%86%E9%A1%B5%E4%B8%BA%E4%BB%80%E4%B9%88%E6%85%A2-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96)
+
+S7-27 [fill]
+??: [填空题·无序] 原文给出的深分页两种优化方式是：____、____。
+??: {"id": "S7-27", "type": "fill", "stem": "原文给出的深分页两种优化方式是：____、____。", "blankCount": 2, "blankOrder": "unordered"}
+??: 方式一是游标分页，把上一页最后一条记录的 ID 传回来，从这个位置继续查；方式二是先查主键再回表，先用较窄的索引扫描得到目标主键，再关联获取完整记录。[原文§深分页为什么慢？怎么优化？](https://xiaolincoding.com/interview/mysql.html#%E6%B7%B1%E5%88%86%E9%A1%B5%E4%B8%BA%E4%BB%80%E4%B9%88%E6%85%A2-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96)
+
+S7-28 [single]
+??: 游标分页中，WHERE id > ? 里的值应该取什么？为什么不能把第 100 万条记录直接当成 id = 1000000？
+??: {"id": "S7-28", "type": "single", "stem": "用 WHERE id > ? ORDER BY id LIMIT 20 做游标分页时，? 应该取什么值？", "options": [{"key": "A", "text": "页码乘以每页条数，也就是 1000000，因为第 100 万条记录的 ID 一定等于 1000000", "correct": false}, {"key": "B", "text": "表中当前最大的自增 ID，这样做可以保证翻页时不会漏掉任何一条记录，也不会重复", "correct": false}, {"key": "C", "text": "上一页最后一条记录的实际 ID，不能把第 100 万条记录直接当成 id = 1000000，因为自增 ID 可能不连续", "correct": true}, {"key": "D", "text": "固定写成 0，再由 LIMIT 的偏移量来决定从哪一条记录开始继续往后查询", "correct": false}]}
+??: 游标分页是把上一页最后一条记录的 ID 传回来，从这个位置继续查，例如 WHERE id > 1000000 ORDER BY id LIMIT 20。这里的 1000000 是上一页末尾的实际 ID，不能把第 100 万条记录直接当成 id = 1000000，因为自增 ID 可能不连续。[原文§深分页为什么慢？怎么优化？](https://xiaolincoding.com/interview/mysql.html#%E6%B7%B1%E5%88%86%E9%A1%B5%E4%B8%BA%E4%BB%80%E4%B9%88%E6%85%A2-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96)
+
+S7-29 [single]
+??: 游标分页适合什么场景，不适合什么场景？
+??: {"id": "S7-29", "type": "single", "stem": "关于游标分页的适用场景，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "适合直接跳到任意页，但不适合顺序地接着上一页往下翻", "correct": false}, {"key": "B", "text": "适合顺序翻页，也就是接着上一页往下翻，但不适合直接跳到任意页", "correct": true}, {"key": "C", "text": "既适合顺序翻页，也适合直接跳到任意页，使用上没有任何限制", "correct": false}, {"key": "D", "text": "只适合直接跳到最后一页，其他任何翻页方式都不能使用", "correct": false}]}
+??: 游标分页适合顺序翻页，不适合直接跳到任意页。[原文§深分页为什么慢？怎么优化？](https://xiaolincoding.com/interview/mysql.html#%E6%B7%B1%E5%88%86%E9%A1%B5%E4%B8%BA%E4%BB%80%E4%B9%88%E6%85%A2-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96)
+
+S7-30 [single]
+??: 按创建时间倒序做游标分页时，同一时间有多条记录该怎么办？
+??: {"id": "S7-30", "type": "single", "stem": "深分页按创建时间倒序做游标分页时，原文怎样处理同一时间有多条记录的情况？", "options": [{"key": "A", "text": "只用 created_at 做游标，因为同一时间的多条记录会被一起返回，所以不会漏掉也不会重复", "correct": false}, {"key": "B", "text": "只用 id 做游标，不再需要 created_at，也不需要为这个排序建立任何联合索引", "correct": false}, {"key": "C", "text": "把 LIMIT 的偏移量加大，用来跳过同一时间产生的那些重复记录，不需要其他处理", "correct": false}, {"key": "D", "text": "加上唯一字段 id，建 (created_at, id) 索引，游标同时带上 created_at 和 id 两个值", "correct": true}]}
+??: 如果按创建时间倒序，要加唯一字段处理同一时间的多条记录，比如建 (created_at, id) 索引，游标同时带上这两个值，例如 WHERE created_at < '2024-08-01 12:00:00' OR (created_at = '2024-08-01 12:00:00' AND id < 1000000) ORDER BY created_at DESC, id DESC LIMIT 20。[原文§深分页为什么慢？怎么优化？](https://xiaolincoding.com/interview/mysql.html#%E6%B7%B1%E5%88%86%E9%A1%B5%E4%B8%BA%E4%BB%80%E4%B9%88%E6%85%A2-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96)
+
+S7-31 [multiple]
+??: 「先查主键，再回表」的深分页优化方式怎么做？它能完全消除深分页的开销吗？
+??: {"id": "S7-31", "type": "multiple", "stem": "关于「先查主键，再回表」的深分页优化方式，下列说法符合原文的有哪些？", "options": [{"key": "A", "text": "通过 (created_at, id) 的覆盖扫描，可以减少中间过程读取完整行的成本", "correct": true}, {"key": "B", "text": "子查询不再需要扫描前面的偏移量，所以彻底消除了深分页的开销", "correct": false}, {"key": "C", "text": "先用较窄的索引扫描得到目标主键，再关联获取完整记录", "correct": true}, {"key": "D", "text": "适用于必须按页码跳页的情况", "correct": true}, {"key": "E", "text": "仍然要扫描前面的偏移量，不能把它当成完全消除了深分页的开销", "correct": true}]}
+??: 如果必须按页码跳页，可以先用较窄的索引扫描得到目标主键，再关联获取完整记录（子查询里 ORDER BY created_at DESC, id DESC LIMIT 1000000, 20 取出主键，再 JOIN 原表）。这个方案仍然要扫描前面的偏移量，只是可以通过 (created_at, id) 的覆盖扫描减少中间过程读取完整行的成本，不能把它当成完全消除了深分页开销。[原文§深分页为什么慢？怎么优化？](https://xiaolincoding.com/interview/mysql.html#%E6%B7%B1%E5%88%86%E9%A1%B5%E4%B8%BA%E4%BB%80%E4%B9%88%E6%85%A2-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96)
+
+S7-32 [single]
+??: ORDER BY 怎么利用索引避免排序？关键是什么？
+??: {"id": "S7-32", "type": "single", "stem": "ORDER BY 能否利用索引避免排序，关键在于什么？", "options": [{"key": "A", "text": "索引中的顺序能不能直接提供查询要求的顺序", "correct": true}, {"key": "B", "text": "ORDER BY 的字段是不是主键，只要是主键就一定不需要排序", "correct": false}, {"key": "C", "text": "ORDER BY 后面的字段个数是否多于索引中的字段个数，与字段的顺序无关", "correct": false}, {"key": "D", "text": "LIMIT 的值是否足够小，与索引中的顺序没有关系", "correct": false}]}
+??: 关键是索引中的顺序能不能直接提供查询要求的顺序。[原文§ORDER BY 怎么利用索引避免排序？](https://xiaolincoding.com/interview/mysql.html#order-by-%E6%80%8E%E4%B9%88%E5%88%A9%E7%94%A8%E7%B4%A2%E5%BC%95%E9%81%BF%E5%85%8D%E6%8E%92%E5%BA%8F)
+
+S7-33 [short]
+??: 联合索引为 (user_id, status, created_at) 时，查询 WHERE user_id = 100 AND status = 0 ORDER BY created_at DESC LIMIT 20 为什么可以避免额外排序？
+??: {"id": "S7-33", "type": "short"}
+??: user_id 和 status 都固定后，这一段索引就按 created_at 有序，可以反向扫描取得最近的记录，避免额外排序。[原文§ORDER BY 怎么利用索引避免排序？](https://xiaolincoding.com/interview/mysql.html#order-by-%E6%80%8E%E4%B9%88%E5%88%A9%E7%94%A8%E7%B4%A2%E5%BC%95%E9%81%BF%E5%85%8D%E6%8E%92%E5%BA%8F)
+
+S7-34 [short]
+??: 同样是联合索引 (user_id, status, created_at)，如果只固定 user_id，却直接按 created_at 排序，为什么通常不能用索引直接提供这个排序？
+??: {"id": "S7-34", "type": "short"}
+??: 只固定 user_id 时，索引中还隔着一个没有固定的 status，各个状态内部虽然按时间有序，但合起来并不是全局时间有序，所以通常不能直接提供这个排序。[原文§ORDER BY 怎么利用索引避免排序？](https://xiaolincoding.com/interview/mysql.html#order-by-%E6%80%8E%E4%B9%88%E5%88%A9%E7%94%A8%E7%B4%A2%E5%BC%95%E9%81%BF%E5%85%8D%E6%8E%92%E5%BA%8F)
+
+S7-35 [single]
+??: ORDER BY 有多个排序字段时，排序方向与索引怎样配合？
+??: {"id": "S7-35", "type": "single", "stem": "ORDER BY 有多个排序字段时，排序方向与索引的配合，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "无论排序方向是否一致，只要字段顺序和索引一致，就一定能避免额外的排序操作", "correct": false}, {"key": "B", "text": "只有全部为 ASC 才能利用索引，全部为 DESC 时一定需要额外排序，不能反向扫描", "correct": false}, {"key": "C", "text": "全正序或全倒序通常可以正向、反向扫描索引；混合 ASC、DESC 时，要结合 MySQL 8.0 的降序索引等方案判断", "correct": true}, {"key": "D", "text": "混合 ASC、DESC 时，任何版本的 MySQL 都可以直接用普通索引避免排序，无需再做判断", "correct": false}]}
+??: 多个排序字段的方向也要和索引顺序配合，全正序或全倒序通常可以正向、反向扫描；混合 ASC、DESC 时，要结合 MySQL 8.0 的降序索引等方案判断。[原文§ORDER BY 怎么利用索引避免排序？](https://xiaolincoding.com/interview/mysql.html#order-by-%E6%80%8E%E4%B9%88%E5%88%A9%E7%94%A8%E7%B4%A2%E5%BC%95%E9%81%BF%E5%85%8D%E6%8E%92%E5%BA%8F)
+
+S7-36 [single]
+??: 索引能提供所需顺序时，优化器一定会选择它吗？
+??: {"id": "S7-36", "type": "single", "stem": "索引能够提供查询要求的顺序时，优化器一定会选择它吗？", "options": [{"key": "A", "text": "一定会选，只要索引能提供顺序，优化器就会放弃其他所有执行方案", "correct": false}, {"key": "B", "text": "不一定，优化器会比较扫描、过滤、回表和排序的总成本", "correct": true}, {"key": "C", "text": "不一定，优化器只比较排序的成本，不考虑扫描、过滤和回表的成本", "correct": false}, {"key": "D", "text": "一定会选，因为避免排序永远比多扫描一些记录更划算", "correct": false}]}
+??: 即使索引能够提供顺序，优化器也会比较扫描、过滤、回表和排序的总成本，不一定总选它。[原文§ORDER BY 怎么利用索引避免排序？](https://xiaolincoding.com/interview/mysql.html#order-by-%E6%80%8E%E4%B9%88%E5%88%A9%E7%94%A8%E7%B4%A2%E5%BC%95%E9%81%BF%E5%85%8D%E6%8E%92%E5%BA%8F)
+
+S7-37 [single]
+??: 如果 EXPLAIN 显示用到的索引不正确，干预之前应先确认什么？
+??: {"id": "S7-37", "type": "single", "stem": "如果 EXPLAIN 显示用到的索引不正确，原文建议在使用索引提示之前先做什么？", "options": [{"key": "A", "text": "直接在所有相关查询里加上 FORCE INDEX，之后不需要再核对执行计划", "correct": false}, {"key": "B", "text": "先把查询改成游标分页，再决定要不要为这条查询指定索引", "correct": false}, {"key": "C", "text": "先执行 EXPLAIN ANALYZE 并忽略估算行数，因为统计信息与优化器的选择无关", "correct": false}, {"key": "D", "text": "先确认优化器是不是估算错了，例如评估执行 ANALYZE TABLE 更新统计信息，再比较计划和实际耗时", "correct": true}]}
+??: 先确认优化器是不是估算错了。比如数据分布变化后，可以评估执行 ANALYZE TABLE 更新统计信息，再比较计划和实际耗时；也可以结合查询重写、索引设计解决问题。[原文§如果Explain用到的索引不正确的话，有什么办法干预吗？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9Cexplain%E7%94%A8%E5%88%B0%E7%9A%84%E7%B4%A2%E5%BC%95%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%AF%9D-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9E%E6%B3%95%E5%B9%B2%E9%A2%84%E5%90%97)
+
+S7-38 [fill]
+??: [填空题·无序] 原文提到的干预优化器选择索引的三种索引提示是：____、____、____。
+??: {"id": "S7-38", "type": "fill", "stem": "原文提到的干预优化器选择索引的三种索引提示是：____、____、____。", "blankCount": 3, "blankOrder": "unordered"}
+??: 如果仍需要干预，可以使用 USE INDEX、IGNORE INDEX 或 FORCE INDEX。[原文§如果Explain用到的索引不正确的话，有什么办法干预吗？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9Cexplain%E7%94%A8%E5%88%B0%E7%9A%84%E7%B4%A2%E5%BC%95%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%AF%9D-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9E%E6%B3%95%E5%B9%B2%E9%A2%84%E5%90%97)
+
+S7-39 [single]
+??: FORCE INDEX 有什么特点？指定后是否绝对不会全表扫描？
+??: {"id": "S7-39", "type": "single", "stem": "关于 FORCE INDEX，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "它会把全表扫描视为成本很高并限制候选索引，但指定的索引不可用时，也不是绝对不会全表扫描", "correct": true}, {"key": "B", "text": "它保证无论指定的索引是否可用，都绝对不会发生全表扫描，优化器只能使用该索引", "correct": false}, {"key": "C", "text": "它会把全表扫描视为成本很低，让优化器更倾向于不使用任何索引而去扫描整张表", "correct": false}, {"key": "D", "text": "它的作用是更新表的统计信息，让优化器重新估算每条查询需要扫描的行数", "correct": false}]}
+??: FORCE INDEX 会把全表扫描视为成本很高，并限制候选索引，但指定索引不可用时也不是绝对不会全表扫描。[原文§如果Explain用到的索引不正确的话，有什么办法干预吗？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9Cexplain%E7%94%A8%E5%88%B0%E7%9A%84%E7%B4%A2%E5%BC%95%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%AF%9D-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9E%E6%B3%95%E5%B9%B2%E9%A2%84%E5%90%97)
+
+S7-40 [multiple]
+??: 使用 FORCE INDEX 等索引提示时有哪些注意事项？
+??: {"id": "S7-40", "type": "multiple", "stem": "使用 FORCE INDEX 等索引提示时，原文提到的注意事项有哪些？", "options": [{"key": "A", "text": "一旦用提示固定了索引，以后就不需要再复查执行计划", "correct": false}, {"key": "B", "text": "提示里指定的是索引名称，不是列名", "correct": true}, {"key": "C", "text": "数据量和分布变化后，强制使用的索引也可能变差", "correct": true}, {"key": "D", "text": "提示里写列名和写索引名的效果一样，可以任选其一", "correct": false}, {"key": "E", "text": "使用前后要对比不同参数下的实际效果", "correct": true}]}
+??: 提示指定的是索引名称，不是列名（例如 FORCE INDEX (idx_buyprice)）。使用前后要对比不同参数下的实际效果，数据量和分布变化后，强制使用的索引也可能变差。[原文§如果Explain用到的索引不正确的话，有什么办法干预吗？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9Cexplain%E7%94%A8%E5%88%B0%E7%9A%84%E7%B4%A2%E5%BC%95%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%AF%9D-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9E%E6%B3%95%E5%B9%B2%E9%A2%84%E5%90%97)

@@ -1,0 +1,892 @@
+[
+  {
+    "id": "U6-1",
+    "typed": {
+      "id": "U6-1",
+      "type": "single",
+      "stem": "按官方文档，OAuth2 是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "一个把 JSON 对象编码成没有空格的密集长字符串的标准",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "一个定义了几种处理身份认证和授权的方法的规范，包括使用第三方登录",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "一个直接规定了如何对通信进行加密的规范，如今已经不太流行",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "一个用于构建 API 的开放规范，使交互式文档和代码生成成为可能",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，OAuth2 是什么？",
+    "answer": "OAuth2 是一个规范，定义了几种处理身份认证和授权的方法，涵盖使用“第三方”（如 Facebook、Google、X、GitHub）登录的场景。A 说的是 JWT，C 是 OAuth 1 的特点，D 说的是 OpenAPI。[原文§安全性 · OAuth2](https://fastapi.tiangolo.com/zh/tutorial/security/#oauth2)"
+  },
+  {
+    "id": "U6-2",
+    "typed": {
+      "id": "U6-2",
+      "type": "single",
+      "stem": "按官方文档，OAuth2 对通信加密是怎么处理的？",
+      "options": [
+        {
+          "key": "A",
+          "text": "规范本身包含了如何加密通信的详细规定",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "要求先用 JWT 把请求内容加密后再进行传输",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "要求所有请求都按 OAuth 1 的方式进行签名",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "规范没有指定如何加密通信，期望应用使用 HTTPS",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，OAuth2 对通信加密是怎么处理的？",
+    "answer": "OAuth 1 直接包含了如何加密通信的规范，因此更复杂；OAuth2 没有指定如何加密通信，期望你为应用使用 HTTPS 进行通信。[原文§安全性 · OAuth 1](https://fastapi.tiangolo.com/zh/tutorial/security/#oauth-1)"
+  },
+  {
+    "id": "U6-3",
+    "typed": {
+      "id": "U6-3",
+      "type": "short"
+    },
+    "question": "OpenID Connect 与 OAuth2 是什么关系？它和单独叫“OpenID”的规范有什么区别？",
+    "answer": "OpenID Connect 是基于 OAuth2 的规范，只是对 OAuth2 做扩展，并明确了一些 OAuth2 中相对模糊的内容，让它更具互操作性；例如 Google 登录使用 OpenID Connect，而 Facebook 登录不支持它，使用的是自己的 OAuth2 风格。单独的“OpenID”试图解决同样的问题，但不基于 OAuth2，是一个完整的附加系统，如今已不流行。[原文§安全性 · OpenID Connect](https://fastapi.tiangolo.com/zh/tutorial/security/#openid-connect)[原文§安全性 · OpenID（非「OpenID Connect」）](https://fastapi.tiangolo.com/zh/tutorial/security/#openid-not-openid-connect)"
+  },
+  {
+    "id": "U6-4",
+    "typed": {
+      "id": "U6-4",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 之所以能自动提供交互式文档、支持代码生成，并能在其中集成各种安全方案，是因为它基于哪个规范？",
+      "options": [
+        {
+          "key": "A",
+          "text": "OpenAPI",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "OAuth 1",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "OpenID（非“OpenID Connect”）",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "JWT",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 之所以能自动提供交互式文档、支持代码生成，并能在其中集成各种安全方案，是因为它基于哪个规范？",
+    "answer": "FastAPI 基于 OpenAPI（以前称为 Swagger），这使多个自动交互式文档界面、代码生成等成为可能；OpenAPI 还定义了多种安全“方案”，用它们可以利用这些基于标准的工具，包括交互式文档系统。[原文§安全性 · OpenAPI](https://fastapi.tiangolo.com/zh/tutorial/security/#openapi)"
+  },
+  {
+    "id": "U6-5",
+    "typed": {
+      "id": "U6-5",
+      "type": "fill",
+      "stem": "按官方文档，OpenAPI 定义的四种安全方案是：____、____、____、____。",
+      "blankCount": 4,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档，OpenAPI 定义的四种安全方案是：____、____、____、____。",
+    "answer": "apiKey（来自查询参数、请求头或 cookie 的应用特定密钥）、http（标准 HTTP 身份认证，包括 bearer、HTTP Basic、HTTP Digest 等）、oauth2（OAuth2 处理安全性的各种方式，称为“流程”）、openIdConnect（提供自动发现 OAuth2 身份认证数据的方法）。[原文§安全性 · OpenAPI](https://fastapi.tiangolo.com/zh/tutorial/security/#openapi)"
+  },
+  {
+    "id": "U6-6",
+    "typed": {
+      "id": "U6-6",
+      "type": "single",
+      "stem": "按官方文档，在 OAuth2 的各种“流程”中，哪一种可以直接用于在同一个应用程序中处理身份认证？",
+      "options": [
+        {
+          "key": "A",
+          "text": "implicit",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "clientCredentials",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "password",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "authorizationCode",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，在 OAuth2 的各种“流程”中，哪一种可以直接用于在同一个应用程序中处理身份认证？",
+    "answer": "password 流程可以完美地用于直接在同一应用程序中处理身份认证（接下来几章的示例就用它）；implicit、clientCredentials、authorizationCode 这几种流程适合构建 OAuth 2.0 身份认证的提供者，例如 Google、Facebook、X、GitHub。[原文§安全性 · OpenAPI](https://fastapi.tiangolo.com/zh/tutorial/security/#openapi)"
+  },
+  {
+    "id": "U6-7",
+    "typed": {
+      "id": "U6-7",
+      "type": "short"
+    },
+    "question": "按官方文档，password 流程中，从用户登录到前端带着令牌访问受保护端点，大致经过哪几步？",
+    "answer": "用户在前端输入 username 和 password，前端把它们发送到 API 中由 tokenUrl 声明的 URL；API 校验后返回一个“令牌”，它只是一个包含某些内容、之后可用来验证该用户的字符串，通常会过期；前端把令牌临时存起来，之后访问需要认证的端点时发送 Authorization 请求头，值为 Bearer 加上令牌，例如 Bearer foobar。[原文§安全 - 第一步 · password 流](https://fastapi.tiangolo.com/zh/tutorial/security/first-steps/#the-password-flow)"
+  },
+  {
+    "id": "U6-8",
+    "typed": {
+      "id": "U6-8",
+      "type": "single",
+      "stem": "按官方文档，令牌为什么通常会设置过期时间？",
+      "options": [
+        {
+          "key": "A",
+          "text": "即使令牌被窃取，风险也更小，它不是永久有效的钥匙",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "令牌过期后，其中的内容就再也无法被他人读取",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "令牌有过期时间，服务端就不必再校验它是否有效",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "令牌过期后，用户无需重新登录就能自动获得新令牌",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，令牌为什么通常会设置过期时间？",
+    "answer": "令牌通常会在一段时间后过期，用户过一段时间需要重新登录；这样即使令牌被窃取，风险也更小，因为它不像一把永久有效的钥匙（在大多数情况下）。B、C 不是原文给出的理由，D 与“需要重新登录”相反。[原文§安全 - 第一步 · password 流](https://fastapi.tiangolo.com/zh/tutorial/security/first-steps/#the-password-flow)"
+  },
+  {
+    "id": "U6-9",
+    "typed": {
+      "id": "U6-9",
+      "type": "single",
+      "stem": "按官方文档，OAuth2 的设计目标是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "规定所有应用都必须使用 JWT 令牌来传递用户信息",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "要求前端和后端必须部署在同一个域名之下",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "让后端或 API 与负责用户认证的服务器解耦",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "要求 API 自己同时处理接口和用户认证两件事",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，OAuth2 的设计目标是什么？",
+    "answer": "OAuth2 的设计目标是让后端或 API 与负责用户认证的服务器解耦；本章示例是简化的情形，由 FastAPI 应用同时处理 API 和认证，这并不是 OAuth2 的设计目标。[原文§安全 - 第一步 · password 流](https://fastapi.tiangolo.com/zh/tutorial/security/first-steps/#the-password-flow)"
+  },
+  {
+    "id": "U6-10",
+    "typed": {
+      "id": "U6-10",
+      "type": "single",
+      "stem": "按官方文档，如果令牌内容是 foobar，前端访问受保护端点时发送的 Authorization 请求头的值应是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "foobar",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "Bearer foobar",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "Basic foobar",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "foobar Bearer",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，如果令牌内容是 foobar，前端访问受保护端点时发送的 Authorization 请求头的值应是什么？",
+    "answer": "Authorization 请求头的值是 Bearer 加上令牌，所以令牌是 foobar 时，请求头内容就是 Bearer foobar。[原文§安全 - 第一步 · password 流](https://fastapi.tiangolo.com/zh/tutorial/security/first-steps/#the-password-flow)"
+  },
+  {
+    "id": "U6-11",
+    "typed": {
+      "id": "U6-11",
+      "type": "single",
+      "stem": "创建 OAuth2PasswordBearer 实例时需要传入的 tokenUrl 参数表示什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "受保护的路径操作所在的 URL",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "前端用来向服务端校验令牌是否仍然有效的 URL",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "令牌过期后前端应当跳转去重新登录的页面 URL",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "客户端发送 username 和 password 来获取令牌的 URL",
+          "correct": true
+        }
+      ]
+    },
+    "question": "创建 OAuth2PasswordBearer 实例时需要传入的 tokenUrl 参数表示什么？",
+    "answer": "tokenUrl 参数包含客户端（运行在用户浏览器中的前端）用来发送 username 和 password 以获取令牌的 URL。[原文§安全 - 第一步 · FastAPI 的 OAuth2PasswordBearer](https://fastapi.tiangolo.com/zh/tutorial/security/first-steps/#fastapis-oauth2passwordbearer)"
+  },
+  {
+    "id": "U6-12",
+    "typed": {
+      "id": "U6-12",
+      "type": "multiple",
+      "stem": "关于 OAuth2PasswordBearer(tokenUrl=\"token\") 中的 tokenUrl，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "它不会创建端点，只声明客户端该用哪个 URL 获取令牌，实际的路径操作要自己创建",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "它会自动创建一个接收用户名和密码、返回令牌的 /token 路径操作",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "\"token\" 是相对 URL，等价于 ./token，会相对 API 所在的地址解析",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "它必须写成绝对 URL，否则在代理等高级用例中应用无法正常工作",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "这些信息会用于 OpenAPI，进而用于交互式 API 文档系统",
+          "correct": true
+        }
+      ]
+    },
+    "question": "关于 OAuth2PasswordBearer(tokenUrl=\"token\") 中的 tokenUrl，下列哪些说法符合官方文档？",
+    "answer": "tokenUrl 不会创建端点或路径操作，只是声明客户端应使用 /token 这个 URL 来获取令牌，这些信息会用于 OpenAPI 和交互式文档，对应的路径操作要自己创建。它是相对 URL（等价于 ./token），而使用相对 URL 很重要，能确保应用在使用代理等高级用例中依然正常工作，所以 B、D 错误。[原文§安全 - 第一步 · FastAPI 的 OAuth2PasswordBearer](https://fastapi.tiangolo.com/zh/tutorial/security/first-steps/#fastapis-oauth2passwordbearer)"
+  },
+  {
+    "id": "U6-13",
+    "typed": {
+      "id": "U6-13",
+      "type": "short"
+    },
+    "question": "OAuth2PasswordBearer 作为依赖项时具体做了什么？请求没带令牌时会怎样？",
+    "answer": "它在请求中查找 Authorization 请求头，检查其值是否为 Bearer 加上一些令牌，并把令牌作为 str 返回给路径操作函数，FastAPI 还据此在 OpenAPI 中定义“安全方案”。如果没有 Authorization 请求头，或者其值不包含 Bearer 令牌，它会直接返回 401 状态码错误，因此只要函数被执行，就一定能拿到一个 str 类型的令牌。[原文§安全 - 第一步 · 使用](https://fastapi.tiangolo.com/zh/tutorial/security/first-steps/#use-it)[原文§安全 - 第一步 · 它做了什么](https://fastapi.tiangolo.com/zh/tutorial/security/first-steps/#what-it-does)"
+  },
+  {
+    "id": "U6-14",
+    "typed": {
+      "id": "U6-14",
+      "type": "short"
+    },
+    "question": "怎样用依赖项实现“获取当前用户”？get_current_user 与 oauth2_scheme 是什么关系？",
+    "answer": "get_current_user 把 oauth2_scheme 作为子依赖项，从中接收 str 类型的 token，再用工具函数把令牌转成用户（示例是返回 Pydantic 的 User 模型）。路径操作用 Depends(get_current_user) 注入当前用户，并把参数类型声明为 User，这样函数内部可以使用代码补全和类型检查。[原文§获取当前用户 · 创建 get_current_user 依赖项](https://fastapi.tiangolo.com/zh/tutorial/security/get-current-user/#create-a-get-current-user-dependency)[原文§获取当前用户 · 注入当前用户](https://fastapi.tiangolo.com/zh/tutorial/security/get-current-user/#inject-the-current-user)"
+  },
+  {
+    "id": "U6-15",
+    "typed": {
+      "id": "U6-15",
+      "type": "multiple",
+      "stem": "关于用依赖注入系统处理安全并获取当前用户，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "可以使用任何模型或数据来满足安全需求，例如字符串、字典或数据库模型实例",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "必须使用 Pydantic 的 User 模型，并且模型里必须有 username 字段",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "即使登录应用的不是用户，而是只有访问令牌的机器人或其它系统，工作方式也一样",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "每个路径操作都需要各自重复写一遍令牌解析代码",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "安全和依赖注入的代码只需写一次，即使有数千个端点也可以共用同一个安全系统",
+          "correct": true
+        }
+      ]
+    },
+    "question": "关于用依赖注入系统处理安全并获取当前用户，下列哪些说法符合官方文档？",
+    "answer": "开发者可以使用任何模型、类或数据满足安全需求，本例的 Pydantic User 模型只是示例，不局限于 username 字段，所以 B 错；登录的可以是机器人等只拥有访问令牌的系统；安全和依赖注入的代码只写一次，数千个端点都可以共用，每个路径操作只需很少的几行代码，所以 D 错。[原文§获取当前用户 · 其它模型](https://fastapi.tiangolo.com/zh/tutorial/security/get-current-user/#other-models)[原文§获取当前用户 · 代码大小](https://fastapi.tiangolo.com/zh/tutorial/security/get-current-user/#code-size)"
+  },
+  {
+    "id": "U6-16",
+    "typed": {
+      "id": "U6-16",
+      "type": "multiple",
+      "stem": "关于 OAuth2 密码流中 username 和 password 的发送，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "必须以表单数据形式发送",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "可以用 JSON 对象发送，只要字段名是 username 和 password",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "两个字段必须命名为 username 和 password，不能用 user-name 或 email 等其它名称",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "字段名可以自定义，只要在 OpenAPI 文档中声明即可",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "只有登录路径操作需要使用规范规定的字段名，前端显示的名称和数据库模型的字段名仍可按需命名",
+          "correct": true
+        }
+      ]
+    },
+    "question": "关于 OAuth2 密码流中 username 和 password 的发送，下列哪些说法符合官方文档？",
+    "answer": "OAuth2 规范要求密码流中客户端必须以表单数据形式发送 username 和 password 字段，不能使用 JSON 对象，字段名也必须就是 username 和 password。前端仍可显示终端用户所需的名称，数据库模型也可以用所需的名称，但登录路径操作要使用兼容规范的这两个名称。[原文§OAuth2 实现简单的 Password 和 Bearer 验证 · 获取 username 和 password](https://fastapi.tiangolo.com/zh/tutorial/security/simple-oauth2/#get-the-username-and-password)"
+  },
+  {
+    "id": "U6-17",
+    "typed": {
+      "id": "U6-17",
+      "type": "multiple",
+      "stem": "关于 OAuth2 的 scope，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "表单字段名是 scope（单数），但内容是以空格分隔的、由多个作用域组成的长字符串",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "作用域必须写成 URL 的形式，否则 OAuth2 无法识别",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "作用域只是不带空格的字符串，常用于声明指定的安全权限，例如 users:read、users:write",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "是否使用冒号等符号，对 OAuth2 来说只是特定实现的细节，它们都只是字符串",
+          "correct": true
+        },
+        {
+          "key": "E",
+          "text": "OAuth2PasswordRequestForm 的实例通过 scope 属性提供由多个作用域组成的列表",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于 OAuth2 的 scope，下列哪些说法符合官方文档？",
+    "answer": "scope 表单字段名是单数，实际是以空格分隔的多个作用域组成的长字符串；作用域只是不带空格的字符串，常用于声明权限（如 users:read），是否用冒号或 URL 形式不重要，对 OAuth2 来说都只是字符串，所以 B 错。表单类的实例没有长字符串属性 scope，而是提供 scopes 属性，由已发送的 scope 字符串列表组成，所以 E 错。[原文§OAuth2 实现简单的 Password 和 Bearer 验证 · scope](https://fastapi.tiangolo.com/zh/tutorial/security/simple-oauth2/#scope)[原文§OAuth2 实现简单的 Password 和 Bearer 验证 · 使用表单数据](https://fastapi.tiangolo.com/zh/tutorial/security/simple-oauth2/#use-the-form-data)"
+  },
+  {
+    "id": "U6-18",
+    "typed": {
+      "id": "U6-18",
+      "type": "multiple",
+      "stem": "关于 OAuth2PasswordRequestForm，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "它只是普通的类依赖项，并不是 FastAPI 会识别为安全方案的特殊类",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "它和 OAuth2PasswordBearer 一样会被识别为安全方案并写入 OpenAPI",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "它声明了 username、password 两个表单字段，以及可选的 scope、grant_type 等字段",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "也可以自己编写这样的类或直接声明 Form 参数，FastAPI 只是因为这种用例常见才直接提供支持",
+          "correct": true
+        },
+        {
+          "key": "E",
+          "text": "它会强制 grant_type 字段必须是固定值 password",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于 OAuth2PasswordRequestForm，下列哪些说法符合官方文档？",
+    "answer": "OAuth2PasswordRequestForm 并不像 OAuth2PasswordBearer 那样是被识别为安全方案的特殊类，它只是可以自行编写的类依赖项（也可以直接声明 Form 参数），FastAPI 因为用例常见才直接支持，所以 B 错。它声明 username、password，以及可选的 scope、grant_type、client_id、client_secret；它没有强制 grant_type 为 password，要强制须改用 OAuth2PasswordRequestFormStrict，所以 E 错。[原文§OAuth2 实现简单的 Password 和 Bearer 验证 · OAuth2PasswordRequestForm](https://fastapi.tiangolo.com/zh/tutorial/security/simple-oauth2/#oauth2passwordrequestform)"
+  },
+  {
+    "id": "U6-19",
+    "typed": {
+      "id": "U6-19",
+      "type": "short"
+    },
+    "question": "为什么永远不要保存明文密码，而要保存密码哈希？",
+    "answer": "哈希是把内容（这里是密码）转换成形似乱码的字节序列：相同的内容总得到相同的结果，但无法从结果转换回原密码。这样数据库被盗时，窃贼拿到的只是哈希值而不是明文密码，也就无法把密码拿去其它应用登录，而很多用户在各个系统里用的是同一个密码，风险很大。[原文§OAuth2 实现简单的 Password 和 Bearer 验证 · 为什么使用密码哈希](https://fastapi.tiangolo.com/zh/tutorial/security/simple-oauth2/#why-use-password-hashing)[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 为什么使用密码哈希](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#why-use-password-hashing)"
+  },
+  {
+    "id": "U6-20",
+    "typed": {
+      "id": "U6-20",
+      "type": "single",
+      "stem": "按官方文档，密码哈希有什么特点？",
+      "options": [
+        {
+          "key": "A",
+          "text": "每次传入相同的内容都得到相同的结果，且无法转换回原密码",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "相同的密码每次得到的结果都不同，并且可以解密还原成原密码",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "需要用 SECRET_KEY 加密，持有密钥的人可以还原出原密码",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只是对密码做了编码，任何人都可以反向转换回原密码",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，密码哈希有什么特点？",
+    "answer": "哈希是把密码转换成形似乱码的字节序列；每次传入完全相同的内容得到的都是完全相同的结果，但这个结果无法转换回传入的密码，所以窃贼只拿到哈希值也还原不出明文。[原文§OAuth2 实现简单的 Password 和 Bearer 验证 · 密码哈希](https://fastapi.tiangolo.com/zh/tutorial/security/simple-oauth2/#password-hashing)"
+  },
+  {
+    "id": "U6-21",
+    "typed": {
+      "id": "U6-21",
+      "type": "fill",
+      "stem": "按官方文档，OAuth2 令牌端点返回的 JSON 对象应包含的两个键是：____、____。",
+      "blankCount": 2,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档，OAuth2 令牌端点返回的 JSON 对象应包含的两个键是：____、____。",
+    "answer": "access_token（包含访问令牌的字符串）、token_type（本例使用 Bearer 令牌，所以类型应为 bearer）。[原文§OAuth2 实现简单的 Password 和 Bearer 验证 · 返回 Token](https://fastapi.tiangolo.com/zh/tutorial/security/simple-oauth2/#return-the-token)"
+  },
+  {
+    "id": "U6-22",
+    "typed": {
+      "id": "U6-22",
+      "type": "single",
+      "stem": "get_current_active_user 依赖项与 get_current_user 是什么关系？",
+      "options": [
+        {
+          "key": "A",
+          "text": "它取代 get_current_user，因此不再需要令牌",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "它是 get_current_user 的子依赖项，用来解析令牌",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "它以 get_current_user 为基础，再在用户未激活时返回 HTTP 错误",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "它只用于登录端点，在 /token 中校验用户名和密码",
+          "correct": false
+        }
+      ]
+    },
+    "question": "get_current_active_user 依赖项与 get_current_user 是什么关系？",
+    "answer": "get_current_active_user 以 get_current_user 为基础：用户不存在时 get_current_user 报错，用户未激活时它再返回 HTTP 错误，这样端点只有在用户存在、通过身份验证且处于激活状态时才能拿到该用户。[原文§OAuth2 实现简单的 Password 和 Bearer 验证 · 更新依赖项](https://fastapi.tiangolo.com/zh/tutorial/security/simple-oauth2/#update-the-dependencies)"
+  },
+  {
+    "id": "U6-23",
+    "typed": {
+      "id": "U6-23",
+      "type": "single",
+      "stem": "按官方文档，任何 401 状态码的响应按规范应返回哪个响应头？使用 Bearer 令牌时它的值应是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "Authorization: Bearer",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "WWW-Authenticate: Bearer",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "WWW-Authenticate: Basic",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "Authorization: Basic",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，任何 401 状态码的响应按规范应返回哪个响应头？使用 Bearer 令牌时它的值应是什么？",
+    "answer": "按规范，任何 401 UNAUTHORIZED 响应都应返回 WWW-Authenticate 响应头，使用 Bearer 令牌时它的值就是 Bearer。忽略它实际上也不会有问题，提供它是为了符合规范，并且现在或将来可能有工具期望并使用它。[原文§OAuth2 实现简单的 Password 和 Bearer 验证 · 更新依赖项](https://fastapi.tiangolo.com/zh/tutorial/security/simple-oauth2/#update-the-dependencies)"
+  },
+  {
+    "id": "U6-24",
+    "typed": {
+      "id": "U6-24",
+      "type": "single",
+      "stem": "JWT 指的是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "一种专门用于对用户密码做哈希并安全存储的算法",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "一种规定如何加密通信的规范，属于 OAuth 1 的一部分",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "OpenAPI 为 API 安全定义的一种认证方案的名称",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "JSON Web Tokens，把 JSON 对象编码成密集长字符串的标准",
+          "correct": true
+        }
+      ]
+    },
+    "question": "JWT 指的是什么？",
+    "answer": "JWT 意为 JSON Web Tokens，是一种把 JSON 对象编码成没有空格、很密集的一长串字符串的标准。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 关于 JWT](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#about-jwt)"
+  },
+  {
+    "id": "U6-25",
+    "typed": {
+      "id": "U6-25",
+      "type": "single",
+      "stem": "关于 JWT 的“加密”与“签名”，下列说法正确的是？",
+      "options": [
+        {
+          "key": "A",
+          "text": "它不是加密的，任何人都能从内容中恢复信息，但它是签名的，可以验证令牌确实由自己签发",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "它是加密的，只有持有密钥的人才能读出内容，签名只是用来压缩字符串",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "它既不加密也不签名，只是把 JSON 对象编码成一长串字符串而已",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "它是加密的，所以收到令牌后无需再验证它是不是自己签发的",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于 JWT 的“加密”与“签名”，下列说法正确的是？",
+    "answer": "JWT 不是加密的，所以任何人都可以从内容中恢复信息；但它是“签名”的，因此收到自己签发的令牌时，可以验证它确实是你签发的。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 关于 JWT](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#about-jwt)"
+  },
+  {
+    "id": "U6-26",
+    "typed": {
+      "id": "U6-26",
+      "type": "short"
+    },
+    "question": "JWT 是怎样实现“令牌有效期”的？如果用户或第三方尝试修改令牌里的过期时间会怎样？",
+    "answer": "可以创建一个有效期例如为 1 周的令牌，用户第二天带着令牌回来，就能知道该用户仍处于登录状态；一周后令牌过期，用户不再被授权，需要重新登录以获取新令牌。如果用户或第三方尝试修改令牌来更改过期时间，也能被发现，因为签名将不匹配。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 关于 JWT](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#about-jwt)"
+  },
+  {
+    "id": "U6-27",
+    "typed": {
+      "id": "U6-27",
+      "type": "single",
+      "stem": "按官方文档，pwdlib 推荐使用哪种密码哈希算法？",
+      "options": [
+        {
+          "key": "A",
+          "text": "HS256",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "bcrypt",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "Argon2",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "RSA",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，pwdlib 推荐使用哪种密码哈希算法？",
+    "answer": "pwdlib 推荐的算法是 Argon2；它也支持 bcrypt，但推荐的是 Argon2。HS256 是示例里用来签名 JWT 令牌的算法，RSA 属于数字签名算法，都不是密码哈希算法。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 安装 pwdlib](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#install-pwdlib)"
+  },
+  {
+    "id": "U6-28",
+    "typed": {
+      "id": "U6-28",
+      "type": "single",
+      "stem": "按官方文档，authenticate_user 在用户名不存在时，仍会对一个虚拟哈希运行 verify_password，这样做是为了什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "让不存在的用户名也能顺利通过校验并获得一个访问令牌",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "让响应时间不随用户名是否存在而变化，防止枚举用户名的时序攻击",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "减少密码哈希的计算次数，让用户名不存在时登录响应变得更快",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "把虚拟哈希写入数据库，作为该用户名新注册账号的初始密码",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，authenticate_user 在用户名不存在时，仍会对一个虚拟哈希运行 verify_password，这样做是为了什么？",
+    "answer": "这样可以确保无论用户名是否有效，端点的响应时间都大致相同，从而防止可用于枚举已存在用户名的时序攻击。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 哈希并校验密码](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#hash-and-verify-the-passwords)"
+  },
+  {
+    "id": "U6-29",
+    "typed": {
+      "id": "U6-29",
+      "type": "multiple",
+      "stem": "关于示例中处理 JWT 令牌时用到的变量和设置，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "SECRET_KEY 是用于对 JWT 令牌签名的随机密钥，应自行用命令生成，不要使用示例里的那个",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "SECRET_KEY 只要是任意固定的简单字符串即可，不必是随机的",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "ALGORITHM 是用于签名 JWT 令牌的算法，示例设为 \"HS256\"",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "ALGORITHM 指的是对用户密码做哈希的算法，示例设为 \"HS256\"",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "签发令牌时会把过期时间以 exp 键放进要编码的内容里，过期时间由一个变量设置",
+          "correct": true
+        }
+      ]
+    },
+    "question": "关于示例中处理 JWT 令牌时用到的变量和设置，下列哪些说法符合官方文档？",
+    "answer": "SECRET_KEY 是用来对 JWT 令牌签名的随机密钥，要用命令生成安全的随机密钥并复制到变量里，不要使用示例中的那个，所以 B 错；ALGORITHM 是签名 JWT 所用的算法，示例设为 HS256，不是密码哈希算法（推荐 Argon2），所以 D 错；过期时间由一个变量设置，签发时以 exp 键写入令牌内容。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 处理 JWT 令牌](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#handle-jwt-tokens)"
+  },
+  {
+    "id": "U6-30",
+    "typed": {
+      "id": "U6-30",
+      "type": "multiple",
+      "stem": "关于 JWT 规范中的 sub 键，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "它表示令牌的“主题”（subject），使用是可选的，通常把用户的标识放在这里",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "它表示令牌的过期时间，到期后令牌自动失效",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "它在整个应用中应是唯一标识符，并且应该是字符串",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "它必须是整数类型的用户自增 ID，不能是字符串",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "不同实体可能出现相同 ID 时，可给值加前缀（如 username:johndoe）避免冲突",
+          "correct": true
+        }
+      ]
+    },
+    "question": "关于 JWT 规范中的 sub 键，下列哪些说法符合官方文档？",
+    "answer": "sub 表示令牌的“主题”，可选，通常放用户标识，不是过期时间；它在整个应用中应是唯一标识符，并且应该是字符串，不是整数 ID；当用户、车、博客文章等不同实体可能有相同 ID 时，可以给 sub 的值加上前缀，例如 username:johndoe，以避免 ID 冲突。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 关于 JWT “主题” sub 的技术细节](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#technical-details-about-the-jwt-subject-sub)"
+  },
+  {
+    "id": "U6-31",
+    "typed": {
+      "id": "U6-31",
+      "type": "short"
+    },
+    "question": "在 JWT 版本里，get_current_user 怎样处理收到的令牌？哪些情况会返回错误？",
+    "answer": "它先用 oauth2_scheme 拿到令牌，再用 SECRET_KEY 和 ALGORITHM 解码并校验令牌，从内容里取出 sub 作为用户名，据此到（伪）数据库里查用户。令牌无效、取不到 sub，或者查不到用户时，都会抛出 401 的 HTTPException（Could not validate credentials），并带上 WWW-Authenticate: Bearer 响应头。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 更新依赖项](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#update-the-dependencies)"
+  },
+  {
+    "id": "U6-32",
+    "typed": {
+      "id": "U6-32",
+      "type": "single",
+      "stem": "按官方文档，在使用 JWT 令牌的方案下，密码会在什么时候发送？",
+      "options": [
+        {
+          "key": "A",
+          "text": "每个请求都要同时带上用户的密码和访问令牌",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "每次服务端校验令牌时都要让用户重新发送密码",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "只有在令牌过期之后才需要发送一次密码",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只在第一个请求中用于认证用户并获取令牌，之后只发送令牌",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，在使用 JWT 令牌的方案下，密码会在什么时候发送？",
+    "answer": "密码只会在第一个请求中用于认证用户并获取访问令牌，之后就不会再发送密码了，发送的数据只包含令牌（Authorization 请求头的值以 Bearer 开头）。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 检查](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#check-it)"
+  },
+  {
+    "id": "U6-33",
+    "typed": {
+      "id": "U6-33",
+      "type": "single",
+      "stem": "按官方文档，OAuth2 的 scopes（作用域）可以用来做什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "为 JWT 令牌设置统一的过期时间，到期后自动失效",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "指定对 JWT 令牌进行签名所使用的算法和密钥",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "为 JWT 令牌添加一组特定权限，让用户或第三方在限制条件下调用 API",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "把 username 和 password 从表单字段中隐藏起来",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，OAuth2 的 scopes（作用域）可以用来做什么？",
+    "answer": "OAuth2 支持 scopes，可以用它们为 JWT 令牌添加一组特定权限，然后把这个令牌直接交给用户或第三方，让他们在一组限制条件下与 API 交互；具体用法在高级用户指南中讲解。[原文§使用密码（及哈希）的 OAuth2，基于 JWT 的 Bearer 令牌 · 使用 scopes 的高级用法](https://fastapi.tiangolo.com/zh/tutorial/security/oauth2-jwt/#advanced-usage-with-scopes)"
+  }
+]

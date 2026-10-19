@@ -1,0 +1,96 @@
+{
+  "source_url": "https://xiaolincoding.com/interview/network.html",
+  "source_sha256": "de6318e0343c119bcb8b6f6a630376d22fe9459879ef756f874bfd53da8a3304",
+  "chapter_counts": {
+    "T1": 16,
+    "T2": 295,
+    "T3": 203,
+    "T4": 21,
+    "T5": 65,
+    "T6": 56
+  },
+  "chapter_statuses": {
+    "T1": "draft",
+    "T2": "draft",
+    "T3": "draft",
+    "T4": "draft",
+    "T5": "draft",
+    "T6": "draft"
+  },
+  "type_counts": {
+    "fill": 101,
+    "single": 457,
+    "multiple": 60,
+    "short": 38
+  },
+  "question_count": 656,
+  "answer_count": 656,
+  "typed_count": 656,
+  "ids_and_order_match": true,
+  "duplicate_ids": {
+    "questions": [],
+    "answers": [],
+    "typed": []
+  },
+  "source_subheading_count": 96,
+  "local_subheading_count": 96,
+  "subheadings_match_normalized": true,
+  "fill_count": 101,
+  "fill_sync_errors": [],
+  "distinct_reference_count": 102,
+  "missing_reference_anchors": [],
+  "single_correct_positions": {
+    "B": 115,
+    "D": 114,
+    "A": 114,
+    "C": 114
+  },
+  "file_sha256": {
+    "interview-practice/network.md": "169d7107099e69dacf47dcba650979528b4238688c69537ec64709ee55632eb8",
+    "interview-practice/answers-xiaolin/network.md": "176f1a7430d1714c775fbccafb07b8e72d0197614f4d7a412d2b2b4093cdf3f1",
+    "content/typed/network.json": "08540b14d4d67d043c366bfe8e6acda7ec1b163dce3e0798a1a171ffc835116e"
+  },
+  "validation": {
+    "command": "npm run content:validate",
+    "exit_code": 0,
+    "warnings": [
+      {
+        "rule": "V14",
+        "target": "R3-139",
+        "scope": "existing data-structures topic"
+      }
+    ]
+  },
+  "unit_tests": {
+    "command": "npm run test:unit",
+    "exit_code": 0,
+    "passed_files": 9,
+    "passed_tests": 103
+  },
+  "include_drafts_validation": {
+    "command": "CONTENT_INCLUDE_DRAFTS=1 npm run content:validate",
+    "exit_code": 0,
+    "chapters": 190,
+    "questions": 5604,
+    "warnings": [
+      {
+        "rule": "V14",
+        "target": "R3-139"
+      }
+    ]
+  },
+  "final_review_checks": {
+    "review_reports": 4,
+    "changed_network_inputs": [],
+    "broken_local_report_links": [],
+    "unknown_report_question_ids": [],
+    "chapter_statuses": {
+      "T1": "draft",
+      "T2": "draft",
+      "T3": "draft",
+      "T4": "draft",
+      "T5": "draft",
+      "T6": "draft"
+    }
+  }
+}

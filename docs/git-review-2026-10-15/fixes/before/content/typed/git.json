@@ -1,0 +1,5882 @@
+{
+  "prefix": "X",
+  "chapters": {
+    "X1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "X1-1",
+          "type": "fill",
+          "stem": "按原文，Workspace、Index / Stage、Repository、Remote 的译名依次是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X1-2",
+          "type": "single",
+          "stem": "按原文，Index / Stage 对应的译名是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工作区",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "暂存区",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "仓库区（或本地仓库）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "远程仓库",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-3",
+          "type": "single",
+          "stem": "按原文，最基础的工作流程中，开发之前首先执行哪条命令获取远程仓库的最新代码？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git add .",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git commit -m",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git push",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git pull",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X1-4",
+          "type": "single",
+          "stem": "按原文，git add . 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "将工作区代码的修改添加到暂存区",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "将暂存区代码提交到本地仓库并添加注释",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "将本地仓库的代码推送到远程仓库",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "获取远程仓库的最新代码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-5",
+          "type": "single",
+          "stem": "按原文，git commit -m 完成xx功能 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "将工作区代码的修改全部添加到暂存区中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "将本地仓库的代码强制推送到远程仓库",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "将暂存区代码提交到本地仓库并添加相应的注释",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "获取远程仓库的最新代码到本地",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-6",
+          "type": "fill",
+          "stem": "按原文，最基础的工作流程在 git pull 并写完代码之后，依次执行：____ → ____ → ____（填写命令）。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X1-7",
+          "type": "single",
+          "stem": "按原文，想撤回刚执行的 git commit，并让代码改动仍保留在暂存区和工作区，应使用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git reset --mixed HEAD^",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git push origin xxx --force",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git reset --soft HEAD^",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git pull",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-8",
+          "type": "single",
+          "stem": "按原文，执行 git reset --mixed HEAD^ 后，代码的改动保留在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只保留在工作区",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "同时保留在暂存区和工作区",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只保留在暂存区",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "全部丢失，不会保留",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-9",
+          "type": "single",
+          "stem": "按原文，执行 git reset --soft HEAD^ 后，代码的改动保留在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只保留在工作区",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只保留在暂存区",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "全部丢失，不会保留",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "暂存区和工作区",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X1-10",
+          "type": "single",
+          "stem": "按原文，git reset HEAD^（不带选项）等同于下列哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git reset --soft HEAD^",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git reset --mixed HEAD^",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git push origin xxx --force",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git pull",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-11",
+          "type": "single",
+          "stem": "按原文，与 --soft 相比，git reset --mixed HEAD^ 额外回退了哪个操作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git commit 操作",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git push 操作",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git pull 操作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git add 操作",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X1-12",
+          "type": "single",
+          "stem": "按原文，git reset --soft HEAD^ 会把本地仓库回退到什么位置？",
+          "options": [
+            {
+              "key": "A",
+              "text": "远程仓库的最新版本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "当前版本的上一个版本",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "暂存区中的快照",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "本地仓库最初的第一个版本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-13",
+          "type": "single",
+          "stem": "按原文，撤回 git push 时，本地回退之后，用哪条命令把本地当前版本强制推送到远程仓库？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git reset --soft HEAD^",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git reset --mixed HEAD^",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git push origin xxx --force",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git commit -m 完成xx功能",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-14",
+          "type": "single",
+          "stem": "按原文，撤回 git push 时先执行 git reset HEAD^，代码的修改会保留在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工作区",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "暂存区",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "暂存区和工作区",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "远程仓库",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-15",
+          "type": "multiple",
+          "stem": "按原文，下列关于撤回 git commit 和 git push 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git reset --soft HEAD^ 回退后，改动保留在暂存区和工作区",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "--mixed 是 git reset 命令的默认选项",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "撤回 git push 需要在本地回退后用 git push origin xxx --force 强制推送",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git reset --mixed HEAD^ 回退后，改动仍保留在暂存区",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "只要在本地执行 git reset HEAD^，远程仓库就会自动同步回退",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-16",
+          "type": "short"
+        },
+        {
+          "id": "X1-17",
+          "type": "short"
+        },
+        {
+          "id": "X1-18",
+          "type": "fill",
+          "stem": "按原文，Git 内部主要有四个区域：工作区、____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "X1-19",
+          "type": "single",
+          "stem": "按原文，Git 的工作区指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "本地磁盘上你能直接看到和修改的项目目录",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "文件快照所在的 .git/index",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git commit 之后记录到本地 .git 目录的 commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "托管在 GitHub、GitLab 等服务器上的仓库",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-20",
+          "type": "single",
+          "stem": "按原文，git add 之后，文件的快照被暂存在哪个位置？",
+          "options": [
+            {
+              "key": "A",
+              "text": "项目目录的根目录下",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "GitHub、GitLab 等远程服务器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": ".git/index",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "origin/main 这样的远程跟踪分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-21",
+          "type": "single",
+          "stem": "按原文，git commit 之后，暂存区的内容会变成什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "同步到 GitHub、GitLab 等远程服务器",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "固化成一条 commit，记录到本地的 .git 目录",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "重新变回项目目录里的普通文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "继续作为快照暂存在 .git/index 里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-22",
+          "type": "single",
+          "stem": "按原文，git push 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把工作区的修改暂存到 .git/index",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把暂存区的内容固化成一条 commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把远程的最新内容更新到工作区",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把本地 commit 同步到远程仓库",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X1-23",
+          "type": "single",
+          "stem": "按原文，远程仓库指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "本地磁盘上你能直接看到和修改的项目目录",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "托管在 GitHub、GitLab 等远程服务器上的仓库",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "记录在本地 .git 目录中的 commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "保存在 .git/index 里的文件快照",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-24",
+          "type": "fill",
+          "stem": "按原文，正向数据流是：工作区 --____--> 暂存区 --____--> 本地仓库 --____--> 远程仓库（填写命令）。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X1-25",
+          "type": "single",
+          "stem": "按原文，反向数据流中，从远程仓库到本地仓库用哪个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git checkout 或 git restore",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git add",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git fetch 或 git pull",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git push",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-26",
+          "type": "single",
+          "stem": "按原文，反向数据流中，从本地仓库到工作区用哪个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git fetch 或 git pull",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git commit 或 git push",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git add 或 git commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git checkout 或 git restore",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X1-27",
+          "type": "single",
+          "stem": "按原文，git commit 在正向数据流中位于哪两个区域之间？",
+          "options": [
+            {
+              "key": "A",
+              "text": "暂存区与本地仓库之间",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "工作区与暂存区之间",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "本地仓库与远程仓库之间",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "远程仓库与本地仓库之间",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-28",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Git 四个区域的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git add 之后文件的快照被暂存在 .git/index 里",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "远程仓库托管在 GitHub、GitLab 等远程服务器上",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git commit 把暂存区的内容固化成一条 commit，记录到本地的 .git 目录",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "工作区指的是 .git/index 里暂存的文件快照",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "git push 会把工作区里尚未 add 的修改直接同步到远程仓库",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-29",
+          "type": "short"
+        },
+        {
+          "id": "X1-30",
+          "type": "single",
+          "stem": "按原文，git fetch 会把远程仓库的最新 commit 拉到哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "当前所在的本地分支（比如 main）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工作区中被修改的文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "远程仓库上的 main 分支",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "远程跟踪分支（比如 origin/main）",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X1-31",
+          "type": "single",
+          "stem": "按原文，git fetch 对当前工作区和本地分支有什么影响？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不会改动，相当于只“下载”",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "会立刻合并到当前分支",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "会改动工作区，但不改动本地分支",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会改动本地分支，但不改动工作区",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-32",
+          "type": "fill",
+          "stem": "按原文，git pull 等价于先执行 ____，再执行 ____（填写命令）。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X1-33",
+          "type": "single",
+          "stem": "按原文，git fetch 之后，想先看看远程都改了什么，可以用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git pull",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git push origin main",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git log origin/main",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git add .",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-34",
+          "type": "single",
+          "stem": "按原文，日常开发中推荐先 git fetch 看一眼再手动选择 merge 还是 rebase，主要是为了避免什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "fetch 无法获取远程仓库的最新代码",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "被意外的远程改动拉出 merge commit 或冲突",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "本地分支落后于远程跟踪分支",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "push 时需要使用 --force 强制推送",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-35",
+          "type": "multiple",
+          "stem": "按原文，下列关于 git pull 和 git fetch 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git fetch 不会改动当前工作区和本地分支",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git pull 先拉取远程更新，然后立刻合并到当前分支",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git fetch 拉取之后，可以先查看再决定要不要合并",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git fetch 拉取后会立刻合并到当前分支",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "git pull 只下载远程更新，不会合并",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-36",
+          "type": "short"
+        },
+        {
+          "id": "X1-37",
+          "type": "single",
+          "stem": "按原文，不带参数的 git diff 对比的是哪两者？",
+          "options": [
+            {
+              "key": "A",
+              "text": "暂存区与 HEAD（已经 add 但还没 commit 的修改）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工作区与暂存区（还没 add 的修改）",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "工作区与 HEAD（所有未 commit 的修改）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两个分支之间的差异",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-38",
+          "type": "single",
+          "stem": "按原文，git diff --cached 对比的是哪两者？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工作区与暂存区（还没 add 的修改）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工作区与 HEAD（所有未 commit 的修改）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两个 commit 之间的差异",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "暂存区与 HEAD（已经 add 但还没 commit 的修改）",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X1-39",
+          "type": "single",
+          "stem": "按原文，git diff --staged 和下列哪个写法效果相同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git diff --cached",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git diff",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git diff HEAD",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git diff main feat/a",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-40",
+          "type": "single",
+          "stem": "按原文，git diff HEAD 对比的是哪两者？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工作区与暂存区（还没 add 的修改）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "暂存区与 HEAD（已经 add 但还没 commit 的修改）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "工作区与 HEAD（所有未 commit 的修改）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两个分支之间的差异",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-41",
+          "type": "single",
+          "stem": "按原文，要查看 main 和 feat/a 两个分支之间的差异，应使用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git diff commit1 commit2",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git diff --cached",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git diff main feat/a",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git diff HEAD",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-42",
+          "type": "single",
+          "stem": "按原文，git diff commit1 commit2 对比的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两个 commit 之间的差异",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两个分支之间的差异",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "工作区与 commit1 之间的差异",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "暂存区与 commit2 之间的差异",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-43",
+          "type": "single",
+          "stem": "按原文，git diff main feat/a -- <file> 末尾的 -- <file> 起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "排除指定文件后再对比",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把指定文件加入暂存区",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "改为对比暂存区与 HEAD 中的该文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只对比指定文件的差异",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X1-44",
+          "type": "fill",
+          "stem": "按原文的口诀，git diff 默认对比 ____，加上 --cached 则对比 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X1-45",
+          "type": "multiple",
+          "stem": "按原文，下列关于 git diff 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git diff 默认对比工作区与暂存区",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git diff --cached 与 git diff --staged 效果相同",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git diff HEAD 对比工作区与 HEAD，是最常用的写法",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git diff --cached 对比的是工作区与 HEAD",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "不带参数的 git diff 对比的是暂存区与 HEAD",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-46",
+          "type": "short"
+        },
+        {
+          "id": "X1-47",
+          "type": "single",
+          "stem": "按原文，正常情况下 HEAD 指向什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最近一次使用的 tag",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "当前分支的最新 commit",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "远程仓库的最新 commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "暂存区中的文件快照",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-48",
+          "type": "single",
+          "stem": "按原文，更准确地说，HEAD 通常指向什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一个具体的 commit 哈希值（如 a1b2c3d）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个 tag（如某个版本标签）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "远程跟踪分支（如 origin/main）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一个分支引用（如 refs/heads/main）",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X1-49",
+          "type": "single",
+          "stem": "按原文，什么情况属于游离 HEAD（detached HEAD）？",
+          "options": [
+            {
+              "key": "A",
+              "text": "HEAD 指向当前分支的最新 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "HEAD 直接指向一个 commit，而不是分支",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "HEAD 指向暂存区中的快照",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "HEAD 指向远程跟踪分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-50",
+          "type": "multiple",
+          "stem": "按原文，下列哪些操作会让 HEAD 直接指向一个 commit，进入游离 HEAD 状态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git checkout <commit-hash>",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git checkout <tag>",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git switch -c new-branch",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git log origin/main",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-51",
+          "type": "fill",
+          "stem": "按原文，执行 git checkout <____> 或 git checkout <____> 时，HEAD 会直接指向一个 commit 而不是分支。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "X1-52",
+          "type": "single",
+          "stem": "按原文，在游离 HEAD 状态下做的新 commit 属于哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "属于 main 分支",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "属于切换之前所在的分支",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不属于任何分支",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "属于远程跟踪分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-53",
+          "type": "single",
+          "stem": "按原文，在游离 HEAD 状态下做了新 commit 后，一旦 git switch 切走，会发生什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这些 commit 可能被垃圾回收而丢失",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "这些 commit 自动合并到 main 分支",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这些 commit 自动推送到远程仓库",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这些 commit 自动保存在一个新分支上",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-54",
+          "type": "single",
+          "stem": "按原文，在游离 HEAD 状态下做了重要修改，应该怎样把它们保存下来？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 git switch -c new-branch 创建一个新分支",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用 git switch 切回原来的分支",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "再次执行 git checkout <tag>",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 git push origin xxx --force 强制推送",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X1-55",
+          "type": "short"
+        }
+      ]
+    },
+    "X2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "X2-1",
+          "type": "fill",
+          "stem": "按原文，git reset 的三个参数决定了 reset 对本地仓库 HEAD、____、____ 三个区域的影响范围。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "X2-2",
+          "type": "single",
+          "stem": "按原文，执行 git reset --soft 后，暂存区和工作区的状态是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "暂存区回退，工作区保留",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "暂存区和工作区都回退",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "暂存区和工作区都保留",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "暂存区保留，工作区回退",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-3",
+          "type": "single",
+          "stem": "按原文，不带模式参数的 git reset 默认的行为是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按 --soft 处理，只回退 HEAD，暂存区和工作区保留",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按 --hard 处理，HEAD、暂存区、工作区都回退",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按 --mixed 处理，只回退 HEAD，暂存区和工作区保留",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "按 --mixed 处理，HEAD 和暂存区回退，工作区保留",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-4",
+          "type": "single",
+          "stem": "按原文，git reset --soft 相当于怎样的操作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只撤销 commit，保留 add",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "撤销 commit 和 add",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "撤销一切，包括工作区的修改",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只撤销 add，保留 commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-5",
+          "type": "single",
+          "stem": "按原文，用 git reset --mixed 回退之后，想重新提交这些修改，需要怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "修改还在暂存区，直接重新 commit 即可",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "修改还在工作区，需要重新 add 再 commit",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "工作区已被清空，需要重新写出修改再提交",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先执行 git revert 生成反向 commit，再重新 add 和 commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-6",
+          "type": "single",
+          "stem": "按原文，没有 commit 或 stash 的改动，在 git reset --hard 之后会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "仍保留在暂存区中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "会直接丢失",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "仍保留在工作区中",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "被自动存入 stash 栈",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-7",
+          "type": "single",
+          "stem": "按原文，想重写最近一次 commit 的内容时，适合用 git reset 的哪种模式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "--mixed，修改回到工作区，需要重新 add",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "--hard，工作区的修改全部清空",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "--soft，修改还在暂存区，可直接重新 commit",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "三种模式没有区别，任选其一",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-8",
+          "type": "single",
+          "stem": "按原文，git reset --hard 应该在什么情况下才使用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "确认不需要本地所有改动时",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "想重写最近一次 commit 的内容时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "想保留 add、只撤销 commit 时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "想保留工作区的修改、只撤销暂存区时",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-9",
+          "type": "multiple",
+          "stem": "按原文的表格，下列关于 git reset 三种模式的说法，哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "--soft 回退 HEAD，保留暂存区和工作区",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "--mixed 回退 HEAD 和暂存区，保留工作区",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "--hard 回退 HEAD、暂存区和工作区",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "--mixed 回退 HEAD 和工作区，保留暂存区",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "--soft 回退 HEAD 和暂存区，保留工作区",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-10",
+          "type": "fill",
+          "stem": "按原文，在 git reset 的三种模式中，只回退 HEAD 的是 ____，回退 HEAD 和暂存区、保留工作区的是 ____（默认），三个区域都回退的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X2-11",
+          "type": "short"
+        },
+        {
+          "id": "X2-12",
+          "type": "single",
+          "stem": "按原文，git reset 指定 commit 的本质是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "生成一条内容是指定 commit 反向的新 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只修改最近一次 commit 的提交信息",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把当前工作区的修改临时保存起来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把 HEAD 指针往回移动到指定 commit，改写历史",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-13",
+          "type": "single",
+          "stem": "按原文，git revert 指定 commit 会做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把 HEAD 往回移动，让后面的 commit 消失",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "生成一条新 commit，内容正好是指定 commit 的反向",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只修改最近一次 commit 的内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把指定 commit 之后的修改暂存起来",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-14",
+          "type": "single",
+          "stem": "按原文，执行 git reset 回到某个 commit 后，在它之后的 commit 会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "依然保留在历史中，并新增一条反向 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "依然保留在历史中，但 hash 都会改变",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "被合并成一条新的 commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会“消失”，不再出现在历史中",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-15",
+          "type": "single",
+          "stem": "按原文，执行 git revert 之后，被撤销的那个原 commit 会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会从历史中消失，相当于改写历史",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "会被新的 commit 替换，hash 改变",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "依然保留在历史中，不改写历史",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "会被合并进它前面的一个 commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-16",
+          "type": "single",
+          "stem": "按原文，为什么 git reset 不适合用在已经 push 到共享远程的 commit 上？",
+          "options": [
+            {
+              "key": "A",
+              "text": "改写历史后，会和其他人的本地历史冲突",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "reset 会额外生成一条反向 commit，造成重复提交",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "reset 无法回退暂存区里的内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "reset 会保留被撤销的 commit，让人看不出撤销",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-17",
+          "type": "single",
+          "stem": "按原文，在共享分支上回滚已发布的改动，应优先用哪个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git revert",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git reset",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git commit --amend",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git stash drop",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-18",
+          "type": "multiple",
+          "stem": "按原文，下列关于 git reset 和 git revert 的说法，哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "reset 把 HEAD 往回移动，本质是改写历史",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "revert 生成反向的新 commit，原 commit 依然保留在历史中",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "revert 安全，适合在共享分支上回滚已发布的改动",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "reset 适合用来处理已经 push 到共享远程的 commit",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "revert 会让指定 commit 之后的 commit 从历史中消失",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-19",
+          "type": "fill",
+          "stem": "按原文的口诀，git reset 是“____”，git revert 是“____”。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X2-20",
+          "type": "short"
+        },
+        {
+          "id": "X2-21",
+          "type": "single",
+          "stem": "按原文，git commit --amend 是用来做什么的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把 HEAD 回退到指定 commit 并改写之后的历史",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "生成一条反向 commit 来撤销指定的提交",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "修改最近一次 commit",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把工作区的修改临时保存起来",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-22",
+          "type": "single",
+          "stem": "按原文，只想修改最近一次 commit 的提交信息，应使用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git commit --amend --no-edit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git commit --amend -m \"新的提交信息\"",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git commit -m \"新的提交信息\"",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git stash push -m \"新的提交信息\"",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-23",
+          "type": "single",
+          "stem": "按原文，要把漏掉的文件补进最近一次 commit，应怎样操作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先 git commit --amend --no-edit，再 git add 该文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先 git stash，再 git commit --amend",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先 git add 该文件，再 git push --force-with-lease",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先 git add 该文件，再 git commit --amend --no-edit",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-24",
+          "type": "single",
+          "stem": "按原文，git commit --amend 实际上做了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在原 commit 上原地修改，hash 保持不变",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在原 commit 之后追加一条反向 commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "生成一个新的 commit（hash 会变），替换掉原来的那个",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不生成新 commit，只把 HEAD 往回移动",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-25",
+          "type": "single",
+          "stem": "按原文，在什么情况下不要使用 git commit --amend？",
+          "options": [
+            {
+              "key": "A",
+              "text": "原 commit 已经 push 到远程并被别人拉过",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "原 commit 的提交信息写错了",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "原 commit 漏提交了某个文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "原 commit 还没有 push 到远程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-26",
+          "type": "single",
+          "stem": "按原文，对已被别人拉取的 commit 执行 amend，会造成什么后果？",
+          "options": [
+            {
+              "key": "A",
+              "text": "别人本地会多出一条反向 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "别人工作区里的改动会被清空",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "别人本地的 stash 会被清空",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "别人的本地历史会对不上",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-27",
+          "type": "single",
+          "stem": "按原文，对已推送的 commit 改完后用 git push --force-with-lease，比 --force 更安全的原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它会自动备份被覆盖的旧 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它会检查远程有没有被别人推过新 commit",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它只推送最近一次 commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它会通知其他协作者重新 clone",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-28",
+          "type": "multiple",
+          "stem": "按原文，下列关于 git commit --amend 的说法，哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它修改的是最近一次 commit",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它会生成新的 commit，hash 会变",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "原 commit 已被别人拉过时不要 amend",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "amend 之后 commit 的 hash 保持不变",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "对已推送的 commit 改完后，普通 git push 即可",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-29",
+          "type": "fill",
+          "stem": "按原文，git commit --amend 最常见的两种用法是：只改____，以及补提交____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X2-30",
+          "type": "short"
+        },
+        {
+          "id": "X2-31",
+          "type": "single",
+          "stem": "按原文，在 Git 2.23 之前，git checkout 同时承担了哪两个职责？",
+          "options": [
+            {
+              "key": "A",
+              "text": "切换分支和暂存修改",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "恢复文件和回退 commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "创建分支和删除分支",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "切换分支和恢复文件",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-32",
+          "type": "single",
+          "stem": "按原文，Git 2.23 引入了哪两个新命令来拆分 git checkout 的职责？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git switch 和 git restore",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git switch 和 git stash",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git restore 和 git revert",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git reset 和 git switch",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-33",
+          "type": "single",
+          "stem": "按原文，git switch -c feat/xxx 做了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "切换到已有的 feat/xxx 分支",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只创建 feat/xxx 分支，不切换",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "创建并切换到新分支 feat/xxx",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "撤销工作区中 feat/xxx 的修改",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-34",
+          "type": "single",
+          "stem": "按原文，git restore 加文件名的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把文件从暂存区撤回工作区",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "撤销工作区的修改",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "切换到指定的分支",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "创建并切换到新分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-35",
+          "type": "single",
+          "stem": "按原文，git restore --staged 加文件名的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "撤销工作区修改，恢复到 HEAD 的版本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "创建并切换到新分支",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把文件临时保存到 stash 栈中",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把文件从暂存区撤回工作区",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-36",
+          "type": "single",
+          "stem": "按原文，git restore --staged 加文件名等价于老的哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git reset --hard HEAD",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git reset HEAD 文件名",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git revert HEAD",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git commit --amend",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-37",
+          "type": "single",
+          "stem": "按原文，git checkout 在引入 switch 和 restore 之后的现状是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "已被移除，不能再继续使用了",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "仍然是唯一被推荐的切换分支命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "仍然可用，但推荐改用 switch 和 restore",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只能用于恢复文件，不能再用于切换分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-38",
+          "type": "multiple",
+          "stem": "按原文，下列哪些命令用于切换分支（含创建并切换）？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git switch main",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git switch -c feat/xxx",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git restore 文件名",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git restore --staged 文件名",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "git stash pop",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-39",
+          "type": "multiple",
+          "stem": "按原文，下列关于 git restore 的说法，哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git restore 文件名可以撤销工作区的修改",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git restore --staged 文件名把文件从暂存区撤回工作区",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git restore 是专门用于恢复文件的命令",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git restore 专门用于切换分支",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "git restore 在 Git 2.23 之前就已经存在",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-40",
+          "type": "fill",
+          "stem": "按原文，Git 2.23 引入的 git switch 专门用于____，git restore 专门用于____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X2-41",
+          "type": "short"
+        },
+        {
+          "id": "X2-42",
+          "type": "single",
+          "stem": "按原文，git stash 是用来做什么的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "临时保存当前工作区的修改，之后再回来继续",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把 HEAD 回退到指定 commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "生成一条反向 commit 撤销提交",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把本地 commit 推送到远程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-43",
+          "type": "single",
+          "stem": "按原文，在 feat/a 分支改到一半时去 main 修完紧急 bug，回到原分支后用哪个命令取回之前的改动？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git stash drop",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git stash clear",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git stash pop",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git stash list",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-44",
+          "type": "single",
+          "stem": "按原文，查看所有 stash 应使用哪个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git stash apply",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git stash pop",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git stash drop",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git stash list",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-45",
+          "type": "single",
+          "stem": "按原文，git stash pop 和 git stash apply 的区别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "pop 应用后不删除，apply 应用后从 stash 栈中删除",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "pop 应用后从 stash 栈中删除，apply 应用后不删除",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "pop 只应用到暂存区，apply 只应用到工作区",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者没有区别，只是叫法不同",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-46",
+          "type": "single",
+          "stem": "按原文，想把同一个 stash 反复应用多次，应使用哪个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git stash apply",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git stash pop",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git stash drop",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git stash clear",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-47",
+          "type": "single",
+          "stem": "按原文，git stash drop 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "丢弃某个 stash",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "清空所有 stash",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "应用某个 stash 但不删除它",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "弹出最近一次 stash 并应用到工作区",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-48",
+          "type": "single",
+          "stem": "按原文，stash 默认会不会被推送到远程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会，推送时会一并推到远程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不会，stash 是本地栈结构",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "会，但只推送最近一次 stash",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不会，但执行 git stash pop 时会推到远程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-49",
+          "type": "multiple",
+          "stem": "按原文，下列哪些写法可以暂存当前修改？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git stash",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git stash push -m \"msg\"",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git stash pop",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git stash apply",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "git stash list",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-50",
+          "type": "multiple",
+          "stem": "按原文，下列关于 git stash 的说法，哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "stash 是本地栈结构",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git stash pop 取出后会从 stash 栈中删除",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "stash 默认不会推到远程",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git stash apply 应用后会从 stash 栈中删除",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "git stash clear 只丢弃最近一次 stash",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-51",
+          "type": "fill",
+          "stem": "按原文，stash 常用命令中：查看所有 stash 用 git stash ____，弹出最近一次并应用用 git stash ____，应用但不删除用 git stash ____，丢弃某个用 git stash ____，清空所有用 git stash ____。",
+          "blankCount": 5,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X2-52",
+          "type": "short"
+        },
+        {
+          "id": "X2-53",
+          "type": "single",
+          "stem": "按原文，不小心提交了敏感信息后，为什么仅靠 git reset 或 git revert 不够？",
+          "options": [
+            {
+              "key": "A",
+              "text": "reset 和 revert 只能处理工作区，改不了 commit 历史",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "reset 和 revert 会把敏感信息同步给所有协作者",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "reset 和 revert 在已 push 后会被远程自动拒绝",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "commit 历史里仍残留敏感信息，clone 下来就能看到",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-54",
+          "type": "single",
+          "stem": "按原文，敏感信息已经 push 之后，需要怎样处理 Git 历史？",
+          "options": [
+            {
+              "key": "A",
+              "text": "再提交一条删除该信息的新 commit 即可",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 git revert 生成反向 commit 即可",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用工具改写历史，把敏感内容从历史中彻底清除",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用 git stash 把敏感信息暂存起来",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-55",
+          "type": "single",
+          "stem": "按原文，对于清理历史的旧方法 git filter-branch，评价是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "速度快、易用，官方推荐",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只能清理文件，不能清理字符串",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只适用于还没 push 的情况",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "慢、难用，官方已不推荐",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X2-56",
+          "type": "single",
+          "stem": "按原文，清理完历史后，需要怎样把结果同步到远程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "普通 git push 即可",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git revert 之后再普通 push",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git push --force --all 强推覆盖远程",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git stash apply 之后再 push",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-57",
+          "type": "single",
+          "stem": "按原文，强推覆盖远程之后，还要让所有协作者做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "重新 clone 远程仓库",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "执行 git stash pop 取回改动",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "执行 git commit --amend 修改提交",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "执行 git revert 生成反向提交",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-58",
+          "type": "single",
+          "stem": "按原文，敏感信息一旦被推送到公网仓库，最重要的是做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 git reset --hard 回退，就不会泄露了",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "假设已泄露，立即去对应平台作废并轮换密钥",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只清理 Git 历史，就足够了",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "等所有协作者重新 clone 之后再处理密钥",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-59",
+          "type": "multiple",
+          "stem": "按原文，敏感信息已经 push 后，下列哪些做法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 git filter-repo 或 BFG Repo-Cleaner 清理指定字符串或文件",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "清理完后用 git push --force --all 强推覆盖远程",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "让所有协作者重新 clone",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "立即去对应平台作废并轮换密钥",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "只用 git revert 生成反向 commit 就够了",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "优先使用官方推荐的 git filter-branch",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X2-60",
+          "type": "fill",
+          "stem": "按原文，敏感信息已经 push 后，推荐用来清理 Git 历史的两个工具是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "X2-61",
+          "type": "short"
+        }
+      ]
+    },
+    "X3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "X3-1",
+          "type": "single",
+          "stem": "按原文，Rebase（变基）是怎样处理分支上的提交的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "将两个分支上的提交历史合并为一个新的提交",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "将一个分支上的提交逐个地应用到另一个分支上",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "创建一个新的合并提交，把两个分支的提交历史连接起来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把目标分支的提交逐个应用到源分支的共同祖先上",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-2",
+          "type": "single",
+          "stem": "按原文，Rebase 的主要效果是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在历史中新增一个合并提交",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "保留每个分支各自的提交记录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把两个分支的修改包含进同一个合并提交",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "使提交历史变得更加线性",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-3",
+          "type": "single",
+          "stem": "按原文，执行 Merge 时 Git 会做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "创建一个新的合并提交，把两个分支的提交历史连接在一起",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把一个分支上的提交逐个应用到另一个分支上",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只把一个分支的修改复制过来，不创建任何新提交",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "丢弃源分支的提交记录，只保留最终的代码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-4",
+          "type": "single",
+          "stem": "按原文，Merge 之后的提交历史有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "变得更加线性，看不出分支的痕迹",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个提交都被复制到目标分支上",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "会保留每个分支的提交记录",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "各分支的提交记录被抹去，只剩一个合并提交",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-5",
+          "type": "single",
+          "stem": "按原文，Rebase 的过程可以看作是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "将两个分支的修改包含在同一个合并提交中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用一个新的合并提交连接两条分支的历史",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "将源分支上的每个提交复制到目标分支上",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "将目标分支上的每个提交复制到源分支上",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-6",
+          "type": "single",
+          "stem": "按原文，执行 Merge 后，两个分支的修改都会包含在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "新建的那个合并提交中",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "逐个复制过来的各个提交中",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两个分支共同祖先的提交中",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "目标分支原有的最新提交中",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-7",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于 Merge 的特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会创建一个新的合并提交",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把两个分支的提交历史连接在一起",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "合并后的历史保留每个分支的提交记录",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "将提交逐个应用到另一个分支上",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "使提交历史变得更加线性",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-8",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于 Rebase 的特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把一个分支上的提交逐个地应用到另一个分支上",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "使提交历史变得更加线性",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "可以看作是把源分支上的每个提交复制到目标分支上",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "会创建一个新的合并提交",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "合并后的历史保留每个分支的提交记录",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-9",
+          "type": "short"
+        },
+        {
+          "id": "X3-10",
+          "type": "single",
+          "stem": "按原文，合并发生冲突后，用哪条命令查看所有冲突文件的状态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git add <已解决文件>",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git commit -m \"解决合并冲突\"",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git cherry-pick --continue",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git status",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-11",
+          "type": "single",
+          "stem": "按原文，冲突文件中 <<<<<<< HEAD 与 ======= 之间的代码来自哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "要合并的分支",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "目标分支",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两个分支的共同祖先",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "刚刚执行 git add 的文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-12",
+          "type": "single",
+          "stem": "按原文，冲突文件中 ======= 与 >>>>>>> branchName 之间的代码来自哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "目标分支",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "要合并的分支",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "当前的暂存区",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "上一次 git commit 的内容",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-13",
+          "type": "single",
+          "stem": "按原文，打开包含冲突的文件后应该怎么解决冲突？",
+          "options": [
+            {
+              "key": "A",
+              "text": "等 Git 自动保留要合并分支的全部代码，无需处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "直接执行 git commit，由 Git 自动选择保留哪一边的代码",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只反复执行 git status，冲突标记就会自动消失",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "手动编辑文件，决定保留哪些变更或如何整合这些变更",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-14",
+          "type": "single",
+          "stem": "按原文，冲突解决完成后，用哪条命令把已解决的文件标记为已解决？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git add <已解决文件>",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git status",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git commit -m \"解决合并冲突\"",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git pull --rebase",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-15",
+          "type": "single",
+          "stem": "按原文，把冲突文件标记为已解决之后，用哪条命令完成合并？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git status",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git add <已解决文件>",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git commit -m \"解决合并冲突\"",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git fetch --prune",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-16",
+          "type": "fill",
+          "stem": "按原文，合并发生冲突后，处理冲突的四个步骤依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X3-17",
+          "type": "fill",
+          "stem": "按原文，合并冲突时：查看所有冲突文件的状态用 ____，把已解决的文件标记为已解决用 ____，最后提交已解决的冲突文件用 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X3-18",
+          "type": "multiple",
+          "stem": "按原文，关于冲突文件里的冲突标记，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "<<<<<<< HEAD 之后的一段代码来自目标分支",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "======= 把两边的代码隔开",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "======= 之后、>>>>>>> branchName 之前的代码来自要合并的分支",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Git 会自动决定保留哪一边，无需手动编辑",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "两边的代码都来自要合并的分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-19",
+          "type": "short"
+        },
+        {
+          "id": "X3-20",
+          "type": "single",
+          "stem": "按原文，git pull 等价于哪两个操作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "fetch 加 rebase",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "merge 加 rebase",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "fetch 加 merge",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "fetch 加 cherry-pick",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-21",
+          "type": "single",
+          "stem": "按原文，git pull --rebase 等价于哪两个操作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "fetch 加 rebase",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "fetch 加 merge",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "merge 加 rebase 两步合在一起",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "fetch 加 prune 两步合在一起",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-22",
+          "type": "single",
+          "stem": "按原文，本地和远程都有新 commit 时，git pull 会出现什么情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把本地 commit 搬到远程分支最新 commit 的后面",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "保持线性历史，不产生额外的 commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "直接丢弃本地的新 commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "产生一个额外的 merge commit，提交历史出现分叉",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-23",
+          "type": "single",
+          "stem": "按原文，git pull --rebase 对本地 commit 做了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在本地 commit 之后额外生成一个 merge commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把本地 commit “搬”到远程分支最新 commit 的后面",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把本地 commit 全部丢弃，只保留远程内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把远程分支最新 commit 搬到本地 commit 前面",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-24",
+          "type": "single",
+          "stem": "按原文，在多人协作的长期分支上，推荐使用哪种方式拉取代码？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git pull",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git pull --rebase",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git merge --no-ff",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git cherry-pick",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-25",
+          "type": "single",
+          "stem": "按原文，很多团队配置哪一项，让 rebase 成为 git pull 的默认行为？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git fetch --prune",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git merge --no-ff",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git cherry-pick --continue",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git config --global pull.rebase true",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-26",
+          "type": "single",
+          "stem": "按原文，rebase 会改写本地 commit 的什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "hash",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "所在分支的名称",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对应远程仓库的地址",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "pull.rebase 配置项的取值",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-27",
+          "type": "single",
+          "stem": "按原文，不要对哪类 commit 做 rebase？",
+          "options": [
+            {
+              "key": "A",
+              "text": "还没有 push、只在本地的 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "已经解决完冲突的 commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "已经 push 到远程、被别人拉过的 commit",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "通过 git pull 拉下来的 merge commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-28",
+          "type": "multiple",
+          "stem": "按原文，关于 git pull，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "等价于 fetch 加 merge",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "本地和远程都有新 commit 时会产生一个额外的 merge commit",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "会让提交历史出现分叉",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "会把本地 commit 搬到远程分支最新 commit 的后面",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "可以保持线性历史",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-29",
+          "type": "multiple",
+          "stem": "按原文，关于 git pull --rebase，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "等价于 fetch 加 rebase",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "会把本地 commit 搬到远程分支最新 commit 的后面",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "可以保持线性历史",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "能避免大量无意义的 merge commit 污染历史",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "两边都有新 commit 时会产生一个额外的 merge commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-30",
+          "type": "fill",
+          "stem": "按原文，git pull 等价于 ____ 加 ____，git pull --rebase 等价于 ____ 加 ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X3-31",
+          "type": "short"
+        },
+        {
+          "id": "X3-32",
+          "type": "single",
+          "stem": "按原文，Fast-Forward（快进）合并发生在什么情况下？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两个分支分叉了，各自都有新的 commit，需要合并",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "使用了 git merge --no-ff 强制生成合并提交",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "目标分支分出去之后没有新的 commit，两者是直接上下游关系",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "合并过程中出现了冲突，需要手动解决后再提交",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-33",
+          "type": "single",
+          "stem": "按原文，Fast-Forward 合并时 Git 是怎么合并的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把 main 的指针直接往前挪到 feat/a 的位置",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "创建一个新的 merge commit 把两条历史连起来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把 feat/a 的提交逐个重新生成后挪到 main 上",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "删除 feat/a 后重新创建 main",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-34",
+          "type": "single",
+          "stem": "按原文，Fast-Forward 合并会不会产生新的 merge commit？提交历史是什么样的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会产生，提交历史出现分叉",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "会产生，并且可以清晰看到 feature 分支的合并",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不会产生，但提交历史会出现分叉",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不会产生，提交历史保持线性",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-35",
+          "type": "single",
+          "stem": "按原文，两个分支各自都有新 commit 时，普通 merge 会怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把一个分支的指针直接往前挪，不产生新 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "创建一个新的 merge commit 把两条历史连起来",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只保留较新的一条历史，另一条被丢弃",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "报错并拒绝合并，必须先 rebase",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-36",
+          "type": "single",
+          "stem": "按原文，即便本来可以 Fast-Forward，也要强制生成一个 merge commit，应该用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git merge feat/a",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git merge --no-ff feat/a",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git pull --rebase feat/a",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git cherry-pick feat/a",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-37",
+          "type": "single",
+          "stem": "按原文，feature 分支合入 main 时加上 --no-ff 有什么好处？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让提交历史保持线性，完全不出现 merge commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让两个分支合并时一定不会出现任何冲突",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让 main 的指针直接移到 feature 分支的位置上",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能在历史中清晰看到这是一次 feature 分支的合并，方便回溯和回滚",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-38",
+          "type": "multiple",
+          "stem": "按原文，关于 Fast-Forward 合并，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只需要把目标分支的指针往前挪",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不会产生新的 merge commit",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "提交历史保持线性",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "会创建一个新的 merge commit 把两条历史连起来",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "要求两个分支各自都有新的 commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-39",
+          "type": "multiple",
+          "stem": "按原文，关于 git merge --no-ff，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "即便本来可以 Fast-Forward，也会强制生成一个 merge commit",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "能在历史中清晰看到这是一次 feature 分支的合并",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "方便回溯和回滚",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "很多团队在 feature 合入 main 时会强制加上它",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "只有两个分支有分叉时才会生成 merge commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-40",
+          "type": "fill",
+          "stem": "按原文，Fast-Forward 合并时，Git 只需把 main 的 ____ 直接往前挪到 feat/a 的位置，不会产生新的 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X3-41",
+          "type": "short"
+        },
+        {
+          "id": "X3-42",
+          "type": "single",
+          "stem": "按原文，git cherry-pick <commit> 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把某个 commit 的改动“挑”到当前分支",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把整个分支合并到当前分支",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把当前分支的所有 commit 重新排列",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "删除某个 commit 的所有改动",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-43",
+          "type": "single",
+          "stem": "按原文，cherry-pick 之后，当前分支上生成的 commit 与原 commit 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是同一个 commit，hash 也一样",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "hash 相同，但内容不一样",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "内容相同，但是是新 commit，hash 不一样",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "内容和 hash 都不一样",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-44",
+          "type": "single",
+          "stem": "按原文，线上 main 发现了 bug，而 feat/a 分支已经顺手修好，只想把修复单独搬到 main 上，适合用什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把整个 feat/a 合并到 main",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git push origin --delete feat/a",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git cherry-pick",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git pull --rebase",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-45",
+          "type": "single",
+          "stem": "按原文，把某个 hotfix 分支的修复同步回 dev、release-1.0 等多个长期分支，适合用什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git cherry-pick",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git branch -D",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git fetch --prune",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git merge --no-ff",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-46",
+          "type": "single",
+          "stem": "按原文，git cherry-pick <c1> <c2> <c3> 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只挑 c1 和 c3 之间的 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "挑 c1 到 c3 之间的所有 commit，不含 c1",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只挑 c1，c2 和 c3 被忽略",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一次挑多个 commit",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-47",
+          "type": "single",
+          "stem": "按原文，git cherry-pick A..B 会挑出哪些 commit？",
+          "options": [
+            {
+              "key": "A",
+              "text": "A（含）到 B（不含）之间的所有 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "A（不含）到 B（含）之间的所有 commit",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "A 和 B 这两个 commit，中间的不挑",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "A（含）到 B（含）之间的所有 commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-48",
+          "type": "multiple",
+          "stem": "按原文，下列哪些是 cherry-pick 的典型使用场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "线上 main 发现 bug，在 feat/a 上已修好，只把这个修复搬到 main",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把某个 hotfix 分支的修复同步回多个长期分支，如 dev、release-1.0",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把整个 feat/a 分支的全部提交一起合并到 main 分支上",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "清理在远程已经删除、本地还缓存着的远程跟踪分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-49",
+          "type": "multiple",
+          "stem": "按原文，cherry-pick 遇到冲突时，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "手动解决冲突后先 git add",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "再执行 git cherry-pick --continue",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "中途想放弃就执行 git cherry-pick --abort",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Git 会自动解决冲突，无需手动处理",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "放弃时执行 git cherry-pick --continue",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-50",
+          "type": "fill",
+          "stem": "按原文，cherry-pick 遇到冲突时，手动解决后先 git add，再执行 git cherry-pick ____ 继续；中途想放弃则执行 git cherry-pick ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X3-51",
+          "type": "short"
+        },
+        {
+          "id": "X3-52",
+          "type": "single",
+          "stem": "按原文，git branch -d feat/xxx 属于哪种删除？",
+          "options": [
+            {
+              "key": "A",
+              "text": "强制删除，未合并的分支也能删",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "安全删除，只有已经合并过的分支才允许删",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "删除远程分支",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "清理本地缓存的、远程已删除的跟踪分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-53",
+          "type": "single",
+          "stem": "按原文，git branch -D feat/xxx 有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "安全删除，只有已经合并过的分支才允许删",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "同时把本地和远程的这个分支一起删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只清理远程已经删除、本地还缓存的跟踪分支",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "强制删除，未合并的分支也能删，要小心丢代码",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-54",
+          "type": "single",
+          "stem": "按原文，想删除一个还没有合并的本地分支，需要用哪个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git branch -D feat/xxx",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git branch -d feat/xxx",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git push origin --delete feat/xxx",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git remote prune origin",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-55",
+          "type": "single",
+          "stem": "按原文，删除远程分支的推荐写法是哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git branch -d feat/xxx",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git branch -D feat/xxx",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git push origin --delete feat/xxx",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "git fetch --prune",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-56",
+          "type": "single",
+          "stem": "按原文，git push origin :feat/xxx 为什么能删除远程分支？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它会先合并 feat/xxx 再删除",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它只删除本地缓存的跟踪分支",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它相当于把“空”推上去，与 --delete 写法等价",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它把 feat/xxx 强制推送成最新提交",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-57",
+          "type": "single",
+          "stem": "按原文，下列哪条命令用来清理在远程已被删除、但本地仍缓存的跟踪分支？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git fetch --prune",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git branch -D feat/xxx",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git push origin --delete feat/xxx",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git push origin :feat/xxx",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-58",
+          "type": "single",
+          "stem": "按原文，清理失效的跟踪分支这一步能解决什么尴尬情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "删除分支时误删了未合并的代码",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git pull 产生额外的 merge commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "cherry-pick 遇到冲突无法继续",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git branch -r 里一堆早就没了的分支",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X3-59",
+          "type": "multiple",
+          "stem": "按原文，下列哪些命令可以删除远程分支？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git push origin --delete feat/xxx",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git push origin :feat/xxx",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git branch -d feat/xxx",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git branch -D feat/xxx",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "git fetch --prune",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-60",
+          "type": "multiple",
+          "stem": "按原文，下列哪些命令可以清理在远程已被删除、本地仍缓存的跟踪分支？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git fetch --prune",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git remote prune origin",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git branch -d feat/xxx",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git push origin --delete feat/xxx",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X3-61",
+          "type": "fill",
+          "stem": "按原文，删除本地分支时，git branch ____ 是安全删除，只允许删已合并的分支；git branch ____ 是强制删除，未合并的也能删。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X3-62",
+          "type": "fill",
+          "stem": "按原文，清理远程已删除但本地仍缓存的跟踪分支，有两种写法：git fetch ____ 和 git remote ____ origin。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X3-63",
+          "type": "short"
+        }
+      ]
+    },
+    "X4": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "X4-1",
+          "type": "fill",
+          "stem": "按原文，业界主流的四种 Git 工作流是：Git Flow、GitHub Flow、____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "X4-2",
+          "type": "single",
+          "stem": "按原文，Git Flow 使用了哪些分支？",
+          "options": [
+            {
+              "key": "A",
+              "text": "master、develop、feature/*、release/*、hotfix/* 多种分支",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只有 main 一个长期分支，加多个短生命周期的 feature 分支",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在 main 之外再加 production、pre-production 等环境分支",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有人直接在 main 上开发，不再另建长期分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-3",
+          "type": "single",
+          "stem": "按原文，Git Flow 适合什么类型的产品？",
+          "options": [
+            {
+              "key": "A",
+              "text": "版本化发布的产品，比如客户端 App、大型企业产品",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "持续部署的 Web 应用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要明确发布环境的场景",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "具备成熟 CI/CD 和测试体系、直接在主干上开发的团队",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-4",
+          "type": "single",
+          "stem": "按原文，Git Flow 的主要缺点是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "规则不够严谨，不适合版本化发布的产品",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要成熟的 CI/CD 和测试体系才能运转",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "长分支的寿命被限制在一两天以内，限制过死",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "流程太重，对快速迭代不友好",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-5",
+          "type": "single",
+          "stem": "按原文，GitHub Flow 的分支结构是怎样的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "master 和 develop 两个长期分支，加 feature、release、hotfix 等临时分支",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "main 之外再加 production、pre-production 等环境分支，按环境逐级发布",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只有 main 一个长期分支，加多个短生命周期的 feature 分支，全部通过 Pull Request 合并",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "所有人直接在 main 上开发，用 feature flag 控制功能开关，不走 Pull Request",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-6",
+          "type": "single",
+          "stem": "按原文，GitHub Flow 适合什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "版本化发布的客户端 App",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要明确发布环境的场景",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "持续部署的 Web 应用",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "规则严谨的大型企业产品",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-7",
+          "type": "single",
+          "stem": "按原文，GitLab Flow 与 GitHub Flow 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 GitHub Flow 的基础上加入 feature flag，让所有人直接在 main 上开发",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在 GitHub Flow 的基础上加入 production、pre-production 等环境分支",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "比 Git Flow 流程更重，在其基础上又增加了 release 和 hotfix 分支",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "与 GitHub Flow 完全相同，只是不再通过 Pull Request 合并",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-8",
+          "type": "single",
+          "stem": "按原文，GitLab Flow 适合什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "持续部署的 Web 应用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要明确发布环境的场景",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "版本化发布的客户端 App",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "要求所有人直接在 main 上开发的团队",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-9",
+          "type": "fill",
+          "stem": "按原文，Trunk-Based Development（主干开发）里所有人直接在 ____ 上开发，配合 ____ 控制功能开关。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X4-10",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于 Trunk-Based Development（主干开发）的特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 GitHub Flow 基础上加入 production、pre-production 环境分支",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有人直接在 main 上开发",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "需要成熟的 CI/CD 和测试体系",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "长分支的寿命不超过一两天",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "配合 feature flag 控制功能开关",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "设有 develop、release/*、hotfix/* 等多种分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-11",
+          "type": "single",
+          "stem": "按原文，要采用 Trunk-Based Development（主干开发），团队需要具备什么条件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "develop 与 release 分支配合的严格发布流程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "production、pre-production 等多套环境分支",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "成熟的 CI/CD 和测试体系",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "长期存在的 feature 分支，用来隔离未完成的功能",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-12",
+          "type": "single",
+          "stem": "按原文，现在很多团队怎么看待 Git Flow？",
+          "options": [
+            {
+              "key": "A",
+              "text": "认为它是中小团队用得最多的工作流",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "认为它最适合持续部署的 Web 应用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "认为它是 Google、Facebook 等大厂主推的模式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "认为它已经过时",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-13",
+          "type": "single",
+          "stem": "按原文，实际中小团队用得最多的是哪类工作流？",
+          "options": [
+            {
+              "key": "A",
+              "text": "GitHub Flow 或 Trunk-Based 的变体",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Git Flow 及其各种变体",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "GitLab Flow 及其各种变体",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Git Flow 与 GitLab Flow 的组合",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-14",
+          "type": "short"
+        },
+        {
+          "id": "X4-15",
+          "type": "single",
+          "stem": "按原文，Fork 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把一个远程仓库下载到本地，方便编辑和编译",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "请求原仓库的维护者 review 并把你的改动合并进来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在 GitHub 上把别人的仓库复制一份到自己的账号下",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把本地提交推送到自己账号下已经 fork 的仓库",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-16",
+          "type": "single",
+          "stem": "按原文，Clone 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 GitHub 上把别人的仓库复制一份到自己的账号下，是服务器端操作",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "请求原仓库的维护者把你的改动合并进来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把一个远程仓库下载到本地，是本地操作",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "在自己 fork 的仓库里建立 feature 分支，再发起合并请求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-17",
+          "type": "single",
+          "stem": "按原文，Fork 和 Clone 分别属于哪种操作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Fork 是本地操作，Clone 是服务器端操作",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Fork 和 Clone 都是服务器端操作",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Fork 是服务器端操作，Clone 是本地操作",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Fork 和 Clone 都是本地操作",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-18",
+          "type": "single",
+          "stem": "按原文，往自己 fork 出来的仓库推代码，对原仓库有什么影响？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不影响原作者，fork 出的仓库与原仓库仍保持关联",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "会直接合并进原仓库，原作者无法拒绝",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要原仓库维护者先 review 通过才能推送",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "fork 出的仓库与原仓库断开关联，之后再也无法发起合并请求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-19",
+          "type": "single",
+          "stem": "按原文，为什么要把代码 Clone 到本地？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Clone 之后才能在 GitHub 上把仓库复制到自己账号下",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Fork 出的仓库在 GitHub 上不允许推送代码",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Clone 是服务器端操作，必须在 GitHub 上完成",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只有 clone 下来的代码才能在本地编辑、测试、编译",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-20",
+          "type": "single",
+          "stem": "按原文，Pull Request（PR）是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 GitHub 上把别人的仓库复制到自己账号下",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把自己 fork 的仓库下载到本地进行编辑",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在自己 fork 的仓库改完并推上去后，请求原仓库维护者合并改动",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把本地提交推送到自己 fork 的仓库",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-21",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Fork、Clone、Pull Request 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "PR 是请求原仓库维护者合并你的改动",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Clone 是把别人的仓库复制到自己的 GitHub 账号下",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Fork 是在 GitHub 上进行的服务器端操作",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Fork 是把远程仓库下载到本地的本地操作",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "Clone 是把远程仓库下载到本地的本地操作",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "原作者可以对 PR 进行 review、讨论，最终 merge 或拒绝",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-22",
+          "type": "fill",
+          "stem": "按原文，标准开源贡献流程依次是：Fork（在 GitHub 上）→ ____（到本地）→ 改代码 + commit → ____ → 发 Pull Request → 维护者 Review & Merge。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X4-23",
+          "type": "single",
+          "stem": "按原文，标准开源贡献流程中，改完代码并 commit 之后应该把代码 Push 到哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "原仓库的 main 分支",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "自己的 Fork",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "原作者的本地仓库",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不推送，直接发起 Pull Request",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-24",
+          "type": "single",
+          "stem": "按原文，内部团队协作想用同样的流程时，一般怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一般不 fork，直接在同一个仓库里建 feature 分支，再发 PR/MR",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个成员都先 fork 再 clone，再向原仓库推送",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有人直接在 main 上提交，不再发 PR/MR",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能使用 PR/MR，只能由每个人自己直接 merge",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-25",
+          "type": "short"
+        },
+        {
+          "id": "X4-26",
+          "type": "single",
+          "stem": "按原文，git log --oneline 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 ASCII 图形显示分支 / 合并关系",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一行显示一个 commit，简洁直观",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "显示每个 commit 的完整 diff",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只看最近 5 条 commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-27",
+          "type": "single",
+          "stem": "按原文，git log --graph 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一行显示一个 commit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按作者过滤提交记录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "显示每个 commit 修改了哪些文件、增删行数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 ASCII 图形显示分支 / 合并关系",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-28",
+          "type": "single",
+          "stem": "按原文，git log -n 5 的效果是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只看最近 5 条 commit",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只看作者名为 5 的 commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按时间过滤，只看最近 5 天的 commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "显示每个 commit 的完整 diff，共 5 个",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-29",
+          "type": "single",
+          "stem": "按原文，git log --author=\"name\" 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按 commit message 关键字过滤",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按时间过滤",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "查看某个文件的修改历史",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "按作者过滤",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-30",
+          "type": "single",
+          "stem": "按原文，--since=\"1 week ago\" --until=\"yesterday\" 这类参数用来做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按作者过滤",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按 commit message 关键字过滤",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只看最近 5 条 commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "按时间过滤",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-31",
+          "type": "single",
+          "stem": "按原文，要按 commit message 里的关键字过滤提交记录，应该用哪个参数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "--author=\"name\"",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "--grep=\"fix\"",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "--since=\"1 week ago\"",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "--stat",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-32",
+          "type": "single",
+          "stem": "按原文，git log -p 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "显示每个 commit 修改了哪些文件、增删行数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "显示每个 commit 的完整 diff",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一行显示一个 commit",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "按 commit message 关键字过滤",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-33",
+          "type": "single",
+          "stem": "按原文，要看每个 commit 修改了哪些文件、增删了多少行，应该用哪个参数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "-p",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "--stat",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "--graph",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "--oneline",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-34",
+          "type": "single",
+          "stem": "按原文，git log -- <file> 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按作者过滤提交记录",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "显示每个 commit 的完整 diff",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 ASCII 图形显示分支 / 合并关系",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "查看某个文件的修改历史",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-35",
+          "type": "multiple",
+          "stem": "按原文，下列哪些参数是用来过滤提交记录的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "--graph --decorate",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "--since、--until",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "--grep=\"fix\"",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "--oneline",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "--stat",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "--author=\"name\"",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-36",
+          "type": "fill",
+          "stem": "按原文，日常最常用的组合 git log --oneline --graph ____ ____ 可以在终端里画出完整的分支图。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "X4-37",
+          "type": "single",
+          "stem": "按原文，git log --oneline --graph --decorate --all 这个组合有什么用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以在终端里画出完整的分支图",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只列出某个作者最近 5 条提交的完整 diff",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按时间过滤，只看最近一周的提交",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "列出某个文件的全部修改历史",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-38",
+          "type": "single",
+          "stem": "按原文，git config --global alias.lg \"log --oneline --graph --decorate --all\" 是在做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把该组合的输出保存成文件备份",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让 git log 默认只显示最近 5 条",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让 git log 默认按作者过滤",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把这个常用组合起个别名 lg",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-39",
+          "type": "short"
+        },
+        {
+          "id": "X4-40",
+          "type": "single",
+          "stem": "按原文，git tag 主要用来做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把某个 commit 复制成一条新的长期分支，方便并行开发",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给某个 commit 打一个固定的名字，方便以后找到这个关键节点",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "逐行显示一个文件每一行最后是谁、在哪个 commit 修改的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "二分查找定位引入 bug 的那个 commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-41",
+          "type": "single",
+          "stem": "按原文，轻量标签（git tag v1.0）本质上是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "作为独立对象存储，包含打标签者、日期和说明",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "带有 GPG 签名的标签对象",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只是一个指向 commit 的指针，没有任何额外信息",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "必须同时带 -a 和 -m 才能创建的标签",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-42",
+          "type": "single",
+          "stem": "按原文，附注标签（annotated tag）会保存哪些内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "作为独立对象存储，包含打标签者、日期、说明，甚至 GPG 签名",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只是一个指向 commit 的指针，没有任何额外信息",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只记录版本号，不包含打标签者和日期",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一次性的临时书签，不会作为对象存储在 Git 里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-43",
+          "type": "single",
+          "stem": "按原文，创建附注标签应该用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git tag v1.0",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git tag -a v1.0 -m \"release 1.0\"",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git push origin --tags",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git push origin --delete v1.0",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-44",
+          "type": "fill",
+          "stem": "按原文，附注标签作为独立对象存储在 Git 里，包含 ____、____、____，甚至 GPG 签名。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "X4-45",
+          "type": "single",
+          "stem": "按原文，发布版本时应该用哪种标签？",
+          "options": [
+            {
+              "key": "A",
+              "text": "轻量标签，因为它只是一个指针，更简洁",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "附注标签，因为它带有完整的元数据，可追溯性更好",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "轻量标签，因为它更适合作为一次性的临时书签",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两种标签都可以，没有任何区别",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-46",
+          "type": "single",
+          "stem": "按原文，把单个标签 v1.0 推送到远程应该用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git push origin --tags",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git push origin --delete v1.0",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git tag -d v1.0",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git push origin v1.0",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-47",
+          "type": "single",
+          "stem": "按原文，git push origin --tags 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只推送最新创建的那个标签",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "推送单个标签 v1.0",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一次推送所有本地标签",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "删除远程的所有标签",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-48",
+          "type": "single",
+          "stem": "按原文，删除本地标签 v1.0 应该用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git push origin --delete v1.0",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git push origin v1.0",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git tag -a v1.0 -m \"release 1.0\"",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git tag -d v1.0",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-49",
+          "type": "single",
+          "stem": "按原文，删除远程标签 v1.0 应该用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git tag -d v1.0",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git push origin --tags",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git tag -a v1.0 -m \"release 1.0\"",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git push origin --delete v1.0",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-50",
+          "type": "multiple",
+          "stem": "按原文，下列关于 git tag 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "发布版本时应该使用附注标签",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "轻量标签只是一个指向 commit 的指针",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git tag -d v1.0 会同时删除本地和远程的标签",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "轻量标签包含打标签者、日期和说明",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "git push origin --tags 可以一次推送所有本地标签",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "附注标签会作为独立对象存储在 Git 里",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-51",
+          "type": "short"
+        },
+        {
+          "id": "X4-52",
+          "type": "single",
+          "stem": "按原文，git blame <file> 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "二分查找定位引入 bug 的 commit，逐轮缩小范围",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "查看某个文件的全部提交记录和完整 diff",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "逐行显示文件每一行最后是谁、在哪个 commit、什么时候修改的",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用 ASCII 图形显示分支 / 合并关系，一目了然",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-53",
+          "type": "multiple",
+          "stem": "按原文，git blame 的输出会在每一行前面标注哪些信息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "还需要二分查找的轮数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "good 或 bad 的标记",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "commit hash",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "作者",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "修改时间",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-54",
+          "type": "single",
+          "stem": "按原文，git bisect 是做什么的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "逐行显示文件每一行最后是谁修改的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给某个 commit 打一个固定的名字",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "二分查找定位引入 bug 的 commit",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "查看某个文件的修改历史",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-55",
+          "type": "single",
+          "stem": "按原文，什么情况下适合用 git bisect？",
+          "options": [
+            {
+              "key": "A",
+              "text": "知道某个 commit 是好的、某个 commit 是坏的，却不知道中间哪个引入了 bug",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "想知道某一行代码最后是谁修改的，以及它出自哪个 commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "想给某个发布版本的 commit 打一个固定的名字，方便以后找到",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "想用一行一条的方式，简洁地查看所有 commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-56",
+          "type": "single",
+          "stem": "按原文，git blame 和 git bisect 的共同点和区别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "都用来排查“这个问题是谁引入的”，但思路完全不同",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "都是逐行显示文件每一行的最后修改者，只是输出格式不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "都要先标记 good 和 bad 的 commit，再自动二分查找",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "都用来给 commit 打固定的名字，只是一个在本地、一个在远程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-57",
+          "type": "fill",
+          "stem": "按原文，用 git bisect 排查时依次执行：git bisect start；git bisect ____（标记当前 HEAD 是坏的）；git bisect ____ <old-commit>（标记一个早期好的 commit）；排查结束后 git bisect ____ 回到原来的 HEAD。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X4-58",
+          "type": "single",
+          "stem": "按原文，标记好坏两个 commit 之后，Git 自动跳到中间某个 commit，你应该做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "立刻执行 git bisect reset 结束排查",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "测试一下，再标记它是 good 还是 bad",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "手动输入引入 bug 的 commit hash",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 git blame 逐行查看这个 commit",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-59",
+          "type": "single",
+          "stem": "按原文，git bisect reset 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "标记当前 HEAD 是坏的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "标记一个早期好的 commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自动跳到中间某个 commit 继续排查",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "结束排查，回到原来的 HEAD",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-60",
+          "type": "single",
+          "stem": "按原文，在一个有几百个 commit 的区间里，git bisect 大约需要多少次就能定位到问题 commit？",
+          "options": [
+            {
+              "key": "A",
+              "text": "n 次，逐个 commit 测试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "log₂(n) 次",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "n/2 次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "n² 次",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-61",
+          "type": "short"
+        },
+        {
+          "id": "X4-62",
+          "type": "single",
+          "stem": "按原文，.gitignore 里加了文件却不生效，核心原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": ".gitignore 只对还没被 Git 追踪的文件生效",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": ".gitignore 只对已经被 Git 追踪的文件生效",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "以 ! 开头的取反规则让所有文件重新被追踪",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "以 / 结尾的规则只匹配文件，不匹配目录",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-63",
+          "type": "single",
+          "stem": "按原文，一个文件已经被 git add + commit 过，之后再把它加到 .gitignore，会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Git 立刻停止追踪这个文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Git 会自动把它从仓库中删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Git 会同时删除本地的这个文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Git 依然会继续追踪它的改动",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-64",
+          "type": "single",
+          "stem": "按原文，要让已被追踪的文件改由 .gitignore 管理，第一步应该执行什么命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git check-ignore -v <file>",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git rm --cached <file>",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git rm -r --cached <dir>",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git commit -m \"stop tracking xxx\"",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-65",
+          "type": "single",
+          "stem": "按原文，git rm --cached <file> 的效果是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从暂存区移除对文件的追踪，同时删除本地文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只查看该文件是被哪条规则忽略的",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "从暂存区移除对文件的追踪，同时保留本地文件",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "给 .gitignore 追加一条取反规则",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-66",
+          "type": "single",
+          "stem": "按原文，要让已被追踪的整个目录停止被追踪，应该用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git rm -r --cached <dir>",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "git rm --cached <file>",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "git check-ignore -v <dir>",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git commit -m \"stop tracking xxx\"",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-67",
+          "type": "fill",
+          "stem": "按原文，让已被追踪的文件不再被追踪，依次执行：git rm ____ <file>；git ____ -m \"stop tracking xxx\"。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "X4-68",
+          "type": "single",
+          "stem": "按原文，.gitignore 里的规则是相对于哪个目录生效的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "整个仓库的根目录",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "执行 git 命令时所在的当前目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这个 .gitignore 文件所在的目录",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "被忽略的文件自己所在的目录",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-69",
+          "type": "single",
+          "stem": "按原文，.gitignore 里以 / 结尾的规则表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只匹配目录",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只匹配文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "表示取反，不忽略匹配的内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "强制让已被追踪的文件也被忽略",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-70",
+          "type": "single",
+          "stem": "按原文，.gitignore 里以 ! 开头的规则表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "取反（不忽略），可以用来做例外",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只匹配目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "强制让已被追踪的文件也被忽略",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "查看文件被哪条规则忽略",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-71",
+          "type": "single",
+          "stem": "按原文，调试 .gitignore 时，用哪条命令可以知道某个文件是被哪条规则忽略的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "git rm --cached <file>",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "git check-ignore -v <file>",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "git blame <file>",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "git log -- <file>",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "X4-72",
+          "type": "multiple",
+          "stem": "按原文，下列关于 .gitignore 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "规则是相对于这个 .gitignore 文件所在的目录生效的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "已经 git add + commit 过的文件，加入 .gitignore 后 Git 就不再追踪",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "以 ! 开头的规则表示取反（不忽略），可以用来做例外",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "已被追踪的文件需要先 git rm --cached 才会被 .gitignore 管理",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "git rm --cached <file> 会同时删除本地文件",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "以 / 结尾的规则只匹配目录",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "X4-73",
+          "type": "short"
+        }
+      ]
+    }
+  }
+}

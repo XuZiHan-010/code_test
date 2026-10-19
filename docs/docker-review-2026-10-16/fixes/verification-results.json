@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-16",
+  "contentValidation": {
+    "passed": true,
+    "questionCount": 7247,
+    "warnings": [
+      "V14 R3-139 (existing unrelated topic)"
+    ]
+  },
+  "unitTests": {
+    "filesPassed": 9,
+    "testsPassed": 103,
+    "exitCode": 0
+  },
+  "dockerVerification": {
+    "passed": true,
+    "checksPassed": 48,
+    "changedQuestionCount": 98,
+    "referencePageCount": 32,
+    "newOfficialCitationCount": 148
+  },
+  "independentReview": {
+    "requirements": "passed",
+    "contentQuality": "passed",
+    "changedQuestionsReviewed": 98,
+    "fillQuestionsReviewed": 28,
+    "openFindings": 0
+  },
+  "localPreviewBuild": {
+    "command": "CONTENT_INCLUDE_DRAFTS=1 npm run content:build",
+    "exitCode": 0,
+    "builtAt": "2026-10-16T09:09:36.593Z",
+    "totalQuestions": 7247,
+    "dockerQuestions": 252,
+    "dockerRuntimeMatchesVerifiedSnapshot": true,
+    "sourceStatus": "draft",
+    "scope": "local preview only"
+  },
+  "finalSourceHashesMatchChecksAndReview": true,
+  "brokenLocalEvidenceLinks": [],
+  "gitPublicationPerformed": false
+}

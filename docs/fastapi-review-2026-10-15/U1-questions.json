@@ -1,0 +1,452 @@
+[
+  {
+    "id": "U1-1",
+    "typed": {
+      "id": "U1-1",
+      "type": "single",
+      "stem": "按官方文档，下面关于给参数添加类型提示（如 `first_name: str`）的说法，哪一项正确？",
+      "options": [
+        {
+          "key": "A",
+          "text": "它与声明默认值是同一回事，写成 `first_name=\"john\"` 同样是在声明类型",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "用冒号声明，与等号声明默认值是两回事，通常不改变代码原本的行为",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "添加类型提示通常会改变代码本来的行为，所以要重新调整函数逻辑",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "类型提示用等号声明，而默认值反过来用冒号声明",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，下面关于给参数添加类型提示（如 `first_name: str`）的说法，哪一项正确？",
+    "answer": "正确说法是：类型提示用冒号声明，与用等号声明默认值是两回事，而且添加类型提示通常不会改变代码本来的行为；把它当成默认值、说成用等号声明类型，或说它会改变行为都是错的。[原文§Python 类型提示简介 · 添加类型](https://fastapi.tiangolo.com/zh/python-types/#add-types)"
+  },
+  {
+    "id": "U1-2",
+    "typed": {
+      "id": "U1-2",
+      "type": "multiple",
+      "stem": "按官方文档，给函数参数加上类型提示后，编辑器和工具能带来哪些帮助？",
+      "options": [
+        {
+          "key": "A",
+          "text": "输入参数名和点号后能触发有用的自动补全",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "把 `str` 与 `int` 直接相加这类错误能被编辑器检查出来",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "处理 `list[str]` 的元素时，编辑器也知道元素是 `str` 并提供支持",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "运行时会自动把不符合声明的参数转换成所需类型",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "没有类型提示时补全同样有用，类型提示只是起注释作用",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，给函数参数加上类型提示后，编辑器和工具能带来哪些帮助？",
+    "answer": "类型提示让编辑器知道变量的类型，所以输入参数名和点号后能得到有用的自动补全，把 `str` 与 `int` 直接相加这类错误也能被检查出来；即使在循环里处理 `list[str]` 的元素，编辑器也知道元素是 `str` 并继续提供支持。运行时自动转换参数不是类型提示本身的作用，没有类型时补全也确实没有什么用处。[原文§Python 类型提示简介 · 更多动机](https://fastapi.tiangolo.com/zh/python-types/#more-motivation)[原文§Python 类型提示简介 · 添加类型](https://fastapi.tiangolo.com/zh/python-types/#add-types)[原文§Python 类型提示简介 · 泛型类型 · 列表](https://fastapi.tiangolo.com/zh/python-types/#list)"
+  },
+  {
+    "id": "U1-3",
+    "typed": {
+      "id": "U1-3",
+      "type": "short"
+    },
+    "question": "按官方文档的例子，为什么说给参数添加类型提示能带来更好的编辑器支持？请结合自动补全和错误检查说明。",
+    "answer": "没有类型提示时，输入参数名和点号后触发补全得不到有用的提示，要凭记忆想“首字母大写的方法”叫 `upper`、`capitalize` 还是别的；给参数声明 `str` 后，编辑器知道变量类型，补全能列出选项供查找。同时编辑器还能做错误检查，例如发现把 `str` 与 `int` 直接相加，提示你用 `str(age)` 转换。[原文§Python 类型提示简介 · 修改它](https://fastapi.tiangolo.com/zh/python-types/#edit-it)[原文§Python 类型提示简介 · 添加类型](https://fastapi.tiangolo.com/zh/python-types/#add-types)[原文§Python 类型提示简介 · 更多动机](https://fastapi.tiangolo.com/zh/python-types/#more-motivation)"
+  },
+  {
+    "id": "U1-4",
+    "typed": {
+      "id": "U1-4",
+      "type": "single",
+      "stem": "按官方文档，想声明某个参数可以是“任意类型”，应该从标准库的哪个模块导入什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "从 `typing` 模块导入 `Annotated`",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "从 `pydantic` 导入 `BaseModel`",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "从 `datetime` 模块导入 `datetime`",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "从 `typing` 模块导入 `Any`",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，想声明某个参数可以是“任意类型”，应该从标准库的哪个模块导入什么？",
+    "answer": "声明“任意类型”要从标准库的 `typing` 模块导入 `Any`；`Annotated` 用于放入额外元数据，`BaseModel` 来自 Pydantic，`datetime` 是示例里的日期时间类型，都不是表示任意类型的。[原文§Python 类型提示简介 · typing 模块](https://fastapi.tiangolo.com/zh/python-types/#typing-module)"
+  },
+  {
+    "id": "U1-5",
+    "typed": {
+      "id": "U1-5",
+      "type": "fill",
+      "stem": "按官方文档，可以带方括号和内部类型作为泛型使用的四种内建类型是：____、____、____、____。",
+      "blankCount": 4,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档，可以带方括号和内部类型作为泛型使用的四种内建类型是：____、____、____、____。",
+    "answer": "可以作为泛型使用的内建类型是 `list`、`tuple`、`set`、`dict`，写法是带方括号和内部类型。[原文§Python 类型提示简介 · 泛型类型](https://fastapi.tiangolo.com/zh/python-types/#generic-types)"
+  },
+  {
+    "id": "U1-6",
+    "typed": {
+      "id": "U1-6",
+      "type": "short"
+    },
+    "question": "按官方文档，什么是泛型类型？以“字符串列表”为例，说明类型参数表达了什么，对编辑器有什么好处。",
+    "answer": "能在方括号中接收“类型参数”、用来声明内部值类型的类型叫泛型类型，例如字符串列表写成 `list[str]`，`str` 是传给 `list` 的类型参数，表示变量是一个 list 且每个元素都是 `str`。这样处理列表元素时，编辑器也知道元素是 `str` 并提供支持，没有类型提示几乎做不到。[原文§Python 类型提示简介 · 泛型类型](https://fastapi.tiangolo.com/zh/python-types/#generic-types)[原文§Python 类型提示简介 · 泛型类型 · 列表](https://fastapi.tiangolo.com/zh/python-types/#list)"
+  },
+  {
+    "id": "U1-7",
+    "typed": {
+      "id": "U1-7",
+      "type": "single",
+      "stem": "按官方文档，把参数声明为 `tuple[int, int, str]` 表示什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "一个含有 3 个元素的元组，依次是 int、int、str",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "一个元素个数不限的元组，每个元素是 int 或 str",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "一个 set，其中每个元素的类型都是 int 或 str",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "一个 dict，键的类型是 int，值的类型是 str",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，把参数声明为 `tuple[int, int, str]` 表示什么？",
+    "answer": "它表示变量是一个含有 3 个元素的 tuple，三个元素依次是 int、int 和 str；它不是元素个数不限的元组，也不是 set 或 dict 的声明。[原文§Python 类型提示简介 · 泛型类型 · 元组和集合](https://fastapi.tiangolo.com/zh/python-types/#tuple-and-set)"
+  },
+  {
+    "id": "U1-8",
+    "typed": {
+      "id": "U1-8",
+      "type": "single",
+      "stem": "按官方文档，把参数声明为 `prices: dict[str, float]`，两个类型参数分别代表什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "第一个类型参数用于值，第二个用于键",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "两个类型参数都用于键，值可以是任意类型",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "第一个类型参数用于键，第二个用于值",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "两个类型参数是 dict 可接受的两种值类型，键不作限制",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，把参数声明为 `prices: dict[str, float]`，两个类型参数分别代表什么？",
+    "answer": "定义 dict 时传入 2 个类型参数并用逗号分隔：第一个用于字典的键（如条目名称，`str`），第二个用于字典的值（如价格，`float`）。把顺序说反，或说两个都是键、值不作限制，都是错的。[原文§Python 类型提示简介 · 泛型类型 · 字典](https://fastapi.tiangolo.com/zh/python-types/#dict)"
+  },
+  {
+    "id": "U1-9",
+    "typed": {
+      "id": "U1-9",
+      "type": "single",
+      "stem": "按官方文档，参数声明为 `item: int | str` 表示什么，这种写法叫什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "item 是 int 或 str 中的任意一种，称为联合类型",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "item 必须同时是 int 和 str，称为联合类型",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "item 是由一个 int 和一个 str 组成的元组，称为联合类型",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "item 是 int，str 只是补充说明，称为泛型类型",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，参数声明为 `item: int | str` 表示什么，这种写法叫什么？",
+    "answer": "用竖线把两种类型分开，表示 item 可以是 int 或 str 中的任意一种，因为它可以是这两类类型集合并集中的任意一个，所以称为“联合类型”（union）；它不是要求同时满足两种类型，也不是元组或泛型的写法。[原文§Python 类型提示简介 · 泛型类型 · Union](https://fastapi.tiangolo.com/zh/python-types/#union)"
+  },
+  {
+    "id": "U1-10",
+    "typed": {
+      "id": "U1-10",
+      "type": "single",
+      "stem": "按官方文档，把参数声明为 `str | None` 而不是只写 `str`，有什么好处？",
+      "options": [
+        {
+          "key": "A",
+          "text": "运行时 Python 会自动把 None 转成空字符串",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "这个参数从此变成必填，调用时不能省略",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "编辑器不再检查这个参数的使用，因为它的类型变成了任意类型",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "编辑器能帮你发现把值当成总是 str、而它实际可能为 None 的错误",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，把参数声明为 `str | None` 而不是只写 `str`，有什么好处？",
+    "answer": "声明 `str | None` 表示值可能是 str 也可能是 None，这样编辑器能帮你发现把值当成总是 str 的错误；它不会让参数变成必填，也不会在运行时自动转换 None，更不是放弃检查。[原文§Python 类型提示简介 · 泛型类型 · 可能为 None](https://fastapi.tiangolo.com/zh/python-types/#possibly-none)"
+  },
+  {
+    "id": "U1-11",
+    "typed": {
+      "id": "U1-11",
+      "type": "single",
+      "stem": "按官方文档，把参数声明为 `one_person: Person`（`Person` 是一个自定义类）表示什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "one_person 是名为 Person 的类本身",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "one_person 是类 Person 的一个实例",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "one_person 是 Person 的某个属性值，类型为 str",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "one_person 可以是任意类型，Person 只是一个注释",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，把参数声明为 `one_person: Person`（`Person` 是一个自定义类）表示什么？",
+    "answer": "这表示 one_person 是类 Person 的一个实例，而不是名为 Person 的类本身；声明之后同样能获得所有编辑器支持。[原文§Python 类型提示简介 · 类作为类型](https://fastapi.tiangolo.com/zh/python-types/#classes-as-types)"
+  },
+  {
+    "id": "U1-12",
+    "typed": {
+      "id": "U1-12",
+      "type": "short"
+    },
+    "question": "按官方文档，Pydantic 是什么？使用它时怎样声明数据结构，用一组值创建实例时它会做什么？",
+    "answer": "Pydantic 是用于执行数据校验的 Python 库：把数据的“结构”声明为带属性的类，每个属性有一个类型；用一些值创建这个类的实例时，它会校验这些值，并在需要时把它们转换为合适的类型，返回一个包含所有数据的对象，对这个对象还能获得完整的编辑器支持。[原文§Python 类型提示简介 · Pydantic 模型](https://fastapi.tiangolo.com/zh/python-types/#pydantic-models)"
+  },
+  {
+    "id": "U1-13",
+    "typed": {
+      "id": "U1-13",
+      "type": "single",
+      "stem": "按官方文档的 Pydantic 示例，`User` 模型声明了 `id: int`；用字符串 `\"123\"` 作为 id 创建实例后，`user.id` 得到什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "抛出异常，因为 `\"123\"` 不是 int",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "仍是字符串 `\"123\"`，不做任何处理",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "整数 123，值被转换成了所需类型",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "None，类型不匹配时该值被丢弃",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档的 Pydantic 示例，`User` 模型声明了 `id: int`；用字符串 `\"123\"` 作为 id 创建实例后，`user.id` 得到什么？",
+    "answer": "Pydantic 会校验值并在需要时转换类型，示例里字符串 `\"123\"` 被转换成整数 123，`print(user.id)` 输出 123；它既不会因为是字符串而报错，也不会保留字符串或丢弃成 None。[原文§Python 类型提示简介 · Pydantic 模型](https://fastapi.tiangolo.com/zh/python-types/#pydantic-models)"
+  },
+  {
+    "id": "U1-14",
+    "typed": {
+      "id": "U1-14",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 与 Pydantic 是什么关系？",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pydantic 完全建立在 FastAPI 之上",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "FastAPI 完全建立在 Pydantic 之上",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "两者互不相关，FastAPI 另用自己的校验库",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "Pydantic 只用于生成交互式文档，不参与校验",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 与 Pydantic 是什么关系？",
+    "answer": "官方文档说 FastAPI 完全建立在 Pydantic 之上，Pydantic 是用于执行数据校验的库；说反了、说两者无关或说 Pydantic 不参与校验都是错的。[原文§Python 类型提示简介 · Pydantic 模型](https://fastapi.tiangolo.com/zh/python-types/#pydantic-models)"
+  },
+  {
+    "id": "U1-15",
+    "typed": {
+      "id": "U1-15",
+      "type": "multiple",
+      "stem": "按官方文档，关于 `typing.Annotated` 下列说法哪些正确？",
+      "options": [
+        {
+          "key": "A",
+          "text": "可以在类型提示里放入额外的元数据",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "传给它的第一个类型参数才是实际类型，其余是给其他工具用的元数据",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "Python 本身不处理其元数据，编辑器看到的类型仍是第一个参数",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "它是标准 Python，编辑器体验和与其他 Python 工具的兼容性不受影响",
+          "correct": true
+        },
+        {
+          "key": "E",
+          "text": "最后一个类型参数才是实际类型，前面的都是元数据",
+          "correct": false
+        },
+        {
+          "key": "F",
+          "text": "它是 FastAPI 专有的语法，需要从 fastapi 导入",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，关于 `typing.Annotated` 下列说法哪些正确？",
+    "answer": "`Annotated` 是标准 Python，可用来在类型提示中放入额外元数据；传给它的第一个类型参数才是实际类型，其余只是给其他工具用的元数据；Python 本身不会处理这些元数据，编辑器看到的类型仍是第一个参数，并且编辑器体验和与其他工具的兼容性都不受影响。把最后一个参数当实际类型，或说它是 FastAPI 专有语法，都是错的。[原文§Python 类型提示简介 · 带元数据注解的类型提示](https://fastapi.tiangolo.com/zh/python-types/#type-hints-with-metadata-annotations)"
+  },
+  {
+    "id": "U1-16",
+    "typed": {
+      "id": "U1-16",
+      "type": "fill",
+      "stem": "按官方文档，用类型提示声明参数后，FastAPI 会用相同的声明完成：定义要求，以及另外三件事：____、____、____。",
+      "blankCount": 3,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档，用类型提示声明参数后，FastAPI 会用相同的声明完成：定义要求，以及另外三件事：____、____、____。",
+    "answer": "FastAPI 用同一份类型声明来定义要求（来自路径参数、查询参数、请求头、请求体、依赖等）、转换数据、校验数据，以及使用 OpenAPI 记录 API；所以三个空是：转换数据、校验数据、使用 OpenAPI 记录 API。[原文§Python 类型提示简介 · FastAPI 中的类型提示](https://fastapi.tiangolo.com/zh/python-types/#type-hints-in-fastapi)"
+  },
+  {
+    "id": "U1-17",
+    "typed": {
+      "id": "U1-17",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 校验请求数据时，如果数据无效会怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "自动生成返回给客户端的错误",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "丢弃无效数据，改用类型的默认值继续处理",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "忽略校验继续运行，仅在编辑器里提示错误",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只在服务启动时校验一次，运行期间不再校验",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 校验请求数据时，如果数据无效会怎样？",
+    "answer": "对于每个请求，FastAPI 都会校验数据，数据无效时自动生成返回给客户端的错误；它不会丢弃数据改用默认值，也不是只在编辑器提示或只在启动时校验一次。[原文§Python 类型提示简介 · FastAPI 中的类型提示](https://fastapi.tiangolo.com/zh/python-types/#type-hints-in-fastapi)"
+  }
+]

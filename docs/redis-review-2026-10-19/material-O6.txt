@@ -1,0 +1,427 @@
+O6-1 [multiple] 按原文，下列哪些情况会导致主从之间需要完全同步（全量同步）？
+A * 主节点无法根据从节点提供的复制 ID 找到兼容的复制历史 | B * 断连时间较长，从节点缺失的命令已经不在复制积压缓冲区中 | C * 首次建立复制关系，从节点没有可用于续传的复制信息 | D 从节点短暂断连，缺失的命令仍然保存在复制积压缓冲区中 | E 主节点和从节点的复制 ID 兼容，请求的偏移量仍在积压缓冲区范围内
+Answer (L522): 正确的是：首次建立复制关系；主节点无法根据复制 ID 找到兼容的复制历史；所需数据已经被覆盖，即缺失的命令不再位于复制积压缓冲区中。错误的是：缺失的命令仍在积压缓冲区、复制历史兼容且偏移量还在范围内时，走的是增量同步。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-2 [single] 按原文，主从同步是全量还是增量，主要取决于什么？
+A * 复制历史能不能衔接，以及需要的增量数据还在不在 | B 只看主节点上的数据在断连期间有没有发生过变化 | C 只看从节点断连了多长时间，与复制历史无关 | D 只看是否开启了无盘复制
+Answer (L523): 取决于复制历史能不能衔接，以及需要的增量数据还在不在。原文说不是只看主节点有没有变化。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-3 [fill] 按原文，主从服务器间第一次同步的三个阶段依次是：____ → ____ → ____。
+
+Answer (L524): 3 个空依次是建立链接并协商同步、主服务器同步数据给从服务器、主服务器发送新写操作命令给从服务器。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-4 [single] 按原文，从节点首次同步时通常发送什么命令，含义是什么？
+A PSYNC 加上上次的复制 ID 和偏移量，请求从断点继续同步 | B FULLRESYNC，请求主节点生成 RDB | C * PSYNC ? -1，表示没有可用的复制 ID 和偏移量 | D CONTINUE，通知主节点采用增量复制
+Answer (L525): PSYNC ? -1，表示没有可用的复制 ID 和偏移量。带着上次复制 ID 和偏移量的 PSYNC 用于断线后的增量同步；FULLRESYNC 和 CONTINUE 是主节点的回复，不是从节点发送的命令。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-5 [single] 按原文，主节点回复 FULLRESYNC，是在告诉从节点什么？
+A 接下来采用增量复制，只发送断线期间的写命令 | B * 接下来进行全量同步，并返回复制 ID 和基准偏移量 | C 需要从节点重新发送一次 PSYNC ? -1 再等待主节点答复 | D 主节点没有可用的复制历史，拒绝同步
+Answer (L526): 接下来进行全量同步，并返回复制 ID 和基准偏移量。告诉从节点采用增量复制的是 CONTINUE 响应。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-6 [single] 按原文，主节点生成快照后，可以怎样把它交给从节点？
+A 只能先写入磁盘，再由从节点读取这个文件 | B 不生成快照，而是把主节点上全部历史写命令逐条重放给从节点 | C 由从节点直接读取主节点的内存，不经过快照 | D * 先写磁盘再传输，或者使用无盘复制直接发送给从节点
+Answer (L527): 快照可以先写磁盘再传输，也可以使用无盘复制直接发送给从节点。原文说主节点是通过子进程生成当前数据的快照。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-7 [single] 按原文，主节点生成和传输快照期间收到新的写命令，会怎样处理？
+A 暂停处理所有客户端请求，直到快照生成并传输完成为止 | B 丢弃这段时间收到的写命令，等同步完成后由从节点自行重新补齐 | C 把这段时间的写命令直接写进正在生成的快照文件里并一起发送 | D * 继续处理请求，把快照之后的写命令保存在待发送的复制数据中
+Answer (L528): 继续处理请求，把快照之后的写命令保存在待发送的复制数据中，避免这段时间的变化丢失。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-8 [single] 按原文，从节点接收到完整快照后会怎样处理自己原来的数据？
+A 把快照和原来的数据合并，保留两边独有的 key | B * 用快照替换原来的数据集 | C 只加载快照里与自己不同的 key | D 保留原来的数据，丢弃快照
+Answer (L529): 用快照替换原来的数据集。之后主节点继续发送快照之后的写命令，从节点执行后进入持续接收命令的阶段。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-9 [fill] 按原文，主从全量同步实现过程的五个环节依次是：____ → ____ → ____ → ____ → ____。
+
+Answer (L530): 5 个空依次是从节点发送 PSYNC、主节点生成 RDB、记录期间的写命令、从节点加载 RDB、补齐增量命令。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-10 [fill] 按原文，____ 是给从节点发送复制数据用的，____ 是保留最近复制历史、支持断线后增量同步用的。
+
+Answer (L531): 2 个空依次是 replication buffer、repl_backlog_buffer。两者职责不同，必须区分。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-11 [single] 按原文，全量同步期间待发送给从节点的命令，应当怎样理解？
+A 它们只保存在 repl_backlog_buffer 里，replication buffer 不参与 | B 它们不需要保存，从节点加载快照后会自动追上 | C * 它们由给从节点发送复制数据用的缓冲区承担，不能只理解为存在 repl_backlog_buffer 里 | D 它们保存在从节点的 repl_backlog_buffer 里，主节点不保存
+Answer (L532): 全量同步期间待发送的命令由给从节点发送复制数据用的 replication buffer 承担，不能只理解为存在 backlog 里。两个缓冲区职责不同。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-12 [single] 按原文，Redis 7.0 对复制缓冲区做了共享实现之后，两个缓冲区的职责还需要区分吗？
+A * 仍然需要区分 | B 不需要区分，两者已经合并成一个缓冲区 | C 不需要区分，repl_backlog_buffer 已被取消 | D 不需要区分，replication buffer 已被取消
+Answer (L533): 仍然需要区分。原文说 Redis 7.0 对复制缓冲区做了共享实现，但 replication buffer 给从节点发送复制数据、repl_backlog_buffer 保留最近复制历史这两个职责仍然要分清。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-13 [fill] 按原文，增量同步基于 ____ 命令，使用 ____ 和复制偏移量（offset）判断能不能接着同步。
+
+Answer (L534): 2 个空依次是 PSYNC、复制 ID（replication ID）。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-14 [single] 按原文，复制 ID 标识的是什么，不要和什么混为一谈？
+A 复制 ID 标识进程本身，和 Sentinel 选主时比较的 run ID 是同一个东西 | B * 复制 ID 标识复制历史，不要和 Sentinel 选主比较的进程 run ID 混为一谈 | C 复制 ID 标识 Sentinel 的投票纪元，不要和复制偏移量混为一谈 | D 复制 ID 标识复制积压缓冲区的大小，不要和 repl-backlog-size 混为一谈
+Answer (L535): 复制 ID 标识的是复制历史，不要和 Sentinel 选主时用于比较的进程 run ID 混为一谈。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-15 [single] 按原文，增量同步时，从服务器恢复网络后发送的 psync 命令里，offset 参数是什么情况？
+A 就是 -1 | B 固定为 0 | C 省略不写 | D * 不是 -1
+Answer (L536): 不是 -1。首次同步发送的是 PSYNC ? -1；增量同步时 offset 不是 -1，主服务器据此判断能否接着同步。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-16 [single] 按原文，主服务器收到增量同步的 psync 命令后，用哪个响应告诉从服务器采用增量复制？
+A * CONTINUE | B FULLRESYNC | C PSYNC ? -1 | D WAIT
+Answer (L537): CONTINUE。FULLRESYNC 是告诉从节点进行全量同步，PSYNC ? -1 是从节点首次同步发送的命令。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-17 [single] 按原文，主服务器确定采用增量复制后，会把什么发送给从服务器？
+A 当前数据完整的 RDB 快照 | B 主服务器上全部的历史写命令 | C * 主从服务器断线期间所执行的写命令 | D 断线期间新增的 key 的名称列表
+Answer (L538): 主从服务器断线期间所执行的写命令，从服务器执行这些命令后就追上了主服务器。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-18 [single] 按原文，repl_backlog_buffer 是做什么的？
+A 给每个从节点各自单独保存一份完整的全量快照 | B 只记录各个从节点的复制偏移量，不保存任何写命令内容 | C * 保存最近的复制历史，用于从节点断连后查找缺失的数据 | D 保存主节点自启动以来的全部历史写命令，永不丢弃
+Answer (L539): 保存最近的复制历史，传统实现是环形缓冲区，用于从节点断连后查找缺失的数据。它只保留最近的复制历史，旧的历史不会无限保留。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-19 [fill] 按原文，主服务器记录自己「写」到的位置用 ____，从服务器记录自己「读」到的位置用 ____。
+
+Answer (L540): 2 个空依次是 master_repl_offset、slave_repl_offset。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-20 [single] 按原文，repl_backlog_buffer 是什么时候写入的？
+A * 主服务器进行命令传播时，把写命令发给从服务器的同时也写入 | B 只在主节点为全量同步生成 RDB 快照的时候才写入 | C 只在从服务器断线之后重新连上主服务器的时候才写入 | D 只在主服务器收到从服务器发来的 psync 命令的时候才写入
+Answer (L541): 主服务器进行命令传播时，不仅把写命令发送给从服务器，还会把写命令写入 repl_backlog_buffer，因此这个缓冲区里保存着最近传播的写命令。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-21 [single] 按原文，从服务器重新连上主服务器后，主服务器决定同步方式的判断顺序是什么？
+A 先检查请求的偏移量是否在 backlog 范围内，再判断复制 ID 是否兼容 | B 只比较进程 run ID，其余不用判断 | C 只看主节点自上次同步以来有没有新的写入 | D * 先判断复制 ID 是否兼容，再检查请求的偏移量是否仍在 backlog 范围内
+Answer (L542): 先判断复制 ID 是否兼容，再检查从节点请求的偏移量是否还在 backlog 保存的范围内，据此决定采用增量同步还是全量同步。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-22 [multiple] 按原文，主服务器根据 repl_backlog_buffer 决定同步方式时，下列哪些说法正确？
+A * 从服务器要读取的数据还在 repl_backlog_buffer 里，就采用增量同步 | B 只要从服务器断连过，不论所需数据是否还在缓冲区里，就一定采用全量同步 | C 只要复制 ID 兼容，不用再看偏移量是否还在 backlog 范围内，就一定采用增量同步 | D * 从服务器要读取的数据已经不在 repl_backlog_buffer 里，就采用全量同步
+Answer (L543): 正确的是：数据还在 repl_backlog_buffer 里就增量同步；数据已不在就全量同步。错误的是：断连过不一定全量，只要所需数据还在就能增量；复制 ID 兼容还不够，还要检查偏移量是否仍在 backlog 范围内。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-23 [single] 按原文，主节点确认需要的历史还在 backlog 中后，Redis 7.0 的共享复制缓冲区有什么好处？
+A 可以让每个副本都单独保存一份完整的数据块副本，互不影响 | B * 可以复用已有的数据块，不需要为每个副本重复保存一份 | C 可以取消复制偏移量，从此不再需要判断从哪个断点继续 | D 可以让全量同步不再需要生成 RDB
+Answer (L544): 可以复用已有的数据块，不需要为每个副本重复保存一份。旧版本会把历史复制到从节点待发送的缓冲区。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-24 [single] 按原文，复制积压缓冲区默认的 repl-backlog-size 是多少？
+A * 1MB | B 2MB | C 120MB | D 3GB
+Answer (L545): 1MB。复制积压缓冲区可以理解为只保留最近复制历史的有限窗口。2MB 和 120MB 是原文计算示例里的数字，3GB 是 32 位环境 maxmemory 的默认限制，都不是 repl-backlog-size 的默认值。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-25 [single] 按原文，什么情况下，从节点需要的数据越容易超出复制积压缓冲区这个窗口？
+A 断连时间越短、复制流量越大 | B 断连时间越长、复制流量越小 | C * 断连时间越长、复制流量越大 | D 与断连时间和复制流量都无关
+Answer (L546): 断连时间越长、复制流量越大。无论传统环形缓冲区还是 Redis 7.0 的共享复制缓冲块，旧的复制历史都不会无限保留。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-26 [single] 按原文，从服务器想读的数据已经被覆盖时，主服务器采用全量同步，与增量同步相比性能损耗如何？
+A 比增量同步小很多 | B * 比增量同步大很多 | C 与增量同步基本一样 | D 只在首次建立复制时才有损耗
+Answer (L547): 比增量同步的性能损耗大很多，所以要设法减少断线重连时的全量同步。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-27 [single] 按原文，为减少断线重连时的全量同步，repl-backlog-size 可以按什么来估算？
+A 把每秒复制流量除以希望容忍的断连时间，再减去一定余量 | B 从节点个数乘以默认的 1MB，再加上一定余量 | C 主节点 maxmemory 的一半，再减去一定余量 | D * 每秒复制流量乘以希望容忍的断连时间，再加上一定余量
+Answer (L548): 按「每秒复制流量 × 希望容忍的断连时间」再加上一定余量来设置 repl-backlog-size。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-28 [single] 按原文的方法：每秒复制流量约 2MB，希望覆盖 60 秒的断连，至少需要考虑多大的历史窗口？
+A 30MB | B 62MB | C 240MB | D * 120MB
+Answer (L549): 120MB。2MB/s × 60s = 120MB，并且还要预留流量波动的空间。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-29 [single] 按原文，repl-backlog-size 是不是设置得越大越好？
+A 是，越大越能避免全量同步，所以应尽量调大 | B * 不是，要结合内存预算设置 | C 是，只要不超过默认的 1MB 就没有影响 | D 不是，因为它越大复制偏移量越不准确
+Answer (L550): 不是，要结合内存预算设置。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-30 [short] Redis主从同步中的增量和完全同步怎么实现？
+
+Answer (L551): 完全同步主要发生在三种情况：首次建立复制关系；主节点无法根据从节点提供的复制 ID 找到兼容的复制历史；断连较久、从节点缺失的命令不再位于复制积压缓冲区中。所以是全量还是增量，看复制历史能不能衔接，以及需要的增量数据还在不在。第一次同步分三个阶段：建立链接、协商同步，主服务器同步数据给从服务器，主服务器发送新写操作命令给从服务器。具体是：从节点发送 PSYNC ? -1，主节点回复 FULLRESYNC 并返回复制 ID 和基准偏移量；主节点用子进程生成 RDB 快照（可先写磁盘，也可无盘复制）；期间的写命令保存在待发送的复制数据中；从节点加载 RDB 替换原数据集；主节点再发送快照之后的写命令。要区分 replication buffer（给从节点发送复制数据）和 repl_backlog_buffer（保留最近复制历史，支持断线后增量同步）。增量同步基于 PSYNC，用复制 ID 和偏移量判断能否续传：从节点恢复网络后发送 offset 不是 -1 的 psync，主服务器若判断复制 ID 兼容、且请求的偏移量仍在 repl_backlog_buffer 范围内，就回复 CONTINUE，并把断线期间的写命令发给从服务器；否则采用全量同步。主服务器用 master_repl_offset 记录写到的位置，从服务器用 slave_repl_offset 记录读到的位置。repl-backlog-size 默认 1MB，可按每秒复制流量乘以希望容忍的断连时间再加余量设置，但要结合内存预算，不是越大越好。[原文§Redis主从同步中的增量和完全同步怎么实现？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E4%B8%AD%E7%9A%84%E5%A2%9E%E9%87%8F%E5%92%8C%E5%AE%8C%E5%85%A8%E5%90%8C%E6%AD%A5%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0)
+
+O6-31 [single] 按原文，Redis 的主从和集群能保证数据强一致吗？
+A 能保证强一致，写入成功后所有从节点都会立刻拥有并可读到这条数据 | B 主从复制能保证强一致，但集群不能 | C * 不能保证主从强一致，也不能保证故障切换时已经确认的写入一定不丢失 | D 开启读写分离之后就能保证强一致
+Answer (L555): 不能保证主从强一致，也不能保证故障切换时已经确认的写入一定不丢失。[原文§redis主从和集群可以保证数据一致性吗 ？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E9%9B%86%E7%BE%A4%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E5%90%97)
+
+O6-32 [single] 按原文，Redis 主从无法保证强一致，根本原因是什么？
+A * 主从复制默认是异步的 | B 复制只在全量同步时才传输数据 | C 从节点不保存复制偏移量 | D 主节点一次只能服务一个从节点
+Answer (L556): 因为 Redis 的主从复制默认是异步的，主节点返回成功时，数据可能还没复制到从节点。[原文§redis主从和集群可以保证数据一致性吗 ？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E9%9B%86%E7%BE%A4%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E5%90%97)
+
+O6-33 [single] 按原文的例子：客户端写入主节点并收到成功响应，但这条数据还没复制到从节点，这时主节点宕机，从节点被提升为新主节点，会怎样？
+A 新主节点上有这条数据，因为客户端已收到成功响应 | B * 新主节点上没有这条数据 | C 新主节点会自动从旧主节点的磁盘恢复这条数据 | D 客户端会自动重发这条写入，数据不会丢
+Answer (L557): 新主节点上没有这条数据。哨兵或者 Cluster 把从节点提升为主节点，而这条写入还没复制过去，所以丢失。[原文§redis主从和集群可以保证数据一致性吗 ？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E9%9B%86%E7%BE%A4%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E5%90%97)
+
+O6-34 [single] 按原文，读写分离时，对「写完马上读」的场景可以优先怎么做？
+A 优先读从节点，从节点上的数据一定是最新的 | B 随机选主节点或从节点读取，效果相同 | C 读从节点，并把 repl-backlog-size 调到最大 | D * 优先读主节点，但这也不能消除故障切换造成的数据丢失窗口
+Answer (L558): 优先读主节点，因为刚写完主节点马上去从节点读，可能读到旧值。但这不能消除故障切换造成的数据丢失窗口。[原文§redis主从和集群可以保证数据一致性吗 ？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E9%9B%86%E7%BE%A4%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E5%90%97)
+
+O6-35 [multiple] 按原文，下列哪些措施可以降低异步复制带来的风险？
+A * 用 min-replicas-max-lag 限制副本延迟过大时的写入 | B * 用 min-replicas-to-write 限制副本状态不好时的写入 | C * 通过 WAIT 等机制等待副本确认 | D 把读请求全部转到从节点上执行 | E 把 repl-backlog-size 调到最大即可保证强一致
+Answer (L559): 正确的是：WAIT 等待副本确认；min-replicas-to-write、min-replicas-max-lag 限制副本状态不好时的写入。错误的是：把读请求转到从节点反而可能读到旧值；调大 repl-backlog-size 并不能让 Redis 变成强一致系统。[原文§redis主从和集群可以保证数据一致性吗 ？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E9%9B%86%E7%BE%A4%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E5%90%97)
+
+O6-36 [single] 按原文，用 WAIT、min-replicas-to-write 等措施之后，Redis 会变成强一致系统吗？
+A * 不会，这些措施只能降低风险 | B 会，配置之后就能保证强一致 | C 会，但只在主从架构下成立，Cluster 下不成立 | D 不会，因为这些措施会让 Redis 彻底停止复制
+Answer (L560): 不会。原文强调这些措施不会把 Redis 变成强一致系统，只是降低风险。[原文§redis主从和集群可以保证数据一致性吗 ？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E9%9B%86%E7%BE%A4%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E5%90%97)
+
+O6-37 [single] 按原文，能不能简单地说「Redis Cluster 属于 AP，所以网络分区时一直可用」？
+A 能，Cluster 属于 AP，网络分区时所有节点都继续接受读写 | B 不能，Cluster 属于 CP，网络分区时所有节点都立刻拒绝读写 | C * 不能，Cluster 在失去多数主节点联系时会停止接受写入，可用性是有条件的 | D 能，只要有一个主节点存活，Cluster 就一直可用
+Answer (L561): 不能。Cluster 在失去多数主节点联系时会停止接受写入，它的可用性有条件，面试时直接讲清楚异步复制和故障切换的边界更准确。[原文§redis主从和集群可以保证数据一致性吗 ？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E9%9B%86%E7%BE%A4%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E5%90%97)
+
+O6-38 [multiple] 按原文，关于 Redis Cluster 的可用性，下列哪些说法正确？
+A 网络分区时所有节点都会继续接受写入 | B * 默认要求所有槽都可服务 | C * 槽不可用也可能影响整个集群 | D * 在失去多数主节点联系时会停止接受写入 | E 只有出问题的那些槽受影响，对集群的其他部分绝对没有影响
+Answer (L562): 正确的是：失去多数主节点联系时停止接受写入；默认要求所有槽都可服务；槽不可用也可能影响整个集群。错误的是：不能认为网络分区时一直可用，也不能认为槽的故障绝不影响其他部分。[原文§redis主从和集群可以保证数据一致性吗 ？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E9%9B%86%E7%BE%A4%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E5%90%97)
+
+O6-39 [short] redis主从和集群可以保证数据一致性吗 ？
+
+Answer (L563): 不能保证主从强一致，也不能保证故障切换时已经确认的写入一定不丢失，因为 Redis 的主从复制默认是异步的。比如客户端往主节点写入一条数据，主节点返回成功，但还没复制到从节点，这时主节点宕机，哨兵或 Cluster 把从节点提升为主节点，新主节点上就没有这条数据了。读写分离也有类似问题：刚写完主节点马上去从节点读，可能读到旧值，所以「写完马上读」的场景可以优先读主节点，但这也不能消除故障切换造成的数据丢失窗口。可以通过 WAIT 等机制等待副本确认，或用 min-replicas-to-write、min-replicas-max-lag 限制副本状态不好时的写入来降低风险，但这些措施不会把 Redis 变成强一致系统。另外不能简单说 Redis Cluster 属于 AP、网络分区时一直可用：Cluster 在失去多数主节点联系时会停止接受写入，默认要求所有槽都可服务，槽不可用也可能影响整个集群，可用性是有条件的。[原文§redis主从和集群可以保证数据一致性吗 ？](https://xiaolincoding.com/interview/redis.html#redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E9%9B%86%E7%BE%A4%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E5%90%97)
+
+O6-40 [multiple] 按原文，在没有哨兵的主从架构中，主节点挂了之后，需要人工介入做哪些事？
+A * 选择一个从节点切换为主节点 | B * 通知上游连接主节点的客户端，把配置里的主节点 IP 地址更新为新主节点 | C * 让其他从节点指向新的主节点 | D 手动重新生成一份 RDB 文件交给客户端 | E 把所有从节点都重启一遍以释放内存
+Answer (L567): 正确的是：选择一个从节点切换为主节点；让其他从节点指向新的主节点；通知上游客户端更新主节点 IP 地址。错误的是：重启所有从节点、手动生成 RDB 交给客户端都不是原文所述的人工步骤。[原文§哨兵机制原理是什么？](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O6-41 [single] 按原文，哨兵（Sentinel）机制的作用是什么？
+A 把数据分片存放到多个主节点上 | B 提升单个节点的读写性能 | C * 实现主从节点的故障转移 | D 负责数据持久化到磁盘
+Answer (L568): 实现主从节点故障转移。它会监测主节点是否存活，发现主节点挂了就选举一个从节点切换为主节点，并把新主节点的相关信息通知从节点和客户端。[原文§哨兵机制原理是什么？](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O6-42 [single] 按原文，哨兵本质上是什么？
+A * 运行在特殊模式下的 Redis 进程，所以它也是一个节点 | B 一个独立于 Redis 的外部代理程序，负责转发所有请求 | C 一个只存在于从节点内部的线程 | D 一个专门保存复制偏移量的磁盘文件
+Answer (L569): 哨兵其实是一个运行在特殊模式下的 Redis 进程，所以它也是一个节点，相当于观察主从节点的「观察者节点」。[原文§哨兵机制原理是什么？](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O6-43 [fill] 按原文，哨兵节点主要负责三件事：____、____、____。
+
+Answer (L570): 3 个空是监控、选主、通知（顺序不限）。[原文§哨兵机制原理是什么？](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O6-44 [single] 按原文，哨兵发现主节点挂了、选出新主节点之后，会把新主节点的相关信息通知给谁？
+A 只通知其他哨兵 | B 只通知从节点 | C 只通知上游的负载均衡器 | D * 从节点和客户端
+Answer (L571): 通知从节点和客户端。这样就不需要人工去更新从节点指向和客户端配置。[原文§哨兵机制原理是什么？](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O6-45 [short] 哨兵机制原理是什么？
+
+Answer (L572): 在 Redis 主从架构中，写请求通常由主节点处理，主节点挂了就没有节点服务写请求，也没有主节点给从节点同步数据。没有哨兵时需要人工介入：选一个从节点切换为主节点，让其他从节点指向新主节点，并通知上游客户端更新主节点 IP。哨兵（Sentinel）机制用来实现主从节点故障转移：它是运行在特殊模式下的 Redis 进程，也是一个节点，相当于观察主从节点的观察者。它监测主节点是否存活，发现主节点挂了就选举一个从节点切换为主节点，并把新主节点的信息通知从节点和客户端。哨兵节点主要负责三件事：监控、选主、通知。[原文§哨兵机制原理是什么？](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+O6-46 [single] 按原文，选主算法讲的是哪种架构下的故障转移？
+A 所有 Redis 部署形式，包括 Redis Cluster，都由 Sentinel 统一选主 | B * 哨兵管理的主从架构，Redis Cluster 有自己的故障检测和选举机制，不依赖 Sentinel | C 只有 Redis Cluster，哨兵管理的主从架构不需要选主 | D 只有单机 Redis，没有从节点时才需要选主
+Answer (L576): 哨兵管理的主从架构。原文说 Redis Cluster 有自己的故障检测和选举机制，不依赖 Sentinel。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-47 [fill] 按原文，哨兵管理的主从架构中主节点故障时，Sentinel 协调故障转移依次经过：____ → ____ → ____ → ____。
+
+Answer (L577): 4 个空依次是故障节点主观下线、故障节点客观下线、Sentinel 集群选举 Leader、Sentinel Leader 决定新主节点。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-48 [single] 按原文，一个 Sentinel 把某个 redis 节点标记为主观下线的条件是什么？
+A * 该节点在 down-after-milliseconds 时间内没有回复这个 Sentinel 的心跳包 | B 该节点的复制偏移量落后于集群中其他节点的复制偏移量 | C 该节点的 replica-priority 被配置为 0，不参与晋升 | D 该节点内存超过 maxmemory 后对写命令返回了 OOM 错误
+Answer (L578): 该节点在 down-after-milliseconds 时间内没有回复 Sentinel 节点的心跳包。Sentinel 集群的每个节点会定时向 redis 集群的所有节点发心跳包检测节点是否正常。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-49 [single] 按原文，一个节点被某个 Sentinel 标记为主观下线，是否说明它肯定故障了？
+A 是，只要一个 Sentinel 做出判断就足以认定它已经故障 | B 是，此时就可以立刻开始选新主节点 | C * 不一定，还需要 Sentinel 集群的其他节点共同判断 | D 不一定，但只需要等它的从节点确认即可
+Answer (L579): 不一定。当节点被一个 Sentinel 节点记为主观下线时，并不意味着该节点肯定故障了，还需要 Sentinel 集群的其他节点共同判断。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-50 [single] 按原文，主节点被标记为客观下线的条件是什么？
+A 只要任意一个 Sentinel 把它标记为主观下线，就可以标记为客观下线 | B * 认为主节点下线的 Sentinel 数量达到配置的 quorum（包括自己） | C 集群里的所有 Sentinel 都必须一致认为主节点已经下线 | D 它的所有从节点都向 Sentinel 报告认为它已经下线
+Answer (L580): 该 Sentinel 会询问其他 Sentinel 节点，如果认为主节点下线的 Sentinel 数量达到配置的 quorum（包括自己），就可以把主节点标记为客观下线。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-51 [single] 按原文，客观下线的判断针对的是哪类节点？
+A 从节点 | B 其他 Sentinel | C 任何被标记为主观下线的节点 | D * 主节点
+Answer (L581): 主节点。从节点和其他 Sentinel 可以被标记为主观下线，但不会对它们执行主节点这样的客观下线和故障转移流程。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-52 [single] 按原文，选举 Leader 时，一个 Sentinel 在同一个纪元里怎样投票？
+A 可以在同一个纪元里同时投给多个候选者，只要收到请求就同意 | B 不论收到几个请求，都只投给 run ID 字典序最小的那个候选者 | C 不论收到几个请求，都只投给复制偏移量最大的那个候选者 | D * 只会投给一个候选者，还没投过票就可以同意请求，否则不再投给另一个候选者
+Answer (L582): 每一轮选举有对应的纪元，一个 Sentinel 在同一个纪元里只会投票给一个候选者：如果还没有投票，就可以同意该请求，否则不会再给另一个候选者投票。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-53 [single] 按原文，Sentinel 当选 Leader 需要的最低票数是多少？
+A quorum 与 floor(Sentinel 节点数 / 2) + 1 中较小的那个 | B * quorum 与 floor(Sentinel 节点数 / 2) + 1 中较大的那个 | C 只需要达到 quorum，不用考虑节点总数 | D 必须拿到全部 Sentinel 节点的赞成票
+Answer (L583): Leader 最低票数是 quorum 和 floor(Sentinel 节点数 / 2) + 1 的最大值。获得的选举票数达到这个票数的 Sentinel 当选 Leader，否则重新进行选举。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-54 [single] 按原文的例子：有 3 个哨兵节点，quorum 设置为 2，想成为 Leader 的哨兵至少要拿到几张赞成票才能当选？
+A 1 张 | B 3 张 | C * 2 张 | D 5 张
+Answer (L584): 2 张。原文说此时任何一个想成为 Leader 的哨兵只要拿到 2 张赞成票，就可以选举成功；没有满足条件就需要重新进行选举。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-55 [multiple] 按原文，Sentinel Leader 挑选新主节点时，会先过滤掉哪些从节点？
+A * replica-priority 为 0 的从节点 | B * 与主节点断连过久的从节点 | C run ID 字典序最小的从节点 | D 复制偏移量最大的从节点 | E * 不可用的从节点
+Answer (L585): 正确的是：不可用的、与主节点断连过久的、replica-priority 为 0 的从节点都会被排除。错误的是：复制偏移量最大和 run ID 字典序最小，是在过滤之后比较时更有利的条件，不是被排除的条件。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-56 [single] 按原文，replica-priority 为 0 表示什么？
+A * 该从节点不参与晋升 | B 该从节点的优先级最高，最先晋升 | C 该从节点的复制偏移量为 0 | D 该从节点必须等其他节点都下线后才晋升
+Answer (L586): 优先级为 0 表示不参与晋升，这类从节点在过滤阶段就被排除。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-57 [fill] 按原文，Sentinel Leader 在过滤掉不合适的从节点后，依次比较的三项是：____ → ____ → ____。
+
+Answer (L587): 3 个空依次是 replica-priority（优先级）、复制偏移量、run ID。这些条件是按顺序比较的，不是选不到优先级最大的才去比较偏移量。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-58 [single] 按原文，比较 replica-priority 时，哪个从节点优先？
+A 数值更大的，数值越大优先级越高 | B * 数值更小的，数值越小优先级越高 | C 数值为 0 的优先 | D 数值与优先级无关，随机选择
+Answer (L588): 选择 replica-priority 数值更小的节点，数值越小，优先级越高。数值为 0 的节点则是不参与晋升。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-59 [single] 按原文，旧版本里 replica-priority 这个配置叫什么名字？
+A master-priority | B sentinel-priority | C replica-offset | D * slave-priority
+Answer (L589): slave-priority。原文说旧版本配置名叫 slave-priority。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-60 [single] 按原文，优先级相同时，Sentinel Leader 接着比较什么，选哪个？
+A * 比较复制偏移量，选偏移量更大的，它通常接收了更多复制数据 | B 比较复制偏移量，选偏移量更小的 | C 比较 run ID，选字典序更大的 | D 比较 down-after-milliseconds，选更小的
+Answer (L590): 优先级相同，再比较复制偏移量，选择偏移量更大的节点，说明它通常接收了更多复制数据。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-61 [single] 按原文，偏移量也相同时，Sentinel Leader 怎样决出新主节点？
+A 选 run ID 字典序更大的，让选择结果是确定的 | B 随机选择其中一个节点晋升 | C * 选 run ID 字典序更小的，让选择结果是确定的 | D 重新开始新一轮的 Leader 选举再比较
+Answer (L591): 偏移量也相同，再比较 run ID，选择 run ID 字典序更小的节点，让选择结果是确定的。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-62 [multiple] 按原文，选出新主节点之后，Sentinel 会做哪些事？
+A * 通知支持 Sentinel 的客户端发现新主节点 | B 对其余所有从节点重新执行一遍主观下线判断 | C * 将它提升为主节点 | D 清空新主节点上的数据，再从旧主节点重新同步 | E * 让其他从节点重新复制它
+Answer (L592): 正确的是：将新主节点提升为主节点；让其他从节点重新复制它；通知支持 Sentinel 的客户端发现新主节点。错误的是：不会清空新主节点的数据，也不是重新做主观下线判断。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-63 [short] 哨兵机制的选主节点的算法介绍一下
+
+Answer (L593): 这里说的是哨兵管理的主从架构，Redis Cluster 有自己的故障检测和选举机制，不依赖 Sentinel。主节点故障时，Sentinel 协调故障转移，经过四步：故障节点主观下线、故障节点客观下线、Sentinel 集群选举 Leader、Sentinel Leader 决定新主节点。主观下线：Sentinel 定时向所有节点发心跳包，节点在 down-after-milliseconds 时间内没有回复，就被该 Sentinel 主观下线。客观下线：被一个 Sentinel 标记为主观下线不代表真的故障，该 Sentinel 会询问其他 Sentinel，认为主节点下线的数量达到 quorum（包括自己）就标记为客观下线，客观下线只针对主节点。选举 Leader：确认主节点客观下线并准备发起故障转移的 Sentinel 请求其他 Sentinel 选自己，每轮选举有纪元，一个 Sentinel 在同一纪元只投给一个候选者；票数达到 quorum 与 floor(Sentinel 节点数 / 2) + 1 的最大值才当选，否则重新选举。比如 3 个哨兵、quorum 为 2，拿到 2 张赞成票即可。决定新主节点：先过滤不可用、与主节点断连过久、replica-priority 为 0（不参与晋升）的从节点；再依次比较 replica-priority（数值小的优先，旧版叫 slave-priority）、复制偏移量（大的优先）、run ID（字典序小的优先），这些条件按顺序比较。选出后，Sentinel 将它提升为主节点，让其他从节点重新复制它，并通知支持 Sentinel 的客户端发现新主节点。[原文§哨兵机制的选主节点的算法介绍一下](https://xiaolincoding.com/interview/redis.html#%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%89%E4%B8%BB%E8%8A%82%E7%82%B9%E7%9A%84%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)
+
+O6-64 [single] 按原文，在哨兵管理的主从架构中，脑裂通常是指什么？
+A 两个 Sentinel 同时当选 Leader，各自发起一次故障转移 | B 一个主节点被拆成两个节点，各自负责不同的哈希槽 | C * 网络分区后，旧主节点仍被部分客户端当作主节点使用，另一边已完成故障转移，出现了新主节点 | D 一个从节点同时复制了两个不同的主节点
+Answer (L597): 脑裂通常是指网络分区后，旧主节点仍然被部分客户端当作主节点使用，而另一边已经完成故障转移，出现了新主节点。[原文§Redis 脑裂是什么？怎么降低影响？](https://xiaolincoding.com/interview/redis.html#redis-%E8%84%91%E8%A3%82%E6%98%AF%E4%BB%80%E4%B9%88-%E6%80%8E%E4%B9%88%E9%99%8D%E4%BD%8E%E5%BD%B1%E5%93%8D)
+
+O6-65 [single] 按原文，网络恢复后，脑裂中的旧主节点会怎样？
+A * 被改成从节点，它独有的写入可能被新主节点的数据覆盖 | B 仍然保持主节点身份，新主节点被降为从节点 | C 它独有的写入会自动合并进新主节点，不会丢失 | D 被移出集群，所有写入原样保留在旧主节点上
+Answer (L598): 旧主节点被改成从节点，它独有的写入可能被新主节点的数据覆盖，也就是出现数据丢失。[原文§Redis 脑裂是什么？怎么降低影响？](https://xiaolincoding.com/interview/redis.html#redis-%E8%84%91%E8%A3%82%E6%98%AF%E4%BB%80%E4%B9%88-%E6%80%8E%E4%B9%88%E9%99%8D%E4%BD%8E%E5%BD%B1%E5%93%8D)
+
+O6-66 [multiple] 按原文，下列哪些做法可以降低脑裂的影响？
+A * 使用支持 Sentinel 的客户端，正确处理连接错误和拓扑变化，避免长期连接旧主节点 | B 把所有哨兵和主从节点部署在同一个机架上，减少网络距离 | C 让客户端忽略连接错误，一直重连原来的主节点 | D * 用 min-replicas-to-write 和 min-replicas-max-lag 限制孤立主节点的写入 | E * 把哨兵和主从节点分布在不同故障域，合理设置检测和切换参数
+Answer (L599): 正确的是：限制孤立主节点的写入；让客户端及时发现新主节点；减少共同故障，让哨兵和主从节点分布在不同故障域。错误的是：集中部署会增加共同故障的风险，客户端忽略连接错误并一直连旧主节点会让脑裂的影响扩大。[原文§Redis 脑裂是什么？怎么降低影响？](https://xiaolincoding.com/interview/redis.html#redis-%E8%84%91%E8%A3%82%E6%98%AF%E4%BB%80%E4%B9%88-%E6%80%8E%E4%B9%88%E9%99%8D%E4%BD%8E%E5%BD%B1%E5%93%8D)
+
+O6-67 [fill] 按原文，限制孤立主节点写入所用的两个配置项是：____、____。
+
+Answer (L600): 2 个空是 min-replicas-to-write、min-replicas-max-lag（顺序不限）。[原文§Redis 脑裂是什么？怎么降低影响？](https://xiaolincoding.com/interview/redis.html#redis-%E8%84%91%E8%A3%82%E6%98%AF%E4%BB%80%E4%B9%88-%E6%80%8E%E4%B9%88%E9%99%8D%E4%BD%8E%E5%BD%B1%E5%93%8D)
+
+O6-68 [single] 按原文，min-replicas-to-write 和 min-replicas-max-lag 起到的作用是什么？
+A 要求主节点把每次写入都同步写到磁盘后才返回 | B 要求从节点每次读取前先向主节点确认数据是最新的 | C 要求 Sentinel 在检测到延迟后立即撤销主节点 | D * 要求主节点有足够数量、延迟在允许范围内的副本，否则拒绝写入
+Answer (L601): 要求主节点有足够数量、延迟在允许范围内的副本，否则拒绝写入，以此限制孤立主节点的写入。[原文§Redis 脑裂是什么？怎么降低影响？](https://xiaolincoding.com/interview/redis.html#redis-%E8%84%91%E8%A3%82%E6%98%AF%E4%BB%80%E4%B9%88-%E6%80%8E%E4%B9%88%E9%99%8D%E4%BD%8E%E5%BD%B1%E5%93%8D)
+
+O6-69 [single] 按原文，采取降低脑裂影响的措施之后，能否完全消除数据丢失？
+A 能完全消除数据丢失，只要配置了足够多的副本即可 | B * 不能承诺完全消除，只能缩短风险窗口，限制写入还会牺牲可用性 | C 能完全消除数据丢失，只是会因此增加复制延迟 | D 能完全消除数据丢失，代价是客户端需要手动切换主节点
+Answer (L602): 不能承诺完全消除数据丢失，这些措施只能缩短风险窗口。副本状态的判断存在延迟，限制写入也会牺牲可用性，所以要结合业务对一致性和可用性的要求来选择。[原文§Redis 脑裂是什么？怎么降低影响？](https://xiaolincoding.com/interview/redis.html#redis-%E8%84%91%E8%A3%82%E6%98%AF%E4%BB%80%E4%B9%88-%E6%80%8E%E4%B9%88%E9%99%8D%E4%BD%8E%E5%BD%B1%E5%93%8D)
+
+O6-70 [short] Redis 脑裂是什么？怎么降低影响？
+
+Answer (L603): 在哨兵管理的主从架构中，脑裂通常是指网络分区后，旧主节点仍被部分客户端当作主节点使用，而另一边已完成故障转移、出现了新主节点。比如旧主节点与哨兵、从节点之间网络断了，但某些应用仍能访问旧主节点，哨兵把从节点提升为新主节点，新旧两个主节点都可能收到写请求；网络恢复后旧主节点被改成从节点，它独有的写入可能被新主节点的数据覆盖。降低影响可以从三方面入手：用 min-replicas-to-write 和 min-replicas-max-lag 限制孤立主节点的写入，要求主节点有足够数量、延迟在允许范围内的副本，否则拒绝写入；使用支持 Sentinel 的客户端，正确处理连接错误和拓扑变化，让客户端及时发现新主节点；让哨兵和主从节点分布在不同故障域，合理设置检测和切换参数，减少共同故障。这些措施只能缩短风险窗口，不能承诺完全消除数据丢失，限制写入还会牺牲可用性，要结合业务对一致性和可用性的要求选择。[原文§Redis 脑裂是什么？怎么降低影响？](https://xiaolincoding.com/interview/redis.html#redis-%E8%84%91%E8%A3%82%E6%98%AF%E4%BB%80%E4%B9%88-%E6%80%8E%E4%B9%88%E9%99%8D%E4%BD%8E%E5%BD%B1%E5%93%8D)
+
+O6-71 [single] 按原文，什么情况下需要使用 Redis 切片集群（Redis Cluster）方案？
+A * 缓存的数据量大到一台服务器无法缓存时 | B 需要把数据同步到从节点做备份时 | C 主节点宕机需要自动选出新主节点时 | D 需要保证写入后所有节点立即读到最新值时
+Answer (L607): 当 Redis 缓存数据量大到一台服务器无法缓存时，就需要使用切片集群，把数据分布在不同的服务器上，以此降低系统对单主节点的依赖，提高读写性能。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-72 [single] 按原文，一个 Redis 切片集群共有多少个哈希槽？
+A 4 | B 1024 | C * 16384 | D 65536
+Answer (L608): 16384。每个键值对会根据它的 key 被映射到其中一个哈希槽。4 个槽只是原文为画图方便假设的数量，真实的 Redis Cluster 固定有 16384 个槽，不能改成 4 个。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-73 [fill] 按原文，把 key 映射到哈希槽时，先按 ____ 算法计算出一个 16 bit 的值，再用这个值对 ____ 取模。
+
+Answer (L609): 2 个空依次是 CRC16、16384，取模得到 0~16383 范围内的模数，每个模数代表一个相应编号的哈希槽。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-74 [fill] 按原文，把哈希槽映射到具体 Redis 节点上有两种方案：____、____。
+
+Answer (L610): 2 个空是平均分配、手动分配（顺序不限）。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-75 [single] 按原文，用哪个命令创建 Redis 集群时，会自动把所有哈希槽平均分布到集群节点上？
+A cluster meet | B * cluster create | C cluster addslots | D CLUSTER SHARDS
+Answer (L611): cluster create。cluster meet 用于手动建立节点间的连接，cluster addslots 用于手动指定每个节点上的哈希槽，CLUSTER SHARDS 是客户端获取槽位映射的命令。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-76 [fill] 按原文，手动分配哈希槽时，先用 ____ 命令手动建立节点间的连接、组成集群，再用 ____ 命令指定每个节点上的哈希槽个数。
+
+Answer (L612): 2 个空依次是 cluster meet、cluster addslots。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-77 [single] 按原文，一个集群有 3 个主节点，每个主节点各有 2 个从节点，共 9 个节点，哈希槽是怎样分配的？
+A 平均分给 9 个节点，每个节点负责约 16384/9 个槽，从节点同样独立负责槽 | B 只分配给 6 个从节点，主节点不负责槽，只负责接收写请求 | C 每个从节点在主节点之外再独立分配一部分新的槽，三个主节点各负责约 16384/3 个槽 | D * 槽位只分配给 3 个主节点，每个主节点负责约 16384/3 个槽，从节点复制对应主节点的数据，不独立分配槽
+Answer (L613): 槽位仍然只分配给 3 个主节点，每个主节点负责约 16384/3 个槽。从节点复制对应主节点的数据，不独立分配新的槽。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-78 [single] 原文示例：集群有 2 个节点、4 个哈希槽（Slot 0～Slot 3），节点 1 保存哈希槽 0 和 1，节点 2 保存哈希槽 2 和 3。如果某个 key 的 CRC16 值对槽总数 4 取模得 2，它会被映射到哪里？
+A 哈希槽 2，对应节点 1 | B 哈希槽 1，对应节点 1 | C 哈希槽 1，对应节点 2 | D * 哈希槽 2，对应节点 2
+Answer (L614): 取模结果是 2，所以映射到哈希槽 2，而哈希槽 2 由节点 2 保存。注意真实集群固定是 16384 个槽，这里的 4 个槽只是为了画图方便。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-79 [single] 按原文，Redis Cluster 的 cluster-require-full-coverage 默认是什么，含义是什么？
+A 默认为 no，部分槽不可用时可用的槽继续服务 | B * 默认为 yes，要求全部槽都可服务 | C 默认为 yes，要求每个槽至少有两个副本 | D 默认为 no，只要求一半以上的槽可服务
+Answer (L615): 默认为 yes，需要全部槽可服务；关闭这个配置可以让可用的槽继续服务，但仍然需要满足集群的其他可用性条件。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-80 [fill] 按原文，Redis 集群模式的三个优点是：____、____、____。
+
+Answer (L616): 3 个空是容量和吞吐量可以扩展、支持故障转移、可以在线扩缩容（顺序不限）。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-81 [multiple] 按原文，下列哪些属于 Redis 集群模式的优点？
+A * 通过迁移哈希槽及其数据，调整节点负责的数据范围，实现在线扩缩容 | B 同一个热 key 的写请求会被自动拆分到多个主节点处理 | C 事务和 Lua 脚本可以任意跨槽的多个 key 执行 | D * 把不同 key 分散到多个主节点，多个分片可以并行处理各自的请求 | E * 主节点故障时，可以由合适的从节点接替
+Answer (L617): 正确的是：不同 key 分散到多个主节点并行处理；主节点故障时可由合适的从节点接替；迁移哈希槽及数据实现在线扩缩容。错误的是：事务、Lua 脚本和许多多 key 命令要求相关 key 在同一个哈希槽里；一个 key 只属于一个槽，增加分片不能自动拆分同一个热 key 的写请求。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-82 [single] 按原文，Redis 集群支持故障转移的前提是什么？
+A 任何节点故障都能保证整个集群正常工作 | B 只要集群配置了 16384 个哈希槽即可 | C * 存在可用副本，并且满足选举条件 | D 只要关闭 cluster-require-full-coverage 即可
+Answer (L618): 前提是存在可用副本，并满足选举条件。不是任何节点故障都能保证整个集群正常工作。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-83 [fill] 按原文，Redis 集群模式的四个缺点是：____、____、____、____。
+
+Answer (L619): 4 个空是维护更复杂、多 key 操作受限制、不能解决所有热点问题、存在复制延迟和数据丢失窗口（顺序不限）。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-84 [multiple] 按原文，Redis 集群「维护更复杂」体现在需要管理哪些内容？
+A * 客户端路由 | B * 数据和请求分布是否均衡 | C 过期键的惰性删除标记 | D 哨兵 Leader 的投票纪元 | E * 槽位和迁移 | F * 主从关系
+Answer (L620): 正确的是：主从关系、槽位和迁移、客户端路由，以及数据和请求分布是否均衡。哨兵 Leader 的投票纪元和过期键的惰性删除标记不属于集群维护复杂的原因。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-85 [single] 按原文，Redis 集群里「多 key 操作受限制」是指什么？
+A * 事务、Lua 脚本以及许多多 key 命令，要求相关 key 在同一个哈希槽里 | B 多 key 命令只要求相关 key 位于集群里的同一个节点，与哈希槽无关 | C 所有多 key 命令在集群中都被禁用，只能逐个 key 操作 | D 只有事务受限制，Lua 脚本和其他多 key 命令都不受任何限制
+Answer (L621): 事务、Lua 脚本以及许多多 key 命令，要求相关 key 在同一个哈希槽里；同一个节点上的两个 key，也不一定在同一个槽。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-86 [single] 按原文，为什么说 Redis 集群「不能解决所有热点问题」？
+A 因为集群的哈希槽数量太少，整个集群只能放下很少的 key，容量很快耗尽 | B * 一个 key 仍然只属于一个槽、由一个主节点处理，增加分片不能自动拆分同一个热 key 的写请求 | C 因为集群不支持把数据分布到多个主节点上，所有 key 都只会放在一个节点 | D 因为集群的从节点不能处理任何读请求，读写压力全压在主节点上
+Answer (L622): 因为一个 key 仍然只属于一个槽、由一个主节点处理，增加分片不能自动把同一个热 key 的写请求拆到多个主节点。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-87 [single] 按原文，Redis Cluster 对多个数据库的支持是怎样的？
+A 每个哈希槽对应一个独立的数据库 | B 和单机一样，支持通过 SELECT 在多个数据库间切换 | C 每个主节点各自使用不同编号的数据库 | D * 只支持数据库 0，不支持通过 SELECT 切换多个数据库
+Answer (L623): Cluster 只支持数据库 0，不支持通过 SELECT 切换多个数据库。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-88 [single] 按原文，原生 Redis Cluster 的节点会怎样处理客户端的普通请求？
+A * 不充当代理转发请求，而是让客户端根据槽位路由，必要时返回重定向 | B 节点充当代理，把收到的请求转发给负责对应槽的节点，客户端无需关心路由 | C 由 Sentinel 节点统一代理并转发所有客户端发来的请求 | D 必须额外部署一层代理，集群本身无法响应请求
+Answer (L624): 原生 Redis Cluster 节点不会充当代理来转发普通请求，而是让客户端根据槽位路由，必要时返回重定向。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-89 [short] Redis集群的模式了解吗 优缺点了解吗
+
+Answer (L625): 当缓存数据量大到一台服务器无法缓存时，就用 Redis 切片集群（Redis Cluster）：数据分布在不同服务器上，降低对单主节点的依赖，提高读写性能。它采用哈希槽处理数据和节点的映射：一个集群共有 16384 个哈希槽，key 先用 CRC16 算出 16 bit 的值，再对 16384 取模，得到 0~16383 的槽号。槽映射到节点有两种方式：用 cluster create 创建集群时自动平均分配，或用 cluster meet 建立连接后再用 cluster addslots 手动指定。槽只分配给主节点，从节点复制对应主节点的数据，不独立分配槽；真实集群固定 16384 个槽，默认 cluster-require-full-coverage 为 yes，需要全部槽可服务。优点：容量和吞吐量可以扩展，支持故障转移（前提是有可用副本并满足选举条件），可以通过迁移哈希槽及其数据在线扩缩容。缺点：维护更复杂，要管理主从关系、槽位、迁移、客户端路由以及数据和请求分布是否均衡；多 key 操作受限制，事务、Lua 脚本和许多多 key 命令要求相关 key 在同一个槽，同节点的两个 key 也不一定同槽；不能解决所有热点问题，一个 key 仍只属于一个槽、由一个主节点处理；存在复制延迟和数据丢失窗口，主从异步复制，故障切换不能保证强一致，并且 Cluster 只支持数据库 0。另外，原生 Redis Cluster 节点不充当代理转发普通请求，而是让客户端根据槽位路由，必要时返回重定向。[原文§Redis集群的模式了解吗 优缺点了解吗](https://xiaolincoding.com/interview/redis.html#redis%E9%9B%86%E7%BE%A4%E7%9A%84%E6%A8%A1%E5%BC%8F%E4%BA%86%E8%A7%A3%E5%90%97-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BA%86%E8%A7%A3%E5%90%97)
+
+O6-90 [single] 按原文，客户端启动后，会先和 Redis Cluster 中的哪个节点建立连接去获取槽位信息？
+A 必须是持有最多哈希槽的节点 | B 必须是集群里的 Sentinel 节点 | C * 集群中的任意一个节点 | D 必须逐个连接所有节点后才能获取
+Answer (L629): 集群中的任意一个节点。客户端通过这个连接获取「槽位 - 节点」映射关系，并缓存到本地。[原文§cluster集群客户端是怎样知道该访问哪个分片的？](https://xiaolincoding.com/interview/redis.html#cluster%E9%9B%86%E7%BE%A4%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%AF%A5%E8%AE%BF%E9%97%AE%E5%93%AA%E4%B8%AA%E5%88%86%E7%89%87%E7%9A%84)
+
+O6-91 [fill] 按原文，客户端可以通过 ____，或 Redis 7.0 起提供的 ____ 获取「槽位 - 节点」映射关系。
+
+Answer (L630): 2 个空依次是 CLUSTER SLOTS、CLUSTER SHARDS。[原文§cluster集群客户端是怎样知道该访问哪个分片的？](https://xiaolincoding.com/interview/redis.html#cluster%E9%9B%86%E7%BE%A4%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%AF%A5%E8%AE%BF%E9%97%AE%E5%93%AA%E4%B8%AA%E5%88%86%E7%89%87%E7%9A%84)
+
+O6-92 [single] 按原文，客户端缓存了槽位映射之后，访问某个 key 的流程是怎样的？
+A 随机选择一个节点发送请求，由该节点代为转发给真正负责该槽的节点并返回结果 | B 每次访问 key 之前，都先向集群重新拉取一次完整的槽位映射再计算 | C * 先对 key 做 CRC16 哈希并对 16384 取模算出槽位，再查本地缓存的映射表，找到节点地址后直接访问 | D 按 key 的字符串长度对集群中的节点个数取模，直接选出要访问的节点
+Answer (L631): 客户端先对 key 做 CRC16 哈希计算，再对 16384 取模，算出槽位，接着查本地缓存的映射表找到该槽位对应的节点地址，直接访问这个节点。[原文§cluster集群客户端是怎样知道该访问哪个分片的？](https://xiaolincoding.com/interview/redis.html#cluster%E9%9B%86%E7%BE%A4%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%AF%A5%E8%AE%BF%E9%97%AE%E5%93%AA%E4%B8%AA%E5%88%86%E7%89%87%E7%9A%84)
+
+O6-93 [single] 按原文，客户端收到 MOVED 响应说明什么，应该怎么处理？
+A * 当前槽位应该访问另一个节点，客户端重发请求，并更新这个槽的路由或刷新整个槽位映射 | B 只是让这一次请求去目标节点，不能修改本地的槽位映射 | C 说明槽位正在迁移，客户端应在目标节点的同一连接上先发送 ASKING 再发原命令 | D 说明集群里没有任何可用的节点，客户端应当直接放弃这次请求并报错
+Answer (L632): MOVED 表示当前槽位应该访问另一个节点。客户端重发请求，并更新这个槽的路由，或者刷新整个槽位映射。只让这一次请求去目标节点的是 ASK。[原文§cluster集群客户端是怎样知道该访问哪个分片的？](https://xiaolincoding.com/interview/redis.html#cluster%E9%9B%86%E7%BE%A4%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%AF%A5%E8%AE%BF%E9%97%AE%E5%93%AA%E4%B8%AA%E5%88%86%E7%89%87%E7%9A%84)
+
+O6-94 [single] 按原文，ASK 响应通常出现在什么时候，表示什么？
+A 槽位已经迁移完成，要求客户端永久改用目标节点 | B 客户端连接断开之后，要求客户端重新建立连接 | C 集群丢失多数主节点之后，要求客户端等待恢复 | D * 槽位迁移过程中，只要求这一次请求去目标节点
+Answer (L633): ASK 通常出现在槽位迁移过程中，只要求这一次请求去目标节点。槽位已迁移完成、需要更新路由的是 MOVED。[原文§cluster集群客户端是怎样知道该访问哪个分片的？](https://xiaolincoding.com/interview/redis.html#cluster%E9%9B%86%E7%BE%A4%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%AF%A5%E8%AE%BF%E9%97%AE%E5%93%AA%E4%B8%AA%E5%88%86%E7%89%87%E7%9A%84)
+
+O6-95 [single] 按原文，客户端收到 ASK 之后应当怎么做？
+A 先在原节点发送 ASKING，再永久把槽位映射改成目标节点 | B * 在目标节点的同一连接上先发送 ASKING，再发送原命令，且不能据此永久修改槽位映射 | C 直接把本地槽位映射永久改成目标节点，之后的请求全部发往目标节点，不需要发送 ASKING | D 刷新整个槽位映射之后，放弃这次的原命令不再重发
+Answer (L634): 在目标节点的同一连接上先发送 ASKING，再发送原命令；不能据此永久修改槽位映射。[原文§cluster集群客户端是怎样知道该访问哪个分片的？](https://xiaolincoding.com/interview/redis.html#cluster%E9%9B%86%E7%BE%A4%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%AF%A5%E8%AE%BF%E9%97%AE%E5%93%AA%E4%B8%AA%E5%88%86%E7%89%87%E7%9A%84)
+
+O6-96 [multiple] 按原文，下列关于 MOVED 和 ASK 的说法，哪些正确？
+A 收到 MOVED 后，只让这一次请求去另一个节点，不更新路由 | B * 收到 MOVED 后，客户端可以更新这个槽的路由，或刷新整个槽位映射 | C 收到 ASK 后，客户端应永久更新槽位映射 | D * MOVED 表示当前槽位应访问另一个节点 | E * 收到 ASK 后，不能据此永久修改槽位映射 | F * ASK 通常出现在槽位迁移过程中
+Answer (L635): 正确的是：MOVED 表示槽位应访问另一个节点，客户端更新路由或刷新映射；ASK 通常出现在槽位迁移过程中，且不能据此永久修改映射。错误的是：把两者的处理说反了，MOVED 需要更新路由，ASK 只针对这一次请求。[原文§cluster集群客户端是怎样知道该访问哪个分片的？](https://xiaolincoding.com/interview/redis.html#cluster%E9%9B%86%E7%BE%A4%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%AF%A5%E8%AE%BF%E9%97%AE%E5%93%AA%E4%B8%AA%E5%88%86%E7%89%87%E7%9A%84)
+
+O6-97 [single] 按原文，如果连接直接断开，客户端一定会收到 MOVED 或 ASK 重定向吗？
+A * 不一定，可能先遇到连接错误，再由客户端刷新拓扑或者重试 | B 一定会，断开前节点总会先发送 MOVED | C 一定会，断开前节点总会先发送 ASK | D 不会遇到任何错误，客户端会自动切换到新节点
+Answer (L636): 不一定。原文说如果连接直接断开，也可能先遇到连接错误，再由客户端刷新拓扑或者重试，不一定总能收到重定向。[原文§cluster集群客户端是怎样知道该访问哪个分片的？](https://xiaolincoding.com/interview/redis.html#cluster%E9%9B%86%E7%BE%A4%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%AF%A5%E8%AE%BF%E9%97%AE%E5%93%AA%E4%B8%AA%E5%88%86%E7%89%87%E7%9A%84)
+
+O6-98 [short] cluster集群客户端是怎样知道该访问哪个分片的？
+
+Answer (L637): Redis Cluster 把所有数据映射到 16384 个哈希槽里，每个节点负责一部分槽位。客户端启动后先和集群中任意一个节点建立连接，通过 CLUSTER SLOTS，或 Redis 7.0 起提供的 CLUSTER SHARDS，获取「槽位 - 节点」映射关系，并缓存到本地。访问某个 key 时，先对 key 做 CRC16 哈希计算，再对 16384 取模算出槽位，查本地缓存的映射表找到对应节点，直接访问。如果槽位迁移，或故障切换使槽位对应的主节点变化，客户端可能收到 MOVED 或 ASK，两者处理不同：MOVED 表示当前槽位应访问另一个节点，客户端重发请求并更新这个槽的路由或刷新整个槽位映射；ASK 通常出现在槽位迁移过程中，只要求这一次请求去目标节点，客户端在目标节点的同一连接上先发送 ASKING 再发原命令，不能据此永久修改槽位映射。连接直接断开时可能先遇到连接错误，再由客户端刷新拓扑或重试。简单说，客户端缓存全量槽位映射表，访问 key 时算槽位、查缓存找节点，遇到变动就更新缓存，全程自动完成，不用开发者手动指定分片，这是 Redis Cluster 能做到透明分片访问的核心。[原文§cluster集群客户端是怎样知道该访问哪个分片的？](https://xiaolincoding.com/interview/redis.html#cluster%E9%9B%86%E7%BE%A4%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%AF%A5%E8%AE%BF%E9%97%AE%E5%93%AA%E4%B8%AA%E5%88%86%E7%89%87%E7%9A%84)
+
+O6-99 [single] 按原文，Redis Cluster 为什么会报 CROSSSLOT？
+A 因为多个 key 被存放在不同的节点上，而节点之间无法互相通信、无法联合执行命令 | B 因为多个 key 的过期时间不一致，Redis 无法在一个命令里同时处理它们 | C * 许多多 key 操作要求所有 key 位于同一个哈希槽，key 分属不同槽就可能返回 CROSSSLOT | D 因为客户端没有在本地缓存槽位映射，所以无法判断该把命令发给哪个节点
+Answer (L641): 因为 Redis Cluster 的许多多 key 操作，要求所有 key 位于同一个哈希槽。如果 key 分属不同槽，就可能返回 CROSSSLOT。[原文§Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？](https://xiaolincoding.com/interview/redis.html#redis-cluster-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%A5-crossslot-hash-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)
+
+O6-100 [single] 按原文，hash tag 起什么作用？
+A 让带 hash tag 的 key 永不过期，不再受 TTL 限制 | B * 计算槽位时只对花括号内的内容做哈希，所以含相同 hash tag 的 key 会落在同一个槽里 | C 让带 hash tag 的 key 自动在集群的所有节点上各保存一份副本 | D 让带 hash tag 的 key 被自动拆分到彼此不同的几个槽里，分摊流量
+Answer (L642): Redis 计算槽位时，只对花括号内的内容做哈希，所以含相同 hash tag 的 key 会落在同一个槽里。[原文§Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？](https://xiaolincoding.com/interview/redis.html#redis-cluster-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%A5-crossslot-hash-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)
+
+O6-101 [single] 原文示例的两个 key 分别是 seckill:{activity:1001}:stock 和 seckill:{activity:1001}:buyers，Redis 计算它们的槽位时，对哪一部分做哈希？
+A 整个 key 字符串 | B 花括号外的前缀 seckill | C 末尾的 stock 或 buyers | D * 花括号内的 activity:1001
+Answer (L643): 只对花括号内的 activity:1001 做哈希，所以这两个 key 会落在同一个槽里。[原文§Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？](https://xiaolincoding.com/interview/redis.html#redis-cluster-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%A5-crossslot-hash-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)
+
+O6-102 [single] 按原文，让两个 key 落在同一个槽里，可以带来什么好处？
+A 让这两个 key 自动共享同一个过期时间，一个到期另一个同时失效 | B 让这两个 key 的读写请求被自动分散到集群中的多个主节点上 | C 让这两个 key 不再需要主从复制，写入后立即在所有节点可见 | D * 能够在一个节点内执行相关的原子操作，比如用 Lua 同时检查商品库存和用户购买记录
+Answer (L644): 能够在一个节点内执行相关的原子操作。原文的例子是用 Lua 同时检查商品库存和用户购买记录。[原文§Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？](https://xiaolincoding.com/interview/redis.html#redis-cluster-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%A5-crossslot-hash-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)
+
+O6-103 [single] 按原文，两个 key 位于同一个节点，是否就满足多 key 操作的同槽要求？
+A 满足，因为同一个节点上的所有 key 一定都在同一个槽里 | B * 不满足，一个节点会负责很多槽，多 key 操作仍要满足同槽要求 | C 满足，只要这次多 key 操作没有使用 Lua 脚本就行 | D 不满足，除非两个 key 的名字完全相同才能落在同一个槽
+Answer (L645): 不满足。在同一个节点，不等于在同一个槽，一个节点会负责很多槽，多 key 操作仍然要满足同槽要求。[原文§Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？](https://xiaolincoding.com/interview/redis.html#redis-cluster-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%A5-crossslot-hash-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)
+
+O6-104 [single] 按原文，如果所有商品的 key 都使用同一个 hash tag，会有什么后果？
+A 所有商品的数据会自动复制到每个节点，读性能更好 | B 多 key 操作会变得更慢，但数据分布更均匀 | C * 数据和流量集中到一个槽，失去分片带来的扩展能力 | D 不会有任何影响，因为槽的数量足够多
+Answer (L646): 会把数据和流量集中到一个槽，失去分片带来的扩展能力。[原文§Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？](https://xiaolincoding.com/interview/redis.html#redis-cluster-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%A5-crossslot-hash-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)
+
+O6-105 [single] 按原文，hash tag 应当按什么范围来设置？
+A * 按需要原子处理的业务范围，比如一个活动或者一个订单 | B 整个业务统一使用同一个 hash tag，方便管理 | C 每个 key 随机生成不同的 hash tag | D 按节点的 IP 地址来设置
+Answer (L647): 应按需要原子处理的业务范围来设置，比如一个活动或者一个订单，而不是为了方便把整个业务的数据都放到同一个槽。[原文§Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？](https://xiaolincoding.com/interview/redis.html#redis-cluster-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%A5-crossslot-hash-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)
+
+O6-106 [multiple] 关于 hash tag 的使用，下列哪些说法符合原文？
+A 所有商品共用一个 hash tag，可以更好地分摊流量 | B * 不是所有 key 都应该使用同一个 hash tag | C * 含相同 hash tag 的 key 会落在同一个槽 | D 同一个节点上的两个 key 一定在同一个槽 | E * 应按需要原子处理的业务范围设置，比如一个活动或一个订单
+Answer (L648): 正确的是：含相同 hash tag 的 key 落在同一个槽；应按需要原子处理的业务范围设置；不是所有 key 都该用同一个 hash tag。错误的是：同一节点不等于同一槽；所有商品共用一个 tag 会把数据和流量集中到一个槽。[原文§Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？](https://xiaolincoding.com/interview/redis.html#redis-cluster-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%A5-crossslot-hash-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)
+
+O6-107 [short] Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？
+
+Answer (L649): 因为 Redis Cluster 的许多多 key 操作要求所有 key 位于同一个哈希槽，如果 key 分属不同槽，就可能返回 CROSSSLOT。比如要用 Lua 同时检查商品库存和用户购买记录，可以把 key 设计成 seckill:{activity:1001}:stock 和 seckill:{activity:1001}:buyers，花括号内的 activity:1001 就是 hash tag，Redis 计算槽位时只对这一段内容做哈希，两个 key 会落在同一个槽里，能在一个节点内执行相关原子操作。有两个容易答错的点：在同一个节点不等于在同一个槽，一个节点负责很多槽，多 key 操作仍要满足同槽要求；不是所有 key 都该用同一个 hash tag，如果所有商品都用同一个 tag，会把数据和流量集中到一个槽，失去分片带来的扩展能力。所以 hash tag 应按需要原子处理的业务范围来设置，比如一个活动或者一个订单。[原文§Redis Cluster 为什么会报 CROSSSLOT？hash tag 有什么用？](https://xiaolincoding.com/interview/redis.html#redis-cluster-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8A%A5-crossslot-hash-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)

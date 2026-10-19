@@ -45,6 +45,12 @@
 - **N1-32** 原文的例子是创建一个 Stop Hook，在任务准备结束时自动运行文档检查脚本：检查通过时正常结束任务，检查失败时把摘要交给 Codex 继续处理；之后每次任务准备结束都会自动运行，不需要在提示词里重复提醒。[原文§一个简单的 Hook 例子](https://xiaolinnote.com/codex/basics/codex_engineering.html#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-hook-%E4%BE%8B%E5%AD%90)
 - **N1-33** AGENTS.md 让 Codex 在项目中持续遵守固定规则；Skills 封装可复用的专项知识和操作流程，按需加载；Subagents 拆分独立子任务，并行调查并汇总结果；MCP 连接仓库外的数据、工具和外部系统；Hooks 在固定的生命周期节点自动执行动作。[原文§最后](https://xiaolinnote.com/codex/basics/codex_engineering.html#%E6%9C%80%E5%90%8E)
 
+### 补充考点
+
+- **N1-34** 可以直接通过插件市场安装：原文以 Google Drive 为例，打开 Codex 侧边栏的“Plugins”，搜索后进入详情页点击加号安装，提示连接账号时按页面引导完成登录和授权；安装完成后新建一个任务，在提示词里说明要用这个工具做什么即可，Codex 会根据任务内容自动选择它提供的工具，不需要再输入额外命令。[原文§怎么接入 MCP 工具？](https://xiaolinnote.com/codex/basics/codex_engineering.html#%E6%80%8E%E4%B9%88%E6%8E%A5%E5%85%A5-mcp-%E5%B7%A5%E5%85%B7)
+- **N1-35** SessionStart 在任务会话启动时触发，常用于加载环境信息或项目上下文；UserPromptSubmit 在用户提交任务时触发；PreToolUse 在工具执行之前，可检查命令或阻止不允许的操作；PostToolUse 在工具执行之后。[原文§Hooks 是怎么工作的？](https://xiaolinnote.com/codex/basics/codex_engineering.html#hooks-%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84)
+- **N1-36** Codex 通过标准输入把当前工作目录和事件名称等信息交给 Handler，工具相关事件还会包含工具名称和参数。[原文§Hooks 是怎么工作的？](https://xiaolinnote.com/codex/basics/codex_engineering.html#hooks-%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84)
+
 ## 2. 面向新模型调整 Skills、规则与提示词
 
 原文：[GPT-6 使用指南：怎样让 Codex 更好地完成任务？](https://xiaolinnote.com/codex/playbook/openai_gpt6_usage_guide.html)。
@@ -131,7 +137,7 @@
 - **N3-41** 由工具注册时声明的能力决定：允许并行的工具拿的是共享通行证，可以一起执行；需要单独运行的工具拿到专用通行证后，其他调用要等它完成。这控制的是工具分发顺序，不是给整个文件系统上锁。[原文§工具如何并发和选环境？](https://xiaolinnote.com/codex/source/codex_harness.html#%E5%B7%A5%E5%85%B7%E5%A6%82%E4%BD%95%E5%B9%B6%E5%8F%91%E5%92%8C%E9%80%89%E7%8E%AF%E5%A2%83)
 - **N3-42** App Server 连接客户端和 Agent 运行核心，负责传递用户请求与执行事件；Exec Server 连接工具和执行环境，负责在对应的本地或远程环境中完成进程与文件操作。[原文§工具如何并发和选环境？](https://xiaolinnote.com/codex/source/codex_harness.html#%E5%B7%A5%E5%85%B7%E5%A6%82%E4%BD%95%E5%B9%B6%E5%8F%91%E5%92%8C%E9%80%89%E7%8E%AF%E5%A2%83)
 - **N3-43** 当前上下文服务下一次模型请求，让它知道刚才读了什么、改了什么；持久化历史服务原会话恢复，关闭后重新打开还能继续；长期记忆尝试把跨任务仍有价值的信息带进全新的会话。[原文§三种记忆有什么区别？](https://xiaolinnote.com/codex/source/codex_harness.html#%E4%B8%89%E7%A7%8D%E8%AE%B0%E5%BF%86%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
-- **N3-44** 恢复时从记录中还原已发生的用户消息、模型回复和工具结果，再恢复上下文基线与窗口用量等信息；但等待中的审批、交互对象或正在运行的进程只存在于当时的进程内，已发生的文件修改也不会靠重放聊天自动撤销或再执行一次。[原文§会话怎么恢复？](https://xiaolinnote.com/codex/source/codex_harness.html#%E4%BC%9A%E8%AF%9D%E6%80%8E%E4%B9%88%E6%81%A2%E5%A4%8D)
+- **N3-44** 恢复时从记录中还原已发生的用户消息、模型回复和工具结果，再恢复上下文基线与窗口用量等信息；但某些等待中的审批、交互对象或正在运行的进程，只存在于当时的进程内，已发生的文件修改也不会靠重放聊天自动撤销或再执行一次。[原文§会话怎么恢复？](https://xiaolinnote.com/codex/source/codex_harness.html#%E4%BC%9A%E8%AF%9D%E6%80%8E%E4%B9%88%E6%81%A2%E5%A4%8D)
 - **N3-45** App Server 在带输入的新轮次成功启动、运行环境准备好后尝试调度；真正启动前还要确认长期记忆功能已开启、当前不是临时会话或子 Agent 会话、状态数据库可用、账号剩余调用量高于系统阈值，任一条件不满足就直接跳过。[原文§历史怎么提炼？](https://xiaolinnote.com/codex/source/codex_harness.html#%E5%8E%86%E5%8F%B2%E6%80%8E%E4%B9%88%E6%8F%90%E7%82%BC)
 - **N3-46** 整理 Agent 本身是临时的内部任务，会关闭再次生成和读取记忆、递归协作等能力，避免整理过程再次触发自己；同时整理流程持有全局租约，同一时间只允许一个整理 Agent 改写共享记忆。[原文§为什么还要整理？](https://xiaolinnote.com/codex/source/codex_harness.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E6%95%B4%E7%90%86)
 - **N3-47** 使用次数只能说明这份材料被引用过，并不构成自动的事实校验机制；系统只是根据引用等信号记录使用情况，再结合时间窗口和数量上限选择后续的整理材料。[原文§记忆怎么更新？](https://xiaolinnote.com/codex/source/codex_harness.html#%E8%AE%B0%E5%BF%86%E6%80%8E%E4%B9%88%E6%9B%B4%E6%96%B0)
@@ -139,6 +145,14 @@
 - **N3-49** Skills 告诉模型某类任务应该怎么做，并提供需要的说明和资源；MCP 把外部服务的工具接进来，让模型可以请求 Harness 调用；Hooks 让程序在指定时机介入，例如收到用户输入时、工具执行前后或任务准备停止时。[原文§Skills、MCP 和 Hooks 做什么？](https://xiaolinnote.com/codex/source/codex_harness.html#skills%E3%80%81mcp-%E5%92%8C-hooks-%E5%81%9A%E4%BB%80%E4%B9%88)
 - **N3-50** 独立会话意味着运行状态分开，却不等于文件环境一定隔离：如果父子 Agent 指向同一个工作目录，多个 Agent 仍可能看到或修改相同的文件；真正需要隔离时，还要配合独立工作目录或相应的环境策略。[原文§子 Agent 怎么运行？](https://xiaolinnote.com/codex/source/codex_harness.html#%E5%AD%90-agent-%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C)
 - **N3-51** 原文的答法：核心是在大模型外面加一套 Harness，模型判断下一步，Harness 把判断变成真实行动；整体分为客户端接入、会话编排、上下文管理、工具执行、状态与记忆五部分；主线是模型决定下一步，Harness 让这一步安全执行，再把结果交给模型继续判断。[原文§最后](https://xiaolinnote.com/codex/source/codex_harness.html#%E6%9C%80%E5%90%8E)
+
+### 补充考点
+
+- **N3-52** 先给导航，再按需展开：记忆读取功能启用且已有非空摘要时，扩展把有限长度的记忆导航和使用说明注入开发者指令，模型先看到过去大概有哪些经验，判断是否与当前任务相关；需要细节时再通过专用工具搜索详细记忆，必要时继续读取任务摘要和可复用步骤。把全部记忆塞进去，只会让新任务的上下文越来越难控制。[原文§新任务怎么读取记忆？](https://xiaolinnote.com/codex/source/codex_harness.html#%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%80%8E%E4%B9%88%E8%AF%BB%E5%8F%96%E8%AE%B0%E5%BF%86)
+- **N3-53** 本地搜索主要按文字匹配，找到以后只返回命中位置附近的一小段内容，这样不用读入整份记忆，但两段话意思相近、用词不同时就可能搜不到；过去的经验只是线索，项目代码和环境可能已经变化，模型必须回到当前文件与工具结果上验证，不能把长期记忆当成永远正确的事实库。[原文§新任务怎么读取记忆？](https://xiaolinnote.com/codex/source/codex_harness.html#%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%80%8E%E4%B9%88%E8%AF%BB%E5%8F%96%E8%AE%B0%E5%BF%86)
+- **N3-54** 连接模型服务时中断，Harness 可能等一会儿再重连，或改用另一种传输方式，取决于错误类型；遇到无法继续处理的错误，才会结束这一轮并清理相关运行状态。[原文§失败怎么处理？](https://xiaolinnote.com/codex/source/codex_harness.html#%E5%A4%B1%E8%B4%A5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86)
+- **N3-55** 会话过程会持续写入历史：当前本地实现以 JSONL 保存事件历史，在状态数据库可用时，再用 SQLite 保存便于查询的元数据。[原文§会话怎么恢复？](https://xiaolinnote.com/codex/source/codex_harness.html#%E4%BC%9A%E8%AF%9D%E6%80%8E%E4%B9%88%E6%81%A2%E5%A4%8D)
+- **N3-56** 第一阶段每次只处理一段历史任务：先按会话来源、时间、空闲状态、记忆配置和数量限制筛选候选，再通过任务租约抢占处理资格，然后由模型从这次任务中提炼结构化的原始记忆和任务摘要，留下可复用偏好、有效步骤、失败教训等信息，没有值得长期保留的内容时也允许没有产出。第二阶段做跨任务整理：先取得全局租约，选择第一阶段的材料同步到记忆工作区并比较内容是否变化，没有变化且现有产物通过检查就跳过；确实需要更新时启动专门的整理 Agent，把经验整理成导航摘要、详细记忆、任务摘要和可复用步骤几类文件。[原文§历史怎么提炼？](https://xiaolinnote.com/codex/source/codex_harness.html#%E5%8E%86%E5%8F%B2%E6%80%8E%E4%B9%88%E6%8F%90%E7%82%BC)[原文§为什么还要整理？](https://xiaolinnote.com/codex/source/codex_harness.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E6%95%B4%E7%90%86)
 
 ## 4. Codex 记忆机制
 
@@ -193,3 +207,8 @@
 - **N4-39** 只有用户直接要求新增、更正或删除记忆时，Codex 才单独写一份用户纠正说明，等后续整理流程把它与现有证据一起合并；这样虽然绕了一步，却能避免一次临时回答直接破坏整本长期手册。[原文§06｜新任务怎样找到旧经验，又怎样忘掉它？](https://xiaolinnote.com/codex/source/codex-memory-mechanism.html#_06-%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%80%8E%E6%A0%B7%E6%89%BE%E5%88%B0%E6%97%A7%E7%BB%8F%E9%AA%8C-%E5%8F%88%E6%80%8E%E6%A0%B7%E5%BF%98%E6%8E%89%E5%AE%83)
 - **N4-40** Codex 不会看到某条记忆很久没用就立刻删除：先从第一阶段的经验记录里筛出仍在保留期内的，再参考使用次数和最近使用时间选一部分交给第二阶段整理；长期没用、上一轮整理也没选中的记录会被分批清理。[原文§06｜新任务怎样找到旧经验，又怎样忘掉它？](https://xiaolinnote.com/codex/source/codex-memory-mechanism.html#_06-%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%80%8E%E6%A0%B7%E6%89%BE%E5%88%B0%E6%97%A7%E7%BB%8F%E9%AA%8C-%E5%8F%88%E6%80%8E%E6%A0%B7%E5%BF%98%E6%8E%89%E5%AE%83)
 - **N4-41** 删掉这些原始材料不会立即改动 MEMORY.md 和 memory_summary.md；要等下一次整理，这两份供模型查阅的文件才会更新。[原文§06｜新任务怎样找到旧经验，又怎样忘掉它？](https://xiaolinnote.com/codex/source/codex-memory-mechanism.html#_06-%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%80%8E%E6%A0%B7%E6%89%BE%E5%88%B0%E6%97%A7%E7%BB%8F%E9%AA%8C-%E5%8F%88%E6%80%8E%E6%A0%B7%E5%BF%98%E6%8E%89%E5%AE%83)
+
+### 补充考点
+
+- **N4-42** 没有启用 Token 预算策略时，服务端支持远程压缩就交给服务端处理，不支持才使用本地总结。[原文§本地压缩怎样重建历史？](https://xiaolinnote.com/codex/source/codex-memory-mechanism.html#%E6%9C%AC%E5%9C%B0%E5%8E%8B%E7%BC%A9%E6%80%8E%E6%A0%B7%E9%87%8D%E5%BB%BA%E5%8E%86%E5%8F%B2)
+- **N4-43** 在原文分析的版本中，这套机制默认关闭，需要在设置里打开启用本地记忆。[原文§05｜旧任务怎样变成跨任务的长期记忆？](https://xiaolinnote.com/codex/source/codex-memory-mechanism.html#_05-%E6%97%A7%E4%BB%BB%E5%8A%A1%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90%E8%B7%A8%E4%BB%BB%E5%8A%A1%E7%9A%84%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86)

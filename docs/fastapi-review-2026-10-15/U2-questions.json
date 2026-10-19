@@ -1,0 +1,597 @@
+[
+  {
+    "id": "U2-1",
+    "typed": {
+      "id": "U2-1",
+      "type": "multiple",
+      "stem": "按官方文档，下列哪些情形应当用 async def 声明路径操作函数？",
+      "options": [
+        {
+          "key": "A",
+          "text": "所用的第三方库告诉你要使用 await 来调用它",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "所用的第三方库不支持 await（例如大多数数据库库）",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "应用不需要与其他任何东西通信并等待其响应",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "你不清楚该用 def 还是 async def",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，下列哪些情形应当用 async def 声明路径操作函数？",
+    "answer": "正确的是：所用第三方库告诉你要用 await 调用它；应用不需要与其他任何东西通信并等待其响应（此时即使函数内不需要 await 也用 async def）。第三方库不支持 await（如大多数数据库库）时应当用 def；不清楚该用哪个时也用 def。 [原文§并发 async / await · 赶时间吗？](https://fastapi.tiangolo.com/zh/async/#in-a-hurry)"
+  },
+  {
+    "id": "U2-2",
+    "typed": {
+      "id": "U2-2",
+      "type": "single",
+      "stem": "路径操作函数要通过第三方库与数据库等组件通信，而该库不支持 await 时，官方建议怎么声明路径操作函数？",
+      "options": [
+        {
+          "key": "A",
+          "text": "用 def 声明，像平常一样直接调用该库",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "用 async def 声明，并在函数内用 await 调用该库",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "用 async def 声明，但函数内不使用 await",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "换成支持 await 的库之前，不能用 FastAPI 开发该接口",
+          "correct": false
+        }
+      ]
+    },
+    "question": "路径操作函数要通过第三方库与数据库等组件通信，而该库不支持 await 时，官方建议怎么声明路径操作函数？",
+    "answer": "应像平常那样用 def 声明，并直接调用该库。用 async def 声明是针对库支持 await 的情形，或应用不需要与其他任何东西通信等待响应的情形。 [原文§并发 async / await · 赶时间吗？](https://fastapi.tiangolo.com/zh/async/#in-a-hurry)"
+  },
+  {
+    "id": "U2-3",
+    "typed": {
+      "id": "U2-3",
+      "type": "single",
+      "stem": "官方文档说，如果你不清楚路径操作函数该用 def 还是 async def，应该怎么办？",
+      "options": [
+        {
+          "key": "A",
+          "text": "一律使用 async def，即使函数内不需要 await",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "使用 def 就好",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "在同一个应用里只能二选一，必须全部统一",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "使用 async def，并把所有调用都改写成 await 的形式",
+          "correct": false
+        }
+      ]
+    },
+    "question": "官方文档说，如果你不清楚路径操作函数该用 def 还是 async def，应该怎么办？",
+    "answer": "官方的建议是：如果不清楚，使用 def 就好。一律使用 async def 只适用于应用不需要与其他东西通信等待响应的情形；同一应用里也允许混用两种声明方式。 [原文§并发 async / await · 赶时间吗？](https://fastapi.tiangolo.com/zh/async/#in-a-hurry)"
+  },
+  {
+    "id": "U2-4",
+    "typed": {
+      "id": "U2-4",
+      "type": "single",
+      "stem": "关于在同一个应用的路径操作函数中混用 def 和 async def，官方文档怎么说？",
+      "options": [
+        {
+          "key": "A",
+          "text": "不能混用，同一应用里必须全部使用 def",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "可以混用，但只要出现 def 函数，FastAPI 就不再异步工作",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "可以按需混用，FastAPI 会为它们做正确的事情",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "可以混用，但只有全部使用 async def 时 FastAPI 才会异步工作",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于在同一个应用的路径操作函数中混用 def 和 async def，官方文档怎么说？",
+    "answer": "可以按需混用，用最适合每个函数的方式去定义，FastAPI 会为它们做正确的事情。无论哪种情况，FastAPI 仍然异步工作且速度很快；遵循上述指导则能进行一些性能优化。 [原文§并发 async / await · 赶时间吗？](https://fastapi.tiangolo.com/zh/async/#in-a-hurry)"
+  },
+  {
+    "id": "U2-5",
+    "typed": {
+      "id": "U2-5",
+      "type": "short"
+    },
+    "question": "什么是异步代码？它为什么被称为“异步”，与“同步”（顺序）有何区别？",
+    "answer": "异步代码指编程语言有办法告诉程序，在代码的某处它得等某件事完成；等待期间计算机可以去做别的工作，之后再回来查看等待的任务是否已完成并继续处理。叫“异步”是因为程序不必与慢任务“同步”，不用一直空等到任务完成的那一刻；而“同步”也叫“顺序”，程序在切换到另一个任务前要按顺序执行完所有步骤，即使这些步骤涉及等待。 [原文§并发 async / await · 异步代码](https://fastapi.tiangolo.com/zh/async/#asynchronous-code)"
+  },
+  {
+    "id": "U2-6",
+    "typed": {
+      "id": "U2-6",
+      "type": "multiple",
+      "stem": "下列哪些属于官方文档列举的“需要等待 I/O 操作”的例子？",
+      "options": [
+        {
+          "key": "A",
+          "text": "等待客户端通过网络发送来的数据",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "等待磁盘中的文件内容被系统读取并提供给程序",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "等待一个数据库查询返回结果",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "对一幅图像的每个像素做大量计算",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "用大量矩阵乘法构建和使用模型",
+          "correct": false
+        }
+      ]
+    },
+    "question": "下列哪些属于官方文档列举的“需要等待 I/O 操作”的例子？",
+    "answer": "文中列出的 I/O 等待包括：通过网络接收客户端发来的数据、等待磁盘中的文件内容被系统读取、等待数据库查询返回结果等。对图像像素做大量计算、大量矩阵乘法属于后文所说的 CPU 密集型工作，主要时间花在实际计算而不是等待上。 [原文§并发 async / await · 异步代码](https://fastapi.tiangolo.com/zh/async/#asynchronous-code) [原文§并发 async / await · 并发比并行好吗？](https://fastapi.tiangolo.com/zh/async/#is-concurrency-better-than-parallelism)"
+  },
+  {
+    "id": "U2-7",
+    "typed": {
+      "id": "U2-7",
+      "type": "single",
+      "stem": "按官方文档，什么样的操作被称为“I/O 密集型”操作？",
+      "options": [
+        {
+          "key": "A",
+          "text": "执行时间大多由 CPU 完成的实际工作占用的操作",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "执行时间主要花在复杂的数学处理上的操作",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "必须按顺序执行完所有步骤才能切换到其他任务的操作",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "执行时间大多是在等待 I/O 操作的操作",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，什么样的操作被称为“I/O 密集型”操作？",
+    "answer": "执行时间大多是在等待 I/O 操作的，就叫 I/O 密集型。执行时间主要由实际工作（由 CPU 完成）占用的是 CPU 密集型，常见例子是复杂的数学处理。 [原文§并发 async / await · 异步代码](https://fastapi.tiangolo.com/zh/async/#asynchronous-code) [原文§并发 async / await · 并发比并行好吗？](https://fastapi.tiangolo.com/zh/async/#is-concurrency-better-than-parallelism)"
+  },
+  {
+    "id": "U2-8",
+    "typed": {
+      "id": "U2-8",
+      "type": "short"
+    },
+    "question": "并发与并行有什么区别？Web 应用和以实际计算为主的工作分别更适合哪一种？",
+    "answer": "并发就是异步代码的思想：一个任务需要等待时先切换去做别的事，等结果好了再回来继续；并行则是多个处理器同时各做一部分工作。并发在需要大量等待的场景（如大多数 Web 应用）效果更好，而并发并不总是比并行好：几乎没有等待、主要是实际计算的工作（CPU 密集型），用多个处理器并行分担才能更快完成。 [原文§并发 async / await · 并发与汉堡](https://fastapi.tiangolo.com/zh/async/#concurrency-and-burgers) [原文§并发 async / await · 并发比并行好吗？](https://fastapi.tiangolo.com/zh/async/#is-concurrency-better-than-parallelism)"
+  },
+  {
+    "id": "U2-9",
+    "typed": {
+      "id": "U2-9",
+      "type": "single",
+      "stem": "按官方文档，为什么为 Web API 使用异步（并发）很有意义？",
+      "options": [
+        {
+          "key": "A",
+          "text": "服务器要等待大量用户通过网络发来的请求，总的等待时间很长",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "Web API 的主要工作是复杂的数学运算，需要多个处理器同时去计算",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "并发在所有场景下都比并行更好，包括纯计算的场景",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "异步能让服务器完全不再需要等待用户的请求和响应",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，为什么为 Web API 使用异步（并发）很有意义？",
+    "answer": "因为服务器要等待很多用户通过不太好的网络发来的请求，之后还要再等响应传回去，每次等待以微秒计，但总的等待时间很长。Web API 的主要时间花在等待而不是复杂计算上，所以并发比较合适；并发并不是在所有场景都比并行好。 [原文§并发 async / await · 汉堡结论](https://fastapi.tiangolo.com/zh/async/#burger-conclusion) [原文§并发 async / await · 并发比并行好吗？](https://fastapi.tiangolo.com/zh/async/#is-concurrency-better-than-parallelism)"
+  },
+  {
+    "id": "U2-10",
+    "typed": {
+      "id": "U2-10",
+      "type": "single",
+      "stem": "对于几乎不需要等待、主要是大量实际工作的任务（例如要打扫一个又大又脏的房子），按官方文档怎样才能更快完成？",
+      "options": [
+        {
+          "key": "A",
+          "text": "让一个处理器在各部分之间轮流切换，用并发代替并行",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "让多个处理器各负责一部分工作，并行地完成",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "无论怎么安排所需时间都相同，增加处理器也不会更快",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "把相关的函数都改成 async def 声明",
+          "correct": false
+        }
+      ]
+    },
+    "question": "对于几乎不需要等待、主要是大量实际工作的任务（例如要打扫一个又大又脏的房子），按官方文档怎样才能更快完成？",
+    "answer": "这类任务没有需要等待的地方，是否轮流执行（并发）所需时间相同、完成的工作量也相同；只有多个处理器各占一部分、并行地做，才能借助额外的帮手更快完成。 [原文§并发 async / await · 并发比并行好吗？](https://fastapi.tiangolo.com/zh/async/#is-concurrency-better-than-parallelism)"
+  },
+  {
+    "id": "U2-11",
+    "typed": {
+      "id": "U2-11",
+      "type": "multiple",
+      "stem": "下列哪些是官方文档列举的 CPU 密集型操作的常见例子？",
+      "options": [
+        {
+          "key": "A",
+          "text": "音频或图像处理",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "等待一个数据库查询返回结果",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "机器学习中大量的矩阵和向量乘法",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "计算机视觉中对数百万像素的计算",
+          "correct": true
+        },
+        {
+          "key": "E",
+          "text": "等待一个远程 API 调用返回",
+          "correct": false
+        }
+      ]
+    },
+    "question": "下列哪些是官方文档列举的 CPU 密集型操作的常见例子？",
+    "answer": "文中列出的 CPU 密集型例子有音频或图像处理、计算机视觉（对数百万像素计算）、机器学习（大量矩阵和向量乘法）以及深度学习。等待数据库查询或远程 API 调用返回属于 I/O 密集型。 [原文§并发 async / await · 并发比并行好吗？](https://fastapi.tiangolo.com/zh/async/#is-concurrency-better-than-parallelism) [原文§并发 async / await · 异步代码](https://fastapi.tiangolo.com/zh/async/#asynchronous-code)"
+  },
+  {
+    "id": "U2-12",
+    "typed": {
+      "id": "U2-12",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 要处理类似机器学习系统中的 CPU 密集型工作，可以利用什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "只靠并发机制，把函数声明为 async def 就够了",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "NodeJS 为代表的并发机制",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "并行和多进程（让多个进程并行运行）",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "以回调的方式编写代码",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 要处理类似机器学习系统中的 CPU 密集型工作，可以利用什么？",
+    "answer": "可以利用并行和多进程（让多个进程并行运行）的优点；而 Web 开发中常见的并发机制（NodeJS 的主要吸引力）则用于处理等待。 [原文§并发 async / await · 并发 + 并行: Web + 机器学习](https://fastapi.tiangolo.com/zh/async/#concurrency-parallelism-web-machine-learning)"
+  },
+  {
+    "id": "U2-13",
+    "typed": {
+      "id": "U2-13",
+      "type": "single",
+      "stem": "await 关键字的作用是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "让 def 声明的函数被放到外部线程池中运行，避免阻塞服务器",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "把一个函数声明成可以在内部暂停执行的异步函数",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "让多个操作同时在多个处理器上并行地执行",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "告诉 Python 必须等某个操作完成，期间可去做其他事",
+          "correct": true
+        }
+      ]
+    },
+    "question": "await 关键字的作用是什么？",
+    "answer": "await 告诉 Python 必须等待某个操作完成它的工作，再把结果存下来；这样 Python 就知道此时可以去做其他事情（比如接收另一个请求）。声明函数可以被暂停靠的是 async def。 [原文§并发 async / await · async 和 await](https://fastapi.tiangolo.com/zh/async/#async-and-await)"
+  },
+  {
+    "id": "U2-14",
+    "typed": {
+      "id": "U2-14",
+      "type": "single",
+      "stem": "await 只能在什么地方使用？",
+      "options": [
+        {
+          "key": "A",
+          "text": "用 async def 创建的函数内",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "任何用 def 或 async def 声明的函数内",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "只要安装了 AnyIO，在任何位置都可以使用",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只能在用 def 声明且运行在线程池中的函数内",
+          "correct": false
+        }
+      ]
+    },
+    "question": "await 只能在什么地方使用？",
+    "answer": "只能在用 async def 创建的函数内使用 await。 [原文§并发 async / await · 赶时间吗？](https://fastapi.tiangolo.com/zh/async/#in-a-hurry) [原文§并发 async / await · 更多技术细节](https://fastapi.tiangolo.com/zh/async/#more-technical-details)"
+  },
+  {
+    "id": "U2-15",
+    "typed": {
+      "id": "U2-15",
+      "type": "single",
+      "stem": "调用一个用 async def 定义的函数（如 get_burgers）时，官方文档要求怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "像普通函数一样直接调用，就可以直接拿到它的返回结果",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "必须用 await 等待它，因此只能在 async def 函数内调用",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "直接调用之后，FastAPI 会自动把它放进外部线程池里运行",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "可以在任意用 def 声明的函数内，用 await 来调用它",
+          "correct": false
+        }
+      ]
+    },
+    "question": "调用一个用 async def 定义的函数（如 get_burgers）时，官方文档要求怎样？",
+    "answer": "必须“等待”它，也就是用 await 调用，所以带 async def 的函数也只能在 async def 定义的函数内部调用；直接像普通函数那样调用（burgers = get_burgers(2)）是行不通的。 [原文§并发 async / await · async 和 await](https://fastapi.tiangolo.com/zh/async/#async-and-await) [原文§并发 async / await · 更多技术细节](https://fastapi.tiangolo.com/zh/async/#more-technical-details)"
+  },
+  {
+    "id": "U2-16",
+    "typed": {
+      "id": "U2-16",
+      "type": "short"
+    },
+    "question": "既然 await 只能在 async def 函数内用，async def 函数又只能在 async def 函数内调用，那么第一个 async 函数是怎么被调用的？",
+    "answer": "使用 FastAPI 时不必担心：“第一个”函数就是路径操作函数，FastAPI 知道如何做正确的事。不用 FastAPI 也想使用 async / await 时可以自己做，例如直接用 AnyIO 编写自己的异步程序。 [原文§并发 async / await · 更多技术细节](https://fastapi.tiangolo.com/zh/async/#more-technical-details) [原文§并发 async / await · 编写自己的异步代码](https://fastapi.tiangolo.com/zh/async/#write-your-own-async-code)"
+  },
+  {
+    "id": "U2-17",
+    "typed": {
+      "id": "U2-17",
+      "type": "single",
+      "stem": "在 Python 的异步代码中，“协程”指的是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "用 def 声明、并且会被放进外部线程池中运行的普通函数",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "第三方库提供的、专门用来等待慢任务完成的 await 关键字",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "async def 函数返回的那个东西，可以启动、结束，内部有 await 时可能暂停",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "让多个进程在多个处理器上同时并行运行以加快计算的机制",
+          "correct": false
+        }
+      ]
+    },
+    "question": "在 Python 的异步代码中，“协程”指的是什么？",
+    "answer": "协程是对 async def 函数返回的那个东西的称呼：Python 知道它有点像函数，可以启动、也会在某个时刻结束，并且只要内部有 await 就可能在内部暂停。它不是线程池里运行的 def 函数，也不是 await 关键字本身。 [原文§并发 async / await · 协程](https://fastapi.tiangolo.com/zh/async/#coroutines)"
+  },
+  {
+    "id": "U2-18",
+    "typed": {
+      "id": "U2-18",
+      "type": "short"
+    },
+    "question": "用 def 而不是 async def 声明的路径操作函数在 FastAPI 中是怎样运行的？为什么？",
+    "answer": "它运行在外部的线程池中并等待其结果，而不是被直接调用，因为直接调用会阻塞服务器。 [原文§并发 async / await · 非常技术性的细节 · 路径操作函数](https://fastapi.tiangolo.com/zh/async/#path-operation-functions)"
+  },
+  {
+    "id": "U2-19",
+    "typed": {
+      "id": "U2-19",
+      "type": "single",
+      "stem": "对只做计算、不包含执行阻塞 I/O 的代码的路径操作函数，官方文档建议怎么声明？",
+      "options": [
+        {
+          "key": "A",
+          "text": "用 def，以获得约 100 纳秒的微小性能增益",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "用 def，让它在外部线程池中运行以免阻塞服务器",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "用 def 或 async def 均可，两者在 FastAPI 中没有区别",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "用 async def，除非函数内使用了执行阻塞 I/O 的代码",
+          "correct": true
+        }
+      ]
+    },
+    "question": "对只做计算、不包含执行阻塞 I/O 的代码的路径操作函数，官方文档建议怎么声明？",
+    "answer": "最好使用 async def，除非函数内使用了执行阻塞 I/O 的代码。在其他框架里习惯用普通 def 声明仅计算的函数以换取约 100 纳秒的微小性能增益，但在 FastAPI 中效果完全相反。 [原文§并发 async / await · 非常技术性的细节 · 路径操作函数](https://fastapi.tiangolo.com/zh/async/#path-operation-functions)"
+  },
+  {
+    "id": "U2-20",
+    "typed": {
+      "id": "U2-20",
+      "type": "multiple",
+      "stem": "关于依赖和子依赖的声明方式，按官方文档下列哪些说法成立？",
+      "options": [
+        {
+          "key": "A",
+          "text": "用标准 def 声明的依赖会被运行在外部线程池中",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "依赖和子依赖可以混用 async def 与 def，仍然能正常工作",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "用 def 声明的子依赖会在线程池的外部线程中调用，而不是被“等待”",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "子依赖必须与它所属的依赖使用同样的声明方式",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "用 def 声明的依赖会像普通函数那样被直接调用，不放到线程池",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于依赖和子依赖的声明方式，按官方文档下列哪些说法成立？",
+    "answer": "标准 def 的依赖会运行在外部线程池中；依赖和子依赖可以混用 async def 与 def，仍能正常工作，其中用 def 声明的会在外部线程（线程池）里调用，而不是被“等待”。子依赖不要求与所属依赖声明方式一致，def 依赖也不会像普通函数那样被直接调用。 [原文§并发 async / await · 非常技术性的细节 · 依赖](https://fastapi.tiangolo.com/zh/async/#dependencies) [原文§并发 async / await · 非常技术性的细节 · 子依赖](https://fastapi.tiangolo.com/zh/async/#sub-dependencies)"
+  },
+  {
+    "id": "U2-21",
+    "typed": {
+      "id": "U2-21",
+      "type": "single",
+      "stem": "你自己在代码中直接调用的其他工具函数，FastAPI 会怎样处理？",
+      "options": [
+        {
+          "key": "A",
+          "text": "用 def 声明的会像路径操作函数一样，被放到外部线程池中运行",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "为了能被调用，必须全部改成用 async def 声明的函数",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "FastAPI 会自动替你 await 其中用 async def 声明的那些函数",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "不受影响：def 的直接调用不进线程池，async def 的要 await",
+          "correct": true
+        }
+      ]
+    },
+    "question": "你自己在代码中直接调用的其他工具函数，FastAPI 会怎样处理？",
+    "answer": "FastAPI 不会影响你调用它们的方式：def 工具函数会在代码里写调用的地方直接调用，不会进线程池；async def 工具函数则需要你用 await 等待其结果。这与 FastAPI 调用路径操作函数和依赖的逻辑相反。 [原文§并发 async / await · 非常技术性的细节 · 其他工具函数](https://fastapi.tiangolo.com/zh/async/#other-utility-functions)"
+  }
+]

@@ -1,0 +1,408 @@
+[
+  {
+    "title": "docker底层依托于linux怎么实现资源隔离的？",
+    "anchor": "docker底层依托于linux怎么实现资源隔离的",
+    "questionIds": [
+      "Y1-1",
+      "Y1-2",
+      "Y1-3",
+      "Y1-4",
+      "Y1-5",
+      "Y1-6",
+      "Y1-7",
+      "Y1-8",
+      "Y1-9",
+      "Y1-10"
+    ],
+    "text": "基于 Namespace 的视图隔离 ：Docker利用Linux命名空间（Namespace）来实现不同容器之间的隔离。每个容器都运行在自己的一组命名空间中，包括PID（进程）、网络、挂载点、IPC（进程间通信）等。这样，容器中的进程只能看到自己所在命名空间内的进程，而不会影响其他容器中的进程。 基于 cgroups 的资源隔离 ：cgroups 是Linux内核的一个功能，允许在进程组之间分配、限制和优先处理系统资源，如CPU、内存和磁盘I/O。它们提供了一种机制，用于管理和隔离进程集合的资源使用，有助于资源限制、工作负载隔离以及在不同进程组之间进行资源优先处理。"
+  },
+  {
+    "title": "讲讲cgroup v2.0",
+    "anchor": "讲讲cgroup-v2-0",
+    "questionIds": [
+      "Y1-11",
+      "Y1-12",
+      "Y1-13",
+      "Y1-14",
+      "Y1-15",
+      "Y1-16",
+      "Y1-17",
+      "Y1-18",
+      "Y1-19",
+      "Y1-20",
+      "Y1-21",
+      "Y1-22",
+      "Y1-23"
+    ],
+    "text": "cgroup v2 是 Linux cgroup API 的下一个版本。cgroup v2 提供了一个具有增强资源管理能力的统一控制系统。\n\ncgroup v2 对 cgroup v1 进行了多项改进，例如：\n\nAPI 中单个统一的层次结构设计 更安全的子树委派给容器 更新的功能特性， 例如 压力阻塞信息（Pressure Stall Information，PSI） (opens new window) 跨多个资源的增强资源分配管理和隔离 统一核算不同类型的内存分配（网络内存、内核内存等） 考虑非即时资源变化，例如页面缓存回写\n\nv1 的 cgroup 为每个控制器都使用独立的树(目录)\n\n[root@docker cgroup]# ls /sys/fs/cgroup/ blkio  cpu  cpuacct  cpuacct,cpu  cpu,cpuacct  cpuset  devices  freezer  hugetlb  memory  net_cls  net_cls,net_prio  net_prio  perf_event  pids  rdma  systemd\n\n每个目录就代表了一个 cgroup subsystem，比如要限制 cpu 则需要到 cpu 目录下创建子目录(树)，限制 memory 则需要到 memory 目录下去创建子目录(树)。\n\n比如 Docker 就会在 cpu、memory 等等目录下都创建一个名为 docker 的目录，在 docker 目录下在根据 containerID 创建子目录来实现资源限制。\n\n各个 Subsystem 各自为政，看起来比混乱，难以管理\n\n因此最终的结果就是：\n\n用户空间最后 管理着多个非常类似的 hierarchy ， 在执行 hierarchy 管理操作时， 每个 hierarchy 上都重复着相同的操作 。\n\nv2 中对 cgroups 的最大更改是将重点放在简化层次结构上\n\nv1 为每个控制器使用独立的树（例如 /sys/fs/cgroup/cpu/GROUPNAME和 /sys/fs/cgroup/memory/GROUPNAME）。 v2 将统一/sys/fs/cgroup/GROUPNAME中的树，如果进程 X 加入/sys/fs/cgroup/test，则启用 test 的每个控制器都将控制进程 X。"
+  },
+  {
+    "title": "Docker 和虚拟机有什么区别？",
+    "anchor": "docker-和虚拟机有什么区别",
+    "questionIds": [
+      "Y1-24",
+      "Y1-25",
+      "Y1-26",
+      "Y1-27",
+      "Y1-28",
+      "Y1-29",
+      "Y1-30",
+      "Y1-31",
+      "Y1-32",
+      "Y1-33",
+      "Y1-34",
+      "Y1-35",
+      "Y1-36"
+    ],
+    "text": "核心区别 ：虚拟机虚拟化的是 操作系统 ，Docker 虚拟化的是 进程 。\n\n虚拟机（VM） ：通过 Hypervisor 在宿主机上模拟一整套硬件，每台 VM 都跑着一个完整的 Guest OS 内核，隔离性极强但开销大——启动要几十秒、镜像几个 GB、单实例内存占用 GB 级别。 Docker 容器 ：所有容器共享宿主机的 Linux 内核，通过 Namespace 做视图隔离、cgroups 做资源限制，本质上容器就是一组被隔离起来的特殊进程。启动秒级、镜像几十到几百 MB、内存开销 MB 级别。\n\n形象一点说：VM 像\"独立的房子\"，容器像\"同一栋楼里的房间\"。容器牺牲了一点隔离性（共用内核），换来了远高于 VM 的启动速度和资源利用率，这也是云原生时代首选 Docker 的根本原因。"
+  },
+  {
+    "title": "Docker 有哪几个核心组件？",
+    "anchor": "docker-有哪几个核心组件",
+    "questionIds": [
+      "Y1-37",
+      "Y1-38",
+      "Y1-39",
+      "Y1-40",
+      "Y1-41",
+      "Y1-42",
+      "Y1-43",
+      "Y1-44",
+      "Y1-45",
+      "Y1-46"
+    ],
+    "text": "主要是三个：\n\n镜像（Image） ：只读的模板，包含了运行一个应用所需要的 代码、依赖、环境变量、配置 等，相当于\"安装包\"。 容器（Container） ：镜像的运行时实例，可以启动、停止、删除，是一个独立隔离的进程组，相当于\"安装后运行起来的程序\"。 仓库（Registry） ：存储和分发镜像的地方，分公有仓库（如 Docker Hub）和私有仓库（如 Harbor、阿里云 ACR、腾讯云 TCR），类似于\"应用商店\"。\n\n三者的协作流程是： 从 Registry 拉镜像 → 由镜像启动容器 → 容器运行应用 。"
+  },
+  {
+    "title": "镜像和容器有什么区别？",
+    "anchor": "镜像和容器有什么区别",
+    "questionIds": [
+      "Y1-47",
+      "Y1-48",
+      "Y1-49",
+      "Y1-50",
+      "Y1-51",
+      "Y1-52",
+      "Y1-53",
+      "Y1-54"
+    ],
+    "text": "最常被问的基础题，一句话记住： 镜像是静态的模板，容器是镜像的动态运行实例 。\n\n类比关系就像编程里的 类（Class）和对象（Object） ：\n\n镜像 = 类，定义了应用的结构和行为，是只读的 容器 = 对象，是镜像被启动后的具体实例，有自己的文件系统读写层、网络、进程\n\n一个镜像可以启动多个容器实例，每个容器之间互不影响；停止/删除容器也不会影响镜像本身。"
+  },
+  {
+    "title": "Docker 镜像的分层原理是什么？",
+    "anchor": "docker-镜像的分层原理是什么",
+    "questionIds": [
+      "Y1-55",
+      "Y1-56",
+      "Y1-57",
+      "Y1-58",
+      "Y1-59",
+      "Y1-60",
+      "Y1-61",
+      "Y1-62",
+      "Y1-63",
+      "Y1-64",
+      "Y1-65"
+    ],
+    "text": "Docker 镜像采用 分层只读 的结构，底层基于 UnionFS（联合文件系统） ，现代 Docker 主要使用 overlay2 作为默认的存储驱动。\n\nDockerfile 里 每一条指令都会产生一个新的镜像层 ，这些层都是 只读 的。例如：\n\nFROM ubuntu:22.04       # 层 1 RUN apt-get update      # 层 2 COPY app /app           # 层 3 CMD [ \"./app\" ]           # 层 4\n\n当容器启动时，Docker 会在所有只读层之上再叠加一层 可写层（容器层） ，容器对文件的任何修改都发生在这一层，通过 Copy-on-Write（写时复制） 机制实现。\n\n分层带来的好处：\n\n共享与复用 ：多个镜像可以共享相同的底层（比如都基于 ubuntu:22.04 ），节省存储和网络传输 构建缓存 ：重新构建时，只要某一层没变就直接复用缓存，速度极快 增量分发 ： docker pull 只会下载变化的那一层\n\n这也解释了 Dockerfile 最佳实践里的一条重要原则： 把\"不常变的层\"（如依赖安装）放在\"常变的层\"（如 COPY 源码）之前 ，这样缓存命中率更高、构建更快。"
+  },
+  {
+    "title": "Dockerfile 常用指令有哪些？",
+    "anchor": "dockerfile-常用指令有哪些",
+    "questionIds": [
+      "Y2-1",
+      "Y2-2",
+      "Y2-3",
+      "Y2-4",
+      "Y2-5",
+      "Y2-6",
+      "Y2-7",
+      "Y2-8",
+      "Y2-9",
+      "Y2-10",
+      "Y2-11",
+      "Y2-12"
+    ],
+    "text": "面试一般不会考冷门指令，记住这几个就足够：\n\nFROM ：指定基础镜像，必须是 Dockerfile 的第一条指令 WORKDIR ：设置容器内的工作目录，相当于 cd COPY / ADD ：把宿主机的文件拷贝到镜像里 RUN ：在构建阶段执行命令（如安装依赖），每条 RUN 产生一个新层 ENV ：设置环境变量（运行时也能看到） ARG ：构建时的参数，只在 docker build 阶段有效 EXPOSE ：声明容器要监听的端口（只是声明，不会真的开放端口） VOLUME ：声明数据卷挂载点 CMD / ENTRYPOINT ：指定容器启动时默认要运行的命令 USER ：切换到非 root 用户运行\n\n一个典型的 Java Spring Boot 应用 Dockerfile：\n\nFROM openjdk:17-jdk-slim WORKDIR /app COPY target/app.jar app.jar EXPOSE 8080 ENTRYPOINT [ \"java\" , \"-jar\" , \"app.jar\" ]"
+  },
+  {
+    "title": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "anchor": "dockerfile-中-cmd-和-entrypoint-有什么区别",
+    "questionIds": [
+      "Y2-13",
+      "Y2-14",
+      "Y2-15",
+      "Y2-16",
+      "Y2-17",
+      "Y2-18",
+      "Y2-19",
+      "Y2-20",
+      "Y2-21",
+      "Y2-22",
+      "Y2-23"
+    ],
+    "text": "两者都用于 指定容器启动时执行的命令 ，但有微妙而关键的区别：\n\nCMD ：提供\"默认命令\"， 可以被 docker run 后面跟的参数完全覆盖 。 ENTRYPOINT ：设置容器的\"主命令\"， 不会被 docker run 覆盖 ，后面跟的参数会作为参数追加到 ENTRYPOINT 后面。\n\n推荐组合用法 ： ENTRYPOINT 设主命令， CMD 设默认参数，这样用户既能使用默认行为，也能灵活传参：\n\nENTRYPOINT [ \"java\" , \"-jar\" , \"app.jar\" ] CMD [ \"--spring.profiles.active=prod\" ]\n\ndocker run myapp ：运行 java -jar app.jar --spring.profiles.active=prod docker run myapp --server.port=9090 ：运行 java -jar app.jar --server.port=9090 （ --server.port=9090 覆盖了 CMD）\n\n另外，两者都有两种语法写法：\n\nexec 形式 （推荐）： CMD [\"java\", \"-jar\", \"app.jar\"] ，直接 exec，PID=1 就是你的进程，能正确接收 SIGTERM 等信号，优雅停止 shell 形式 ： CMD java -jar app.jar ，会通过 /bin/sh -c 启动，PID=1 其实是 sh，容器停止时信号传不到应用进程，可能导致无法优雅退出"
+  },
+  {
+    "title": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "anchor": "dockerfile-中-copy-和-add-有什么区别",
+    "questionIds": [
+      "Y2-24",
+      "Y2-25",
+      "Y2-26",
+      "Y2-27",
+      "Y2-28",
+      "Y2-29",
+      "Y2-30",
+      "Y2-31",
+      "Y2-32",
+      "Y2-33",
+      "Y2-34"
+    ],
+    "text": "两者都是把文件从宿主机拷贝到镜像里，但 ADD 多了两个\"魔法\"功能 ：\n\n自动解压 ：如果源文件是 tar.gz 之类的压缩包， ADD 会自动解压到目标目录 支持 URL ： ADD 可以直接从 URL 下载远程文件到镜像里\n\n听起来方便，但官方和 Docker 最佳实践都推荐 优先使用 COPY ，原因是：\n\nADD 的行为\"太聪明\"反而不透明，容易出 bug 如果需要下载远程文件，推荐用 RUN curl -fLO https://... && ... 明确写出来，行为可控 如果需要解压，在 RUN 里显式处理更清晰\n\n简单原则： 除非你明确需要 ADD 的自动解压或 URL 下载功能，否则一律用 COPY 。"
+  },
+  {
+    "title": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "anchor": "什么是多阶段构建-multi-stage-build-有什么好处",
+    "questionIds": [
+      "Y2-35",
+      "Y2-36",
+      "Y2-37",
+      "Y2-38",
+      "Y2-39",
+      "Y2-40",
+      "Y2-41",
+      "Y2-42",
+      "Y2-43",
+      "Y2-44"
+    ],
+    "text": "多阶段构建 是 Docker 17.05 引入的一个重要特性，允许在一个 Dockerfile 里写多个 FROM ，每个 FROM 开启一个\"构建阶段\"，后面的阶段可以从前面的阶段拷贝文件， 但最终只有最后一个阶段的镜像会被保留 。\n\n核心价值： 把\"构建环境\"和\"运行环境\"分开，大幅减小最终镜像体积 。\n\n以一个 Go 应用为例，传统做法：\n\nFROM golang:1.21 COPY . /src RUN cd /src && go build -o /app CMD [ \"/app\" ]\n\n问题是最终镜像里包含了整个 Go 编译器、依赖、源码，可能有 800MB+。\n\n多阶段构建写法：\n\n# 第一阶段：构建 FROM golang:1.21 AS builder WORKDIR /src COPY . . RUN go build -o app # 第二阶段：运行 FROM alpine:3.18 COPY --from = builder /src/app /app CMD [ \"/app\" ]\n\n最终镜像只基于 alpine（5MB）加上编译好的二进制，可能只有 15MB， 瘦身 50 倍 。Java、Node.js、前端项目都适合用这种模式。"
+  },
+  {
+    "title": "如何减小 Docker 镜像体积？",
+    "anchor": "如何减小-docker-镜像体积",
+    "questionIds": [
+      "Y2-45",
+      "Y2-46",
+      "Y2-47",
+      "Y2-48",
+      "Y2-49",
+      "Y2-50",
+      "Y2-51",
+      "Y2-52",
+      "Y2-53"
+    ],
+    "text": "常见手段，面试可以组合说出：\n\n选小的基础镜像 ：用 alpine （5MB）代替 ubuntu （70MB+），用 openjdk:17-jre-slim 代替 openjdk:17 多阶段构建 ：构建和运行分离，最终镜像只保留运行所需的产物 合并 RUN 指令 ：每条 RUN 都会产生一个新层，用 && 把多个命令合并成一条 RUN ，减少层数 清理构建中间产物 ：在同一条 RUN 里装完包就立刻清理缓存，例如： RUN apt-get update && apt-get install -y curl \\ && rm -rf /var/lib/apt/lists/* 使用 .dockerignore ：像 .gitignore 一样，排除不需要 COPY 进镜像的文件（比如 node_modules 、 .git 、日志文件） 避免在镜像里装无关调试工具 ：调试工具应该在需要时 docker exec 临时装，不该塞进生产镜像"
+  },
+  {
+    "title": "Docker 容器数据持久化有哪些方式？",
+    "anchor": "docker-容器数据持久化有哪些方式",
+    "questionIds": [
+      "Y3-1",
+      "Y3-2",
+      "Y3-3",
+      "Y3-4",
+      "Y3-5",
+      "Y3-6",
+      "Y3-7",
+      "Y3-8",
+      "Y3-9",
+      "Y3-10",
+      "Y3-11",
+      "Y3-12",
+      "Y3-13"
+    ],
+    "text": "容器本身是\"用完即扔\"的，想持久化数据必须用外部存储。Docker 提供三种方式：\n\nVolume（数据卷） ：Docker 官方推荐。由 Docker 管理，默认存储在宿主机的 /var/lib/docker/volumes/ 下，可以用 docker volume 系列命令管理， 最通用也最推荐 。 docker run -v mydata:/app/data myimage Bind Mount（目录挂载） ：把宿主机的 任意路径 直接挂进容器，灵活但耦合宿主机路径、不利于迁移， 适合开发阶段的热更新调试 。 docker run -v /home/user/code:/app myimage tmpfs ：挂载到宿主机 内存 里，容器停止数据就没了，适合存放敏感临时数据（如解密后的密钥、临时缓存）。\n\n常见的最佳实践是： 开发阶段用 bind mount 方便热更新，生产环境用 volume 保证可移植性和可管理性 。"
+  },
+  {
+    "title": "Docker 的网络模式有哪些？",
+    "anchor": "docker-的网络模式有哪些",
+    "questionIds": [
+      "Y3-14",
+      "Y3-15",
+      "Y3-16",
+      "Y3-17",
+      "Y3-18",
+      "Y3-19",
+      "Y3-20",
+      "Y3-21",
+      "Y3-22",
+      "Y3-23",
+      "Y3-24",
+      "Y3-25",
+      "Y3-26",
+      "Y3-27"
+    ],
+    "text": "Docker 默认提供五种网络模式：\n\nbridge（默认） ：Docker 创建一个 docker0 虚拟网桥，每个容器分配独立 IP，容器之间通过网桥通信，访问外网通过 NAT。 单机多容器的默认场景 。 host ：容器直接使用宿主机的网络栈，不做隔离。性能最好但会和宿主机抢端口，无法在一台机器上起多个监听同一端口的容器。 none ：容器没有任何网络，只有 loopback。适合完全不需要网络的纯计算任务。 container ：和指定的另一个容器共享同一个网络栈（Kubernetes 里 Pod 内多个容器就是类似机制）。 overlay ：跨宿主机的网络，通常在 Docker Swarm 或 Kubernetes 里使用。\n\n日常接触最多的是 bridge ，跨主机通信是 overlay 。"
+  },
+  {
+    "title": "同一个宿主机上的多个容器之间怎么通信？",
+    "anchor": "同一个宿主机上的多个容器之间怎么通信",
+    "questionIds": [
+      "Y3-28",
+      "Y3-29",
+      "Y3-30",
+      "Y3-31",
+      "Y3-32",
+      "Y3-33",
+      "Y3-34",
+      "Y3-35",
+      "Y3-36",
+      "Y3-37",
+      "Y3-38",
+      "Y3-39"
+    ],
+    "text": "有几种常见方式：\n\n默认 bridge 网络（不推荐） ：通过容器的 IP 直接访问，但 IP 不固定、也不支持容器名 DNS 解析。 自定义 bridge 网络（推荐） ：自己创建一个网络，加入同一网络的容器之间可以 直接用容器名作为 DNS 名互访 ： docker network create mynet docker run -d --name redis --network mynet redis docker run -d --name app --network mynet myapp # app 容器里可以直接通过 \"redis:6379\" 访问 redis host 模式 ：所有容器共享宿主机网络，直接通过 localhost:port 访问，但失去了端口隔离。 通过 Docker Compose ：Compose 会自动为一个 project 创建一个 bridge 网络，service 名就是容器名，互访非常方便。\n\n生产中最常用的组合是 自定义网络 + 容器名 DNS ，既保留了隔离又方便访问。"
+  },
+  {
+    "title": "Docker Compose 是什么？什么场景用？",
+    "anchor": "docker-compose-是什么-什么场景用",
+    "questionIds": [
+      "Y3-40",
+      "Y3-41",
+      "Y3-42",
+      "Y3-43",
+      "Y3-44",
+      "Y3-45",
+      "Y3-46",
+      "Y3-47",
+      "Y3-48",
+      "Y3-49",
+      "Y3-50",
+      "Y3-51"
+    ],
+    "text": "Docker Compose 是 Docker 官方提供的单机容器编排工具 ，用一个 YAML 文件定义一组相关服务，然后一条命令启动或停止整组服务。\n\n典型场景：本地开发或小型单机部署一套\"Web 应用 + 数据库 + 缓存\"的组合。\n\n# docker-compose.yml version : \"3.9\" services : web : build : . ports : - \"8080:8080\" depends_on : - db - redis db : image : mysql : 8 environment : MYSQL_ROOT_PASSWORD : root volumes : - db_data : /var/lib/mysql redis : image : redis : 7 volumes : db_data :\n\n常用命令：\n\ndocker compose up -d ：后台启动所有服务 docker compose down ：停止并删除所有服务 docker compose logs -f ：实时查看日志 docker compose ps ：查看服务状态\n\n需要注意： Docker Compose 只解决单机编排 ；跨主机编排应该用 Docker Swarm 或者 Kubernetes 。"
+  },
+  {
+    "title": "Docker 常用命令有哪些？",
+    "anchor": "docker-常用命令有哪些",
+    "questionIds": [
+      "Y4-1",
+      "Y4-2",
+      "Y4-3",
+      "Y4-4",
+      "Y4-5",
+      "Y4-6",
+      "Y4-7",
+      "Y4-8",
+      "Y4-9",
+      "Y4-10",
+      "Y4-11",
+      "Y4-12",
+      "Y4-13",
+      "Y4-14"
+    ],
+    "text": "面试里经常让你当场说几个常用命令，下面这些是必须记住的：\n\n镜像相关：\n\ndocker pull <image> ：拉镜像 docker images ：列出本地镜像 docker rmi <image> ：删除镜像 docker build -t name:tag . ：基于当前目录的 Dockerfile 构建镜像\n\n容器相关：\n\ndocker run -d -p 8080:80 --name web nginx ：启动一个后台容器 docker ps ：查看运行中的容器（加 -a 看所有） docker stop / start / restart <container> ：停止 / 启动 / 重启 docker rm <container> ：删除容器 docker logs -f <container> ：查看日志（ -f 实时跟踪） docker exec -it <container> bash ：进入容器 docker inspect <container> ：查看详细信息（JSON 格式） docker stats ：查看容器资源占用\n\n系统相关：\n\ndocker system df ：查看 Docker 占用了多少磁盘 docker system prune ：清理无用资源"
+  },
+  {
+    "title": "如何进入一个运行中的容器？",
+    "anchor": "如何进入一个运行中的容器",
+    "questionIds": [
+      "Y4-15",
+      "Y4-16",
+      "Y4-17",
+      "Y4-18",
+      "Y4-19",
+      "Y4-20",
+      "Y4-21",
+      "Y4-22",
+      "Y4-23"
+    ],
+    "text": "最常用的方式是 docker exec ：\n\ndocker exec -it < container > bash # 如果镜像里没有 bash（比如 alpine 只有 sh） docker exec -it < container > sh\n\n参数含义：\n\n-i ：交互式（保留 stdin） -t ：分配一个伪终端（TTY） bash / sh ：要在容器里运行的 shell\n\n另一个老办法是 docker attach ，但 不推荐 ——attach 进去后按 Ctrl+C 会直接杀掉容器的主进程，非常容易误操作。\n\ndocker exec 是在容器里启动一个 新的进程 ，退出时不会影响容器主进程，安全得多， 面试里的推荐答案就是 exec 。"
+  },
+  {
+    "title": "容器启动后立刻退出，怎么排查？",
+    "anchor": "容器启动后立刻退出-怎么排查",
+    "questionIds": [
+      "Y4-24",
+      "Y4-25",
+      "Y4-26",
+      "Y4-27",
+      "Y4-28",
+      "Y4-29",
+      "Y4-30",
+      "Y4-31",
+      "Y4-32",
+      "Y4-33",
+      "Y4-34",
+      "Y4-35",
+      "Y4-36"
+    ],
+    "text": "这是生产里超级高频的场景，常见原因和排查步骤：\n\n先看日志 ： docker logs <container> 或 docker logs --tail 100 <container> ，大部分问题从日志就能看出来（依赖缺失、端口冲突、配置错误） 看退出码 ： docker ps -a 的 STATUS 列会显示 Exited (X) 的退出码。 0 是正常退出， 137 通常是 OOM 被杀（128+9）， 139 是段错误，其他非 0 就是应用报错 思考 PID=1 问题 ：Docker 容器里主进程必须是 前台运行 的——如果启动命令是一个后台化的程序（比如写成 nginx 而不是 nginx -g 'daemon off;' ），主进程启动完立刻退出，容器也就跟着结束了 临时用 shell 进去调试 ：如果容器一启动就挂，可以临时把 ENTRYPOINT 覆盖成 shell 进去查看： docker run -it --entrypoint sh < image > 进去之后手动执行原来的启动命令，看看到底报什么错 检查资源限制 ：是否因为 cgroups 内存限制太小被 OOM Killer 杀掉（ docker inspect 能看到 OOMKilled: true ）"
+  },
+  {
+    "title": "docker commit 和 docker build 有什么区别？",
+    "anchor": "docker-commit-和-docker-build-有什么区别",
+    "questionIds": [
+      "Y2-54",
+      "Y2-55",
+      "Y2-56",
+      "Y2-57",
+      "Y2-58",
+      "Y2-59",
+      "Y2-60",
+      "Y2-61",
+      "Y2-62"
+    ],
+    "text": "两者都能得到一个新镜像，但使用场景和推荐度完全不同：\n\ndocker commit <container> <image> ：把一个 正在运行的容器 的当前状态打包成镜像，相当于\"快照\"。过程是手动的、隐式的，镜像里到底发生了什么只有操作者自己知道。 docker build -f Dockerfile -t <image> . ：根据 Dockerfile 脚本自动构建镜像。过程是 可复现、可追溯、可版本控制 的。\n\n生产环境一定要用 docker build ，因为：\n\nDockerfile 可以提交到 Git，方便团队协作和代码审查 构建过程完全自动化，随时可以从代码重新构建出一模一样的镜像 镜像层结构清晰，每一层对应一条指令，便于排查\n\ndocker commit 只在 临时调试 时用：比如你在容器里手动改了点东西想快速保存验证一下—— 事后还是要把这些改动沉淀回 Dockerfile 。"
+  },
+  {
+    "title": "docker run 的常用参数有哪些？",
+    "anchor": "docker-run-的常用参数有哪些",
+    "questionIds": [
+      "Y4-37",
+      "Y4-38",
+      "Y4-39",
+      "Y4-40",
+      "Y4-41",
+      "Y4-42",
+      "Y4-43",
+      "Y4-44",
+      "Y4-45",
+      "Y4-46",
+      "Y4-47",
+      "Y4-48",
+      "Y4-49"
+    ],
+    "text": "面试里经常让你现场写一条 docker run ，这几个参数必须会：\n\n-d ：后台运行（detached） -it ：交互式 + 分配终端，通常一起用 -p 8080:80 ：端口映射（宿主机:容器） -v /host:/container 或 -v volname:/container ：目录/数据卷挂载 --name web ：给容器起个名字 --network mynet ：指定容器网络 -e KEY=VALUE ：设置环境变量 --rm ：容器停止后自动删除（适合一次性任务） --restart always / unless-stopped ：自动重启策略 -m 512m --cpus=1 ：内存/CPU 资源限制 -u 1000:1000 ：以非 root 用户运行\n\n一个典型的生产启动命令：\n\ndocker run -d \\ --name myapp \\ -p 8080 :8080 \\ -v mydata:/app/data \\ -e SPRING_PROFILES_ACTIVE = prod \\ --restart unless-stopped \\ --network mynet \\ -m 1g --cpus = 2 \\ myapp:1.0.0"
+  },
+  {
+    "title": "Docker 和 Kubernetes 是什么关系？",
+    "anchor": "docker-和-kubernetes-是什么关系",
+    "questionIds": [
+      "Y3-52",
+      "Y3-53",
+      "Y3-54",
+      "Y3-55",
+      "Y3-56",
+      "Y3-57",
+      "Y3-58",
+      "Y3-59",
+      "Y3-60",
+      "Y3-61",
+      "Y3-62",
+      "Y3-63",
+      "Y3-64"
+    ],
+    "text": "这是云原生面试的高频题。一句话总结： Docker 负责\"怎么把一个容器跑起来\"，Kubernetes 负责\"怎么把一大堆容器跨多台机器跑起来、管起来\" 。\n\n再具体一点：\n\nDocker 是一个 容器运行时 和镜像构建工具，解决的是\"单机上如何打包、分发、运行一个容器\"的问题。 Kubernetes（K8s） 是一个 容器编排系统 ，解决的是\"跨多台机器如何调度、扩缩容、自愈、负载均衡、服务发现、配置管理、发布回滚\"的问题。\n\n两者 不是竞争关系，而是上下游关系 ：K8s 需要一个底层容器运行时来实际运行容器。历史上 K8s 默认用 Docker 作为运行时，但从 Kubernetes 1.24 起，K8s 已经移除了对 Docker Engine 的直接支持（dockershim） ，改用符合 CRI 规范的运行时，比如 containerd 、 CRI-O 。不过：\n\n用 docker build 打出来的镜像依然可以在 K8s 上跑（因为镜像格式遵循 OCI 标准） 开发者日常还是用 Docker 来构建镜像和本地调试\n\n所以简单记： Docker 管\"容器本身\"，K8s 管\"容器集群\" 。"
+  },
+  {
+    "title": "如何清理 Docker 的无用镜像、容器和卷？",
+    "anchor": "如何清理-docker-的无用镜像、容器和卷",
+    "questionIds": [
+      "Y4-50",
+      "Y4-51",
+      "Y4-52",
+      "Y4-53",
+      "Y4-54",
+      "Y4-55",
+      "Y4-56",
+      "Y4-57",
+      "Y4-58",
+      "Y4-59",
+      "Y4-60",
+      "Y4-61"
+    ],
+    "text": "Docker 用久了磁盘占用会越来越大，主要是\"悬空镜像（dangling images）\"、停止的容器、没人用的卷堆积。常见清理命令：\n\n清理停止的容器 ： docker container prune 清理悬空镜像 ： docker image prune 清理所有无用镜像（包括没被任何容器使用的） ： docker image prune -a 清理无用的卷 ： docker volume prune 清理无用的网络 ： docker network prune\n\n一键清理所有无用资源 （最常用）：\n\ndocker system prune # 清理停止容器、悬空镜像、无用网络 docker system prune -a # 加 -a 顺带清理没被使用的所有镜像 docker system prune -a --volumes # 再加 --volumes 顺带清理无用卷\n\n清理前可以先用 docker system df 查看占用分布：\n\ndocker system df # TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE # Images          45        12        12.3GB    8.7GB (70%) # Containers      18        5         123MB     45MB (36%) # Local Volumes   23        8         2.1GB     1.4GB (66%)\n\n生产环境建议在 CI/CD 流水线或定时任务里定期执行清理，避免磁盘爆满导致容器无法启动。\n\n\n\n最新的图解文章都在公众号首发，别忘记关注哦！！如果你想加入百人技术交流群，扫码下方二维码回复「加群」。\n\n"
+  }
+]

@@ -1,0 +1,5894 @@
+{
+  "prefix": "Y",
+  "chapters": {
+    "Y1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "Y1-1",
+          "type": "fill",
+          "stem": "按原文，Docker 依托 Linux 实现资源隔离的两种机制是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y1-2",
+          "type": "single",
+          "stem": "按原文，Docker 利用 Linux 的哪项机制来实现不同容器之间的视图隔离？",
+          "options": [
+            {
+              "key": "A",
+              "text": "cgroups",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "UnionFS（联合文件系统）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Namespace（命名空间）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Hypervisor",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-3",
+          "type": "single",
+          "stem": "按原文，Docker 利用 Linux 内核的哪项功能来分配、限制和优先处理容器可用的 CPU、内存和磁盘 I/O 等系统资源？",
+          "options": [
+            {
+              "key": "A",
+              "text": "cgroups",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Namespace（命名空间）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Copy-on-Write（写时复制）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "UnionFS（联合文件系统）",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-4",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于容器所运行的命名空间所隔离的内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "网络",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "CPU 与内存的使用上限",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "IPC（进程间通信）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "挂载点",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "镜像的只读分层结构",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "PID（进程）",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-5",
+          "type": "single",
+          "stem": "使用独立 PID 命名空间，且未与其他容器共享、未在其中创建子 PID 命名空间时，容器中的进程能看到哪些进程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只能看到自己所在命名空间内的进程",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "能看到宿主机上所有容器中的进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能看到所有基于同一镜像启动的容器中的进程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能看到其他容器中的进程，但无法影响它们",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-6",
+          "type": "single",
+          "stem": "按原文，cgroups 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Docker 提供的存储驱动，负责把镜像按层存储并一层层叠加起来",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Linux 命名空间的一种，让每个容器只能看到自己所在空间内的进程和网络",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Docker 的一类仓库，负责存储和分发镜像，供各个容器的使用者拉取",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Linux 内核的一个功能，允许在进程组之间分配、限制和优先处理系统资源",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-7",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于 cgroups 可以分配、限制和优先处理的系统资源？",
+          "options": [
+            {
+              "key": "A",
+              "text": "磁盘 I/O",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "内存",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "IPC 通信的可见范围",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "CPU",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "挂载点的可见范围",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-8",
+          "type": "multiple",
+          "stem": "按原文，cgroups 提供机制来管理和隔离进程集合的资源使用，有助于哪些方面？",
+          "options": [
+            {
+              "key": "A",
+              "text": "隐藏其他容器中的进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工作负载隔离",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把镜像拆分成可复用的只读层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在不同进程组之间进行资源优先处理",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "资源限制",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-9",
+          "type": "single",
+          "stem": "按原文，Namespace 与 cgroups 在容器隔离中各自的分工是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Namespace 负责视图隔离，cgroups 负责资源隔离",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Namespace 负责资源隔离，cgroups 负责视图隔离",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都只负责视图隔离，不涉及系统资源",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Namespace 负责镜像的分层存储，cgroups 负责视图隔离",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-10",
+          "type": "short"
+        },
+        {
+          "id": "Y1-11",
+          "type": "single",
+          "stem": "按原文，cgroup v2 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Linux 命名空间 API 的下一个版本，提供具有增强视图隔离能力的统一控制系统",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Docker 引擎的下一个大版本，提供具有增强镜像构建能力的统一构建系统",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Linux cgroup API 的下一个版本，提供具有增强资源管理能力的统一控制系统",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Linux 内核的联合文件系统，提供具有增强分层存储能力的统一存储系统",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-12",
+          "type": "single",
+          "stem": "按原文，v2 中对 cgroups 的最大更改是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "为每个控制器使用更多相互独立的树",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "将重点放在简化层次结构上",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "取消对 CPU 和内存的限制能力，只保留视图隔离",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把重点放在增加更多相互独立的控制器目录上",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-13",
+          "type": "single",
+          "stem": "在原文展示的 cgroup v1 分挂载布局中，cpu、memory 等控制器的层次结构是怎样组织的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "cpu、memory 等控制器分别使用自己的树（目录）",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "所有控制器统一在 /sys/fs/cgroup/GROUPNAME 下的一棵树中",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只有 cpu 控制器有自己的树，其余控制器共用同一棵树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个容器对应一棵独立的树，与控制器类型无关",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-14",
+          "type": "single",
+          "stem": "在原文展示的 cgroup v1 分挂载布局中，要限制 cpu 需要到哪里创建子目录？",
+          "options": [
+            {
+              "key": "A",
+              "text": "memory 目录下",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "/sys/fs/cgroup/GROUPNAME 下",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "cpu 目录下",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "blkio 目录下",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-15",
+          "type": "single",
+          "stem": "在原文采用的 cgroup v1 + cgroupfs 示例中，Docker 是怎样组织容器的资源限制目录的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 cpu、memory 等目录下都创建名为 test 的目录，再在其下根据 containerID 创建子目录",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在 cpu、memory 等目录下都创建名为 docker 的目录，再在其下根据控制器名称创建子目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在 cpu、memory 等目录下都创建名为 docker 的目录，再在其下根据 containerID 创建子目录",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "在 /sys/fs/cgroup 下创建名为 GROUPNAME 的单个目录，再在其下根据 containerID 创建子目录",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-16",
+          "type": "multiple",
+          "stem": "在原文各 Subsystem 分别挂载到多个层次的 cgroup v1 示例中，会带来哪些管理结果？",
+          "options": [
+            {
+              "key": "A",
+              "text": "加入任意一个控制器目录后，其他独立层次的控制器也会自动管理该进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个 hierarchy 上都要重复执行相同的管理操作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "所有控制器共用同一个层次结构，只需操作一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户空间要管理多个非常类似的 hierarchy",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-17",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于 cgroup v2 相对 v1 的改进？",
+          "options": [
+            {
+              "key": "A",
+              "text": "新增压力阻塞信息（PSI）等功能特性",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把不同类型的内存分配分开各自核算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "更安全地把子树委派给容器",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "为每个控制器使用独立的树",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "API 中采用单个统一的层次结构设计",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-18",
+          "type": "multiple",
+          "stem": "按原文，下列哪些也属于 cgroup v2 的改进？",
+          "options": [
+            {
+              "key": "A",
+              "text": "跨多个资源的增强资源分配管理和隔离",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个 Subsystem 各自维护一棵独立的树",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "考虑非即时的资源变化，例如页面缓存回写",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "统一核算不同类型的内存分配，例如网络内存、内核内存",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "取消子树委派以保证安全",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-19",
+          "type": "single",
+          "stem": "按原文，cgroup v2 新增的 PSI 指的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "页面缓存回写的统计信息",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "统一内存核算的统计信息",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "子树委派的权限配置信息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "压力阻塞信息",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-20",
+          "type": "single",
+          "stem": "按原文，cgroup v2 在内存核算上有什么改进？",
+          "options": [
+            {
+              "key": "A",
+              "text": "统一核算不同类型的内存分配（网络内存、内核内存等）",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只核算用户空间内存，不再核算网络内存和内核内存",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "为网络内存、内核内存各自建立独立的核算树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不再考虑页面缓存回写这类非即时的资源变化",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-21",
+          "type": "single",
+          "stem": "按原文，在 cgroup v2 中，如果进程 X 加入 /sys/fs/cgroup/test，会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "启用 test 的每个控制器都将控制进程 X",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只有 cpu 控制器会控制进程 X，其他控制器需要另行加入",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要再分别到各控制器目录下加入一次，对应的控制器才会生效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "进程 X 不再受任何控制器控制",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-22",
+          "type": "short"
+        },
+        {
+          "id": "Y1-23",
+          "type": "short"
+        },
+        {
+          "id": "Y1-24",
+          "type": "fill",
+          "stem": "虚拟机抽象的是 ____ 资源；Docker 容器共享宿主机内核，其运行实体是一组被隔离的 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y1-25",
+          "type": "single",
+          "stem": "按原文，虚拟机是通过什么在宿主机上模拟一整套硬件的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Namespace（命名空间）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Hypervisor",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "cgroups（控制组）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "UnionFS（联合文件系统）",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-26",
+          "type": "single",
+          "stem": "按原文，每台虚拟机里都运行着什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "宿主机的 Linux 内核（与其他虚拟机共享）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个完整的 Guest OS 内核",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一组被隔离起来的特殊进程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只读的镜像模板",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-27",
+          "type": "single",
+          "stem": "按原文，Docker 容器之间共享的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "各自独立的 Guest OS 内核",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Hypervisor 模拟出来的一整套硬件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "同一份可写的容器层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "宿主机的 Linux 内核",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-28",
+          "type": "fill",
+          "stem": "按原文，Docker 容器通过 ____ 做视图隔离，通过 ____ 做资源限制。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y1-29",
+          "type": "single",
+          "stem": "按原文，本质上，Docker 容器是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一台运行完整 Guest OS 的轻量级虚拟机",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一组被隔离起来的特殊进程",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一套由 Hypervisor 模拟出来的硬件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一份只读的应用模板文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-30",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于虚拟机的特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每台虚拟机都跑着一个完整的 Guest OS 内核",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "所有虚拟机共享宿主机的 Linux 内核",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "通过 Hypervisor 在宿主机上模拟一整套硬件",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "启动秒级、内存开销 MB 级别",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "隔离性极强但开销大",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-31",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Docker 容器的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个容器都要运行一个完整的 Guest OS 内核",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "本质上是一组被隔离起来的特殊进程",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "所有容器共享宿主机的 Linux 内核",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "通过 Namespace 做视图隔离、cgroups 做资源限制",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "隔离性比虚拟机更强",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "镜像一般几个 GB，启动要几十秒",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-32",
+          "type": "single",
+          "stem": "按原文，容器和虚拟机在启动速度上有什么差别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "容器启动要几十秒，虚拟机启动秒级",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者启动都是秒级，没有明显差别",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者启动都要几十秒，没有明显差别",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器启动秒级，虚拟机启动要几十秒",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-33",
+          "type": "single",
+          "stem": "按原文，容器和虚拟机在镜像体积和内存开销上分别是什么量级？",
+          "options": [
+            {
+              "key": "A",
+              "text": "容器镜像几个 GB、内存 GB 级；虚拟机镜像几十到几百 MB、内存 MB 级",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器和虚拟机的镜像都是几个 GB，内存开销都是 GB 级",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "容器镜像几十到几百 MB、内存 GB 级；虚拟机镜像几个 GB、内存 MB 级",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器镜像几十到几百 MB、内存 MB 级；虚拟机镜像几个 GB、内存 GB 级",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-34",
+          "type": "single",
+          "stem": "按原文，用来形象比喻虚拟机和容器的说法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "虚拟机像“同一栋楼里的房间”，容器像“独立的房子”",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "虚拟机和容器都像“独立的房子”，只是大小不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "虚拟机像“独立的房子”，容器像“同一栋楼里的房间”",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "虚拟机和容器都像“同一栋楼里的房间”，只是楼层不同",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-35",
+          "type": "single",
+          "stem": "按原文，容器相比虚拟机牺牲了什么，换来了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "牺牲了启动速度，换来更强的隔离性和更高的资源利用率",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "牺牲了一点隔离性（共用内核），换来更快的启动速度和更高的资源利用率",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "牺牲了资源利用率，换来更快的启动速度和共享内核的便利",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "牺牲了与宿主机共享内核的能力，换来更强的隔离性和启动速度",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-36",
+          "type": "short"
+        },
+        {
+          "id": "Y1-37",
+          "type": "fill",
+          "stem": "按原文，Docker 有三个核心组件：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y1-38",
+          "type": "single",
+          "stem": "按原文，Docker 中的镜像（Image）指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "镜像的运行时实例，可以启动、停止、删除，是一个独立隔离的进程组",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只读的模板，包含运行应用所需的代码、依赖、环境变量、配置等",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "存储和分发镜像的地方，分公有仓库（如 Docker Hub）和私有仓库",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器启动后叠加在所有只读层之上、可以修改的一层",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-39",
+          "type": "single",
+          "stem": "按原文，Docker 中的容器（Container）指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "镜像的运行时实例，是一个独立隔离的进程组",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只读的模板，包含代码、依赖、环境变量和配置",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "存储和分发镜像的地方，类似于“应用商店”",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在宿主机上模拟一整套硬件的 Hypervisor",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-40",
+          "type": "single",
+          "stem": "按原文，Docker 中的仓库（Registry）是用来做什么的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "运行镜像并提供一个独立隔离的进程组",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "定义应用的结构，作为只读模板打包代码和依赖",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "存储和分发镜像",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "限制容器可以使用的 CPU 和内存资源",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-41",
+          "type": "multiple",
+          "stem": "按原文，镜像中包含运行一个应用所需要的哪些内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "宿主机的 Linux 内核",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "环境变量",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "依赖",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "正在运行的进程组",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "配置",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "代码",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-42",
+          "type": "fill",
+          "stem": "按原文，容器可以执行的三种操作是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y1-43",
+          "type": "multiple",
+          "stem": "原文将下列哪些 Registry 服务列作私有部署或私有镜像托管的例子？",
+          "options": [
+            {
+              "key": "A",
+              "text": "腾讯云 TCR",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "阿里云 ACR",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Docker Hub",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Harbor",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-44",
+          "type": "single",
+          "stem": "按原文，镜像、容器、仓库依次类似于什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "应用商店、安装包、安装后运行起来的程序",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "安装后运行起来的程序、安装包、应用商店",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "安装包、应用商店、安装后运行起来的程序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "安装包、安装后运行起来的程序、应用商店",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-45",
+          "type": "single",
+          "stem": "按原文，三个核心组件的协作流程是怎样的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由镜像启动容器 → 从 Registry 拉镜像 → 容器运行应用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器运行应用 → 从 Registry 拉镜像 → 由镜像启动容器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "从 Registry 拉镜像 → 由镜像启动容器 → 容器运行应用",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "从 Registry 拉容器 → 由容器启动镜像 → 镜像运行应用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-46",
+          "type": "short"
+        },
+        {
+          "id": "Y1-47",
+          "type": "single",
+          "stem": "按原文，一句话概括镜像和容器的区别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "镜像是静态的模板，容器是镜像的动态运行实例",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "镜像是动态的运行实例，容器是静态的模板",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "镜像和容器都是静态的模板，只是容器可以被删除",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "镜像是存储和分发容器的地方，容器是它的静态副本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-48",
+          "type": "fill",
+          "stem": "按原文，镜像类比编程里的 ____，容器类比编程里的 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y1-49",
+          "type": "single",
+          "stem": "按原文，镜像被类比为“类”，是因为它具有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "定义了应用的结构和行为，并且是只读的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是镜像被启动之后得到的具体实例",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "有自己的文件系统读写层、网络和进程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "删除后会同时删除所有基于它的容器",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-50",
+          "type": "multiple",
+          "stem": "在默认分别隔离命名空间、未显式共享相关资源的情况下，容器作为镜像启动后的具体实例，拥有自己的什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "网络",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只读的应用结构定义",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "文件系统读写层",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "独立的 Guest OS 内核",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "进程",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-51",
+          "type": "single",
+          "stem": "在默认分别隔离命名空间、未显式共享相关资源的情况下，从一个镜像启动多个容器时，这些容器之间是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一个镜像只能启动一个容器实例",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个镜像可以启动多个容器实例，各自的可写层修改不会写入其他容器的可写层",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "可以启动多个容器，但一个容器对自身可写层的修改会自动写入其他容器的可写层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "可以启动多个容器，但它们共用同一套读写层和进程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-52",
+          "type": "single",
+          "stem": "按原文，停止或删除容器会对镜像产生什么影响？",
+          "options": [
+            {
+              "key": "A",
+              "text": "镜像也会随之被删除",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不会影响镜像本身",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "容器中的修改会被写回镜像",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "镜像会被一并停止，无法再启动新容器",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-53",
+          "type": "multiple",
+          "stem": "在默认分别隔离命名空间、未显式共享相关资源的情况下，下列关于镜像和容器的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "容器是镜像的动态运行实例",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一个镜像只能启动一个容器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "删除容器会同时删除它所基于的镜像",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一个镜像可以启动多个容器，各容器的可写层相互独立",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "镜像是静态的模板，是只读的",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-54",
+          "type": "short"
+        },
+        {
+          "id": "Y1-55",
+          "type": "single",
+          "stem": "按原文，Docker 镜像采用什么样的结构？",
+          "options": [
+            {
+              "key": "A",
+              "text": "单层可读写的结构",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "分层可读写的结构",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "单层只读的结构",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "分层只读的结构",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-56",
+          "type": "fill",
+          "stem": "按原文所述的传统存储后端场景，镜像分层基于 ____，文中所举主要存储驱动是 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y1-57",
+          "type": "single",
+          "stem": "按原文，容器启动时，Docker 会在所有只读层之上再叠加什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一层只读的缓存层",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一份完整复制的镜像",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一个新的 Guest OS 内核",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一层可写层（容器层）",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-58",
+          "type": "single",
+          "stem": "对容器根文件系统中未被额外挂载覆盖、来自镜像的已有文件，首次修改时写入哪里，并使用什么机制？",
+          "options": [
+            {
+              "key": "A",
+              "text": "发生在最底层的只读层，通过 Copy-on-Write（写时复制）实现",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "复制到可写层（容器层）后修改，使用 Copy-on-Write（写时复制）",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "发生在可写层（容器层），通过 docker pull 的增量分发机制实现",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "发生在最底层的只读层，通过重新构建时的构建缓存机制实现",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-59",
+          "type": "fill",
+          "stem": "按原文，镜像分层带来的三项好处是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y1-60",
+          "type": "single",
+          "stem": "多个镜像都基于 ubuntu:22.04 时，共享相同底层直接体现了分层的哪项好处？",
+          "options": [
+            {
+              "key": "A",
+              "text": "已有可用缓存且相关输入、前序状态不变时，复用相应构建步骤的缓存",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker pull 时复用本地已有相同层，仅下载本地缺失的镜像层",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可以共享相同的底层，节省存储和网络传输",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "容器的修改会直接写进共享的底层",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-61",
+          "type": "single",
+          "stem": "重新构建镜像时，已有相应可用缓存，且指令、相关输入与前序状态均未变化时，可以怎样处理该步骤？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须重新执行该层，只是跳过下载",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "会触发 docker pull 重新下载该层",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "该层会被转为可写层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "复用相应缓存，避免重复执行该步骤",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-62",
+          "type": "single",
+          "stem": "按原文，docker pull 的“增量分发”指的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "复用本地已有的相同层，仅下载本地缺失的镜像层",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每次都重新下载整个镜像的全部层",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只下载最上面的可写层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只下载被多个镜像共享的底层",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-63",
+          "type": "single",
+          "stem": "按原文，Dockerfile 最佳实践中，不常变的层和常变的层应该怎样排列？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把常变的层（如 COPY 源码）放在不常变的层（如依赖安装）之前",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "层的先后顺序不影响缓存命中率，可以任意排列",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把不常变的层（如依赖安装）放在常变的层（如 COPY 源码）之前",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把体积最大的层放在最前面，不论是否常变",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y1-64",
+          "type": "multiple",
+          "stem": "按原文，下列关于镜像分层与容器可写层的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker pull 每次都会下载镜像的全部层",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器启动时会在只读层之上叠加一层可写层",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "多个镜像可以共享相同的底层",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "容器对文件的修改会直接写入镜像的只读层",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "镜像的各层都是只读的",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y1-65",
+          "type": "short"
+        }
+      ]
+    },
+    "Y2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "Y2-1",
+          "type": "single",
+          "stem": "按原文，Dockerfile 中的 FROM 指令用来做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "指定基础镜像",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "设置容器内的工作目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "声明容器要监听的端口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "切换到非 root 用户运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-2",
+          "type": "single",
+          "stem": "按原文，WORKDIR 指令的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在构建阶段执行命令，例如安装依赖",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把宿主机的文件拷贝到镜像里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "指定容器使用的基础镜像",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "设置容器内的工作目录，相当于 cd",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-3",
+          "type": "single",
+          "stem": "按原文，Dockerfile 里的 RUN 指令用来做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "指定容器启动时默认要运行的命令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把宿主机的文件拷贝到镜像里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在构建阶段执行命令，例如安装依赖",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "设置容器内的工作目录",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-4",
+          "type": "single",
+          "stem": "按原文，ENV 和 ARG 的区别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ARG 设置的参数运行时也能看到，ENV 设置的环境变量只在 docker build 阶段有效",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ENV 设置的环境变量可在运行时使用；ARG 是构建参数，不会自动成为容器运行时的环境变量",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "ENV 和 ARG 设置的值都只在 docker build 阶段有效，运行时都看不到",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "ENV 和 ARG 设置的值在容器运行时都能看到，两者没有区别",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-5",
+          "type": "single",
+          "stem": "按原文，EXPOSE 指令的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把容器端口真正开放出来，让宿主机可以直接访问",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "声明数据卷的挂载点，而不是监听的端口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "指定容器启动时默认要运行的命令",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "声明容器要监听的端口，只是声明，不会真的开放端口",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-6",
+          "type": "single",
+          "stem": "按原文，USER 指令的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "设置后续 RUN 和容器启动命令使用的用户及可选的组，常用于切换到非 root 用户",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "设置容器内的工作目录，相当于 cd",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "声明容器要监听的端口，只是声明，不会真的开放端口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "构建时的参数，只在 docker build 阶段有效",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-7",
+          "type": "single",
+          "stem": "按原文，VOLUME 指令的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "声明容器要监听的端口",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "声明数据卷挂载点",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "切换到非 root 用户运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "设置容器运行时也能看到的环境变量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-8",
+          "type": "fill",
+          "stem": "按原文，指定容器启动时默认要运行命令的两条指令是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y2-9",
+          "type": "single",
+          "stem": "按原文，下列哪组指令都可以把宿主机的文件拷贝到镜像里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "RUN / ENV",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "WORKDIR / VOLUME",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "COPY / ADD",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "FROM / USER",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-10",
+          "type": "single",
+          "stem": "按原文的 Java Spring Boot 示例 Dockerfile，写有启动主命令 java -jar app.jar 的那一行用的是哪条指令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "RUN 指令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ENTRYPOINT 指令",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "WORKDIR 指令",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "EXPOSE 指令",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-11",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Dockerfile 常用指令的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ADD 用来设置容器内的工作目录，相当于 cd",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "RUN 在构建阶段执行命令，每条 RUN 会产生一个新层",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "VOLUME 用来切换到非 root 用户运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "ARG 是构建参数，不会自动成为容器运行时的环境变量",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "EXPOSE 只是声明容器要监听的端口，不会真的开放端口",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-12",
+          "type": "short"
+        },
+        {
+          "id": "Y2-13",
+          "type": "single",
+          "stem": "按原文，CMD 和 ENTRYPOINT 的共同点是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "都只能在构建阶段执行命令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "都用来声明容器要监听的端口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "都用来把宿主机的文件拷贝到镜像里",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "都用于指定容器启动时执行的命令",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-14",
+          "type": "single",
+          "stem": "按原文，下列关于 CMD 的说法哪项正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "设置容器的“主命令”，docker run 后面跟的参数会作为参数追加到它后面",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "声明容器要监听的端口，只是声明，不会真的开放端口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "提供“默认命令”，可以被 docker run 后面跟的参数完全覆盖",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "构建时的参数，只在 docker build 阶段有效",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-15",
+          "type": "single",
+          "stem": "使用 exec 形式的 ENTRYPOINT 时，docker run 中位于镜像名之后的运行参数会怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不会覆盖 ENTRYPOINT，而是作为参数追加到它后面",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "完全覆盖 ENTRYPOINT，与它覆盖 CMD 的方式一致",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "被忽略，容器仍只按 Dockerfile 里写好的命令运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会覆盖 ENTRYPOINT，同时保留 CMD 里的默认参数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-16",
+          "type": "single",
+          "stem": "按原文两者均采用 exec 形式的示例，CMD 和 ENTRYPOINT 的推荐组合用法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CMD 设主命令，ENTRYPOINT 设默认参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ENTRYPOINT 设主命令，CMD 设默认参数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只写 ENTRYPOINT，不写 CMD",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只写 CMD，让 docker run 后面跟的参数追加到它后面",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-17",
+          "type": "single",
+          "stem": "按原文示例（ENTRYPOINT [\"java\", \"-jar\", \"app.jar\"]，CMD [\"--spring.profiles.active=prod\"]），执行 docker run myapp 实际运行的是哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "java -jar app.jar",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "--spring.profiles.active=prod",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "java -jar app.jar --server.port=9090",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "java -jar app.jar --spring.profiles.active=prod",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-18",
+          "type": "single",
+          "stem": "按原文示例（ENTRYPOINT [\"java\", \"-jar\", \"app.jar\"]，CMD [\"--spring.profiles.active=prod\"]），执行 docker run myapp --server.port=9090 实际运行的是哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "java -jar app.jar --server.port=9090",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "java -jar app.jar --spring.profiles.active=prod --server.port=9090",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "java -jar app.jar --spring.profiles.active=prod",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "--server.port=9090",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-19",
+          "type": "fill",
+          "stem": "按原文，CMD 和 ENTRYPOINT 的两种语法写法依次是：推荐的 ____ 形式（如 CMD [\"java\", \"-jar\", \"app.jar\"]），以及不带方括号的 ____ 形式（如 CMD java -jar app.jar）。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y2-20",
+          "type": "single",
+          "stem": "在原文直接运行 Java 应用、没有额外 shell 或包装脚本的示例中，为什么推荐 exec 形式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会通过 /bin/sh -c 启动，容器停止时信号传不到应用进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "exec ENTRYPOINT 会把镜像名之后的运行参数追加到主命令之后",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "应用可直接作为 PID 1 接收 SIGTERM 等信号，便于应用按自身处理逻辑优雅停止",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "ENTRYPOINT 设主命令，CMD 设默认参数，组合起来更灵活",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-21",
+          "type": "single",
+          "stem": "按原文，CMD java -jar app.jar 这种 shell 形式的主要隐患是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "shell 形式必然使应用直接成为 PID 1，并无条件保证应用优雅停止",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "通过 /bin/sh -c 包装运行时，shell 可能成为 PID 1 并影响信号转发，使应用无法优雅退出",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "在构建阶段执行命令，每条都会产生一个新层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "构建时的参数，只在 docker build 阶段有效",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-22",
+          "type": "multiple",
+          "stem": "对于 CMD、ENTRYPOINT 及原文直接运行应用的两种写法，下列说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "shell 形式无论如何包装，PID 1 都必然是应用进程本身",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker run 中镜像名之后的运行参数会替换 CMD 提供的默认命令或参数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "CMD 和 ENTRYPOINT 都只能用 exec 形式书写",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接运行应用的 exec 示例可避免 shell 包装，让应用作为 PID 1 接收 SIGTERM 等信号",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-23",
+          "type": "short"
+        },
+        {
+          "id": "Y2-24",
+          "type": "single",
+          "stem": "按原文，COPY 和 ADD 的共同点是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "都支持直接从 URL 下载远程文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "都会自动解压 tar.gz 之类的压缩包",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "都只能在容器运行时使用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "都是把文件从宿主机拷贝到镜像里",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-25",
+          "type": "fill",
+          "stem": "ADD 除拷贝文件外，对构建上下文中可识别的本地 tar 归档（未另设解包选项）可____，也可直接从____下载远程文件。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y2-26",
+          "type": "single",
+          "stem": "未另设解包选项时，ADD 的源是构建上下文中可识别的本地 tar 归档（例如真正的 tar.gz），会怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "原样拷贝，不做任何解压",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "直接从 URL 下载远程文件到镜像里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自动解压到目标目录",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不处理压缩包，需要在 RUN 里显式解压",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-27",
+          "type": "single",
+          "stem": "按原文，ADD 比 COPY 多出的 URL 功能指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以直接从 URL 下载远程文件到镜像里",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "可以自动解压 tar.gz 之类的压缩包到目标目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能拷贝宿主机上的文件，不支持任何远程来源",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "可以用 RUN curl -fLO 明确写出下载过程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-28",
+          "type": "single",
+          "stem": "按照原文作者对普通本地文件拷贝的取舍，下列哪项建议正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "现行官方要求不分来源和用途一律优先使用 ADD",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "官方推荐除非需要 COPY 的自动解压或 URL 下载，否则一律用 ADD",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "官方只推荐 ADD，认为 COPY 行为不透明、容易出 bug",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "原文作者建议普通本地文件拷贝优先使用 COPY",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-29",
+          "type": "single",
+          "stem": "按原文，不推荐优先使用 ADD 的原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ADD 无法把宿主机的文件拷贝进镜像里，只能下载远程文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ADD 的行为“太聪明”，反而不透明，容易出 bug",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只有 COPY 才支持自动解压压缩包",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "ADD 不支持 URL 下载，功能比 COPY 更少",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-30",
+          "type": "single",
+          "stem": "按照原文作者的推荐，需要下载远程文件时，更推荐怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 ADD 直接写 URL，省去一步，更加简洁方便",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 COPY 直接写 URL，让构建过程自动下载",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 RUN curl -fLO ... 明确写出来，行为可控",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用 COPY --from=builder 从前面的阶段拷贝文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-31",
+          "type": "single",
+          "stem": "按照原文作者的推荐，需要解压压缩包时，更推荐怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 RUN 里显式处理，更清晰",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "依赖 ADD 的自动解压，不另写命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 COPY 自动解压",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 .dockerignore 排除压缩包，避免进入镜像",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-32",
+          "type": "single",
+          "stem": "按原文作者的简单原则，什么情况下才应使用 ADD 而不是 COPY？",
+          "options": [
+            {
+              "key": "A",
+              "text": "任何需要把文件拷贝进镜像的时候都应优先用 ADD",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "明确需要 COPY 的自动解压或 URL 下载功能时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "明确需要 ADD 的自动解压或 URL 下载功能时",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要排除不需要 COPY 进镜像的文件时",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-33",
+          "type": "multiple",
+          "stem": "按原文，下列关于 COPY 和 ADD 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不论来源与用途，官方都因 ADD 功能更多而要求一律优先使用 ADD",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ADD 可以直接从 URL 下载远程文件到镜像里",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "需要解压时，原文推荐依赖 ADD 的自动解压，不要在 RUN 里处理",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "COPY 不具备 ADD 的自动解压和 URL 下载功能",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "原文认为 ADD 的行为“太聪明”，反而不透明，容易出 bug",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-34",
+          "type": "short"
+        },
+        {
+          "id": "Y2-35",
+          "type": "short"
+        },
+        {
+          "id": "Y2-36",
+          "type": "single",
+          "stem": "按原文，多阶段构建在一个 Dockerfile 里是怎样划分构建阶段的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写多个 RUN，每个 RUN 开启一个构建阶段",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "写多个 COPY，每个 COPY 开启一个构建阶段",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "写多个 Dockerfile，每个文件对应一个阶段",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "写多个 FROM，每个 FROM 开启一个构建阶段",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-37",
+          "type": "single",
+          "stem": "多阶段构建未另行指定 target 时，默认以哪个阶段作为本次构建的最终输出？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只有第一个阶段的镜像",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "最后一个阶段",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "所有阶段的镜像合并后的结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个阶段的镜像都会保留，分别作为独立镜像",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-38",
+          "type": "single",
+          "stem": "按原文，后面的构建阶段怎样使用前面阶段产出的文件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从前面的阶段拷贝文件，例如 COPY --from=builder",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "通过 docker commit 把前一阶段的容器状态保存下来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 ADD 从 URL 重新下载前面阶段生成的文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 RUN 在后一阶段重新编译一遍，不使用前面阶段的文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-39",
+          "type": "fill",
+          "stem": "按原文，多阶段构建的核心价值是把“____环境”和“____环境”分开，从而大幅减小最终镜像体积。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y2-40",
+          "type": "single",
+          "stem": "按原文，传统单阶段写法（FROM golang:1.21，直接在其中编译并运行）有什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最终镜像只基于 alpine（5MB）加上编译好的二进制，可能只有 15MB",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "构建环境和运行环境分离，导致最终镜像体积反而更大",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最终镜像里包含整个 Go 编译器、依赖和源码，可能有 800MB+",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "最终镜像里只有源码，没有 Go 编译器和依赖",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-41",
+          "type": "single",
+          "stem": "按原文的多阶段示例，第二阶段（运行阶段）基于哪个镜像？",
+          "options": [
+            {
+              "key": "A",
+              "text": "golang:1.21",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "alpine:3.18",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "openjdk:17-jre-slim",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "ubuntu",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-42",
+          "type": "single",
+          "stem": "按原文的多阶段示例，最终镜像大约多大，相比传统写法瘦身多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "约 15MB，瘦身 50 倍",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "约 5MB，瘦身 800 倍",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "约 800MB，没有明显瘦身",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "约 15MB，瘦身 5 倍",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-43",
+          "type": "multiple",
+          "stem": "按原文，下列关于多阶段构建的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有阶段的文件和构建工具都会自动合并进最终镜像，无需显式选择和复制产物",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "未指定 target 时默认输出最后阶段，但不保证中间缓存被删除",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "原文认为 Java、Node.js、前端项目也适合借此分开构建与运行环境",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "多阶段构建只能用于 Go 应用，Java、Node.js 和前端项目都无法采用",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "原文 Go 示例基于 alpine（估计约 5MB）加编译后二进制，最终估计约 15MB",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-44",
+          "type": "short"
+        },
+        {
+          "id": "Y2-45",
+          "type": "single",
+          "stem": "按原文，用 alpine（5MB）代替 ubuntu（70MB+）属于下列哪种减小镜像体积的手段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "多阶段构建",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "合并 RUN 指令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "使用 .dockerignore",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "选小的基础镜像",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-46",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于“选小的基础镜像”的做法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 ubuntu（70MB+）代替 alpine（5MB）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 alpine（5MB）代替 ubuntu（70MB+）",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "用 openjdk:17 代替 openjdk:17-jre-slim",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 openjdk:17-jre-slim 代替 openjdk:17",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-47",
+          "type": "single",
+          "stem": "按原文，为什么要用 && 把多个命令合并成一条 RUN？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每条 RUN 都会产生一个新层，所以应该把每个命令分开写成多条 RUN",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "像 .gitignore 一样排除不需要 COPY 进镜像的文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每条 RUN 都会产生一个新层，合并后可以减少层数",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "构建和运行分离，最终镜像只保留运行所需的产物",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-48",
+          "type": "single",
+          "stem": "按原文，清理构建中间产物（如 apt 缓存）应该在哪里做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在同一条 RUN 里装完包就立刻清理",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "在 Dockerfile 末尾另起一条 RUN 统一清理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 .dockerignore 排除缓存目录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 docker system prune 清理",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-49",
+          "type": "single",
+          "stem": "按原文，.dockerignore 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在同一条 RUN 里装完包就立刻清理缓存",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "像 .gitignore 一样，从构建上下文中排除不需要的文件",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "清理镜像里已经存在的缓存和中间产物",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "构建和运行分离，最终镜像只保留运行所需的产物",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-50",
+          "type": "multiple",
+          "stem": "按原文示例，下列哪些宿主机文件适合从构建上下文中排除，避免直接拷贝进镜像？",
+          "options": [
+            {
+              "key": "A",
+              "text": "日志文件",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "应用运行需要的编译产物",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "宿主机已有的 node_modules",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "应用运行必需的配置文件",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": ".git",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-51",
+          "type": "single",
+          "stem": "按原文，调试工具应该怎样处理，才不会增大生产镜像？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 Dockerfile 里预装好，方便线上随时排查",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 ADD 把调试工具打进生产镜像",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 docker commit 把调试工具固化到镜像里",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要时用 docker exec 临时安装，不塞进生产镜像",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-52",
+          "type": "multiple",
+          "stem": "按原文，下列哪些是减小 Docker 镜像体积的常见手段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "选小的基础镜像",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "在镜像里预装各种调试工具",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把每个命令都单独写成一条 RUN",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在同一条 RUN 里装完包就立刻清理缓存",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-53",
+          "type": "short"
+        },
+        {
+          "id": "Y2-54",
+          "type": "single",
+          "stem": "按原文，docker commit 是把什么打包成镜像？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dockerfile 脚本里写好的每一条指令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器相对于镜像的文件变更及配置，相当于保存成新镜像的“快照”",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "构建缓存里没有变化的那些镜像层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "已经提交到 Git 的 Dockerfile 的各个版本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-55",
+          "type": "single",
+          "stem": "按原文，docker commit 的过程有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自动化，过程可复现、可追溯",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "由 Dockerfile 驱动，可以纳入版本控制",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "手动、隐式，镜像里到底发生了什么只有操作者自己知道",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "随时可以重新构建出一模一样的镜像",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-56",
+          "type": "single",
+          "stem": "按原文，docker build 是根据什么构建镜像的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dockerfile 脚本，步骤显式且可自动重复执行、可追溯",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "正在运行的容器的当前状态快照",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "宿主机上的 .dockerignore 文件内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "构建缓存里已有的镜像层",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-57",
+          "type": "single",
+          "stem": "按原文，生产环境应该用哪种方式得到镜像？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一般用 docker commit，临时调试时才用 docker build",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker commit 和 docker build 均可，看个人习惯",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "进入容器手动修改后用 docker commit 保存",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一定要用 docker build",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-58",
+          "type": "multiple",
+          "stem": "按原文，下列哪些是生产环境一定要用 docker build 的理由？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker build 的过程手动、隐式，操作者最清楚",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Dockerfile 可以提交到 Git，方便团队协作和代码审查",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "docker commit 能保证每次得到完全一样的镜像",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "构建步骤由 Dockerfile 显式记录且可自动执行，便于按记录的输入重复构建",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y2-59",
+          "type": "single",
+          "stem": "按原文，docker commit 只适合用在什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "生产环境里的正式发布、上线和长期维护",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "团队协作时统一各人的环境",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "临时调试，如在容器里手动改了点东西想快速验证",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要走代码审查的开发场景",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-60",
+          "type": "single",
+          "stem": "按原文，用 docker commit 保存了调试时的改动，事后还应该怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接把该镜像作为生产镜像发布",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把这些改动沉淀回 Dockerfile",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "删除 Dockerfile，只保留这个镜像",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "继续用 docker commit 保存，不必再写 Dockerfile",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y2-61",
+          "type": "fill",
+          "stem": "docker commit 可类比为给容器的文件变更与配置打一个“____”，而 docker build 则根据 ____ 脚本自动构建镜像。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y2-62",
+          "type": "short"
+        }
+      ]
+    },
+    "Y3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "Y3-1",
+          "type": "fill",
+          "stem": "原文介绍的三种容器数据存储/挂载方式是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y3-2",
+          "type": "single",
+          "stem": "原文介绍的三种存储/挂载方式中，哪一种由 Docker 管理，并被原文推荐用于数据持久化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Bind Mount（目录挂载）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Volume（数据卷）",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "tmpfs",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器自身的可写层",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-3",
+          "type": "single",
+          "stem": "按原文，Volume 默认存储在宿主机的哪个目录下？",
+          "options": [
+            {
+              "key": "A",
+              "text": "/var/lib/docker/volumes/",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "/sys/fs/cgroup/",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "/var/lib/mysql",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "/home/user/code",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-4",
+          "type": "single",
+          "stem": "按原文，Volume 可以用哪一类命令来管理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker volume 系列命令",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "docker network 系列命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "docker compose 系列命令",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "docker stats 命令",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-5",
+          "type": "single",
+          "stem": "按原文，下面这条命令使用的是哪种存储/挂载方式？docker run -v mydata:/app/data myimage",
+          "options": [
+            {
+              "key": "A",
+              "text": "Bind Mount（目录挂载）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "tmpfs",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Volume（数据卷）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "容器自身的可写层",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-6",
+          "type": "single",
+          "stem": "按原文，Bind Mount 把什么挂进容器？",
+          "options": [
+            {
+              "key": "A",
+              "text": "宿主机的任意路径",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "宿主机的内存",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能是 /var/lib/docker/volumes/ 下由 Docker 管理的目录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "镜像仓库（Registry）里的文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-7",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Bind Mount 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "灵活，可以把宿主机的任意路径挂进容器",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "耦合宿主机路径，不利于迁移",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "挂载的是由 Docker 管理的、位于 /var/lib/docker/volumes/ 下的目录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器停止后数据就没了",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "适合开发阶段的热更新调试",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-8",
+          "type": "single",
+          "stem": "按原文，tmpfs 把数据放在哪里，容器停止后数据会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "挂载到宿主机内存，容器停止后数据仍保留在内存中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "挂载到宿主机的任意路径，容器停止后数据仍保留",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "挂载到宿主机内存，容器停止数据就没了",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "挂载到 /var/lib/docker/volumes/ 下，容器停止后数据仍保留",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-9",
+          "type": "single",
+          "stem": "按原文，tmpfs 适合存放什么样的数据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要长期保留、不能随容器停止而丢失的数据库文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "开发阶段需要热更新调试的宿主机源码目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要跨宿主机迁移、保证可移植的业务数据",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "敏感的临时数据，如解密后的密钥、临时缓存",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-10",
+          "type": "fill",
+          "stem": "按原文，常见的最佳实践是：开发阶段用 ____ 方便热更新，生产环境用 ____ 保证可移植性和可管理性。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y3-11",
+          "type": "single",
+          "stem": "按原文，生产环境更推荐用 Volume 而不是 Bind Mount，看重的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "热更新调试更方便",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器停止后数据自动清空",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可以挂载宿主机上的任意路径",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "可移植性和可管理性",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-12",
+          "type": "multiple",
+          "stem": "下列关于原文介绍的三种存储/挂载方式的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Volume 由 Docker 管理，可以用 docker volume 系列命令管理",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Bind Mount 是 Docker 官方推荐的、最通用的方式",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "tmpfs 挂载到宿主机内存，适合存放敏感临时数据",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要独立于容器生命周期保存的数据，应放在卷或绑定挂载等外部存储中",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "生产环境应该优先用 Bind Mount 来保证可移植性",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "Bind Mount 灵活，但耦合宿主机路径、不利于迁移",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-13",
+          "type": "short"
+        },
+        {
+          "id": "Y3-14",
+          "type": "fill",
+          "stem": "原文归纳介绍的五种容器网络用法是：____、____、____、____、____。",
+          "blankCount": 5,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y3-15",
+          "type": "single",
+          "stem": "按原文，Docker 默认使用哪种网络模式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "host",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "none",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "overlay",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "bridge",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-16",
+          "type": "fill",
+          "stem": "按原文，日常接触最多的网络模式是 ____，跨主机通信用的网络模式是 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y3-17",
+          "type": "single",
+          "stem": "在原文 Linux 上的默认 bridge 网络示例中，容器之间通过什么通信？",
+          "options": [
+            {
+              "key": "A",
+              "text": "宿主机的网络栈",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "各自的 loopback 接口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "docker0 虚拟网桥",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "跨宿主机的 overlay 网络",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-18",
+          "type": "single",
+          "stem": "在原文 Linux 默认 bridge 网络的通常默认配置下，容器访问外网通过什么实现？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接使用宿主机的网络栈",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "NAT",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "与另一个容器共享同一个网络栈",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器自己的 loopback 接口",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-19",
+          "type": "single",
+          "stem": "按原文，host 模式的特点是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个容器分配独立 IP，容器之间通过 docker0 虚拟网桥通信",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器没有任何网络，只有 loopback",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "容器与指定的另一个容器共享同一个网络栈",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "共享宿主机网络命名空间，不提供独立的网络栈",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-20",
+          "type": "single",
+          "stem": "按原文，host 模式有什么缺点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "性能最差，所有流量都要经过 NAT 转发",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "共享宿主机端口，同一监听地址和协议下使用同一端口会冲突",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "容器没有任何网络，连 loopback 都没有",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只能用于跨宿主机的容器通信，不能用在单机上",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-21",
+          "type": "single",
+          "stem": "按原文，none 模式下容器的网络情况是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通过 docker0 虚拟网桥与其他容器通信",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "直接使用宿主机的网络栈",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "与指定的另一个容器共享同一个网络栈",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有任何网络，只有 loopback",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-22",
+          "type": "single",
+          "stem": "按原文，container 模式是什么意思？",
+          "options": [
+            {
+              "key": "A",
+              "text": "容器直接使用宿主机的网络栈，不做网络栈隔离",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个容器通过 docker0 虚拟网桥分配独立 IP",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "和指定的另一个容器共享同一个网络栈",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "容器之间跨宿主机通信",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-23",
+          "type": "single",
+          "stem": "按原文，Kubernetes 里 Pod 内多个容器的做法类似于哪种网络模式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "bridge",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "container",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "host",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "none",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-24",
+          "type": "single",
+          "stem": "Docker 的 overlay 网络驱动通常用于哪种跨宿主机通信场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "单机上多个容器互相通信的默认场景",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Docker Swarm 中的跨宿主机通信",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "完全不需要网络、只有 loopback 的纯计算任务",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要和宿主机共用网络栈、追求性能的场景",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-25",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Docker 网络模式的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "host：共享宿主机网络命名空间，不提供独立网络栈",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "container：每个容器都分配独立的网络栈和 IP",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "none：容器没有任何网络，只有 loopback",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "overlay：只能连接同一台宿主机内的容器，不能跨宿主机通信",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "Linux 默认 bridge 网络：通常使用 docker0 虚拟网桥，默认通过 NAT 访问外网",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-26",
+          "type": "multiple",
+          "stem": "按原文，下列关于 host 模式的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "省去 NAT 等网络开销，常用于优化网络性能",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个容器分配独立 IP，通过 docker0 虚拟网桥通信",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "访问外网需要经过 NAT",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会和宿主机抢端口",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "同一监听地址和协议下，多个容器使用同一端口会发生冲突",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "容器没有任何网络，只有 loopback",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-27",
+          "type": "short"
+        },
+        {
+          "id": "Y3-28",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于同一个宿主机上多个容器之间的常见通信方式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "tmpfs 挂载：让容器把数据写进宿主机内存来互相读取",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "默认 bridge 网络：通过容器的 IP 直接访问",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "none 模式：容器之间通过 loopback 通信",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "自定义 bridge 网络：加入同一网络的容器用容器名作为 DNS 名互访",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "host 模式：所有容器共享宿主机网络，通过 localhost:port 访问",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "通过 Docker Compose：自动为一个 project 创建一个 bridge 网络",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-29",
+          "type": "single",
+          "stem": "按原文，为什么不推荐用默认 bridge 网络做容器间通信？",
+          "options": [
+            {
+              "key": "A",
+              "text": "容器之间无法通过网络互相通信",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有容器会失去端口隔离，直接共享宿主机网络",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能用于跨宿主机的容器通信",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器 IP 不固定，也不支持容器名 DNS 解析",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-30",
+          "type": "single",
+          "stem": "按原文，加入同一个自定义 bridge 网络的容器之间可以怎样互访？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接用容器名作为 DNS 名互访",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只能通过容器 IP 访问，不能解析容器名",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "必须通过 localhost:port 访问，并且失去端口隔离",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "必须借助 Docker Compose 才能互访",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-31",
+          "type": "single",
+          "stem": "按原文示例，创建自定义 bridge 网络 mynet 用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker network prune",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker run -d --name mynet redis",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "docker network create mynet",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "docker compose up -d",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-32",
+          "type": "single",
+          "stem": "按原文示例，要让容器加入自定义网络 mynet，docker run 里用的是哪个参数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "--name mynet",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "--network mynet",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "-p mynet",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "-v mynet",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-33",
+          "type": "single",
+          "stem": "按原文示例，app 容器和 redis 容器加入同一个自定义网络后，app 容器里可以通过什么地址访问 redis？",
+          "options": [
+            {
+              "key": "A",
+              "text": "mynet:6379",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "myapp:6379",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "redis:6379",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "localhost:6379",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-34",
+          "type": "single",
+          "stem": "按原文，用 host 模式让多个容器通信，有什么代价？",
+          "options": [
+            {
+              "key": "A",
+              "text": "容器的 IP 不固定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "失去了端口隔离",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不支持容器名 DNS 解析",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器之间完全无法通信",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-35",
+          "type": "single",
+          "stem": "按原文，通过 Docker Compose 做容器间通信时，Compose 会自动做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "为每个容器各创建一个 overlay 网络",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "为一个 project 创建一个 bridge 网络",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把所有容器切换成 host 模式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把所有容器切换成 none 模式",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-36",
+          "type": "single",
+          "stem": "按原文，生产中最常用的容器间通信组合是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自定义网络 + 容器名 DNS",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "默认 bridge 网络 + 容器 IP",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "host 模式 + localhost:port",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "none 模式 + loopback",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-37",
+          "type": "multiple",
+          "stem": "按原文，下列关于同一宿主机上容器间通信的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自定义 bridge 网络里，容器之间可以直接用容器名作为 DNS 名互访",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "默认 bridge 网络支持直接用容器名做 DNS 解析",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "默认 bridge 网络可以通过容器 IP 直接访问，但 IP 不固定",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "host 模式下可以直接通过 localhost:port 访问，但失去了端口隔离",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "生产中最常用的是 host 模式，因为它保留了端口隔离",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-38",
+          "type": "short"
+        },
+        {
+          "id": "Y3-39",
+          "type": "short"
+        },
+        {
+          "id": "Y3-40",
+          "type": "single",
+          "stem": "按原文，Docker Compose 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Docker 官方提供的单机容器编排工具",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "管理多台机器上容器的集群编排系统",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "存储和分发镜像的仓库",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用来构建镜像的脚本文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-41",
+          "type": "single",
+          "stem": "按原文，Docker Compose 用什么来定义一组相关服务？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一个 Dockerfile",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个 .dockerignore 文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一条很长的 docker run 命令",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一个 YAML 文件",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-42",
+          "type": "single",
+          "stem": "按原文，Docker Compose 的典型使用场景是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "跨多台主机调度、扩缩容大量容器并自愈",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "本地开发或小型单机部署 Web 应用、数据库和缓存的组合",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "用多阶段构建缩小生产镜像的体积",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "定期清理磁盘上无用的镜像、容器和卷",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-43",
+          "type": "fill",
+          "stem": "按原文，Docker Compose 的典型场景是本地开发或小型单机部署一套“____ + ____ + ____”的组合。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y3-44",
+          "type": "single",
+          "stem": "按原文示例，web 服务通过哪项配置声明它依赖 db 和 redis？",
+          "options": [
+            {
+              "key": "A",
+              "text": "build",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "depends_on",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "ports",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "volumes",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-45",
+          "type": "single",
+          "stem": "按原文示例，db 服务使用的镜像是哪个？",
+          "options": [
+            {
+              "key": "A",
+              "text": "mysql:8",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "redis:7",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "nginx",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "openjdk:17-jdk-slim",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-46",
+          "type": "single",
+          "stem": "按原文示例，db 服务把数据卷 db_data 挂载到容器内的哪个路径？",
+          "options": [
+            {
+              "key": "A",
+              "text": "/var/lib/mysql",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "/var/lib/docker/volumes/",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "/app/data",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "/home/user/code",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-47",
+          "type": "fill",
+          "stem": "Compose 的四个常用命令中，后台启动项目服务的是 ____，停止并删除项目服务容器及相应非外部网络的是 ____，实时查看日志的是 ____，查看服务状态的是 ____（填写完整命令）。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y3-48",
+          "type": "single",
+          "stem": "按原文，docker compose up -d 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "停止并删除项目服务容器及相应非外部网络",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "实时查看日志",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "后台启动所有服务",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "查看服务状态",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-49",
+          "type": "single",
+          "stem": "按原文，Docker Compose 只解决单机编排，需要跨主机编排时应该用什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "还是用 Docker Compose，只需加上 -d 参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker commit",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Docker Swarm 或 Kubernetes",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "bridge 网络",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-50",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Docker Compose 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以解决跨主机的容器编排",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用一个 YAML 文件定义一组相关服务",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "docker compose down 只停止服务容器，不删除容器",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一条命令就可以启动或停止整组服务",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "典型场景是本地开发或小型单机部署 Web 应用加数据库加缓存",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "docker compose ps 用来实时查看日志",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-51",
+          "type": "short"
+        },
+        {
+          "id": "Y3-52",
+          "type": "single",
+          "stem": "按原文，下列哪一项准确概括了 Docker 和 Kubernetes 的分工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Docker 负责跨多台机器调度大量容器，Kubernetes 负责在单机上打包和运行一个容器",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都只负责在单机上把容器跑起来，区别只在命令不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Docker 只负责构建镜像，Kubernetes 只负责存储和分发镜像",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Docker 负责怎么把一个容器跑起来，Kubernetes 负责怎么把一大堆容器跨多台机器跑起来、管起来",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-53",
+          "type": "single",
+          "stem": "按原文，Docker 在这组关系里是什么，解决什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "容器运行时和镜像构建工具，解决单机上如何打包、分发、运行一个容器",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "容器编排系统，解决跨多台机器的调度、扩缩容和自愈",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "单机容器编排工具，用一个 YAML 文件定义一组服务",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "符合 CRI 规范的运行时，专门供 Kubernetes 调用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-54",
+          "type": "single",
+          "stem": "按原文，Kubernetes（K8s）是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "容器运行时和镜像构建工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "存储和分发镜像的仓库",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "容器编排系统",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "单机上的容器网络模式",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-55",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于 Kubernetes 要解决的问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "单机上如何打包一个容器镜像",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "跨多台机器如何调度容器",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "容器的扩缩容与自愈",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "单机上如何构建镜像并本地调试",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "服务发现与负载均衡",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "配置管理与发布回滚",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-56",
+          "type": "single",
+          "stem": "按原文，Docker 和 Kubernetes 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是竞争关系，Kubernetes 用来取代 Docker",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者是同一类工具，都只解决单机上运行容器的问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者没有任何关系，Kubernetes 不需要容器运行时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是竞争关系，而是上下游关系",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-57",
+          "type": "single",
+          "stem": "按原文，Kubernetes 要实际运行容器，需要什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Docker Compose",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Docker Swarm",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一个底层的容器运行时",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "一个私有镜像仓库（如 Harbor）",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-58",
+          "type": "single",
+          "stem": "按原文，从 Kubernetes 1.24 起发生了什么变化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "K8s 移除了对 Docker Engine 的直接支持（dockershim）",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "K8s 开始把 Docker Engine 作为唯一支持的运行时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "K8s 不再支持 OCI 标准的镜像格式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "K8s 移除了对 CRI 规范的支持",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-59",
+          "type": "multiple",
+          "stem": "按原文，从 Kubernetes 1.24 起，下列哪些是 K8s 改用的符合 CRI 规范的运行时示例？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Docker Engine（通过 dockershim）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "containerd",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Docker Swarm",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Docker Compose",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "CRI-O",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-60",
+          "type": "single",
+          "stem": "按原文，为什么用 docker build 打出来的镜像依然可以在 K8s 上跑？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为 K8s 仍然通过 dockershim 直接调用 Docker Engine",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为 containerd 会把镜像重新构建一遍",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为镜像是 Docker 专有格式，K8s 专门为它保留了支持",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "因为镜像格式遵循 OCI 标准",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y3-61",
+          "type": "single",
+          "stem": "按原文，开发者日常仍然用 Docker 来做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "构建镜像和本地调试",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "调度和扩缩容多台机器上的容器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "替代 K8s 做服务发现和负载均衡",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "为 K8s 提供符合 CRI 规范的运行时",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-62",
+          "type": "multiple",
+          "stem": "按原文，下列关于 Docker 与 Kubernetes 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Docker 和 Kubernetes 是竞争关系，K8s 用来取代 Docker",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "K8s 从 1.24 起移除了对 Docker Engine 的直接支持（dockershim）",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "K8s 现在改用符合 CRI 规范的运行时，如 containerd、CRI-O",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用 docker build 打出来的镜像依然可以在 K8s 上跑，因为镜像格式遵循 OCI 标准",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "K8s 负责单机上如何打包、分发、运行一个容器",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y3-63",
+          "type": "fill",
+          "stem": "按原文，一句话记：Docker 管“____”，K8s 管“____”。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y3-64",
+          "type": "short"
+        }
+      ]
+    },
+    "Y4": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "Y4-1",
+          "type": "single",
+          "stem": "按原文，docker pull <image> 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "拉取镜像",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "列出本地镜像",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "删除本地镜像",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "基于当前目录的 Dockerfile 构建镜像",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-2",
+          "type": "single",
+          "stem": "按原文，列出本地镜像用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker ps",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker pull <image>",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "docker rmi <image>",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "docker images",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-3",
+          "type": "single",
+          "stem": "按原文，docker rmi <image> 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "删除容器",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "停止容器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "删除镜像",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "清理无用资源",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-4",
+          "type": "single",
+          "stem": "按原文，按名称或 ID 删除指定容器用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker rmi <image>",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker rm <container>",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "docker stop <container>",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "docker system prune",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-5",
+          "type": "single",
+          "stem": "按原文，docker build -t name:tag . 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "拉取名为 name:tag 的镜像",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "启动一个名为 name 的后台容器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "删除名为 name:tag 的镜像",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "基于当前目录的 Dockerfile 构建镜像",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-6",
+          "type": "single",
+          "stem": "按原文，docker ps 查看的是运行中的容器，想看所有容器要加哪个参数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "-a",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "-f",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "-d",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "-t",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-7",
+          "type": "single",
+          "stem": "按原文，docker logs -f <container> 中的 -f 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只查看日志的最后 100 行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "实时跟踪日志",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "查看所有容器（包括已退出的）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "以后台方式运行容器",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-8",
+          "type": "single",
+          "stem": "按原文，docker inspect <container> 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查看容器资源占用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "查看容器日志",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "查看容器的详细信息（JSON 格式）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "查看 Docker 占用了多少磁盘",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-9",
+          "type": "single",
+          "stem": "按原文，docker stats 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查看 Docker 占用了多少磁盘",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "查看容器资源占用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "查看运行中的容器列表",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "实时跟踪容器日志",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-10",
+          "type": "fill",
+          "stem": "按原文，系统相关的命令中，查看 Docker 占用多少磁盘的是 ____，清理无用资源的是 ____（填写完整命令）。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y4-11",
+          "type": "fill",
+          "stem": "按原文，停止、启动、重启容器的命令依次是 docker ____、docker ____、docker ____（填写子命令）。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y4-12",
+          "type": "fill",
+          "stem": "按原文，Docker 常用命令按用途分成三类：____、____、____（填写类别名）。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y4-13",
+          "type": "multiple",
+          "stem": "按原文，下列命令与作用的对应哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker rmi <image>：删除容器",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker logs -f <container>：查看日志并实时跟踪",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "docker system prune：查看 Docker 占用了多少磁盘",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "docker exec -it <container> bash：进入容器",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "docker inspect <container>：查看容器的详细信息",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-14",
+          "type": "short"
+        },
+        {
+          "id": "Y4-15",
+          "type": "single",
+          "stem": "按原文，进入一个运行中的容器，面试里的推荐答案是哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker attach <container>",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker logs -f <container>",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "docker inspect <container>",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "docker exec -it <container> bash",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-16",
+          "type": "single",
+          "stem": "按原文，docker exec 中的 -i 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "分配一个伪终端（TTY）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在后台运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "交互式（保留 stdin）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "要在容器里运行的 shell",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-17",
+          "type": "single",
+          "stem": "按原文，docker exec 中的 -t 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "分配一个伪终端（TTY）",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "交互式（保留 stdin）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "指定要运行的 shell",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器停止后自动删除",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-18",
+          "type": "single",
+          "stem": "按原文，镜像里没有 bash（比如 alpine 只有 sh）时，进入容器应该怎么调整命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把 -it 换成 -d 以后台运行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把 bash 换成 sh",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把 exec 换成 attach，改用老办法",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "改用 docker logs -f 实时跟踪日志",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-19",
+          "type": "single",
+          "stem": "按原文，docker attach 为什么不推荐？",
+          "options": [
+            {
+              "key": "A",
+              "text": "exec 是在容器里启动一个新的进程，退出时不会影响主进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "attach 退出时不会影响容器主进程，比 exec 更安全",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "面试里的推荐答案就是 attach，exec 才是老办法",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "attach 连接现有主进程的标准流，Ctrl+C 可能中断主进程并使容器停止，容易误操作",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-20",
+          "type": "single",
+          "stem": "正常退出 exec 新开的 shell（未另行操作主进程），与在 attach 中按 Ctrl+C 相比，对容器主进程的影响哪项正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "正常退出 exec shell 本身不终止容器主进程；attach 中按 Ctrl+C 可能中断主进程",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "退出 exec shell 必然杀掉主进程，attach 中按 Ctrl+C 则绝不影响主进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这两种操作都会无条件杀掉容器主进程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这两种操作在任何情况下都不影响容器主进程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-21",
+          "type": "fill",
+          "stem": "按原文，进入运行中的容器，推荐使用 docker ____，不推荐使用 docker ____（填写子命令）。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y4-22",
+          "type": "multiple",
+          "stem": "按原文，下列关于 docker exec 和 docker attach 的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "attach 比 exec 更安全，所以是面试里的推荐答案",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "exec 是在容器里启动一个新的进程",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "attach 后按 Ctrl+C 可能把中断信号传给容器主进程并使容器停止",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "exec 是不推荐的老办法，attach 才是最常用的方式",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "正常退出 exec 新开的 shell 本身不会终止容器主进程",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-23",
+          "type": "short"
+        },
+        {
+          "id": "Y4-24",
+          "type": "single",
+          "stem": "按原文，排查容器启动后立刻退出，列在最前、说“先”做的是哪一步？",
+          "options": [
+            {
+              "key": "A",
+              "text": "覆盖 ENTRYPOINT 进入 shell 调试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "检查是否因内存限制被 OOM Killer 杀掉",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "查看日志",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "检查主进程是否在前台运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-25",
+          "type": "single",
+          "stem": "按原文，在哪里能看到容器退出时的退出码？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker ps（不加 -a）的 STATUS 列，会显示 Exited (X)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker ps -a 的 STATUS 列，会显示 Exited (X)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "docker stats 的输出，会显示 Exited (X)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "docker system df 的输出，会显示 Exited (X)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-26",
+          "type": "single",
+          "stem": "按原文，退出码 137 通常表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "正常退出（退出码 0）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "段错误（退出码 139）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "其他非 0 退出码仅凭数字就能确诊为应用自身报错",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "OOM 被杀（128+9）",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-27",
+          "type": "single",
+          "stem": "对于除 0、137、139 之外的其他非 0 退出码，排查时应怎样判断？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一律判定为正常退出，无需查看日志",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一律判定为 OOM 被杀，无需其他证据",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "结合应用日志、启动命令及信号终止情况判断，不能一概认定为应用报错",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "一律判定为段错误，无需其他证据",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-28",
+          "type": "fill",
+          "stem": "按原文，容器退出码 0、137、139 通常依次表示：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y4-29",
+          "type": "single",
+          "stem": "按原文，要让容器持续运行，容器里的主进程必须怎样运行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前台运行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "后台化运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "以非 root 用户运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "以交互式运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-30",
+          "type": "single",
+          "stem": "按原文，下列哪种启动写法会因为主进程后台化，导致容器启动完立刻退出？",
+          "options": [
+            {
+              "key": "A",
+              "text": "nginx -g 'daemon off;'",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker run -it --entrypoint sh <image>",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "nginx",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "docker logs --tail 100 <container>",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-31",
+          "type": "single",
+          "stem": "按原文，容器一启动就挂，想临时用 shell 进去查看，应该怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker logs --tail 100 <container>，从日志里找原因",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker run -it --entrypoint sh <image>，把 ENTRYPOINT 覆盖成 shell",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "docker inspect <container>，查看是否 OOMKilled: true",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "docker ps -a，查看 STATUS 列里的退出码 Exited (X)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-32",
+          "type": "single",
+          "stem": "按原文，用 docker run -it --entrypoint sh <image> 进入容器之后，下一步做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "执行 docker system prune 清理无用资源",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按 Ctrl+C 结束主进程后重新 attach",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "再用 docker logs -f 实时跟踪日志",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "手动执行原来的启动命令，看看到底报什么错",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-33",
+          "type": "single",
+          "stem": "按原文，怎样确认容器是被 OOM Killer 杀掉的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker inspect 能看到 OOMKilled: true",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "docker ps -a 的 STATUS 列显示 Exited (0)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "docker ps -a 的 STATUS 列显示 Exited (139)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "docker stats 能看到 OOMKilled: true",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-34",
+          "type": "single",
+          "stem": "按原文，“检查资源限制”这一步要排查的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "依赖缺失、端口冲突、配置错误等应用层报错",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是否因为 cgroups 内存限制太小被 OOM Killer 杀掉",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "启动命令是后台化的程序，主进程启动完就退出",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "有没有先用 docker logs 查看过日志",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-35",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于排查“容器启动后立刻退出”的做法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 docker logs <container> 查看日志",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用 docker system df 查看 Docker 占用了多少磁盘",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 docker ps -a 查看 STATUS 里的退出码",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "临时把 ENTRYPOINT 覆盖成 shell，进去手动执行启动命令",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "检查启动命令的主进程是否在前台运行",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-36",
+          "type": "short"
+        },
+        {
+          "id": "Y4-37",
+          "type": "single",
+          "stem": "按原文，docker run 的 -d 参数表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "交互式并分配终端，通常一起用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器停止后自动删除（适合一次性任务）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "以非 root 用户运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "后台运行（detached）",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-38",
+          "type": "single",
+          "stem": "按原文，docker run 的 -it 参数表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "后台运行（detached）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给容器起一个名字",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "交互式并分配终端，通常一起用",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "设置容器里的环境变量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-39",
+          "type": "single",
+          "stem": "按原文，docker run -p 8080:80 做的是端口映射，8080 和 80 分别是哪个端口？",
+          "options": [
+            {
+              "key": "A",
+              "text": "8080 是宿主机端口，80 是容器端口",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "8080 是容器端口，80 是宿主机端口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两个都是宿主机端口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两个都是容器端口",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-40",
+          "type": "single",
+          "stem": "按原文，docker run 的 -v 参数用于做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "指定容器网络",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "设置环境变量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "目录或数据卷挂载",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "设置内存和 CPU 资源限制",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-41",
+          "type": "fill",
+          "stem": "按原文，docker run 的 --name 用来指定容器的 ____，--network 用来指定容器的 ____，-e KEY=VALUE 用来设置 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y4-42",
+          "type": "single",
+          "stem": "按原文，docker run 的 --rm 参数表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自动重启策略",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器停止后自动删除",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "后台运行（detached）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "以非 root 用户运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-43",
+          "type": "single",
+          "stem": "按原文，docker run 的 --restart 参数用于做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "设置自动重启策略",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "让容器停止后自动删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "限制内存和 CPU",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "以非 root 用户运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-44",
+          "type": "fill",
+          "stem": "按原文，--restart 自动重启策略的两个示例取值是 ____ 和 ____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "Y4-45",
+          "type": "single",
+          "stem": "按原文，docker run 的 -m 512m --cpus=1 用于做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "设置容器名称和网络",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "设置端口映射和数据卷挂载",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "设置环境变量和自动重启策略",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "限制容器的内存和 CPU 资源",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-46",
+          "type": "single",
+          "stem": "按原文，docker run 的 -u 1000:1000 用于做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "限制容器的内存和 CPU 资源",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "设置容器里的环境变量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "以非 root 用户运行",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "设置宿主机到容器的端口映射",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-47",
+          "type": "multiple",
+          "stem": "按原文，典型生产启动命令里用到了下列哪些参数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "--entrypoint sh",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "-d",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "--restart unless-stopped",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "-u 1000:1000",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "--network mynet",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "-m 1g --cpus=2",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-48",
+          "type": "multiple",
+          "stem": "按原文，下列参数与作用的对应哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "-d：后台运行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "-u 1000:1000：以 root 用户运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "--rm：容器停止后自动删除",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "-it：容器停止后自动删除",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "-e KEY=VALUE：设置环境变量",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-49",
+          "type": "short"
+        },
+        {
+          "id": "Y4-50",
+          "type": "single",
+          "stem": "按原文，Docker 用久了磁盘占用越来越大，主要是哪一组东西堆积造成的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "悬空镜像、停止的容器、没人用的卷",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "运行中的容器、悬空镜像、没人用的卷",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "悬空镜像、停止的容器、正在使用的卷",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没被任何容器使用的所有镜像、停止的容器、没人用的卷",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-51",
+          "type": "single",
+          "stem": "按原文，docker container prune 清理的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "悬空镜像",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "停止的容器",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "没人用的卷",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "无用的网络",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-52",
+          "type": "single",
+          "stem": "按原文，docker image prune 清理的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "停止的容器和无用的网络",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "没人用的卷和停止的容器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有没被任何容器使用的镜像",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "悬空镜像（dangling images）",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-53",
+          "type": "single",
+          "stem": "按原文，docker image prune -a 比 docker image prune 多清理什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没被任何容器使用的镜像",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "停止的容器和无用的网络",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "没人用的数据卷",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "正在运行的容器使用的镜像",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-54",
+          "type": "fill",
+          "stem": "默认清理未被任何容器引用的匿名本地卷用 docker ____ prune，清理未使用的网络用 docker ____ prune（填写子命令）。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "Y4-55",
+          "type": "single",
+          "stem": "按原文，docker system prune（不加任何选项）会清理什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "停止的容器、悬空镜像、未使用网络，以及所有未使用的命名卷",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有未使用的镜像和所有未使用的卷，但不清理停止容器与网络",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "停止的容器、悬空镜像、未使用的网络和未使用的构建缓存",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "仅悬空镜像，保留所有停止容器、未使用网络及未使用的构建缓存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-56",
+          "type": "single",
+          "stem": "按原文，docker system prune -a 比不带 -a 多清理什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "无用的卷",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "没被使用的所有镜像",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "无用的网络",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "停止的容器",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-57",
+          "type": "single",
+          "stem": "想在 docker system prune -a 的基础上顺带清理未使用的匿名卷，要再加什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "--tail 100",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "--restart always",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "--network mynet",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "--volumes",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-58",
+          "type": "single",
+          "stem": "按原文，清理之前可以先用哪条命令查看占用分布？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker stats",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker images",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "docker system df",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "docker inspect <container>",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-59",
+          "type": "single",
+          "stem": "按原文，建议在 CI/CD 流水线或定时任务里定期执行清理，是为了避免什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "容器被 OOM Killer 杀掉",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "磁盘爆满导致容器无法启动",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "构建缓存无法命中",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容器里的主进程被放到后台运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "Y4-60",
+          "type": "multiple",
+          "stem": "按原文，下列清理命令与清理对象的对应哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "docker volume prune：清理无用的网络",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "docker container prune：清理停止的容器",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "docker image prune -a：清理所有没被任何容器使用的镜像",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "docker network prune：清理无用的卷",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "docker image prune：清理悬空镜像",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "Y4-61",
+          "type": "short"
+        }
+      ]
+    }
+  }
+}

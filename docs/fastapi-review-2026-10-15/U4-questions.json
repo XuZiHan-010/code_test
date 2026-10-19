@@ -1,0 +1,1011 @@
+[
+  {
+    "id": "U4-1",
+    "typed": {
+      "id": "U4-1",
+      "type": "multiple",
+      "stem": "按官方文档，FastAPI 会用路径操作函数声明的返回类型（响应模型）完成下列哪些工作？",
+      "options": [
+        {
+          "key": "A",
+          "text": "对返回数据做校验，数据无效时返回服务器错误而不是错误的数据",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "数据无效时仍照常发送给客户端，只在响应头里附上校验警告",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "在 OpenAPI 的路径操作中为响应添加 JSON Schema",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "使用 Pydantic 把返回数据序列化为 JSON",
+          "correct": true
+        },
+        {
+          "key": "E",
+          "text": "先用 jsonable_encoder 转换返回数据，再交给 JSONResponse 序列化",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 会用路径操作函数声明的返回类型（响应模型）完成下列哪些工作？",
+    "answer": "返回类型会让 FastAPI 校验返回数据（数据无效说明应用代码有问题，返回服务器错误而不是错误数据）、在 OpenAPI 的路径操作中为响应添加 JSON Schema，并使用 Pydantic 把返回数据序列化为 JSON。数据无效时仍照常发送的说法与原文相反；先用 `jsonable_encoder` 转换再交给 `JSONResponse` 是没有声明响应模型时的做法。[原文§响应模型 - 返回类型 · 返回类型](https://fastapi.tiangolo.com/zh/tutorial/response-model/#response-model-return-type) [原文§直接返回响应 · 响应模型如何工作](https://fastapi.tiangolo.com/zh/advanced/response-directly/#how-a-response-model-works)"
+  },
+  {
+    "id": "U4-2",
+    "typed": {
+      "id": "U4-2",
+      "type": "single",
+      "stem": "路径操作函数声明了返回类型，但实际返回的数据缺少必填字段时，FastAPI 会怎么处理？",
+      "options": [
+        {
+          "key": "A",
+          "text": "照常返回缺少字段的数据，由客户端自行处理",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "返回服务器错误，而不是返回错误的数据",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "自动用默认值或 None 补全缺失字段后再返回",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "返回客户端错误，提示请求方发送的数据无效",
+          "correct": false
+        }
+      ]
+    },
+    "question": "路径操作函数声明了返回类型，但实际返回的数据缺少必填字段时，FastAPI 会怎么处理？",
+    "answer": "缺少字段说明应用代码有问题、没有返回应有的数据，FastAPI 会返回服务器错误而不是返回错误的数据，这样你和客户端都能确定收到的数据及其结构符合预期。照常返回、自动补全缺失字段、返回客户端错误都不是原文的行为。[原文§响应模型 - 返回类型 · 返回类型](https://fastapi.tiangolo.com/zh/tutorial/response-model/#response-model-return-type)"
+  },
+  {
+    "id": "U4-3",
+    "typed": {
+      "id": "U4-3",
+      "type": "single",
+      "stem": "函数实际返回的是 dict 或数据库对象，却想让 Pydantic 模型来做文档、校验等工作，官方为什么让用 response_model 参数而不是返回类型注解？",
+      "options": [
+        {
+          "key": "A",
+          "text": "返回类型注解只能声明 int、bool 等标量类型，不能写成 Pydantic 模型",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "返回类型注解不会被 FastAPI 用来做校验，只有 response_model 才会",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "返回类型注解会让 FastAPI 无法为该路径操作生成 OpenAPI 文档",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "编辑器和工具会（正确地）报错，提示函数返回的 dict 等类型与注解的模型不同",
+          "correct": true
+        }
+      ]
+    },
+    "question": "函数实际返回的是 dict 或数据库对象，却想让 Pydantic 模型来做文档、校验等工作，官方为什么让用 response_model 参数而不是返回类型注解？",
+    "answer": "如果加了返回类型注解，工具和编辑器会（正确地）报错，提示函数返回的类型（例如 dict）与声明的 Pydantic 模型不同，所以这种情况改用路径操作装饰器的 `response_model` 参数。其余选项对返回类型注解的限制都是原文没有的说法。[原文§响应模型 - 返回类型 · response_model 参数](https://fastapi.tiangolo.com/zh/tutorial/response-model/#response-model-parameter)"
+  },
+  {
+    "id": "U4-4",
+    "typed": {
+      "id": "U4-4",
+      "type": "single",
+      "stem": "路径操作同时声明了返回类型注解和 response_model 时，FastAPI 用哪一个？",
+      "options": [
+        {
+          "key": "A",
+          "text": "response_model，它具有优先级",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "返回类型注解，response_model 被忽略",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "两者同时使用，先按返回类型校验，再按 response_model 过滤",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "两者不一致时 FastAPI 启动即报错",
+          "correct": false
+        }
+      ]
+    },
+    "question": "路径操作同时声明了返回类型注解和 response_model 时，FastAPI 用哪一个？",
+    "answer": "response_model 具有优先级，由 FastAPI 使用。这样即使返回的类型与响应模型不同，你也能给函数加上供编辑器和 mypy 使用的正确注解，同时仍让 FastAPI 用 response_model 做校验、文档等。[原文§响应模型 - 返回类型 · response_model 的优先级](https://fastapi.tiangolo.com/zh/tutorial/response-model/#response-model-priority)"
+  },
+  {
+    "id": "U4-5",
+    "typed": {
+      "id": "U4-5",
+      "type": "short"
+    },
+    "question": "为什么不能用同一个带明文密码的模型既声明输入又声明输出？官方推荐怎样用 response_model 解决？",
+    "answer": "同一个模型作输出时，API 会在响应里原样返回密码，若其他路径操作也用它，就可能把用户密码发给每个客户端。应另建一个不含密码的输出模型（如 `UserOut`），用 `response_model=UserOut` 声明；函数即使返回含密码的输入对象，FastAPI 也会过滤掉输出模型中未声明的数据。[原文§响应模型 - 返回类型 · 返回与输入相同的数据](https://fastapi.tiangolo.com/zh/tutorial/response-model/#return-the-same-input-data) [原文§响应模型 - 返回类型 · 添加输出模型](https://fastapi.tiangolo.com/zh/tutorial/response-model/#add-an-output-model)"
+  },
+  {
+    "id": "U4-6",
+    "typed": {
+      "id": "U4-6",
+      "type": "short"
+    },
+    "question": "怎样既让函数的返回类型注解通过编辑器和 mypy 的检查，又让 FastAPI 过滤掉多余的字段？",
+    "answer": "用类继承：把公共字段放在 `BaseUser`，`UserIn` 继承它并多出 `password`，函数注解返回 `BaseUser`、实际返回 `UserIn`。类型系统里子类可以代替基类，所以工具不报错；FastAPI 按返回类型只保留其中声明的字段，并做了处理，不会因类继承而返回比预期更多的数据。[原文§响应模型 - 返回类型 · 返回类型与数据过滤](https://fastapi.tiangolo.com/zh/tutorial/response-model/#return-type-and-data-filtering) [原文§响应模型 - 返回类型 · FastAPI 的数据过滤](https://fastapi.tiangolo.com/zh/tutorial/response-model/#fastapi-data-filtering)"
+  },
+  {
+    "id": "U4-7",
+    "typed": {
+      "id": "U4-7",
+      "type": "single",
+      "stem": "路径操作的返回类型注解写成 `Response | dict` 会怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "创建响应模型失败，因为它不是 Pydantic 类型，也不是单个 Response 类或子类",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "正常工作，FastAPI 会根据函数实际返回的是 Response 还是 dict 自动选择处理方式，并照常校验",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "正常工作，只是 FastAPI 不会为该路径操作生成响应模型，也不会生成对应的文档",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "编辑器和 mypy 会报错，但 FastAPI 运行时会自动跳过响应模型的生成并正常返回",
+          "correct": false
+        }
+      ]
+    },
+    "question": "路径操作的返回类型注解写成 `Response | dict` 会怎样？",
+    "answer": "FastAPI 会尝试基于该注解创建响应模型并失败，因为它既不是 Pydantic 类型，也不是单个 Response 类或其子类，而是两者的联合类型。后面三个选项描述的都是原文没有的行为。[原文§响应模型 - 返回类型 · 无效的返回类型注解](https://fastapi.tiangolo.com/zh/tutorial/response-model/#invalid-return-type-annotations)"
+  },
+  {
+    "id": "U4-8",
+    "typed": {
+      "id": "U4-8",
+      "type": "single",
+      "stem": "路径操作设置了 `response_model_exclude_unset=True`，响应里会包含哪些字段？",
+      "options": [
+        {
+          "key": "A",
+          "text": "只包含值不是 None 的字段，值为 None 的一律省略",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "只包含实际设置过值的字段，不含靠默认值填上的",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "只包含值与模型默认值不同的字段，相同的一律省略",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "不包含任何带默认值的字段，即使数据里给了值",
+          "correct": false
+        }
+      ]
+    },
+    "question": "路径操作设置了 `response_model_exclude_unset=True`，响应里会包含哪些字段？",
+    "answer": "响应只包含实际设置过值的字段，不包含靠默认值填上的字段；只要数据里给了某个有默认值的字段的值，它就会出现。只排除 None 或只排除等于默认值的字段是另外的参数（`response_model_exclude_none`、`response_model_exclude_defaults`）。[原文§响应模型 - 返回类型 · 使用 response_model_exclude_unset 参数](https://fastapi.tiangolo.com/zh/tutorial/response-model/#use-the-response-model-exclude-unset-parameter)"
+  },
+  {
+    "id": "U4-9",
+    "typed": {
+      "id": "U4-9",
+      "type": "single",
+      "stem": "官方为什么仍推荐用多个类，而不是用 response_model_include、response_model_exclude 来省略输出字段？",
+      "options": [
+        {
+          "key": "A",
+          "text": "它们只接受 list，传入 set 或 tuple 会报错",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "OpenAPI 里的 JSON Schema 仍是完整模型",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "它们只在 GET 路径操作里才会生效，其他方法忽略",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "使用它们会让 FastAPI 跳过对响应数据的校验和文档",
+          "correct": false
+        }
+      ]
+    },
+    "question": "官方为什么仍推荐用多个类，而不是用 response_model_include、response_model_exclude 来省略输出字段？",
+    "answer": "因为即使用这两个参数省略了一些属性，应用在 OpenAPI（和文档）里生成的 JSON Schema 仍然是完整模型。它们只是在只有一个 Pydantic 模型时从输出中移除数据的快捷方式。[原文§响应模型 - 返回类型 · response_model_include 和 response_model_exclude](https://fastapi.tiangolo.com/zh/tutorial/response-model/#response-model-include-and-response-model-exclude)"
+  },
+  {
+    "id": "U4-10",
+    "typed": {
+      "id": "U4-10",
+      "type": "multiple",
+      "stem": "关于用户的输入模型、输出模型和数据库模型，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "输入模型应该包含密码",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "输出模型不应包含密码",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "数据库模型可能需要包含哈希后的密码",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "数据库模型应直接存储明文密码，方便之后校验",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "输出模型应包含哈希后的密码，方便客户端自行校验",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于用户的输入模型、输出模型和数据库模型，下列哪些说法符合官方文档？",
+    "answer": "输入模型应该包含密码，输出模型不应含密码，数据库模型可能需要包含哈希后的密码。不要存储明文密码，始终只存储之后可用于校验的“安全哈希”；输出模型也不应带上密码。[原文§更多模型 · 更多模型](https://fastapi.tiangolo.com/zh/tutorial/extra-models/#extra-models)"
+  },
+  {
+    "id": "U4-11",
+    "typed": {
+      "id": "U4-11",
+      "type": "single",
+      "stem": "为减少多个用户模型之间重复的字段声明，官方建议怎么做？",
+      "options": [
+        {
+          "key": "A",
+          "text": "把所有字段放进一个模型，再在每个路径操作里用 response_model_exclude 去掉不需要的",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "为每个模型各自完整声明全部字段，再靠人工保持各处同步",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "声明 UserBase 作为基类，其他模型继承它，只声明各自差异的部分",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "让输出模型继承数据库模型，再用 response_model_include 去掉哈希密码",
+          "correct": false
+        }
+      ]
+    },
+    "question": "为减少多个用户模型之间重复的字段声明，官方建议怎么做？",
+    "answer": "声明一个 `UserBase` 作为基类，其他模型继承它，只声明各自差异的部分（明文 `password`、`hashed_password`、不含密码），数据转换、校验、文档等仍正常运行。减少重复是 FastAPI 的核心思想之一，重复会导致 bug、安全问题、代码失步。[原文§更多模型 · 减少重复](https://fastapi.tiangolo.com/zh/tutorial/extra-models/#reduce-duplication)"
+  },
+  {
+    "id": "U4-12",
+    "typed": {
+      "id": "U4-12",
+      "type": "multiple",
+      "stem": "关于装饰器参数 `response_model` 和 `status_code`，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "都是 @app.get()、@app.post() 等装饰器方法的参数",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "都不是路径操作函数的参数，与查询参数、请求体不同",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "status_code 接收表示状态码的数字，也能接收 IntEnum（如 http.HTTPStatus）",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "都和查询参数、请求体一样，写在路径操作函数的参数列表里",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "status_code 只能接收 int，不能接收枚举类型",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于装饰器参数 `response_model` 和 `status_code`，下列哪些说法符合官方文档？",
+    "answer": "两者都是 `@app.get()`、`@app.post()` 等装饰器方法的参数，而不是路径操作函数的参数（与查询参数、请求体不同）；`status_code` 接收表示 HTTP 状态码的数字，也可以接收 `IntEnum`（如 `http.HTTPStatus`）。写在函数参数列表里、只能接收 int 的说法都不对。[原文§响应状态码 · 响应状态码](https://fastapi.tiangolo.com/zh/tutorial/response-status-code/#response-status-code) [原文§响应模型 - 返回类型 · response_model 参数](https://fastapi.tiangolo.com/zh/tutorial/response-model/#response-model-parameter)"
+  },
+  {
+    "id": "U4-13",
+    "typed": {
+      "id": "U4-13",
+      "type": "fill",
+      "stem": "按官方文档，HTTP 状态码按区段分类：100–199 用于返回“____”，200–299 表示“____”，300–399 用于“____”，400–499 表示“____”，500–599 表示“____”。",
+      "blankCount": 5,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，HTTP 状态码按区段分类：100–199 用于返回“____”，200–299 表示“____”，300–399 用于“____”，400–499 表示“____”，500–599 表示“____”。",
+    "answer": "100–199 是信息，200–299 是成功，300–399 是重定向，400–499 是客户端错误，500–599 是服务器端错误。所以五个空依次是：信息、成功、重定向、客户端错误、服务器错误。[原文§响应状态码 · 关于 HTTP 状态码](https://fastapi.tiangolo.com/zh/tutorial/response-status-code/#about-http-status-codes)"
+  },
+  {
+    "id": "U4-14",
+    "typed": {
+      "id": "U4-14",
+      "type": "multiple",
+      "stem": "按官方文档，下列哪些状态码（段）对应的响应不能包含响应体？",
+      "options": [
+        {
+          "key": "A",
+          "text": "100–199 的信息类状态码",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "204 无内容",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "304 未修改",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "201 已创建",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "404 未找到",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，下列哪些状态码（段）对应的响应不能包含响应体？",
+    "answer": "100–199 的信息类状态码、204（无内容）和 304（未修改）的响应都不能包含响应体。201 表示“已创建”，示例里照常返回内容；404 是客户端错误，用 `HTTPException` 触发时响应带有 `detail` 的 JSON。[原文§响应状态码 · 关于 HTTP 状态码](https://fastapi.tiangolo.com/zh/tutorial/response-status-code/#about-http-status-codes) [原文§处理错误 · 响应结果](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/#the-resulting-response)"
+  },
+  {
+    "id": "U4-15",
+    "typed": {
+      "id": "U4-15",
+      "type": "single",
+      "stem": "关于 500–599 这类服务器端错误状态码，官方文档怎么说？",
+      "options": [
+        {
+          "key": "A",
+          "text": "几乎永远不会直接使用，出问题时会自动返回",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "是最常用的一类，通常需要在代码里主动选择并返回",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "用于表示客户端发送了错误的请求，是第二常用的一类",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "具有这些状态码的响应一律不能包含响应体",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于 500–599 这类服务器端错误状态码，官方文档怎么说？",
+    "answer": "几乎永远不会直接使用这些状态码，应用代码或服务器出现问题时会自动返回它们。“最常用”指的是 200–299，“客户端错误”指的是 400–499，“不能包含响应体”则对应信息类、204、304。[原文§响应状态码 · 关于 HTTP 状态码](https://fastapi.tiangolo.com/zh/tutorial/response-status-code/#about-http-status-codes)"
+  },
+  {
+    "id": "U4-16",
+    "typed": {
+      "id": "U4-16",
+      "type": "single",
+      "stem": "`status_code=status.HTTP_201_CREATED` 与 `status_code=201` 是什么关系？",
+      "options": [
+        {
+          "key": "A",
+          "text": "前者会让 FastAPI 返回 201 并自动生成“已创建”的响应体",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "前者来自 Starlette，含义与数字 201 不同",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "数字代码完全相同，前者只是便于使用编辑器自动补全的快捷方式",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "前者只在 POST 路径操作中生效，后者适用于所有方法",
+          "correct": false
+        }
+      ]
+    },
+    "question": "`status_code=status.HTTP_201_CREATED` 与 `status_code=201` 是什么关系？",
+    "answer": "两者数字代码相同，`fastapi.status` 里的变量只是一种快捷方式，好处是可以使用编辑器的自动补全；它与 `starlette.status` 完全相同，直接来自 Starlette。[原文§响应状态码 · 状态码名称快捷方式](https://fastapi.tiangolo.com/zh/tutorial/response-status-code/#shortcut-to-remember-the-names)"
+  },
+  {
+    "id": "U4-17",
+    "typed": {
+      "id": "U4-17",
+      "type": "short"
+    },
+    "question": "为什么 HTTPException 只能 raise 而不能 return？这对路径操作函数里后面的代码有什么影响？",
+    "answer": "HTTPException 是额外包含 API 相关数据的常规 Python 异常，所以只能 raise。raise 之后后续代码不再执行，请求立刻终止并把 HTTP 错误发给客户端，即使异常是路径操作函数所调用的工具函数内部触发的也一样。[原文§处理错误 · 在代码中触发 HTTPException](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/#raise-an-httpexception-in-your-code)"
+  },
+  {
+    "id": "U4-18",
+    "typed": {
+      "id": "U4-18",
+      "type": "single",
+      "stem": "触发 HTTPException 时，`detail` 参数可以传什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "只能是 str，传入 dict 或 list 会报错",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "任何可转为 JSON 的值，如 dict、list",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "只能是 str 或 int 两种类型之一",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "必须是 Pydantic 模型，不能是普通类型",
+          "correct": false
+        }
+      ]
+    },
+    "question": "触发 HTTPException 时，`detail` 参数可以传什么？",
+    "answer": "可以传任何能转换为 JSON 的值，不仅限于 `str`，还支持 `dict`、`list` 等数据结构，FastAPI 会自动处理并转换成 JSON。[原文§处理错误 · 响应结果](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/#the-resulting-response)"
+  },
+  {
+    "id": "U4-19",
+    "typed": {
+      "id": "U4-19",
+      "type": "single",
+      "stem": "怎样让某个自定义异常（如 UnicornException）在全局被统一处理并返回自定义响应？",
+      "options": [
+        {
+          "key": "A",
+          "text": "在路径操作装饰器里设置 response_class=该异常类，由它捕获并处理异常",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "在 HTTPException 的 headers 参数里声明处理该异常的函数，再在函数里调用",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "把该异常类作为 response_model 传给每个会触发它的路径操作装饰器",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "用 @app.exception_handler(该异常类) 装饰一个处理函数，由它返回响应",
+          "correct": true
+        }
+      ]
+    },
+    "question": "怎样让某个自定义异常（如 UnicornException）在全局被统一处理并返回自定义响应？",
+    "answer": "用 `@app.exception_handler(该异常类)` 装饰一个异常处理器函数，它接收 `Request` 和该异常，返回要发给客户端的响应（如指定状态码的 `JSONResponse`）；路径操作里 raise 该异常时就由它处理。[原文§处理错误 · 安装自定义异常处理器](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/#install-custom-exception-handlers)"
+  },
+  {
+    "id": "U4-20",
+    "typed": {
+      "id": "U4-20",
+      "type": "fill",
+      "stem": "按官方文档，请求中包含无效数据时，FastAPI 内部会触发 ____ 异常，并内置了它的默认处理器。",
+      "blankCount": 1,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，请求中包含无效数据时，FastAPI 内部会触发 ____ 异常，并内置了它的默认处理器。",
+    "answer": "触发的是 `RequestValidationError`；要覆盖默认处理器，导入它并用 `@app.exception_handler(RequestValidationError)` 装饰自己的处理器。[原文§处理错误 · 覆盖请求验证异常](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/#override-request-validation-exceptions)"
+  },
+  {
+    "id": "U4-21",
+    "typed": {
+      "id": "U4-21",
+      "type": "single",
+      "stem": "FastAPI 的 HTTPException 与 Starlette 的 HTTPException 有什么区别？",
+      "options": [
+        {
+          "key": "A",
+          "text": "FastAPI 的只能 raise，Starlette 的既可以 raise 也可以 return",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "FastAPI 的不继承 Starlette 的，两者互不相关",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "FastAPI 的继承自 Starlette 的，唯一区别是 detail 能接受任意可转为 JSON 的数据",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "FastAPI 的 detail 只接受字符串，Starlette 的 detail 接受任意可转为 JSON 的数据",
+          "correct": false
+        }
+      ]
+    },
+    "question": "FastAPI 的 HTTPException 与 Starlette 的 HTTPException 有什么区别？",
+    "answer": "FastAPI 的 HTTPException 继承自 Starlette 的，唯一区别是 FastAPI 的 `detail` 接受任意可转换为 JSON 的数据，而 Starlette 的只接受字符串。[原文§处理错误 · FastAPI 的 HTTPException vs Starlette 的 HTTPException](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/#fastapis-httpexception-vs-starlettes-httpexception)"
+  },
+  {
+    "id": "U4-22",
+    "typed": {
+      "id": "U4-22",
+      "type": "single",
+      "stem": "为 HTTPException 注册自定义异常处理器时，官方建议注册到 Starlette 的 HTTPException，原因是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "Starlette 内部代码、扩展、插件触发该异常时也能被处理",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "FastAPI 的 HTTPException 不是 Python 异常，无法为它注册处理器",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "只有 Starlette 的 HTTPException 才能携带自定义响应头",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只有注册到 Starlette 的版本，detail 才能接受 dict 和 list",
+          "correct": false
+        }
+      ]
+    },
+    "question": "为 HTTPException 注册自定义异常处理器时，官方建议注册到 Starlette 的 HTTPException，原因是什么？",
+    "answer": "这样当 Starlette 的内部代码、扩展或插件触发 Starlette 的 HTTPException 时，你的处理器也能捕获并处理；而在代码中触发时仍可照常使用 FastAPI 的 HTTPException。[原文§处理错误 · FastAPI 的 HTTPException vs Starlette 的 HTTPException](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/#fastapis-httpexception-vs-starlettes-httpexception)"
+  },
+  {
+    "id": "U4-23",
+    "typed": {
+      "id": "U4-23",
+      "type": "single",
+      "stem": "覆盖 RequestValidationError 的处理器时，官方示例为什么逐条提取错误信息，而不是把异常直接转成字符串返回？",
+      "options": [
+        {
+          "key": "A",
+          "text": "转成字符串会丢掉请求体里的无效数据，导致无法调试",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "含文件名和行号，直接转字符串可能泄露系统细节",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "异常对象不能转换成字符串，强行转换会触发新的异常",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "直接转成字符串会让响应状态码被改成 500，客户端无法识别",
+          "correct": false
+        }
+      ]
+    },
+    "question": "覆盖 RequestValidationError 的处理器时，官方示例为什么逐条提取错误信息，而不是把异常直接转成字符串返回？",
+    "answer": "因为 `RequestValidationError` 包含发生验证错误的文件名和行号信息，直接转成字符串返回可能泄露系统细节；需要时可以把这些信息记录到日志里。[原文§处理错误 · 覆盖 HTTPException 错误处理器](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/#override-the-httpexception-error-handler)"
+  },
+  {
+    "id": "U4-24",
+    "typed": {
+      "id": "U4-24",
+      "type": "short"
+    },
+    "question": "jsonable_encoder 是做什么的？为什么存入只接受 JSON 兼容数据的数据库前要用它？",
+    "answer": "它把 Pydantic 模型等转换成与 JSON 兼容的 Python 数据：模型变成 `dict`，`datetime` 变成 ISO 格式的 `str`。这样数据才能存入只接受 JSON 兼容数据的数据库（不接受 `datetime` 对象和 Pydantic 模型）；FastAPI 内部也用它转换数据。[原文§JSON 兼容编码器 · 使用 jsonable_encoder](https://fastapi.tiangolo.com/zh/tutorial/encoder/#using-the-jsonable-encoder)"
+  },
+  {
+    "id": "U4-25",
+    "typed": {
+      "id": "U4-25",
+      "type": "single",
+      "stem": "jsonable_encoder 返回什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "一个包含 JSON 格式数据的字符串（str）",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "一个已经序列化好的 JSONResponse 对象",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "一个新的 Pydantic 模型实例，其中的 datetime 已被改成 str",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "Python 标准数据结构（如 dict），值和子值都与 JSON 兼容",
+          "correct": true
+        }
+      ]
+    },
+    "question": "jsonable_encoder 返回什么？",
+    "answer": "它不会返回一个包含 JSON 格式数据的庞大字符串，而是返回 Python 标准数据结构（例如 `dict`），其值和子值都与 JSON 兼容；之后可以再用 `json.dumps()` 序列化。[原文§JSON 兼容编码器 · 使用 jsonable_encoder](https://fastapi.tiangolo.com/zh/tutorial/encoder/#using-the-jsonable-encoder)"
+  },
+  {
+    "id": "U4-26",
+    "typed": {
+      "id": "U4-26",
+      "type": "single",
+      "stem": "用 PUT 更新已存储的数据，请求体里省略了已存储的 `tax`（模型里 `tax` 默认 10.5），会怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "tax 保持原来存储的值不变，因为请求体没有提供它",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "FastAPI 返回客户端错误，要求 PUT 必须提供全部字段",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "输入模型取默认值 10.5，保存的数据会带上它",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "tax 字段被从存储的数据里删除，不再保存",
+          "correct": false
+        }
+      ]
+    },
+    "question": "用 PUT 更新已存储的数据，请求体里省略了已存储的 `tax`（模型里 `tax` 默认 10.5），会怎样？",
+    "answer": "PUT 用于接收替换现有数据的数据，输入模型对没提供的 `tax` 取默认值 10.5，保存的数据就会带上这个“新的” `tax` 值，覆盖原来存储的值。[原文§请求体 - 更新数据 · 关于替换的警告](https://fastapi.tiangolo.com/zh/tutorial/body-updates/#warning-about-replacing)"
+  },
+  {
+    "id": "U4-27",
+    "typed": {
+      "id": "U4-27",
+      "type": "multiple",
+      "stem": "关于 PUT 与 PATCH，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "PUT 用于接收替换现有数据的数据",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "PATCH 用于部分更新，只需发送想更新的数据，其余数据保持不变",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "很多团队只用 PUT 也能实现部分更新，FastAPI 对此不做限制",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "FastAPI 强制要求部分更新必须使用 PATCH，用 PUT 会报错",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "PATCH 比 PUT 更知名、更常用",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于 PUT 与 PATCH，下列哪些说法符合官方文档？",
+    "answer": "PUT 用于接收替换现有数据的数据；PATCH 用于部分更新，只需发送想更新的数据，其余数据保持不变；FastAPI 不限制怎么用，很多团队甚至只用 PUT 实现部分更新。PATCH 没有 PUT 知名、也没那么常用，FastAPI 也不强制部分更新必须用 PATCH。[原文§请求体 - 更新数据 · 用 PUT 替换式更新](https://fastapi.tiangolo.com/zh/tutorial/body-updates/#update-replacing-with-put) [原文§请求体 - 更新数据 · 用 PATCH 进行部分更新](https://fastapi.tiangolo.com/zh/tutorial/body-updates/#partial-updates-with-patch)"
+  },
+  {
+    "id": "U4-28",
+    "typed": {
+      "id": "U4-28",
+      "type": "short"
+    },
+    "question": "用 FastAPI 实现请求体的部分更新，大致要经过哪些步骤？",
+    "answer": "（可选）使用 PATCH；取出已存储的数据并放入 Pydantic 模型；用输入模型的 `model_dump(exclude_unset=True)` 生成只含请求里实际设置值的 dict；对已存储的模型用 `model_copy(update=...)` 创建副本并更新属性；用 `jsonable_encoder` 转成可存入数据库的形式，保存后返回更新后的模型。[原文§请求体 - 更新数据 · 部分更新小结](https://fastapi.tiangolo.com/zh/tutorial/body-updates/#partial-updates-recap)"
+  },
+  {
+    "id": "U4-29",
+    "typed": {
+      "id": "U4-29",
+      "type": "single",
+      "stem": "部分更新时对输入模型调用 `model_dump(exclude_unset=True)` 的目的是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "只得到请求中实际设置的数据，避免用模型默认值覆盖已存储的值",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "把 datetime 等值转换成与 JSON 兼容的 str",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "让输入模型跳过对请求体的校验",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "把已存储的数据和输入数据合并成完整的副本",
+          "correct": false
+        }
+      ]
+    },
+    "question": "部分更新时对输入模型调用 `model_dump(exclude_unset=True)` 的目的是什么？",
+    "answer": "目的是得到只含请求中实际设置的数据的 dict（不含默认值），这样只会更新用户实际设置的值，不会用模型里的默认值覆盖已存储的值。[原文§请求体 - 更新数据 · 使用 Pydantic 的 exclude_unset 参数](https://fastapi.tiangolo.com/zh/tutorial/body-updates/#using-pydantics-exclude-unset-parameter)"
+  },
+  {
+    "id": "U4-30",
+    "typed": {
+      "id": "U4-30",
+      "type": "single",
+      "stem": "如果希望接收的部分更新可以省略所有属性，输入模型应该怎样设计？",
+      "options": [
+        {
+          "key": "A",
+          "text": "不需要特别设计，输入模型在部分更新时不会被验证",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "给路径操作设置 response_model_exclude_unset=True，让输入模型的验证变宽松",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "把模型的字段都设为必填，再使用 PATCH 方法",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "所有属性都标记为可选（带默认值或 None），因为输入模型仍会被验证",
+          "correct": true
+        }
+      ]
+    },
+    "question": "如果希望接收的部分更新可以省略所有属性，输入模型应该怎样设计？",
+    "answer": "输入模型仍会被验证，所以需要一个所有属性都标记为可选（带默认值或 None）的模型；可以参考“更多模型”里的思路，把用于更新（全部可选）和用于创建（必填）的模型区分开。[原文§请求体 - 更新数据 · 部分更新小结](https://fastapi.tiangolo.com/zh/tutorial/body-updates/#partial-updates-recap)"
+  },
+  {
+    "id": "U4-31",
+    "typed": {
+      "id": "U4-31",
+      "type": "multiple",
+      "stem": "直接返回 Response 对象时，下列哪些说法符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "FastAPI 会直接传递它",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "不会用 Pydantic 模型做数据转换，即使声明了 response_model",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "不会自动生成文档",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "仍会按 response_model 过滤其中的字段",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "会自动对 content 调用 jsonable_encoder，转成 JSON 兼容类型",
+          "correct": false
+        }
+      ]
+    },
+    "question": "直接返回 Response 对象时，下列哪些说法符合官方文档？",
+    "answer": "返回 Response 时 FastAPI 直接传递它，不会用 Pydantic 模型做数据转换（即使声明了 `response_model`），也不会自动生成文档。它不会按 `response_model` 过滤字段，也不会替你对 `content` 调用 `jsonable_encoder`，数据要自己准备好。[原文§直接返回响应 · 返回 Response](https://fastapi.tiangolo.com/zh/advanced/response-directly/#return-a-response) [原文§直接返回响应 · 说明](https://fastapi.tiangolo.com/zh/advanced/response-directly/#notes) [原文§自定义响应 - HTML、流、文件等 · 自定义响应 - HTML、流、文件等](https://fastapi.tiangolo.com/zh/advanced/custom-response/#custom-response-html-stream-file-others)"
+  },
+  {
+    "id": "U4-32",
+    "typed": {
+      "id": "U4-32",
+      "type": "single",
+      "stem": "要把含有 datetime 字段的 Pydantic 模型放进 JSONResponse 直接返回，应该先做什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "什么都不用做，JSONResponse 会自动把模型转换成 JSON",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "用 jsonable_encoder 转换成 JSON 兼容的数据，再传给 JSONResponse",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "在装饰器里声明 response_model，FastAPI 会在 JSONResponse 内部完成转换",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "把模型转成 dict 即可，datetime 不用转换，JSONResponse 能直接序列化",
+          "correct": false
+        }
+      ]
+    },
+    "question": "要把含有 datetime 字段的 Pydantic 模型放进 JSONResponse 直接返回，应该先做什么？",
+    "answer": "FastAPI 不会改动你返回的 Response，所以必须先准备好内容：用 `jsonable_encoder` 把模型转成 dict、把 `datetime` 等转成兼容 JSON 的类型，再传给 `JSONResponse`。[原文§直接返回响应 · 在 Response 中使用 jsonable_encoder](https://fastapi.tiangolo.com/zh/advanced/response-directly/#using-the-jsonable-encoder-in-a-response)"
+  },
+  {
+    "id": "U4-33",
+    "typed": {
+      "id": "U4-33",
+      "type": "short"
+    },
+    "question": "声明了响应模型（或返回类型）与没有声明时，FastAPI 序列化返回数据的流程有什么不同？哪种性能更好？",
+    "answer": "声明了响应模型时，FastAPI 用 Pydantic 直接生成 JSON 字节并返回带 `application/json` 媒体类型的 Response，不使用 `jsonable_encoder`，也不使用 `JSONResponse` 类；这部分在 Rust 侧完成，性能好得多。没有声明时，则先用 `jsonable_encoder` 转换，再放进 `JSONResponse`。[原文§直接返回响应 · 响应模型如何工作](https://fastapi.tiangolo.com/zh/advanced/response-directly/#how-a-response-model-works) [原文§直接返回响应 · 直接返回响应](https://fastapi.tiangolo.com/zh/advanced/response-directly/#return-a-response-directly)"
+  },
+  {
+    "id": "U4-34",
+    "typed": {
+      "id": "U4-34",
+      "type": "single",
+      "stem": "路径操作装饰器的 response_class 参数起什么作用？",
+      "options": [
+        {
+          "key": "A",
+          "text": "声明用的 Response 类，并定媒体类型",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "声明响应模型，用来过滤和校验函数返回的数据",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "声明请求体使用的媒体类型，并在收到请求时校验",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "声明函数抛出异常时，用来构造错误响应的类",
+          "correct": false
+        }
+      ]
+    },
+    "question": "路径操作装饰器的 response_class 参数起什么作用？",
+    "answer": "它声明要使用的 Response 类（任意 Response 子类），函数返回的内容会被放进该响应里；它也用来定义响应的媒体类型（如 `HTMLResponse` 的 `text/html`），并记录到 OpenAPI 文档中。[原文§自定义响应 - HTML、流、文件等 · 自定义响应 - HTML、流、文件等](https://fastapi.tiangolo.com/zh/advanced/custom-response/#custom-response-html-stream-file-others) [原文§自定义响应 - HTML、流、文件等 · HTML 响应](https://fastapi.tiangolo.com/zh/advanced/custom-response/#html-response)"
+  },
+  {
+    "id": "U4-35",
+    "typed": {
+      "id": "U4-35",
+      "type": "multiple",
+      "stem": "下列关于几种响应类用途的描述，哪些符合官方文档？",
+      "options": [
+        {
+          "key": "A",
+          "text": "StreamingResponse：接收异步生成器或普通生成器/迭代器，流式传输响应主体",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "FileResponse：异步地把文件作为响应传输",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "RedirectResponse：返回 HTTP 重定向",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "PlainTextResponse：接收数据并返回 application/json 编码的响应",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "HTMLResponse：用来异步传输磁盘上的大文件",
+          "correct": false
+        }
+      ]
+    },
+    "question": "下列关于几种响应类用途的描述，哪些符合官方文档？",
+    "answer": "`StreamingResponse` 接收异步生成器或普通生成器/迭代器并流式传输响应主体；`FileResponse` 异步传输文件；`RedirectResponse` 返回 HTTP 重定向。返回 `application/json` 编码响应的是 `JSONResponse`，`PlainTextResponse` 返回纯文本；`HTMLResponse` 返回 HTML，不是用来传输大文件的。[原文§自定义响应 - HTML、流、文件等 · StreamingResponse](https://fastapi.tiangolo.com/zh/advanced/custom-response/#streamingresponse) [原文§自定义响应 - HTML、流、文件等 · FileResponse](https://fastapi.tiangolo.com/zh/advanced/custom-response/#fileresponse) [原文§自定义响应 - HTML、流、文件等 · RedirectResponse](https://fastapi.tiangolo.com/zh/advanced/custom-response/#redirectresponse) [原文§自定义响应 - HTML、流、文件等 · PlainTextResponse](https://fastapi.tiangolo.com/zh/advanced/custom-response/#plaintextresponse)"
+  },
+  {
+    "id": "U4-36",
+    "typed": {
+      "id": "U4-36",
+      "type": "single",
+      "stem": "RedirectResponse 默认使用哪个状态码？",
+      "options": [
+        {
+          "key": "A",
+          "text": "301（永久重定向）",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "307（临时重定向）",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "302（临时重定向）",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "308（永久重定向）",
+          "correct": false
+        }
+      ]
+    },
+    "question": "RedirectResponse 默认使用哪个状态码？",
+    "answer": "默认使用 307（临时重定向）；也可以配合 `status_code` 参数改用其他状态码（例如示例里的 302）。[原文§自定义响应 - HTML、流、文件等 · RedirectResponse](https://fastapi.tiangolo.com/zh/advanced/custom-response/#redirectresponse)"
+  }
+]

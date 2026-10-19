@@ -1,0 +1,7161 @@
+{
+  "prefix": "R",
+  "chapters": {
+    "R1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "R1-1",
+          "type": "short"
+        },
+        {
+          "id": "R1-2",
+          "type": "short"
+        },
+        {
+          "id": "R1-3",
+          "type": "fill",
+          "stem": "栈遵循的存取原则是____，队列遵循的存取原则是____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-4",
+          "type": "fill",
+          "stem": "栈只允许在____进行插入和删除操作；队列允许在____插入元素，在____删除元素。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-5",
+          "type": "fill",
+          "stem": "原文介绍的常见数据结构中，适合快速判断元素是否存在、统计频次的是____，适合表示层次关系（如文件系统、组织结构）的是____，适合优先级队列、Top K 的是____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-6",
+          "type": "short"
+        },
+        {
+          "id": "R1-7",
+          "type": "single",
+          "stem": "关于树这种数据结构，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它是线性数据结构，每个节点至多只有一个后继节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它只允许在一端进行插入和删除，遵循后进先出的原则",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它是非线性数据结构，由节点和边组成，每个节点可以有多个子节点",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它由顶点和边组成，用来表示社交关系等多对多的关系",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-8",
+          "type": "single",
+          "stem": "关于常见的二叉堆，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它是一棵完全二叉树，堆顶保存最大值或最小值",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它是一棵完全二叉树，整体有序，左子树的值总小于右子树的值",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它通过哈希函数把键映射到桶，堆顶保存出现次数最多的键",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它由顶点和边组成，堆顶保存度数最大的顶点",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-9",
+          "type": "single",
+          "stem": "关于图这种数据结构，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它由节点和边组成，每个节点可以有多个子节点，只能表示层次关系，适合文件系统",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它由一组连续的存储单元组成，主要适合按索引访问元素，不适合表示复杂的关系",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它只允许在栈顶进行插入和删除，适合需要维护最近操作状态的场景",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它由顶点和边组成，可以表示多对多的关系，适合社交关系、路径规划、任务依赖等场景",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-10",
+          "type": "short"
+        },
+        {
+          "id": "R1-11",
+          "type": "single",
+          "stem": "原文中，链表插入、删除节点的时间复杂度为 O(1)，需要满足下列哪个前提？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不需要先定位，按某个值或某个位置插入、删除同样都是 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "已经找到需要修改的节点及相关指针，只需要修改指针",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "链表节点在内存中连续存储，可以通过地址计算直接找到目标节点",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "必须使用单链表，因为单链表删除节点时不需要知道前驱节点",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-12",
+          "type": "single",
+          "stem": "单链表删除一个节点时，通常还需要知道该节点的哪项信息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个元素占用的字节数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它的前驱节点",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "链表当前的总长度",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "底层数组的容量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-13",
+          "type": "single",
+          "stem": "双向链表删除节点时，怎样找到该节点的前驱和后继？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须先从头节点开始遍历到目标位置才能找到",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要借助数组首地址和元素大小计算出它们的位置",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "必须额外保存一个指向前驱节点的外部指针才能找到",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "通过节点本身就可以找到前驱和后继",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-14",
+          "type": "single",
+          "stem": "要在链表中按某个值或某个位置插入、删除节点，整体时间复杂度是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(n)，因为仍然需要先遍历定位",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "O(1)，因为只需要修改指针即可",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(log n)，因为可以跳过部分节点直接定位",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "O(n²)，因为每次都要移动后续所有元素",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-15",
+          "type": "single",
+          "stem": "数组和链表在 CPU 缓存命中率上的差异，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "链表节点连续存储，可以提高 CPU 缓存命中率；数组元素分散存储，命中率可能较低",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "数组和链表的缓存命中率相同，因为两者的访问时间复杂度相同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数组元素连续存储，可以提高 CPU 缓存命中率；链表节点不连续存储，命中率可能较低",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "链表节点不连续存储，所以缓存命中率更高，频繁缓存失效会影响数组性能",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-16",
+          "type": "multiple",
+          "stem": "下列关于数组和链表应用场景的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数组适合频繁按下标访问、顺序遍历的场景",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "链表适合已经定位到节点后，频繁插入、删除的场景",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "数组不能动态增长，所以只要需要动态增长就必须选链表",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "链表适合频繁按下标随机访问的场景",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "选择时只需要判断是否需要动态增长即可",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-17",
+          "type": "single",
+          "stem": "数组查询的时间复杂度为 O(1)，这里的“查询”指的是哪种操作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "根据值查找元素并返回其下标",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在任意位置插入元素后再访问",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "根据下标访问元素",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "遍历整个数组并统计元素个数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-18",
+          "type": "single",
+          "stem": "无序数组按值查找元素，时间复杂度通常是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(n)，通常还需要遍历",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "O(1)，直接计算地址即可",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(log n)，每次排除一半的元素",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "O(n²)，每个元素都要和其他元素比较",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-19",
+          "type": "short"
+        },
+        {
+          "id": "R1-20",
+          "type": "fill",
+          "stem": "数组按下标访问时，元素地址的计算公式是：元素地址 = ____ + ____ × ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-21",
+          "type": "single",
+          "stem": "对象数组在内存中连续存储的通常是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对象本身，且所有对象一定连续存放",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个对象占用的字节数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数组首地址和元素下标",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "对象引用，对象本身不一定连续",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-22",
+          "type": "single",
+          "stem": "数组首地址为 1000，每个整型元素占 4 个字节，下标为 2 的元素的内存地址是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "1002",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "1008",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "1004",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "1012",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-23",
+          "type": "fill",
+          "stem": "动态数组底层仍然是连续的数组，它把实际元素个数和底层数组容量分开管理，这两个量的名称分别是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-24",
+          "type": "short"
+        },
+        {
+          "id": "R1-25",
+          "type": "short"
+        },
+        {
+          "id": "R1-26",
+          "type": "single",
+          "stem": "动态数组尾部插入的均摊时间复杂度是 O(1)，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是，每一次插入都是 O(1)，包括触发扩容的那一次",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，某一次触发扩容的插入仍然可能是 O(n)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不是，每一次插入都是 O(n)，均摊只是一种近似说法",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是，因为扩容时不需要复制任何已有元素",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-27",
+          "type": "single",
+          "stem": "动态数组每次扩容只增加一个固定数量的容量，连续插入 n 个元素的总成本可能是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "仍然是 O(n)，和每次翻倍扩容没有区别",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只有 O(log n)，因为扩容次数很少",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可能达到 O(n²)，因为每次插入都要移动全部后续元素",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "可能达到 O(n²)，因为会频繁复制已有元素",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-28",
+          "type": "multiple",
+          "stem": "下列关于动态数组的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "实际实现也可以按其他固定比例扩容，不一定翻倍",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每次只增加一个固定数量的容量，同样可以保持均摊 O(1)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在中间位置插入、删除要移动后续元素，即使不扩容，通常也是 O(n)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "触发扩容的那一次尾部插入一定是 O(1)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-29",
+          "type": "short"
+        },
+        {
+          "id": "R1-30",
+          "type": "short"
+        },
+        {
+          "id": "R1-31",
+          "type": "fill",
+          "stem": "按原文，适合需要按照插入顺序进行处理、例如任务调度的是____，适合需要维护最近操作状态、例如函数调用的是____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-32",
+          "type": "short"
+        },
+        {
+          "id": "R1-33",
+          "type": "fill",
+          "stem": "栈的基本操作有两种：加入数据的操作叫做____，输出数据的操作叫做____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-34",
+          "type": "fill",
+          "stem": "原文介绍的 Java 实现栈的四种方式中，除数组实现外，另外三种是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R1-35",
+          "type": "short"
+        },
+        {
+          "id": "R1-36",
+          "type": "single",
+          "stem": "原文的数组栈实现中，栈顶指针 top 初始化为 -1 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "栈为空",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "栈已满",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "栈中恰好有一个元素",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "数组容量尚未确定",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-37",
+          "type": "single",
+          "stem": "关于 Java 内置的 Stack 类，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它不允许存入 null，也不是线程安全的，是日常开发中的常用选择",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它基于链表实现，没有同步开销，多个方法组合起来的操作一定是原子的",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它继承自 Vector，主要操作带有同步开销，单个方法同步不意味着组合操作具备原子性",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它继承自 Vector，所有组合操作因为方法同步而天然具备原子性",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-38",
+          "type": "multiple",
+          "stem": "关于用 Deque 接口配合 ArrayDeque 实现栈，下列说法符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "支持 push、pop、peek 操作",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不允许存入 null",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是线程安全的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "继承自 Vector，主要操作带有同步开销",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "是日常开发中实现栈的常用选择",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-39",
+          "type": "single",
+          "stem": "用 Deque 实现的栈在栈为空时，pop() 和 peek() 分别有什么表现？",
+          "options": [
+            {
+              "key": "A",
+              "text": "pop() 和 peek() 都抛出异常",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "pop() 返回 null，peek() 抛出异常",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "pop() 抛出异常，peek() 返回 null",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "pop() 和 peek() 都返回 null",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-40",
+          "type": "code",
+          "stem": "用任意语言实现一个固定容量的整数栈，支持 push、pop、peek、isEmpty、size 五个操作；栈满时 push、栈空时 pop 或 peek 要报错（如抛出异常）。"
+        },
+        {
+          "id": "R1-41",
+          "type": "fill",
+          "stem": "用两个栈 stackPush 和 stackPop 实现队列时，入队的元素压入____，出队时从____弹出元素。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-42",
+          "type": "short"
+        },
+        {
+          "id": "R1-43",
+          "type": "single",
+          "stem": "用两个栈实现队列时，在什么情况下才把 stackPush 中的元素转移到 stackPop？",
+          "options": [
+            {
+              "key": "A",
+              "text": "出队或查询队首时，只有 stackPop 为空才转移",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "入队时就立即把元素转移到 stackPop 中",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次出队前无论 stackPop 是否为空都转移",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "出队时只要 stackPush 非空就转移，不管 stackPop 是否为空",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-44",
+          "type": "short"
+        },
+        {
+          "id": "R1-45",
+          "type": "multiple",
+          "stem": "用两个栈实现队列时，下列关于时间复杂度的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "入队的时间复杂度是 O(1)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "出队和查询队首元素的均摊时间复杂度是 O(1)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "单次出队最坏可能是 O(n)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每次出队都恰好是 O(1)，不会出现 O(n) 的情况",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "每个元素会在两个栈之间反复转移很多次",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-46",
+          "type": "short"
+        },
+        {
+          "id": "R1-47",
+          "type": "single",
+          "stem": "用两个栈实现队列时，如果两个栈都为空，原文代码中的 pop() 和 peek() 会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会返回 0 表示队列为空",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "会自动等待新元素入队后再返回",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "会返回 stackPush 中最后压入的元素",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会抛出异常，需要根据业务要求处理空队列",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-48",
+          "type": "code",
+          "stem": "用任意语言实现一个队列类，只能使用两个栈作为存储，支持 push（入队）、pop（出队并返回队首）、peek（查看队首）、empty（判空）四个操作，要求先进先出，且出队、查看队首的均摊时间复杂度为 O(1)。"
+        },
+        {
+          "id": "R1-49",
+          "type": "fill",
+          "stem": "原文介绍的五种常见队列中，除顺序队列外的另外四种是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R1-50",
+          "type": "short"
+        },
+        {
+          "id": "R1-51",
+          "type": "single",
+          "stem": "顺序队列的“假溢出”指的是什么情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "队列中的元素数量超过了可用内存的上限，无法再分配新节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "队尾指针到达数组末尾，前面虽有空闲空间也可能无法继续插入元素",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "队头指针和队尾指针重合，无法区分队列是空还是满",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "队头元素被删除后，队尾指针被错误地移回数组头部",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-52",
+          "type": "single",
+          "stem": "原文认为顺序队列适合下列哪种场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数据量不确定、需要频繁插入删除的场景，如进程调度中的就绪队列",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "操作不频繁、数据量较小的简单场景，如学校食堂打饭排队系统",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "需要管理数据缓冲区的场景，如音频、视频数据的缓冲",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要在浏览器页面浏览历史中向前向后浏览的场景",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-53",
+          "type": "short"
+        },
+        {
+          "id": "R1-54",
+          "type": "single",
+          "stem": "原文认为链式队列适合下列哪种场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "操作不频繁、数据量较小的场景，如学校食堂打饭排队系统",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要按优先级决定出队顺序的场景，如实时进程优先调度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要在两端快速插入删除的场景，如浏览器页面浏览历史",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "数据量不确定、需要频繁插入和删除的场景，如操作系统的进程调度",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-55",
+          "type": "short"
+        },
+        {
+          "id": "R1-56",
+          "type": "single",
+          "stem": "原文认为循环队列常用于下列哪种场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数据缓冲区的管理，如音频、视频数据的缓冲",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "简单的小规模排队，如学校食堂打饭排队系统",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "处理数据量不确定的频繁插入删除，如进程调度的等待队列",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "按任务优先级调度，如任务调度系统中的高优先级任务",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-57",
+          "type": "short"
+        },
+        {
+          "id": "R1-58",
+          "type": "single",
+          "stem": "原文认为双端队列适合下列哪种场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数据缓冲区管理，如音频、视频数据的缓冲",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "简单的小规模排队，如学校食堂打饭排队系统",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要频繁在两端进行数据操作的场景，如浏览器的页面浏览历史记录",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "任务有不同优先级、需要优先执行高优先级任务的任务调度系统",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-59",
+          "type": "short"
+        },
+        {
+          "id": "R1-60",
+          "type": "single",
+          "stem": "原文中，优先级队列插入和删除元素的时间复杂度通常是多少（n 为队列中的元素个数）？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "O(n)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(log n)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "O(n²)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-61",
+          "type": "single",
+          "stem": "原文认为优先级队列适合下列哪种场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "任务调度系统中优先级高的任务需要优先执行，如实时性要求高的进程优先被调度",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "音频、视频数据的缓冲管理，数据以循环的方式存入缓冲区，由消费端从队头取出处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "浏览器的页面浏览历史记录，用户可以向前和向后浏览页面，新页面可以从两端插入",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "学校食堂打饭排队系统，新学生在队尾加入，打到饭的学生从队头离开，操作并不频繁",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-62",
+          "type": "fill",
+          "stem": "循环队列通常使用数组，其中 head 指向____，tail 指向____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-63",
+          "type": "single",
+          "stem": "循环队列中，head 和 tail 指针前进时是如何回到数组开头的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通过把全部元素整体向前移动一位来腾出开头",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "通过重新申请更大的数组并把元素复制过去",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "通过把指针重置为 -1 再重新计数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "通过取模，如 (tail + 1) % capacity",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-64",
+          "type": "single",
+          "stem": "循环队列如果只用 head == tail 来判断队列状态，会有什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只能表示队列已经装满，无法表示队列为空的情况",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "既可能表示队列为空，也可能表示队列已装满，无法区分",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只能表示队列为空，无法表示队列已经装满的情况",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会让入队和出队的时间复杂度都变成 O(n)，影响效率",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-65",
+          "type": "short"
+        },
+        {
+          "id": "R1-66",
+          "type": "fill",
+          "stem": "循环队列采用预留一个空位的做法时，队空的判断条件是____，队满的判断条件是____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-67",
+          "type": "single",
+          "stem": "循环队列采用预留一个空位的做法，长度为 5 的数组最多能保存多少个元素？",
+          "options": [
+            {
+              "key": "A",
+              "text": "3 个",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "4 个",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "5 个",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "6 个",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-68",
+          "type": "fill",
+          "stem": "循环队列采用维护元素数量 size 的做法时，队空的判断条件是____，队满的判断条件是____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-69",
+          "type": "single",
+          "stem": "循环队列出队后，腾出的空间是怎样重新使用的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把其余元素整体向前移动，使空闲位置集中到数组末尾，再继续入队",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "重新申请一个更大的数组，把有效元素复制过去后再继续使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "腾出的空间不能再使用，只能等整个队列清空并重置指针后才能复用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "head 前进，腾出的空间等 tail 绕回数组开头后继续使用，无需移动其他元素",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-70",
+          "type": "single",
+          "stem": "固定容量循环队列入队、出队的时间复杂度和空间复杂度分别是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "入队、出队都是 O(1)，空间复杂度是 O(capacity)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "入队、出队都是 O(n)，空间复杂度是 O(capacity)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "入队、出队都是 O(1)，空间复杂度是 O(1)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "入队是 O(1)，出队是 O(n)，空间复杂度是 O(capacity)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-71",
+          "type": "multiple",
+          "stem": "实现固定容量的循环队列时，下列做法符合原文要求的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "入队前先检查队满",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "出队前先检查队空",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "保证数组容量大于 0",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每次出队后把其余元素整体前移一位",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "队列装满后自动扩容数组",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-72",
+          "type": "short"
+        },
+        {
+          "id": "R1-73",
+          "type": "single",
+          "stem": "关于二叉搜索树的查找复杂度与树高 h 的关系，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "无论树高如何，查找时间复杂度都能保证是 O(log n)，与树是否退化无关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "查找时间复杂度与树高无关，只取决于节点总数，树高变化不影响查找效率",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "查找时间复杂度不超过 O(h)，只有树高为 O(log n) 时才保证是 O(log n)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只有树退化成链表时，查找时间复杂度才是 O(h)，其他情况与树高无关",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-74",
+          "type": "short"
+        },
+        {
+          "id": "R1-75",
+          "type": "fill",
+          "stem": "AVL 树要求每个节点左右两个子树的高度差（称为____）的绝对值不超过____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-76",
+          "type": "multiple",
+          "stem": "下列关于 AVL 树平衡特性的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "左右两个子树的高度差（平衡因子）的绝对值不超过 1",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "左右两个子树都是一棵平衡二叉树",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它必须是一棵完全二叉树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个节点要么是红色，要么是黑色",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-77",
+          "type": "single",
+          "stem": "一棵树要成为平衡二叉树，除了平衡因子的条件，首先必须满足下列哪个前提？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它首先要是一棵完全二叉树",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它的所有叶子节点必须位于同一层",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它首先要是一棵二叉搜索树",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它的每个节点必须是红色或黑色",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-78",
+          "type": "single",
+          "stem": "AVL 树和红黑树的关系，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都是自平衡二叉搜索树，红黑树不要求每个节点左右子树高度差都不超过 1",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "红黑树同样要求每个节点的左右子树高度差都不超过 1，两者的平衡条件完全一致",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "AVL 树不是二叉搜索树，红黑树才是二叉搜索树，所以两者不属于同一类",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "红黑树是严格平衡的，AVL 树的平衡要求更宽松，不要求高度差不超过 1",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-79",
+          "type": "single",
+          "stem": "红黑树在插入和删除操作后通过什么手段来保持平衡？",
+          "options": [
+            {
+              "key": "A",
+              "text": "节点分裂和合并",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "增加多层索引",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "扩容并复制全部节点",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "旋转和重新着色",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-80",
+          "type": "multiple",
+          "stem": "下列关于红黑树特点的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "根节点是黑色的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个叶子节点（NIL 节点）都是黑色的",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "如果一个节点是红色的，则它的两个子节点都是黑色的",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "从任一节点到它的各个后代 NIL 节点的路径上，黑色节点的数量都相同",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "如果一个节点是红色的，则它的两个子节点也必须是红色的",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "从根节点到每个叶子节点的路径上，红色节点的数量都相同",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-81",
+          "type": "single",
+          "stem": "红黑树的这些特性能保证最长路径和最短路径之间是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最长路径和最短路径一定相等",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "最长路径不超过最短路径的两倍",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "最长路径不超过最短路径的一半",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最长路径可以是最短路径的任意倍数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-82",
+          "type": "short"
+        },
+        {
+          "id": "R1-83",
+          "type": "multiple",
+          "stem": "下列关于跳表特点的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "跳表中的数据是有序的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "上层索引可以跳过底层的多个节点",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "节点的层数通常通过随机方式确定",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每一层的节点个数都和最底层相同",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "每次插入后必须通过旋转来保持平衡",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-84",
+          "type": "single",
+          "stem": "随机跳表的搜索、插入、删除操作的时间复杂度，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "搜索、插入、删除在最坏情况下也能保证是 O(log n)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "期望时间复杂度是 O(log n)，最坏仍可能退化到 O(n)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "期望和最坏情况下的时间复杂度都是 O(n)，没有加速效果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "期望时间复杂度是 O(1)，最坏情况下是 O(log n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-85",
+          "type": "single",
+          "stem": "合理设置随机晋升概率后，跳表总的期望空间复杂度及其代价，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "期望空间复杂度是 O(log n)，不需要额外指针",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "期望空间复杂度是 O(n²)，因为每层都存全部节点",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "期望空间复杂度是 O(1)，不需要额外指针",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "期望空间复杂度是 O(n)，但需要额外的索引指针",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-86",
+          "type": "single",
+          "stem": "与红黑树相比，下列关于跳表的说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不需要旋转，查找过程更直观，常用于有序集合和范围查询",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "需要通过旋转和重新着色来保持平衡，常用于有序集合",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个节点都必须是红色或黑色，查找过程更复杂",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最坏情况下的时间复杂度始终是 O(log n)，不会退化",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-87",
+          "type": "single",
+          "stem": "epoll 使用红黑树管理的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "已经就绪的事件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "事件对应的就绪链表",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "注册的监听项",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "有序集合的成员及分数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-88",
+          "type": "short"
+        },
+        {
+          "id": "R1-89",
+          "type": "fill",
+          "stem": "Java 的 TreeMap、TreeSet 底层使用____，因而支持有序遍历和____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-90",
+          "type": "multiple",
+          "stem": "下列关于 Redis zset 与跳表的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "使用跳表编码时，通过跳表维护成员的顺序",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "使用跳表编码时，配合哈希表按成员查询分数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "小规模 zset 也可以使用紧凑编码",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "所有 zset 都使用跳表",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "跳表负责按成员查询分数，哈希表负责维护成员顺序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-91",
+          "type": "short"
+        },
+        {
+          "id": "R1-92",
+          "type": "single",
+          "stem": "采用随机层高的跳表，搜索、插入、删除的期望时间复杂度是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "O(n)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(log n)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "O(n log n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-93",
+          "type": "single",
+          "stem": "关于跳表的最坏时间复杂度，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "索引层数和分布很不理想时可能退化成链表，变成 O(n)，不能把期望 O(log n) 说成最坏 O(log n)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "最坏情况下也是 O(log n)，因为随机层高保证了每一层的索引分布始终均匀",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最坏情况下会退化成 O(n²)，因为每一层都需要重新建立一遍索引",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最坏情况下是 O(1)，因为每次查找都可以直接从最高层一步到位",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-94",
+          "type": "fill",
+          "stem": "每个节点以 1/2 的概率晋升到上一层时，跳表各层节点数大致为 n、____、____……，加起来仍然是 O(n)。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-95",
+          "type": "single",
+          "stem": "跳表范围查询需要返回 m 个元素时，期望时间复杂度是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(log n)，只需要定位范围起点就能得到全部结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "O(m log n)，每个元素都要重新从最高层开始查找",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(n)，必须从头遍历整个跳表才能得到结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "O(log n + m)，先定位范围起点，再沿底层链表遍历",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-96",
+          "type": "fill",
+          "stem": "红黑树中每个节点的颜色只能是____或____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R1-97",
+          "type": "single",
+          "stem": "红黑树对根节点和叶子节点（NIL 节点）的颜色有什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "根节点是红色，每个叶子节点（NIL 节点）是黑色",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "根节点是黑色，每个叶子节点（NIL 节点）也是黑色",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "根节点是黑色，每个叶子节点（NIL 节点）是红色",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "根节点和叶子节点（NIL 节点）的颜色可以任意",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-98",
+          "type": "single",
+          "stem": "红黑树对红色节点的子节点有什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "如果一个节点是红色，则其子节点必须也是红色",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "如果一个节点是红色，则其子节点必须是黑色",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "如果一个节点是红色，则其子节点颜色可以任意",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "如果一个节点是红色，则它不能有子节点",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-99",
+          "type": "single",
+          "stem": "红黑树对从任一节点到其每个叶子节点的所有路径有什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "都包含相同数目的红色节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "长度完全相同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "至少包含一个红色节点",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "都包含相同数目的黑色节点",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-100",
+          "type": "short"
+        },
+        {
+          "id": "R1-101",
+          "type": "single",
+          "stem": "红黑树和 AVL 树的性能对比，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者查找、插入、删除最坏都是 O(log n)，不能简单认为某一种树在所有场景下都更快",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "AVL 树的查找、插入、删除都比红黑树快，应该在所有场景下都选择 AVL 树",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "红黑树的查找、插入、删除都比 AVL 树快，应该在所有场景下都选择红黑树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "红黑树最坏情况下是 O(log n)，而 AVL 树最坏情况下是 O(n)，所以红黑树更优",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-102",
+          "type": "multiple",
+          "stem": "下列关于 AVL 树和红黑树平衡要求的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "AVL 树要求每个节点左右子树高度差不超过 1",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "红黑树通过颜色规则维持平衡，要求更宽松",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "红黑树的平衡要求比 AVL 树更严格",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "AVL 树通过颜色规则维持平衡",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-103",
+          "type": "single",
+          "stem": "原文给出的红黑树的高度上限是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "log₂(n + 1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "n × log₂(n + 1)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "2log₂(n + 1)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "2n + 1",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-104",
+          "type": "short"
+        },
+        {
+          "id": "R1-105",
+          "type": "short"
+        },
+        {
+          "id": "R1-106",
+          "type": "short"
+        },
+        {
+          "id": "R1-107",
+          "type": "single",
+          "stem": "Java 的 TreeMap 和 TreeSet 使用红黑树，原文给出的原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为红黑树的查询一定比其他任何树都快",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为红黑树不需要任何旋转或着色调整",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "为了兼顾有序查询、插入和删除的性能",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "因为红黑树的树高一定比 AVL 树更低",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-108",
+          "type": "single",
+          "stem": "二叉搜索树查找的最坏时间复杂度是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(n)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "O(1)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(log n)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "O(n log n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-109",
+          "type": "short"
+        },
+        {
+          "id": "R1-110",
+          "type": "fill",
+          "stem": "原文提到用来解决二叉查找树退化问题的两种自平衡二叉树是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R1-111",
+          "type": "single",
+          "stem": "平衡二叉查找树（AVL 树）在二叉查找树的基础上增加了什么约束？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个节点要么是红色，要么是黑色",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有数据都存放在叶子节点，叶子节点之间用指针相连",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个节点的左子树和右子树的节点个数必须相等",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个节点的左子树和右子树的高度差不能超过 1",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-112",
+          "type": "single",
+          "stem": "与 AVL 树相比，原文怎样评价红黑树的约束条件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "红黑树没有任何约束条件，靠旋转自动保持平衡",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "红黑树也通过约束条件来达到自平衡，但约束条件比较复杂",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "红黑树的约束条件比 AVL 树简单，只需要保证左右子树高度差不超过 1",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "红黑树不能解决二叉查找树退化成链表的问题",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-113",
+          "type": "single",
+          "stem": "关于 B+ 树的整体结构，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它是自平衡的二叉查找树，每个节点只有两个子节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它是自平衡的多路查找树，所有叶节点都位于同一层",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它是自平衡的多路查找树，叶节点分布在不同层，路径长度不固定",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它是不要求平衡的多路查找树，所有叶节点位于同一层",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-114",
+          "type": "short"
+        },
+        {
+          "id": "R1-115",
+          "type": "single",
+          "stem": "B+ 树的所有数据记录存放在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "存放在根节点中，叶节点只存放指针",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "分散存放在所有节点中，非叶节点也保存完整记录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "全部存放在非叶节点中，叶节点只保存关键字",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "全部存放在叶节点中，且按关键字排序",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-116",
+          "type": "single",
+          "stem": "B+ 树的叶节点之间是怎样连接的？有什么好处？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通过指针相互链接（通常是双向链表），便于范围查询和顺序遍历",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "彼此独立，没有任何链接，只便于单点查找，不便于范围查询",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "通过非叶节点间接相连，只便于单点查找，不便于顺序遍历",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用哈希表相连，便于快速判断某个元素是否存在于叶节点中",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-117",
+          "type": "single",
+          "stem": "B 树在查找数据时，检索路径有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须走到叶子节点才能结束，所有查找的路径长度都是固定的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只能在根节点终止，所有查找的路径长度都是固定的",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可能在非叶子节点就找到目标并终止，路径长度不固定",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "总是遍历所有节点后才结束，所有查找的路径长度都是固定的",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-118",
+          "type": "single",
+          "stem": "B+ 树在查找数据时，检索路径有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可能在非叶子节点就找到目标数据并终止，路径长度不固定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可以在任意一个节点终止，因此不同查找的路径长度不固定",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有数据都在叶子节点，查找必须走到叶子节点才结束，路径长度固定",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "所有数据都在根节点，所有查找的路径长度都固定为一",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-119",
+          "type": "single",
+          "stem": "B 树和 B+ 树的叶子节点在结构上有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "B 树的叶子节点彼此独立，B+ 树的叶子节点通过指针连成有序链表",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "B 树的叶子节点连成有序链表，B+ 树的叶子节点彼此独立",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者的叶子节点都彼此独立，没有任何指针链接",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者的叶子节点都通过指针连接，形成有序链表",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-120",
+          "type": "fill",
+          "stem": "B 树的非叶子节点存储____和____；B+ 树的非叶子节点只存储用于导航的____和____，不存储完整记录。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-121",
+          "type": "short"
+        },
+        {
+          "id": "R1-122",
+          "type": "single",
+          "stem": "B+ 树和 B 树在范围查询上的差别，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "B 树找到起点后沿叶子链表扫描；B+ 树的叶子节点彼此独立，不能做范围查询，只能做单点查找",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "B 树和 B+ 树都不支持范围查询，要做范围查询只能借助额外的哈希表来完成",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "B+ 树需要在不同层之间来回遍历才能做范围查询，B 树的叶子链表使它做起来更方便",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "B+ 树找到起点后沿叶子链表扫描；B 树也能范围查询，但要访问不同层的节点，顺序读取不如 B+ 树方便",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-123",
+          "type": "single",
+          "stem": "以 InnoDB 为例，聚簇索引和二级索引的叶子节点分别保存什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "聚簇索引的叶子节点保存索引列和主键值，二级索引的叶子节点保存完整行记录",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "聚簇索引的叶子节点保存完整行记录，二级索引的叶子节点保存索引列和主键值",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "聚簇索引和二级索引的叶子节点都保存完整行记录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "聚簇索引的叶子节点只保存主键值，二级索引的叶子节点只保存索引列",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-124",
+          "type": "single",
+          "stem": "在 InnoDB 中，什么情况下查询需要回表？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查询的列能由二级索引完全覆盖时，需要根据主键回表查询",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "查询的列不能由二级索引覆盖时，需要根据主键回表查询",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "所有 B+ 树的叶子节点保存的都是完整的一行数据，所以总要回表",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只要查询用到聚簇索引就必须回表",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-125",
+          "type": "multiple",
+          "stem": "下列关于红黑树、B 树、B+ 树的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "红黑树每个节点存 1 个键值对，是二分叉的二叉树",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "B 树每个节点存多个键值对，是多分叉的多路树",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "B+ 树的叶节点额外用链表连接",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "B+ 树的所有节点均存数据",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "红黑树每个节点存多个键值对，是多分叉的多路树",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-126",
+          "type": "fill",
+          "stem": "在红黑树、B 树、B+ 树三者中，数据仅存于叶节点的是____，平衡维护方式是颜色标记与旋转的是____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-127",
+          "type": "single",
+          "stem": "红黑树、B 树、B+ 树的平衡维护方式，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "红黑树靠节点分裂、合并，B 树和 B+ 树靠颜色标记与旋转",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "三者都靠颜色标记与旋转",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "红黑树靠颜色标记与旋转，B 树靠节点分裂、合并，B+ 树靠哈希重排",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "红黑树靠颜色标记与旋转，B 树和 B+ 树靠节点分裂、合并",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-128",
+          "type": "single",
+          "stem": "红黑树、B 树、B+ 树在查找稳定性上的区别，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "红黑树和 B 树查到即返回，B+ 树必须查至叶节点",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "红黑树必须查至叶节点，B 树和 B+ 树查到即返回",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "B 树和 B+ 树都必须查至叶节点，红黑树查到即返回",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "三者都是查到即返回",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-129",
+          "type": "short"
+        },
+        {
+          "id": "R1-130",
+          "type": "single",
+          "stem": "关于范围查询，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只有 B+ 树支持范围查询，红黑树和 B 树都不支持范围查询，只能逐个查找",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "红黑树和 B 树可以沿叶子链表顺序扫描，B+ 树只能逐个节点单独查询",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "B+ 树可定位起点后沿叶子链表扫描，红黑树和 B 树也支持范围查询，不能说只有 B+ 树才能",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "三者的范围查询没有任何差别，访问方式和数据局部性也完全相同",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-131",
+          "type": "single",
+          "stem": "关于红黑树旋转与 B 树、B+ 树分裂、合并的维护成本，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "分裂、合并一定比旋转便宜，因为 B 树和 B+ 树的调整不会传播到上层节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "旋转一定比分裂、合并便宜，所以 B 树和 B+ 树的维护成本总是更高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能简单认为分裂、合并一定比旋转便宜，B 树和 B+ 树的调整也可能传播到根节点",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "三者的维护成本完全相同，所以选择时只需要比较查询效率即可",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-132",
+          "type": "fill",
+          "stem": "数据在内存中且高频增删时，原文建议选择____；数据在磁盘上且随机查询、范围查询都需要时，原文建议选择____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-133",
+          "type": "single",
+          "stem": "关于堆，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "堆是一棵完全二叉树，这样实现的堆也称为二叉堆",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "堆是一棵二叉搜索树，整体按从小到大排列",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "堆是一棵所有叶子节点位于同一层的多路查找树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "堆是由顶点和边组成的、可以表示多对多关系的结构",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-134",
+          "type": "fill",
+          "stem": "堆中节点的值都大于等于其子节点的值时，称为____；都小于等于其子节点的值时，称为____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-135",
+          "type": "single",
+          "stem": "一棵二叉树要成为堆，除了节点值与其子节点之间满足大于等于（或小于等于）的关系，还必须满足什么形态要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须是二叉搜索树",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "必须是平衡因子绝对值不超过 1 的二叉树",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "必须是所有叶子节点位于同一层的树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "必须是完全二叉树",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-136",
+          "type": "single",
+          "stem": "以小顶堆为例，下列关于堆的有序性，说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "堆是整体有序的，左子树的值一定小于右子树的值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "最小值在堆顶，但堆并不整体有序，左右子树之间也没有固定大小关系",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "最小值保存在叶子节点中，堆顶保存的是最大值",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "堆是整体有序的，所以可以像二叉搜索树那样只走一侧去查找",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-137",
+          "type": "fill",
+          "stem": "堆的常见操作中，查看堆顶的时间复杂度是____，插入元素最坏是____，删除堆顶最坏是____，查找任意值最坏是____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-138",
+          "type": "short"
+        },
+        {
+          "id": "R1-139",
+          "type": "short"
+        },
+        {
+          "id": "R1-140",
+          "type": "single",
+          "stem": "为什么在堆中查找任意值最坏需要 O(n)？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为堆顶保存的是最大值，需要先逐个比较所有叶子",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能像二叉搜索树那样确定只走哪一边",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "因为堆是整体有序的，需要先对所有元素重新排序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "因为堆的每个节点只能通过链表指针逐个访问",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-141",
+          "type": "fill",
+          "stem": "建堆有两种方式：逐个插入的总时间复杂度是____，自底向上建堆的总时间复杂度是____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-142",
+          "type": "single",
+          "stem": "自底向上建堆是从哪个节点开始、怎样调整的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从堆顶开始向上调整",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "从最后一个叶子节点开始向上调整",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "从堆顶开始，每个节点都向下调整 log n 层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从最后一个非叶子节点开始向下调整",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-143",
+          "type": "short"
+        },
+        {
+          "id": "R1-144",
+          "type": "single",
+          "stem": "估算自底向上建堆的复杂度时，为什么不能把每个节点都按树高 log n 来计算？",
+          "options": [
+            {
+              "key": "A",
+              "text": "那样忽略了不同节点实际能调整的层数",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "因为叶子节点需要调整的层数比根节点更多",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为每个节点只需要和堆顶比较一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "因为建堆时不需要任何调整",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-145",
+          "type": "fill",
+          "stem": "前缀树（Trie Tree）除了叫前缀树，还被称为____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R1-146",
+          "type": "single",
+          "stem": "前缀树的核心思想是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把键映射到桶，用哈希函数直接定位到要查找的字符串",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用多层索引跳过链表中的多个节点，从而加速搜索过程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "利用字符串的公共前缀减少查询时间，最大限度地减少无谓的字符串比较",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用位数组记录字符串是否存在，并允许存在少量误判",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-147",
+          "type": "multiple",
+          "stem": "下列关于前缀树特点的说法，符合原文的有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "根节点不包含字符，除根节点外的每一个节点都包含一个字符",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "从根节点到某一节点，路径上经过的字符连接起来，即为该节点对应的字符串",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每个节点的所有子节点包含的字符都不相同",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "同一节点的子节点可以包含相同的字符",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "每个节点都只能有一个子节点",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-148",
+          "type": "single",
+          "stem": "前缀树的节点为什么还需要记录是否是单词的结束位置？",
+          "options": [
+            {
+              "key": "A",
+              "text": "否则无法保证每个节点的所有子节点包含的字符都互不相同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "否则查询一个单词的时间复杂度会从 O(L) 变成 O(n²)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "否则只能判断前缀是否存在，无法区分 app 是完整单词还是 apple 的前缀",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "否则无法统计字符串集合中一共有多少个不同的单词",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-149",
+          "type": "single",
+          "stem": "字符串长度为 L，且查找子节点的操作是 O(1) 时，前缀树插入、查找一个单词的时间复杂度是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(L)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "O(1)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(L²)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "O(log L)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-150",
+          "type": "single",
+          "stem": "用前缀树查询某个前缀并返回所有匹配词时，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查询前缀是 O(L)，返回所有匹配词同样只需要 O(L) 的时间",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "查询前缀需要遍历整棵前缀树中的所有节点",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "无法通过前缀树查询前缀，只能用来查询完整的单词",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "查询前缀本身是 O(L)，但返回所有匹配词还需要遍历相应子树",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-151",
+          "type": "single",
+          "stem": "前缀树的代价是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不支持前缀查询，只能用来查询完整单词，无法做自动补全",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "空间占用可能较大，尤其是每个节点都预分配整个字符集大小的数组时",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "查询时间复杂度会随着单词数量的增加而线性增长",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会产生误判，返回存在时并不一定真的存在，需要二次确认",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-152",
+          "type": "fill",
+          "stem": "原文所述前缀树的三类应用场景是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R1-153",
+          "type": "short"
+        },
+        {
+          "id": "R1-154",
+          "type": "single",
+          "stem": "前缀树在路由表匹配中用来做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "判断一个 IP 是否肯定不在黑名单中，并允许少量误判存在",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "根据 IP 地址前缀实现最长前缀匹配，快速确定数据包的转发路径",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "对 IP 地址按大小顺序做范围查询并返回全部结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "统计每个 IP 地址在日志中出现的次数并排序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-155",
+          "type": "short"
+        },
+        {
+          "id": "R1-156",
+          "type": "single",
+          "stem": "LRU 缓存淘汰算法在缓存空间已满时，优先淘汰哪个数据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最先插入缓存的数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "访问次数最少的数据",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最近刚被访问过的数据",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最长时间未被访问的数据",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-157",
+          "type": "fill",
+          "stem": "原文实现 LRU 的方式是把____和____结合起来。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R1-158",
+          "type": "short"
+        },
+        {
+          "id": "R1-159",
+          "type": "short"
+        },
+        {
+          "id": "R1-160",
+          "type": "short"
+        },
+        {
+          "id": "R1-161",
+          "type": "single",
+          "stem": "LRU 缓存中更新一个已存在的 key 时，需要淘汰其他节点吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不需要，因为元素数量没有增加",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "需要，每次写入都必须淘汰链表尾部的节点",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要，因为更新后该节点会移到头部占用额外空间",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不需要，因为已存在的 key 不会被移动位置",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-162",
+          "type": "short"
+        },
+        {
+          "id": "R1-163",
+          "type": "single",
+          "stem": "LRU 实现中常用虚拟头尾节点，它的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "保证哈希表不会发生冲突",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让链表可以不使用前驱指针",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "减少处理边界的分支",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让 get 未命中时自动写入缓存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-164",
+          "type": "single",
+          "stem": "在哈希表操作平均为 O(1) 的前提下，哈希表加双向链表实现的 LRU（容量为 C），get、put 的时间复杂度和空间复杂度是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "get、put 平均都是 O(n)，空间复杂度是 O(C)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "get、put 平均都是 O(1)，空间复杂度是 O(1)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "get、put 平均都是 O(1)，空间复杂度是 O(C)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "get 是 O(1)，put 是 O(n)，空间复杂度是 O(C)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-165",
+          "type": "fill",
+          "stem": "用 Java 的 LinkedHashMap 实现 LRU 时，构造方法的第三个参数传 true，表示按____顺序维护链表；再重写____方法，在 size() 超过容量时淘汰最久未访问的条目。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-166",
+          "type": "single",
+          "stem": "原文的 LinkedHashMap 版 LRU 示例是线程安全的吗？多线程使用时要怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是线程安全的，多线程使用时还需要保证整个缓存操作的同步",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是线程安全的，因为 LinkedHashMap 的每个方法都带同步",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是线程安全的，但多线程使用时无需任何额外处理",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是线程安全的，因为按访问顺序维护链表可以避免并发冲突",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-167",
+          "type": "code",
+          "stem": "用任意语言实现一个容量固定的 LRU 缓存，容量为非负整数。支持 get(key)：命中时返回对应的值并把该条目视为最近使用，未命中返回 -1；put(key, value)：写入或更新，写入后若条目数超过容量，淘汰最久未访问的条目。get、put 的平均时间复杂度都要求 O(1)。"
+        },
+        {
+          "id": "R1-168",
+          "type": "single",
+          "stem": "原文认为，用 HashSet 或 HashMap 直接保存约 1 亿个恶意 IP 做黑名单，主要问题是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "哈希表无法判断一个元素是否在集合中，只能保存元素",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "哈希表的查询时间复杂度是 O(n)，查询速度太慢而无法使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "哈希表会把不在集合中的元素误判为存在，无法保证准确",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "要存储元素本身以及相关的对象、桶和指针，内存开销可能很大",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-169",
+          "type": "fill",
+          "stem": "布隆过滤器使用一个很长的____，同时结合多个____来实现。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-170",
+          "type": "short"
+        },
+        {
+          "id": "R1-171",
+          "type": "fill",
+          "stem": "把未加入的元素判断为存在的错误称为____，对应的概率叫 False Positive Probability，简称____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-172",
+          "type": "single",
+          "stem": "布隆过滤器设计时设定目标误判率为 1%，指的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "已加入的元素有 1% 的概率被丢失",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "查询未加入元素时，误判为存在的概率是 1%",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "查询已加入元素时，有 1% 的概率返回不存在",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次添加元素有 1% 的概率失败",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-173",
+          "type": "fill",
+          "stem": "布隆过滤器创建时先建立一个全由____组成的位数组；添加元素时，把元素经所有哈希函数映射到的位置标记为____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-174",
+          "type": "single",
+          "stem": "布隆过滤器查询元素时，下列判断方式符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有位置都被标记为 1，则元素肯定在集合中；任何一个位置不为 1，则元素可能不在",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有位置都被标记为 1，则元素可能在集合中；任何一个位置不为 1，则元素肯定不在",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只要有一个位置被标记为 1，则元素肯定在集合中",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有位置都不为 1 时，元素可能在集合中",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-175",
+          "type": "single",
+          "stem": "布隆过滤器误判率的主要来源是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "已加入的元素被直接删除，造成查询时出现丢失",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "哈希函数的个数总是不足，导致位数组没有被使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "位数组在创建时被初始化为全 1，所以查询一定返回存在",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "哈希碰撞：位数组大小有限，不同元素可能映射到相同的位置",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-176",
+          "type": "single",
+          "stem": "元素数量相同的情况下，增加布隆过滤器的位数组长度对误判率通常有什么影响？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通常可以降低误判率",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "通常会升高误判率",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "没有任何影响，误判率只由哈希函数个数决定",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会让误判率变成 0",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-177",
+          "type": "single",
+          "stem": "布隆过滤器的哈希函数个数，下列说法符合原文的是哪一项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是，哈希函数越多误判率一定越低，所以应尽量多用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是，哈希函数的个数不影响计算开销，只影响误判率",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，超过合适数量后反而可能增加误判率，同时增加计算开销",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不是，哈希函数应该只用一个，以避免更多位被设成 1",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-178",
+          "type": "fill",
+          "stem": "对于 m（比特位个数）和 k（哈希函数个数）确定的布隆过滤器，添加和判断操作的时间复杂度都是____，空间复杂度是____比特。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-179",
+          "type": "single",
+          "stem": "预计插入 n 个元素、目标误判率为 p 时，位数组长度 m 的常用估算公式是哪一个？",
+          "options": [
+            {
+              "key": "A",
+              "text": "m ≈ (m / n) × ln 2",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "m ≈ n × ln(p) × (ln 2)²",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "m ≈ -n × ln(p) / (ln 2)²",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "m ≈ n × ln 2",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-180",
+          "type": "single",
+          "stem": "预计插入 n 个元素、位数组长度为 m 时，哈希函数数量 k 的常用估算公式是哪一个？",
+          "options": [
+            {
+              "key": "A",
+              "text": "k ≈ (m / n) × ln 2，实际使用时取合适的整数",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "k ≈ (n / m) × ln 2，实际使用时取合适的整数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "k ≈ -n × ln(p) / (ln 2)²，实际使用时取合适的整数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "k ≈ m × ln 2，实际使用时取合适的整数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-181",
+          "type": "fill",
+          "stem": "预计存储 100 万个元素、目标误判率为 1% 时，大约需要____万个比特（约 1.2 MB），哈希函数数量约为____个。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R1-182",
+          "type": "single",
+          "stem": "布隆过滤器实际插入的元素数量远超预估时，会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "误判率会降低",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "误判率不变",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "已加入的元素会被自动删除",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "误判率会升高",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R1-183",
+          "type": "short"
+        },
+        {
+          "id": "R1-184",
+          "type": "single",
+          "stem": "布隆过滤器“返回不存在就一定不存在”这个结论成立的前提是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "过滤器使用的哈希函数个数不超过三个，才能保证没有哈希碰撞",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "元素已正确加入，且过滤器没有被错误删除或丢失更新",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "过滤器的位数组长度恰好等于已加入的元素个数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "目标误判率被设置为 0，因此不会出现任何误判",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R1-185",
+          "type": "short"
+        }
+      ]
+    },
+    "R2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "R2-1",
+          "type": "fill",
+          "stem": "原文列举并说明了时间、空间复杂度的六种排序算法是：____、____、____、____、____、____。",
+          "blankCount": 6,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R2-2",
+          "type": "single",
+          "stem": "冒泡排序的基本做法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把待排序元素逐个插入到已排序序列中的合适位置，逐步形成有序序列",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "通过相邻元素的比较和交换，每次把最大（或最小）的元素逐步移到序列的末尾（或开头）",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不断从未排序部分里选出最小（或最大）的元素，放到已排序部分的末尾（或开头）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "选一个基准元素把数组划分成两个子数组，再对两个子数组分别递归排序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-3",
+          "type": "single",
+          "stem": "给冒泡排序加上“本轮没有交换就提前结束”的判断后，它的最好、最坏、平均时间复杂度和空间复杂度分别是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最好 O(n²)，最坏 O(n²)，平均 O(n²)，空间 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "最好 O(n)，最坏 O(n²)，平均 O(nlogn)，空间 O(1)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最好 O(n)，最坏 O(n²)，平均 O(n²)，空间 O(1)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "最好 O(n)，最坏 O(n²)，平均 O(n²)，空间 O(n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-4",
+          "type": "fill",
+          "stem": "把待排序元素逐个插入到已排序序列合适位置的排序算法是____；不断选择未排序部分的最小（或最大）元素并放到已排序部分末尾（或开头）的排序算法是____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-5",
+          "type": "single",
+          "stem": "插入排序的最好、最坏时间复杂度分别是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最好 O(n)，最坏 O(n²)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "最好 O(n²)，最坏 O(n²)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最好 O(nlogn)，最坏 O(n²)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最好 O(n)，最坏 O(nlogn)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-6",
+          "type": "single",
+          "stem": "冒泡排序（带提前结束判断）、插入排序、选择排序、快速排序四种算法中，哪一种在最好情况下的时间复杂度仍然是 O(n²)？",
+          "options": [
+            {
+              "key": "A",
+              "text": "冒泡排序（带提前结束判断）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "插入排序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "快速排序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "选择排序",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-7",
+          "type": "short"
+        },
+        {
+          "id": "R2-8",
+          "type": "multiple",
+          "stem": "关于快速排序的复杂度，下列说法哪些成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "平均时间复杂度为 O(nlogn)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "最坏情况下时间复杂度为 O(n²)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "空间复杂度始终为 O(1)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "空间复杂度最好情况下为 O(logn)，最坏情况下为 O(n)",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "最好情况下时间复杂度为 O(n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-9",
+          "type": "short"
+        },
+        {
+          "id": "R2-10",
+          "type": "single",
+          "stem": "归并排序的时间复杂度和空间复杂度分别是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最好、最坏、平均时间复杂度都是 O(nlogn)，空间复杂度 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "最好时间复杂度 O(n)，最坏、平均时间复杂度 O(nlogn)，空间复杂度 O(n)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最好、最坏、平均时间复杂度都是 O(nlogn)，空间复杂度 O(n)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "最好、平均时间复杂度 O(nlogn)，最坏时间复杂度 O(n²)，空间复杂度 O(logn)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-11",
+          "type": "short"
+        },
+        {
+          "id": "R2-12",
+          "type": "multiple",
+          "stem": "关于堆排序的复杂度，下列说法哪些成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自底向上建堆的时间复杂度是 O(n)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "使用迭代堆调整时，空间复杂度是 O(1)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "空间复杂度是 O(n)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "建堆的时间复杂度是 O(n²)",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "最坏情况下整个排序的时间复杂度是 O(n²)",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "整个排序的平均和最坏时间复杂度是 O(nlogn)",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-13",
+          "type": "single",
+          "stem": "在升序排序中，“数组已经有序”指的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前一个元素严格小于后一个元素，不允许相等",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "前一个元素大于等于后一个元素",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数组中所有元素的值互不相同",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "前一个元素小于等于后一个元素",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-14",
+          "type": "single",
+          "stem": "冒泡排序若仍固定执行所有轮次，面对已经有序的数组，比较次数的量级是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(n)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "O(n²)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "O(nlogn)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "O(1)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-15",
+          "type": "short"
+        },
+        {
+          "id": "R2-16",
+          "type": "short"
+        },
+        {
+          "id": "R2-17",
+          "type": "code",
+          "stem": "用任意语言实现冒泡排序，对整数数组原地升序排序；要求输入已经有序时最好时间复杂度为 O(n)，空间复杂度为 O(1)。"
+        },
+        {
+          "id": "R2-18",
+          "type": "short"
+        },
+        {
+          "id": "R2-19",
+          "type": "fill",
+          "stem": "快速排序的过程是：从序列中选取一个数作为____，通过一次____把较小的元素放到左边、较大的元素放到右边，然后分别对左右两边重复以上操作，直到数组完全排序。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-20",
+          "type": "single",
+          "stem": "快速排序一次划分之后，与基准相等的元素放在基准的哪一侧？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由具体的划分方式决定",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一律放在基准的左边",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一律放在基准的右边",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不允许序列中出现与基准相等的元素",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-21",
+          "type": "fill",
+          "stem": "原文所述，快速排序常见的划分方式有：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R2-22",
+          "type": "single",
+          "stem": "原文用单向扫描划分（Lomuto 划分）实现快速排序，选择区间里的哪个元素作为基准？",
+          "options": [
+            {
+              "key": "A",
+              "text": "区间的第一个元素",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "区间正中间位置的元素",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "区间里随机选取的一个元素",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "区间的最后一个元素",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-23",
+          "type": "single",
+          "stem": "单向扫描划分中，初始值为 low - 1 的变量 i 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "大于基准的区域的第一个位置",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "小于基准的区域的最后一个位置",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "当前正在扫描的元素的位置",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "基准元素最终所在的位置",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-24",
+          "type": "short"
+        },
+        {
+          "id": "R2-25",
+          "type": "single",
+          "stem": "单向扫描划分扫描结束后，应把基准元素和哪个位置的元素交换，它才到达最终位置？",
+          "options": [
+            {
+              "key": "A",
+              "text": "arr[i + 1]",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "arr[i]",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "arr[low]",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "arr[high - 1]",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-26",
+          "type": "single",
+          "stem": "划分完成后递归排序基准两侧的区间时，基准本身是否包含在递归区间内？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只有左边的区间包含基准",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只有右边的区间包含基准",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "左右两个区间都不包含基准",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "左右两个区间都包含基准",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-27",
+          "type": "short"
+        },
+        {
+          "id": "R2-28",
+          "type": "short"
+        },
+        {
+          "id": "R2-29",
+          "type": "short"
+        },
+        {
+          "id": "R2-30",
+          "type": "single",
+          "stem": "快速排序遇到大量重复值时，原文建议采用三路划分，它的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把等于基准的一段直接排除在递归之外",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把基准固定放到数组正中间",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "保证每次划分后左右两部分长度完全相等",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不再需要对基准的左右两边递归",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-31",
+          "type": "code",
+          "stem": "用任意语言实现快速排序，对整数数组原地升序排序（空数组、单元素数组和含重复元素的数组也要能正确处理）。"
+        },
+        {
+          "id": "R2-32",
+          "type": "single",
+          "stem": "关于大顶堆，下列哪项描述正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个节点都小于等于其子树中的每个节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个节点都大于其左子节点且小于其右子节点",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个节点都大于等于其子树中的每个节点",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "同一层的节点从左到右依次变大",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-33",
+          "type": "fill",
+          "stem": "堆有两条要求：一是必须是____；二是堆中每个节点的值都必须大于等于（或小于等于）其____中每个节点的值。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-34",
+          "type": "single",
+          "stem": "堆通常使用一维数组保存，主要的好处是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "保证堆一定是满二叉树，数组中不会出现空位",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "节省空间，不需要存左右子节点的指针，通过下标就能定位左右子节点和父节点",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "数组天然有序，建堆时不再需要任何调整",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "便于在每个节点中保存指向左右子节点的指针",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-35",
+          "type": "fill",
+          "stem": "在起始位置为 0 的数组中，下标为 i 的节点，其左子节点的下标是____，右子节点的下标是____，父节点的下标是____（i > 0，向下取整）。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-36",
+          "type": "fill",
+          "stem": "堆排序的过程大致分为两大步骤：先____，再____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-37",
+          "type": "single",
+          "stem": "原地建堆时（元素个数为 n，下标从 0 起），应从哪个节点开始依次向前调整？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最后一个元素，即下标 n - 1 的节点",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "根节点，即下标 0 的节点",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "下标为 n / 2 的节点",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最后一个非叶子节点，即下标 n / 2 - 1 的节点",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-38",
+          "type": "single",
+          "stem": "堆排序建堆时所说的“原地”建堆，含义是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "建堆过程中不需要任何比较和交换",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先把数组复制到一棵链式二叉树上再调整",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不借助另一个数组，直接在原数组上操作",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只对根节点做一次向下调整",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-39",
+          "type": "short"
+        },
+        {
+          "id": "R2-40",
+          "type": "short"
+        },
+        {
+          "id": "R2-41",
+          "type": "single",
+          "stem": "数组（长度为 n）建成大顶堆后，把堆顶元素与最后一个元素交换，最大的元素被放到哪个下标？",
+          "options": [
+            {
+              "key": "A",
+              "text": "下标 0",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "下标 n / 2 - 1",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "下标 1",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "下标 n - 1",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-42",
+          "type": "single",
+          "stem": "对数组 [4, 10, 3, 5, 1]，按“从最后一个非叶子节点起依次向下调整”的方式原地构建最大堆，得到的数组是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "[10, 4, 3, 5, 1]",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "[10, 5, 3, 4, 1]",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "[4, 10, 3, 5, 1]",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "[5, 10, 3, 4, 1]",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-43",
+          "type": "single",
+          "stem": "建好最大堆 [10, 5, 3, 4, 1] 后，交换堆顶元素与最后一个元素，再把剩余的前 4 个元素调整为堆，这 4 个元素的顺序是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "[5, 4, 3, 1]",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "[1, 5, 3, 4]",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "[5, 1, 3, 4]",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "[4, 5, 3, 1]",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-44",
+          "type": "code",
+          "stem": "用任意语言实现堆排序，对整数数组原地升序排序，要求整体时间复杂度为 O(nlogn)，额外空间复杂度为 O(1)。"
+        },
+        {
+          "id": "R2-45",
+          "type": "single",
+          "stem": "堆排序的向下调整如果写成递归，除常数个临时变量外，最坏还要计入多少调用栈空间？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "O(n)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(log n)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "O(nlogn)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-46",
+          "type": "fill",
+          "stem": "堆排序中，建堆的时间复杂度是____，排序过程的时间复杂度是____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-47",
+          "type": "short"
+        },
+        {
+          "id": "R2-48",
+          "type": "multiple",
+          "stem": "下列哪些是归并排序适合的使用场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "外部排序中有序文件的归并",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "希望已经有序的数据最好情况下只需 O(n) 的排序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "链表排序，可以通过调整指针来合并",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要保持相同关键字元素相对顺序的排序",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "要求最坏时间复杂度为 O(nlogn) 的排序",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "只允许使用 O(1) 临时空间的数组排序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-49",
+          "type": "short"
+        },
+        {
+          "id": "R2-50",
+          "type": "single",
+          "stem": "快速排序主要适合下列哪类场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "要求保持相同关键字相对顺序的排序",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "内存中的数组排序",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "要求最坏时间复杂度为 O(nlogn) 的排序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "外部排序中有序文件的归并",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-51",
+          "type": "multiple",
+          "stem": "关于快速排序，下列说法哪些成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最坏时间复杂度仍然是 O(nlogn)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "普通快速排序不稳定",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "普通快速排序是稳定排序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最坏会退化到 O(n²)，通常要结合随机基准、三路划分等优化",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "通常有较好的数据局部性",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "平均时间复杂度为 O(nlogn)",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-52",
+          "type": "single",
+          "stem": "能不能直接断言快速排序在所有场景中都是最快的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，因为它的平均时间复杂度是 O(nlogn)，其他算法都比不过",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能，只要配合随机基准，它在任何数据上都一定最快",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，因为它的最坏时间复杂度也是 O(nlogn)，不会退化",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，实际选择还要看数据规模、重复值比例、是否要求稳定、可用内存等条件",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-53",
+          "type": "short"
+        },
+        {
+          "id": "R2-54",
+          "type": "single",
+          "stem": "关于排序算法的稳定性，下列哪项描述正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "多个关键字相同的元素在排序后仍保持它们原有的相对顺序",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "排序后关键字相同的元素的相对顺序被完全反转",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "关键字相同的元素在排序后的相对顺序可以任意改变",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "排序算法的最好和最坏时间复杂度相同",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-55",
+          "type": "short"
+        },
+        {
+          "id": "R2-56",
+          "type": "single",
+          "stem": "用稳定的排序算法把 [(\"Alice\", 25), (\"Bob\", 25), (\"Charlie\", 20)] 按年龄升序排序，结果是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "[(\"Charlie\", 20), (\"Alice\", 25), (\"Bob\", 25)]",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "[(\"Charlie\", 20), (\"Bob\", 25), (\"Alice\", 25)]",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "[(\"Alice\", 25), (\"Bob\", 25), (\"Charlie\", 20)]",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "[(\"Bob\", 25), (\"Alice\", 25), (\"Charlie\", 20)]",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-57",
+          "type": "single",
+          "stem": "关于不稳定排序算法，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相同元素的相对位置不会改变，排序后仍保持原始顺序",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "相同元素的相对位置可能改变，排序后不保证原始顺序",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一定比稳定排序算法运行得更快",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只能用来处理不含相同元素的序列",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-58",
+          "type": "single",
+          "stem": "先按姓名排序，再用稳定的排序算法按年龄排序，最终得到什么结果？",
+          "options": [
+            {
+              "key": "A",
+              "text": "姓名优先，姓名相同的按年龄排列",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "年龄相同的元素之间不保证姓名顺序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "年龄优先，年龄相同的按姓名排列",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只保留年龄的顺序，姓名顺序全部丢失",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-59",
+          "type": "single",
+          "stem": "稳定性本身能不能决定排序算法的快慢？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，稳定的排序算法一定更快",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能，不稳定的排序算法一定更快",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，稳定性相同的算法速度一定相同",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，仍要比较具体算法和实现",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-60",
+          "type": "single",
+          "stem": "业务需要保留相同关键字元素的原有顺序时，应该怎样选择排序算法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "选平均时间复杂度最低的算法即可，稳定性无关紧要",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "选不稳定排序算法，因为它们不会改变相同元素的顺序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先去掉重复元素再排序，稳定性就不再重要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "通常应选择稳定排序算法",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-61",
+          "type": "fill",
+          "stem": "快速排序的流程依次是：从数组中选择一个____元素；将数组分成两部分，小于它的放在____边，大于它的放在____边；然后____地对左右两部分进行快速排序。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-62",
+          "type": "single",
+          "stem": "原文介绍快速排序流程时，说基准元素通常是数组中哪个位置的元素？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数组中间位置的元素",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "数组最左边的元素",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数组最右边的元素",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "数组中最大的元素",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-63",
+          "type": "single",
+          "stem": "快速排序的平均时间复杂度和最坏时间复杂度分别是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "平均 O(n²)，最坏 O(n²)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "平均 O(nlogn)，最坏 O(n²)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "平均 O(nlogn)，最坏 O(nlogn)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "平均 O(n)，最坏 O(n²)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-64",
+          "type": "single",
+          "stem": "快速排序的最坏时间复杂度出现在什么情况下？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次选择的基准元素恰好是中位数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "数组的长度是奇数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次选择的基准元素都是最大值或最小值",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "数组中没有任何重复元素",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-65",
+          "type": "short"
+        },
+        {
+          "id": "R2-66",
+          "type": "multiple",
+          "stem": "下列哪些情况下快速排序容易出现 O(n²) 的最坏情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "固定选择首尾元素作基准，且数组已经有序",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "使用单向扫描划分，且数组中有大量重复元素",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "对大量重复元素采用三路划分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次选择的基准都是当前子数组中的最大或最小元素",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "每次划分都把数组均匀地分成两部分",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-67",
+          "type": "fill",
+          "stem": "快速排序退化时，各轮划分的工作量为 (n - 1) + (n - 2) + … + 1，因此总时间复杂度是____，递归栈深度也会达到____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-68",
+          "type": "single",
+          "stem": "关于随机选择基准和三数取中，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以彻底消除 O(n²) 的最坏情况，之后最坏也是 O(nlogn)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可以让快速排序变成稳定排序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可以降低划分不均衡的风险，但不能保证消除 O(n²) 的最坏情况",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "对不均衡划分完全没有作用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-69",
+          "type": "single",
+          "stem": "数组里有大量重复值时，原文认为快速排序适合采用哪种做法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "固定选择首元素作基准的划分",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "三路划分",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "固定选择末尾元素作基准的单向扫描划分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只随机选基准，不改变划分方式",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-70",
+          "type": "multiple",
+          "stem": "如果要求最坏时间复杂度为 O(nlogn)，下列哪些方案可以选择？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只加了随机基准的快速排序",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在递归过深时切换到堆排序的混合方案",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "归并排序",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "堆排序",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "固定选首元素作基准的快速排序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-71",
+          "type": "multiple",
+          "stem": "与快速排序相比，冒泡排序在特定场景下有哪些优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在任何规模的数据上都比快速排序更快",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是稳定排序，要求稳定性时更合适",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "平均时间复杂度比快速排序低",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只需 O(1) 额外空间",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "实现简单，适合讲解排序和处理很小的数据量",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-72",
+          "type": "single",
+          "stem": "数组“基本有序”时，冒泡排序一定很快吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不一定，例如最小值在数组末尾时，普通冒泡仍可能需要很多轮",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一定很快，基本有序的数据只需扫描一轮",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一定很快，因为冒泡排序总是比快速排序快",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一定很快，只要加了提前结束判断就是 O(n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-73",
+          "type": "single",
+          "stem": "冒泡排序与快速排序在稳定性上有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "冒泡排序不稳定，快速排序稳定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都是稳定排序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都是不稳定排序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "冒泡排序稳定，快速排序不稳定",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-74",
+          "type": "single",
+          "stem": "快速排序虽然是原地排序，递归调用仍需要多少栈空间？",
+          "options": [
+            {
+              "key": "A",
+              "text": "始终为 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "始终为 O(n)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "始终为 O(nlogn)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "O(log n)，最坏 O(n)",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-75",
+          "type": "single",
+          "stem": "需要稳定、额外空间 O(1)，且数据规模小或接近有序时，原文指出哪种排序通常更实用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "归并排序",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "堆排序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "插入排序",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "快速排序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-76",
+          "type": "fill",
+          "stem": "数据集太大无法一次性在内存里排序时，可以使用外部排序，它的基本思路分为两个阶段：先是____阶段，再是____阶段。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-77",
+          "type": "short"
+        },
+        {
+          "id": "R2-78",
+          "type": "fill",
+          "stem": "外部排序的部分排序阶段，把待排序文件拆成多个足以存入内存的部分，用合适的____算法分别排序后输出到外存临时文件，每个有序的临时文件称为一个“____”。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-79",
+          "type": "single",
+          "stem": "外部排序的部分排序阶段，为什么可以用快速排序对每个部分排序？",
+          "options": [
+            {
+              "key": "A",
+              "text": "内存可以装下每个顺段的所有元素，快速排序的时间复杂度是 O(nlogn)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个顺段本来就已经有序，所以快速排序可以直接跳过不处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "快速排序不需要把数据装入内存，就可以直接对外存文件排序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "快速排序的归并路数最多，因此能让输入输出的次数最少",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-80",
+          "type": "short"
+        },
+        {
+          "id": "R2-81",
+          "type": "single",
+          "stem": "外部排序的归并阶段，一个非常大的时间消耗是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对每个顺段做内排序",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "IO，也就是输入输出",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "在内存中比较两个元素的大小",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把待排序文件拆成多个部分",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-82",
+          "type": "single",
+          "stem": "要减少外部排序归并阶段的归并轮数，应当怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "使用败者树来选择下一项",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "改用最小堆来选择下一项",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "增加归并路数 k",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "减小每个部分的大小",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-83",
+          "type": "single",
+          "stem": "增加外部排序的归并路数 k，需要满足什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "要为每一路输入以及输出预留缓冲区",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "必须先把所有顺段都读入内存",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "必须改用胜者树，不能再用败者树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "部分排序阶段不能再用快速排序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-84",
+          "type": "fill",
+          "stem": "多路归并时，从 k 路当前元素中选出最小值，可以使用____或者____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R2-85",
+          "type": "fill",
+          "stem": "胜者树的非终端结点存储每次比较中____的一方（左右孩子相比较，谁最小即为胜者），而败者树的非终端结点存储比较中____的一方，真正的胜者会被传到上一层继续比较。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-86",
+          "type": "single",
+          "stem": "败者树中某一路的数据发生变化时，需要怎样重新比较？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要把所有叶子结点重新两两比较一遍，共 O(k) 次比较",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只需沿着从叶子到根的一条路径重新比较，每次更新需要 O(log k) 次比较",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "需要丢弃整棵树并从头重新建树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只需和它的兄弟结点比较一次，不用再向上比较",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-87",
+          "type": "single",
+          "stem": "败者树相对于胜者树和最小堆的优势主要体现在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次更新只需 O(1) 次比较，复杂度等级低于最小堆",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "胜者树和最小堆无法做到 O(log k)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能够直接减少归并轮数，省去增加路数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "主要在比较过程的常数开销，复杂度等级并没有更低",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-88",
+          "type": "short"
+        },
+        {
+          "id": "R2-89",
+          "type": "single",
+          "stem": "找出数组中最大的前 K 个值（数组长度为 N）时，K 的合法取值范围是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "[0, N]，其中 K 为 0 时返回空数组",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "[1, N]，K 为 0 时视为非法",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "[0, N - 1]，K 等于 N 时视为非法",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "[1, N - 1]，两端都视为非法",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-90",
+          "type": "single",
+          "stem": "允许重复值各占一个名额时，数组 [5, 5, 3] 中最大的前两个值是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "[5, 3]",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "[5]",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "[3]",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "[5, 5]",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-91",
+          "type": "single",
+          "stem": "“找出最大的 K 个值”和“把这 K 个值排好序”相比，成本有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "后者更省，因为排好序后不需要再找",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "后者还要再排序，会增加排序成本",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者成本完全相同",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "前者必须先把整个数组排序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-92",
+          "type": "fill",
+          "stem": "求最大的前 K 个值的几种做法中，会修改原数组的两种是____和____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R2-93",
+          "type": "short"
+        },
+        {
+          "id": "R2-94",
+          "type": "single",
+          "stem": "对整个数组升序排序后取最后 K 个元素，这种做法的时间复杂度是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(N log K)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "O(N)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(N log N)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "O(K log K)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-95",
+          "type": "single",
+          "stem": "什么情况下，对整个数组排序再取最后 K 个元素的做法效率不高？",
+          "options": [
+            {
+              "key": "A",
+              "text": "K 远小于 N 时，因为排序整个数组没有必要",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "K 接近 N 时，因为需要排序的元素太多",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数组中有重复值时，因为重复值无法排序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要保留原数组时，因为排序法根本无法复制",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-96",
+          "type": "fill",
+          "stem": "用最小堆求最大的前 K 个值：遍历数组，堆的大小小于 K 时直接____，否则比较当前元素和____，如果更大就替换它并调整堆。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-97",
+          "type": "multiple",
+          "stem": "关于用最小堆求最大的前 K 个值的复杂度，下列说法哪些成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "扫描并维护堆的时间复杂度是 O(N log K)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "如果最后连续出堆得到降序结果，这一步需要 O(K log K)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "额外空间是 O(K)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "额外空间是 O(N)",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "K 为 1 时，扫描并维护堆的时间复杂度是 O(N)",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "扫描并维护堆的时间复杂度是 O(N log N)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-98",
+          "type": "single",
+          "stem": "最小堆方法求最大的前 K 个值，为什么适合处理大数据流？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为它的时间复杂度是 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为它会先对整个数据流排序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为它不需要任何额外空间",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不需要一次性把所有数据加载到内存",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R2-99",
+          "type": "short"
+        },
+        {
+          "id": "R2-100",
+          "type": "single",
+          "stem": "快速选择在随机选基准时，选择过程的期望时间复杂度和最坏时间复杂度分别是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "期望 O(NlogN)，最坏 O(N²)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "期望 O(N)，最坏 O(N)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "期望 O(N)，最坏 O(N²)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "期望 O(NlogK)，最坏 O(NlogN)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-101",
+          "type": "single",
+          "stem": "快速选择的实现中使用三路划分，是为了处理什么情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数组已经完全有序",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "数组中的重复值",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "K 为 0 的边界情况",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "原数组不能被修改的要求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-102",
+          "type": "single",
+          "stem": "快速选择得到最大的 K 个元素后，如果继续把结果排序，总的期望时间复杂度应写成？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(N)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "O(N + K log K)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "O(N log N)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "O(N log K)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R2-103",
+          "type": "fill",
+          "stem": "怎么选 Top K 的方案：K 很小时推荐使用____；数据能放入内存、允许修改原数组且只需无序的 K 个最大值时可以使用____；实现复杂度要求较低且 K 接近 N 时可以直接使用____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R2-104",
+          "type": "code",
+          "stem": "用任意语言实现函数：给定整数数组 arr 和整数 k，返回 arr 中最大的 k 个值（允许重复值各占一个名额，返回值的顺序不作要求）。k 不在 [0, 数组长度] 范围内时视为非法输入并报错；k 为 0 时返回空数组。任一正确的解法均可。"
+        }
+      ]
+    },
+    "R3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "R3-1",
+          "type": "short"
+        },
+        {
+          "id": "R3-2",
+          "type": "fill",
+          "stem": "原文所述哈希表的核心原理是：先准备一个可按需扩容的____（数组），再用____把键映射成一个整数，然后用这个整数对数组长度做____（或位运算）得到桶下标，最后把键值对放到这个桶里。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R3-3",
+          "type": "short"
+        },
+        {
+          "id": "R3-4",
+          "type": "fill",
+          "stem": "原文所述，解决哈希冲突的两大类方案是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R3-5",
+          "type": "single",
+          "stem": "链地址法（拉链法）是怎样处理哈希冲突的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "冲突时按一定规则在数组里寻找下一个空位，把元素放进去",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "冲突时用第二个哈希函数算出步长，再去探测其他位置",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个桶里挂一个链表（或红黑树），冲突的元素都挂在对应桶的链表上",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "冲突时把桶数组扩容，让冲突的元素重新分配到新的位置",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-6",
+          "type": "single",
+          "stem": "关于 Java HashMap、Redis 的 dict 和 Java 的 ThreadLocalMap 解决哈希冲突的方式，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Java HashMap 和 Redis 的 dict 用链地址法，ThreadLocalMap 用开放寻址法中的线性探测",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Java HashMap 和 Redis 的 dict 用开放寻址法，ThreadLocalMap 用链地址法",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "三者都用链地址法，桶内都只用链表而不会用红黑树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Java HashMap 用线性探测，Redis 的 dict 和 ThreadLocalMap 用链地址法",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-7",
+          "type": "single",
+          "stem": "关于 JDK 8 的 HashMap 在桶内链表较长时的处理，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "链表长度一达到 8 就立刻转换为红黑树，不再考虑桶数组的长度，也与插入路径无关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "常说的阈值是 64；桶数组长度达到 8 时才会转换为红黑树，长度不足时不做处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "链表再长也不会转换，红黑树只会出现在使用开放寻址法的哈希表里，HashMap 不使用树",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会尝试树化，常说的阈值是 8；桶数组长度不足 64 时优先扩容，达到要求时才转换为红黑树",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-8",
+          "type": "fill",
+          "stem": "原文所述，开放寻址法常见的三种探测方式是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R3-9",
+          "type": "short"
+        },
+        {
+          "id": "R3-10",
+          "type": "short"
+        },
+        {
+          "id": "R3-11",
+          "type": "single",
+          "stem": "Java HashMap 默认的负载因子阈值是多少？一般在什么时候扩容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "默认是 8，一般在元素数量超过 容量 × 8 时扩容",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "默认是 0.75，一般在元素数量超过 容量 × 负载因子 时扩容",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "默认是 0.75，一般在所有桶都被占满之后才扩容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "默认是 64，一般在桶内链表长度超过 64 时扩容",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-12",
+          "type": "short"
+        },
+        {
+          "id": "R3-13",
+          "type": "short"
+        },
+        {
+          "id": "R3-14",
+          "type": "short"
+        },
+        {
+          "id": "R3-15",
+          "type": "short"
+        },
+        {
+          "id": "R3-16",
+          "type": "code",
+          "stem": "实现归并排序：把整数数组 arr 排成升序（直接修改 arr），要求采用「分、治、合」的思路，排序是稳定的，最好、最坏、平均时间复杂度都是 O(n log n)；合并两个有序子数组时可以借助临时数组。"
+        },
+        {
+          "id": "R3-17",
+          "type": "single",
+          "stem": "归并排序最好、最坏、平均情况下的时间复杂度分别是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最好 O(n)，最坏 O(n²)，平均 O(n log n)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "三种情况都是 O(n log n)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "最好 O(n log n)，最坏 O(n²)，平均 O(n log n)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "三种情况都是 O(n²)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-18",
+          "type": "short"
+        },
+        {
+          "id": "R3-19",
+          "type": "single",
+          "stem": "归并排序的空间复杂度是多少？原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "O(1)，合并直接在原数组上交换元素，不需要额外空间",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "O(log n)，只需要保存递归调用栈",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "O(n²)，每一层递归都要重新分配一个与原数组等长的数组",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "O(n)，需要额外的临时数组存放合并结果",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-20",
+          "type": "single",
+          "stem": "关于归并排序的稳定性，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是稳定排序，合并时相同元素按原始顺序放入",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不是稳定排序，合并时相同元素的先后顺序可能被打乱",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是稳定排序，只有最坏情况下才会改变相同元素的相对顺序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是稳定排序，因为它不需要额外空间，元素不会被移动",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-21",
+          "type": "short"
+        },
+        {
+          "id": "R3-22",
+          "type": "multiple",
+          "stem": "下列哪些是原文所述归并排序的典型应用场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "外部排序，即内存放不下的海量数据",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "链表排序",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "需要稳定性的业务场景",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "要求完全原地排序、不允许使用 O(n) 额外空间的场景",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-23",
+          "type": "short"
+        },
+        {
+          "id": "R3-24",
+          "type": "short"
+        },
+        {
+          "id": "R3-25",
+          "type": "code",
+          "stem": "给定一个按升序排列的整数数组 arr（无重复元素）和目标值 target。实现二分查找：找到 target 则返回它的下标，找不到返回 -1。要求时间复杂度 O(log n)，空间复杂度 O(1)。"
+        },
+        {
+          "id": "R3-26",
+          "type": "single",
+          "stem": "二分查找中，为什么要把中点写成 left + (right - left) / 2，而不是 (left + right) / 2？",
+          "options": [
+            {
+              "key": "A",
+              "text": "(left + right) / 2 在数组长度为偶数时会漏掉中间两个元素之一",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "(left + right) / 2 会让循环里某个分支不再改变 left 或 right，造成死循环",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "当 left 和 right 都接近 Integer.MAX_VALUE 时，(left + right) / 2 会发生整数溢出",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "(left + right) / 2 只适用于左闭右开区间，不能用于闭区间",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-27",
+          "type": "fill",
+          "stem": "原文所述，二分查找采用闭区间 [left, right] 时，循环条件是 ____，更新时 left = ____，right = ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R3-28",
+          "type": "single",
+          "stem": "采用左闭右开区间 [left, right) 写二分查找，下列循环条件和更新方式正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "循环条件 left <= right；更新时 left = mid + 1，right = mid - 1",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "循环条件 left < right；更新时 left = mid，right = mid - 1",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "循环条件 left <= right；更新时 left = mid + 1，right = mid",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "循环条件 left < right；更新时 left = mid + 1，right = mid（不减 1）",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-29",
+          "type": "short"
+        },
+        {
+          "id": "R3-30",
+          "type": "short"
+        },
+        {
+          "id": "R3-31",
+          "type": "short"
+        },
+        {
+          "id": "R3-32",
+          "type": "short"
+        },
+        {
+          "id": "R3-33",
+          "type": "code",
+          "stem": "给定一个按升序排列、可能含有重复元素的整数数组 arr 和目标值 target，返回数组中第一个大于等于 target 的元素的下标；如果所有元素都小于 target，返回数组长度。要求时间复杂度 O(log n)，空间复杂度 O(1)。"
+        },
+        {
+          "id": "R3-34",
+          "type": "single",
+          "stem": "在左闭右开区间的 lower bound 写法里，当 arr[mid] < target 时，为什么令 left = mid + 1？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为 mid 可能是答案，需要排除它右侧的元素",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为 mid 及其左侧都不满足大于等于 target 的条件",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "因为 mid 刚好等于 target，可以直接返回",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "因为左闭右开区间里 left 每次必须向右移动一格",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-35",
+          "type": "single",
+          "stem": "在左闭右开区间的 lower bound 写法里，当 arr[mid] >= target 时，为什么令 right = mid，而不是 mid - 1？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为 mid 一定不是答案，所以排除它之后继续向右找",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为 mid 及其左侧都不满足条件，可以整体排除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为 mid 可能就是答案，需要保留它并继续向左找",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "因为右边界是开区间，写成 mid - 1 会导致数组下标越界",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-36",
+          "type": "single",
+          "stem": "在数组 [1, 2, 2, 4] 上用 lower bound 查找，target 分别为 2、3、5 时，返回值依次是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "1、3、4",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "2、3、4",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "1、2、4",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "1、3、3",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-37",
+          "type": "short"
+        },
+        {
+          "id": "R3-38",
+          "type": "single",
+          "stem": "在 lower bound 的基础上，怎么得到「第一个大于 target 的位置」（upper bound）？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把代码中的 < target 改为 <= target",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把代码中的 < target 改为 > target",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把 right = mid 改为 right = mid - 1",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把 left = mid + 1 改为 left = mid",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-39",
+          "type": "short"
+        },
+        {
+          "id": "R3-40",
+          "type": "short"
+        },
+        {
+          "id": "R3-41",
+          "type": "fill",
+          "stem": "原文所述，DFS 通常用递归或____实现，BFS 通常用____实现。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R3-42",
+          "type": "single",
+          "stem": "在树上遍历时（不计结果），DFS 和 BFS 的辅助空间分别是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "DFS 是 O(w)，w 是树的最大宽度；BFS 是 O(h)，h 是树高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都是 O(h)，h 是树高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "DFS 是 O(h)，h 是树高；BFS 是 O(w)，w 是树的最大宽度",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "DFS 是 O(1)，BFS 是 O(w)，w 是树的最大宽度",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-43",
+          "type": "single",
+          "stem": "关于 DFS 和 BFS 能否求最短路径，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "DFS 可以，沿一条路径走到底得到的路径就是最短路径；BFS 不能直接求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "BFS 可以，边权相等的图中 BFS 第一次到达就是最短路径；DFS 不能直接求",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都可以，边权是否相等不影响 BFS 的最短路结论",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都不能，求最短路径只能靠动态规划",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-44",
+          "type": "multiple",
+          "stem": "下列哪些是原文所述 DFS 的典型应用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "全排列、子集等回溯类问题",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "检测环",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "连通分量",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "层序遍历",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "「最少几步」类问题",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-45",
+          "type": "single",
+          "stem": "下列经典题与 DFS/BFS 的对应关系，哪一项符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "二叉树的层序遍历用 DFS",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "回溯类题目（全排列、N 皇后、子集、组合）用 BFS",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "二叉树的前、中、后序遍历用 BFS",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "腐烂的橘子（求最短感染时间）用 BFS",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-46",
+          "type": "single",
+          "stem": "遍历含 V 个顶点、E 条边的图时，下列关于时间复杂度的说法哪个正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "使用邻接表时，DFS 是 O(V + E)，BFS 因为要用队列所以是 O(V²)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "使用邻接矩阵时，扫描所有邻居的时间仍然是 O(V + E)，DFS 和 BFS 都是如此",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "使用邻接表时，DFS 和 BFS 都是 O(V + E)；使用邻接矩阵时，扫描所有邻居的时间可能达到 O(V²)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "无论使用邻接表还是邻接矩阵，DFS 和 BFS 的时间复杂度都是 O(V²)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-47",
+          "type": "short"
+        },
+        {
+          "id": "R3-48",
+          "type": "short"
+        },
+        {
+          "id": "R3-49",
+          "type": "fill",
+          "stem": "原文所述，图常见的两种存储方式是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R3-50",
+          "type": "short"
+        },
+        {
+          "id": "R3-51",
+          "type": "multiple",
+          "stem": "图有 V 个顶点、E 条边。下列关于邻接矩阵和邻接表的说法，哪些是正确的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "邻接矩阵的空间复杂度是 O(V²)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "邻接表的空间复杂度是 O(V + E)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "邻接矩阵判断两点是否相连是 O(1)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "邻接表遍历某个顶点的邻居需要 O(V)",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "邻接表更适合稠密图",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-52",
+          "type": "short"
+        },
+        {
+          "id": "R3-53",
+          "type": "short"
+        },
+        {
+          "id": "R3-54",
+          "type": "short"
+        },
+        {
+          "id": "R3-55",
+          "type": "code",
+          "stem": "给定单链表的头节点 head（节点含 val 和 next），将链表反转并返回新的头节点。要求用迭代方式实现，时间复杂度 O(n)，空间复杂度 O(1)；需要处理空链表和只有一个节点的情况。"
+        },
+        {
+          "id": "R3-56",
+          "type": "short"
+        },
+        {
+          "id": "R3-57",
+          "type": "single",
+          "stem": "迭代法反转链表结束后（循环到 curr 为 null 为止），应该返回哪个指针作为新的头节点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "prev",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "curr",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "next",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "原来的 head",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-58",
+          "type": "single",
+          "stem": "迭代法和递归法反转链表的复杂度，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者时间复杂度都是 O(n)；迭代空间 O(n)，递归空间 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "迭代时间 O(n)，递归时间 O(n²)；两者空间都是 O(1)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者时间复杂度和空间复杂度都是 O(n)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者时间复杂度都是 O(n)；迭代空间 O(1)，递归因递归栈占用 O(n) 空间",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-59",
+          "type": "short"
+        },
+        {
+          "id": "R3-60",
+          "type": "short"
+        },
+        {
+          "id": "R3-61",
+          "type": "short"
+        },
+        {
+          "id": "R3-62",
+          "type": "fill",
+          "stem": "原文所述，判断链表是否有环时，slow 指针每次走____步，fast 指针每次走____步。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R3-63",
+          "type": "single",
+          "stem": "用快慢指针判断链表是否有环，下列结论哪个正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "fast 走到 null 说明有环，fast 追上 slow（相遇）说明没有环",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "fast 走到 null 说明没有环，fast 追上 slow（相遇）说明有环",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "slow 先走到 null 说明没有环，slow 和 fast 的值相同说明有环",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只要 fast 和 slow 指向值相同的节点就说明有环",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-64",
+          "type": "short"
+        },
+        {
+          "id": "R3-65",
+          "type": "code",
+          "stem": "给定单链表的头节点 head（节点含 val 和 next），判断链表是否有环：如果有环，返回环的入口节点，否则返回 null。要求时间复杂度 O(n)，额外空间复杂度 O(1)。"
+        },
+        {
+          "id": "R3-66",
+          "type": "short"
+        },
+        {
+          "id": "R3-67",
+          "type": "single",
+          "stem": "判断链表是否有环、找环入口的快慢指针方法，时间复杂度和额外空间复杂度分别是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "时间复杂度都是 O(n)，额外空间复杂度都是 O(n)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "时间复杂度都是 O(n)，额外空间复杂度都是 O(1)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "时间复杂度都是 O(n²)，额外空间复杂度都是 O(1)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "判断有环是 O(n)，找入口是 O(n²)；额外空间复杂度都是 O(1)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-68",
+          "type": "fill",
+          "stem": "原文所述，二叉树常见的四种遍历是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R3-69",
+          "type": "fill",
+          "stem": "原文所述，前序遍历的访问顺序是____，中序遍历的访问顺序是____，后序遍历的访问顺序是____（均用「根」「左」「右」和箭头表示）。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R3-70",
+          "type": "single",
+          "stem": "二叉搜索树用哪种遍历方式得到的结果是升序的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前序遍历",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "后序遍历",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "层序遍历",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "中序遍历",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-71",
+          "type": "single",
+          "stem": "「先处理子树再处理当前节点」的场景（比如释放整棵树的内存）适合用哪种遍历？",
+          "options": [
+            {
+              "key": "A",
+              "text": "后序遍历",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "前序遍历",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "中序遍历",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "层序遍历",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-72",
+          "type": "code",
+          "stem": "给定二叉树的根节点 root（节点含 val、left、right），不使用递归，返回其中序遍历的节点值列表。要求用显式栈实现，时间复杂度 O(n)。"
+        },
+        {
+          "id": "R3-73",
+          "type": "short"
+        },
+        {
+          "id": "R3-74",
+          "type": "single",
+          "stem": "关于二叉树四种遍历的复杂度，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "时间复杂度都是 O(n)；DFS 写法的栈空间是 O(w)，层序遍历的队列空间是 O(h)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "时间复杂度都是 O(log n)；DFS 写法的栈空间是 O(h)，层序遍历的队列空间是 O(w)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "时间复杂度都是 O(n)；DFS 写法的栈空间是 O(h)，层序遍历的队列空间是 O(w)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "时间复杂度都是 O(n)；四种遍历的辅助空间都是 O(1)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-75",
+          "type": "short"
+        },
+        {
+          "id": "R3-76",
+          "type": "code",
+          "stem": "给定字符串 s，求其中不含重复字符的最长子串的长度。要求时间复杂度 O(n)（假设哈希表操作平均为 O(1)），用滑动窗口配合哈希表实现。"
+        },
+        {
+          "id": "R3-77",
+          "type": "short"
+        },
+        {
+          "id": "R3-78",
+          "type": "single",
+          "stem": "字符串 abba 扫描到最后一个 a 时，它上次出现在下标 0，而窗口左边界已经在 2。此时左边界应该怎么处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "更新为 1（上次位置的下一格），因为它在窗口外也要重新计入",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "重置为 0，重新从头统计窗口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "更新为当前的右边界，让窗口只包含最后一个 a",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "保持在 2，不能退回 1，否则窗口又会包含重复的 b",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-79",
+          "type": "single",
+          "stem": "最长无重复子串的滑动窗口解法（哈希表操作平均为 O(1)），时间和空间复杂度分别是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "时间 O(n²)，空间 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "时间 O(n)，空间 O(min(n, 字符集大小))",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "时间 O(n)，空间 O(1)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "时间 O(n log n)，空间 O(n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-80",
+          "type": "short"
+        },
+        {
+          "id": "R3-81",
+          "type": "short"
+        },
+        {
+          "id": "R3-82",
+          "type": "short"
+        },
+        {
+          "id": "R3-83",
+          "type": "code",
+          "stem": "给定整数数组 nums，返回一个等长的数组 result：result[i] 是 nums[i] 右边第一个比它大的元素的下标，不存在则为 -1。例如 [2, 1, 3] 的结果是 [2, 2, -1]。要求时间复杂度 O(n)，用单调栈实现。"
+        },
+        {
+          "id": "R3-84",
+          "type": "single",
+          "stem": "在「找数组中每个元素右边第一个更大元素的下标」的单调栈做法中，栈里保存什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "已经找到答案的元素的下标，对应的值从栈底到栈顶保持严格递增",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "还没有找到答案的元素的值，从栈底到栈顶保持严格递增",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "还没有找到答案的元素的下标，对应的值从栈底到栈顶保持非递增",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "已经找到答案的元素的值，从栈底到栈顶保持非递增",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-85",
+          "type": "short"
+        },
+        {
+          "id": "R3-86",
+          "type": "single",
+          "stem": "对数组 [2, 1, 3] 求每个元素右边第一个更大元素的下标（不存在为 -1），结果是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "[2, 2, -1]",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "[1, 2, -1]",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "[2, 2, 2]",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "[-1, 2, -1]",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-87",
+          "type": "single",
+          "stem": "单调栈的循环里有 while，下列关于其复杂度的解释哪个正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个元素只会入栈一次、出栈一次，所以时间复杂度是 O(n)，辅助空间复杂度是 O(n)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个元素最多入栈两次、出栈两次，所以时间复杂度是 O(n)，辅助空间复杂度是 O(1)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "while 每次最多弹出一个元素，所以时间复杂度是 O(n)，辅助空间复杂度是 O(n²)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个元素入栈后要与栈里所有元素比较，所以时间复杂度是 O(n²)，辅助空间复杂度是 O(n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-88",
+          "type": "short"
+        },
+        {
+          "id": "R3-89",
+          "type": "short"
+        },
+        {
+          "id": "R3-90",
+          "type": "fill",
+          "stem": "原文所述，拓扑排序常用的 Kahn 算法依靠____和____实现。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R3-91",
+          "type": "short"
+        },
+        {
+          "id": "R3-92",
+          "type": "single",
+          "stem": "用 Kahn 算法判断任务依赖中是否有环，依据是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "队列为空后，如果结果包含所有顶点，就说明图中有环",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只要有顶点的入度大于 1，就说明图中有环",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "队列为空后，如果结果没有包含所有顶点，就说明图中有环",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "队列在算法进行过程中出现过空的时刻，就说明图中有环",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-93",
+          "type": "short"
+        },
+        {
+          "id": "R3-94",
+          "type": "single",
+          "stem": "关于拓扑排序的结果，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一定唯一，拓扑顺序由图的结构唯一确定，与入度为 0 的顶点的选择先后无关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不一定唯一，同时有多个入度为 0 的顶点时，选择它们的先后顺序可能不同",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "对任意有向图都存在拓扑顺序，只是同一个图的拓扑顺序不一定唯一",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是唯一的，只要使用队列保证入度为 0 的顶点先进先出就不会出现不同顺序",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-95",
+          "type": "single",
+          "stem": "使用邻接表时，Kahn 算法的时间复杂度和辅助空间（不计图本身的存储）分别是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "时间 O(V²)，辅助空间 O(V)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "时间 O(V + E)，辅助空间 O(E²)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "时间 O(V log V)，辅助空间 O(1)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "时间 O(V + E)，辅助空间 O(V)",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-96",
+          "type": "fill",
+          "stem": "原文所述，并查集主要支持的两个操作是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R3-97",
+          "type": "short"
+        },
+        {
+          "id": "R3-98",
+          "type": "short"
+        },
+        {
+          "id": "R3-99",
+          "type": "fill",
+          "stem": "原文所述，并查集常用的两种优化是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R3-100",
+          "type": "short"
+        },
+        {
+          "id": "R3-101",
+          "type": "code",
+          "stem": "实现并查集 UnionFind：元素编号为 [0, n)。构造函数接收 n；find(x) 返回 x 所在集合的根节点；union(a, b) 合并 a、b 所在的集合，如果它们已经在同一集合返回 false，否则合并并返回 true。要求同时使用路径压缩和按大小合并。"
+        },
+        {
+          "id": "R3-102",
+          "type": "single",
+          "stem": "同时使用路径压缩和按大小合并时，下列关于并查集 find、union 复杂度的说法哪个正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次 find 和 union 操作都严格是 O(1)，与集合的大小无关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "均摊时间复杂度是 O(log n)，其中 α 是反阿克曼函数，增长极慢但不能近似为常数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "均摊时间复杂度是 O(α(n))，α 增长极慢可近似看作常数，但不是每次操作都严格为 O(1)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "均摊时间复杂度是 O(n)，因为即使使用了两种优化树仍然可能退化成很长的链",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-103",
+          "type": "single",
+          "stem": "关于用并查集判断图中是否形成环，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对无向图，加边时若两个端点已属于同一集合，加入这条边就会形成环；但有向图不能直接用这个规则判断有向环",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "对无向图和有向图都适用：只要两个端点已属于同一集合，加入这条边就会形成有向环或无向环",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对无向图，加边时两个端点分别属于不同集合，才说明加入这条边会形成环",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "并查集只能用来判断图中是否有环，不能用来判断两个元素之间是否连通",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-104",
+          "type": "single",
+          "stem": "关于普通并查集处理「删除边之后的连通性」，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "适合，删除边只需要把对应节点的 parent 重新指回自己",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "适合，路径压缩让删除边后的 find 依然正确",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不适合，因为它无法判断两个元素是否在同一集合",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不适合，它擅长合并集合，不能直接拆分集合",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-105",
+          "type": "short"
+        },
+        {
+          "id": "R3-106",
+          "type": "fill",
+          "stem": "原文所述，使用动态规划求最优解时通常要关注的三个特征是：____、____，以及状态能够描述后续决策需要的信息，也就是常说的____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R3-107",
+          "type": "single",
+          "stem": "关于动态规划能解决的问题，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "DP 只能用于求最优解，不能用于计数和判断可行性",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "DP 也可以用于计数、判断可行性，不局限于求最优解",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "DP 只能用于计数，求最优解要用贪心",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "DP 只能用于判断可行性",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-108",
+          "type": "short"
+        },
+        {
+          "id": "R3-109",
+          "type": "fill",
+          "stem": "原文所述，DP 的解题套路依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R3-110",
+          "type": "multiple",
+          "stem": "下列哪些是原文列为典型动态规划的题目？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最长公共子序列（LCS）",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "编辑距离",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "零钱兑换",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "活动选择",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "霍夫曼编码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-111",
+          "type": "single",
+          "stem": "dp[i][j] 表示 s[i..j] 是否是回文，这是下列哪个典型 DP 问题的状态定义？",
+          "options": [
+            {
+              "key": "A",
+              "text": "最长公共子序列",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "最长回文子串",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "编辑距离",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "0-1 背包",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-112",
+          "type": "short"
+        },
+        {
+          "id": "R3-113",
+          "type": "fill",
+          "stem": "原文所述，DP 的进阶技巧是：先想暴力递归 → 发现重叠子问题 → 用数组或哈希表做____ → 改写成自底向上的____ → 最后用____优化空间。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R3-114",
+          "type": "single",
+          "stem": "关于用滚动数组优化 DP 空间，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有 DP 都可以直接用滚动数组优化，不需要考虑依赖关系",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "滚动数组可以替代对状态含义和转移条件的定义",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "使用滚动数组后，DP 的时间复杂度会从多项式降为 O(1)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只有在依赖关系允许时才能使用，关键还是先把状态含义和转移条件定义清楚",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-115",
+          "type": "single",
+          "stem": "0-1 背包和完全背包的区别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个物品的可使用次数：0-1 背包最多一次，完全背包可以多次",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "物品的总价值：0-1 背包要求总价值恰好等于容量，完全背包没有这个要求",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "dp 数组的维度：0-1 背包只能用二维数组，完全背包只能用一维数组",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "时间复杂度：0-1 背包是 O(n × C)，完全背包是 O(n × C²)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-116",
+          "type": "single",
+          "stem": "以最大化总价值、总重量不超过容量为例，一维 DP 中 dp[j] 表示什么，初始值是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "恰好装满容量 j 时的物品个数，初始都为 0",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容量为 j 时能获得的最大价值，除 dp[0] 外初始都为不可达",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "容量为 j 时能获得的最大价值，初始都为 0",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "前 j 个物品能获得的最大价值，初始都为无穷大",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-117",
+          "type": "code",
+          "stem": "0-1 背包：给定背包容量 capacity，以及 n 个物品的重量数组 weights（均为正整数）和价值数组 values，每个物品最多使用一次，求在总重量不超过 capacity 的前提下能获得的最大总价值。要求使用一维 dp 数组，时间复杂度 O(n × capacity)，空间复杂度 O(capacity)。"
+        },
+        {
+          "id": "R3-118",
+          "type": "short"
+        },
+        {
+          "id": "R3-119",
+          "type": "short"
+        },
+        {
+          "id": "R3-120",
+          "type": "single",
+          "stem": "只有一件重量为 2、价值为 3 的物品（完全背包中可无限使用），背包容量为 4，0-1 背包和完全背包的最大价值分别是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "0-1 背包是 6，完全背包是 3",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都是 3",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都是 6",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "0-1 背包是 3，完全背包是 6",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-121",
+          "type": "single",
+          "stem": "物品数为 n、容量为 C 时，两种一维 DP 背包写法的时间、空间复杂度分别是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "时间都是 O(n × C)，空间都是 O(n × C)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "时间都是 O(n × C)，空间都是 O(C)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "0-1 背包时间 O(n × C)，完全背包时间 O(n × C²)；空间都是 O(C)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "时间都是 O(C)，空间都是 O(n × C)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-122",
+          "type": "short"
+        },
+        {
+          "id": "R3-123",
+          "type": "short"
+        },
+        {
+          "id": "R3-124",
+          "type": "fill",
+          "stem": "原文所述，常见复杂度等级从快到慢依次是：O(1) < ____ < O(n) < ____ < O(n²) < ____ < O(2ⁿ) < O(n!)。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "R3-125",
+          "type": "multiple",
+          "stem": "关于分析时间复杂度的基本规则，下列哪些说法是正确的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只关注最高阶项，3n² + 2n + 5 = O(n²)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "忽略常数系数，5n = O(n)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "顺序执行的两段代码取较大的，O(n) + O(n²) = O(n²)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只要代码里有两层嵌套循环，时间复杂度就一定是 O(n²)",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "顺序执行的两段代码取较小的，O(n) + O(n²) = O(n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-126",
+          "type": "short"
+        },
+        {
+          "id": "R3-127",
+          "type": "short"
+        },
+        {
+          "id": "R3-128",
+          "type": "single",
+          "stem": "暴力斐波那契递归（每次递归求 f(n-1) 和 f(n-2)）的时间复杂度常用什么表示？加上记忆化之后又是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "常用 O(n) 表示；带记忆化后降为 O(1)",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "常用 O(n²) 表示；带记忆化后降为 O(log n)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "常用 O(2ⁿ) 表示其指数级上界；带记忆化后只需计算 O(n) 个状态",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "常用 O(2ⁿ) 表示；带记忆化后仍然是指数级",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-129",
+          "type": "fill",
+          "stem": "原文所述，分析空间复杂度主要关注两部分：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "R3-130",
+          "type": "single",
+          "stem": "对 n 个元素做快速排序，递归栈的空间复杂度是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "平均 O(log n)，最坏 O(n)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "平均 O(n)，最坏 O(n²)",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "平均 O(1)，最坏 O(log n)",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "平均 O(n log n)，最坏 O(n²)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-131",
+          "type": "multiple",
+          "stem": "下列关于常见排序算法时间、空间复杂度的说法，哪些是正确的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "冒泡排序：时间 O(n²)，空间 O(1)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "快速排序：时间平均 O(n log n)、最坏 O(n²)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "归并排序：时间 O(n log n)，空间 O(n)",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "堆排序：时间 O(n log n)，空间 O(n)",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-132",
+          "type": "short"
+        },
+        {
+          "id": "R3-133",
+          "type": "short"
+        },
+        {
+          "id": "R3-134",
+          "type": "single",
+          "stem": "关于贪心算法，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "当前选择通常会影响后续可选方案，只是能证明按这个规则选择不会损失得到最优解的机会",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "当前选择完全不会影响后续可选方案，所以使用贪心时不需要证明正确性",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "贪心每一步选择之后，都会保存状态并重新比较之前做出的各个选择",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只要每一步都选当前最大的方案，就一定能得到全局最优解，不必再证明",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-135",
+          "type": "single",
+          "stem": "关于贪心与动态规划的快慢和正确性，下列哪个说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "动态规划一定比贪心慢，因为它要保存不同状态的结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只要用了动态规划，结果就一定正确，不需要检查状态、转移和边界",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能笼统说动态规划一定比贪心慢，也不能说只要用了 DP 就一定正确",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "贪心的时间复杂度一定是 O(n log n)，与具体算法无关",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-136",
+          "type": "short"
+        },
+        {
+          "id": "R3-137",
+          "type": "single",
+          "stem": "面值为 [1, 3, 4] 的硬币（可无限使用）凑出 6，每次选最大面值的贪心做法和最优解各需要几枚？",
+          "options": [
+            {
+              "key": "A",
+              "text": "贪心 4 + 1 + 1 需要 3 枚，最优解也是 3 枚",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "贪心 4 + 1 + 1 需要 3 枚，最优解 3 + 3 只需要 2 枚",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "贪心 4 + 1 需要 2 枚，最优解 3 + 3 需要 2 枚",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "贪心 4 + 1 + 1 需要 3 枚，最优解 3 + 3 + 0 需要 3 枚",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-138",
+          "type": "short"
+        },
+        {
+          "id": "R3-139",
+          "type": "multiple",
+          "stem": "下列哪些是原文列出的常见贪心场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "活动选择：按结束时间排序，优先选最早结束且不冲突的活动",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "霍夫曼编码",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "跳跃游戏的可达性判断",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "背包问题",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "编辑距离",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "R3-140",
+          "type": "short"
+        },
+        {
+          "id": "R3-141",
+          "type": "short"
+        },
+        {
+          "id": "R3-142",
+          "type": "single",
+          "stem": "跳跃游戏的可达性判断用贪心怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次都实际跳到当前能到达的最远下标",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每次都跳到能到达的最近的下标，保证不会越界",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对每个下标保存到达它的最少跳跃次数，再比较候选方案",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "扫描当前位置能到达的范围，持续更新最远可达位置",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "R3-143",
+          "type": "short"
+        }
+      ]
+    }
+  }
+}

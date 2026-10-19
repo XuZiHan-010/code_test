@@ -1,0 +1,5275 @@
+{
+  "prefix": "D",
+  "chapters": {
+    "D1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D1-1",
+          "type": "single",
+          "stem": "大语言模型与传统 NLP 方案有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "传统 NLP 是一任务一模型、用 pipeline 串联，LLM 是一个模型用 Prompt 作统一接口处理所有任务",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "LLM 是一任务一模型、用 pipeline 串联，传统 NLP 是一个模型用 Prompt 作统一接口处理所有任务",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都用 Prompt 作接口，区别只在输出是标签还是概率",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都是一任务一模型，区别只在模型的参数量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D1-2",
+          "type": "single",
+          "stem": "BERT 与自回归生成式 LLM 的训练目标有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自回归 LLM 遮掉部分词让模型按上下文去猜，BERT 从左到右预测下一个 token",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "BERT 遮掉部分词让模型按上下文去猜，自回归 LLM 从左到右预测下一个 token",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都从左到右预测下一个 token，区别只在数据量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都遮掉部分词去猜，区别只在遮盖的比例",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D1-3",
+          "type": "single",
+          "stem": "为什么“预测下一个 token”能够支持多种下游任务？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每种任务都要另接一个专门的任务头",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型内部为每种任务保存了一套参数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有任务都能写成 Prompt 加续写",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "下游任务会被自动拆成多个小模型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D1-4",
+          "type": "single",
+          "stem": "“涌现能力”通常指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型在微调之后才具备的特定任务能力",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型在训练过程中被人工逐条教会的能力",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "某项能力随模型规模均匀地、线性地一点点提升",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "某项能力在小模型上几乎看不到，规模到临界点后突然表现出来",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D1-5", "type": "short" },
+        {
+          "id": "D1-6",
+          "type": "single",
+          "stem": "什么是 OOV 问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型的参数量太大，无法装进显存",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "分词模型遇到训练时没见过的新词，就无法正确处理",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "训练数据里某类样本数量太少",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型的输出长度超过了上下文窗口",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D1-7",
+          "type": "multiple",
+          "stem": "传统 NLP 流水线有哪些致命的痛点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "错误会累积传导，前面一步错了后面全错",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一个模型要处理所有任务，负担太重",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "输出只能是自然语言文本，无法给出标签",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "迁移成本高，换个领域所有模型基本都得重新训练",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D1-8",
+          "type": "fill",
+          "stem": "BERT 的两个预训练任务是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "D1-9",
+          "type": "single",
+          "stem": "为什么说 BERT 只走通了一半？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它解决了特征通用，但没解决任务统一，每种任务仍要单独的任务头",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它解决了任务统一，但没解决特征通用，每个任务要重新预训练",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它只能处理英文，无法处理其他语言",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它只能生成文本，无法输出向量表示",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D1-10", "type": "short" },
+        {
+          "id": "D1-11",
+          "type": "fill",
+          "stem": "原文说 CLM 这个简单目标能学到那么多东西，靠的是两个杠杆：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "D1-12",
+          "type": "single",
+          "stem": "什么是 In-Context Learning？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用少量标注数据对模型做一轮微调",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让模型在回答之前先输出推理过程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在 Prompt 里给几个例子，模型不更新参数就能学会",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把外部知识库的内容检索出来放进上下文",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D1-13", "type": "short" },
+        {
+          "id": "D1-14",
+          "type": "single",
+          "stem": "Scaling Law 的基本含义是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只要增加参数量，其他两项不变，损失也会线性下降",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型规模与训练效果之间没有可预测的关系",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数据量越大，模型的损失反而越高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型规模、数据量和算力按比例同时放大，损失会沿一条幂律曲线下降",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D1-15",
+          "type": "single",
+          "stem": "涌现是不是意味着模型越大越好？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，数据量和算力对效果没有影响",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，参数越多效果一定越好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，参数越少的模型效果一定越好",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，超过某个规模后，单纯堆参数的边际收益在递减",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D1-16", "type": "short" },
+        { "id": "D1-17", "type": "short" },
+        {
+          "id": "D1-18",
+          "type": "single",
+          "stem": "生成式与判别式的根本不同是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者没有区别，只是训练数据不同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "判别式只能处理图片，生成式只能处理文本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "判别式是输入文本、输出标签，LLM 是输入文本、输出更多文本",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "判别式是输入文本、输出更多文本，LLM 是输入文本、输出标签",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D1-19",
+          "type": "fill",
+          "stem": "DeepMind 的 Chinchilla 论文给出的比例是：参数和数据按 ____ 配，例如 70B 参数最好配 ____ token。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        }
+      ]
+    },
+    "D2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D2-1",
+          "type": "multiple",
+          "stem": "RNN 有哪些局限？",
+          "options": [
+            {
+              "key": "A",
+              "text": "序列很长时梯度指数级衰减，难以学到长距离依赖",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个 token 都能直接关注任意其他位置",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "完全不考虑词在序列中的先后顺序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "逐个处理，后一步要等前一步算完，无法利用 GPU 并行",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D2-2", "type": "short" },
+        {
+          "id": "D2-3",
+          "type": "fill",
+          "stem": "注意力计算里的三个角色：代表“我想找什么”的是 ____，代表“我有什么标签”的是 ____，代表“我的实际内容”的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D2-4",
+          "type": "single",
+          "stem": "缩放点积注意力为什么要除以根号 d_k？",
+          "options": [
+            {
+              "key": "A",
+              "text": "点积数值太大，softmax 后梯度接近 0，缩放后才能训练",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "点积数值范围太小，softmax 后过于平均，缩放是为了把它放大",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "为了让多头注意力的参数量与单头保持一致",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "为了给每个 token 注入位置信息",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D2-5",
+          "type": "single",
+          "stem": "多头注意力比单头多了什么表达能力？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个头都重复计算同一种关联以提高精度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个头可以专注于不同类型的语言关联",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "多头可以省掉前馈网络这一层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "多头让模型不再需要位置编码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D2-6",
+          "type": "single",
+          "stem": "FFN 与位置编码在 Transformer 层中分别起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "FFN 对每个位置独立做非线性变换，位置编码给每个 token 注入位置信息",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都用来计算 token 之间的相关程度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "位置编码对每个位置独立做非线性变换，FFN 给每个 token 注入位置信息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都只在解码时使用，编码时不需要",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D2-7",
+          "type": "fill",
+          "stem": "三种架构各有所长：双向关注、擅长理解任务的是 ____，用因果掩码只看前文、适合文本生成的是 ____，适合翻译、摘要这类输入输出不同的任务的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D2-8",
+          "type": "single",
+          "stem": "为什么许多生成式大模型采用 Decoder-only 架构？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它需要大量人工标注的数据才能开始训练",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "预测下一个 token 的目标统一，便于自监督训练和扩大规模",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它可以双向关注上下文，在理解任务上能力最强",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它的参数量是固定的，无法再继续扩大规模",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D2-9",
+          "type": "single",
+          "stem": "自注意力里的“自”是什么意思？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个 token 只关注它自己",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型自己决定要不要计算注意力",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Q 来自一边，K 和 V 来自另一边",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Q、K、V 都是从同一个输入算出来的",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D2-10", "type": "short" },
+        {
+          "id": "D2-11",
+          "type": "single",
+          "stem": "投影维度 d_k 通常怎样取值？",
+          "options": [
+            {
+              "key": "A",
+              "text": "固定等于头数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "固定等于 d_model",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "等于 d_model 除以头数",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "等于 d_model 乘以头数",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D2-12", "type": "short" },
+        { "id": "D2-13", "type": "short" },
+        {
+          "id": "D2-14",
+          "type": "single",
+          "stem": "Transformer 块里的前馈网络是什么结构？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一层卷积加一层池化",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个循环神经网络单元",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "多组并行的注意力头",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两层全连接加一个激活函数",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "D3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D3-1",
+          "type": "single",
+          "stem": "长上下文推理时，MHA 的 KV Cache 为什么占用大量显存？",
+          "options": [
+            {
+              "key": "A",
+              "text": "要为每个 token 额外保存一份完整的模型参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "要把每一层的 N×N 注意力矩阵永久保存下来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "要缓存前面所有 token 的 K 和 V，每层、每个 head 各存一份",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "要把全部训练数据加载进显存以备查询",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D3-2",
+          "type": "single",
+          "stem": "MQA 怎样减少 K/V 缓存，代价是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "去掉一半的层数，代价是模型无法处理长文本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有 head 共享同一份 K 和 V，代价是多视角被压缩、表达能力下降",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "所有 head 共享同一份 Q，代价是推理速度变慢",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把 K/V 写到磁盘，代价是每次都要重新读取",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D3-3",
+          "type": "single",
+          "stem": "GQA 怎样在 MHA 与 MQA 之间折中？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把 head 分成几组，组内共享一份 K/V，组间各自独立",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "训练时用 MHA，推理时自动切换成 MQA",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让一半的层用 MHA，另一半的层用 MQA",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让每个 head 的 K/V 维度减半",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D3-4",
+          "type": "single",
+          "stem": "Flash Attention 为什么能减少显存读写和中间矩阵占用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用低秩矩阵近似代替完整的注意力矩阵",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把计算切成小块在片上高速缓存里完成，不把 N×N 矩阵写回显存",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "让所有 head 共享同一份 K 和 V",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只计算最近若干个 token 的注意力，丢弃远处的信息",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D3-5",
+          "type": "single",
+          "stem": "GQA 与 Flash Attention 能否一起使用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，一个是结构层的优化，一个是实现层的优化，是叠加而不是替代",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "能，但一起使用时模型精度会明显下降",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能，两者都改的是 K/V 的套数，只能选一个",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，Flash Attention 要求每个 head 有独立的 K/V",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D3-6", "type": "short" },
+        {
+          "id": "D3-7",
+          "type": "single",
+          "stem": "什么是 memory-bound 问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "训练数据太多，硬盘空间不够保存",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "上下文窗口太小，装不下完整的输入",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "GPU 算力很强但显存带宽跟不上，大量时间花在等数据搬运",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型参数量超过了显存容量，无法加载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D3-8",
+          "type": "fill",
+          "stem": "原文归纳的 MHA 三个痛点是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "D3-9", "type": "short" },
+        {
+          "id": "D3-10",
+          "type": "single",
+          "stem": "GQA 和 MHA、MQA 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "GQA 是 MHA 与 MQA 两个模型输出的平均",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "分组数等于头数时退化成 MQA，分组数等于 1 时退化成 MHA",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "三者互不相关，是完全不同的注意力公式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "分组数等于头数时退化成 MHA，分组数等于 1 时退化成 MQA",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D3-11",
+          "type": "single",
+          "stem": "MLA 是怎样压低 KV Cache 的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只缓存最近若干个 token 的 K/V",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把每个 token 的 K/V 压缩成低维向量来保存",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "让所有 head 直接共享同一份 K 和 V",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把 head 分组，组内共享 K/V",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D3-12", "type": "short" },
+        {
+          "id": "D3-13",
+          "type": "single",
+          "stem": "Flash Attention 是近似计算吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，它用低秩近似降低了精度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，它用稀疏近似丢掉了部分注意力",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，但它会让模型精度明显下降",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，它算的是同一个注意力公式，数学上等价",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D3-14", "type": "short" },
+        { "id": "D3-15", "type": "short" },
+        { "id": "D3-16", "type": "short" }
+      ]
+    },
+    "D4": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D4-1",
+          "type": "single",
+          "stem": "Self-Attention 为什么不能只靠词向量理解顺序？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它每次只处理一个 token",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它只能看到当前位置之前的 token",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它的计算对位置不敏感，词序换了算出的结果几乎相同",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它的词向量维度太低，装不下位置信息",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D4-2",
+          "type": "single",
+          "stem": "原始 Transformer 的 sin/cos 位置编码怎样加入输入？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 sin/cos 生成位置向量，加到 token 的 embedding 上",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "在 softmax 之前给注意力分数加一个偏置",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把位置向量拼接在 embedding 后面，使维度翻倍",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把 Q 和 K 向量按位置旋转一个角度",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D4-3",
+          "type": "single",
+          "stem": "RoPE 为什么能让 Q/K 点积携带相对位置信息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它在点积之后再加上两个位置的编号",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "旋转后两个向量的点积只取决于旋转角度差，也就是相对距离",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它给每个绝对位置训练了一个独立的向量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它把位置编号直接乘到 V 向量上",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D4-4",
+          "type": "single",
+          "stem": "ALiBi 怎样用注意力偏置表达距离？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把 Q 和 K 向量按位置旋转对应的角度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把位置向量加到 token 的 embedding 上",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把距离过远的 token 直接从序列里删除",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在 softmax 之前给注意力分数加一个与距离成正比的负偏置",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D4-5", "type": "short" },
+        { "id": "D4-6", "type": "short" },
+        {
+          "id": "D4-7",
+          "type": "single",
+          "stem": "位置编码为什么是“加”到 embedding 上，而不是“拼接”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "拼接之后输入序列的长度会翻倍",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "拼接会让模型完全无法进行训练",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "加法不增加维度，网络也能把两部分信息解开",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "加法可以让位置信息覆盖掉词义信息",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D4-8",
+          "type": "single",
+          "stem": "模型理解语言时，更需要哪种位置信息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相对位置，例如主语和动词之间隔了几个词",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只需要知道序列的总长度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都不需要，词向量已经足够",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "绝对位置，例如某个词是全文的第几个",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D4-9", "type": "short" },
+        {
+          "id": "D4-10",
+          "type": "multiple",
+          "stem": "RoPE 有哪些优点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "天然的相对位置编码，直接编进点积",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只在 Q/K 上做旋转，能与各种推理优化叠加",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "要为每个位置单独训练一个向量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "旋转不改变向量模长，训练更稳定",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "会带来过强的局部偏置",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "零参数，只是数学上的旋转",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D4-11",
+          "type": "single",
+          "stem": "ALiBi 有什么不足？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它无法与 KV Cache 一起使用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它会改变向量的模长，训练不稳定",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "线性距离惩罚带来过强的局部偏置，对长距离依赖不利",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它引入了大量可训练参数，训练成本高",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D4-12",
+          "type": "single",
+          "stem": "RoPE 的长上下文外推可以无成本地无限扩展吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能，RoPE 完全不支持超过训练长度的输入",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能，RoPE 本身对长度没有任何限制",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，推理时改一下参数就能支持任意长度",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，要稳定支持很长的上下文，很多模型还要继续训练或校准",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D4-13",
+          "type": "fill",
+          "stem": "原文概括 RoPE 胜出在三个维度的均衡：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        }
+      ]
+    },
+    "D5": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D5-1",
+          "type": "single",
+          "stem": "Tokenizer 为什么是文本进入模型前必需的步骤？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型只认整数，它负责文本与 token ID 的互相转换",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "模型只认字符串，它负责把整数转换成文字",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它负责把文本翻译成模型训练时用的语言",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它负责检查输入文本里有没有敏感内容",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D5-2",
+          "type": "single",
+          "stem": "BPE 是怎样构造子词词表的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先收集所有完整的词，再删掉出现频率最低的那些",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "反复把最高频的相邻 token 对合并成新 token",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "由语言学家手工编写每一个子词",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把每个字符都作为一个 token，词表大小固定不变",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D5-3",
+          "type": "single",
+          "stem": "字符级分词的典型问题是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "词表会膨胀到几十万甚至更多",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "遇到训练时没见过的新词就无法处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "序列变得很长，单个字符的语义也太少",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "中文文本必须先做一遍分词才能用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D5-4",
+          "type": "fill",
+          "stem": "四个常见的特殊 token：标记序列开始的是 ____，标记结束并让模型停止生成的是 ____，用于对齐不同长度序列的是 ____，用于分隔不同部分的是 ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D5-5",
+          "type": "single",
+          "stem": "为什么不能只用汉字数估算上下文用量和 API 成本？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个汉字固定对应一个 token，没有偏差",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "API 是按字符数而不是 token 数计费的",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "汉字不占用任何 token",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "字数与 token 数的比例随语言和 tokenizer 而变",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D5-6", "type": "short" },
+        { "id": "D5-7", "type": "short" },
+        {
+          "id": "D5-8",
+          "type": "single",
+          "stem": "文档长度卡在上下文限制边缘时，工程上怎么处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把文档压缩成一句话",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "保留一定的安全 buffer",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "直接删除文档的后半部分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "换一个更小的模型",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D5-9", "type": "short" },
+        { "id": "D5-10", "type": "short" }
+      ]
+    },
+    "D6": {
+      "status": "draft",
+      "questions": [
+        { "id": "D6-1", "type": "short" },
+        {
+          "id": "D6-2",
+          "type": "single",
+          "stem": "预训练好的模型，为什么还需要 SFT 才适合对话？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它只会续写，SFT 让它学会看到指令就给出完整回答",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它没有任何语言能力，SFT 负责教它语法",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它会生成有害内容，SFT 负责做价值观对齐",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它的参数太少，SFT 负责扩大模型规模",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D6-3",
+          "type": "single",
+          "stem": "对齐阶段主要改变模型的什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让模型学会指令和回答的格式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让模型的参数量变得更小",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让模型掌握语法和世界知识",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让模型的行为更符合人类的价值观和偏好",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D6-4",
+          "type": "single",
+          "stem": "预训练、SFT、对齐三个阶段为什么不能互相替代？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对齐决定能力的天花板，预训练只是锦上添花",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "预训练决定能力的天花板，后两者只是在天花板之内优化",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "跳过预训练只做后两个阶段，效果反而更好",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "三个阶段学的内容完全相同，只是重复三遍",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D6-5",
+          "type": "fill",
+          "stem": "用培养员工来类比训练的三个阶段：打下基础知识对应 ____，学会适配工作场景对应 ____，懂得价值观和分寸感对应 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "D6-6", "type": "short" },
+        { "id": "D6-7", "type": "short" },
+        { "id": "D6-8", "type": "short" },
+        { "id": "D6-9", "type": "short" },
+        {
+          "id": "D6-10",
+          "type": "single",
+          "stem": "SFT 数据有什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数量最重要，质量和多样性可以忽略",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只需要覆盖一种任务场景即可",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "质量比数量更重要，场景还要足够多样",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "必须全部由模型自动生成，不能人工标注",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D6-11",
+          "type": "single",
+          "stem": "RLHF 在工程上难在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "流程长、要维护好几个模型、训练不稳定",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "训练过程完全确定，没有调参空间",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不需要任何人类偏好数据，难以评估",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只需要一条训练数据，数据太少难以收集",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D6-12",
+          "type": "single",
+          "stem": "DPO 怎样简化了对齐流程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "增加了第二个奖励模型，让打分更稳定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把优化目标改写成纯监督学习，不需要奖励模型和 PPO",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把对齐合并进预训练，不再单独进行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "去掉了偏好数据，只用指令数据训练",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D6-13",
+          "type": "single",
+          "stem": "大模型公司之间真正的护城河在哪个阶段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对齐阶段的算法技巧",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "SFT 阶段的指令模板",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "部署阶段的界面设计",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "预训练阶段的数据、算力和工程经验",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D6-14",
+          "type": "fill",
+          "stem": "RLHF 的三步流程：先让标注员对同一问题的多个回答排序，收集 ____；再训练一个 ____ 自动给回答打分；最后用 ____ 调整大模型参数。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D6-15",
+          "type": "single",
+          "stem": "说“Llama 2 是 DPO 训的”，这个说法对吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对，Llama 2-Chat 公开论文的主线就是 DPO",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "对，DPO 是开源社区的常见方案，Llama 2 也不例外",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不严谨，Llama 2-Chat 公开论文的主线是 SFT、拒绝采样和 PPO/RLHF",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不严谨，Llama 2-Chat 公开论文的主线是只做 SFT、不做对齐",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "D7": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D7-1",
+          "type": "fill",
+          "stem": "Scaling Law 描述训练损失与三个规模变量的关系，这三个变量是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "D7-2",
+          "type": "single",
+          "stem": "Chinchilla 的数据与参数配比，是在什么前提下提出的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给定固定的推理延迟",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给定固定的模型参数量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "给定固定的训练算力",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "没有任何约束条件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D7-3",
+          "type": "single",
+          "stem": "为什么后来的小模型可能使用远多于 Chinchilla 配比的数据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "那个配比是固定算力下的最优分配，不是数据上限",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "小模型无法从更多的数据里学到东西",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数据越多，小模型的推理成本越高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Chinchilla 的配比已被证明是错误的",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D7-4",
+          "type": "single",
+          "stem": "“涌现”为什么可能与评测指标的设计有关？",
+          "options": [
+            {
+              "key": "A",
+              "text": "评测指标与模型规模完全无关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "离散指标会把连续的提升看成突变",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "评测时使用的数据量太小",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "连续指标会把突然的跃迁抹平成一条直线",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D7-5",
+          "type": "single",
+          "stem": "训练算力最优与部署总成本最优为什么可能不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "参数越多，推理时的显存和延迟越高，部署成本也越高",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "训练和部署使用的是完全相同的硬件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "部署成本只取决于训练数据量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "参数越多，推理越快，部署成本越低",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D7-6",
+          "type": "multiple",
+          "stem": "原文指出单纯扩大规模会遇到哪两个潜在的天花板？",
+          "options": [
+            {
+              "key": "A",
+              "text": "小模型无法利用更多的训练数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "高质量公开文本的总量有限",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "模型参数量存在无法突破的硬性上限",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "算力增长放缓，堆参数的边际成本越来越高",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D7-7", "type": "short" },
+        {
+          "id": "D7-8",
+          "type": "single",
+          "stem": "OpenAI 最初版本的 Scaling Law 留下了什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有说明损失会随规模下降",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "没有涉及训练算力这个变量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "没有给出任何实验数据",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有回答参数和数据应该按什么比例配",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D7-9",
+          "type": "single",
+          "stem": "Chinchilla 的对照实验说明了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "当时的大模型数据都喂得太多",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "数据量对效果没有影响",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "当时的大模型都严重欠训",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "参数量越大效果一定越好",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D7-10", "type": "short" },
+        { "id": "D7-11", "type": "short" },
+        { "id": "D7-12", "type": "short" },
+        { "id": "D7-13", "type": "short" },
+        { "id": "D7-14", "type": "short" },
+        {
+          "id": "D7-15",
+          "type": "fill",
+          "stem": "面对数据见底的“数据墙”问题，原文列出的三个应对方向是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        }
+      ]
+    },
+    "D8": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D8-1",
+          "type": "single",
+          "stem": "业务效果不好时，为什么不应立刻微调？",
+          "options": [
+            {
+              "key": "A",
+              "text": "微调一定会让模型效果变差",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "微调之后模型无法再使用 Prompt",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "微调只能由模型厂商来做",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "微调成本很大，应先试更轻的办法",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D8-2",
+          "type": "fill",
+          "stem": "三种微调方式：更新所有参数的是 ____，冻结原权重、只训练旁路两个低秩小矩阵的是 ____，先把基础模型做 4-bit 量化再套低秩适配的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D8-3",
+          "type": "single",
+          "stem": "“更新哪些参数”与“学习什么目标”是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前者只用于预训练，后者只用于微调",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两个独立的维度，可以任意组合",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "同一个维度，选了一个就决定了另一个",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "互斥，只能选择其中一个维度",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D8-4",
+          "type": "single",
+          "stem": "SFT 与偏好优化各解决什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "SFT 让模型学会按指令回答，偏好优化告诉它哪种合格回答更受欢迎",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "偏好优化让模型学会按指令回答，SFT 告诉它哪种合格回答更受欢迎",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都只是让模型记住新的事实知识",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都用来压缩模型的参数量",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D8-5", "type": "short" },
+        { "id": "D8-6", "type": "short" },
+        {
+          "id": "D8-7",
+          "type": "multiple",
+          "stem": "哪些场景下微调才真正值得做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只想临时调整一次输出的格式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要让模型知道每天变化的库存和价格",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要模型稳定掌握某类任务模式或内部术语",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "想用小模型替代大模型来节省成本",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "需要持续以一种特殊风格输出，Prompt 控制不住",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D8-8",
+          "type": "single",
+          "stem": "经常变化的事实知识为什么不适合用微调来补？",
+          "options": [
+            {
+              "key": "A",
+              "text": "事实知识只能通过预训练获得",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "微调之后模型会拒绝回答事实问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这类内容应放进 RAG 或数据库实时查",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "微调无法让模型记住任何内容",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D8-9", "type": "short" },
+        {
+          "id": "D8-10",
+          "type": "single",
+          "stem": "LoRA 的核心洞见是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "量化之后的模型无法再训练",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "有意义的更新只发生在一个低维子空间里",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "模型的每一个参数都必须被完整更新",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "更新的参数越多，效果一定越好",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D8-11", "type": "short" },
+        {
+          "id": "D8-12",
+          "type": "fill",
+          "stem": "按资源选微调组合：个人开发者或小团队用 ____，有几张 A100、没有大集群的中小企业用 ____，有充足 GPU、追求最高效果的大厂可考虑 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D8-13",
+          "type": "multiple",
+          "stem": "为什么说微调方案不是越重越好？",
+          "options": [
+            {
+              "key": "A",
+              "text": "基础模型升级后要重新微调，维护成本上升",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "轻量方案的效果在任何情况下都更好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "训练成本大幅上升",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "调参难度上升",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "重的方案无法使用 GPU 训练",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D8-14", "type": "short" }
+      ]
+    },
+    "D9": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D9-1",
+          "type": "single",
+          "stem": "LoRA 如何表示权重更新？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接更新原始权重矩阵里的每一个元素",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把原始权重量化成更低的精度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用两个较小矩阵的乘积近似更新矩阵，原始权重保持冻结",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "在每层之间插入一个新的小型网络",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D9-2", "type": "short" },
+        {
+          "id": "D9-3",
+          "type": "single",
+          "stem": "LoRA 权重合并之后，推理开销怎样变化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每一层都要额外过一遍旁路矩阵，延迟叠加",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "推理速度比原始模型慢一倍",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "推理时必须同时加载两份完整的模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "计算图与原始模型完全相同，没有额外延迟",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D9-4",
+          "type": "single",
+          "stem": "一个基座模型加载多套 LoRA，有什么部署优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "基础模型可以完全不加载，只运行 LoRA",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有 LoRA 必须合并成一个才能使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每套 LoRA 都要单独部署一份完整的基础模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "基础模型只加载一次，不同 LoRA 像插件一样按需挂载和切换",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D9-5",
+          "type": "single",
+          "stem": "冻结基座能否保证完全不发生灾难性遗忘？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，原始权重冻结后通用能力绝不会受影响",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能，只要把 LoRA 合并后继续训练就不会遗忘",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能，数据很偏或 rank、学习率过高时，通用能力仍可能下降",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不能，因为 LoRA 会直接改写全部原始权重",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D9-6",
+          "type": "single",
+          "stem": "LoRA 与传统 Adapter 在推理开销上有什么差别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "LoRA 每层都要额外过一遍小网络、延迟叠加，Adapter 合并后没有这个问题",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Adapter 每层都要额外过一遍小网络、延迟叠加，LoRA 合并后没有这个问题",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者推理时都完全没有任何额外开销",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者推理时都有逐层叠加的额外延迟",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D9-7",
+          "type": "single",
+          "stem": "多套 LoRA 权重能否直接混合？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，多个 LoRA 的更新可以加权相加",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不能，混合会破坏基础模型的权重",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，但混合之后必须重新训练全部参数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，每次只能加载一套 LoRA",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D9-8",
+          "type": "single",
+          "stem": "参数高效微调 PEFT 的核心思路是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把全部参数更新得更加彻底",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "从头重新做一遍预训练",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "完全不训练，只修改提示词",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不更新全部参数，只训练一小部分",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D9-9",
+          "type": "single",
+          "stem": "LoRA 的秩 r 对模型有什么影响？",
+          "options": [
+            {
+              "key": "A",
+              "text": "r 越小表达能力越强，r 越大参数越少",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "r 必须等于原始矩阵的维度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "r 越小参数越少但表达能力越弱，r 越大越接近全量微调",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "r 只影响推理速度，不影响训练效果",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D9-10", "type": "short" },
+        {
+          "id": "D9-11",
+          "type": "single",
+          "stem": "为什么说 LoRA 调参成本更低？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的学习率必须精确到固定的数值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "最关键的超参只有 rank，取值范围很宽",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它完全没有任何超参数需要设置",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它要同步调整几十亿个参数",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D9-12", "type": "short" },
+        { "id": "D9-13", "type": "short" },
+        { "id": "D9-14", "type": "short" }
+      ]
+    },
+    "D10": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D10-1",
+          "type": "single",
+          "stem": "SFT 之后模型已经会按指令回答，为什么仍需要 Post-Training？",
+          "options": [
+            {
+              "key": "A",
+              "text": "SFT 学到的只是合格，不是优质，也可能没覆盖有害请求",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "SFT 会让模型忘记预训练学到的全部知识",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "SFT 之后模型的参数量太大，需要压缩",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "SFT 之后模型还不会生成任何文本",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D10-2", "type": "short" },
+        {
+          "id": "D10-3",
+          "type": "single",
+          "stem": "经典 RLHF 流程为什么需要参考模型和 KL 约束？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 KL 约束来加快训练的收敛速度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让主模型的输出尽量远离 SFT 模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "防止主模型学会欺骗奖励模型",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用参考模型代替人类给回答打分",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D10-4",
+          "type": "single",
+          "stem": "DPO 为什么可以不显式训练奖励模型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它完全不使用任何偏好数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "奖励可由主模型相对参考模型的概率比值替代",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它用人类标注员实时给每个回答打分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它把奖励写死成了固定的常数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D10-5",
+          "type": "single",
+          "stem": "GRPO 相比 PPO 去掉了哪个模型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Value Model",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Policy Model",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "被优化的主模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Reference Model",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D10-6",
+          "type": "single",
+          "stem": "拒绝采样怎样产生新的训练数据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把所有候选回答不加筛选地全部加入训练",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把得分最低的回答加入训练数据作为反例",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让人类重新撰写每一个回答",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把候选里得分最高的回答当作新的 SFT 数据",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D10-7",
+          "type": "single",
+          "stem": "RLAIF 与 RLHF 的反馈来源有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "RLAIF 的偏好来自人类标注员，RLHF 用更强的 AI 模型代替人类打偏好",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者的偏好都来自人类标注员",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "RLHF 的偏好来自人类标注员，RLAIF 用更强的 AI 模型代替人类打偏好",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都不需要任何偏好反馈",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D10-8",
+          "type": "single",
+          "stem": "对齐方法之间是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "包含关系，后出现的方法包含之前的全部方法",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "互斥关系，一个模型只能用其中一种",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "顺序关系，必须按固定的先后顺序各用一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是替代关系，真实流程是多阶段交替使用",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D10-9", "type": "short" },
+        { "id": "D10-10", "type": "short" },
+        { "id": "D10-11", "type": "short" },
+        { "id": "D10-12", "type": "short" },
+        {
+          "id": "D10-13",
+          "type": "fill",
+          "stem": "按原文的选型建议：资源有限、实现优先简单时选 ____；答案对错可验证的推理类任务、想探索能力上限时选 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        }
+      ]
+    },
+    "D11": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D11-1",
+          "type": "fill",
+          "stem": "原文称 PPO 训练要同时维护四个模型，其中三个是：正在被优化、负责生成回答的是 ____，给回答打质量分的是 ____，作为冻结副本约束主模型不要偏离太远的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D11-2",
+          "type": "single",
+          "stem": "DPO 训练样本里的 chosen 与 rejected 提供了什么信号？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相对于参考模型，提高 chosen 的概率、降低 rejected 的概率",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "让模型忽略两者，只学习提示本身",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让两者的概率保持完全相等",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "相对于参考模型，提高 rejected 的概率、降低 chosen 的概率",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D11-3",
+          "type": "single",
+          "stem": "DPO 与基于 PPO 的 RLHF 在复杂度和稳定性上怎样比较？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都不需要参考模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "PPO 要维护更多模型、训练不稳定，DPO 等价于监督学习、训练稳定",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "DPO 要维护更多模型、训练不稳定，PPO 等价于监督学习、训练稳定",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都需要单独训练奖励模型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D11-4",
+          "type": "single",
+          "stem": "DPO 是否与任意 PPO 训练过程完全等价？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，它是从带 KL 约束的 RLHF 目标推导出的闭式目标",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是的，两者在任何情况下结果都完全相同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，两者优化的目标毫无关系",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，DPO 只是 PPO 的另一个名字",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D11-5",
+          "type": "single",
+          "stem": "什么时候值得承担 PPO 的工程成本？",
+          "options": [
+            {
+              "key": "A",
+              "text": "GPU 资源有限、需要快速迭代时",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "要探索超出现有数据的能力，且有 RL 工程能力时",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只想在已有偏好数据的分布上提升一步时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "团队没有任何强化学习经验时",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D11-6",
+          "type": "single",
+          "stem": "原文用什么比喻概括 PPO 和 DPO 的区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都是先训练裁判，区别只在裁判的数量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "DPO 是先训练裁判再训练选手，PPO 是直接拿比赛录像教选手",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "PPO 是先训练裁判再训练选手，DPO 是直接拿比赛录像教选手",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都不需要裁判，区别只在录像的长度",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D11-7", "type": "short" },
+        {
+          "id": "D11-8",
+          "type": "single",
+          "stem": "GRPO 去掉 Value Model 之后，用什么充当基线？",
+          "options": [
+            {
+              "key": "A",
+              "text": "人类标注员给出的固定分数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "参考模型输出的概率",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上一轮训练的损失值",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "同一问题多个采样回答的组内平均分",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D11-9",
+          "type": "single",
+          "stem": "GRPO 为什么对“可验证任务”特别友好？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这类任务的奖励只能由人类给出",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这类任务不需要采样多个回答",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这类任务不需要任何奖励信号",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "奖励可以直接按答案的对错判定",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D11-10", "type": "short" }
+      ]
+    },
+    "D12": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D12-1",
+          "type": "single",
+          "stem": "自回归生成的每一步，解码策略在决定什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "怎样从概率分布里选出下一个 token",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "模型要使用哪一层的参数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型一共要生成多少个 token",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型要输出多大的概率分布",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D12-2",
+          "type": "single",
+          "stem": "贪心解码的特点是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "同时保留多条路径，最后选整体概率最高的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先用小模型生成，再由大模型验证",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每步都选概率最高的 token，结果可复现，但容易陷入重复循环",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每步都随机采样，结果多样，但不可复现",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D12-3",
+          "type": "single",
+          "stem": "Beam Search 是怎样工作的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每一步都让多个模型投票决定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每一步保留若干条总概率最高的路径同时推进",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每一步从分布里随机抽取一个 token",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每一步只保留概率最高的一个 token",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D12-4",
+          "type": "single",
+          "stem": "为什么整体概率最高的序列不一定是最好的开放式回答？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它总是包含大量不合理的低概率词",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它往往每步都选最稳的词，输出保守乏味，还容易复读",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它生成的速度太快，内容来不及展开",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它的概率计算存在错误，结果不可信",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D12-5",
+          "type": "single",
+          "stem": "采样相比确定性解码，带来什么收益和风险？",
+          "options": [
+            {
+              "key": "A",
+              "text": "收益是速度更快，风险是占用更多显存",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "收益是完全可复现，风险是容易重复",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "收益是结果唯一，风险是缺少变化",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "收益是多样性，风险是可能抽到不合理的低概率词",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D12-6",
+          "type": "single",
+          "stem": "推测解码与 Self-Consistency 各优化什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都只是为了优化输出文本的多样性",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Self-Consistency 优化推理速度，推测解码优化推理类任务的准确率",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "推测解码优化推理速度，Self-Consistency 优化推理类任务的准确率",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都只是为了降低每次调用的成本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D12-7",
+          "type": "single",
+          "stem": "贪心解码适合什么任务？",
+          "options": [
+            {
+              "key": "A",
+              "text": "代码、SQL 这类有标准答案的精确任务",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "需要每次都不一样的创意写作任务",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要多条路径投票的推理任务",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有固定答案的开放式闲聊对话",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D12-8", "type": "short" },
+        { "id": "D12-9", "type": "short" },
+        {
+          "id": "D12-10",
+          "type": "single",
+          "stem": "Top-P 采样是怎样截断候选集的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只保留概率最低的那一部分候选",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把所有候选的概率调整成完全相等",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按概率从高到低累加，超过阈值就停",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "固定只保留概率最高的 K 个候选",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D12-11",
+          "type": "single",
+          "stem": "各家 API 的采样参数默认值能死记吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，所有模型和产品的默认值都相同且永不变化",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能，因为主流 API 都不提供这类参数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，记住之后就不需要再做任何调整",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，应先用官方默认值作基线，再按任务是精确还是开放去调",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "D13": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D13-1",
+          "type": "single",
+          "stem": "Temperature 如何改变 token 的概率分布？",
+          "options": [
+            {
+              "key": "A",
+              "text": "无论取多少，分布都保持不变",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "小于 1 时分布更尖锐，大于 1 时分布更均匀",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "小于 1 时分布更均匀，大于 1 时分布更尖锐",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它只改变词表的大小，不改变分布",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D13-2",
+          "type": "single",
+          "stem": "Top-K 与 Top-P 的候选集有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Top-K 固定保留 K 个词，Top-P 按累计概率截断、候选池大小自动变化",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者的候选池大小都固定不变",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者的候选池都包含整个词表",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Top-P 固定保留 P 个词，Top-K 按累计概率截断、候选池大小自动变化",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D13-3",
+          "type": "single",
+          "stem": "精确任务与创意写作的采样设置为什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两类任务都应把温度设为 0",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两类任务都应使用最高的温度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "精确任务用高温求多样，创意任务用低温求稳定可复现",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "精确任务用低温求稳定可复现，创意任务用较高温度求多样",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D13-4",
+          "type": "single",
+          "stem": "为什么不建议同时大幅调整 Temperature、Top-K、Top-P？",
+          "options": [
+            {
+              "key": "A",
+              "text": "同时调整会让模型的参数被永久修改",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "三个参数作用重叠，同时调会互相干扰，分不清是谁在起作用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "三个参数互不相关，同时调没有任何效果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "接口每次只允许传入其中一个参数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D13-5",
+          "type": "single",
+          "stem": "Temperature 设为 0 时，模型怎样选词？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在整个词表里完全随机地选一个词",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只在概率最低的几个词里选",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "相当于贪心解码，永远选概率最高的词",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "拒绝输出任何内容",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D13-6", "type": "short" },
+        { "id": "D13-7", "type": "short" },
+        {
+          "id": "D13-8",
+          "type": "single",
+          "stem": "Top-K 最明显的问题是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "K 是固定的，不会随分布的形状自适应",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它会让输出变得完全确定",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它无法避免采到长尾的噪声词",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它的候选池总是包含整个词表",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D13-9",
+          "type": "single",
+          "stem": "实际工程里，三个采样参数应怎样配合使用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "三个参数每次都要一起大幅调整",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "多数情况只调 Temperature 一个参数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "同时把 top_k 和 top_p 设到最小",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只设置 top_k，其他两个参数没有作用",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D13-10", "type": "short" }
+      ]
+    },
+    "D14": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D14-1",
+          "type": "single",
+          "stem": "自回归生成时如果不缓存先前 token 的 K/V，会出现什么重复计算？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每生成一个 token，都要重新做一次分词",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每生成一个 token，都要重新训练一遍模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每生成一个 token，都要把前面所有 token 重新算一遍 attention",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每生成一个 token，都要重新加载一遍模型权重",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D14-2",
+          "type": "single",
+          "stem": "KV Cache 的速度收益伴随什么成本？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型的输出精度会出现明显下降",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型的权重需要重新做一遍量化",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每一步的计算量会变成原来的平方",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "前面所有 token 的 K/V 都要常驻显存",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D14-3",
+          "type": "single",
+          "stem": "Prompt Caching 与 KV Cache 的复用范围有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "KV Cache 在单次生成内复用，Prompt Caching 把复用扩展到不同请求之间",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都只在不同用户的请求之间复用结果",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都只在单次生成的 token 之间复用结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Prompt Caching 在单次生成内复用，KV Cache 把复用扩展到不同请求之间",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D14-4",
+          "type": "single",
+          "stem": "为什么固定内容要放前面、动态内容放后面？",
+          "options": [
+            {
+              "key": "A",
+              "text": "固定内容放在后面会被自动截断",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "动态内容放在后面可以不计费",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型只读取 Prompt 的后半部分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "前缀必须完全一致才能命中缓存",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D14-5",
+          "type": "single",
+          "stem": "评估 Prompt Caching 的费用时，应怎样看？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写入和命中都比普通输入贵",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "命中的 token 更贵，写入那次免费",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "命中更便宜、写入更贵，命中够多才划算",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "写入和命中都免费，开启一定省钱",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D14-6",
+          "type": "single",
+          "stem": "KV Cache 量化与 PagedAttention 分别优化什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "PagedAttention 减少缓存的数值精度，量化消除显存碎片",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "量化减少缓存的显存占用，PagedAttention 消除显存碎片",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都用来加快模型的训练速度",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都用来提高模型的输出精度",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D14-7", "type": "short" },
+        { "id": "D14-8", "type": "short" },
+        {
+          "id": "D14-9",
+          "type": "single",
+          "stem": "Claude 和 OpenAI 的 Prompt Caching 实现方式有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Claude 要用户显式加缓存标记，OpenAI 在前缀够长时自动尝试缓存",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两家都要求用户显式加缓存标记",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "OpenAI 要用户显式加缓存标记，Claude 在前缀够长时自动尝试缓存",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两家都不支持跨请求的缓存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D14-10",
+          "type": "multiple",
+          "stem": "哪些场景适合用 Prompt Caching？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次请求的开头都是不同的日期和用户名",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Prompt 里带很多 Few-shot 示例",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "对同一份长文档反复提问",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每次都发送完全不同的短提示",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "长 System Prompt",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D14-11", "type": "short" }
+      ]
+    },
+    "D15": {
+      "status": "draft",
+      "questions": [
+        { "id": "D15-1", "type": "short" },
+        {
+          "id": "D15-2",
+          "type": "single",
+          "stem": "INT8 与 INT4 通常怎样权衡？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都会让模型基本不能用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "INT4 接近无损，INT8 体积更小、损失稍大",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "INT8 接近无损，INT4 更小但损失稍大",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者体积相同，区别只在推理速度",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D15-3",
+          "type": "single",
+          "stem": "GPTQ 如何利用校准数据和误差补偿？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用校准数据重新训练整个模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把量化误差修正到尚未量化的权重上",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把所有权重统一四舍五入，不做任何修正",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只量化激活值最大的那些通道",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D15-4",
+          "type": "single",
+          "stem": "AWQ 为什么关注与高激活输入相关的权重？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这些权重承担了大部分输出贡献，要让它们量化时损失更小",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "这些权重对输出没有影响，可以直接删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这些权重只在训练时使用，推理时不用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这些权重的数值最小，最容易量化",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D15-5",
+          "type": "single",
+          "stem": "QLoRA 中的 NF4 是为哪类场景设计的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在手机上做语音识别",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在浏览器里渲染图片",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在大型集群上做预训练",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在消费级 GPU 上做微调",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D15-6",
+          "type": "single",
+          "stem": "量化后为什么必须重测业务任务？",
+          "options": [
+            {
+              "key": "A",
+              "text": "平均损失对所有任务都完全相同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "量化会改变模型的输入格式",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "精度损失不是均匀分布的，不同任务掉得不一样",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "量化后的模型一定无法加载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D15-7",
+          "type": "single",
+          "stem": "量化算法和文件格式是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文件格式决定模型的精度，量化算法只决定文件名",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "量化算法只能配合一种固定的文件格式使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是同一个概念，GGUF 就是 GPTQ 的另一个名字",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是两层概念，GGUF 是权重的存储格式，不是某一种量化算法",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D15-8",
+          "type": "fill",
+          "stem": "量化能带来两方面的收益：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "D15-9",
+          "type": "single",
+          "stem": "量化位数越来越低时，精度损失的变化有什么规律？",
+          "options": [
+            {
+              "key": "A",
+              "text": "损失曲线先陡后平，位数越低越稳定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "损失曲线先平后陡，位数再往下降精度会突然变差",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "位数越低，精度反而越高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "损失与位数无关，始终保持不变",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D15-10", "type": "short" },
+        { "id": "D15-11", "type": "short" },
+        {
+          "id": "D15-12",
+          "type": "fill",
+          "stem": "QLoRA 除了 NF4 量化，还用了两项技术：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "D15-13", "type": "short" },
+        { "id": "D15-14", "type": "short" }
+      ]
+    },
+    "D16": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D16-1",
+          "type": "fill",
+          "stem": "原文列出的 Prompt 五要素是：____、____、____、____、____。",
+          "blankCount": 5,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "D16-2",
+          "type": "single",
+          "stem": "为什么只说“帮我总结一下”会产生不稳定的输出？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有任何约束，模型只能随机发挥",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "模型不具备总结文本的能力",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这句话会触发安全拦截",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这句话太短，模型无法识别其中的文字",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D16-3",
+          "type": "single",
+          "stem": "格式约束与示例分别怎样帮助模型遵守格式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "格式约束规定输出的结构，示例直接给范例让模型对齐",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都只影响模型的语气",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "示例规定输出的结构，格式约束直接给范例让模型对齐",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都只是为了让 Prompt 更长",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D16-4",
+          "type": "single",
+          "stem": "为什么建议用 XML 标签组织 Prompt 的不同部分？",
+          "options": [
+            {
+              "key": "A",
+              "text": "XML 标签是模型唯一能读懂的格式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "XML 标签会被模型当作代码执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "XML 标签可以让 Prompt 不计入 token",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把不同部分明确区分开，模型理解起来更准确",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D16-5",
+          "type": "single",
+          "stem": "修改 Prompt 之后，怎样判断它真的变好了？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只看输出的字数有没有变多",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "准备一批测试用例，每次只改一处，在整个测试集上跑",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "随手试一两个例子，感觉更好就算通过",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一次同时改很多处，看总体印象",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D16-6",
+          "type": "single",
+          "stem": "Prompt 压缩应该按什么来取舍？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按语言，只保留英文内容",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按字符数，超过长度就从末尾截断",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按信息量，删掉信息量低的内容",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "按位置，一律删掉前半部分",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D16-7", "type": "short" },
+        {
+          "id": "D16-8",
+          "type": "multiple",
+          "stem": "新手写 Prompt 最常见的三个问题是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "角色设定得太具体",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "没有格式约束",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "指令不清晰",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "缺少关键上下文",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "示例给得太多",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D16-9",
+          "type": "single",
+          "stem": "泛泛的“助手”与具体的专业角色，效果有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者在输出上没有任何实际区别",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "角色设定只会影响输出内容的长度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "具体的专业角色让输出更有深度和针对性",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "泛泛的助手角色输出反而更加专业",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D16-10", "type": "short" },
+        {
+          "id": "D16-11",
+          "type": "single",
+          "stem": "从差 Prompt 改到好 Prompt 的示例说明了什么规律？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只要加上角色，其他约束都不需要",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每加一层约束，效果就上一个台阶",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Prompt 越短效果越好",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "约束越少，输出质量越稳定",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D16-12",
+          "type": "single",
+          "stem": "使用 CoT 触发词时，要不要把完整推理过程展示给用户？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不建议默认展示，对外只给简要依据",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "应当禁止模型做任何分步分析",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只展示推理过程，不给最终结论",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "必须完整展示，否则准确率会下降",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D16-13",
+          "type": "single",
+          "stem": "Prompt 工程的迭代方式是怎样的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次都从头重写全部内容",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "完全依靠直觉，不需要测试",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一次写完之后就不需要再改",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "提出假设、测试、优化的循环",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D16-14",
+          "type": "multiple",
+          "stem": "Prompt 里哪些内容可以压缩？",
+          "options": [
+            {
+              "key": "A",
+              "text": "输出格式的字段定义",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "啰嗦的指令",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "模式重复的 Few-shot 示例",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "唯一的一条任务说明",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "反复强调的禁令",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D16-15", "type": "short" }
+      ]
+    },
+    "D17": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D17-1",
+          "type": "multiple",
+          "stem": "CoT 为什么可能改善多步推理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它让模型不再需要任何上下文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "激活了模型从推理型文本里学到的推理模式",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它减少了模型需要生成的 token 数量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "中间步骤充当草稿纸，减轻模型的推理负担",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "每一步的错误都暴露出来，便于发现和纠正",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D17-2",
+          "type": "single",
+          "stem": "零样本 CoT 与少样本 CoT 分别怎样触发分步推理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "零样本只加一句分步思考的提示，少样本给出几个带推理过程的完整示例",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都只加一句提示，区别只在措辞",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都必须给出示例，区别只在数量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "少样本只加一句分步思考的提示，零样本给出几个带推理过程的完整示例",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D17-3",
+          "type": "single",
+          "stem": "Self-Consistency 如何利用多条推理路径？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把多条路径拼接成一个更长的答案",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用较高温度生成多条推理路径，对最终答案做多数投票",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只保留最长的那一条推理路径",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只生成一条路径，并把温度设为 0",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D17-4",
+          "type": "multiple",
+          "stem": "CoT 有哪些成本和风险？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前面一步错了，后面会基于错误前提继续推导",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它能完全消除推理错误",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "额外生成大量 token，成本和响应时间增加",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它会让模型的回答变得更短",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "对简单问题可能适得其反",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D17-5",
+          "type": "single",
+          "stem": "面向用户的系统应怎样呈现推理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只展示推理过程，不给出最终答案",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把完整的内部推理链原样展示给每个用户",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "禁止模型进行任何形式的推理",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型内部完成推理，只给用户简洁答案和可核查的依据",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D17-6", "type": "short" },
+        {
+          "id": "D17-7",
+          "type": "single",
+          "stem": "CoT 对哪类任务没有帮助？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要一步步做逻辑推导的题目",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要多步计算才能得出结果的数学题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "简单问答、分类这类不需要推理的任务",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要逐步排查原因的代码调试",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "D18": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D18-1",
+          "type": "fill",
+          "stem": "三类幻觉：编造不存在的事实或张冠李戴的是 ____ 幻觉，事实没问题但推理错乱、前后矛盾的是 ____ 幻觉，不违反客观事实却违反用户给出的明确条件的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D18-2",
+          "type": "single",
+          "stem": "训练数据里的错误和过时信息，怎样进入模型的回答？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型会在推理时实时联网读取这些错误信息",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型把它们都学进了参数，没有区分真假的机制",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "模型会主动核实每一条训练数据的真伪",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这些信息在预训练时已被自动剔除",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D18-3",
+          "type": "single",
+          "stem": "为什么“预测下一个 token”不等同于查询事实数据库？",
+          "options": [
+            {
+              "key": "A",
+              "text": "LLM 找不到会报错，数据库按概率续写",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都对自己是否知道有明确的信号",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数据库找不到会报错，LLM 按概率续写，总会输出点什么",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都返回精确匹配的记录",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D18-4",
+          "type": "single",
+          "stem": "偏好对齐为什么可能让模型过度自信？",
+          "options": [
+            {
+              "key": "A",
+              "text": "标注员倾向给“我不知道”打高分",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "对齐阶段删除了模型的全部知识",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对齐阶段把温度固定成了最高值",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "标注员倾向给详细自信的回答打高分",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D18-5",
+          "type": "single",
+          "stem": "下列哪项属于系统层的幻觉缓解措施？",
+          "options": [
+            {
+              "key": "A",
+              "text": "接入 RAG，并强制回答带引用来源",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "在对齐数据里加入“不知道就说不知道”的样例",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让模型先分步分析再作答",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把 Temperature 调低",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D18-6",
+          "type": "single",
+          "stem": "幻觉无法完全消除，工程上的目标是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "保证模型永远不出现任何幻觉",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "降低发生率，并让用户能够识别",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把幻觉隐藏起来不让用户发现",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让模型拒绝回答所有的问题",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D18-7",
+          "type": "single",
+          "stem": "LLM 幻觉的两个关键特征是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "内容是错的，而且一眼就能看出来",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "内容是对的，但听起来很奇怪",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "内容是空的，没有任何输出",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "内容是错的，但听起来是对的",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D18-8",
+          "type": "single",
+          "stem": "为什么把温度调低不能根除幻觉？",
+          "options": [
+            {
+              "key": "A",
+              "text": "温度调低会让模型忘记全部知识",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "温度与模型的输出完全无关",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "温度只减少随机性，不能修正错误本身",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "温度调低会让模型拒绝回答",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D18-9",
+          "type": "single",
+          "stem": "什么是 Calibrated Refusal？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让模型该说不知道时就说不知道",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "让模型把拒答的内容悄悄替换成猜测",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让模型对所有问题一律拒绝回答",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让模型对所有问题都自信地作答",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D18-10", "type": "short" },
+        { "id": "D18-11", "type": "short" },
+        { "id": "D18-12", "type": "short" },
+        { "id": "D18-13", "type": "short" }
+      ]
+    },
+    "D19": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D19-1",
+          "type": "single",
+          "stem": "MoE 相对 Dense 模型，改变了 Transformer 的哪类子层？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自注意力计算层",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "层归一化模块",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "位置编码模块",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "FFN 前馈网络层",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D19-2",
+          "type": "fill",
+          "stem": "MoE 的三个部件：每层并行的多份 FFN 是 ____，给 token 打分并选出 Top-K 的是 ____，惩罚使用率不均、迫使任务分散的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D19-3",
+          "type": "single",
+          "stem": "“总参数多、每 token 激活参数少”带来什么计算优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个 token 都要计算全部参数，所以精度更高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "总参数越多，需要的显存越少",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "知识量按总参数算，而每个 token 只计算被激活的那部分",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "激活参数越少，模型学到的知识越少",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D19-4",
+          "type": "single",
+          "stem": "什么是专家塌缩？",
+          "options": [
+            {
+              "key": "A",
+              "text": "少数专家一直被选中并得到训练，其余专家学不到东西",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "所有专家被平均使用，没有任何分化",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "专家数量在训练中不断减少",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Router 拒绝为任何 token 选择专家",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D19-5",
+          "type": "single",
+          "stem": "MoE 为什么仍可能面临显存问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的 KV Cache 比 Dense 模型大很多倍",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有专家的参数都要加载进显存，显存按总参数算",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它无法使用任何量化技术",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个 token 都要激活全部专家",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D19-6",
+          "type": "single",
+          "stem": "MoE 的核心思想是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让每个 token 都计算全部参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "去掉注意力层以加快推理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用稀疏激活换便宜的推理",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把几个小模型简单拼在一起",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D19-7", "type": "short" },
+        {
+          "id": "D19-8",
+          "type": "single",
+          "stem": "MoE 里每个专家擅长什么，是怎样确定的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是预先指定的，而是在训练中自然涌现的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "所有专家擅长的内容完全相同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "由用户在每次请求时指定",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "由工程师在训练前逐个指定",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D19-9", "type": "short" },
+        {
+          "id": "D19-10",
+          "type": "single",
+          "stem": "DeepSeek V3 的无辅助损失负载均衡是怎样做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "随机丢弃一部分 token 来平衡负载",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把所有的专家合并成同一个专家",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "加一个更大的辅助损失来惩罚不均衡",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不加辅助损失，动态调整专家的偏置项",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D19-11", "type": "short" },
+        {
+          "id": "D19-12",
+          "type": "single",
+          "stem": "主流 MoE 模型在专家设计上呈现什么趋势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "专家越来越少，激活率越来越高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "专家越来越多，激活率越来越低",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每次都激活全部专家",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "专家数量和激活率都保持不变",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D19-13", "type": "short" },
+        { "id": "D19-14", "type": "short" },
+        {
+          "id": "D19-15",
+          "type": "single",
+          "stem": "为什么有的公司喜欢 MoE 的训练性价比，部署时却仍选 Dense？",
+          "options": [
+            {
+              "key": "A",
+              "text": "MoE 模型无法进行任何推理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Dense 模型的总参数一定更多",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "MoE 部署的成熟度还在演进，Dense 更省心",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Dense 模型不需要任何显存",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D19-16", "type": "short" },
+        {
+          "id": "D19-17",
+          "type": "single",
+          "stem": "MoE 和 Dense 各适合什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "MoE 已经在所有场景里完全取代了 Dense 模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "MoE 适合把总容量做大、激活成本压低，Dense 适合部署简单、负载稳定的场景",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者适合的场景完全相同，可以随意互换使用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Dense 适合把总容量做大、激活成本压低，MoE 适合部署简单、负载稳定的场景",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "D20": {
+      "status": "draft",
+      "questions": [
+        { "id": "D20-1", "type": "short" },
+        {
+          "id": "D20-2",
+          "type": "single",
+          "stem": "vLLM 的 PagedAttention 如何减少 KV Cache 碎片？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把显存切成固定大小的块，用多少占多少",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "让所有请求共用同一份 KV Cache",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "给每个请求都预留最大长度的连续显存",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把 KV Cache 全部写到磁盘上",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D20-3",
+          "type": "single",
+          "stem": "SGLang 的 RadixAttention 怎样复用共享前缀？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把所有请求合并成一个超长请求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把每个请求的缓存完全独立保存",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只缓存每个请求的最后一个 token",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用树结构组织缓存，开头相同的请求共享路径",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D20-4",
+          "type": "single",
+          "stem": "TGI 在 Hugging Face 生态中有什么优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以直接读取 HF Hub 的模型 ID 自动下载部署",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只支持 NVIDIA 的特定 GPU 型号",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能在没有 GPU 的设备上运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "部署前必须手动把模型转成专用格式",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D20-5",
+          "type": "single",
+          "stem": "llama.cpp 为什么常用于 CPU 和个人设备？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它依赖大量 Python 库，安装复杂",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "纯 C++ 实现、零依赖，并针对 CPU 做了优化",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它只能在大规模 GPU 集群上运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它不支持任何量化后的模型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D20-6",
+          "type": "single",
+          "stem": "TensorRT-LLM 适合怎样的团队？",
+          "options": [
+            {
+              "key": "A",
+              "text": "希望零配置、几分钟上线的小团队",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "使用多家厂商 GPU 混合部署的团队",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "有 NVIDIA 大规模 GPU 集群、追求极致利用率的团队",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只有一台没有 GPU 的笔记本的个人开发者",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D20-7", "type": "short" },
+        { "id": "D20-8", "type": "short" },
+        { "id": "D20-9", "type": "short" },
+        {
+          "id": "D20-10",
+          "type": "single",
+          "stem": "Continuous Batching 与静态批处理有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Continuous Batching 凑齐一批一起跑一起结束，静态批处理让请求随时加入和退出",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都要求所有请求长度完全相同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都不支持多个请求同时处理",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "静态批处理凑齐一批一起跑一起结束，Continuous Batching 让请求随时加入和退出",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D20-11", "type": "short" },
+        { "id": "D20-12", "type": "short" },
+        {
+          "id": "D20-13",
+          "type": "fill",
+          "stem": "三个推理框架的核心技术：靠 PagedAttention 加 Continuous Batching 的是 ____，靠 RadixAttention 共享前缀的是 ____，NVIDIA 官方做硬件极致优化的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D20-14",
+          "type": "single",
+          "stem": "vLLM 和 SGLang 是替代关系吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，两者其实是同一个项目",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，两者互补，业内已有公司混用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是的，两者无法在同一家公司共存",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，SGLang 已经完全取代了 vLLM",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "D21": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D21-1",
+          "type": "single",
+          "stem": "代码类 Benchmark 里，SWE-bench Verified 怎样测模型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给出多学科的四选一选择题",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给出小学数学应用题让模型计算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让用户对两个模型的回答投票",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让模型去修真实的 GitHub issue",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D21-2",
+          "type": "single",
+          "stem": "数据污染为什么会让公开榜单高估真实能力？",
+          "options": [
+            {
+              "key": "A",
+              "text": "榜单的题目每天都在更换",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "榜单只统计模型的推理速度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "题目公开流传，模型训练时可能已经见过",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "榜单的题目太难，模型全部答不上来",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D21-3",
+          "type": "single",
+          "stem": "怎样从业务真实请求建立评测集？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从真实用户请求里采样，人工标注期望答案",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只收集用户表示满意的请求",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让被测模型自己出题并自己评分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接照搬公开榜单的题目",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D21-4",
+          "type": "single",
+          "stem": "离线评估与线上指标分别能告诉你什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "线上指标帮助发现问题、快速迭代，离线评估说明是否真正改善了用户体验",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都只反映模型的推理速度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者说明的是同一件事，做其中一个即可",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "离线评估帮助发现问题、快速迭代，线上指标说明是否真正改善了用户体验",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D21-5", "type": "short" },
+        { "id": "D21-6", "type": "short" },
+        {
+          "id": "D21-7",
+          "type": "single",
+          "stem": "MMLU 考查的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "修复真实代码仓库里出现的问题",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "竞赛级别的数学证明和推导题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "多学科选择题，考知识广度和推理基础",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "多轮对话里的工具调用和状态管理",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D21-8",
+          "type": "fill",
+          "stem": "三个数学和科学推理类 Benchmark：小学数学应用题是 ____，竞赛数学是 ____，偏研究生级别的科学问答是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "D21-9",
+          "type": "single",
+          "stem": "τ-bench 这类评测偏重什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工具调用、多轮状态管理和业务流程里的表现",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用 LLM 给多轮对话的回答打分",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用户对模型回答的真实偏好投票",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "覆盖多个学科的知识选择题",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D21-10",
+          "type": "single",
+          "stem": "LiveBench 有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只包含四选一的选择题",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "持续更新题目，降低数据污染",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "题目多年固定不变，便于横向比较",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只评测模型的有害性",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D21-11", "type": "short" },
+        { "id": "D21-12", "type": "short" },
+        { "id": "D21-13", "type": "short" },
+        {
+          "id": "D21-14",
+          "type": "single",
+          "stem": "代码评测中常用的 Pass@k 指标表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "生成 k 个候选代码，至少 1 个能通过所有测试的比例",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "模型一次生成的代码恰好有 k 行的比例",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "k 个候选代码必须全部通过测试的比例",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型回答的正确答案排在前 k 位的比例",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "D22": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D22-1",
+          "type": "single",
+          "stem": "为什么不能只按公开排行榜选生产模型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "排行榜上的模型都无法通过 API 调用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "跑分高不代表在自己业务里表现好",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "排行榜只收录已经停止维护的模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "排行榜的分数是随机生成的",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D22-2",
+          "type": "single",
+          "stem": "海外模型过不了合规审批时，应怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "仍然可以直接用在核心生产链路上",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "换一个账号重新申请即可",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把敏感数据脱敏后就不再需要审批",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只能用来做离线评测，不能进核心生产链路",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D22-3",
+          "type": "multiple",
+          "stem": "工具调用和结构化输出节点，应重点测试哪些能力？",
+          "options": [
+            {
+              "key": "A",
+              "text": "公开榜单上的总排名",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Tool Use 的准确率",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "结构化输出是否稳定",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "创意写作的文采",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "长上下文下的指令遵循",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D22-4",
+          "type": "single",
+          "stem": "高频简单任务和少量复杂任务，为什么可能路由到不同模型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "简单的高频节点用便宜的模型，难题再交给更强的模型",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "所有任务都必须使用同一个模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "路由只是为了让调用链路更长",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "复杂任务用便宜的模型，简单的高频节点用最贵的模型",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D22-5", "type": "short" },
+        { "id": "D22-6", "type": "short" },
+        { "id": "D22-7", "type": "short" },
+        {
+          "id": "D22-8",
+          "type": "single",
+          "stem": "原文的项目最终采用了怎样的选型策略？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有环节统一使用最便宜的模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有环节统一使用榜单第一的模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按环节分配不同模型的路由策略",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "完全不使用大模型，改用规则系统",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D22-9",
+          "type": "fill",
+          "stem": "原文说模型选型要看四个维度：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        { "id": "D22-10", "type": "short" }
+      ]
+    },
+    "D23": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "D23-1",
+          "type": "single",
+          "stem": "窗口上限与有效上下文长度有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者是同一个概念的两种叫法",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "有效上下文回答能不能装进去，窗口上限回答装进去以后能不能用好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "窗口上限回答能不能装进去，有效上下文回答装进去以后能不能用好",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都只描述模型训练时见过的文本长度",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D23-2",
+          "type": "single",
+          "stem": "Lost in the Middle 是什么现象？",
+          "options": [
+            {
+              "key": "A",
+              "text": "关键证据放在中间最容易答对，放在首尾时正确率下降",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "关键证据无论放在哪里，正确率都完全相同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型完全看不见位于中间的任何内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "关键证据放在开头和结尾更容易答对，放在中间时正确率更容易下降",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "D23-3",
+          "type": "fill",
+          "stem": "除了位置编码，原文认为至少还有三方面因素影响中间证据的利用：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "D23-4", "type": "short" },
+        { "id": "D23-5", "type": "short" },
+        { "id": "D23-6", "type": "short" },
+        {
+          "id": "D23-7",
+          "type": "single",
+          "stem": "关于上下文窗口，最容易踩的认识误区是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把它当成硬盘，以为容量越大就答得越准",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "认为窗口越大费用和延迟越高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "认为长输入里会混进干扰内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "认为模型未必能用好装进去的全部内容",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "D23-8", "type": "short" },
+        {
+          "id": "D23-9",
+          "type": "single",
+          "stem": "Lost in the Middle 能全部归因于位置编码吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，它与训练分布和任务难度都无关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能，位置编码有影响，但全部归因于它是把问题想简单了",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不能，因为位置编码对它没有任何影响",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能，只要换一种位置编码就能彻底解决",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D23-10",
+          "type": "single",
+          "stem": "窗口越大，会带来什么隐蔽的代价？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型会拒绝读取位于开头的内容",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型输出的长度会被强制缩短",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "质量退化：更多资料也可能引入矛盾的内容",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型的参数量会随着窗口同步变大",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "D23-11",
+          "type": "single",
+          "stem": "面对大量资料时，应该先问什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这些资料一共有多少个 token",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "怎样把摘要压缩得尽量短",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这些资料能不能一次全部塞进窗口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "完成当前任务，模型到底需要哪些信息",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "D23-12", "type": "short" }
+      ]
+    }
+  }
+}

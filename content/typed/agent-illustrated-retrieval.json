@@ -1,0 +1,2545 @@
+{
+  "prefix": "L",
+  "chapters": {
+    "L1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "L1-1",
+          "type": "fill",
+          "stem": "原文描述的大模型三个“知识困局”是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "L1-2",
+          "type": "single",
+          "stem": "RAG 的核心思想是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先用自己的数据对预训练模型进一步训练，把知识内化进模型参数，再让它凭记忆生成回答",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先从外部知识库检索相关资料，再把资料连同问题一起交给大模型，由它基于这些资料生成回答",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "先把知识库里的所有文档拼成一个长上下文，一次性全部交给大模型，由它自己挑出相关内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先让大模型凭已有知识生成回答，再到外部知识库里检索资料，用来替换回答里编造的内容",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L1-3", "type": "short" },
+        {
+          "id": "L1-4",
+          "type": "multiple",
+          "stem": "关于 RAG 的定位，下列哪些说法符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它是万能的，可以完全替代微调",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它改变不了大模型的输出风格",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它与微调、Prompt Engineering 是互补关系",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它改变不了大模型的推理能力",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "模型推理不行时，多给资料就能弥补",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-5",
+          "type": "single",
+          "stem": "用开卷考试类比，RAG 的索引阶段和查询阶段分别对应什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "索引阶段是考试中翻书作答，需要快速响应；查询阶段是考前把参考书整理好，不需要实时响应",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "索引阶段是上课把知识记进脑子，查询阶段是闭卷考试时凭记忆作答，两者都需要重新训练",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "索引阶段是考前把参考书整理好，不需要实时响应；查询阶段是考试中翻书作答，需要快速响应",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "索引阶段是老师出题，查询阶段是老师批改，两者都在考试结束之后才进行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-6",
+          "type": "fill",
+          "stem": "RAG 索引阶段的四个步骤依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "L1-7",
+          "type": "fill",
+          "stem": "RAG 查询阶段的四个步骤依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "L1-8",
+          "type": "multiple",
+          "stem": "在 Naive RAG 的基础流程之外，原文提到生产中还会加入哪些高级技术？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查询改写",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "向量化入库",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "多路召回",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "重排序",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "文档加载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-9",
+          "type": "single",
+          "stem": "以 LoRA 为代表的参数高效微调是怎么做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只训练一个很小的低秩适配器，不动模型主体",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "更新模型的所有参数，效果最好但成本极高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不训练模型，只把检索到的资料拼进提示词",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用“指令-回答”格式的数据，让模型学会按指令回答",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-10",
+          "type": "single",
+          "stem": "用考试来类比，微调和 RAG 有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "微调像配了参考书架后开卷考试，可以翻书；RAG 像上了一门课后闭卷考试，靠记忆回答",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都是开卷考试，区别只在微调用的参考书不能再更新",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都是闭卷考试，区别只在 RAG 的课上得更久、记得更牢",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "微调像上了一门课后闭卷考试，靠记忆回答；RAG 像配了参考书架后开卷考试，可以翻书",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-11",
+          "type": "multiple",
+          "stem": "在知识更新和回答准确性上，下列哪些说法符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "RAG 每次新增知识都要重新训练模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "微调对具体事实的准确性最有保障",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "RAG 的回答基于检索到的真实文档，可追溯、可验证",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "微调要更新知识就得重新训练模型，成本高、周期长",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "RAG 只需替换知识库里的旧文档并重新索引",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-12",
+          "type": "multiple",
+          "stem": "在输出风格控制和成本结构上，下列哪些说法符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "微调每次查询的 token 消耗比 RAG 更多",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "微调初始成本高，但推理成本相对低",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "RAG 检索到的内容能直接决定模型的说话风格",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "RAG 初始成本低，但每次查询都有检索开销",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "风格控制是微调的强项",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-13",
+          "type": "single",
+          "stem": "按原文，微调和 RAG 在生产中最成熟的做法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只用 RAG：把风格和格式要求也写进知识库，让模型检索后照着模仿",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者结合：先用微调适应领域和风格，再用 RAG 提供实时准确的知识",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只用微调：把私有数据和最新知识定期重新训练进模型的参数里",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者二选一：知识更新频繁时用微调，需要回答可追溯时用 RAG",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-14",
+          "type": "single",
+          "stem": "文档切割面临怎样的两难？",
+          "options": [
+            {
+              "key": "A",
+              "text": "切得太小需要大量调用 LLM，切得太大则必须按文档结构重新排版",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "切得太小会超出模型的上下文窗口，切得太大则向量数据库无法存储",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "切得太小每块信息太少、可能丢失上下文，切得太大检索精度下降、还浪费上下文窗口",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "切得太小检索精度下降、还浪费上下文窗口，切得太大每块信息太少、可能丢失上下文",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-15",
+          "type": "multiple",
+          "stem": "关于固定大小切割，下列哪些说法符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要大量调用 LLM，成本是各种方法里最高的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按标题层级切，切出来的块语义完整",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不考虑语义和结构，可能把一句话从中间切开",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "重叠能保持一定连贯，但只能算一个补丁",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "简单、可预测、容易实现",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "L1-16", "type": "short" },
+        {
+          "id": "L1-17",
+          "type": "single",
+          "stem": "基于文档结构的切割，适用范围是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只适用于代码文件，Markdown 和 HTML 这类文档不能用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只适用于没有任何格式标记的纯文本，有结构的文档不能用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "适用于任何文档，结构越混乱的文档切出来的效果越好",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只适用于格式规范的文档，结构混乱或没有格式标记时不好用",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-18",
+          "type": "single",
+          "stem": "语义切分把切割点定在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相邻句子的相似度突然下降的地方",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "出现双换行、段落结束的地方",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "文档标题层级发生变化的地方",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "累计字符数达到固定大小的地方",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-19",
+          "type": "single",
+          "stem": "Agent 驱动的切割有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按固定的 token 数来切，简单、可预测，成本也最低",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只按分隔符的优先级列表往下切，不看内容是否完整",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只算相邻句子的余弦相似度，不需要调用 LLM",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "依靠 LLM 逐块审视内容，理论上效果最好，但成本也最高",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-20",
+          "type": "single",
+          "stem": "按原文的务实路线，起步阶段直接用哪种切割策略？",
+          "options": [
+            {
+              "key": "A",
+              "text": "父子块策略",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "语义切割",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "递归字符切割",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Agent 驱动的切割",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-21",
+          "type": "fill",
+          "stem": "原文指出的 Bi-Encoder 两个关键缺陷是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "L1-22",
+          "type": "single",
+          "stem": "Cross-Encoder 是怎样判断查询与文档相关性的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把文档向量在索引阶段预先算好，检索时只需要计算查询向量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把查询和文档拼成一个输入，通过自注意力让两者的每个词相互交互",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把查询拆成关键词，再统计这些关键词在文档里出现的次数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把查询和文档分别编码成向量，再计算两个向量的余弦相似度",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L1-23", "type": "short" },
+        {
+          "id": "L1-24",
+          "type": "single",
+          "stem": "两阶段检索的第一阶段追求什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "速度和召回率，宁可多捞一些，也不能漏掉相关的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "精细的相关性排序，候选越少越好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "回答的可追溯性，每个候选都要附上来源",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "查询意图的感知，针对具体问题逐篇判断",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-25",
+          "type": "single",
+          "stem": "原文对 BGE-Reranker 的描述是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "智源研究院出品的开源标杆，中文表现好，可本地部署",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用得最多的商业方案之一，SaaS API 接入简单，适合预算充足的项目",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "网易有道开源的双语模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "微软的轻量级 Cross-Encoder，体积小、推理快",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-26",
+          "type": "single",
+          "stem": "按原文，加入 Re-rank 后，哪类查询的准确率提升最大？",
+          "options": [
+            {
+              "key": "A",
+              "text": "各类查询的提升幅度基本相同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只需要查到一个事实的简单查询",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用户表述不太精确的模糊查询",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要多跳推理、要串联多个文档的复杂查询",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "L1-27", "type": "short" },
+        { "id": "L1-28", "type": "short" },
+        {
+          "id": "L1-29",
+          "type": "fill",
+          "stem": "Word2Vec 的两种训练方式是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "L1-30",
+          "type": "single",
+          "stem": "Word2Vec 的根本缺陷是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "上下文窗口只有 512 tokens，处理不了长文本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个词只生成一个固定的向量，无法处理多义词",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "几百字被压缩成一串数字，关键信息可能丢失",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "输出的向量全都挤在一起，彼此区分不开",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-31",
+          "type": "fill",
+          "stem": "BERT 的两个预训练任务是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "L1-32",
+          "type": "fill",
+          "stem": "BGE-M3 一次推理得到三种输出：用于语义检索的是 ____，用于关键词匹配的是 ____，用于更精细匹配的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "L1-33",
+          "type": "fill",
+          "stem": "BGE-M3 名称中的三个“多”分别是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "L1-34", "type": "short" },
+        {
+          "id": "L1-35",
+          "type": "single",
+          "stem": "为什么不能直接取生成式大模型的隐藏状态当作检索用的 Embedding？",
+          "options": [
+            {
+              "key": "A",
+              "text": "大模型的上下文窗口只有 512 tokens，装不下一个文本块",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "大模型给每个词只生成一个固定向量，区分不了多义词",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "直接输出的向量质量不好，都挤在一起、区分不开，需要专门训练",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "大模型的向量维度太高，向量数据库里存不下这么多数字",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-36",
+          "type": "single",
+          "stem": "第四代 Embedding 的核心思路是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把大模型远超传统编码器的语义理解能力迁移到 Embedding 生成上",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "给每个词生成一个固定的向量，靠上下文相似的词语义也相似来训练",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "继续以 BERT 这种编码器模型为基座，把模型做得又长又专",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "放弃稠密向量，只用稀疏向量做关键词匹配",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L1-37", "type": "short" },
+        {
+          "id": "L1-38",
+          "type": "single",
+          "stem": "向量数据库解决的是什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 Embedding 模型，把文本块转换成语义相近则距离相近的向量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用倒排索引，对分词之后的关键词做精确的词频匹配",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 Cross-Encoder，对检索出来的候选文档做精细化的重排序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用特殊的索引结构，在海量向量中实现毫秒级的近似最近邻搜索",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-39",
+          "type": "fill",
+          "stem": "三种向量索引中，给所有向量建多层导航图的是 ____，先把向量聚成若干个桶、查询时只搜其中几个桶的是 ____，把向量切成几段做压缩表示的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "L1-40",
+          "type": "single",
+          "stem": "原文对 Chroma 的描述是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 Rust 写成，单机性能强",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "开源，能扛十亿到百亿级向量，部署有门槛",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "轻量简单，适合原型验证，不支持分布式",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "全托管 SaaS，零运维，但数据存在第三方",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-41",
+          "type": "single",
+          "stem": "按原文的选型建议，数据量上亿的大规模企业级应用基本要选哪个向量数据库？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Pinecone",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Milvus",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Chroma",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "pgvector",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-42",
+          "type": "single",
+          "stem": "只靠向量检索这一路召回，短板在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "语义匹配：换一种说法提问，就检索不到意思相同的文档",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "实体关系：能精确匹配编号，但无法理解编号之间的关系",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "检索速度：每次查询都要逐一计算全部向量的相似度",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "精确匹配：相近的型号容易搜混，没有语义的产品编号可能匹配不上",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-43",
+          "type": "single",
+          "stem": "多路召回里，BM25 关键词检索擅长什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "精确关键词匹配，对专有名词、产品编号、人名有天然优势",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "实体关系推理，用图查询沿着关系找到相关内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "精细化重排序，让查询与文档的每个词相互交互",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "语义匹配，能把换了说法的问题和文档对应起来",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-44",
+          "type": "single",
+          "stem": "RRF 的核心思想是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只保留向量检索这一路的排名，其他各路的结果只用来补充没有被召回的文档",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把各路召回的候选交给 Cross-Encoder 重新打分，只按重排之后的相关性分数排序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不看文档的绝对分数，只看它在各路召回中的排名，排名越靠前、命中的路数越多得分越高",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把各路召回给出的绝对分数直接相加，绝对分数越高、分数差距越大的文档综合得分越高",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L1-45", "type": "short" },
+        {
+          "id": "L1-46",
+          "type": "single",
+          "stem": "HyDE 是怎么做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在检索前用 LLM 把原始问题改写成更适合检索的形式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先让 LLM 根据问题生成一个假设性的答案文档，再用它的向量去检索",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "同时发起向量检索和 BM25 检索，再用排名融合合并两路结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 LLM 把一个问题改写成多个不同角度的子问题，分别检索后合并",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L1-47", "type": "short" },
+        {
+          "id": "L1-48",
+          "type": "single",
+          "stem": "一个查询共有 10 篇相关文档，Top-5 返回结果中有 3 篇相关。Recall@5 和 Precision@5 各是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recall@5 是 60%，Precision@5 是 30%",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Recall@5 是 30%，Precision@5 是 60%",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Recall@5 是 50%，Precision@5 是 60%",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Recall@5 是 30%，Precision@5 是 30%",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-49",
+          "type": "single",
+          "stem": "NDCG 比只看找得全不全、准不准，多衡量了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "回答是否忠实于检索到的文档",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "回答是否真正回答了用户的问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "第一个相关文档排在第几位",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "排得对不对，即高度相关的文档是否排在前面",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-50",
+          "type": "single",
+          "stem": "MAP 和 MRR 分别关注什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "MAP 关注所有相关文档的整体排序质量，MRR 关注第一个相关文档排在第几位",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "MAP 关注回答是否忠实于文档，MRR 关注回答是否跑题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "MAP 关注找得全不全，MRR 关注找得准不准",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "MAP 关注第一个相关文档排在第几位，MRR 关注所有相关文档的整体排序质量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-51",
+          "type": "fill",
+          "stem": "原文列出的生成质量三个评估指标是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "L1-52",
+          "type": "single",
+          "stem": "RAGAS 是怎样计算忠实度的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把回答与标准答案逐字比较，统计两者之间完全相同的字符所占的比例",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把检索到的文档按相关程度排序，检查高度相关的文档是否排在前面",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把回答拆成一个个独立的陈述，检查每个陈述能否在检索到的文档中找到支撑",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "对同一个问题多次采样生成回答，统计关键事实前后说法一致的比例",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-53",
+          "type": "fill",
+          "stem": "使用 RAGAS 评估前，要准备的数据集包含四个字段：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "L1-54",
+          "type": "single",
+          "stem": "原文对 DeepEval 的描述是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把 RAG 评估融入单元测试框架，适合工程化团队",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "提供 RAG 应用的深度可观测性和诊断能力",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 LLM 生成合成评估数据，解决标注数据不足",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用更强大的 LLM 作为裁判，自动评估输出质量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-55",
+          "type": "multiple",
+          "stem": "原文列出的 RAG 评估最佳实践有哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把评估自动化，融入 CI/CD 流程",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "测试数据只选简单的事实查询，保证结果稳定",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先建基线再做优化，每次改动都对比基线",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "定期评估、持续监控",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "测试数据包含简单事实、复杂推理、多跳、模糊等多种问题",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "只在上线前做一次评估，之后不必再看",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-56",
+          "type": "single",
+          "stem": "模型说“我不知道这个问题的答案”，算不算幻觉？",
+          "options": [
+            {
+              "key": "A",
+              "text": "算，凡是没有给出正确答案的回答都属于幻觉",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不算，幻觉是模型不知道却假装知道，自信地编造内容",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "算，这属于生成内容与输入上下文矛盾的内在幻觉",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不算，但只要模型答错了任何一道题就属于幻觉",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-57",
+          "type": "single",
+          "stem": "RAG 场景中更常见的“忠实性幻觉”指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型生成的内容与输入的上下文信息相矛盾，属于事实性幻觉里的内在幻觉",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型生成的内容无法从输入上下文或任何已知知识中得到验证",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型在不确定时如实回答“我不知道这个问题的答案”",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型拿到了正确的检索文档，却在生成时偏离文档、加入文档没有的信息或曲解含义",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "L1-58", "type": "short" },
+        {
+          "id": "L1-59",
+          "type": "single",
+          "stem": "RAG 能完全消除幻觉吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，只要提示词里包含检索到的文档，模型就只会复述文档内容",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能，因为回答可以追溯到具体的文档来源，编造的内容会被自动删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能，检索到错误文档、模型曲解文档或做越界推断时，幻觉依然会发生",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不能，RAG 只影响输出风格，对事实性幻觉没有任何作用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-60",
+          "type": "multiple",
+          "stem": "用 Prompt 工程约束幻觉，原文给了哪些实用策略？",
+          "options": [
+            {
+              "key": "A",
+              "text": "明确要求只能基于给定资料回答，资料里没有就直接说无法回答",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "资料里没有相关信息时，让模型凭常识自行补全",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "要求回答尽量流畅自信，不要出现不确定的表述",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "允许并鼓励模型在不确定时说“我不确定”",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "要求在每个关键陈述后标注出处",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "要求先列出确定的事实，再推理并标注哪些是推理",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-61",
+          "type": "multiple",
+          "stem": "下列哪些属于原文所说的输出验证做法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在提示词里要求模型只基于给定资料回答",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用另一个模型逐一检查每个事实陈述能否在参考资料中找到支撑",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "用规则引擎校验数字、日期、人名、金额等关键信息",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "同一问题生成多个回答，看关键事实的说法是否一致",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "用人工审核过的“问题-正确答案”对训练模型",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L1-62", "type": "short" },
+        {
+          "id": "L1-63",
+          "type": "single",
+          "stem": "OpenAI 2025 年的研究建议把 RLHF 的计分规则改成什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "蒙对得分，不答零分",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "蒙错零分，不答扣分",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "蒙错扣分，不答零分",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "蒙对得分，不答扣分",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-64",
+          "type": "single",
+          "stem": "回答里很多 token 的概率都很低，说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型对回答很有把握，幻觉风险低",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型的上下文窗口快要用满了",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型的回答偏离了检索到的文档",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型对回答不太确定，幻觉风险高",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L1-65",
+          "type": "single",
+          "stem": "利用模型内部隐藏状态检测幻觉，适用范围是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要白盒访问内部状态，只能用于自己部署的开源模型",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "需要多次采样生成回答，只能用于支持批量调用的 API",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只需要拿到每个 token 的概率，多数商业 API 都能使用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只需要拿到最终输出的文本，任何外部 API 都能使用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-66",
+          "type": "fill",
+          "stem": "不确定性量化的三条技术路线分别基于：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "L1-67",
+          "type": "single",
+          "stem": "LightRAG 解决了 GraphRAG 的什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只能检索文档片段、缺乏全局理解",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "token 开销大、动态更新成本高",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不支持需要推理的问题",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "无法从文档里提取实体和关系",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L1-68",
+          "type": "fill",
+          "stem": "原文所说防幻觉的四道防线依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "L1-69",
+          "type": "single",
+          "stem": "按风险等级分层管控幻觉，低风险场景（头脑风暴、草稿起草、创意生成）应怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "做基础的 Prompt 优化即可",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "必须 RAG 加人工审核加明确的免责声明",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 Prompt 约束、RAG、输出验证和置信度阈值",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "必须做领域微调并加上不确定性量化",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L1-70", "type": "short" },
+        {
+          "id": "L1-71",
+          "type": "single",
+          "stem": "按原文对 BERT 的历史介绍，通常取 BERT 输出的哪个位置作为整段文本的向量表示？",
+          "options": [
+            {
+              "key": "A",
+              "text": "[CLS] token 的向量",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "[SEP] token 的向量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "被遮盖位置上预测出的词",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "下一句预测任务给出的判断结果",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L1-72", "type": "short" },
+        { "id": "L1-73", "type": "short" },
+        { "id": "L1-74", "type": "short" }
+      ]
+    },
+    "L2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "L2-1",
+          "type": "single",
+          "stem": "传统 RAG 为什么做不好多跳推理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "同一个实体被抽成了多个节点，相关的关系分散挂在各处",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "答案需要通读所有文档归纳总结，它却只会取最像问题的几个文本块",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "信息分散在多个文档里，它没有机制把几组检索结果做交集或链式推理",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "完整的论述被切到几个块里，它只召回了其中的上半段",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-2",
+          "type": "single",
+          "stem": "什么是全局性问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "答案所在的那段论述横跨几个段落，被切块之后分到了不同的块里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "答案不在某一个文本块里，需要通读所有文档、归纳总结才能得出",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "答案需要从 A 关联到 B、再从 B 关联到 C，沿着关系一步步推出来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "答案涉及的实体在不同文档里有不同的叫法，需要先合并才能查到",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-3",
+          "type": "single",
+          "stem": "切块带来的“语义断裂”是什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文本块里的实体没有被抽取出来，无法连成一张关系网",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文本块之间保留了重叠内容，同一句话被重复召回，浪费上下文窗口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "文本块被转成向量之后信息被压缩，细微但关键的信息丢失",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一段完整的论述被切到几个块里，检索只召回一部分，答案不完整甚至被曲解",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L2-4",
+          "type": "single",
+          "stem": "传统 RAG 三大痛点背后的根本原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它查不到具体事实",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它的索引成本太高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它不理解关系",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它找不到相似的句子",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-5",
+          "type": "single",
+          "stem": "原文说 GraphRAG 有两层含义，其中广义的 GraphRAG 指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有基于知识图谱做 RAG 的方法",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "融合图增强索引和双层检索的轻量版",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "微软研究院发布的论文和配套开源项目",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Local 和 Global 两种搜索的混合版",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L2-6", "type": "short" },
+        { "id": "L2-7", "type": "short" },
+        {
+          "id": "L2-8",
+          "type": "single",
+          "stem": "图里的“社区”指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "同一个实体在不同文本块里的多处描述，汇总之后成为综合描述",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "互相抱团、关系特别密切的一群节点，社区内部紧密、社区之间连接稀疏",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "被切出来的一个个文本块，块内部语义完整、块之间保留重叠",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "同一个时间段里的全部文档，各时间段分别建成一张独立的图",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-9",
+          "type": "fill",
+          "stem": "GraphRAG 的索引阶段先把文档切成 Text Unit，之后的四步依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        { "id": "L2-10", "type": "short" },
+        { "id": "L2-11", "type": "short" },
+        {
+          "id": "L2-12",
+          "type": "single",
+          "stem": "Leiden 算法在 GraphRAG 里做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相似度搜索，在实体向量索引里找到入口实体",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "实体消歧，把叫法不同的同一实体合并成一个节点",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "增量更新，识别新文档加入后受影响的子图",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "层次化社区检测，把图谱划分成多个层级的社区",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L2-13",
+          "type": "single",
+          "stem": "层次化社区怎样对应不同粒度的问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不论问题粒度如何，都固定使用最粗的那一层社区",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "问得越宏观用越低层的社区，问得越具体用越高层的社区",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "问得越宏观用越高层的社区，问得越具体用越低层的社区",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不论问题粒度如何，都固定使用最细的那一层社区",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L2-14", "type": "short" },
+        {
+          "id": "L2-15",
+          "type": "single",
+          "stem": "只抽取实体和关系、不生成社区报告，为什么做不了 Global Search？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Global Search 只读取原始文本块，社区报告用来给文本块排序",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Global Search 的入口实体要靠社区报告的向量才能定位",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Global Search 要用社区报告代替 Leiden 算法来划分社区",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Global Search 的 Map 阶段处理的对象就是社区报告，没有它流程就没有输入",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L2-16",
+          "type": "single",
+          "stem": "GraphRAG 的 Local Search 是怎样检索的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先从根节点社区出发，只深入相关的社区，跳过无关的子树",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先用问题向量在实体向量索引里找到入口实体，再沿图的边扩展取回相关内容",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "先把问题分词，在倒排索引里匹配关键词，再用排名融合合并",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先把某一层级的全部社区报告分批交给 LLM，再汇总各批的中间答案",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-17",
+          "type": "single",
+          "stem": "Global Search 的 Map 阶段和 Reduce 阶段分别做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Map 把社区报告分批生成中间答案并给观点评分，Reduce 汇总观点、按评分筛选后合并成最终答案",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Map 把新实体与老实体消歧合并，Reduce 只对受影响的社区重新生成摘要",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Map 汇总观点、按评分筛选后合并成最终答案，Reduce 把社区报告分批生成中间答案并给观点评分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Map 用问题向量找到入口实体，Reduce 沿图的边扩展取回邻居实体、关系和文本块",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L2-18", "type": "short" },
+        { "id": "L2-19", "type": "short" },
+        {
+          "id": "L2-20",
+          "type": "single",
+          "stem": "动态社区选择怎样减少参与计算的社区数量？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从根节点开始，只深入与问题相关的社区，跳过无关的子树",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "按时间段分开建图，查询时只查指定时间段的图",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不在索引阶段生成社区报告，改成查询时再生成",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从最低层开始，随机抽取一部分社区参与计算",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-21",
+          "type": "single",
+          "stem": "除了 Local Search 和 Global Search，GraphRAG 官方后来推出的第三种搜索模式叫什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Leiden",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "DRIFT Search",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "LightRAG",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "LazyGraphRAG",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L2-22", "type": "short" },
+        {
+          "id": "L2-23",
+          "type": "single",
+          "stem": "微软的 LazyGraphRAG 做了什么改动？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从根节点开始，只深入与问题相关的社区，跳过无关子树",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把 Local Search 和 Global Search 混合成一种搜索模式",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "日常跑增量索引，每隔一段时间再做一次全量重建",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不在索引阶段做实体摘要和社区报告，改成查询时动态生成",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "L2-24", "type": "short" },
+        { "id": "L2-25", "type": "short" },
+        {
+          "id": "L2-26",
+          "type": "fill",
+          "stem": "生产环境通常叠加三层实体消歧策略：处理拼写差异的是 ____，处理语义相似的是 ____，处理复杂情况的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "L2-27", "type": "short" },
+        { "id": "L2-28", "type": "short" },
+        {
+          "id": "L2-29",
+          "type": "fill",
+          "stem": "原文归纳的 GraphRAG 四大难点是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        { "id": "L2-30", "type": "short" },
+        { "id": "L2-31", "type": "short" },
+        {
+          "id": "L2-32",
+          "type": "single",
+          "stem": "GraphRAG 的增量索引怎样避免全部重算？",
+          "options": [
+            {
+              "key": "A",
+              "text": "索引时不做任何处理，等查询时再动态生成社区报告",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把新文档单独建成一张图，查询时再和旧图做联邦查询",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用图算法识别受影响的子图，只对受影响的社区重新检测和生成摘要",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只把新实体和新关系写进存储，社区和报告一律保持不动",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-33",
+          "type": "single",
+          "stem": "只重算局部社区、日积月累之后，阶段性全量重建起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "校准，把累积漂移掉的精度拉回来",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "降本，把索引的 token 消耗降下来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对齐，让不同时间段的图可以联邦查询",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "提速，让日常的增量索引跑得更快",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L2-34", "type": "short" },
+        {
+          "id": "L2-35",
+          "type": "single",
+          "stem": "索引时不做实体消歧、直接把实体加进去，会带来什么结果？",
+          "options": [
+            {
+              "key": "A",
+              "text": "索引变慢、增量成本变高，但查询延迟变低，不会再出现漏召回",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "索引极快、增量几乎零成本，但查询延迟变高，合并完成前可能漏召回",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "索引和查询都变快，只是社区报告需要每天全量重建一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "索引和查询都不受影响，只是图谱里的实体数量会变少",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-36",
+          "type": "single",
+          "stem": "“定期全量重建”适合什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数据量上亿、重建一次成本极高的场景",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文档每天大量更新、要求新内容立刻可查的场景",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "面向 C 端用户、要求秒级响应的场景",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "文档更新频率低、数据量不大、对实时性不敏感的场景",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L2-37",
+          "type": "single",
+          "stem": "生产环境最常见的增量策略是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "分图策略：按时间段分开建图，查询时跨图聚合",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "纯全量策略：每天把所有文档重新跑一遍索引",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "混合策略：日常跑小增量，每隔一段时间做一次全量重建",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "纯增量策略：只做增量索引，从不全量重建",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-38",
+          "type": "single",
+          "stem": "按时间段分开建图的做法适合什么数据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数据量不到 10 万 token 的小型知识库",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "有明显时间属性的数据，如新闻、月度报告、季度财报",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一年只更新一两次的规章制度和法律条文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要跨多个时间段做关系推理的合规数据",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L2-39", "type": "short" },
+        {
+          "id": "L2-40",
+          "type": "fill",
+          "stem": "LightRAG 论文总结的现有图 RAG 方法两个关键局限是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "L2-41",
+          "type": "single",
+          "stem": "与 GraphRAG 相比，LightRAG 的图保留了什么、省去了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只保留实体节点和关系边，不做社区检测，也不生成社区摘要",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "保留全部结构，只是把向量数据库换成了键值存储",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "保留层次化社区，但把社区摘要改成查询时再生成",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只保留社区和社区摘要，不再抽取实体节点和关系边",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-42",
+          "type": "single",
+          "stem": "LightRAG 为轻量付出的主要代价是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "索引成本变得更高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "查询延迟变得更长",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "牺牲了全局深度洞察",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "增量更新变得更难",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-43",
+          "type": "single",
+          "stem": "LightRAG 中实体与关系的 Key 和 Value 分别起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Key 是文本块的向量，Value 是文本块在原文里的位置",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Key 是命中后直接取出来组装上下文的详细描述，Value 是便于检索匹配的短语",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Key 是实体所属社区的编号，Value 是这个社区预先生成的摘要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Key 是便于检索匹配的短语，Value 是命中后直接取出来组装上下文的详细描述",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "L2-44", "type": "short" },
+        {
+          "id": "L2-45",
+          "type": "single",
+          "stem": "LightRAG 使用键值结构，是否意味着它不再需要向量检索？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，键值设计完全取代了向量库，查询关键词只做字符串精确匹配",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，实体描述、关系描述和关系关键词的向量仍存在向量库里供查询关键词检索",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不是，它仍用向量库，但只存社区摘要的向量，不存实体和关系",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，它改为遍历所有文本块，逐块判断是否与查询关键词相关",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-46",
+          "type": "single",
+          "stem": "LightRAG 的实体去重是怎样做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "索引时完全不去重，全部推迟到查询阶段再聚合",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "叠加编辑距离、向量相似度和 LLM 判别三层策略，再加人工兜底",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先做社区检测，再把同一社区里语义相近的实体合并",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "主要基于名称匹配：同名实体合并，不处理同人不同名的情况",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L2-47",
+          "type": "single",
+          "stem": "LightRAG 的知识图谱默认用什么作存储后端？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ollama",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Leiden",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "NetworkX",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "arXiv",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-48",
+          "type": "single",
+          "stem": "LightRAG 的低层关键词与高层关键词分别关注什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "低层关键词盯着具体的实体、细节和术语，高层关键词关注更抽象的主题和总体概念",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "低层关键词来自用户的问题，高层关键词来自上一轮检索返回的结果",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "低层关键词用来检索原始文本块，高层关键词用来检索预先生成的社区摘要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "低层关键词关注更抽象的主题和总体概念，高层关键词盯着具体的实体、细节和术语",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-49",
+          "type": "single",
+          "stem": "LightRAG 的低层检索和高层检索分别以什么为入口？",
+          "options": [
+            {
+              "key": "A",
+              "text": "低层检索直接搜原始文本块，高层检索遍历所有社区摘要并逐个生成中间答案",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "低层检索用关键词搜实体节点再扩展到一跳邻居，高层检索用关键词搜关系边再聚合涉及的实体",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "低层检索从根节点社区往下找，高层检索从最细一层的社区往上找",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "低层检索用关键词搜关系边再聚合涉及的实体，高层检索用关键词搜实体节点再扩展到一跳邻居",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L2-50", "type": "short" },
+        { "id": "L2-51", "type": "short" },
+        {
+          "id": "L2-52",
+          "type": "single",
+          "stem": "LightRAG 的四种查询模式里，默认推荐的是哪一种？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Global",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Naive",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Hybrid",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Local",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-53",
+          "type": "multiple",
+          "stem": "LightRAG 新增文档时，仍需要执行哪些步骤？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把新描述向量化后追加到向量库",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "重新做一遍社区检测",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "重新生成全库的社区摘要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "与同名节点合并描述，或新增节点和边",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "用 LLM 抽取实体和关系",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "对新文档切块",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L2-54",
+          "type": "single",
+          "stem": "LightRAG 先后抽到两条互相矛盾的关系，会怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自动保留后抽到的那条，丢弃较早的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "交给 LLM 判别之后合并成一条",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自动保留先抽到的那条，丢弃较晚的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两条同时保留，不会自动判定哪条更新",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "L2-55", "type": "short" },
+        { "id": "L2-56", "type": "short" },
+        { "id": "L2-57", "type": "short" },
+        { "id": "L2-58", "type": "short" },
+        { "id": "L2-59", "type": "short" },
+        { "id": "L2-60", "type": "short" },
+        { "id": "L2-61", "type": "short" },
+        {
+          "id": "L2-62",
+          "type": "single",
+          "stem": "为什么说 GraphRAG 最适合数据相对静态的知识库？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的增量更新成本高，建好后长期服务，成本才能慢慢摊薄",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它不支持删除文档，数据一旦入库就无法再改动",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它的查询延迟高，只有数据静态时才能把延迟降到秒级",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它的图谱默认存在内存里，数据变化之后会全部丢失",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "L2-63", "type": "short" },
+        {
+          "id": "L2-64",
+          "type": "multiple",
+          "stem": "按原文，下列哪些情况不建议上 GraphRAG？",
+          "options": [
+            {
+              "key": "A",
+              "text": "做 C 端实时交互的产品",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "业务变化快，数据每天都在更新",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "需要审计追踪、每个回答都要有据可查的合规场景",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "数据量很小，比如不到 10 万 token",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "一年只更新一两次的法律条文库",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "预算紧张的初创公司和个人项目",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "L2-65",
+          "type": "single",
+          "stem": "LightRAG 最核心的适用场景是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "语料超过 5000 万 token 的知识库",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "对实体消歧要求严格的合同审查",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要极深度全局归纳的分析",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要数据持续增量更新的业务",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "L2-66", "type": "short" },
+        { "id": "L2-67", "type": "short" },
+        { "id": "L2-68", "type": "short" },
+        {
+          "id": "L2-69",
+          "type": "single",
+          "stem": "按原文的选型建议，语料规模在 10 万到 500 万 token 时用哪种方案最佳？",
+          "options": [
+            {
+              "key": "A",
+              "text": "传统 RAG",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "GraphRAG",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "LightRAG",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不需要任何检索",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-70",
+          "type": "single",
+          "stem": "原文的混合架构怎样在 GraphRAG 与 LightRAG 之间分工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有数据先进 LightRAG，每次查询都把结果再交给 GraphRAG 的 Global Search 复核一遍",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "稳定的历史性核心知识用 GraphRAG 做深度分析，动态的日常增量用 LightRAG 实时响应，由路由器分流",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "稳定的历史性核心知识用 LightRAG 实时响应，动态的日常增量用 GraphRAG 做深度分析，由路由器分流",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有数据先进 GraphRAG，LightRAG 只负责缓存 GraphRAG 已经回答过的问题",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-71",
+          "type": "single",
+          "stem": "原文给出的最务实的选型策略是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "大多数落地用 LightRAG 覆盖 80% 的需求，剩下的深度分析需求再上 GraphRAG 补充",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一律先上 GraphRAG，等预算不够时再整体迁移到 LightRAG",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一律只用传统 RAG，图方案等语料超过 5000 万 token 再考虑",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "大多数落地用 GraphRAG 覆盖 80% 的需求，剩下的实时交互需求再上 LightRAG 补充",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "L2-72",
+          "type": "single",
+          "stem": "知识图谱并不新，GraphRAG 为什么到 2024 年才火起来？",
+          "options": [
+            {
+              "key": "A",
+              "text": "知识图谱这个概念本身是 2024 年才被提出来的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "向量数据库到 2024 年才支持存储实体和关系",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "社区检测算法到 2024 年才被发明出来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是思路新，而是 LLM 让“从文档自动构建知识图谱”变得可实现",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "L2-73", "type": "short" },
+        {
+          "id": "L2-74",
+          "type": "single",
+          "stem": "GraphRAG 和 LightRAG 的设计哲学各是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "GraphRAG 是“预计算全局视角”，LightRAG 是“按需检索，延迟聚合”",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "GraphRAG 是“按需检索，延迟聚合”，LightRAG 是“预计算全局视角”",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都是“预计算全局视角”，区别只在社区的层数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都是“按需检索，延迟聚合”，区别只在关键词的层数",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

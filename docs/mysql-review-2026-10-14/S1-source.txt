@@ -1,0 +1,461 @@
+# SQL基础
+
+# NOSQL和SQL的区别？
+
+SQL数据库，指关系型数据库 - 主要代表：SQL Server，Oracle，MySQL(开源)，PostgreSQL(开源)。
+
+关系型数据库存储结构化数据。这些数据逻辑上以行列二维表的形式存在，每一列代表数据的一种属性，每一行代表一个数据实体。
+
+
+
+NoSQL指非关系型数据库 ，主要代表：MongoDB，Redis。NoSQL 数据库逻辑上提供了不同于二维表的存储方式，存储方式可以是JSON文档、哈希表或者其他方式。
+
+
+
+选择 SQL vs NoSQL，考虑以下因素。
+
+ACID vs BASE
+
+关系型数据库通常支持 ACID，也就是原子性、一致性、隔离性和持久性。部分 NoSQL 系统更强调 BASE，也就是基本可用、软状态和最终一致性。
+
+不过， 不能简单认为 SQL 就一定支持完整事务、NoSQL 就一定不支持事务 。比如 MySQL 的事务能力和存储引擎有关，MongoDB 也支持多文档事务，具体还是要看数据库的实现和配置。
+
+从实用的角度出发，我们需要考虑对于面对的应用场景，ACID 是否是必须的。比如银行应用就必须保证 ACID，否则一笔钱可能被使用两次；又比如社交软件不必保证 ACID，因为一条状态的更新对于所有用户读取先后时间有数秒不同并不影响使用。
+
+对于需要事务和复杂关联查询的应用，通常优先考虑关系型数据库；对于缓存、文档存储等场景，可以考虑对应的 NoSQL 数据库。一个系统也可以同时使用两者，比如 MySQL 存业务数据，Redis 缓存热点数据。
+
+扩展性对比
+
+很多 NoSQL 数据库围绕特定的数据模型设计，较少依赖跨节点 JOIN，因此更容易按键分片。比如 Redis 支持主从复制、哨兵和 Cluster，但扩展时仍然需要考虑热点数据、跨分片操作和一致性等问题。
+
+相反关系型数据库的数据之间存在关联性，水平扩展较难 ，需要解决跨服务器 JOIN，分布式事务等问题。
+
+# 数据库三大范式是什么？
+
+第一范式（1NF）：要求数据库表的每一列都是不可分割的原子数据项。
+
+举例说明：
+
+
+
+在上面的表中，“家庭信息”和“学校信息”列均不满足原子性的要求，故不满足第一范式，调整如下：
+
+
+
+可见，调整后的每一列都是不可再分的，因此满足第一范式（1NF）；
+
+第二范式（2NF）：在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）
+
+第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。
+
+举例说明：
+
+
+
+在上图所示的情况中，同一个订单中可能包含不同的产品，因此主键必须是“订单号”和“产品号”联合组成，
+
+但可以发现，产品数量、产品折扣、产品价格与“订单号”和“产品号”都相关，但是订单金额和订单时间仅与“订单号”相关，与“产品号”无关，
+
+这样就不满足第二范式的要求，调整如下，需分成两个表：
+
+
+
+
+
+第三范式（3NF）：在2NF基础上，任何非主 属性 (opens new window) 不依赖于其它非主属性（在2NF基础上消除传递依赖）
+
+第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。
+
+举例说明：
+
+
+
+上表中，所有属性都完全依赖于学号，所以满足第二范式，但是“班主任性别”和“班主任年龄”直接依赖的是“班主任姓名”，
+
+而不是主键“学号”，所以需做如下调整：
+
+
+
+
+
+这样以来，就满足了第三范式的要求。
+
+# MySQL 怎么连表查询？
+
+数据库有以下几种联表查询类型：
+
+内连接 (INNER JOIN) 左外连接 (LEFT JOIN) 右外连接 (RIGHT JOIN) 全外连接 (FULL JOIN)
+
+
+
+1. 内连接 (INNER JOIN)
+
+内连接返回两个表中有匹配关系的行。 示例 :
+
+SELECT employees . name , departments . name FROM employees INNER JOIN departments ON employees . department_id = departments . id ;
+
+这个查询返回每个员工及其所在的部门名称。
+
+2. 左外连接 (LEFT JOIN)
+
+左外连接返回左表中的所有行，即使在右表中没有匹配的行。未匹配的右表列会包含NULL。 示例 :
+
+SELECT employees . name , departments . name FROM employees LEFT JOIN departments ON employees . department_id = departments . id ;
+
+这个查询返回所有员工及其部门名称，包括那些没有分配部门的员工。
+
+3. 右外连接 (RIGHT JOIN)
+
+右外连接返回右表中的所有行，即使左表中没有匹配的行。未匹配的左表列会包含NULL。 示例 :
+
+SELECT employees . name , departments . name FROM employees RIGHT JOIN departments ON employees . department_id = departments . id ;
+
+这个查询返回所有部门及其员工，包括那些没有分配员工的部门。
+
+4. 全外连接 (FULL JOIN)
+
+全外连接返回两个表中所有行，包括非匹配行，在MySQL中，FULL JOIN 需要使用 UNION 来实现，因为 MySQL 不直接支持 FULL JOIN。 示例 :
+
+SELECT employees . name , departments . name FROM employees LEFT JOIN departments ON employees . department_id = departments . id UNION ALL SELECT employees . name , departments . name FROM employees RIGHT JOIN departments ON employees . department_id = departments . id WHERE employees . id IS NULL ;
+
+这个查询返回所有员工和所有部门，包括没有匹配行的记录。第二部分只取右表没有匹配到员工的行，再用 UNION ALL 合并，这样既不会重复返回已经匹配的行，也不会把姓名相同的不同员工误当成重复结果去掉。
+
+# MySQL如何避免重复插入数据？
+
+方式一：使用UNIQUE约束
+
+在表的相关列上添加UNIQUE约束，确保每个值在该列中唯一。例如：
+
+CREATE TABLE users ( id INT PRIMARY KEY AUTO_INCREMENT , email VARCHAR ( 255 ) NOT NULL UNIQUE , name VARCHAR ( 255 ) ) ;
+
+如果尝试插入重复的email，MySQL会返回错误。
+
+方式二：使用INSERT ... ON DUPLICATE KEY UPDATE
+
+这种语句允许在插入记录时处理重复键的情况。如果插入的记录与现有记录冲突，可以选择更新现有记录：
+
+INSERT INTO users ( email , name ) VALUES ( 'example@example.com' , 'John Doe' ) AS new_row ON DUPLICATE KEY UPDATE name = new_row . name ;
+
+上面用的是 MySQL 8.0.19 及之后支持的新行别名写法。较早版本可以写 name = VALUES(name) ，不过这种写法从 MySQL 8.0.20 开始被弃用。
+
+方式三：使用INSERT IGNORE ：
+该语句会在插入记录时忽略那些因重复键而导致的插入错误。例如：
+
+INSERT IGNORE INTO users ( email , name ) VALUES ( 'example@example.com' , 'John Doe' ) ;
+
+如果 email 已经存在，这条插入语句会被忽略。不过， IGNORE 还可能把部分数据转换错误降为警告，不能把它理解成只忽略重复键错误。
+
+选择哪种方法取决于具体的需求：
+
+如果需要保证表内某个业务键唯一，先建立 UNIQUE 约束。联合唯一索引可以保证多个字段的组合不重复。 如果需要插入和更新结合可以使用 ON DUPLICATE KEY UPDATE 。 对于允许忽略重复插入的场景，可以使用 INSERT IGNORE ，同时注意检查警告。
+
+防重复的关键还是唯一约束 ，后面两种写法都是建立在主键或唯一索引冲突的基础上处理数据。如果只是先 SELECT 判断不存在，再 INSERT，并发时两个请求都可能查到不存在，还是会重复插入。另外，唯一索引允许多个 NULL，如果业务要求该字段一定唯一，通常还要加上 NOT NULL 。
+
+
+
+# CHAR 和 VARCHAR有什么区别？
+
+CHAR 是定长字符串 ，比如 CHAR(10) ，不足的部分会在存储时补空格，读取时通常会去掉末尾的填充空格，适合长度比较固定的数据。 VARCHAR 是变长字符串 ，比如 VARCHAR(100) ，100 表示最多保存 100 个字符，实际占用空间取决于内容的字节数，还需要 1 或 2 个字节记录长度，适合姓名、地址等长度不固定的数据。
+
+这里的长度是字符数，不是字节数。尤其使用多字节字符集时，不能简单认为 CHAR(10) 就只占 10 个字节。选择哪一种主要看数据特点，也不能直接认为 CHAR 一定比 VARCHAR 快。
+
+
+
+# VARCHAR 后面代表字节还是字符？
+
+VARCHAR 后面括号里的数字代表的是字符数，而不是字节数。
+
+比如 VARCHAR(10) ，这里的 10 表示该字段最多可以存储 10 个字符。字符的字节长度取决于所使用的字符集。
+
+如果字符集是 ASCII 字符集：ASCII 字符集每个字符占用 1 个字节，那么 VARCHAR(10) 最多可以存储 10 个 ASCII 字符，同时占用的存储空间最多为 10 个字节（不考虑额外的长度记录开销）。 如果字符集是 utf8mb4 ，每个字符最多占用 4 个字节， VARCHAR(10) 最多可以存储 10 个字符，内容最多占 40 个字节，另外还需要长度记录开销。MySQL 的 utf8mb3 每个字符最多占 3 个字节，不能和 utf8mb4 混为一谈。
+
+VARCHAR 的最大可声明长度还受到字符集和整行 65,535 字节上限等限制，并不是可以随意把括号里的数字设得很大。
+
+# int(1) int(10) 在mysql有什么不同？
+
+INT(1) 和 INT(10) 的区别主要在于 显示宽度 ，而不是存储范围或数据类型本身的大小。以下是核心区别的总结：
+
+本质是显示宽度，不改变存储方式： INT 的存储固定为 4 字节，所有 INT （无论写成 INT(1) 还是 INT(10) ）占用的存储空间 均为 4 字节。括号内的数值（如 1 或 10 ）是显示宽度，用于在 特定场景下 控制数值的展示格式。 唯一作用场景： ZEROFILL 补零显示，当字段设置 ZEROFILL 时：数字显示时会用前导零填充至指定宽度。比如，字段类型为 INT(4) ZEROFILL ，实际存入 5 → 显示为 0005 ，实际存入 12345 → 显示仍为 12345 （宽度超限时不截断）。
+
+举一个例子
+
+-- 创建一个包含 INT(1) 和 INT(10) 字段的表，并设置 ZEROFILL 属性 CREATE TABLE test_int ( num1 INT ( 1 ) ZEROFILL , num2 INT ( 10 ) ZEROFILL ) ; -- 插入数据 INSERT INTO test_int ( num1 , num2 ) VALUES ( 1 , 1 ) ; -- 查询数据 SELECT * FROM test_int ;
+
+结果分析：
+
+num1 字段由于设置为 INT(1) ZEROFILL ，其显示宽度为 1，插入数据 1 时会显示为 1 。 num2 字段设置为 INT(10) ZEROFILL ，显示宽度为 10，插入数据 1 时会在前面填充零，显示为 0000000001 。
+
+整数显示宽度和 ZEROFILL 从 MySQL 8.0.17 开始被弃用，新表直接用 INT 就好，需要补零展示可以交给应用处理。
+
+# Text数据类型可以无限大吗？
+
+不能。MySQL 有 4 种 TEXT 类型，最大长度按字节计算：
+
+TINYTEXT：255 字节。 TEXT：65,535 字节，约 64 KB。 MEDIUMTEXT：16,777,215 字节，约 16 MB。 LONGTEXT：4,294,967,295 字节，约 4 GB。
+
+这里限制的是字节数，所以使用 utf8mb4 存储中文或表情时，能放下的字符数会少于这个数字。实际读写还会受到 max_allowed_packet 、内存和传输成本等限制，大文件通常更适合放到对象存储，数据库里保存文件地址。
+
+# 金额为什么建议用 DECIMAL，而不是 FLOAT 或 DOUBLE？
+
+因为 DECIMAL 保存的是精确的十进制数，而 FLOAT 和 DOUBLE 保存的是近似值 。金额计算如果存在精度误差，就可能出现对账不一致的问题。
+
+比如 DECIMAL(10, 2) ，10 表示总位数，2 表示小数位数，也就是整数部分最多 8 位，小数部分最多 2 位。
+
+也可以用整数保存最小货币单位，比如用 BIGINT 保存「分」，100 元保存为 10000。无论采用哪一种，应用里的金额计算也要使用对应的精确类型，并明确舍入规则，不能在应用中先用浮点数算错了，再存到 DECIMAL 里。
+
+# IP地址如何在数据库里存储？
+
+IPv4 地址是一个 32 位的二进制数，通常以点分十进制表示法呈现，例如 192.168.1.1 。
+
+字符串类型的存储方式 ：直接将 IP 地址作为字符串存储在数据库中，比如可以用 VARCHAR(15) 来存储。
+
+-- 创建一个表，使用VARCHAR类型存储IPv4地址 CREATE TABLE ip_records ( id INT AUTO_INCREMENT PRIMARY KEY , ip_address VARCHAR ( 15 ) ) ; -- 插入数据 INSERT INTO ip_records ( ip_address ) VALUES ( '192.168.1.1' ) ;
+
+优点 ：直观易懂，方便直接进行数据的插入、查询和显示，不需要进行额外的转换操作。 缺点 ：占用存储空间较大，字符串比较操作的性能相对较低，不利于进行范围查询。
+
+整数类型的存储方式：将 IPv4 地址转换为 32 位无符号整数进行存储，常用的数据类型有 INT UNSIGNED 。
+
+-- 创建一个表，使用INT UNSIGNED类型存储IPv4地址 CREATE TABLE ip_records ( id INT AUTO_INCREMENT PRIMARY KEY , ip_address INT UNSIGNED ) ; -- 插入数据，需要先将IP地址转换为整数 INSERT INTO ip_records ( ip_address ) VALUES ( INET_ATON ( '192.168.1.1' ) ) ; -- 查询时将整数转换回IP地址 SELECT INET_NTOA ( ip_address ) FROM ip_records ;
+
+优点 ：占用存储空间小，整数比较操作的性能较高，便于进行范围查询。 缺点 ：需要进行额外的转换操作，不够直观，增加了开发的复杂度。
+
+如果还要支持 IPv6，就不能只用 INT UNSIGNED 了，可以用 VARBINARY(16) 保存二进制地址，写入时用 INET6_ATON() ，读取时用 INET6_NTOA() 。这两个函数也能处理 IPv4 地址。
+
+# 说一下外键约束
+
+外键约束的作用是维护表与表之间的引用关系，避免出现「子表引用的父表记录不存在」的情况。
+
+举个栗子，一个学生可以选多门课程，一门课程也可以被多个学生选择，这是多对多关系，需要用选课表来关联，不能只在学生表里放一个 course_id。
+
+CREATE TABLE students ( id INT PRIMARY KEY , name VARCHAR ( 50 ) ) ENGINE = InnoDB ; CREATE TABLE courses ( id INT PRIMARY KEY , name VARCHAR ( 50 ) ) ENGINE = InnoDB ; CREATE TABLE student_courses ( student_id INT NOT NULL , course_id INT NOT NULL , PRIMARY KEY ( student_id , course_id ) , FOREIGN KEY ( student_id ) REFERENCES students ( id ) , FOREIGN KEY ( course_id ) REFERENCES courses ( id ) ) ENGINE = InnoDB ;
+
+这样，给一个不存在的学生添加选课记录，或者选择不存在的课程，数据库都会拒绝。
+
+
+
+删除父表记录时，还可以指定处理方式：
+
+RESTRICT ：如果还有子表记录引用，就拒绝删除，InnoDB 的 NO ACTION 也是这种效果。 CASCADE ：删除父表记录时，把关联的子表记录一起删除。 SET NULL ：把子表的外键字段设置为 NULL，前提是该字段允许为空。
+
+外键可以把引用完整性检查交给数据库，不过也会增加检查和加锁开销。实际是否使用，要结合写入压力、分库分表需求来判断；如果不用外键，就需要应用自己维护这些关系。
+
+# MySQL的关键字 IN 和 EXISTS
+
+在MySQL中， IN 和 EXISTS 都是用来处理子查询的关键词，但它们在功能、性能和使用场景上有各自的特点和区别。
+
+IN关键字
+
+IN 用于检查左边的表达式是否存在于右边的列表或子查询的结果集中。如果存在，则 IN 返回 TRUE ，否则返回 FALSE 。
+
+语法结构：
+
+SELECT column_name ( s ) FROM table_name WHERE column_name IN ( value1 , value2 , . . . ) ;
+
+或
+
+SELECT column_name ( s ) FROM table_name WHERE column_name IN ( SELECT column_name FROM another_table WHERE condition ) ;
+
+例子：
+
+SELECT * FROM Customers WHERE Country IN ( 'Germany' , 'France' ) ;
+
+EXISTS关键字
+
+EXISTS 用于判断子查询是否至少能返回一行数据。它不关心子查询返回什么数据，只关心是否有结果。如果子查询有结果，则 EXISTS 返回 TRUE ，否则返回 FALSE 。
+
+语法结构：
+
+SELECT column_name ( s ) FROM table_name WHERE EXISTS ( SELECT column_name FROM another_table WHERE condition ) ;
+
+例子：
+
+SELECT * FROM Customers WHERE EXISTS ( SELECT 1 FROM Orders WHERE Orders . CustomerID = Customers . CustomerID ) ;
+
+区别与选择：
+
+语义区别 ：IN 比较值是否属于一个集合，EXISTS 判断子查询有没有返回行。 EXISTS (SELECT NULL) 也为 TRUE，因为它确实返回了一行。 性能区别 ：不能简单背「大表用 EXISTS、小表用 IN」。MySQL 优化器可能把它们转成半连接或者对子查询结果做物化，具体性能取决于索引、数据分布和执行计划。 NULL 值处理 ：IN 在没有找到匹配值、但集合中包含 NULL 时，结果是 UNKNOWN，在 WHERE 中不会被保留。尤其使用 NOT IN 时，这一点很容易踩坑。
+
+比如下面这个条件：
+
+SELECT 1 NOT IN ( 2 , NULL ) ;
+
+结果是 NULL，而不是 TRUE。如果要查询「没有订单的客户」，通常可以用相关子查询的 NOT EXISTS：
+
+SELECT c . * FROM Customers c WHERE NOT EXISTS ( SELECT 1 FROM Orders o WHERE o . CustomerID = c . CustomerID ) ;
+
+这样，Orders 中有 CustomerID 为 NULL 的行，也不会把所有客户都排除掉。
+
+
+
+# mysql中的一些基本函数，你知道哪些？
+
+一、字符串函数
+
+CONCAT(str1, str2, ...) ：连接多个字符串，返回一个合并后的字符串。
+
+SELECT CONCAT ( 'Hello' , ' ' , 'World' ) AS Greeting ;
+
+LENGTH(str) ：返回字符串的字节数；如果要统计字符数，使用 CHAR_LENGTH(str) 。
+
+SELECT LENGTH ( '小林' ) AS ByteLength , CHAR_LENGTH ( '小林' ) AS CharLength ;
+
+SUBSTRING(str, pos, len) ：从指定位置开始，截取指定长度的子字符串。
+
+SELECT SUBSTRING ( 'Hello World' , 1 , 5 ) AS SubStr ;
+
+REPLACE(str, from_str, to_str) ：将字符串中的某部分替换为另一个字符串。
+
+SELECT REPLACE ( 'Hello World' , 'World' , 'MySQL' ) AS ReplacedStr ;
+
+二、数值函数
+
+ABS(num) ：返回数字的绝对值。
+
+SELECT ABS ( - 10 ) AS AbsoluteValue ;
+
+POWER(num, exponent) ：返回指定数字的指定幂次方。
+
+SELECT POWER ( 2 , 3 ) AS PowerValue ;
+
+三、日期和时间函数
+
+NOW() ：返回当前日期和时间。
+
+SELECT NOW ( ) AS CurrentDateTime ;
+
+CURDATE() ：返回当前日期。
+
+SELECT CURDATE ( ) AS CurrentDate ;
+
+四、聚合函数
+
+COUNT(column) ：计算指定列中的非 NULL 值的个数； COUNT(*) 统计结果集中的行数，包括列值为 NULL 的行。
+
+SELECT COUNT ( * ) AS RowCount FROM my_table ;
+
+SUM(column) ：计算指定列的总和。
+
+SELECT SUM ( price ) AS TotalPrice FROM orders ;
+
+AVG(column) ：计算指定列的平均值。
+
+SELECT AVG ( price ) AS AveragePrice FROM orders ;
+
+MAX(column) ：返回指定列的最大值。
+
+SELECT MAX ( price ) AS MaxPrice FROM orders ;
+
+MIN(column) ：返回指定列的最小值。
+
+SELECT MIN ( price ) AS MinPrice FROM orders ;
+
+# COUNT(*)、COUNT(1) 和 COUNT(字段) 有什么区别？
+
+COUNT(*) ：统计行数，不管某一列是不是 NULL。 COUNT(1) ：对每一行统计常量 1，1 不为 NULL，所以统计结果和 COUNT(*) 一样。 COUNT(字段) ：只统计该字段不为 NULL 的行。如果字段定义为 NOT NULL，结果才和 COUNT(*) 相同。
+
+对于 InnoDB， 不能直接读取一个固定的总行数返回 ，因为不同事务的可见数据可能不同。没有 WHERE 条件时，MySQL 通常会选择较小的二级索引扫描；没有合适的二级索引，再扫描聚簇索引。
+
+所以，不需要为了性能把 COUNT( ) 改成 COUNT(1)，通常直接用 COUNT( ) 表达「统计行数」就好。大表频繁统计且允许有延迟时，可以考虑维护汇总数据。
+
+# NULL 和空字符串有什么区别？
+
+NULL 表示值未知或者缺失，空字符串表示值已知，但内容为空 ，两者不是一回事。
+
+SELECT * FROM users WHERE name IS NULL ; SELECT * FROM users WHERE name = '' ;
+
+判断 NULL 要用 IS NULL 或 IS NOT NULL ，不能写 name = NULL 。普通比较运算遇到 NULL，结果通常是 UNKNOWN，WHERE 只保留结果为 TRUE 的行。如果需要把两个 NULL 也当成相等，可以用 MySQL 的 NULL 安全等于运算符 <=> 。
+
+另外， NULL 并不意味着不能走索引 ， IS NULL 也可能使用索引；唯一索引允许多个 NULL，而 COUNT(字段) 不会统计 NULL，这些都是面试里容易追问的点。
+
+# DELETE、TRUNCATE 和 DROP 有什么区别？
+
+DELETE ：删除表中的记录，可以带 WHERE 条件，表结构保留。对于 InnoDB，它是事务操作，在事务提交前可以回滚，会产生 undo 和 redo，也会逐行触发 DELETE 触发器。 TRUNCATE ：清空整张表，不能带 WHERE，表结构保留，通常会重建表并重置自增计数器，不会逐行触发 DELETE 触发器。 DROP ：删除整张表，表结构和数据都不再保留。
+
+TRUNCATE 和普通 DROP TABLE 都属于 DDL，会隐式提交，不能通过应用执行 ROLLBACK 撤销。MySQL 8.0 的原子 DDL 保证的是崩溃时操作的一致性，不能把它理解成 DDL 可以像普通事务一样手动回滚。
+
+# SQL查询语句的执行顺序是怎么样的？
+
+
+
+这里说的是 SQL 的 逻辑处理顺序 ，不是数据库内部实际执行每一步的顺序。可以按下面这个顺序理解：
+
+FROM / JOIN → ON → WHERE → GROUP BY → HAVING
+→ SELECT → DISTINCT → ORDER BY → LIMIT
+
+先确定从哪些表取数据，按 ON 条件关联，再用 WHERE 过滤记录。 然后分组、计算聚合结果，通过 HAVING 过滤分组。 最后选择输出的列、去重、排序，再限制返回行数。
+
+所以， WHERE 过滤的是分组前的记录，HAVING 过滤的是分组后的结果 。SELECT 中定义的别名通常不能直接用于 WHERE，不过 MySQL 允许在 GROUP BY、HAVING 和 ORDER BY 中使用。
+
+实际执行时，优化器可能调整连接顺序、提前过滤条件，或者利用索引省掉排序，并不会每一步都真正生成一张临时表。
+
+# sql题：给学生表、课程成绩表，求不存在01课程但存在02课程的学生的成绩
+
+可以使用SQL的子查询和 LEFT JOIN 或者 EXISTS 关键字来实现，这里我将展示两种不同的方法来完成这个查询。
+
+假设我们有以下两张表：
+
+Student 表，其中包含学生的 sid （学生编号）和其他相关信息。 Score 表，其中包含 sid （学生编号）， cid （课程编号）和 score （分数）。
+
+方法1：使用LEFT JOIN 和 IS NULL
+
+SELECT s . sid , s . sname , sc2 . cid , sc2 . score FROM Student s LEFT JOIN Score AS sc1 ON s . sid = sc1 . sid AND sc1 . cid = '01' LEFT JOIN Score AS sc2 ON s . sid = sc2 . sid AND sc2 . cid = '02' WHERE sc1 . cid IS NULL AND sc2 . cid IS NOT NULL ;
+
+方法2：使用NOT EXISTS
+
+SELECT s . sid , s . sname , sc . cid , sc . score FROM Student s JOIN Score sc ON s . sid = sc . sid AND sc . cid = '02' WHERE NOT EXISTS ( SELECT 1 FROM Score sc1 WHERE sc1 . sid = s . sid AND sc1 . cid = '01' ) ;
+
+# 给定一个学生表 student_score（stu_id，subject_id，score），查询总分排名在5-10名的学生id及对应的总分
+
+可以使用以下 SQL 查询来检索总分排名在 5 到 10 名的学生 ID 及对应的总分。其中我们先计算每个学生的总分，然后为其分配一个排名，最后检索排名在 5 到 10 之间的记录。
+
+WITH StudentTotalScores AS ( SELECT stu_id , SUM ( score ) AS total_score FROM student_score GROUP BY stu_id ) , RankedStudents AS ( SELECT stu_id , total_score , RANK ( ) OVER ( ORDER BY total_score DESC ) AS ranking FROM StudentTotalScores ) SELECT stu_id , total_score FROM RankedStudents WHERE ranking BETWEEN 5 AND 10 ORDER BY ranking , stu_id ;
+
+解释：
+
+子查询 StudentTotalScores 中，我们通过对 student_score 表中的 stu_id 分组来计算每个学生的总分。 子查询 RankedStudents 中，我们使用 RANK() 函数为每个学生分配一个排名，按总分从高到低排序。 最后，我们在主查询中选择排名在 5 到 10 之间的学生。
+
+这个写法需要 MySQL 8.0 及以上版本。另外，要先问清楚同分怎么算： RANK() 是并列名次、后面的名次会跳号； DENSE_RANK() 是并列名次、不跳号；如果只是取排序后的第 5 到第 10 条记录，可以用 ROW_NUMBER() OVER (ORDER BY total_score DESC, stu_id) ，用 stu_id 保证同分时排序稳定。
+
+# SQL题：查某个班级下所有学生的选课情况
+
+有三张表：学生信息表、学生选课表、学生班级表
+
+学生信息表（students）结构如下：
+
+CREATE TABLE students ( student_id INT PRIMARY KEY , -- 学生的唯一标识，主键 student_name VARCHAR ( 50 ) , -- 学生姓名 class_id INT -- 学生所属班级的标识，用于关联班级表 ) ;
+
+学生选课表（ course_selections ）结构如下：
+
+CREATE TABLE course_selections ( selection_id INT PRIMARY KEY , -- 选课记录的唯一标识，主键 student_id INT , -- 选课学生的标识，用于关联学生信息表 course_name VARCHAR ( 50 ) -- 所选课程的名称 ) ;
+
+学生班级表（ classes ）结构如下：
+
+CREATE TABLE classes ( class_id INT PRIMARY KEY , -- 班级的唯一标识，主键 class_name VARCHAR ( 50 ) -- 班级名称 ) ;
+
+要查询某个班级（例如班级名称为 'Class A'）下所有学生的选课情况，可以使用以下 SQL 查询语句：
+
+SELECT s . student_id , s . student_name , cs . course_name FROM students s LEFT JOIN course_selections cs ON s . student_id = cs . student_id JOIN classes c ON s . class_id = c . class_id WHERE c . class_name = 'Class A' ;
+
+选课表这里要用 LEFT JOIN，因为题目要求的是「所有学生」，没有选课的学生也要返回，对应的 course_name 为 NULL。如果把选课表的过滤条件写到 WHERE 中，还要注意不要把这些未匹配的学生过滤掉；需要保留时，通常把右表的限制条件放在 ON 中。
+
+# 如何用 MySQL 实现一个可重入的锁？
+
+可以用一张锁表，记录「锁名、持有者、重入次数」，再通过事务和 SELECT ... FOR UPDATE 保证加锁、解锁过程不会被并发请求打乱。
+
+CREATE TABLE lock_table ( lock_name VARCHAR ( 128 ) PRIMARY KEY , holder_id VARCHAR ( 128 ) DEFAULT NULL , reentry_count INT NOT NULL DEFAULT 0 ) ENGINE = InnoDB ; -- 提前初始化要使用的锁，记录一直保留 INSERT INTO lock_table ( lock_name ) VALUES ( 'order_lock' ) ;
+
+锁名必须唯一。持有者也不能只用线程名称，不同服务实例可能有同名线程，可以使用「实例 ID + 线程 ID + 唯一标识」来区分。
+
+加锁的逻辑
+
+开启事务，查询该锁记录： SELECT holder_id, reentry_count FROM lock_table WHERE lock_name = ? FOR UPDATE 。 如果 holder_id 为 NULL，说明锁空闲，把 holder_id 设为自己，reentry_count 设为 1。 如果 holder_id 是自己，说明是重入，把 reentry_count 加 1。 如果 holder_id 是其他持有者，说明加锁失败，结束事务后再决定返回失败还是等待重试。 提交事务。这里释放的是数据库行锁，业务锁的归属仍然保存在记录里。
+
+解锁的逻辑
+
+开启事务，通过 FOR UPDATE 锁住同一条记录，并检查 holder_id 是否是自己。 如果不是自己，不能释放锁。 如果 reentry_count 大于 1，就减 1；如果等于 1，就把 holder_id 置为 NULL、reentry_count 置为 0，完全释放业务锁。 提交事务。
+
+这里保留固定的锁记录，可以避免「记录不存在时，多个请求同时插入」的问题。如果要动态创建锁，也必须通过主键唯一约束处理并发插入失败和重试。
+
+
+
+不过，这只是基本实现。持有者崩溃后，数据库事务虽然已经结束，表里的业务锁记录仍可能一直被占用。生产环境还需要考虑租约、续期，以及过期持有者继续写入的问题；只是加一个过期时间，还不能保证业务操作始终互斥。

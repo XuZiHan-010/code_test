@@ -1,0 +1,1027 @@
+[
+  {
+    "id": "U3-1",
+    "typed": {
+      "id": "U3-1",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 类和 Starlette 是什么关系？",
+      "options": [
+        {
+          "key": "A",
+          "text": "Starlette 是从 FastAPI 继承的类，用来补充 FastAPI 自身缺少的路由功能，需要单独导入才能使用",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "FastAPI 是直接从 Starlette 继承的类，因此通过它也能使用 Starlette 的所有功能",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "FastAPI 与 Starlette 彼此独立，使用 FastAPI 时无法再使用 Starlette 的任何功能",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "FastAPI 负责数据校验和类型转换，Starlette 只用来生成 OpenAPI 模式和交互式文档",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 类和 Starlette 是什么关系？",
+    "answer": "FastAPI 是直接从 Starlette 继承的类，所以通过 FastAPI 也能使用 Starlette 的所有功能；把继承方向说反、说两者互相独立，或把数据校验和生成文档的分工安到这两者头上都不符合原文。[原文§第一步 · 步骤 1：导入 FastAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#step-1-import-fastapi)"
+  },
+  {
+    "id": "U3-2",
+    "typed": {
+      "id": "U3-2",
+      "type": "fill",
+      "stem": "按官方文档，运行开发服务器后，访问 /docs 看到的自动生成的交互式 API 文档由____提供，访问 /redoc 看到的可选文档由____提供。",
+      "blankCount": 2,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，运行开发服务器后，访问 /docs 看到的自动生成的交互式 API 文档由____提供，访问 /redoc 看到的可选文档由____提供。",
+    "answer": "/docs 的交互式 API 文档由 Swagger UI 提供，/redoc 的可选文档由 ReDoc 提供，所以两个空依次是：Swagger UI、ReDoc。[原文§第一步 · 交互式 API 文档](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#interactive-api-docs)[原文§第一步 · 可选的 API 文档](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#alternative-api-docs)"
+  },
+  {
+    "id": "U3-3",
+    "typed": {
+      "id": "U3-3",
+      "type": "short"
+    },
+    "question": "OpenAPI 是什么？FastAPI 用它做了什么？",
+    "answer": "OpenAPI 是一种规定如何定义 API 模式的规范；FastAPI 用它把你的所有 API 转换成「模式」，其中包含 API 路径、可能用到的参数，以及 API 收发数据的定义，这些数据定义通过 JSON Schema 标准生成。这份 OpenAPI 模式驱动了 FastAPI 内置的两个交互式文档系统，也可以用来自动生成与 API 通信的客户端代码。[原文§第一步 · OpenAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#openapi)[原文§第一步 · OpenAPI 和 JSON Schema](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#openapi-and-json-schema)[原文§第一步 · OpenAPI 的用途](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#what-is-openapi-for)"
+  },
+  {
+    "id": "U3-4",
+    "typed": {
+      "id": "U3-4",
+      "type": "fill",
+      "stem": "按官方文档，URL 中从第一个 / 起的后半部分称为____，HTTP 方法（如 GET、POST）在 OpenAPI 中被称为____。",
+      "blankCount": 2,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，URL 中从第一个 / 起的后半部分称为____，HTTP 方法（如 GET、POST）在 OpenAPI 中被称为____。",
+    "answer": "「路径」指 URL 中从第一个 / 起的后半部分，也常被称为「端点」或「路由」；「操作」指 HTTP「方法」，在 OpenAPI 中每个 HTTP 方法都被称为「操作」，所以两个空依次是：路径、操作。[原文§第一步 · 路径](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#path)[原文§第一步 · 操作](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#operation)"
+  },
+  {
+    "id": "U3-5",
+    "typed": {
+      "id": "U3-5",
+      "type": "fill",
+      "stem": "按官方文档，开发 API 时通常用 POST、GET、PUT、DELETE 依次执行的行为是：____数据、____数据、____数据、____数据。",
+      "blankCount": 4,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，开发 API 时通常用 POST、GET、PUT、DELETE 依次执行的行为是：____数据、____数据、____数据、____数据。",
+    "answer": "通常用 POST 创建数据、GET 读取数据、PUT 更新数据、DELETE 删除数据，所以四个空依次是：创建、读取、更新、删除。[原文§第一步 · 操作](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#operation)"
+  },
+  {
+    "id": "U3-6",
+    "typed": {
+      "id": "U3-6",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 对 HTTP 方法的含义有什么强制要求？",
+      "options": [
+        {
+          "key": "A",
+          "text": "强制要求 GET 只能用来读取数据，用 GET 修改数据时 FastAPI 会直接报错",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "强制要求创建数据只能使用 POST 方法，使用 PUT 创建数据时 FastAPI 会拒绝请求",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "强制要求一个应用只能使用 GET、POST、PUT、DELETE 这四种方法，其余方法都不可用",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "没有强制要求，各个方法的常规含义只是指导而不是要求",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 对 HTTP 方法的含义有什么强制要求？",
+    "answer": "FastAPI 没有强制要求操作有任何特定含义，常规用法只是指导而不是要求（例如用 GraphQL 时通常所有动作都通过 POST 执行）；原文还列出了 OPTIONS、HEAD、PATCH、TRACE 等不常用的方法，所以限定只能用四种方法的说法也不对。[原文§第一步 · 定义一个路径操作装饰器](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#define-a-path-operation-decorator)"
+  },
+  {
+    "id": "U3-7",
+    "typed": {
+      "id": "U3-7",
+      "type": "single",
+      "stem": "按官方文档，路径操作函数可以返回什么样的内容？",
+      "options": [
+        {
+          "key": "A",
+          "text": "dict、list、单个值或 Pydantic 模型都可以，并会自动转换为 JSON",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "只能返回 Pydantic 模型，返回 dict 或 list 时 FastAPI 会直接报错",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "只能返回已经序列化好的 JSON 字符串，FastAPI 不会对返回值做任何转换",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只能返回 dict，其他类型的值都必须先由开发者手动转换成 dict 才能返回",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，路径操作函数可以返回什么样的内容？",
+    "answer": "路径操作函数可以返回 dict、list，像 str、int 一样的单个值，还可以返回 Pydantic 模型，以及会自动转换为 JSON 的其他对象和模型（包括 ORM 对象等），不需要事先自己序列化。[原文§第一步 · 步骤 5：返回内容](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#step-5-return-the-content)"
+  },
+  {
+    "id": "U3-8",
+    "typed": {
+      "id": "U3-8",
+      "type": "single",
+      "stem": "路径参数 item_id 声明为 int 后，访问 /items/3，函数收到的 item_id 是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "字符串 \"3\"，类型声明只用于编辑器提示，转换要由函数自己完成",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "浮点数 3.0，因为 URL 中的数字统一按 float 解析后再传入函数",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "整数 3，FastAPI 按类型声明自动把请求中的值解析成了 int",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "不会传入任何值，函数需要自己从请求对象里手动取出 item_id",
+          "correct": false
+        }
+      ]
+    },
+    "question": "路径参数 item_id 声明为 int 后，访问 /items/3，函数收到的 item_id 是什么？",
+    "answer": "FastAPI 通过类型声明自动对请求做「解析」，所以函数收到的是整数 3 而不是字符串 \"3\"，转换不需要函数自己完成。[原文§路径参数 · 数据转换](https://fastapi.tiangolo.com/zh/tutorial/path-params/#data-conversion)"
+  },
+  {
+    "id": "U3-9",
+    "typed": {
+      "id": "U3-9",
+      "type": "single",
+      "stem": "路径参数 item_id 声明为 int 后，访问 /items/foo 会发生什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "函数以字符串 \"foo\" 正常执行，类型声明只用于生成文档和编辑器提示，不做任何校验",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "校验失败并返回错误信息，其中 loc 指出出错位置是 path 里的 item_id",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "item_id 自动取值 0，函数继续正常执行，客户端也不会收到任何错误提示",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "返回一个只有状态码的空响应，但不会告诉客户端具体是哪个参数没有通过校验",
+          "correct": false
+        }
+      ]
+    },
+    "question": "路径参数 item_id 声明为 int 后，访问 /items/foo 会发生什么？",
+    "answer": "类型校验失败时 FastAPI 会返回清晰的错误信息，其中 type 为 int_parsing，loc 指出未通过校验的具体位置是 path 里的 item_id；传入浮点数（如 4.2）同样会得到这个错误。[原文§路径参数 · 数据校验](https://fastapi.tiangolo.com/zh/tutorial/path-params/#data-validation)"
+  },
+  {
+    "id": "U3-10",
+    "typed": {
+      "id": "U3-10",
+      "type": "single",
+      "stem": "按官方文档，路径参数等的数据校验是由谁在幕后完成的？",
+      "options": [
+        {
+          "key": "A",
+          "text": "Uvicorn 服务器",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "Swagger UI 页面里的脚本",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "Python 解释器在运行时对类型注解的强制检查",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "Pydantic",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，路径参数等的数据校验是由谁在幕后完成的？",
+    "answer": "原文明确说所有数据校验都由 Pydantic 在幕后完成；其余选项都不是原文所说的校验者。[原文§路径参数 · Pydantic](https://fastapi.tiangolo.com/zh/tutorial/path-params/#pydantic)"
+  },
+  {
+    "id": "U3-11",
+    "typed": {
+      "id": "U3-11",
+      "type": "fill",
+      "stem": "按官方文档，仅靠一次 Python 类型声明，FastAPI 就能获得的好处有：____、____、____、____。",
+      "blankCount": 4,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档，仅靠一次 Python 类型声明，FastAPI 就能获得的好处有：____、____、____、____。",
+    "answer": "只需声明一次类型，就能获得编辑器支持（错误检查、代码自动补全等）、数据「解析」、数据校验，以及 API 注解和自动文档，所以四个空是：编辑器支持、数据解析、数据校验、API 注解和自动文档。[原文§路径参数 · 小结](https://fastapi.tiangolo.com/zh/tutorial/path-params/#recap)"
+  },
+  {
+    "id": "U3-12",
+    "typed": {
+      "id": "U3-12",
+      "type": "short"
+    },
+    "question": "为什么要在 /users/{user_id} 之前声明 /users/me？如果为同一路径重复定义了两个路径操作，会使用哪一个？",
+    "answer": "路径操作是按顺序依次匹配的，如果 /users/{user_id} 写在前面，它会匹配 /users/me，FastAPI 会认为收到了值为 \"me\" 的 user_id，所以必须把写死的 /users/me 放在前面。同样不能重复定义同一个路径操作：路径首先匹配，始终会使用第一个定义的。[原文§路径参数 · 顺序很重要](https://fastapi.tiangolo.com/zh/tutorial/path-params/#order-matters)"
+  },
+  {
+    "id": "U3-13",
+    "typed": {
+      "id": "U3-13",
+      "type": "single",
+      "stem": "按官方文档，要把路径参数的可选取值限定为一组预设值，应该怎么做？",
+      "options": [
+        {
+          "key": "A",
+          "text": "创建同时继承 str 和 Enum 的类，并把它用作路径参数的类型注解",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "把路径参数声明为 int，再用 ge、le 这类数值约束限制取值范围",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "在 Annotated 中为路径参数加上 Query(pattern=\"^fixedquery$\") 这样的正则",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "把路径参数声明为 bool，让它的取值只能是 True 或 False",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，要把路径参数的可选取值限定为一组预设值，应该怎么做？",
+    "answer": "预设路径参数的有效值，可以导入 Enum 并创建继承自 str 和 Enum 的子类，再用它作为路径参数的类型注解；继承 str 能让 API 文档把值的类型定义为字符串并正确渲染。其余选项分别是数值范围约束、正则约束和布尔转换，都不是限定一组预设取值的做法。[原文§路径参数 · 预设值 · 创建 Enum 类](https://fastapi.tiangolo.com/zh/tutorial/path-params/#create-an-enum-class)"
+  },
+  {
+    "id": "U3-14",
+    "typed": {
+      "id": "U3-14",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 凭什么判断查询参数 q 是可选的、没传时值为 None？",
+      "options": [
+        {
+          "key": "A",
+          "text": "凭类型注解 str | None，即使没有声明任何默认值，它也会被当作可选的参数",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "凭 q 不在路径中，所有不在路径里的参数天然都是可选的，与有没有默认值无关",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "凭默认值 = None；类型写成 str | None 只是让编辑器提供更好的辅助",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "凭 q 使用了 Query()，所以不使用 Query 的参数一律都是必选的，没有例外",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 凭什么判断查询参数 q 是可选的、没传时值为 None？",
+    "answer": "原文说 FastAPI 是因为默认值 = None 才知道 q 不是必填的，str | None 只是让编辑器提供更好的辅助和错误检测，并不是判断是否必填的依据；不在路径中的参数没有默认值时也是必选的（如 needy）。[原文§查询参数 · 可选参数](https://fastapi.tiangolo.com/zh/tutorial/query-params/#optional-parameters)[原文§请求体 · 请求体 + 路径 + 查询参数](https://fastapi.tiangolo.com/zh/tutorial/body/#request-body-path-query-parameters)"
+  },
+  {
+    "id": "U3-15",
+    "typed": {
+      "id": "U3-15",
+      "type": "single",
+      "stem": "按官方文档，怎样把一个查询参数声明为必选的？",
+      "options": [
+        {
+          "key": "A",
+          "text": "给它声明默认值 None，FastAPI 就会要求客户端必须传值，否则报错",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "不给它声明默认值，缺少时会报错，loc 指向 query 里的该参数",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "给它声明默认值 0，客户端不传值时 FastAPI 仍然会返回缺少该字段的错误",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "给它声明空字符串作默认值，客户端不传值时 FastAPI 会报缺少必选参数",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，怎样把一个查询参数声明为必选的？",
+    "answer": "要把查询参数设为必选，就不要声明默认值；缺少时响应会报错，type 为 missing、loc 为 query 加参数名。只要声明了默认值（包括 None），参数就是可选的。[原文§查询参数 · 必选查询参数](https://fastapi.tiangolo.com/zh/tutorial/query-params/#required-query-parameters)"
+  },
+  {
+    "id": "U3-16",
+    "typed": {
+      "id": "U3-16",
+      "type": "multiple",
+      "stem": "按官方文档，bool 类型的查询参数 short，下列哪些取值会被转换成 True？",
+      "options": [
+        {
+          "key": "A",
+          "text": "short=off",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "short=1",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "short=no",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "short=on",
+          "correct": true
+        },
+        {
+          "key": "E",
+          "text": "short=Yes",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，bool 类型的查询参数 short，下列哪些取值会被转换成 True？",
+    "answer": "bool 类型的查询参数接收 1、True、true、on、yes 或它们的任意大小写形式时，函数拿到的 short 是 True，否则为 False；所以 1、on、Yes 会转换成 True，off 和 no 则为 False。[原文§查询参数 · 查询参数类型转换](https://fastapi.tiangolo.com/zh/tutorial/query-params/#query-parameter-type-conversion)"
+  },
+  {
+    "id": "U3-17",
+    "typed": {
+      "id": "U3-17",
+      "type": "short"
+    },
+    "question": "仅靠把函数参数的类型声明为 Pydantic 模型 Item，FastAPI 就能自动完成哪些事情？",
+    "answer": "FastAPI 会以 JSON 形式读取请求体，必要时把它转换为对应的类型，并校验数据；数据无效时返回清晰的错误信息，指出错误数据的确切位置和内容；校验通过后把接收的数据赋值给该参数。它还会为模型生成 JSON Schema 定义，成为 OpenAPI Schema 的一部分，并被自动文档使用。[原文§请求体 · 结果](https://fastapi.tiangolo.com/zh/tutorial/body/#results)"
+  },
+  {
+    "id": "U3-18",
+    "typed": {
+      "id": "U3-18",
+      "type": "single",
+      "stem": "按官方文档，在 GET 请求里携带请求体，FastAPI 会怎样处理？",
+      "options": [
+        {
+          "key": "A",
+          "text": "直接报错拒绝，FastAPI 不允许 GET 请求携带任何请求体",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "完全支持且推荐使用，Swagger UI 会照常显示该请求体的文档",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "自动把它当作 POST 请求处理，中间的代理也都能正常转发请求体",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "仍然支持，但规范没有定义其行为，不推荐，只用于非常复杂或极端的用例",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，在 GET 请求里携带请求体，FastAPI 会怎样处理？",
+    "answer": "规范中没有定义用 GET 请求发送请求体的行为，FastAPI 仍支持这种方式，但只用于非常复杂或极端的用例；由于不推荐，Swagger UI 的交互式文档不会显示请求体文档，中间的代理也可能不支持。[原文§请求体 · 请求体](https://fastapi.tiangolo.com/zh/tutorial/body/#request-body)"
+  },
+  {
+    "id": "U3-19",
+    "typed": {
+      "id": "U3-19",
+      "type": "single",
+      "stem": "按官方文档，Pydantic 请求体模型里的属性在什么情况下是可选的？",
+      "options": [
+        {
+          "key": "A",
+          "text": "带有默认值的属性可选，把默认值设为 None 即可，没有默认值的属性必选",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "只有类型写成 str | None 的属性才可选，与有没有默认值无关",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "所有属性都是必选的，JSON 里缺少任何一个字段都会校验失败",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "是否可选由客户端在 JSON 中是否发送 null 来决定，与模型声明无关",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，Pydantic 请求体模型里的属性在什么情况下是可选的？",
+    "answer": "与查询参数一样，模型中带默认值的属性是可选的，否则就是必选的，把默认值设为 None 可使其变为可选；类型写成 str | None 并不是判断是否必填的依据，是否必填由是否有默认值决定。[原文§请求体 · 创建数据模型](https://fastapi.tiangolo.com/zh/tutorial/body/#create-your-data-model)[原文§请求体 · 请求体 + 路径 + 查询参数](https://fastapi.tiangolo.com/zh/tutorial/body/#request-body-path-query-parameters)"
+  },
+  {
+    "id": "U3-20",
+    "typed": {
+      "id": "U3-20",
+      "type": "fill",
+      "stem": "按官方文档，FastAPI 识别函数参数的规则是：在路径中也声明了的参数是____参数；int、float、str、bool 等单一类型的参数会被当作____参数；类型声明为 Pydantic 模型的参数会被当作____。",
+      "blankCount": 3,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，FastAPI 识别函数参数的规则是：在路径中也声明了的参数是____参数；int、float、str、bool 等单一类型的参数会被当作____参数；类型声明为 Pydantic 模型的参数会被当作____。",
+    "answer": "如果参数也在路径中声明，它就是路径参数；如果是 int、float、str、bool 等单一类型，会被当作查询参数；如果类型声明为 Pydantic 模型，会被当作请求体，所以三个空依次是：路径、查询、请求体。[原文§请求体 · 请求体 + 路径 + 查询参数](https://fastapi.tiangolo.com/zh/tutorial/body/#request-body-path-query-parameters)"
+  },
+  {
+    "id": "U3-21",
+    "typed": {
+      "id": "U3-21",
+      "type": "single",
+      "stem": "使用 Annotated 声明查询参数时，参数的默认值应该怎么写？",
+      "options": [
+        {
+          "key": "A",
+          "text": "写在 Query 里，如 Query(default=\"rick\")，函数参数本身不再写默认值",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "两处都写同一个值，如 Query(default=\"rick\") 加 = \"rick\"，以保证两者一致",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "写在函数参数上，如 = \"rick\"，不能再给 Query 传 default",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "写在 Annotated 的第一个类型参数里，如 Annotated[str = \"rick\", Query()]",
+          "correct": false
+        }
+      ]
+    },
+    "question": "使用 Annotated 声明查询参数时，参数的默认值应该怎么写？",
+    "answer": "使用 Annotated 时不能再给 Query 传 default（例如 Query(default=\"rick\") 配上 = \"morty\" 会让默认值不明确），应使用函数参数本身的实际默认值，推荐写成 q: Annotated[str, Query()] = \"rick\"。[原文§查询参数和字符串校验 · 在默认值中使用 Query 或在 Annotated 中使用 Query](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#query-as-the-default-value-or-in-annotated)"
+  },
+  {
+    "id": "U3-22",
+    "typed": {
+      "id": "U3-22",
+      "type": "multiple",
+      "stem": "按官方文档，推荐用 Annotated 而不是把 Query 放在参数默认值里，下列哪些是 Annotated 的优势？",
+      "options": [
+        {
+          "key": "A",
+          "text": "FastAPI 在 0.95.0 之前的旧版本也能直接使用 Annotated",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "函数参数的默认值就是真正的默认值，更符合 Python 的直觉",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "在 FastAPI 之外直接调用该函数也能按预期工作，缺少必填参数时编辑器和 Python 都会报错",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "可以同时在 Query 的 default 和函数参数默认值里各写一个不同的默认值",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "可以包含多个元数据标注，因此能与 Typer 等其他工具配合使用同一个函数",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，推荐用 Annotated 而不是把 Query 放在参数默认值里，下列哪些是 Annotated 的优势？",
+    "answer": "Annotated 的优势：函数参数的默认值就是真正的默认值；在 FastAPI 之外直接调用函数也按预期工作，缺少必填参数时编辑器和 Python 都会报错；可以包含多个元数据标注，所以能与 Typer 等工具配合。FastAPI 在 0.95.0 版本才添加对 Annotated 的支持，更旧的版本使用它会报错；而在 Annotated 里的 Query 不能再传 default，两处各写一个默认值会不一致。[原文§查询参数和字符串校验 · Annotated 的优势](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#advantages-of-annotated)[原文§查询参数和字符串校验 · 导入 Query 和 Annotated](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#import-query-and-annotated)"
+  },
+  {
+    "id": "U3-23",
+    "typed": {
+      "id": "U3-23",
+      "type": "fill",
+      "stem": "按官方文档，Query 中用来限制字符串最小长度、最大长度和要匹配的正则表达式的参数名依次是：____、____、____。",
+      "blankCount": 3,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，Query 中用来限制字符串最小长度、最大长度和要匹配的正则表达式的参数名依次是：____、____、____。",
+    "answer": "字符串特有的校验参数是 min_length（最小长度）、max_length（最大长度）和 pattern（要匹配的正则表达式），所以三个空依次是：min_length、max_length、pattern。[原文§查询参数和字符串校验 · 添加更多校验](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#add-more-validations)[原文§查询参数和字符串校验 · 添加正则表达式](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#add-regular-expressions)"
+  },
+  {
+    "id": "U3-24",
+    "typed": {
+      "id": "U3-24",
+      "type": "single",
+      "stem": "查询参数 q 声明了 Query(min_length=3, max_length=50, pattern=\"^fixedquery$\")，这个 pattern 要求参数值满足什么条件？",
+      "options": [
+        {
+          "key": "A",
+          "text": "只要包含 fixedquery 即可，前后可以有其他字符",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "必须精确等于 fixedquery，前后不能再有其他字符",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "必须以 fixedquery 开头，后面可以有任意其他字符",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "必须以 fixedquery 结尾，前面可以有任意其他字符",
+          "correct": false
+        }
+      ]
+    },
+    "question": "查询参数 q 声明了 Query(min_length=3, max_length=50, pattern=\"^fixedquery$\")，这个 pattern 要求参数值满足什么条件？",
+    "answer": "^ 表示必须以接下来的字符开头，前面没有其他字符，fixedquery 要求值精确等于它，$ 表示到此结束、之后没有更多字符，所以值必须精确等于 fixedquery。[原文§查询参数和字符串校验 · 添加正则表达式](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#add-regular-expressions)"
+  },
+  {
+    "id": "U3-25",
+    "typed": {
+      "id": "U3-25",
+      "type": "single",
+      "stem": "q: Annotated[str | None, Query(min_length=3)]（没有声明默认值）表示什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "q 是可选的，客户端不传时值为 None",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "q 是必填的，而且客户端发送的值不能是 None",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "因为类型里包含 None，FastAPI 会把 q 当作请求体字段而不是查询参数",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "q 是必填的，但客户端发送的值可以是 None",
+          "correct": true
+        }
+      ]
+    },
+    "question": "q: Annotated[str | None, Query(min_length=3)]（没有声明默认值）表示什么？",
+    "answer": "不声明默认值就是必填；类型里允许 None，意味着客户端必须发送一个值，即使该值是 None，所以 q 必填但可以为 None。[原文§查询参数和字符串校验 · 必填，但可以为 None](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#required-can-be-none)"
+  },
+  {
+    "id": "U3-26",
+    "typed": {
+      "id": "U3-26",
+      "type": "single",
+      "stem": "想让查询参数 q 接收 URL 中重复出现的多个值（如 ?q=foo&q=bar）并得到 Python list，需要注意什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "必须显式使用 Query，否则 list 类型的参数会被解释为请求体",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "必须使用 Header，因为查询参数本身不能声明成 list 类型",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "不用写 Query，list 类型的参数总是会被自动当作查询参数",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只能声明成 list[str]，不能声明成 list[int] 之类带其他元素类型的 list",
+          "correct": false
+        }
+      ]
+    },
+    "question": "想让查询参数 q 接收 URL 中重复出现的多个值（如 ?q=foo&q=bar）并得到 Python list，需要注意什么？",
+    "answer": "用 Query 显式定义查询参数时可以让它接收值列表，如 Annotated[list[str] | None, Query()]，URL 中重复的 q 会以 Python list 的形式收到；要声明 list 类型的查询参数必须显式使用 Query，否则会被解释为请求体。list[int] 这样的写法还会检查并记录列表内容必须是整数。[原文§查询参数和字符串校验 · 查询参数列表 / 多个值](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#query-parameter-list-multiple-values)[原文§查询参数和字符串校验 · 只使用 list](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#using-just-list)"
+  },
+  {
+    "id": "U3-27",
+    "typed": {
+      "id": "U3-27",
+      "type": "single",
+      "stem": "URL 里的查询参数名是 item-query，它不是有效的 Python 变量名，应该怎么办？",
+      "options": [
+        {
+          "key": "A",
+          "text": "给 Query 传 deprecated=True，让 FastAPI 按带连字符的名字去查找参数值",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "给 Query 传 include_in_schema=False，让参数名在文档中保持带连字符的写法",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "给 Query 传 alias=\"item-query\"，让 FastAPI 用这个别名在 URL 中查找",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "给 Query 传 title=\"item-query\"，FastAPI 就会用它作为 URL 里的参数名",
+          "correct": false
+        }
+      ]
+    },
+    "question": "URL 里的查询参数名是 item-query，它不是有效的 Python 变量名，应该怎么办？",
+    "answer": "用 alias 参数声明别名，FastAPI 会用该别名在 URL 中查找参数值；deprecated 只是在文档里把参数标为已弃用，include_in_schema 只是控制它是否出现在文档里，title 只是元数据，都不会改变 FastAPI 在 URL 里查找的参数名。[原文§查询参数和字符串校验 · 别名参数](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#alias-parameters)"
+  },
+  {
+    "id": "U3-28",
+    "typed": {
+      "id": "U3-28",
+      "type": "single",
+      "stem": "需要做内置参数无法完成的自定义校验时，按官方文档可以怎么做？",
+      "options": [
+        {
+          "key": "A",
+          "text": "给 Query 传 alias 参数，让 FastAPI 按别名去执行自定义的校验规则",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "把校验逻辑写进 Query 的 title 参数里，由文档界面在展示时执行",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "给 Query 传 pattern 参数，因为正则可以表达任意类型的校验规则",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "在 Annotated 中使用 AfterValidator，并传入校验函数",
+          "correct": true
+        }
+      ]
+    },
+    "question": "需要做内置参数无法完成的自定义校验时，按官方文档可以怎么做？",
+    "answer": "无法通过 Query 内置参数完成的校验，可以在 Annotated 中使用 Pydantic 的 AfterValidator 传入校验函数，它会在正常校验（例如先校验值是 str）之后应用；它适合只需检查请求中同一份数据的校验，需要和数据库等外部组件通信的校验应改用 FastAPI 依赖项。[原文§查询参数和字符串校验 · 自定义校验](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/#custom-validation)"
+  },
+  {
+    "id": "U3-29",
+    "typed": {
+      "id": "U3-29",
+      "type": "single",
+      "stem": "给路径参数 item_id 声明默认值 None 会怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "不起作用，路径参数始终是必需的，因为它必须是路径的一部分",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "item_id 变成可选的，请求路径里可以不写这一段",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "FastAPI 会把它自动改成查询参数来处理",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "FastAPI 会在启动时报错，路径参数不允许声明默认值",
+          "correct": false
+        }
+      ]
+    },
+    "question": "给路径参数 item_id 声明默认值 None 会怎样？",
+    "answer": "路径参数总是必需的，因为它必须是路径的一部分；即使把它声明为 None 或设置了默认值，也不会产生任何影响，它依然始终是必需参数。[原文§路径参数和数值校验 · 声明元数据](https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/#declare-metadata)"
+  },
+  {
+    "id": "U3-30",
+    "typed": {
+      "id": "U3-30",
+      "type": "fill",
+      "stem": "按官方文档，Query 和 Path 的数值约束中，gt 表示大于，ge 表示____，lt 表示____，le 表示____。",
+      "blankCount": 3,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，Query 和 Path 的数值约束中，gt 表示大于，ge 表示____，lt 表示____，le 表示____。",
+    "answer": "gt 是大于，ge 是大于等于，lt 是小于，le 是小于等于，所以三个空依次是：大于等于、小于、小于等于。[原文§路径参数和数值校验 · 数值校验：大于和小于等于](https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/#number-validations-greater-than-and-less-than-or-equal)[原文§路径参数和数值校验 · 总结](https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/#recap)"
+  },
+  {
+    "id": "U3-31",
+    "typed": {
+      "id": "U3-31",
+      "type": "single",
+      "stem": "FastAPI 通过什么来检测函数参数的种类？参数在函数里的声明顺序重要吗？",
+      "options": [
+        {
+          "key": "A",
+          "text": "通过参数在函数签名中的位置检测，声明顺序必须与 URL 中出现的顺序一致",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "通过参数名的前缀检测，例如 path_ 开头的是路径参数，query_ 开头的是查询参数",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "只通过类型检测，不看参数名，也不看是否使用了 Query、Path 等声明",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "通过参数名、类型和默认值声明（Query、Path 等）检测，声明顺序无关紧要",
+          "correct": true
+        }
+      ]
+    },
+    "question": "FastAPI 通过什么来检测函数参数的种类？参数在函数里的声明顺序重要吗？",
+    "answer": "FastAPI 通过参数的名称、类型和默认值声明（Query、Path 等）来检测参数，而不关心它们的声明顺序；声明查询参数的顺序同样不重要，FastAPI 靠参数名来识别。[原文§路径参数和数值校验 · 按需对参数排序](https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/#order-the-parameters-as-you-need)[原文§查询参数 · 多个路径和查询参数](https://fastapi.tiangolo.com/zh/tutorial/query-params/#multiple-path-and-query-parameters)"
+  },
+  {
+    "id": "U3-32",
+    "typed": {
+      "id": "U3-32",
+      "type": "single",
+      "stem": "函数里声明了 item 和 user 两个 Pydantic 模型参数时，FastAPI 期望什么样的请求体？",
+      "options": [
+        {
+          "key": "A",
+          "text": "一个 JSON 对象，用参数名 item、user 作键，各自的值是对应模型的内容",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "把两个模型的字段平铺在同一层的一个 JSON 对象里，不使用参数名作键，字段名重复时后者覆盖前者",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "两个相互独立的请求体，分别对应 item 和 user，一个请求要带上两个请求体",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只有 item 来自请求体，user 因为不在路径中，会被当作查询参数来读取",
+          "correct": false
+        }
+      ]
+    },
+    "question": "函数里声明了 item 和 user 两个 Pydantic 模型参数时，FastAPI 期望什么样的请求体？",
+    "answer": "声明多个请求体参数时，FastAPI 会使用参数名作为请求体中的键（字段名），期望形如 {\"item\": {...}, \"user\": {...}} 的请求体；一个请求只能有一个请求体，FastAPI 负责在函数里为你提供正确的数据。[原文§请求体 - 多个参数 · 多个请求体参数](https://fastapi.tiangolo.com/zh/tutorial/body-multiple-params/#multiple-body-parameters)"
+  },
+  {
+    "id": "U3-33",
+    "typed": {
+      "id": "U3-33",
+      "type": "single",
+      "stem": "除了 item 和 user 两个模型，还想在请求体里再加一个 int 类型的单一值 importance，应该怎么声明？",
+      "options": [
+        {
+          "key": "A",
+          "text": "直接写成 importance: int，FastAPI 会自动把它放进请求体",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "用 Query 声明它，Query 会把这个值放进请求体的一个新键里，与 item、user 并列",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "用 Body 声明它，如 Annotated[int, Body()]，否则它会被当作查询参数",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "用 Path 声明它，这样它就会成为请求体里的一个新键，与 item、user 并列",
+          "correct": false
+        }
+      ]
+    },
+    "question": "除了 item 和 user 两个模型，还想在请求体里再加一个 int 类型的单一值 importance，应该怎么声明？",
+    "answer": "单一值默认会被当作查询参数，要让它成为请求体的另一个键，需要用 Body 指示 FastAPI，如 Annotated[int, Body()]，这样请求体里就会多出 importance 这个键。[原文§请求体 - 多个参数 · 请求体中的单一值](https://fastapi.tiangolo.com/zh/tutorial/body-multiple-params/#singular-values-in-body)"
+  },
+  {
+    "id": "U3-34",
+    "typed": {
+      "id": "U3-34",
+      "type": "single",
+      "stem": "只有一个 Pydantic 请求体参数 item，想让请求体多包一层以 item 为键的对象，应该怎么做？",
+      "options": [
+        {
+          "key": "A",
+          "text": "给 Query 传 embed=True，Query 会负责把请求体嵌入到一个键里",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "使用 Body 的 embed 参数，如 Body(embed=True)",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "给 Field 传 embed=True，并且 Field 要从 fastapi 导入",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "不需要任何额外声明，单个请求体参数默认就会多包一层以参数名为键的对象，embed 参数是多余的",
+          "correct": false
+        }
+      ]
+    },
+    "question": "只有一个 Pydantic 请求体参数 item，想让请求体多包一层以 item 为键的对象，应该怎么做？",
+    "answer": "单个请求体参数默认期望请求体直接就是模型的内容，使用 Body(embed=True) 后，期望的请求体会多包一层，以 item 作为键、值里放模型内容。[原文§请求体 - 多个参数 · 嵌入单个请求体参数](https://fastapi.tiangolo.com/zh/tutorial/body-multiple-params/#embed-a-single-body-parameter)"
+  },
+  {
+    "id": "U3-35",
+    "typed": {
+      "id": "U3-35",
+      "type": "short"
+    },
+    "question": "Pydantic 的 Field 用来做什么？它和 Query、Path、Body 是什么关系？",
+    "answer": "Field 用来在 Pydantic 模型内部为模型属性声明校验和元数据（例如 max_length、gt、description），它的工作方式和参数与 Query、Path、Body 相同，只是用在模型属性的位置上，写法也和路径操作函数的参数类似。传给 Field 的额外键也会出现在生成的 OpenAPI 架构里，某些 OpenAPI 工具可能因此无法处理。[原文§请求体 - 字段 · 声明模型属性](https://fastapi.tiangolo.com/zh/tutorial/body-fields/#declare-model-attributes)[原文§请求体 - 字段 · 添加更多信息](https://fastapi.tiangolo.com/zh/tutorial/body-fields/#add-extra-information)"
+  },
+  {
+    "id": "U3-36",
+    "typed": {
+      "id": "U3-36",
+      "type": "short"
+    },
+    "question": "Pydantic 模型的属性类型可以是另一个 Pydantic 模型吗？这样声明后 FastAPI 能提供哪些好处？",
+    "answer": "可以：模型属性的类型本身可以是另一个 Pydantic 模型，因此能声明拥有特定属性名称、类型和校验的任意深度嵌套的 JSON 对象，也可以把模型用作 list、set 等的子类型。仅靠这样的声明，FastAPI 就能为被嵌入的模型提供编辑器支持（自动补全等）、数据转换、数据校验和自动生成的文档。[原文§请求体 - 嵌套模型 · 嵌套模型](https://fastapi.tiangolo.com/zh/tutorial/body-nested-models/#nested-models)[原文§请求体 - 嵌套模型 · 带有一组子模型的属性](https://fastapi.tiangolo.com/zh/tutorial/body-nested-models/#attributes-with-lists-of-submodels)"
+  },
+  {
+    "id": "U3-37",
+    "typed": {
+      "id": "U3-37",
+      "type": "single",
+      "stem": "声明 Header 参数 user_agent，FastAPI 默认会去提取哪个请求头？",
+      "options": [
+        {
+          "key": "A",
+          "text": "user_agent：参数名必须与请求头名逐个字符完全一致，下划线不会被转换，也不区分大小写",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "user-agent：默认把参数名里的下划线转换成连字符，请求头不区分大小写",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "User_Agent：必须把每个单词的首字母都写成大写，参数才能与请求头匹配上",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "什么也提取不到：必须先手动用 alias 指定为 user-agent 才行",
+          "correct": false
+        }
+      ]
+    },
+    "question": "声明 Header 参数 user_agent，FastAPI 默认会去提取哪个请求头？",
+    "answer": "大部分标准请求头用连字符分隔，而 user-agent 这样的名字在 Python 里不是有效变量名，所以 Header 默认把参数名里的下划线改成连字符来提取请求头；HTTP 请求头不区分大小写，可以直接用 snake_case 的 user_agent，无需写成 User_Agent。[原文§Header 参数 · 自动转换](https://fastapi.tiangolo.com/zh/tutorial/header-params/#automatic-conversion)"
+  },
+  {
+    "id": "U3-38",
+    "typed": {
+      "id": "U3-38",
+      "type": "single",
+      "stem": "把请求头参数直接写成 user_agent: str | None = None，没有使用 Header()，FastAPI 会怎样解释它？",
+      "options": [
+        {
+          "key": "A",
+          "text": "当作查询参数；Cookie 参数没用 Cookie 声明也同样",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "当作请求头参数，因为参数名看起来很像一个常见的请求头",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "当作 Cookie 参数，因为它不在路径中，也没有指定来源",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "直接报错，FastAPI 要求这类参数必须显式声明它们的来源",
+          "correct": false
+        }
+      ]
+    },
+    "question": "把请求头参数直接写成 user_agent: str | None = None，没有使用 Header()，FastAPI 会怎样解释它？",
+    "answer": "必须使用 Header 声明 header 参数，否则该参数会被解释为查询参数；Cookie 参数同理，必须使用 Cookie 声明，否则也会被解释为查询参数。[原文§Header 参数 · 声明 Header 参数](https://fastapi.tiangolo.com/zh/tutorial/header-params/#declare-header-parameters)[原文§Cookie 参数 · 声明 Cookie 参数](https://fastapi.tiangolo.com/zh/tutorial/cookie-params/#declare-cookie-parameters)"
+  },
+  {
+    "id": "U3-39",
+    "typed": {
+      "id": "U3-39",
+      "type": "fill",
+      "stem": "按官方文档，要使用 Form 接收表单字段，或使用 File 接收上传的文件，需要先安装____。",
+      "blankCount": 1,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，要使用 Form 接收表单字段，或使用 File 接收上传的文件，需要先安装____。",
+    "answer": "接收表单字段和上传文件都需要先安装 python-multipart，因为上传文件和表单字段都是以「表单数据」发送的。[原文§表单数据 · 表单数据](https://fastapi.tiangolo.com/zh/tutorial/request-forms/#form-data)[原文§请求文件 · 请求文件](https://fastapi.tiangolo.com/zh/tutorial/request-files/#request-files)"
+  },
+  {
+    "id": "U3-40",
+    "typed": {
+      "id": "U3-40",
+      "type": "fill",
+      "stem": "按官方文档，不含文件的表单数据通常使用媒体类型____编码，表单包含文件时则编码为____。",
+      "blankCount": 2,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，不含文件的表单数据通常使用媒体类型____编码，表单包含文件时则编码为____。",
+    "answer": "表单数据通常使用 application/x-www-form-urlencoded 编码，但当表单包含文件时会编码为 multipart/form-data，所以两个空依次是：application/x-www-form-urlencoded、multipart/form-data。[原文§表单数据 · 关于「表单字段」](https://fastapi.tiangolo.com/zh/tutorial/request-forms/#about-form-fields)[原文§请求文件 · 什么是「表单数据」](https://fastapi.tiangolo.com/zh/tutorial/request-files/#what-is-form-data)"
+  },
+  {
+    "id": "U3-41",
+    "typed": {
+      "id": "U3-41",
+      "type": "short"
+    },
+    "question": "为什么一个路径操作里不能同时声明 Form 参数和要以 JSON 接收的 Body 字段？",
+    "answer": "因为此时请求体会使用 application/x-www-form-urlencoded 编码，而不是 application/json；声明了 File 时请求体则使用 multipart/form-data 编码，同样不能再以 JSON 接收 Body 字段。可以在一个路径操作中声明多个 Form 参数或多个 File 参数，但这不是 FastAPI 的限制，而是 HTTP 协议的一部分。[原文§表单数据 · 关于「表单字段」](https://fastapi.tiangolo.com/zh/tutorial/request-forms/#about-form-fields)[原文§请求文件 · 什么是「表单数据」](https://fastapi.tiangolo.com/zh/tutorial/request-files/#what-is-form-data)"
+  },
+  {
+    "id": "U3-42",
+    "typed": {
+      "id": "U3-42",
+      "type": "short"
+    },
+    "question": "接收上传文件时，把参数类型声明为 bytes 和声明为 UploadFile 有什么区别？",
+    "answer": "声明为 bytes 时（配合 File()），FastAPI 会读取整个文件并以 bytes 形式接收，内容会全部存储在内存中，适用于小型文件。UploadFile 使用「spooled」文件：先存储在内存中，达到最大上限后写入磁盘，所以适合处理图像、视频、大型二进制等大文件而不占满内存；它还能获取上传文件的元数据，提供 file-like 的 async 接口，并暴露实际的 SpooledTemporaryFile 对象，且不必在参数默认值中使用 File()。[原文§请求文件 · 定义 File 参数](https://fastapi.tiangolo.com/zh/tutorial/request-files/#define-file-parameters)[原文§请求文件 · 含 UploadFile 的文件参数](https://fastapi.tiangolo.com/zh/tutorial/request-files/#file-parameters-with-uploadfile)"
+  },
+  {
+    "id": "U3-43",
+    "typed": {
+      "id": "U3-43",
+      "type": "fill",
+      "stem": "按官方文档，UploadFile 的三个属性依次是：____（上传的原始文件名）、____（MIME 类型）、____（实际的 SpooledTemporaryFile 文件对象）。",
+      "blankCount": 3,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，UploadFile 的三个属性依次是：____（上传的原始文件名）、____（MIME 类型）、____（实际的 SpooledTemporaryFile 文件对象）。",
+    "answer": "UploadFile 的属性有 filename（上传的原始文件名）、content_type（内容类型，即 MIME 类型）和 file（SpooledTemporaryFile，一个 file-like 对象），所以三个空依次是：filename、content_type、file。[原文§请求文件 · 含 UploadFile 的文件参数 · UploadFile](https://fastapi.tiangolo.com/zh/tutorial/request-files/#uploadfile)"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "command": "CONTENT_INCLUDE_DRAFTS=1 npm run content:build",
+  "exitCode": 0,
+  "builtAt": "2026-10-16T09:09:36.593Z",
+  "totalQuestions": 7247,
+  "dockerQuestions": 252,
+  "dockerRuntimeMatchesVerifiedSnapshot": true,
+  "sourceStatus": "draft",
+  "scope": "local preview only"
+}

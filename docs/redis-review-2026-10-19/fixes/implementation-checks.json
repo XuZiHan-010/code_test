@@ -1,0 +1,26 @@
+{
+  "questionCount": 774,
+  "changedQuestionCount": 42,
+  "chapters": 7,
+  "status": "all draft",
+  "counts": {
+    "fill": 90,
+    "single": 528,
+    "multiple": 74,
+    "short": 82
+  },
+  "singleCorrectPositions": {
+    "C": 130,
+    "A": 133,
+    "D": 132,
+    "B": 133
+  },
+  "fillSynchronization": "90/90",
+  "idsAndOrder": "unchanged",
+  "originalCitations": "unchanged; all source anchors exist",
+  "remainingTwoCorrectMultiple": [
+    "O1-16",
+    "O3-14",
+    "O7-75"
+  ]
+}

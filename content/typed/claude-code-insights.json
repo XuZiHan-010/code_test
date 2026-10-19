@@ -1,0 +1,974 @@
+{
+  "prefix": "J",
+  "chapters": {
+    "J1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "J1-1",
+          "type": "single",
+          "stem": "研究发现人主要决定做什么、Agent 主要决定怎么做。怎么写这部分被 Agent 接走后，原文认为剩下的靠什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "敲代码的熟练程度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把话说得漂亮的能力",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对事情本身的理解",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "先修炼成领域专家",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J1-2",
+          "type": "single",
+          "stem": "研究里的“规划类决策”指的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一句话能让 Claude 执行多少个动作",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "具体用哪个函数、代码怎么落地",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "会话卡住之后要不要继续做下去",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这个功能要解决什么问题、做成什么样",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "J1-3", "type": "short" },
+        { "id": "J1-4", "type": "short" },
+        {
+          "id": "J1-5",
+          "type": "single",
+          "stem": "研究比较不同职业的编程成功率时，取的是哪一类会话？",
+          "options": [
+            {
+              "key": "A",
+              "text": "真正产出代码的会话",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只用来修 bug 的会话",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "卡住之后没有放弃的会话",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "全部会话，不论是否产出代码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J1-6",
+          "type": "single",
+          "stem": "各职业的成功率很接近，原文由此得出什么结论？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只有深度专精的人才能把活干成",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "编码背景越来越不能决定编程的成败",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "软件工程师的成功率反而低于其他职业",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "领域知识对编程的成败已经不起作用",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J1-7", "type": "short" },
+        {
+          "id": "J1-8",
+          "type": "fill",
+          "stem": "研究用 Claude 的 ____ 和 ____ 来衡量一句话能让它干多少活。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "J1-9", "type": "short" },
+        { "id": "J1-10", "type": "short" },
+        { "id": "J1-11", "type": "short" },
+        { "id": "J1-12", "type": "short" },
+        { "id": "J1-13", "type": "short" },
+        {
+          "id": "J1-14",
+          "type": "single",
+          "stem": "原文所说“够用”的领域知识指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能熟练写出这个领域里常用的语句和语法",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在这个领域深度专精，已经达到专家的水平",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "知道一件正常的活该长什么样、哪些是关键、做出来对不对",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "能把提示词写得足够长、把话说得足够漂亮",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J1-15", "type": "short" },
+        {
+          "id": "J1-16",
+          "type": "fill",
+          "stem": "原文将用好 AI 编程归纳为三件事：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "J1-17", "type": "short" },
+        {
+          "id": "J1-18",
+          "type": "single",
+          "stem": "管理、销售、法务等非技术岗位的人也把活干成了，原文怎么解释？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这些岗位的人遇到卡住时从不放弃",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Agent 把语法和调试这层壁垒抹平了",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "这些岗位的任务本来不需要产出代码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这些岗位的人一条提示词写得更长",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J1-19",
+          "type": "fill",
+          "stem": "原文认为用好 AI 编程的两项护城河是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "J1-20",
+          "type": "single",
+          "stem": "从新手到专家，成功率的提升主要发生在哪一段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "成为专家之后才开始提升",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两段的提升幅度相同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "从中级到专家",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从新手到中级",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "J2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "J2-1",
+          "type": "multiple",
+          "stem": "模型每犯一次错就加一条永久禁令，按原文，长期下来会带来哪些问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "真正重要的信息被埋在一堆历史补丁里",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "规则越多，模型越不容易被无关内容带偏",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "常驻上下文越来越轻，约束更容易被注意到",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "规则之间互相打架，Claude 得先判断听谁的",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "很多规则为什么存在已经记不清",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "J2-2", "type": "short" },
+        { "id": "J2-3", "type": "short" },
+        { "id": "J2-4", "type": "short" },
+        { "id": "J2-5", "type": "short" },
+        {
+          "id": "J2-6",
+          "type": "single",
+          "stem": "按原文，prompt 与 context 的范围有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "prompt 只是用户输入的那句话，context 还包括系统提示词、CLAUDE.md、Skill、记忆和临时引用的文件",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者的范围完全相同，都指用户输入加上系统提示词，只是上下文工程出现后换了叫法",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "prompt 包括系统提示词、CLAUDE.md 和 Skill，context 只是用户当前输入的那一句话",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "context 只指临时引用的文件，系统提示词、CLAUDE.md、Skill 和记忆都算 prompt",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J2-7", "type": "short" },
+        { "id": "J2-8", "type": "short" },
+        { "id": "J2-9", "type": "short" },
+        {
+          "id": "J2-10",
+          "type": "single",
+          "stem": "同一条要求在 CLAUDE.md、Skill 和工具描述里各写一遍，原文指出的风险是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型会把重复出现的要求当成最高优先级",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "后面很容易改漏，几份内容慢慢就对不上了",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "重复出现的要求会被新模型自动忽略掉",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "常驻上下文变轻，重要约束更难被注意到",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J2-11", "type": "short" },
+        {
+          "id": "J2-12",
+          "type": "single",
+          "stem": "有了 Auto-memory 之后，哪类信息仍然应该写进项目文件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "与当前用户相关的记忆",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "上次做到了哪里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "团队约定和仓库里的特殊坑点",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "个人的使用习惯",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J2-13",
+          "type": "fill",
+          "stem": "原文称规格不一定是文字说明，还可以是这四种形式：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "J2-14",
+          "type": "single",
+          "stem": "精简项目规则时，原文认为更值得保留的是哪类内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次模型犯错后补上的那条禁令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "项目用了什么框架这类扫几份文件就能看出的内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "项目里变量和文件的命名风格",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只看代码不一定知道的坑，例如某个旧接口暂时不能删",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "J2-15",
+          "type": "single",
+          "stem": "工具的参数、状态和返回结构不清楚时，原文认为应该先做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先把参数、状态、调用条件和返回结果整理清楚",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把这个工具的说明拆进 Skill，等需要时再加载",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先多补几个调用示例，把用法给得尽量具体",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在系统提示词里把这个工具的用法再讲一遍",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J2-16",
+          "type": "single",
+          "stem": "/doctor 给出的精简建议为什么不用照单全收？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它只能检查 Skill，检查不了 CLAUDE.md 写得重不重",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "新模型已经不需要任何项目规则，建议本身没有意义",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它给出的建议是让规则变多，而不是让规则变少",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "项目里有些坑只有自己知道，最后还得人工过一遍",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "J2-17", "type": "short" },
+        {
+          "id": "J2-18",
+          "type": "multiple",
+          "stem": "按原文，下列哪些任务仍然值得采用 Superpowers 这类完整流程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "改一个按钮的颜色",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只改一个小东西",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "线上故障",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "安全审查",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "复杂架构改造",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "J2-19",
+          "type": "single",
+          "stem": "判断一个 Skill 是否值得保留，原文的方法是看什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它把每一步该怎么做规定得够不够细",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它有没有给模型补充新的信息和能力",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它包含的流程环节是不是足够完整",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它是不是在能力不强的模型上起过作用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J2-20",
+          "type": "multiple",
+          "stem": "给提示词做减法时，按原文哪些内容该留还是要留？",
+          "options": [
+            {
+              "key": "A",
+              "text": "替模型做判断的流程性内容",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "验收方法",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "项目内部知识",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "专用工具",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "安全边界",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "在多处重复讲一遍的工具用法",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J2-21", "type": "short" },
+        { "id": "J2-22", "type": "short" },
+        { "id": "J2-23", "type": "short" },
+        {
+          "id": "J2-24",
+          "type": "single",
+          "stem": "CLAUDE.md 里不是每次都用得上的流程，原文建议怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "拆出去，做成对应的 Skill 或放到对应目录",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "在 CLAUDE.md 和工具描述里各保留一份",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "全部删除，等模型犯错时再重新补上",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "挪到系统提示词里，让它每次都常驻",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J2-25", "type": "short" }
+      ]
+    },
+    "J3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "J3-1",
+          "type": "single",
+          "stem": "统计型水印藏在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文字里塞入的零宽空格等看不见的字符里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文件属性里的 EXIF、作者和创建时间里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型选择 Token 时形成的选词习惯里",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "附在文章里的一个用户编号里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J3-2",
+          "type": "single",
+          "stem": "零宽字符肉眼看不见，为什么程序却能检测出来？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它们会写进文件属性，读取元数据就能逐个找出来",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它们有各自的 Unicode 编码，检查编码就能逐个找出来",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它们打印出来有固定的形状，对照字形就能逐个找出来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它们会改变整篇文章的选词规律，统计分布就能发现",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J3-3", "type": "short" },
+        {
+          "id": "J3-4",
+          "type": "single",
+          "stem": "C2PA 记录的是什么信息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型选词时结合前文使用的私有密钥",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文字里每个隐藏字符的 Unicode 编码",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "图片的拍摄设备、拍摄时间和拍摄地点",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "文件由什么工具生成、后来又经过哪些处理",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "J3-5",
+          "type": "single",
+          "stem": "转发原文件和只复制正文，对元数据的保留有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "转发原文件时元数据可能跟着走，只复制正文时通常留在原文件里",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "转发原文件时元数据会被剥离，只复制正文时反而会一起带走",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两种方式都带不走元数据，因为元数据只在生成时存在",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两种方式都会带走元数据，因为元数据藏在选词规律里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J3-6",
+          "type": "single",
+          "stem": "统计型水印利用的是文本生成中的哪一点空间？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文件属性里可以额外写入信息的那些字段",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文字之间可以塞进不占宽度字符的那些位置",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型在几个都说得通的候选里保留的一点随机性",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型永远选择概率最高的那个候选这一确定性",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J3-7", "type": "short" },
+        {
+          "id": "J3-8",
+          "type": "single",
+          "stem": "“给候选词分组加分”只是帮助理解的简化版本。原文所说实际方案的设计思路是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在文字里加入方向控制符",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给每篇文章写入一个用户编号",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把生僻词固定替换成常用词",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用密钥悄悄改变随机性的来源",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "J3-9", "type": "short" },
+        { "id": "J3-10", "type": "short" },
+        {
+          "id": "J3-11",
+          "type": "single",
+          "stem": "统计型文字水印会不会在文章里放入用户身份编号？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不会，它不往文章里增加字符，也不给文件塞用户编号",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "会，每一篇带水印的文章都对应一个唯一的用户编号",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不会，但它会在文章里加入零宽字符来标记用户所在环境",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "会，不过编号不在正文里，而是写在文件的元数据里",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J3-12", "type": "short" },
+        {
+          "id": "J3-13",
+          "type": "single",
+          "stem": "水印检测器能回答的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这篇文章是由哪一个用户账号生成的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这段文字的措辞和句式像不像 AI 的文风",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这段文字在多大程度上符合 Claude 水印的统计特征",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "这篇文章是否百分之百由 Claude 写成",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J3-14",
+          "type": "single",
+          "stem": "样本长度怎样影响统计型水印的检测？",
+          "options": [
+            {
+              "key": "A",
+              "text": "检测难度与样本长度无关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "样本越短，检测越难",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只有一个词也能可靠检测",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "样本越短，检测越容易",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J3-15", "type": "short" },
+        { "id": "J3-16", "type": "short" },
+        {
+          "id": "J3-17",
+          "type": "single",
+          "stem": "基于文风的 AI 检测器与密钥水印检测器有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文风检测器核对模型主动植入的信号并需要密钥，水印检测器分析措辞和句式来猜像不像 AI",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文风检测器分析措辞和句式来猜像不像 AI，水印检测器核对模型主动植入的信号并需要密钥",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都分析措辞、句式和文本分布，区别只在水印检测器要求的样本更长一些",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都需要对应的私有密钥，区别只在文风检测器还要另外读取文件的元数据",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J3-18", "type": "short" },
+        {
+          "id": "J3-19",
+          "type": "single",
+          "stem": "按原文，统计型水印的抗改写能力如何？",
+          "options": [
+            {
+              "key": "A",
+              "text": "局部改写和全文翻译都能扛住，只有删除隐藏字符才失效",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "局部改写就会失效，全文翻译之后反而能保留下来",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "局部改写和全文翻译都扛不住，改动任何一个词就会失效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能扛住局部改写，很难扛住全文翻译或换一个模型重写",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "J3-20", "type": "short" },
+        {
+          "id": "J3-21",
+          "type": "multiple",
+          "stem": "按原文，改写范围越大，可能付出哪些代价？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文章的语气可能变了",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "技术含义可能被改偏",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "原来的选词规律更难被打散",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "细节可能丢了",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "文件里的元数据被重新写入",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "J3-22",
+          "type": "single",
+          "stem": "清理工具怎样处理文件里的元数据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用同一把私有密钥重新计算随机信号，再把它从正文里抵消",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "逐个检查字符的 Unicode 编码，把异常字符从正文中删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "找到 C2PA、EXIF、XMP 等元数据，把它们从文件结构中剥离",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把正文交给另一个模型全文重写，打散原来的选词规律",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J3-23", "type": "short" },
+        { "id": "J3-24", "type": "short" },
+        { "id": "J3-25", "type": "short" },
+        {
+          "id": "J3-26",
+          "type": "single",
+          "stem": "按原文，Anthropic 给文字加水印的理由是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "欧盟法规",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用户调研的结果",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对误报的顾虑",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "去水印 Skill 的出现",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "J3-27", "type": "short" },
+        { "id": "J3-28", "type": "short" }
+      ]
+    }
+  }
+}

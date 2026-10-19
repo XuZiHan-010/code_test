@@ -1,0 +1,5773 @@
+{
+  "prefix": "U",
+  "chapters": {
+    "U1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "U1-1",
+          "type": "single",
+          "stem": "按官方文档，下面关于给参数添加类型提示（如 `first_name: str`）的说法，哪一项正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它与声明默认值是同一回事，写成 `first_name=\"john\"` 同样是在声明类型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用冒号声明，与等号声明默认值是两回事，通常不改变代码原本的行为",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "添加类型提示通常会改变代码本来的行为，所以要重新调整函数逻辑",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "类型提示用等号声明，而默认值反过来用冒号声明",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U1-2",
+          "type": "multiple",
+          "stem": "按官方文档，给函数参数加上类型提示后，编辑器和工具能带来哪些帮助？",
+          "options": [
+            {
+              "key": "A",
+              "text": "输入参数名和点号后能触发有用的自动补全",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把 `str` 与 `int` 直接相加这类错误能被编辑器检查出来",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "处理 `list[str]` 的元素时，编辑器也知道元素是 `str` 并提供支持",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "运行时会自动把不符合声明的参数转换成所需类型",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "没有类型提示时补全同样有用，类型提示只是起注释作用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U1-3",
+          "type": "short"
+        },
+        {
+          "id": "U1-4",
+          "type": "single",
+          "stem": "按官方文档，想声明某个参数可以是“任意类型”，应该从标准库的哪个模块导入什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从 `typing` 模块导入 `Annotated`",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "从 `pydantic` 导入 `BaseModel`",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "从 `datetime` 模块导入 `datetime`",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从 `typing` 模块导入 `Any`",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U1-5",
+          "type": "fill",
+          "stem": "按官方文档，可以带方括号和内部类型作为泛型使用的四种内建类型是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U1-6",
+          "type": "short"
+        },
+        {
+          "id": "U1-7",
+          "type": "single",
+          "stem": "按官方文档，把参数声明为 `tuple[int, int, str]` 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一个含有 3 个元素的元组，依次是 int、int、str",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一个元素个数不限的元组，每个元素是 int 或 str",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一个 set，其中每个元素的类型都是 int 或 str",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一个 dict，键的类型是 int，值的类型是 str",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U1-8",
+          "type": "single",
+          "stem": "按官方文档，把参数声明为 `prices: dict[str, float]`，两个类型参数分别代表什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "第一个类型参数用于值，第二个用于键",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两个类型参数都用于键，值可以是任意类型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "第一个类型参数用于键，第二个用于值",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两个类型参数是 dict 可接受的两种值类型，键不作限制",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U1-9",
+          "type": "single",
+          "stem": "按官方文档，参数声明为 `item: int | str` 表示什么，这种写法叫什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "item 是 int 或 str 中的任意一种，称为联合类型",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "item 必须同时是 int 和 str，称为联合类型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "item 是由一个 int 和一个 str 组成的元组，称为联合类型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "item 是 int，str 只是补充说明，称为泛型类型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U1-10",
+          "type": "single",
+          "stem": "按官方文档，把参数声明为 `str | None` 而不是只写 `str`，有什么好处？",
+          "options": [
+            {
+              "key": "A",
+              "text": "运行时 Python 会自动把 None 转成空字符串",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这个参数从此变成必填，调用时不能省略",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "编辑器不再检查这个参数的使用，因为它的类型变成了任意类型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "编辑器能帮你发现把值当成总是 str、而它实际可能为 None 的错误",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U1-11",
+          "type": "single",
+          "stem": "按官方文档，把参数声明为 `one_person: Person`（`Person` 是一个自定义类）表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "one_person 是名为 Person 的类本身",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "one_person 是类 Person 的一个实例",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "one_person 是 Person 的某个属性值，类型为 str",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "one_person 可以是任意类型，Person 只是一个注释",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U1-12",
+          "type": "short"
+        },
+        {
+          "id": "U1-13",
+          "type": "single",
+          "stem": "按官方文档的 Pydantic 示例，`User` 模型声明了 `id: int`；用字符串 `\"123\"` 作为 id 创建实例后，`user.id` 得到什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "抛出异常，因为 `\"123\"` 不是 int",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "仍是字符串 `\"123\"`，不做任何处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "整数 123，值被转换成了所需类型",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "None，类型不匹配时该值被丢弃",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U1-14",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 与 Pydantic 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Pydantic 完全建立在 FastAPI 之上",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "FastAPI 完全建立在 Pydantic 之上",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者互不相关，FastAPI 另用自己的校验库",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Pydantic 只用于生成交互式文档，不参与校验",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U1-15",
+          "type": "multiple",
+          "stem": "按官方文档，关于 `typing.Annotated` 下列说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以在类型提示里放入额外的元数据",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "传给它的第一个类型参数才是实际类型，其余是给其他工具用的元数据",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Python 本身不处理其元数据，编辑器看到的类型仍是第一个参数",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它是标准 Python，编辑器体验和与其他 Python 工具的兼容性不受影响",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "最后一个类型参数才是实际类型，前面的都是元数据",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "它是 FastAPI 专有的语法，需要从 fastapi 导入",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U1-16",
+          "type": "fill",
+          "stem": "按官方文档，用类型提示声明参数后，FastAPI 会用相同的声明完成：定义要求，以及另外三件事：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U1-17",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 校验请求数据时，如果数据无效会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自动生成返回给客户端的错误",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "丢弃无效数据，改用类型的默认值继续处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "忽略校验继续运行，仅在编辑器里提示错误",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只在服务启动时校验一次，运行期间不再校验",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "U2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "U2-1",
+          "type": "multiple",
+          "stem": "按官方文档，下列哪些情形应当用 async def 声明路径操作函数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所用的第三方库告诉你要使用 await 来调用它",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "所用的第三方库不支持 await（例如大多数数据库库）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "应用不需要与其他任何东西通信并等待其响应",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "你不清楚该用 def 还是 async def",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-2",
+          "type": "single",
+          "stem": "路径操作函数要通过第三方库与数据库等组件通信，而该库不支持 await 时，官方建议怎么声明路径操作函数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 def 声明，像平常一样直接调用该库",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用 async def 声明，并在函数内用 await 调用该库",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 async def 声明，但函数内不使用 await",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "换成支持 await 的库之前，不能用 FastAPI 开发该接口",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-3",
+          "type": "single",
+          "stem": "官方文档说，如果你不清楚路径操作函数该用 def 还是 async def，应该怎么办？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一律使用 async def，即使函数内不需要 await",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "使用 def 就好",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "在同一个应用里只能二选一，必须全部统一",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "使用 async def，并把所有调用都改写成 await 的形式",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-4",
+          "type": "single",
+          "stem": "关于在同一个应用的路径操作函数中混用 def 和 async def，官方文档怎么说？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能混用，同一应用里必须全部使用 def",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可以混用，但只要出现 def 函数，FastAPI 就不再异步工作",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可以按需混用，FastAPI 会为它们做正确的事情",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "可以混用，但只有全部使用 async def 时 FastAPI 才会异步工作",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-5",
+          "type": "short"
+        },
+        {
+          "id": "U2-6",
+          "type": "multiple",
+          "stem": "下列哪些属于官方文档列举的“需要等待 I/O 操作”的例子？",
+          "options": [
+            {
+              "key": "A",
+              "text": "等待客户端通过网络发送来的数据",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "等待磁盘中的文件内容被系统读取并提供给程序",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "等待一个数据库查询返回结果",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "对一幅图像的每个像素做大量计算",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "用大量矩阵乘法构建和使用模型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-7",
+          "type": "single",
+          "stem": "按官方文档，什么样的操作被称为“I/O 密集型”操作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "执行时间大多由 CPU 完成的实际工作占用的操作",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "执行时间主要花在复杂的数学处理上的操作",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "必须按顺序执行完所有步骤才能切换到其他任务的操作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "执行时间大多是在等待 I/O 操作的操作",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U2-8",
+          "type": "short"
+        },
+        {
+          "id": "U2-9",
+          "type": "single",
+          "stem": "按官方文档，为什么为 Web API 使用异步（并发）很有意义？",
+          "options": [
+            {
+              "key": "A",
+              "text": "服务器要等待大量用户通过网络发来的请求，总的等待时间很长",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Web API 的主要工作是复杂的数学运算，需要多个处理器同时去计算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "并发在所有场景下都比并行更好，包括纯计算的场景",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "异步能让服务器完全不再需要等待用户的请求和响应",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-10",
+          "type": "single",
+          "stem": "对于几乎不需要等待、主要是大量实际工作的任务（例如要打扫一个又大又脏的房子），按官方文档怎样才能更快完成？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让一个处理器在各部分之间轮流切换，用并发代替并行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让多个处理器各负责一部分工作，并行地完成",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "无论怎么安排所需时间都相同，增加处理器也不会更快",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把相关的函数都改成 async def 声明",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-11",
+          "type": "multiple",
+          "stem": "下列哪些是官方文档列举的 CPU 密集型操作的常见例子？",
+          "options": [
+            {
+              "key": "A",
+              "text": "音频或图像处理",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "等待一个数据库查询返回结果",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "机器学习中大量的矩阵和向量乘法",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "计算机视觉中对数百万像素的计算",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "等待一个远程 API 调用返回",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-12",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 要处理类似机器学习系统中的 CPU 密集型工作，可以利用什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只靠并发机制，把函数声明为 async def 就够了",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "NodeJS 为代表的并发机制",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "并行和多进程（让多个进程并行运行）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "以回调的方式编写代码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-13",
+          "type": "single",
+          "stem": "await 关键字的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让 def 声明的函数被放到外部线程池中运行，避免阻塞服务器",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把一个函数声明成可以在内部暂停执行的异步函数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让多个操作同时在多个处理器上并行地执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "告诉 Python 必须等某个操作完成，期间可去做其他事",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U2-14",
+          "type": "single",
+          "stem": "await 只能在什么地方使用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 async def 创建的函数内",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "任何用 def 或 async def 声明的函数内",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只要安装了 AnyIO，在任何位置都可以使用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只能在用 def 声明且运行在线程池中的函数内",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-15",
+          "type": "single",
+          "stem": "在一个 async def 函数内部，想拿到 async def 函数 get_burgers 的执行结果，按官方文档应怎样做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "像普通函数一样直接调用 get_burgers(2)，就能拿到返回结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 await get_burgers(2) 等待它，从而拿到它的执行结果",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "直接调用之后，FastAPI 会自动把它放进外部线程池里运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "改在一个用 def 声明的普通函数里用 await 调用它",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-16",
+          "type": "short"
+        },
+        {
+          "id": "U2-17",
+          "type": "single",
+          "stem": "在 Python 的异步代码中，“协程”指的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 def 声明、并且会被放进外部线程池中运行的普通函数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "第三方库提供的、专门用来等待慢任务完成的 await 关键字",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "async def 函数返回的那个东西，可以启动、结束，内部有 await 时可能暂停",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让多个进程在多个处理器上同时并行运行以加快计算的机制",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-18",
+          "type": "short"
+        },
+        {
+          "id": "U2-19",
+          "type": "single",
+          "stem": "对只做计算、不包含执行阻塞 I/O 的代码的路径操作函数，官方文档建议怎么声明？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 def，以获得约 100 纳秒的微小性能增益",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 def，让它在外部线程池中运行以免阻塞服务器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 def 或 async def 均可，两者在 FastAPI 中没有区别",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 async def，除非函数内使用了执行阻塞 I/O 的代码",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U2-20",
+          "type": "multiple",
+          "stem": "关于依赖和子依赖的声明方式，按官方文档下列哪些说法成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用标准 def 声明的依赖会被运行在外部线程池中",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "依赖和子依赖可以混用 async def 与 def，仍然能正常工作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "用 def 声明的子依赖会在线程池的外部线程中调用，而不是被“等待”",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "子依赖必须与它所属的依赖使用同样的声明方式",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "用 def 声明的依赖会像普通函数那样被直接调用，不放到线程池",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U2-21",
+          "type": "single",
+          "stem": "你自己在代码中直接调用的其他工具函数，FastAPI 会怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 def 声明的会像路径操作函数一样，被放到外部线程池中运行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "为了能被调用，必须全部改成用 async def 声明的函数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "FastAPI 会自动替你 await 其中用 async def 声明的那些函数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不受影响：def 的直接调用不进线程池，async def 的要 await",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "U3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "U3-1",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 类和 Starlette 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Starlette 是从 FastAPI 继承的类，用来补充 FastAPI 自身缺少的路由功能，需要单独导入才能使用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "FastAPI 是直接从 Starlette 继承的类，因此通过它也能使用 Starlette 的所有功能",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "FastAPI 与 Starlette 彼此独立，使用 FastAPI 时无法再使用 Starlette 的任何功能",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "FastAPI 负责数据校验和类型转换，Starlette 只用来生成 OpenAPI 模式和交互式文档",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-2",
+          "type": "fill",
+          "stem": "按官方文档，运行开发服务器后，访问 /docs 看到的自动生成的交互式 API 文档由____提供，访问 /redoc 看到的可选文档由____提供。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U3-3",
+          "type": "short"
+        },
+        {
+          "id": "U3-4",
+          "type": "fill",
+          "stem": "按官方文档，URL 中从第一个 / 起的后半部分称为____，HTTP 方法（如 GET、POST）在 OpenAPI 中被称为____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U3-5",
+          "type": "fill",
+          "stem": "按官方文档，开发 API 时通常用 POST、GET、PUT、DELETE 依次执行的行为是：____数据、____数据、____数据、____数据。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U3-6",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 对 HTTP 方法的含义有什么强制要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "强制要求 GET 只能用来读取数据，用 GET 修改数据时 FastAPI 会直接报错",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "强制要求创建数据只能使用 POST 方法，使用 PUT 创建数据时 FastAPI 会拒绝请求",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "强制要求一个应用只能使用 GET、POST、PUT、DELETE 这四种方法，其余方法都不可用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有强制要求，各个方法的常规含义只是指导而不是要求",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U3-7",
+          "type": "single",
+          "stem": "按官方文档，路径操作函数可以返回什么样的内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "dict、list、单个值或 Pydantic 模型都可以，并会自动转换为 JSON",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只能返回 Pydantic 模型，返回 dict 或 list 时 FastAPI 会直接报错",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能返回已经序列化好的 JSON 字符串，FastAPI 不会对返回值做任何转换",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只能返回 dict，其他类型的值都必须先由开发者手动转换成 dict 才能返回",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-8",
+          "type": "single",
+          "stem": "路径参数 item_id 声明为 int 后，访问 /items/3，函数收到的 item_id 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "字符串 \"3\"，类型声明只用于编辑器提示，转换要由函数自己完成",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "浮点数 3.0，因为 URL 中的数字统一按 float 解析后再传入函数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "整数 3，FastAPI 按类型声明自动把请求中的值解析成了 int",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不会传入任何值，函数需要自己从请求对象里手动取出 item_id",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-9",
+          "type": "single",
+          "stem": "路径参数 item_id 声明为 int 后，访问 /items/foo 会发生什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "函数以字符串 \"foo\" 正常执行，类型声明只用于生成文档和编辑器提示，不做任何校验",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "校验失败并返回错误信息，其中 loc 指出出错位置是 path 里的 item_id",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "item_id 自动取值 0，函数继续正常执行，客户端也不会收到任何错误提示",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "返回一个只有状态码的空响应，但不会告诉客户端具体是哪个参数没有通过校验",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-10",
+          "type": "single",
+          "stem": "按官方文档，路径参数等的数据校验是由谁在幕后完成的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Uvicorn 服务器",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Swagger UI 页面里的脚本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Python 解释器在运行时对类型注解的强制检查",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Pydantic",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U3-11",
+          "type": "fill",
+          "stem": "按官方文档，仅靠一次 Python 类型声明，FastAPI 就能获得的好处有：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U3-12",
+          "type": "short"
+        },
+        {
+          "id": "U3-13",
+          "type": "single",
+          "stem": "按官方文档，要把路径参数的可选取值限定为一组预设值，应该怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "创建同时继承 str 和 Enum 的类，并把它用作路径参数的类型注解",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把路径参数声明为 int，再用 ge、le 这类数值约束限制取值范围",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在 Annotated 中为路径参数加上 Query(pattern=\"^fixedquery$\") 这样的正则",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把路径参数声明为 bool，让它的取值只能是 True 或 False",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-14",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 凭什么判断查询参数 q 是可选的、没传时值为 None？",
+          "options": [
+            {
+              "key": "A",
+              "text": "凭类型注解 str | None，即使没有声明任何默认值，它也会被当作可选的参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "凭 q 不在路径中，所有不在路径里的参数天然都是可选的，与有没有默认值无关",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "凭默认值 = None；类型写成 str | None 只是让编辑器提供更好的辅助",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "凭 q 使用了 Query()，所以不使用 Query 的参数一律都是必选的，没有例外",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-15",
+          "type": "single",
+          "stem": "按官方文档，怎样把一个查询参数声明为必选的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给它声明默认值 None，FastAPI 就会要求客户端必须传值，否则报错",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不给它声明默认值，缺少时会报错，loc 指向 query 里的该参数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "给它声明默认值 0，客户端不传值时 FastAPI 仍然会返回缺少该字段的错误",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "给它声明空字符串作默认值，客户端不传值时 FastAPI 会报缺少必选参数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-16",
+          "type": "multiple",
+          "stem": "按官方文档，bool 类型的查询参数 short，下列哪些取值会被转换成 True？",
+          "options": [
+            {
+              "key": "A",
+              "text": "short=off",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "short=1",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "short=no",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "short=on",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "short=Yes",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U3-17",
+          "type": "short"
+        },
+        {
+          "id": "U3-18",
+          "type": "single",
+          "stem": "按官方文档，在 GET 请求里携带请求体，FastAPI 会怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接报错拒绝，FastAPI 不允许 GET 请求携带任何请求体",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "完全支持且推荐使用，Swagger UI 会照常显示该请求体的文档",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自动把它当作 POST 请求处理，中间的代理也都能正常转发请求体",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "仍然支持，但规范没有定义其行为，不推荐，只用于非常复杂或极端的用例",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U3-19",
+          "type": "single",
+          "stem": "按官方文档，Pydantic 请求体模型里的属性在什么情况下是可选的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "带有默认值的属性可选，把默认值设为 None 即可，没有默认值的属性必选",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只有类型写成 str | None 的属性才可选，与有没有默认值无关",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有属性都是必选的，JSON 里缺少任何一个字段都会校验失败",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是否可选由客户端在 JSON 中是否发送 null 来决定，与模型声明无关",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-20",
+          "type": "fill",
+          "stem": "按官方文档，FastAPI 识别函数参数的规则是：在路径中也声明了的参数是____参数；int、float、str、bool 等单一类型的参数会被当作____参数；类型声明为 Pydantic 模型的参数会被当作____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U3-21",
+          "type": "single",
+          "stem": "使用 Annotated 声明查询参数时，参数的默认值应该怎么写？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写在 Query 里，如 Query(default=\"rick\")，函数参数本身不再写默认值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两处都写同一个值，如 Query(default=\"rick\") 加 = \"rick\"，以保证两者一致",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "写在函数参数上，如 = \"rick\"，不能再给 Query 传 default",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "写在 Annotated 的第一个类型参数里，如 Annotated[str = \"rick\", Query()]",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-22",
+          "type": "multiple",
+          "stem": "按官方文档，推荐用 Annotated 而不是把 Query 放在参数默认值里，下列哪些是 Annotated 的优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "FastAPI 在 0.95.0 之前的旧版本也能直接使用 Annotated",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "函数参数的默认值就是真正的默认值，更符合 Python 的直觉",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "在 FastAPI 之外直接调用该函数也能按预期工作，缺少必填参数时编辑器和 Python 都会报错",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "可以同时在 Query 的 default 和函数参数默认值里各写一个不同的默认值",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "可以包含多个元数据标注，因此能与 Typer 等其他工具配合使用同一个函数",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U3-23",
+          "type": "fill",
+          "stem": "按官方文档，Query 中用来限制字符串最小长度、最大长度和要匹配的正则表达式的参数名依次是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U3-24",
+          "type": "single",
+          "stem": "查询参数 q 声明了 Query(min_length=3, max_length=50, pattern=\"^fixedquery$\")，这个 pattern 要求参数值满足什么条件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只要包含 fixedquery 即可，前后可以有其他字符",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "必须精确等于 fixedquery，前后不能再有其他字符",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "必须以 fixedquery 开头，后面可以有任意其他字符",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "必须以 fixedquery 结尾，前面可以有任意其他字符",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-25",
+          "type": "single",
+          "stem": "q: Annotated[str | None, Query(min_length=3)]（没有声明默认值）表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "q 是可选的，客户端不传时值为 None",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "q 是必填的，而且类型注解只允许 str，不允许 None",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为类型里包含 None，FastAPI 会把 q 当作请求体字段而不是查询参数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "q 是必填的（没有默认值），类型注解同时允许 str 和 None",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U3-26",
+          "type": "single",
+          "stem": "想让查询参数 q 接收 URL 中重复出现的多个值（如 ?q=foo&q=bar）并得到 Python list，需要注意什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须显式使用 Query，否则 list 类型的参数会被解释为请求体",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "必须使用 Header，因为查询参数本身不能声明成 list 类型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不用写 Query，list 类型的参数总是会被自动当作查询参数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只能声明成 list[str]，不能声明成 list[int] 之类带其他元素类型的 list",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-27",
+          "type": "single",
+          "stem": "URL 里的查询参数名是 item-query，它不是有效的 Python 变量名，应该怎么办？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给 Query 传 deprecated=True，让 FastAPI 按带连字符的名字去查找参数值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给 Query 传 include_in_schema=False，让参数名在文档中保持带连字符的写法",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "给 Query 传 alias=\"item-query\"，让 FastAPI 用这个别名在 URL 中查找",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "给 Query 传 title=\"item-query\"，FastAPI 就会用它作为 URL 里的参数名",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-28",
+          "type": "single",
+          "stem": "需要做内置参数无法完成的自定义校验时，按官方文档可以怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给 Query 传 alias 参数，让 FastAPI 按别名去执行自定义的校验规则",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把校验逻辑写进 Query 的 title 参数里，由文档界面在展示时执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "给 Query 传 pattern 参数，因为正则可以表达任意类型的校验规则",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在 Annotated 中使用 AfterValidator，并传入校验函数",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U3-29",
+          "type": "single",
+          "stem": "路径参数 item_id 能不能通过给它设置默认值，变成请求路径里可以省略的可选参数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能，路径参数始终是必需的，因为它必须是路径的一部分",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "能，设了默认值后请求路径里可以不写这一段",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，FastAPI 会把它自动改成查询参数，不传时取默认值",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能，但只有用 Path(default=None) 声明时才会生效",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-30",
+          "type": "fill",
+          "stem": "按官方文档，Query 和 Path 的数值约束中，gt 表示大于，ge 表示____，lt 表示____，le 表示____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U3-31",
+          "type": "single",
+          "stem": "FastAPI 通过什么来检测函数参数的种类？参数在函数里的声明顺序重要吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通过参数在函数签名中的位置检测，声明顺序必须与 URL 中出现的顺序一致",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "通过参数名的前缀检测，例如 path_ 开头的是路径参数，query_ 开头的是查询参数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只通过类型检测，不看参数名，也不看是否使用了 Query、Path 等声明",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "通过参数名、类型和默认值声明（Query、Path 等）检测，声明顺序无关紧要",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U3-32",
+          "type": "single",
+          "stem": "函数里声明了 item 和 user 两个 Pydantic 模型参数时，FastAPI 期望什么样的请求体？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一个 JSON 对象，用参数名 item、user 作键，各自的值是对应模型的内容",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把两个模型的字段平铺在同一层的一个 JSON 对象里，不使用参数名作键，字段名重复时后者覆盖前者",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两个相互独立的请求体，分别对应 item 和 user，一个请求要带上两个请求体",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只有 item 来自请求体，user 因为不在路径中，会被当作查询参数来读取",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-33",
+          "type": "single",
+          "stem": "除了 item 和 user 两个模型，还想在请求体里再加一个 int 类型的单一值 importance，应该怎么声明？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接写成 importance: int，FastAPI 会自动把它放进请求体",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 Query 声明它，Query 会把这个值放进请求体的一个新键里，与 item、user 并列",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 Body 声明它，如 Annotated[int, Body()]，否则它会被当作查询参数",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用 Path 声明它，这样它就会成为请求体里的一个新键，与 item、user 并列",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-34",
+          "type": "single",
+          "stem": "只有一个 Pydantic 请求体参数 item，想让请求体多包一层以 item 为键的对象，应该怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给 Query 传 embed=True，Query 会负责把请求体嵌入到一个键里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "使用 Body 的 embed 参数，如 Body(embed=True)",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "给 Field 传 embed=True，并且 Field 要从 fastapi 导入",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不需要任何额外声明，单个请求体参数默认就会多包一层以参数名为键的对象，embed 参数是多余的",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-35",
+          "type": "short"
+        },
+        {
+          "id": "U3-36",
+          "type": "short"
+        },
+        {
+          "id": "U3-37",
+          "type": "single",
+          "stem": "声明 Header 参数 user_agent，FastAPI 默认会去提取哪个请求头？",
+          "options": [
+            {
+              "key": "A",
+              "text": "user_agent：参数名必须与请求头名逐个字符完全一致，下划线不会被转换，也不区分大小写",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "user-agent：默认把参数名里的下划线转换成连字符，请求头不区分大小写",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "User_Agent：必须把每个单词的首字母都写成大写，参数才能与请求头匹配上",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "什么也提取不到：必须先手动用 alias 指定为 user-agent 才行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-38",
+          "type": "single",
+          "stem": "把请求头参数直接写成 user_agent: str | None = None，没有使用 Header()，FastAPI 会怎样解释它？",
+          "options": [
+            {
+              "key": "A",
+              "text": "当作查询参数；Cookie 参数没用 Cookie 声明也同样",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "当作请求头参数，因为参数名看起来很像一个常见的请求头",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "当作 Cookie 参数，因为它不在路径中，也没有指定来源",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接报错，FastAPI 要求这类参数必须显式声明它们的来源",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U3-39",
+          "type": "fill",
+          "stem": "按官方文档，要使用 Form 接收表单字段，或使用 File 接收上传的文件，需要先安装____。",
+          "blankCount": 1,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U3-40",
+          "type": "fill",
+          "stem": "按官方文档，不含文件的表单数据通常使用媒体类型____编码，表单包含文件时则编码为____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U3-41",
+          "type": "short"
+        },
+        {
+          "id": "U3-42",
+          "type": "short"
+        },
+        {
+          "id": "U3-43",
+          "type": "fill",
+          "stem": "按官方文档，UploadFile 的三个属性依次是：____（上传的原始文件名）、____（MIME 类型）、____（实际的 SpooledTemporaryFile 文件对象）。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        }
+      ]
+    },
+    "U4": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "U4-1",
+          "type": "multiple",
+          "stem": "按官方文档，在默认的 JSON 响应处理下（未显式指定 response_class，返回普通数据），FastAPI 会用路径操作函数声明的返回类型（响应模型）完成下列哪些工作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对返回数据做校验，数据无效时返回服务器错误而不是错误的数据",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "数据无效时仍照常发送给客户端，只在响应头里附上校验警告",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在 OpenAPI 的路径操作中为响应添加 JSON Schema",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "使用 Pydantic 把返回数据序列化为 JSON",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "先用 jsonable_encoder 转换返回数据，再交给 JSONResponse 序列化",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-2",
+          "type": "single",
+          "stem": "路径操作函数声明了返回类型，但实际返回的数据缺少必填字段时，FastAPI 会怎么处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "照常返回缺少字段的数据，由客户端自行处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "返回服务器错误，而不是返回错误的数据",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "自动用默认值或 None 补全缺失字段后再返回",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "返回客户端错误，提示请求方发送的数据无效",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-3",
+          "type": "single",
+          "stem": "函数实际返回的是 dict 或数据库对象，却想让 Pydantic 模型来做文档、校验等工作，官方为什么让用 response_model 参数而不是返回类型注解？",
+          "options": [
+            {
+              "key": "A",
+              "text": "返回类型注解只能声明 int、bool 等标量类型，不能写成 Pydantic 模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "返回类型注解不会被 FastAPI 用来做校验，只有 response_model 才会",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "返回类型注解会让 FastAPI 无法为该路径操作生成 OpenAPI 文档",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "编辑器和工具会（正确地）报错，提示函数返回的 dict 等类型与注解的模型不同",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U4-4",
+          "type": "single",
+          "stem": "路径操作同时声明了返回类型注解和 response_model 时，FastAPI 用哪一个？",
+          "options": [
+            {
+              "key": "A",
+              "text": "response_model，它具有优先级",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "返回类型注解，response_model 被忽略",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者同时使用，先按返回类型校验，再按 response_model 过滤",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者不一致时 FastAPI 启动即报错",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-5",
+          "type": "short"
+        },
+        {
+          "id": "U4-6",
+          "type": "short"
+        },
+        {
+          "id": "U4-7",
+          "type": "single",
+          "stem": "路径操作的返回类型注解写成 `Response | dict` 会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "创建响应模型失败，因为它不是 Pydantic 类型，也不是单个 Response 类或子类",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "正常工作，FastAPI 会根据函数实际返回的是 Response 还是 dict 自动选择处理方式，并照常校验",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "正常工作，只是 FastAPI 不会为该路径操作生成响应模型，也不会生成对应的文档",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "编辑器和 mypy 会报错，但 FastAPI 运行时会自动跳过响应模型的生成并正常返回",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-8",
+          "type": "single",
+          "stem": "路径操作设置了 `response_model_exclude_unset=True`，响应里会包含哪些字段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只包含值不是 None 的字段，值为 None 的一律省略",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只包含实际设置过值的字段，不含靠默认值填上的",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只包含值与模型默认值不同的字段，相同的一律省略",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不包含任何带默认值的字段，即使数据里给了值",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-9",
+          "type": "single",
+          "stem": "官方为什么仍推荐用多个类，而不是用 response_model_include、response_model_exclude 来省略输出字段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它们只接受 list，传入 set 或 tuple 会报错",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "OpenAPI 里的 JSON Schema 仍是完整模型",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它们只在 GET 路径操作里才会生效，其他方法忽略",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "使用它们会让 FastAPI 跳过对响应数据的校验和文档",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-10",
+          "type": "multiple",
+          "stem": "关于用户的输入模型、输出模型和数据库模型，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "输入模型应该包含密码",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "输出模型不应包含密码",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "数据库模型可能需要包含哈希后的密码",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "数据库模型应直接存储明文密码，方便之后校验",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "输出模型应包含哈希后的密码，方便客户端自行校验",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-11",
+          "type": "single",
+          "stem": "为减少多个用户模型之间重复的字段声明，官方建议怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把所有字段放进一个模型，再在每个路径操作里用 response_model_exclude 去掉不需要的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "为每个模型各自完整声明全部字段，再靠人工保持各处同步",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "声明 UserBase 作为基类，其他模型继承它，只声明各自差异的部分",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让输出模型继承数据库模型，再用 response_model_include 去掉哈希密码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-12",
+          "type": "multiple",
+          "stem": "关于装饰器参数 `response_model` 和 `status_code`，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "都是 @app.get()、@app.post() 等装饰器方法的参数",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "都不是路径操作函数的参数，与查询参数、请求体不同",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "status_code 接收表示状态码的数字，也能接收 IntEnum（如 http.HTTPStatus）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "都和查询参数、请求体一样，写在路径操作函数的参数列表里",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "status_code 只能接收 int，不能接收枚举类型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-13",
+          "type": "fill",
+          "stem": "按官方文档，HTTP 状态码按区段分类：100–199 用于返回“____”，200–299 表示“____”，300–399 用于“____”，400–499 表示“____”，500–599 表示“____”。",
+          "blankCount": 5,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U4-14",
+          "type": "multiple",
+          "stem": "按官方文档，下列哪些状态码（段）对应的响应不能包含响应体？",
+          "options": [
+            {
+              "key": "A",
+              "text": "100–199 的信息类状态码",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "204 无内容",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "304 未修改",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "201 已创建",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "404 未找到",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-15",
+          "type": "single",
+          "stem": "关于 500–599 这类服务器端错误状态码，官方文档怎么说？",
+          "options": [
+            {
+              "key": "A",
+              "text": "几乎永远不会直接使用，出问题时会自动返回",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是最常用的一类，通常需要在代码里主动选择并返回",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用于表示客户端发送了错误的请求，是第二常用的一类",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "具有这些状态码的响应一律不能包含响应体",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-16",
+          "type": "single",
+          "stem": "`status_code=status.HTTP_201_CREATED` 与 `status_code=201` 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前者会让 FastAPI 返回 201 并自动生成“已创建”的响应体",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "前者来自 Starlette，含义与数字 201 不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "数字代码完全相同，前者只是便于使用编辑器自动补全的快捷方式",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "前者只在 POST 路径操作中生效，后者适用于所有方法",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-17",
+          "type": "short"
+        },
+        {
+          "id": "U4-18",
+          "type": "single",
+          "stem": "触发 HTTPException 时，`detail` 参数可以传什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只能是 str，传入 dict 或 list 会报错",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "任何可转为 JSON 的值，如 dict、list",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只能是 str 或 int 两种类型之一",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "必须是 Pydantic 模型，不能是普通类型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-19",
+          "type": "single",
+          "stem": "怎样让某个自定义异常（如 UnicornException）在全局被统一处理并返回自定义响应？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在路径操作装饰器里设置 response_class=该异常类，由它捕获并处理异常",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在 HTTPException 的 headers 参数里声明处理该异常的函数，再在函数里调用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把该异常类作为 response_model 传给每个会触发它的路径操作装饰器",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 @app.exception_handler(该异常类) 装饰一个处理函数，由它返回响应",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U4-20",
+          "type": "fill",
+          "stem": "按官方文档，请求中包含无效数据时，FastAPI 内部会触发 ____ 异常，并内置了它的默认处理器。",
+          "blankCount": 1,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U4-21",
+          "type": "single",
+          "stem": "FastAPI 的 HTTPException 与 Starlette 的 HTTPException 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "FastAPI 的只能 raise，Starlette 的既可以 raise 也可以 return",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "FastAPI 的不继承 Starlette 的，两者互不相关",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "FastAPI 的继承自 Starlette 的，唯一区别是 detail 能接受任意可转为 JSON 的数据",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "FastAPI 的 detail 只接受字符串，Starlette 的 detail 接受任意可转为 JSON 的数据",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-22",
+          "type": "single",
+          "stem": "为 HTTPException 注册自定义异常处理器时，官方建议注册到 Starlette 的 HTTPException，原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Starlette 内部代码、扩展、插件触发该异常时也能被处理",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "FastAPI 的 HTTPException 不是 Python 异常，无法为它注册处理器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只有 Starlette 的 HTTPException 才能携带自定义响应头",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只有注册到 Starlette 的版本，detail 才能接受 dict 和 list",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-23",
+          "type": "single",
+          "stem": "覆盖 RequestValidationError 的处理器时，官方示例为什么逐条提取错误信息，而不是把异常直接转成字符串返回？",
+          "options": [
+            {
+              "key": "A",
+              "text": "转成字符串会丢掉请求体里的无效数据，导致无法调试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "含文件名和行号，直接转字符串可能泄露系统细节",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "异常对象不能转换成字符串，强行转换会触发新的异常",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接转成字符串会让响应状态码被改成 500，客户端无法识别",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-24",
+          "type": "short"
+        },
+        {
+          "id": "U4-25",
+          "type": "single",
+          "stem": "jsonable_encoder 返回什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一个包含 JSON 格式数据的字符串（str）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个已经序列化好的 JSONResponse 对象",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一个新的 Pydantic 模型实例，其中的 datetime 已被改成 str",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Python 标准数据结构（如 dict），值和子值都与 JSON 兼容",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U4-26",
+          "type": "single",
+          "stem": "按教程的全量替换实现（用 `jsonable_encoder(item)` 转换整个输入模型，再直接替换已存储的记录），用 PUT 更新一条已存储 `tax` 为 20.2 的数据，请求体里省略了 `tax`（模型里 `tax` 默认 10.5），会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "tax 保持原来存储的 20.2 不变，因为请求体没有提供它",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "FastAPI 返回客户端错误，要求 PUT 必须提供全部字段",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "输入模型取默认值 10.5，保存的数据会带上它",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "tax 字段被从存储的数据里删除，不再保存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-27",
+          "type": "multiple",
+          "stem": "关于 PUT 与 PATCH，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "PUT 用于接收替换现有数据的数据",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "PATCH 用于部分更新，只需发送想更新的数据，其余数据保持不变",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "很多团队只用 PUT 也能实现部分更新，FastAPI 对此不做限制",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "FastAPI 强制要求部分更新必须使用 PATCH，用 PUT 会报错",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "PATCH 比 PUT 更知名、更常用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-28",
+          "type": "short"
+        },
+        {
+          "id": "U4-29",
+          "type": "single",
+          "stem": "部分更新时对输入模型调用 `model_dump(exclude_unset=True)` 的目的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只得到请求中实际设置的数据，避免用模型默认值覆盖已存储的值",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把 datetime 等值转换成与 JSON 兼容的 str",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让输入模型跳过对请求体的校验",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把已存储的数据和输入数据合并成完整的副本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-30",
+          "type": "single",
+          "stem": "如果希望接收的部分更新可以省略所有属性，输入模型应该怎样设计？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不需要特别设计，输入模型在部分更新时不会被验证",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给路径操作设置 response_model_exclude_unset=True，让输入模型的验证变宽松",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把模型的字段都设为必填，再使用 PATCH 方法",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有属性都标记为可选（带默认值或 None），因为输入模型仍会被验证",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U4-31",
+          "type": "multiple",
+          "stem": "直接返回 Response 对象时，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "FastAPI 会直接传递它",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不会用 Pydantic 模型做数据转换，即使声明了 response_model",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不会根据实际返回的 Response 对象自动推导响应文档",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "仍会按 response_model 过滤其中的字段",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "会自动对 content 调用 jsonable_encoder，转成 JSON 兼容类型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-32",
+          "type": "single",
+          "stem": "要把含有 datetime 字段的 Pydantic 模型放进 JSONResponse 直接返回，应该先做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "什么都不用做，JSONResponse 会自动把模型转换成 JSON",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 jsonable_encoder 转换成 JSON 兼容的数据，再传给 JSONResponse",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "在装饰器里声明 response_model，FastAPI 会在 JSONResponse 内部完成转换",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把模型转成 dict 即可，datetime 不用转换，JSONResponse 能直接序列化",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-33",
+          "type": "short"
+        },
+        {
+          "id": "U4-34",
+          "type": "single",
+          "stem": "路径操作装饰器的 response_class 参数起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "声明用的 Response 类，并定媒体类型",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "声明响应模型，用来过滤和校验函数返回的数据",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "声明请求体使用的媒体类型，并在收到请求时校验",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "声明函数抛出异常时，用来构造错误响应的类",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-35",
+          "type": "multiple",
+          "stem": "下列关于几种响应类用途的描述，哪些符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "StreamingResponse：接收异步生成器或普通生成器/迭代器，流式传输响应主体",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "FileResponse：异步地把文件作为响应传输",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "RedirectResponse：返回 HTTP 重定向",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "PlainTextResponse：接收数据并返回 application/json 编码的响应",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "HTMLResponse：用来异步传输磁盘上的大文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U4-36",
+          "type": "single",
+          "stem": "RedirectResponse 默认使用哪个状态码？",
+          "options": [
+            {
+              "key": "A",
+              "text": "301（永久重定向）",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "307（临时重定向）",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "302（临时重定向）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "308（永久重定向）",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "U5": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "U5-1",
+          "type": "short"
+        },
+        {
+          "id": "U5-2",
+          "type": "multiple",
+          "stem": "按官方文档，下列哪些属于依赖注入特别有用的场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "共享业务逻辑（同一段代码逻辑反复复用）",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "共享数据库连接",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "实施安全、认证、角色权限等要求",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让依赖项的返回值在不同请求之间长期缓存，避免重复执行",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "用依赖项函数直接替代路径操作，不再需要路径操作装饰器",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-3",
+          "type": "single",
+          "stem": "按官方文档，最基本的依赖项（“dependable”）是什么形式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须先在 FastAPI 应用中注册的专用类",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个函数，可以接收与路径操作函数相同的所有参数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一个必须带有路径操作装饰器（如 @app.get）的函数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一个只能返回 dict 的 async def 函数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-4",
+          "type": "single",
+          "stem": "按官方文档，在参数中给 `Depends` 传入依赖项时，正确的做法是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "传入函数（可调用对象）本身，不要在末尾加括号",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "先调用依赖项函数，再把它的返回值传给 Depends",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把依赖项和它的全部参数打包成列表传给 Depends",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "同时传入多个可调用对象，让 FastAPI 依次调用它们",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-5",
+          "type": "short"
+        },
+        {
+          "id": "U5-6",
+          "type": "single",
+          "stem": "官方文档里的 `CommonsDep = Annotated[dict, Depends(common_parameters)]` 这种写法有什么作用和性质？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这是 FastAPI 特有的注册语法，不用这种写法依赖项就不会生效",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它让依赖项的返回值在整个应用运行期间只计算一次，之后所有请求共用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把 Annotated 的值存到变量里当类型别名，多处复用且类型信息仍被保留",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它会把依赖项变成全局依赖，自动应用到应用中的所有路径操作",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-7",
+          "type": "multiple",
+          "stem": "关于依赖项使用 `def` 还是 `async def`，按官方文档，下列哪些说法成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以在普通 def 路径操作函数中声明 async def 依赖项",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "可以在 async def 路径操作函数中声明普通 def 依赖项",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "依赖项必须与使用它的路径操作函数同为 async def",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "依赖项也由 FastAPI 调用，定义函数时与路径操作函数相同的规则同样适用",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "混用 def 与 async def 时 FastAPI 无法处理，必须统一写法",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-8",
+          "type": "single",
+          "stem": "依赖项及其子依赖项中声明的请求参数、验证和需求，在 OpenAPI 方面会怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只有直接写在路径操作函数参数里的那些才会出现在 OpenAPI 模式中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "必须为每个依赖项手动编写 OpenAPI 描述，交互式文档才会显示它们",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "依赖项里的参数只在运行时参与校验，不会出现在交互式文档里",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "都会集成到同一个 OpenAPI 模式，交互式文档里包含这些依赖项的信息",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U5-9",
+          "type": "short"
+        },
+        {
+          "id": "U5-10",
+          "type": "single",
+          "stem": "按官方文档，一个对象能作为 FastAPI 依赖项的关键因素是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它必须是用 def 或 async def 定义的函数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它必须是“可调用对象”，即 Python 能像函数一样调用它",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它必须是一个 Python 类，并且定义了 __init__ 方法",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它必须是实现了 __call__ 方法的类实例",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-11",
+          "type": "short"
+        },
+        {
+          "id": "U5-12",
+          "type": "single",
+          "stem": "官方文档把依赖项从返回 `dict` 的函数改为类 `CommonQueryParams`，主要是为了解决什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "dict 版本的参数不会被转换、验证，也不会出现在 OpenAPI 中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只有类才能声明默认值为 0 的 skip 查询参数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "编辑器不知道 dict 的键和值类型，改用类后能得到有类型的实例",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "函数依赖项每个请求都调用，类依赖项只在应用启动时调用一次",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-13",
+          "type": "single",
+          "stem": "在 `commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]` 中，真正告诉 FastAPI 依赖项是什么的是哪一部分？",
+          "options": [
+            {
+              "key": "A",
+              "text": "第一个 CommonQueryParams，也就是前面的类型注解",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "外层的 Annotated，由它来决定依赖项是谁",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "路径操作函数里的参数名 commons，按名字匹配依赖项",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Depends(...) 里传入的那个 CommonQueryParams",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U5-14",
+          "type": "single",
+          "stem": "依赖项明确是一个类时，`commons: Annotated[CommonQueryParams, Depends()]` 中不带参数的 `Depends()` 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "依赖项就是类型注解里的那个类，等同于 Depends(CommonQueryParams)",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "表示该参数没有依赖项，FastAPI 按普通的请求参数来处理它",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "依赖项是上一个例子里返回 dict 的 common_parameters 函数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "依赖项由应用的全局依赖项决定，这里不用再单独声明了",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-15",
+          "type": "single",
+          "stem": "路径操作函数只声明了依赖项 `query_or_cookie_extractor`，而它又声明依赖 `query_extractor`。FastAPI 会怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "路径操作函数必须同时声明 query_extractor，否则会报错",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先调用 query_or_cookie_extractor，再把它的结果传给 query_extractor",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先处理 query_extractor，再把它的返回值传给 query_or_cookie_extractor 的参数 q",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只处理路径操作函数直接声明的依赖项，子依赖项会被忽略",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-16",
+          "type": "single",
+          "stem": "同一个请求里，同一个依赖项被多个依赖项重复声明（例如共用同一个子依赖项），默认情况下 FastAPI 会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每声明一次就调用一次，各自得到独立的返回值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只调用一次，把返回值“缓存”起来传给同一请求中所有需要它的依赖项",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只在应用启动时调用一次，之后所有请求共用同一个返回值",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "调用次数取决于路径操作函数是 def 还是 async def",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-17",
+          "type": "fill",
+          "stem": "按官方文档，若要让同一请求的每处声明都实际调用依赖项而不使用缓存值，需把 `Depends` 的参数 ____ 设置为 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U5-18",
+          "type": "single",
+          "stem": "按官方文档，什么情况下适合在路径操作装饰器里用 `dependencies` 参数声明依赖项，而不是在路径操作函数的参数里用 `Depends`？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要在路径操作函数里使用依赖项返回的值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "希望依赖项里能够抛出 HTTPException 这类异常",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "依赖项需要再声明子依赖项或请求头等需求项",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不需要用到依赖项的返回值，或依赖项本来就不返回值，但仍要执行它",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U5-19",
+          "type": "multiple",
+          "stem": "关于路径操作装饰器里的 `dependencies` 参数，按官方文档，下列哪些说法成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的值是由 Depends() 组成的 list",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "即使依赖项会返回值，这些值也不会传给路径操作函数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "这类依赖项可以声明请求头等需求项或子依赖项，也可以 raise 异常",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "依赖项返回的值会作为额外参数自动传给路径操作函数",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "只能放入专门为它编写的依赖项，不能复用其他位置用过的普通依赖项",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-20",
+          "type": "single",
+          "stem": "把不需要返回值的依赖项放进路径操作装饰器的 `dependencies` 参数，官方文档提到的一个好处是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "避免编辑器报“未使用参数”，也避免新人误以为有无用参数",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "该依赖项的执行顺序会被提前到路径操作函数的其他依赖项之前",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "依赖项返回值的缓存时间更长，可以在不同请求之间复用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "依赖项不再受 def 与 async def 写法规则的限制",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-21",
+          "type": "fill",
+          "stem": "按官方文档，要为整个应用添加全局依赖项，需在创建应用时写成 `FastAPI(____=[Depends(...)])`，这样该依赖项会应用于所有____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U5-22",
+          "type": "short"
+        },
+        {
+          "id": "U5-23",
+          "type": "single",
+          "stem": "带 `yield` 的依赖项里，`yield` 之前和之后的代码分别在什么时候执行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "yield 前后两部分代码都在路径操作函数运行之前执行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "yield 之前的代码在响应发送之后执行，yield 之后的代码在响应发送之前执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "yield 及其之前的代码在创建响应之前执行，yield 之后的代码在响应发送之后执行",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "yield 之后的代码只有在路径操作函数抛出异常时才会执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-24",
+          "type": "multiple",
+          "stem": "关于带 `yield` 的依赖项，按官方文档，下列哪些说法成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "使用 yield 而不是 return，并把完成后要执行的额外步骤写在 yield 之后",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个依赖里应只使用一次 yield",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "yield 产生的值会注入到路径操作和其他依赖项中",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只有 async def 函数才能使用 yield，普通函数不行",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "yield 产生的值只能注入路径操作函数，不能注入其他依赖项",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-25",
+          "type": "multiple",
+          "stem": "在带 `yield` 的依赖项里用 `try` 包住 `yield`，按官方文档，下列哪些说法成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "使用该依赖时抛出的异常（无论发生在路径操作还是另一个依赖中）都会在依赖里收到",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "可以用 except SomeException 捕获其中某个特定异常",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "可以用 finally 确保退出步骤一定会被执行，无论是否发生异常",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "finally 里的退出代码只在没有异常时才会执行",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "路径操作函数里抛出的异常不会传到依赖项里，只能在路径操作函数里处理",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-26",
+          "type": "single",
+          "stem": "`dependency_c` 依赖 `dependency_b`，`dependency_b` 又依赖 `dependency_a`，三者都使用 `yield`。关于它们的退出代码，官方文档怎么说？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按正确顺序运行：c 退出时 b 的值仍可用，b 退出时 a 的值仍可用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "dependency_a 最先创建，所以它的退出代码也最先执行，之后依次是 b、c",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "三个依赖的退出代码执行顺序没有保证，需要开发者自己安排先后",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只有直接用于路径操作的 dependency_c 的退出代码会被执行，其余不会",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-27",
+          "type": "short"
+        },
+        {
+          "id": "U5-28",
+          "type": "single",
+          "stem": "在路径操作函数里抛出异常（包括 `HTTPException`）时，它与带 `yield` 的依赖项是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "异常已被异常处理器处理，不会再传给依赖项",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只有 HTTPException 之外的异常才会传给依赖项",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只有依赖项里显式声明了要接收异常，才会收到该异常",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "都会传给带 yield 的依赖项，通常应在依赖中重新抛出同一或新的异常",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U5-29",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 在内部是用什么机制实现带 `yield` 的依赖项的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "依赖缓存（use_cache），用它在请求结束时清理缓存的返回值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "异常处理器，yield 之后的代码相当于在其中运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Python 的上下文管理器（contextlib 的两个装饰器）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "后台任务，yield 之后的代码被当作后台任务来调度",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U5-30",
+          "type": "short"
+        },
+        {
+          "id": "U5-31",
+          "type": "multiple",
+          "stem": "关于带 `__call__` 的参数化依赖项（如 `FixedContentQueryChecker`），按官方文档，下列哪些说法成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "要让类的实例成为可调用对象，需要声明 __call__ 方法",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "FastAPI 会用 __call__ 来检查附加参数和子依赖项",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "FastAPI 不会接触也不关心 __init__，它由我们自己的代码用来参数化实例",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "应该写 Depends(FixedContentQueryChecker)，传入类本身",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "FastAPI 会调用 __init__，并把查询参数 q 传给 fixed_content",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "U6": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "U6-1",
+          "type": "single",
+          "stem": "按官方文档，OAuth2 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一个把 JSON 对象编码成没有空格的密集长字符串的标准",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个定义了几种处理身份认证和授权的方法的规范，包括使用第三方登录",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一个直接规定了如何对通信进行加密的规范，如今已经不太流行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一个用于构建 API 的开放规范，使交互式文档和代码生成成为可能",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-2",
+          "type": "single",
+          "stem": "按官方文档，OAuth2 对通信加密是怎么处理的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "规范本身包含了如何加密通信的详细规定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "要求先用 JWT 把请求内容加密后再进行传输",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "要求所有请求都按 OAuth 1 的方式进行签名",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "规范没有指定如何加密通信，期望应用使用 HTTPS",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U6-3",
+          "type": "short"
+        },
+        {
+          "id": "U6-4",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 之所以能自动提供交互式文档、支持代码生成，并能在其中集成各种安全方案，是因为它基于哪个规范？",
+          "options": [
+            {
+              "key": "A",
+              "text": "OpenAPI",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "OAuth 1",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "OpenID（非“OpenID Connect”）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "JWT",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-5",
+          "type": "fill",
+          "stem": "按官方文档，OpenAPI 定义的四种安全方案是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U6-6",
+          "type": "single",
+          "stem": "按官方文档，在 OAuth2 的各种“流程”中，哪一种可以直接用于在同一个应用程序中处理身份认证？",
+          "options": [
+            {
+              "key": "A",
+              "text": "implicit",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "clientCredentials",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "password",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "authorizationCode",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-7",
+          "type": "short"
+        },
+        {
+          "id": "U6-8",
+          "type": "single",
+          "stem": "按官方文档，令牌为什么通常会设置过期时间？",
+          "options": [
+            {
+              "key": "A",
+              "text": "即使令牌被窃取，风险也更小，它不是永久有效的钥匙",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "令牌过期后，其中的内容就再也无法被他人读取",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "令牌有过期时间，服务端就不必再校验它是否有效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "令牌过期后，用户无需重新登录就能自动获得新令牌",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-9",
+          "type": "single",
+          "stem": "按官方文档，OAuth2 的设计目标是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "规定所有应用都必须使用 JWT 令牌来传递用户信息",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "要求前端和后端必须部署在同一个域名之下",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让后端或 API 与负责用户认证的服务器解耦",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "要求 API 自己同时处理接口和用户认证两件事",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-10",
+          "type": "single",
+          "stem": "按官方文档，如果令牌内容是 foobar，前端访问受保护端点时发送的 Authorization 请求头的值应是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "foobar",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Bearer foobar",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Basic foobar",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "foobar Bearer",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-11",
+          "type": "single",
+          "stem": "创建 OAuth2PasswordBearer 实例时需要传入的 tokenUrl 参数表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "受保护的路径操作所在的 URL",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "前端用来向服务端校验令牌是否仍然有效的 URL",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "令牌过期后前端应当跳转去重新登录的页面 URL",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "客户端发送 username 和 password 来获取令牌的 URL",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U6-12",
+          "type": "multiple",
+          "stem": "关于 OAuth2PasswordBearer(tokenUrl=\"token\") 中的 tokenUrl，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它不会创建端点，只声明客户端该用哪个 URL 获取令牌，实际的路径操作要自己创建",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它会自动创建一个接收用户名和密码、返回令牌的 /token 路径操作",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "\"token\" 是相对 URL，等价于 ./token，会相对 API 所在的地址解析",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它必须写成绝对 URL，否则在代理等高级用例中应用无法正常工作",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "这些信息会用于 OpenAPI，进而用于交互式 API 文档系统",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U6-13",
+          "type": "short"
+        },
+        {
+          "id": "U6-14",
+          "type": "short"
+        },
+        {
+          "id": "U6-15",
+          "type": "multiple",
+          "stem": "关于用依赖注入系统处理安全并获取当前用户，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以使用任何模型或数据来满足安全需求，例如字符串、字典或数据库模型实例",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "必须使用 Pydantic 的 User 模型，并且模型里必须有 username 字段",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "即使登录应用的不是用户，而是只有访问令牌的机器人或其它系统，工作方式也一样",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每个路径操作都需要各自重复写一遍令牌解析代码",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "安全和依赖注入的代码只需写一次，即使有数千个端点也可以共用同一个安全系统",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U6-16",
+          "type": "multiple",
+          "stem": "关于 OAuth2 密码流中 username 和 password 的发送，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须以表单数据形式发送",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "可以用 JSON 对象发送，只要字段名是 username 和 password",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两个字段必须命名为 username 和 password，不能用 user-name 或 email 等其它名称",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "字段名可以自定义，只要在 OpenAPI 文档中声明即可",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "只有登录路径操作需要使用规范规定的字段名，前端显示的名称和数据库模型的字段名仍可按需命名",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U6-17",
+          "type": "multiple",
+          "stem": "关于 OAuth2 的 scope，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "表单字段名是 scope（单数），但内容是以空格分隔的、由多个作用域组成的长字符串",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "作用域必须写成 URL 的形式，否则 OAuth2 无法识别",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "作用域只是不带空格的字符串，常用于声明指定的安全权限，例如 users:read、users:write",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "是否使用冒号等符号，对 OAuth2 来说只是特定实现的细节，它们都只是字符串",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "OAuth2PasswordRequestForm 的实例通过 scope 属性提供由多个作用域组成的列表",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-18",
+          "type": "multiple",
+          "stem": "关于 OAuth2PasswordRequestForm，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它只是普通的类依赖项，并不是 FastAPI 会识别为安全方案的特殊类",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它和 OAuth2PasswordBearer 一样会被识别为安全方案并写入 OpenAPI",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它声明了 username、password 两个表单字段，以及可选的 scope、grant_type 等字段",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "也可以自己编写这样的类或直接声明 Form 参数，FastAPI 只是因为这种用例常见才直接提供支持",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "它会强制 grant_type 字段必须是固定值 password",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-19",
+          "type": "short"
+        },
+        {
+          "id": "U6-20",
+          "type": "single",
+          "stem": "按官方文档，密码哈希有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以用来校验密码，但无法从结果转换回原密码",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只要知道哈希算法，就可以把结果解密还原成原密码",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要用 SECRET_KEY 加密，持有密钥的人可以还原出原密码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只是对密码做了编码，任何人都可以反向转换回原密码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-21",
+          "type": "fill",
+          "stem": "按官方文档，OAuth2 令牌端点返回的 JSON 对象应包含的两个键是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U6-22",
+          "type": "single",
+          "stem": "get_current_active_user 依赖项与 get_current_user 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它取代 get_current_user，因此不再需要令牌",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它是 get_current_user 的子依赖项，用来解析令牌",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它以 get_current_user 为基础，再在用户未激活时返回 HTTP 错误",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它只用于登录端点，在 /token 中校验用户名和密码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-23",
+          "type": "single",
+          "stem": "按官方文档，任何 401 状态码的响应按规范应返回哪个响应头？使用 Bearer 令牌时它的值应是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Authorization: Bearer",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "WWW-Authenticate: Bearer",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "WWW-Authenticate: Basic",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Authorization: Basic",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-24",
+          "type": "single",
+          "stem": "JWT 指的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一种专门用于对用户密码做哈希并安全存储的算法",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一种规定如何加密通信的规范，属于 OAuth 1 的一部分",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "OpenAPI 为 API 安全定义的一种认证方案的名称",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "JSON Web Tokens，把 JSON 对象编码成密集长字符串的标准",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U6-25",
+          "type": "single",
+          "stem": "关于本教程中使用 HS256 签名的 JWT 令牌，下列说法正确的是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它不是加密的，任何人都能从内容中恢复信息，但它是签名的，可以验证令牌确实由自己签发",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它是加密的，只有持有密钥的人才能读出内容，签名只是用来压缩字符串",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它既不加密也不签名，只是把 JSON 对象编码成一长串字符串而已",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它是加密的，所以收到令牌后无需再验证它是不是自己签发的",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-26",
+          "type": "short"
+        },
+        {
+          "id": "U6-27",
+          "type": "single",
+          "stem": "按官方文档，pwdlib 推荐使用哪种密码哈希算法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "HS256",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "bcrypt",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Argon2",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "RSA",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-28",
+          "type": "single",
+          "stem": "按官方文档，authenticate_user 在用户名不存在时，仍会对一个虚拟哈希运行 verify_password，这样做是为了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让不存在的用户名也能顺利通过校验并获得一个访问令牌",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让响应时间不随用户名是否存在而变化，防止枚举用户名的时序攻击",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "减少密码哈希的计算次数，让用户名不存在时登录响应变得更快",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把虚拟哈希写入数据库，作为该用户名新注册账号的初始密码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U6-29",
+          "type": "multiple",
+          "stem": "关于示例中处理 JWT 令牌时用到的变量和设置，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "SECRET_KEY 是用于对 JWT 令牌签名的随机密钥，应自行用命令生成，不要使用示例里的那个",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "SECRET_KEY 只要是任意固定的简单字符串即可，不必是随机的",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "ALGORITHM 是用于签名 JWT 令牌的算法，示例设为 \"HS256\"",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "ALGORITHM 指的是对用户密码做哈希的算法，示例设为 \"HS256\"",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "签发令牌时会把过期时间以 exp 键放进要编码的内容里，过期时间由一个变量设置",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U6-30",
+          "type": "multiple",
+          "stem": "关于 JWT 规范中的 sub 键，下列哪些说法符合官方文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它表示令牌的“主题”（subject），使用是可选的，通常把用户的标识放在这里",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它表示令牌的过期时间，到期后令牌自动失效",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它在整个应用中应是唯一标识符，并且应该是字符串",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它必须是整数类型的用户自增 ID，不能是字符串",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "不同实体可能出现相同 ID 时，可给值加前缀（如 username:johndoe）避免冲突",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U6-31",
+          "type": "short"
+        },
+        {
+          "id": "U6-32",
+          "type": "single",
+          "stem": "按官方文档，在使用 JWT 令牌的方案下，密码会在什么时候发送？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个请求都要同时带上用户的密码和访问令牌",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每次服务端校验令牌时都要让用户重新发送密码",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只有在令牌过期之后才需要发送一次密码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只在第一个请求中用于认证用户并获取令牌，之后只发送令牌",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U6-33",
+          "type": "single",
+          "stem": "按官方文档，OAuth2 的 scopes（作用域）可以用来做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "为 JWT 令牌设置统一的过期时间，到期后自动失效",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "指定对 JWT 令牌进行签名所使用的算法和密钥",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "为 JWT 令牌添加一组特定权限，让用户或第三方在限制条件下调用 API",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把 username 和 password 从表单字段中隐藏起来",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "U7": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "U7-1",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 中的“中间件”是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只在应用启动时运行一次的初始化函数，用来加载整个应用共享的资源",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个在每个请求交给路径操作之前、以及每个响应返回之前都会运行的函数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一个在应用关闭时执行、用来释放数据库连接池等资源的函数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一个在响应发出之后才运行的函数，用来执行客户端不必等待的操作",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-2",
+          "type": "fill",
+          "stem": "按官方文档，用 @app.middleware(\"http\") 装饰的中间件函数会接收两个参数：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U7-3",
+          "type": "short"
+        },
+        {
+          "id": "U7-4",
+          "type": "single",
+          "stem": "按官方文档，如果依赖使用了 yield，依赖中 yield 之后的退出代码相对中间件在什么时候运行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在中间件之前运行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "与中间件同时运行，两者没有先后顺序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在中间件之后运行",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "在应用关闭（shutdown）时才运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-5",
+          "type": "single",
+          "stem": "按官方文档，后台任务相对于中间件在什么时候运行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在请求到达路径操作之前，先于所有中间件运行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "与带 yield 的依赖的退出代码一起，在中间件之前运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在应用关闭（shutdown）时才运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在所有中间件之后运行",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U7-6",
+          "type": "single",
+          "stem": "中间件给响应加了一个自定义响应头，并希望浏览器中的客户端能够读取它，按官方文档应该怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把它加到 CORS 配置的 expose_headers 参数中",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把它加到 CORS 配置的 allow_headers 参数中",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把它加到 CORS 配置的 allow_origins 参数中",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "给它加上 X- 前缀即可，浏览器会自动让客户端读取到它",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-7",
+          "type": "short"
+        },
+        {
+          "id": "U7-8",
+          "type": "fill",
+          "stem": "按官方文档，CORS 里的“源”是由哪三部分组合而成的：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U7-9",
+          "type": "single",
+          "stem": "前端运行在 http://localhost:8080，它的 JavaScript 去请求运行在 http://localhost（未指定端口，浏览器采用默认的 80 端口）的后端。按官方文档，它们为什么属于不同的“源”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为两者使用的协议不同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为两者使用的域不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为两者使用的端口不同",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "因为后端还没有配置允许的源列表",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-10",
+          "type": "short"
+        },
+        {
+          "id": "U7-11",
+          "type": "single",
+          "stem": "按官方文档，把允许的源声明为通配符 \"*\" 意味着什么？下列哪项说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通配符表示全部源都允许，连 Cookies 和 Bearer 令牌的 Authorization 请求头这类涉及凭据的通信也一并允许",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "通配符表示只允许与后端同源的请求，其他任何源的请求都不被允许",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "通配符必须同时设置 allow_credentials 为 True 才会生效，否则所有跨域请求都不被允许",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "通配符表示全部源都允许，但这不包括涉及凭据的通信，例如 Cookies 以及使用 Bearer 令牌的 Authorization 请求头",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U7-12",
+          "type": "multiple",
+          "stem": "CORSMiddleware 中，下列哪些参数分别用来配置允许跨域请求的源、HTTP 方法和请求头？",
+          "options": [
+            {
+              "key": "A",
+              "text": "allow_origins",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "expose_headers",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "allow_methods",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "max_age",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "allow_headers",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U7-13",
+          "type": "multiple",
+          "stem": "关于 CORSMiddleware 的参数，下列说法哪些成立？",
+          "options": [
+            {
+              "key": "A",
+              "text": "allow_origin_regex 接受一个正则表达式字符串，匹配的源允许跨域请求",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "allow_methods 默认允许所有 HTTP 方法",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "allow_credentials 默认是 False",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "max_age 的单位是毫秒",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "expose_headers 指示哪些响应头可以被浏览器访问",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U7-14",
+          "type": "fill",
+          "stem": "CORSMiddleware 的参数中，列出允许跨域请求的源的是 ____，用正则表达式匹配允许的源的是 ____，设置浏览器缓存 CORS 响应最长时间的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U7-15",
+          "type": "single",
+          "stem": "按官方文档，下列哪一项是 CORS 预检请求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "带有 Origin 和 Access-Control-Request-Method 请求头的 OPTIONS 请求",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "任何带有 Origin 请求头的请求，不论使用什么 HTTP 方法",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "带有 Access-Control-Request-Method 请求头的 POST 请求",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有 Origin 请求头的 OPTIONS 请求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-16",
+          "type": "short"
+        },
+        {
+          "id": "U7-17",
+          "type": "single",
+          "stem": "按官方文档，后台任务适合用来做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在应用开始接收请求之前，加载整个应用共享的机器学习模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "执行请求之后的操作，客户端不必等操作完成就能收到响应，例如发送邮件通知",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "执行响应返回前必须完成的计算，并把计算结果放进响应里返回给客户端",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "拦截每一个请求，并给每个响应统一加上自定义响应头",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-18",
+          "type": "single",
+          "stem": "按官方文档，在路径操作函数里怎样使用 BackgroundTasks 添加后台任务？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给函数加上 @app.middleware(\"http\") 装饰器，在 call_next 之后调用任务函数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在 FastAPI(...) 构造时通过 lifespan 参数传入任务函数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用类型声明 BackgroundTasks 定义一个参数，再调用它的 .add_task() 方法",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "在 @app.on_event(\"startup\") 处理器里调用 .add_task() 注册任务",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-19",
+          "type": "fill",
+          "stem": "按官方文档，.add_task() 依次接收：在后台运行的____、按顺序传给它的____、传给它的____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U7-20",
+          "type": "single",
+          "stem": "后台任务的任务函数可以怎样定义？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只能是 async def 函数，普通 def 函数不被支持",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只能是普通 def 函数，因为它在响应发出之后才运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "必须是一个返回 Starlette Response 对象的函数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "async def 和普通 def 都可以，FastAPI 知道如何正确处理",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U7-21",
+          "type": "single",
+          "stem": "在路径操作函数和它所依赖的某个依赖项中都声明了 BackgroundTasks 参数，并各自添加了任务，按官方文档会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "FastAPI 会复用同一个对象，所有后台任务被合并在一起并在响应之后运行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只有路径操作函数里添加的任务会运行，依赖里添加的会被忽略",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "依赖中不允许声明 BackgroundTasks 参数，这样写会直接报错",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个声明各得到一个独立对象，依赖里的任务先于路径操作函数运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-22",
+          "type": "short"
+        },
+        {
+          "id": "U7-23",
+          "type": "multiple",
+          "stem": "按官方文档，下列哪些适合放在 lifespan 中处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在应用开始接收请求之前，加载一个在请求之间共享的机器学习模型",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "为每个请求单独加载一份模型，请求结束后立刻卸载",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "创建在整个应用中共享的数据库连接池",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "应用关闭时，释放启动时占用的内存或 GPU 等资源",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "在每个响应返回之前修改它的响应头",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-24",
+          "type": "single",
+          "stem": "按官方文档，为什么不把加载机器学习模型的代码直接写在模块/文件顶部？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为那样模型无法在请求之间共享，每个请求都要各自重新加载一份",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为那样即使只是运行简单的自动化测试也会加载模型，测试会变慢",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "因为模块顶部的代码要等到应用关闭时才会被执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "因为每个用户都需要各自独立的一份模型，不能放在模块级别",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-25",
+          "type": "single",
+          "stem": "在 lifespan 函数中，yield 之前和 yield 之后的代码分别在什么时候执行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "yield 之前的代码在应用关闭时执行，yield 之后的代码在应用启动时执行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两部分都在应用启动时执行，yield 之后的部分先于第一个请求运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "yield 之前的代码在应用开始接收请求之前（启动）执行，yield 之后的代码在应用处理完请求后、关闭之前执行",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "yield 之前的代码在每个请求之前执行，yield 之后的代码在每个请求之后执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-26",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 应用的 lifespan 参数接受什么样的对象？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一个带 yield 的依赖函数，退出代码在请求处理完之后运行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一对分别用 @app.on_event(\"startup\") 和 @app.on_event(\"shutdown\") 装饰的函数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一个在每个请求之前被调用的中间件类",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一个异步上下文管理器，例如带 yield 的异步函数加上 @asynccontextmanager 得到的对象",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U7-27",
+          "type": "single",
+          "stem": "按官方文档，如果同时给应用提供了 lifespan 参数，又用 @app.on_event(\"startup\") 注册了事件处理器，会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "startup 和 shutdown 事件处理器不再生效，要么用 lifespan，要么配置所有事件，两者不能共用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都会生效，startup 事件处理器先于 lifespan 中 yield 之前的代码运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只有 shutdown 事件处理器会失效，startup 事件处理器仍然生效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "startup 事件处理器会取代 lifespan，lifespan 里的代码不再执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-28",
+          "type": "short"
+        },
+        {
+          "id": "U7-29",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 为什么可以使用任意 ASGI 中间件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为 FastAPI 自己定义了一套专用的中间件规范，第三方中间件都按它编写",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为所有第三方中间件都必须继承 fastapi.middleware 里提供的基类",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为 FastAPI 基于 Starlette 并执行 ASGI 规范，中间件只要遵循 ASGI 规范即可",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "因为只要用 @app.middleware(\"http\") 装饰，任何函数都能当作中间件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-30",
+          "type": "fill",
+          "stem": "按官方文档，强制所有请求必须是 https 或 wss 的中间件是____，校验 Host 请求头以防 HTTP 主机头攻击的中间件是____，处理 Accept-Encoding 中包含 gzip 的请求并返回 GZip 响应的中间件是____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U7-31",
+          "type": "single",
+          "stem": "TrustedHostMiddleware 收到的请求没有通过 Host 请求头验证时，会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "发送 400 响应",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把请求重定向到 https 或 wss 这样的安全方案",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把请求重定向到允许主机的 www 版本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "放行请求，因为这个中间件只负责重定向、并不拒绝请求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-32",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 中 WebSocket 端点的基本写法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 @app.get 声明路径，函数参数是 Request，在函数里 return 要发送给客户端的文本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 @app.websocket 声明路径，函数参数是 WebSocket，先 await websocket.accept()，再用 await 收发消息",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "用 @app.middleware(\"http\") 装饰函数，函数参数是 request 和 call_next，通过 call_next 收发消息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "声明 BackgroundTasks 类型的参数，调用 .add_task() 把收发消息的函数作为后台任务添加进去",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-33",
+          "type": "single",
+          "stem": "WebSocket 端点所用的依赖项在校验失败时，按官方文档应该抛出什么异常？",
+          "options": [
+            {
+              "key": "A",
+              "text": "HTTPException",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "WebSocketDisconnect",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "WebSocketException",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "HTTPException，并把 status.WS_1008_POLICY_VIOLATION 作为它的 status_code",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U7-34",
+          "type": "single",
+          "stem": "客户端关闭 WebSocket 连接后，服务端正在 await 的 websocket.receive_text() 会发生什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "引发 WebSocketException，需要用 status 里的关闭代码来处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "正常返回，并由 ConnectionManager 自动把连接从 active_connections 中移除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "引发 HTTPException，由 FastAPI 自动返回错误响应",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "引发 WebSocketDisconnect 异常，可以捕获并处理",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U7-35",
+          "type": "short"
+        }
+      ]
+    },
+    "U8": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "U8-1",
+          "type": "short"
+        },
+        {
+          "id": "U8-2",
+          "type": "fill",
+          "stem": "按官方文档，创建 `APIRouter` 时可以统一设置、并应用到该路由器所有路径操作的四个参数是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U8-3",
+          "type": "single",
+          "stem": "在 `APIRouter(dependencies=[Depends(get_token_header)])` 里声明的路由器级依赖项，对路由器中的路径操作有什么影响？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只有路径操作函数自己声明了同名参数时，这个依赖项才会被执行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "依赖项的返回值会作为参数自动传给路由器里每个路径操作函数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "针对每个请求，在路径操作之前执行，但不会把值传给路径操作函数",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只在把路由器包含进主应用的那一刻执行一次，之后的请求不再执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-4",
+          "type": "single",
+          "stem": "一个路径操作同时受到三种依赖项影响：所在路由器的 `dependencies`、路径操作装饰器里的 `dependencies`、函数参数里声明的普通依赖项。按官方文档，它们的执行顺序是？",
+          "options": [
+            {
+              "key": "A",
+              "text": "路由器的依赖项 → 装饰器中的依赖项 → 普通的参数依赖项",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "装饰器中的依赖项 → 路由器的依赖项 → 普通的参数依赖项",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "普通的参数依赖项 → 装饰器中的依赖项 → 路由器的依赖项",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "路由器的依赖项 → 普通的参数依赖项 → 装饰器中的依赖项",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-5",
+          "type": "single",
+          "stem": "`FastAPI(dependencies=[Depends(get_query_token)])` 声明的全局依赖项，与各个 `APIRouter` 自己的依赖项是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "全局依赖项会被路由器自己的依赖项覆盖，同一个路径操作只执行路由器上的那个",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "全局依赖项会和每个 `APIRouter` 的依赖项组合在一起，一并作用于路由器里的路径操作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "全局依赖项只作用于直接写在 `app` 上的路径操作，对包含进来的路由器无效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "全局依赖项必须同时写在每个 `APIRouter` 上才会生效，只写在 `app` 上不起作用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-6",
+          "type": "short"
+        },
+        {
+          "id": "U8-7",
+          "type": "fill",
+          "stem": "按官方文档，SQLModel 是基于____和____构建的，由 FastAPI 的同一作者制作。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U8-8",
+          "type": "single",
+          "stem": "SQLModel 里，类声明中的 `table=True` 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这个类只是请求和响应用的数据模型，不对应数据库里的表",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这个类的所有字段都必须由客户端在请求体中提供",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这个类会被 FastAPI 自动当作路径操作的 `response_model` 使用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这是一个表模型，表示 SQL 数据库中的一个表，而不仅仅是数据模型",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U8-9",
+          "type": "single",
+          "stem": "SQLModel 示例里的 `engine` 和 `Session` 各自负责什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`engine` 保持与数据库的连接，全代码共用一个；`Session` 在内存中存对象、跟踪改动，经 engine 与数据库通信",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "`engine` 在内存中保存对象并跟踪改动，每个请求各用一个；`Session` 保持与数据库的连接，所有请求共用同一个",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "`engine` 负责声明表模型的各个字段，建表前使用；`Session` 负责在应用启动时创建所有表，请求中不再使用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "`engine` 为每个请求新建一个，保证请求之间互不干扰；`Session` 在整个应用中只创建一个，所有请求共用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-10",
+          "type": "short"
+        },
+        {
+          "id": "U8-11",
+          "type": "single",
+          "stem": "官方示例在应用启动时用 `SQLModel.metadata.create_all(engine)` 建表，对生产环境有什么说法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "生产环境同样应该在每次启动时调用 `create_all`，这样表结构始终是最新的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "生产环境不需要建表，SQLModel 会在第一次写入数据时自动创建",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "生产环境可能会改用在启动应用之前运行的迁移脚本，目前可直接使用 Alembic",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "生产环境应该把建表放进会话依赖项里，每个请求开始时执行一次",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-12",
+          "type": "short"
+        },
+        {
+          "id": "U8-13",
+          "type": "multiple",
+          "stem": "按官方文档，关于 `HeroBase`、`HeroPublic`、`HeroCreate`、`HeroUpdate` 这些模型，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`HeroPublic` 是表模型，所以需要写 `table=True`",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "`HeroBase` 放着所有模型共享的字段，其他模型靠继承避免重复声明",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "`HeroPublic` 与 `HeroBase` 字段相同因此不含 `secret_name`，并重新声明 `id: int` 使客户端总能期待 `id` 是整数",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "`HeroCreate` 含有 `secret_name`，创建后它会通过 API 原样返回给客户端",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "`HeroUpdate` 的所有字段都有默认值 `None`，更新时可以只发送想修改的字段",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U8-14",
+          "type": "single",
+          "stem": "创建 Hero 的路径操作为什么写 `response_model=HeroPublic`，而不是用返回类型注解 `-> HeroPublic`？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为返回类型注解只对 `list` 之类的容器生效，对单个对象的返回值完全不生效",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为写了 `-> HeroPublic` 之后，FastAPI 就会跳过对返回数据的验证和序列化，直接原样返回",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为只有通过 `response_model` 声明，`HeroPublic` 才能显示在自动生成的 API 文档界面里",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "因为实际返回的是 `Hero` 而非 `HeroPublic`，写返回注解会被编辑器抱怨，`response_model` 不会",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U8-15",
+          "type": "short"
+        },
+        {
+          "id": "U8-16",
+          "type": "single",
+          "stem": "按官方文档，从环境变量读到 Python 里的值是什么类型？类型转换和验证由谁来做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会按内容自动转成 `int`、`bool` 等对应类型，不需要自己处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一律是 `str`，任何转换或验证都必须在代码中完成",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "一律是 `str`，但操作系统会在读取时完成转换和验证",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "数字内容是 `int`，其余是 `str`，转换由路径操作自动完成",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-17",
+          "type": "single",
+          "stem": "`class Settings(BaseSettings)` 里声明了 `items_per_user: int = 50`。创建 `Settings()` 时，Pydantic 怎样读取环境变量？",
+          "options": [
+            {
+              "key": "A",
+              "text": "区分大小写，只读取名为 `items_per_user` 的环境变量，值保持字符串",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "区分大小写，只读取名为 `items_per_user` 的环境变量，并把值转换为 `int`",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不区分大小写，读到的值保持 `str`，使用时由你自己转换",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不区分大小写（`ITEMS_PER_USER` 也行），并把值转换、验证成声明的 `int`",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U8-18",
+          "type": "single",
+          "stem": "官方文档为什么说在依赖项（如 `get_settings`）里提供设置，有时比到处使用一个全局 `settings` 对象更好？",
+          "options": [
+            {
+              "key": "A",
+              "text": "因为全局 `settings` 对象读不到环境变量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "因为依赖项会让设置在每个请求里自动重新读取一遍环境变量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为这在测试期间尤其有用，可以很容易地用自定义设置覆盖该依赖项",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "因为 `BaseSettings` 只有放在依赖项里才会校验字段类型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-19",
+          "type": "short"
+        },
+        {
+          "id": "U8-20",
+          "type": "single",
+          "stem": "按官方文档，`TestClient` 是基于哪个库构建的？使用它之前要额外安装哪个包？",
+          "options": [
+            {
+              "key": "A",
+              "text": "基于 Requests，要先安装 `requests`",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "基于 Starlette 自带的网络层，不需要额外安装任何包",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "基于 HTTPX，要先安装 `httpx`",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "基于 AnyIO，要先安装 `anyio`",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-21",
+          "type": "single",
+          "stem": "用 `TestClient` 写测试时，测试函数应该写成 `def` 还是 `async def`？`client` 的调用要不要 `await`？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须写成 `async def`，并且 `client.get(...)` 前要 `await`",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "必须写成 `async def`，但 `client.get(...)` 不需要 `await`",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "写成 `def`，但 `client.get(...)` 前要 `await`",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "写成普通的 `def`，`client` 的调用也是普通调用，不用 `await`",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U8-22",
+          "type": "short"
+        },
+        {
+          "id": "U8-23",
+          "type": "single",
+          "stem": "`app.dependency_overrides` 可以覆盖应用中哪些位置声明的依赖项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "路径操作函数、路径操作装饰器、`.include_router()` 调用等位置的依赖项都能覆盖",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只能覆盖路径操作函数参数里声明的依赖项，写在装饰器或 `.include_router()` 里的覆盖不了",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能覆盖直接写在 `FastAPI(dependencies=[...])` 里的全局依赖项，其他位置的覆盖不了",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只能覆盖路径操作函数和路径操作装饰器里的依赖项，不包括 `.include_router()` 调用里的",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-24",
+          "type": "single",
+          "stem": "只想在某些测试里覆盖依赖项时，官方文档建议怎么设置覆盖、怎么重置？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在模块顶层设置一次覆盖，之后无需重置，因为每个测试结束后框架会自动清除它",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在每个测试结束时把 `app.dependency_overrides` 设为 `None`，表示不再覆盖",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "测试结束时重新创建一个新的 `TestClient` 实例，之前的覆盖就会随之被清除",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在测试函数开头设置覆盖，结尾用 `app.dependency_overrides = {}` 重置",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U8-25",
+          "type": "short"
+        },
+        {
+          "id": "U8-26",
+          "type": "single",
+          "stem": "异步测试函数上的 `@pytest.mark.anyio` 标记起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让 FastAPI 应用本身改以异步方式运行，而不再是同步的应用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让应用的生命周期（startup）事件在测试开始前自动被触发",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "告诉 pytest 这个测试函数应该被异步调用（AnyIO 插件提供）",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "让测试里的 `TestClient` 支持用 `await` 发送请求，不再是同步调用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U8-27",
+          "type": "single",
+          "stem": "用 `AsyncClient` 做异步测试时，如果应用依赖生命周期事件，需要注意什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会自动触发这些事件，不需要在测试里做任何额外处理或安装额外的库",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不会触发这些事件，要用 `asgi-lifespan` 的 `LifespanManager` 来触发",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只要把测试函数写成 `async def`，就会自动触发这些生命周期事件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只有应用的路径操作函数使用普通 `def` 时，这些事件才会被触发",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "U9": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "U9-1",
+          "type": "fill",
+          "stem": "按官方文档“部署概念”，部署 FastAPI 应用时需要关心的六个概念是：____、____、____、____、____、____。",
+          "blankCount": 6,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U9-2",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 应用的 HTTPS 通常由什么来提供？",
+          "options": [
+            {
+              "key": "A",
+              "text": "FastAPI 应用自身，在路径操作函数里完成加密",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "应用程序服务器之外的组件，也就是 TLS 终止代理",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "负责启动时运行的程序，例如 Systemd 或 Supervisor",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "多进程模式下把请求分发给各个 worker 的进程管理器",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-3",
+          "type": "single",
+          "stem": "按官方文档，“进程”这个词具体指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "你编写的 Python 代码文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "操作系统可以执行的文件，例如 python 或 uvicorn",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "同一个程序同一时间只能有一个，再次启动会被系统拒绝",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "操作系统正在执行和管理的、运行中的特定程序",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U9-4",
+          "type": "short"
+        },
+        {
+          "id": "U9-5",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 应用的代码里出现 bug 时，通常的影响范围是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通常只限于触发错误的那个请求，客户端收到 500 错误",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "任何 bug 都会让整个应用崩溃，Uvicorn 和 Python 一起退出",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有路径操作都返回 500 错误，直到有人手动重启服务器",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "出错的 worker 进程崩溃，其他进程自动接管它的请求",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-6",
+          "type": "single",
+          "stem": "按官方文档，为什么负责在进程崩溃后重启应用的东西应该是一个外部组件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "外部组件能在重启之前先自动修复导致崩溃的 bug",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "外部组件可以让客户端不再收到 500 内部服务器错误",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "崩溃时 Uvicorn 和 Python 已崩溃，应用自己的代码做不了什么",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "外部组件让应用即使一启动就立刻崩溃，也值得永远重启下去",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-7",
+          "type": "short"
+        },
+        {
+          "id": "U9-8",
+          "type": "single",
+          "stem": "按官方文档的例子，代码会加载一个 1 GB 的机器学习模型，用 4 个 worker 运行时，API 总共大约消耗多少内存？",
+          "options": [
+            {
+              "key": "A",
+              "text": "1 GB，因为多个进程共享同一份内存",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "2 GB，4 个 worker 平分这个模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "约 4 GB，每个 worker 各占 1 GB",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "取决于 CPU 核数，与进程数无关",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-9",
+          "type": "short"
+        },
+        {
+          "id": "U9-10",
+          "type": "single",
+          "stem": "按官方文档，FastAPI 与 Uvicorn 的关系是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "FastAPI 是 ASGI Web 框架，由 Uvicorn 这样的 ASGI 服务器来运行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都是 ASGI 服务器，功能完全相同，部署时二选一即可",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Uvicorn 是 TLS 终止代理，负责 HTTPS 和证书更新",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Uvicorn 只能用于开发，生产环境必须换成别的服务器",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-11",
+          "type": "multiple",
+          "stem": "下列哪些是官方文档列出的、可以运行 FastAPI 应用的 ASGI 服务器？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Uvicorn",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Hypercorn",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Daphne",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Granian",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "Traefik",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "Caddy",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-12",
+          "type": "fill",
+          "stem": "命令 `uvicorn main:app` 中，冒号前的 main 指的是 ____，冒号后的 app 指的是 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U9-13",
+          "type": "single",
+          "stem": "按官方文档，Uvicorn 的 `--reload` 选项应该如何使用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "生产环境也应开启，这样代码一改就自动生效",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "开发时很有用，但消耗更多资源且相对不稳定，生产环境不应使用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只有 fastapi 命令支持，Uvicorn 和其他服务器都不支持",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它让服务器启动多个工作进程，以利用多核 CPU",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-14",
+          "type": "single",
+          "stem": "按官方文档，`--workers` 选项有什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把同一个应用同时部署到多台远程服务器上",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "开启代码变更后的自动重载，便于开发时使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "指定受信任、允许读取转发请求头的 IP 地址列表",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "启动多个工作进程，利用多核 CPU 处理更多请求",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U9-15",
+          "type": "single",
+          "stem": "按官方文档，Linux 容器为什么比完整虚拟机轻量？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个容器都带着自己独立的 Linux 内核一起启动",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器与同系统的其他容器共享文件系统和网络",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "复用宿主机的同一个 Linux 内核，而不是模拟整个操作系统",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "容器只运行应用代码，依赖留在宿主机上而不打包",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-16",
+          "type": "single",
+          "stem": "按官方文档，容器镜像和容器是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "镜像是静态的打包文件和元数据，容器是它的运行实例，运行时的改动不会写回镜像",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "镜像是正在运行的实例，容器是静态的打包文件和元数据",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "容器里创建或修改的文件会持久化到镜像中，下次启动仍然存在",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只要镜像存在，容器就一直处于运行状态，与是否有进程无关",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-17",
+          "type": "short"
+        },
+        {
+          "id": "U9-18",
+          "type": "single",
+          "stem": "按官方文档，Dockerfile 里应使用 `CMD` 的哪种形式来启动 FastAPI？",
+          "options": [
+            {
+              "key": "A",
+              "text": "shell 形式 `CMD fastapi run app/main.py --port 80`，因为写法更简洁",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两种形式效果完全一样，可以任选",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "exec 形式，但只有使用 docker compose 时才需要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "exec 形式，这样 FastAPI 才能优雅停机并触发生命周期事件",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U9-19",
+          "type": "single",
+          "stem": "容器运行在 Nginx 或 Traefik 等 TLS 终止代理后面，且已用 `--forwarded-allow-ips` 把代理地址配置为可信来源时，按官方文档，还应在 CMD 里加哪个选项来启用代理转发标头的处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`--workers`，启动多个工作进程来分担代理转发的请求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "`--proxy-headers`，启用对代理转发标头的处理",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "`--reload`，让代理的配置变更在容器里自动生效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "`--port`，指定代理对外监听的端口",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-20",
+          "type": "single",
+          "stem": "按官方文档，使用容器时，监听主端口并把请求均衡地分发给多个应用容器的组件通常叫什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ASGI 服务器，例如 Uvicorn",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器镜像，保存着默认运行的命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "进程管理器，负责在容器内启动多个 worker",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "负载均衡器，通常也是 TLS 终止代理",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U9-21",
+          "type": "single",
+          "stem": "在 Kubernetes 等分布式容器集群中，按官方文档，FastAPI 容器的复制应该怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个容器内用 `--workers` 启动多个进程来复制",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "容器内再放一个进程管理器，由它复制并重启进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个容器只跑一个 Uvicorn 进程，由集群用多个容器复制",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把所有副本放进同一个容器，让它们共享内存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-22",
+          "type": "multiple",
+          "stem": "按官方文档，下列哪些情形下可以考虑在一个容器里用 `--workers` 运行多个 Uvicorn worker 进程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "应用足够简单，在单台服务器（不是集群）上运行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用 Docker Compose 部署到单台服务器，无法在保留共享网络与负载均衡的同时简单管理容器复制",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "已经在 Kubernetes 集群层面设置了复制并使用多个容器",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "想让每个容器的内存消耗更容易定义、稳定且有限",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-23",
+          "type": "single",
+          "stem": "每个容器只运行一个进程，按官方文档对内存管理有什么好处？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个容器的内存消耗更容易定义、较稳定，可设置内存限制",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "同一应用的多个容器会自动共享同一份内存，因此更省内存",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不再需要关心内存问题，容器会按需自动无限扩容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "使用机器学习模型时也不必再检查每个容器的内存消耗",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-24",
+          "type": "single",
+          "stem": "在 Kubernetes 等多容器场景下，按官方文档，数据库迁移这类不应并行重复执行的前置步骤通常怎么安排？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在每个副本容器启动主进程之前，都在容器里各自执行一次",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "交给负载均衡器，在它把请求转发给容器之前先执行一次",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在 `--workers` 启动的每个工作进程启动时，各自执行一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用单独的容器先执行一次迁移，完成后再启动复制的 worker 容器",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "U9-25",
+          "type": "fill",
+          "stem": "代理在转发请求给服务器之前设置的、用来告知原始请求信息的三个请求头是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "U9-26",
+          "type": "single",
+          "stem": "按官方文档，服务器程序（如 Uvicorn）为什么不能默认信任任意来源发来的代理转发请求头？",
+          "options": [
+            {
+              "key": "A",
+              "text": "出于安全考虑，服务器并不知道自己处在受信任的代理之后",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "因为这些请求头只会出现在 HTTP 连接里，HTTPS 连接没有",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "因为解析这些请求头会让应用变慢且不稳定",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "因为 FastAPI 会自己解析，服务器不需要处理",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-27",
+          "type": "single",
+          "stem": "`--forwarded-allow-ips=\"*\"` 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "允许所有浏览器访问应用自动生成的文档界面",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让服务器监听这台机器上所有可用的 IP 地址",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "信任所有来源 IP，用于服务器只与受信任代理通信的情形",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "禁止服务器读取任何代理转发过来的请求头",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "U9-28",
+          "type": "short"
+        },
+        {
+          "id": "U9-29",
+          "type": "short"
+        },
+        {
+          "id": "U9-30",
+          "type": "fill",
+          "stem": "在移除路径前缀的代理后面，要告诉应用自己所处的路径前缀（如 /api/v1），有两种方式：启动时使用命令行选项 ____，或者创建 FastAPI 应用时设置参数 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "U9-31",
+          "type": "single",
+          "stem": "在会移除 /api/v1 前缀的代理后面，已把应用的 root_path 配置为 /api/v1，并保持默认的 server 配置。按官方文档，FastAPI 靠什么让文档界面能向正确的地址发请求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自动把所有路径操作改写成带 /api/v1 前缀的路径",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "根据 root_path 在 OpenAPI 模式里创建默认 server（url 为 /api/v1）",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "让 Uvicorn 额外监听 /api/v1 这个路径前缀",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让代理在响应里重写 /openapi.json 里的各个路径",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

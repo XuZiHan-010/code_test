@@ -1,0 +1,786 @@
+[
+  {
+    "id": "U9-1",
+    "typed": {
+      "id": "U9-1",
+      "type": "fill",
+      "stem": "按官方文档“部署概念”，部署 FastAPI 应用时需要关心的六个概念是：____、____、____、____、____、____。",
+      "blankCount": 6,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档“部署概念”，部署 FastAPI 应用时需要关心的六个概念是：____、____、____、____、____、____。",
+    "answer": "六个概念是：安全性 - HTTPS、启动时运行、重新启动、复制（运行的进程数）、内存、启动前的先前步骤。[原文§部署概念 · 部署概念](https://fastapi.tiangolo.com/zh/deployment/concepts/#deployments-concepts)"
+  },
+  {
+    "id": "U9-2",
+    "typed": {
+      "id": "U9-2",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 应用的 HTTPS 通常由什么来提供？",
+      "options": [
+        {
+          "key": "A",
+          "text": "FastAPI 应用自身，在路径操作函数里完成加密",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "应用程序服务器之外的组件，也就是 TLS 终止代理",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "负责启动时运行的程序，例如 Systemd 或 Supervisor",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "多进程模式下把请求分发给各个 worker 的进程管理器",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 应用的 HTTPS 通常由什么来提供？",
+    "answer": "HTTPS 通常由应用程序服务器之外的组件（TLS 终止代理）提供，并且还要有组件负责更新 HTTPS 证书，可以是同一个组件，也可以是不同的组件。A 错在应用自身并不负责 HTTPS；C 的 Systemd、Supervisor 是负责启动时运行与重启的工具，D 的进程管理器负责把请求转给 worker，都不是 HTTPS 的提供者。[原文§部署概念 · 安全性 - HTTPS](https://fastapi.tiangolo.com/zh/deployment/concepts/#security-https)[原文§部署概念 · 启动时运行的示例工具](https://fastapi.tiangolo.com/zh/deployment/concepts/#example-tools-to-run-at-startup)[原文§部署概念 · 多进程 - 一个例子](https://fastapi.tiangolo.com/zh/deployment/concepts/#multiple-processes-an-example)"
+  },
+  {
+    "id": "U9-3",
+    "typed": {
+      "id": "U9-3",
+      "type": "single",
+      "stem": "按官方文档，“进程”这个词具体指什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "你编写的 Python 代码文件",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "操作系统可以执行的文件，例如 python 或 uvicorn",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "同一个程序同一时间只能有一个，再次启动会被系统拒绝",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "操作系统正在执行和管理的、运行中的特定程序",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，“进程”这个词具体指什么？",
+    "answer": "进程特指在操作系统中运行的特定程序，不是文件也不是代码，而是操作系统正在执行和管理的东西，同一个程序可以同时有多个进程（例如浏览器通常每个标签页一个进程）。A、B 是“程序”一词的另外两种含义（代码、可执行文件），C 与“同一程序可以有多个进程”相反。[原文§部署概念 · 什么是程序](https://fastapi.tiangolo.com/zh/deployment/concepts/#what-is-a-program)[原文§部署概念 · 什么是进程](https://fastapi.tiangolo.com/zh/deployment/concepts/#what-is-a-process)"
+  },
+  {
+    "id": "U9-4",
+    "typed": {
+      "id": "U9-4",
+      "type": "short"
+    },
+    "question": "为什么在远程服务器上只靠手动运行 `fastapi run` 不足以保证 API 一直可用？通常怎么解决？",
+    "answer": "手动运行时，如果与服务器的连接丢失，正在运行的进程可能终止；服务器重启（例如更新后或迁移后）时你也可能没注意到，API 就会一直处于挂掉的状态。所以通常要有一个单独的程序（如 Docker、Kubernetes、Docker Compose、Systemd、Supervisor 等）在服务器启动时自动运行服务器程序，不需要人为干预。[原文§部署概念 · 在远程服务器中](https://fastapi.tiangolo.com/zh/deployment/concepts/#in-a-remote-server)[原文§部署概念 · 启动时自动运行](https://fastapi.tiangolo.com/zh/deployment/concepts/#run-automatically-on-startup)"
+  },
+  {
+    "id": "U9-5",
+    "typed": {
+      "id": "U9-5",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 应用的代码里出现 bug 时，通常的影响范围是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "通常只限于触发错误的那个请求，客户端收到 500 错误",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "任何 bug 都会让整个应用崩溃，Uvicorn 和 Python 一起退出",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "所有路径操作都返回 500 错误，直到有人手动重启服务器",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "出错的 worker 进程崩溃，其他进程自动接管它的请求",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 应用的代码里出现 bug 时，通常的影响范围是什么？",
+    "answer": "FastAPI 通常把错误限制在触发它的单个请求里，该请求的客户端收到 500 内部服务器错误，应用继续处理下一个请求；只有在某些情况下，代码才会导致整个应用崩溃（Uvicorn 和 Python 一起崩溃）。B 把“某些情况”说成了“任何 bug”，C、D 描述的行为文中都没有出现。[原文§部署概念 · 自动处理小错误](https://fastapi.tiangolo.com/zh/deployment/concepts/#small-errors-automatically-handled)[原文§部署概念 · 更大的错误 - 崩溃](https://fastapi.tiangolo.com/zh/deployment/concepts/#bigger-errors-crashes)"
+  },
+  {
+    "id": "U9-6",
+    "typed": {
+      "id": "U9-6",
+      "type": "single",
+      "stem": "按官方文档，为什么负责在进程崩溃后重启应用的东西应该是一个外部组件？",
+      "options": [
+        {
+          "key": "A",
+          "text": "外部组件能在重启之前先自动修复导致崩溃的 bug",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "外部组件可以让客户端不再收到 500 内部服务器错误",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "崩溃时 Uvicorn 和 Python 已崩溃，应用自己的代码做不了什么",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "外部组件让应用即使一启动就立刻崩溃，也值得永远重启下去",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，为什么负责在进程崩溃后重启应用的东西应该是一个外部组件？",
+    "answer": "进程崩溃时，运行同一应用的 Uvicorn 和 Python 已经崩溃了，同一应用的代码里没有任何东西能对此做什么，所以需要外部组件来负责重启（通常就是负责启动时运行的那个工具，如 Docker、Kubernetes、Systemd、Supervisor）。500 错误属于只影响单个请求的小错误，与崩溃重启无关；文档也提示，如果应用一启动就立刻崩溃，永远重启它没有意义；重启组件并不会修复 bug。[原文§部署概念 · 崩溃后重新启动](https://fastapi.tiangolo.com/zh/deployment/concepts/#restart-after-crash)[原文§部署概念 · 自动重新启动的示例工具](https://fastapi.tiangolo.com/zh/deployment/concepts/#example-tools-to-restart-automatically)"
+  },
+  {
+    "id": "U9-7",
+    "typed": {
+      "id": "U9-7",
+      "type": "short"
+    },
+    "question": "运行同一应用的多个进程（workers）时，同一个 IP 和端口怎么办？为什么需要一个单独的进程来监听端口？",
+    "answer": "服务器上同一个 IP 和端口的组合只能有一个进程监听，所以必须有一个单个进程（例如 Uvicorn 的管理器进程）监听端口，再把通信转发给各个工作进程；真正运行应用、执行主要计算并加载你放进内存的内容的是这些工作进程。[原文§部署概念 · 工作进程和端口](https://fastapi.tiangolo.com/zh/deployment/concepts/#worker-processes-and-ports)[原文§部署概念 · 多进程 - 一个例子](https://fastapi.tiangolo.com/zh/deployment/concepts/#multiple-processes-an-example)"
+  },
+  {
+    "id": "U9-8",
+    "typed": {
+      "id": "U9-8",
+      "type": "single",
+      "stem": "按官方文档的例子，代码会加载一个 1 GB 的机器学习模型，用 4 个 worker 运行时，API 总共大约消耗多少内存？",
+      "options": [
+        {
+          "key": "A",
+          "text": "1 GB，因为多个进程共享同一份内存",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "2 GB，4 个 worker 平分这个模型",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "约 4 GB，每个 worker 各占 1 GB",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "取决于 CPU 核数，与进程数无关",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档的例子，代码会加载一个 1 GB 的机器学习模型，用 4 个 worker 运行时，API 总共大约消耗多少内存？",
+    "answer": "多个进程通常不共享任何内存，每个进程都有自己的变量和内存，所以 1 GB 的模型在 4 个 worker 下总共约消耗 4 GB；如果服务器只有 3 GB 内存，就会出问题。A 说共享内存，与原文相反；B、D 原文都没有这种说法。[原文§部署概念 · 每个进程的内存](https://fastapi.tiangolo.com/zh/deployment/concepts/#memory-per-process)[原文§部署概念 · 服务器内存](https://fastapi.tiangolo.com/zh/deployment/concepts/#server-memory)"
+  },
+  {
+    "id": "U9-9",
+    "typed": {
+      "id": "U9-9",
+      "type": "short"
+    },
+    "question": "为什么应用启动前的步骤（例如数据库迁移）要由单个进程来执行，即使之后会启动多个 worker？",
+    "answer": "这类前置步骤大多只需要执行一次，所以应由单个进程在启动应用之前完成。如果由多个进程运行，它们会并行重复工作，像数据库迁移这样需要小心处理的步骤还可能导致彼此冲突；当然，多次运行也没有问题的前置步骤就好办得多。[原文§部署概念 · 启动之前的步骤](https://fastapi.tiangolo.com/zh/deployment/concepts/#previous-steps-before-starting)"
+  },
+  {
+    "id": "U9-10",
+    "typed": {
+      "id": "U9-10",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 与 Uvicorn 的关系是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "FastAPI 是 ASGI Web 框架，由 Uvicorn 这样的 ASGI 服务器来运行",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "两者都是 ASGI 服务器，功能完全相同，部署时二选一即可",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "Uvicorn 是 TLS 终止代理，负责 HTTPS 和证书更新",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "Uvicorn 只能用于开发，生产环境必须换成别的服务器",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 与 Uvicorn 的关系是什么？",
+    "answer": "FastAPI 本质上是 ASGI Web 框架，要在远程服务器上运行就需要 ASGI 服务器程序，Uvicorn 就是 fastapi 命令默认使用的那个；安装 FastAPI 时还自带一个可用于生产环境的 Uvicorn。B 把框架说成了服务器，C 是代理的职责，D 与“自带生产环境服务器”相反。[原文§手动运行服务器 · ASGI 服务器](https://fastapi.tiangolo.com/zh/deployment/manually/#asgi-servers)[原文§手动运行服务器 · 安装服务器程序](https://fastapi.tiangolo.com/zh/deployment/manually/#install-the-server-program)"
+  },
+  {
+    "id": "U9-11",
+    "typed": {
+      "id": "U9-11",
+      "type": "multiple",
+      "stem": "下列哪些是官方文档列出的、可以运行 FastAPI 应用的 ASGI 服务器？",
+      "options": [
+        {
+          "key": "A",
+          "text": "Uvicorn",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "Hypercorn",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "Daphne",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "Granian",
+          "correct": true
+        },
+        {
+          "key": "E",
+          "text": "Traefik",
+          "correct": false
+        },
+        {
+          "key": "F",
+          "text": "Caddy",
+          "correct": false
+        }
+      ]
+    },
+    "question": "下列哪些是官方文档列出的、可以运行 FastAPI 应用的 ASGI 服务器？",
+    "answer": "官方文档列出的 ASGI 服务器有：Uvicorn（高性能 ASGI 服务器）、Hypercorn（兼容 HTTP/2 和 Trio 等）、Daphne（为 Django Channels 构建）、Granian（基于 Rust 的 HTTP 服务器）。Traefik 和 Caddy 是可用作 TLS 终止代理的工具，不是 ASGI 服务器。[原文§手动运行服务器 · ASGI 服务器](https://fastapi.tiangolo.com/zh/deployment/manually/#asgi-servers)[原文§部署概念 · HTTPS 示例工具](https://fastapi.tiangolo.com/zh/deployment/concepts/#example-tools-for-https)"
+  },
+  {
+    "id": "U9-12",
+    "typed": {
+      "id": "U9-12",
+      "type": "fill",
+      "stem": "命令 `uvicorn main:app` 中，冒号前的 main 指的是 ____，冒号后的 app 指的是 ____。",
+      "blankCount": 2,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 命令 `uvicorn main:app` 中，冒号前的 main 指的是 ____，冒号后的 app 指的是 ____。",
+    "answer": "第一个空：main.py 文件（即 Python 模块）；第二个空：main.py 中通过 `app = FastAPI()` 创建的对象。整条命令等价于 `from main import app`。[原文§手动运行服务器 · 运行服务器程序](https://fastapi.tiangolo.com/zh/deployment/manually/#run-the-server-program)"
+  },
+  {
+    "id": "U9-13",
+    "typed": {
+      "id": "U9-13",
+      "type": "single",
+      "stem": "按官方文档，Uvicorn 的 `--reload` 选项应该如何使用？",
+      "options": [
+        {
+          "key": "A",
+          "text": "生产环境也应开启，这样代码一改就自动生效",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "开发时很有用，但消耗更多资源且相对不稳定，生产环境不应使用",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "只有 fastapi 命令支持，Uvicorn 和其他服务器都不支持",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "它让服务器启动多个工作进程，以利用多核 CPU",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，Uvicorn 的 `--reload` 选项应该如何使用？",
+    "answer": "Uvicorn 和其他服务器支持 `--reload`，它在开发过程中非常有用，但会消耗更多资源且相对不稳定，所以生产环境中不应该使用。C 与原文相反（原文说 Uvicorn 和其他服务器都支持）；D 说的是 `--workers` 的作用。[原文§手动运行服务器 · 运行服务器程序](https://fastapi.tiangolo.com/zh/deployment/manually/#run-the-server-program)[原文§服务器工作进程（Workers） · 多个工作进程](https://fastapi.tiangolo.com/zh/deployment/server-workers/#multiple-workers)"
+  },
+  {
+    "id": "U9-14",
+    "typed": {
+      "id": "U9-14",
+      "type": "single",
+      "stem": "按官方文档，`--workers` 选项有什么作用？",
+      "options": [
+        {
+          "key": "A",
+          "text": "把同一个应用同时部署到多台远程服务器上",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "开启代码变更后的自动重载，便于开发时使用",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "指定受信任、允许读取转发请求头的 IP 地址列表",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "启动多个工作进程，利用多核 CPU 处理更多请求",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，`--workers` 选项有什么作用？",
+    "answer": "`--workers` 让 Uvicorn 启动指定数量的工作进程，并行执行应用、利用多核 CPU 处理更多请求，而 fastapi 命令默认是单进程模式。它主要有助于“复制”这个部署概念，对重启只有一点帮助，HTTPS、启动时运行、内存、前置步骤等仍要另外处理。A 说的是多台服务器，B 是 `--reload`，C 是 `--forwarded-allow-ips`。[原文§服务器工作进程（Workers） · 多个工作进程](https://fastapi.tiangolo.com/zh/deployment/server-workers/#multiple-workers)[原文§服务器工作进程（Workers） · 部署概念](https://fastapi.tiangolo.com/zh/deployment/server-workers/#deployment-concepts)[原文§使用代理 · 启用代理转发的请求头](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#enable-proxy-forwarded-headers)"
+  },
+  {
+    "id": "U9-15",
+    "typed": {
+      "id": "U9-15",
+      "type": "single",
+      "stem": "按官方文档，Linux 容器为什么比完整虚拟机轻量？",
+      "options": [
+        {
+          "key": "A",
+          "text": "每个容器都带着自己独立的 Linux 内核一起启动",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "容器与同系统的其他容器共享文件系统和网络",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "复用宿主机的同一个 Linux 内核，而不是模拟整个操作系统",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "容器只运行应用代码，依赖留在宿主机上而不打包",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，Linux 容器为什么比完整虚拟机轻量？",
+    "answer": "Linux 容器复用宿主机的同一个 Linux 内核，而不是像虚拟机那样模拟整个操作系统，所以资源消耗很少，大致相当于直接运行进程。A 与此相反；容器有各自隔离的文件系统和网络（B 错）；容器是把应用及其所有依赖和必要文件一起打包（D 错）。[原文§容器中的 FastAPI - Docker · 什么是容器](https://fastapi.tiangolo.com/zh/deployment/docker/#what-is-a-container)"
+  },
+  {
+    "id": "U9-16",
+    "typed": {
+      "id": "U9-16",
+      "type": "single",
+      "stem": "按官方文档，容器镜像和容器是什么关系？",
+      "options": [
+        {
+          "key": "A",
+          "text": "镜像是静态的打包文件和元数据，容器是它的运行实例，运行时的改动不会写回镜像",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "镜像是正在运行的实例，容器是静态的打包文件和元数据",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "容器里创建或修改的文件会持久化到镜像中，下次启动仍然存在",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只要镜像存在，容器就一直处于运行状态，与是否有进程无关",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，容器镜像和容器是什么关系？",
+    "answer": "容器镜像是容器中所有文件、环境变量和默认命令的静态版本，本身不在运行；容器是从镜像启动的运行实例，运行时创建或修改的内容只存在于该容器中，不会写回镜像。容器只有在有进程（通常是主进程）运行时才处于运行状态，主进程停止，容器也就停止，所以 D 错；B 把两者说反了。[原文§容器中的 FastAPI - Docker · 什么是容器镜像](https://fastapi.tiangolo.com/zh/deployment/docker/#what-is-a-container-image)[原文§容器中的 FastAPI - Docker · 容器与进程](https://fastapi.tiangolo.com/zh/deployment/docker/#containers-and-processes)"
+  },
+  {
+    "id": "U9-17",
+    "typed": {
+      "id": "U9-17",
+      "type": "short"
+    },
+    "question": "写 FastAPI 的 Dockerfile 时，为什么要先只复制 `requirements.txt` 并安装依赖，最后才复制应用代码？",
+    "answer": "Docker 按 Dockerfile 的顺序逐层构建，并且会重用上次构建中文件没有变化的那一层。依赖文件不常变化，先单独复制它，该步骤就能使用缓存，下一步下载并安装依赖也能使用缓存，把几分钟的安装缩短到几秒；而应用代码是变化最频繁的部分，放在靠后的位置，只有它之后的步骤用不到缓存，从而缩短反复构建镜像的时间。[原文§容器中的 FastAPI - Docker · Docker 缓存](https://fastapi.tiangolo.com/zh/deployment/docker/#docker-cache)[原文§容器中的 FastAPI - Docker · Dockerfile](https://fastapi.tiangolo.com/zh/deployment/docker/#dockerfile)"
+  },
+  {
+    "id": "U9-18",
+    "typed": {
+      "id": "U9-18",
+      "type": "single",
+      "stem": "按官方文档，Dockerfile 里应使用 `CMD` 的哪种形式来启动 FastAPI？",
+      "options": [
+        {
+          "key": "A",
+          "text": "shell 形式 `CMD fastapi run app/main.py --port 80`，因为写法更简洁",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "两种形式效果完全一样，可以任选",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "exec 形式，但只有使用 docker compose 时才需要",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "exec 形式，这样 FastAPI 才能优雅停机并触发生命周期事件",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，Dockerfile 里应使用 `CMD` 的哪种形式来启动 FastAPI？",
+    "answer": "官方文档要求务必始终使用 `CMD` 的 exec 形式（例如 `CMD [\"fastapi\", \"run\", \"app/main.py\", \"--port\", \"80\"]`），以确保 FastAPI 可以优雅停机并触发生命周期事件，不要使用 shell 形式。使用 docker compose 时这一点尤为明显，但并不是只有那时才需要，所以 C 错。[原文§容器中的 FastAPI - Docker · 使用 CMD - Exec 形式](https://fastapi.tiangolo.com/zh/deployment/docker/#use-cmd-exec-form)"
+  },
+  {
+    "id": "U9-19",
+    "typed": {
+      "id": "U9-19",
+      "type": "single",
+      "stem": "容器运行在 Nginx 或 Traefik 等 TLS 终止代理后面时，按官方文档，应该在 CMD 里加什么选项？",
+      "options": [
+        {
+          "key": "A",
+          "text": "`--workers`，启动多个工作进程来分担代理转发的请求",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "`--proxy-headers`，让 Uvicorn 信任代理发来的标头",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "`--reload`，让代理的配置变更在容器里自动生效",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "`--port`，指定代理对外监听的端口",
+          "correct": false
+        }
+      ]
+    },
+    "question": "容器运行在 Nginx 或 Traefik 等 TLS 终止代理后面时，按官方文档，应该在 CMD 里加什么选项？",
+    "answer": "在 Nginx 或 Traefik 等 TLS 终止代理（负载均衡器）后面运行容器时，要添加 `--proxy-headers`，它通过 FastAPI CLI 告诉 Uvicorn 信任代理发送的标头，表明应用运行在 HTTPS 之后等。A 是多进程选项，C 是开发时的自动重载，D 的 `--port` 是应用自己监听的端口，都不是用来信任代理标头的。[原文§容器中的 FastAPI - Docker · 在 TLS 终止代理后面](https://fastapi.tiangolo.com/zh/deployment/docker/#behind-a-tls-termination-proxy)"
+  },
+  {
+    "id": "U9-20",
+    "typed": {
+      "id": "U9-20",
+      "type": "single",
+      "stem": "按官方文档，使用容器时，监听主端口并把请求均衡地分发给多个应用容器的组件通常叫什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "ASGI 服务器，例如 Uvicorn",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "容器镜像，保存着默认运行的命令",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "进程管理器，负责在容器内启动多个 worker",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "负载均衡器，通常也是 TLS 终止代理",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，使用容器时，监听主端口并把请求均衡地分发给多个应用容器的组件通常叫什么？",
+    "answer": "使用容器时，通常有某个组件监听主端口，承接请求的负载并（期望）均衡地分发给各个应用容器，所以也常被称为负载均衡器；用于 HTTPS 的 TLS 终止代理组件通常也会是负载均衡器。A 运行的是应用，B 是静态的打包文件，C 是容器内启动多个 worker 的方式，都不负责在多个容器之间分发请求。[原文§容器中的 FastAPI - Docker · 负载均衡器](https://fastapi.tiangolo.com/zh/deployment/docker/#load-balancer)"
+  },
+  {
+    "id": "U9-21",
+    "typed": {
+      "id": "U9-21",
+      "type": "single",
+      "stem": "在 Kubernetes 等分布式容器集群中，按官方文档，FastAPI 容器的复制应该怎么做？",
+      "options": [
+        {
+          "key": "A",
+          "text": "每个容器内用 `--workers` 启动多个进程来复制",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "容器内再放一个进程管理器，由它复制并重启进程",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "每个容器只跑一个 Uvicorn 进程，由集群用多个容器复制",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "把所有副本放进同一个容器，让它们共享内存",
+          "correct": false
+        }
+      ]
+    },
+    "question": "在 Kubernetes 等分布式容器集群中，按官方文档，FastAPI 容器的复制应该怎么做？",
+    "answer": "在集群层面处理复制时，应让每个容器只运行一个 Uvicorn 进程，靠集群内置的容器复制和负载均衡来扩展；不要在容器内再用 `--workers` 或进程管理器，那只会引入不必要的复杂性。D 与“每个进程有自己的内存”不符。[原文§容器中的 FastAPI - Docker · 每个容器一个进程](https://fastapi.tiangolo.com/zh/deployment/docker/#one-process-per-container)[原文§容器中的 FastAPI - Docker · 复制 - 进程数](https://fastapi.tiangolo.com/zh/deployment/docker/#replication-number-of-processes)"
+  },
+  {
+    "id": "U9-22",
+    "typed": {
+      "id": "U9-22",
+      "type": "multiple",
+      "stem": "按官方文档，下列哪些情形下可以考虑在一个容器里用 `--workers` 运行多个 Uvicorn worker 进程？",
+      "options": [
+        {
+          "key": "A",
+          "text": "应用足够简单，在单台服务器（不是集群）上运行",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "用 Docker Compose 部署到单台服务器，无法在保留共享网络与负载均衡的同时简单管理容器复制",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "已经在 Kubernetes 集群层面设置了复制并使用多个容器",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "想让每个容器的内存消耗更容易定义、稳定且有限",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，下列哪些情形下可以考虑在一个容器里用 `--workers` 运行多个 Uvicorn worker 进程？",
+    "answer": "官方文档列出的特殊情况有：应用足够简单，可在单台服务器（不是集群）上运行；用 Docker Compose 部署到单台服务器，不容易在保留共享网络与负载均衡的同时管理容器复制，这时可用单个容器加进程管理器启动多个 worker。C 是应在集群层面复制、每个容器一个进程的情形；D 恰恰是每个容器只有一个进程的好处。[原文§容器中的 FastAPI - Docker · 具有多个进程和特殊情况的容器](https://fastapi.tiangolo.com/zh/deployment/docker/#containers-with-multiple-processes-and-special-cases)"
+  },
+  {
+    "id": "U9-23",
+    "typed": {
+      "id": "U9-23",
+      "type": "single",
+      "stem": "每个容器只运行一个进程，按官方文档对内存管理有什么好处？",
+      "options": [
+        {
+          "key": "A",
+          "text": "每个容器的内存消耗更容易定义、较稳定，可设置内存限制",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "同一应用的多个容器会自动共享同一份内存，因此更省内存",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "不再需要关心内存问题，容器会按需自动无限扩容",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "使用机器学习模型时也不必再检查每个容器的内存消耗",
+          "correct": false
+        }
+      ]
+    },
+    "question": "每个容器只运行一个进程，按官方文档对内存管理有什么好处？",
+    "answer": "每个容器只运行一个进程时，它的内存消耗更容易定义、较为稳定且有限，你可以在 Kubernetes 等容器管理系统的配置里设置同样的内存限制与需求，让它在可用机器上复制容器。如果使用大量内存（例如机器学习模型），仍应检查内存消耗并调整每台机器上的容器数量，所以 D 错；多个进程通常不共享内存，B 也错。[原文§容器中的 FastAPI - Docker · 内存](https://fastapi.tiangolo.com/zh/deployment/docker/#memory)"
+  },
+  {
+    "id": "U9-24",
+    "typed": {
+      "id": "U9-24",
+      "type": "single",
+      "stem": "在 Kubernetes 的多容器场景下，按官方文档，数据库迁移这类只需执行一次的前置步骤通常怎么运行？",
+      "options": [
+        {
+          "key": "A",
+          "text": "在每个副本容器启动主进程之前，都在容器里各自执行一次",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "交给负载均衡器，在它把请求转发给容器之前先执行一次",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "在 `--workers` 启动的每个工作进程启动时，各自执行一次",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "用单独的容器（Kubernetes 里是 Init Container）在 worker 容器启动前运行一次",
+          "correct": true
+        }
+      ]
+    },
+    "question": "在 Kubernetes 的多容器场景下，按官方文档，数据库迁移这类只需执行一次的前置步骤通常怎么运行？",
+    "answer": "有多个容器时，可以用一个单独的容器（在 Kubernetes 中通常是 Init Container）运行一个进程来执行前置步骤，之后再启动复制的 worker 容器。只有当并行多次运行没有问题（例如只是检查数据库是否就绪）时，才可以把这些步骤放进每个容器，所以 A 对数据库迁移不合适；B、C 文中没有这样的做法。[原文§容器中的 FastAPI - Docker · 多个容器](https://fastapi.tiangolo.com/zh/deployment/docker/#multiple-containers)"
+  },
+  {
+    "id": "U9-25",
+    "typed": {
+      "id": "U9-25",
+      "type": "fill",
+      "stem": "代理在转发请求给服务器之前设置的、用来告知原始请求信息的三个请求头是：____、____、____。",
+      "blankCount": 3,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 代理在转发请求给服务器之前设置的、用来告知原始请求信息的三个请求头是：____、____、____。",
+    "answer": "三个请求头是：X-Forwarded-For（原始客户端的 IP 地址）、X-Forwarded-Proto（原始协议，如 https）、X-Forwarded-Host（原始主机，如 mysuperapp.com）。[原文§使用代理 · 代理转发的请求头](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#proxy-forwarded-headers)[原文§使用代理 · 代理转发请求头如何工作](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#how-proxy-forwarded-headers-work)"
+  },
+  {
+    "id": "U9-26",
+    "typed": {
+      "id": "U9-26",
+      "type": "single",
+      "stem": "按官方文档，服务器程序（如 Uvicorn）为什么默认不解析代理转发的请求头？",
+      "options": [
+        {
+          "key": "A",
+          "text": "出于安全考虑，服务器并不知道自己处在受信任的代理之后",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "因为这些请求头只会出现在 HTTP 连接里，HTTPS 连接没有",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "因为解析这些请求头会让应用变慢且不稳定",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "因为 FastAPI 会自己解析，服务器不需要处理",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，服务器程序（如 Uvicorn）为什么默认不解析代理转发的请求头？",
+    "answer": "代理转发的请求头会让服务器知道原始的公网 URL、域名和是否使用 HTTPS，但出于安全考虑，服务器并不知道自己处在受信任的代理之后，所以默认不会解析它们，需要显式启用。B、C、D 在文中都没有这样的原因。[原文§使用代理 · 代理转发的请求头](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#proxy-forwarded-headers)"
+  },
+  {
+    "id": "U9-27",
+    "typed": {
+      "id": "U9-27",
+      "type": "single",
+      "stem": "`--forwarded-allow-ips=\"*\"` 表示什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "允许所有浏览器访问应用自动生成的文档界面",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "让服务器监听这台机器上所有可用的 IP 地址",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "信任所有来源 IP，用于服务器只与受信任代理通信的情形",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "禁止服务器读取任何代理转发过来的请求头",
+          "correct": false
+        }
+      ]
+    },
+    "question": "`--forwarded-allow-ips=\"*\"` 表示什么？",
+    "answer": "`--forwarded-allow-ips` 传入应被信任、允许读取转发请求头的 IP 地址列表，设为 `\"*\"` 就是信任所有来源 IP；如果服务器位于受信任的代理之后且只有代理与它通信，这相当于接受该代理的任何 IP。B 说的是监听 0.0.0.0，是另一回事；D 与它的作用相反。[原文§使用代理 · 启用代理转发的请求头](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#enable-proxy-forwarded-headers)"
+  },
+  {
+    "id": "U9-28",
+    "typed": {
+      "id": "U9-28",
+      "type": "short"
+    },
+    "question": "FastAPI 默认会把 `/items` 重定向到 `/items/`。应用在 HTTPS 代理后面时，如果没有启用代理转发的请求头，这个重定向会出什么问题？启用后为什么就对了？",
+    "answer": "没有启用时，服务器不知道原始的公网地址和协议，重定向可能指向 http://localhost:8000/items/，而应用实际托管在 https://mysuperapp.com，应该重定向到 https://mysuperapp.com/items/。启用 `--forwarded-allow-ips` 后，服务器信任并使用代理加上的 X-Forwarded-* 请求头，就能生成指向正确公网地址的重定向。[原文§使用代理 · 使用 HTTPS 的重定向](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#redirects-with-https)[原文§使用代理 · 代理转发请求头如何工作](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#how-proxy-forwarded-headers-work)"
+  },
+  {
+    "id": "U9-29",
+    "typed": {
+      "id": "U9-29",
+      "type": "short"
+    },
+    "question": "什么是“移除路径前缀的代理”？如果不告诉应用它所处的路径前缀，集成的文档界面为什么会出问题？",
+    "answer": "这种代理在顶层给应用加一个路径前缀（例如 /api/v1），转发给服务器之前再把前缀移除，所以应用代码里仍只声明 /app。这时文档界面（在浏览器中运行的前端）会去请求 /openapi.json，而不是 /api/v1/openapi.json，拿不到 OpenAPI 模式；需要用 `root_path`（ASGI 规范提供的机制）告诉应用前缀，文档界面才能找到正确的位置。[原文§使用代理 · 移除路径前缀的代理](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#proxy-with-a-stripped-path-prefix)"
+  },
+  {
+    "id": "U9-30",
+    "typed": {
+      "id": "U9-30",
+      "type": "fill",
+      "stem": "在移除路径前缀的代理后面，要告诉应用自己所处的路径前缀（如 /api/v1），有两种方式：启动时使用命令行选项 ____，或者创建 FastAPI 应用时设置参数 ____。",
+      "blankCount": 2,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 在移除路径前缀的代理后面，要告诉应用自己所处的路径前缀（如 /api/v1），有两种方式：启动时使用命令行选项 ____，或者创建 FastAPI 应用时设置参数 ____。",
+    "answer": "第一个空：命令行选项 `--root-path`（例如 `fastapi run main.py --root-path /api/v1`）；第二个空：参数 `root_path`（例如 `FastAPI(root_path=\"/api/v1\")`），两者等价。[原文§使用代理 · 提供 root_path](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#providing-the-root-path)[原文§使用代理 · 在 FastAPI 应用中设置 root_path](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#setting-the-root-path-in-the-fastapi-app)"
+  },
+  {
+    "id": "U9-31",
+    "typed": {
+      "id": "U9-31",
+      "type": "single",
+      "stem": "代理为应用加上 /api/v1 前缀后，按官方文档，FastAPI 靠什么让文档界面能向正确的地址发请求？",
+      "options": [
+        {
+          "key": "A",
+          "text": "自动把所有路径操作改写成带 /api/v1 前缀的路径",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "用路径前缀在 OpenAPI 模式里创建默认 server（url 为 /api/v1）",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "让 Uvicorn 额外监听 /api/v1 这个路径前缀",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "让代理在响应里重写 /openapi.json 里的各个路径",
+          "correct": false
+        }
+      ]
+    },
+    "question": "代理为应用加上 /api/v1 前缀后，按官方文档，FastAPI 靠什么让文档界面能向正确的地址发请求？",
+    "answer": "FastAPI 用 root_path 在 OpenAPI 模式中创建默认的 server，url 取自 root_path（如 /api/v1），文档界面据此通过代理的前缀访问，所以通过 /api/v1/docs 打开文档能正常工作。A、C、D 文中都没有这样的机制。[原文§使用代理 · 查看文档界面](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#check-the-docs-ui)[原文§使用代理 · 移除路径前缀的代理](https://fastapi.tiangolo.com/zh/advanced/behind-a-proxy/#proxy-with-a-stripped-path-prefix)"
+  }
+]

@@ -47,6 +47,12 @@
 - **K1-39** A2A 支持异步和长时间运行的任务，并提供任务状态查询、进度更新和断线重连。[原文§A2A 的技术特点](https://xiaolinnote.com/agent/concept/agent.html#a2a-%E7%9A%84%E6%8A%80%E6%9C%AF%E7%89%B9%E7%82%B9)
 - **K1-40** 它完全基于现有的 Web 标准：HTTP 用于传输，JSON 用于消息格式，SSE 用于实时流式通信；这意味着不需要引入任何新的基础设施，现有的 Web 技术栈就能直接支持。[原文§A2A 的技术特点](https://xiaolinnote.com/agent/concept/agent.html#a2a-%E7%9A%84%E6%8A%80%E6%9C%AF%E7%89%B9%E7%82%B9)
 - **K1-41** 截至 2026 年初 A2A 还处于发展早期，远不如 MCP 那样已成为事实标准，但它填补了 MCP 明确不处理的 Agent 间协作空白，业界普遍看好；整个协议生态正形成清晰分层：Function Call 提供底层调用能力，MCP 标准化 Agent 与工具的连接，A2A 标准化 Agent 与 Agent 的协作。[原文§A2A 的生态现状](https://xiaolinnote.com/agent/concept/agent.html#a2a-%E7%9A%84%E7%94%9F%E6%80%81%E7%8E%B0%E7%8A%B6)
+- **K1-42** Workflow 由开发者提前写好整个流程：接收申请、调用 LLM 提取关键信息、查数据库获取订单详情、调用 LLM 判断是否符合退款政策、执行退款或生成拒绝邮件、发送通知，每一步做什么、接下来走哪条路都提前写死在代码里，LLM 只在某些步骤被调出来做理解和判断；Agent 收到任务后自己决定怎么做，先看申请内容，觉得需要就查订单信息，发现情况特殊就去搜索退款政策文档，推理判断后决定执行退款，最后发邮件通知，每一步做什么都由 Agent 自己决定，而不是代码预先规定。[原文§先用一个场景来感受区别](https://xiaolinnote.com/agent/concept/agent.html#%E5%85%88%E7%94%A8%E4%B8%80%E4%B8%AA%E5%9C%BA%E6%99%AF%E6%9D%A5%E6%84%9F%E5%8F%97%E5%8C%BA%E5%88%AB)
+- **K1-43** Function Call 相当于“打电话的能力”，员工学会了拿起电话、拨号、和对方沟通，这是和外部世界互动的最基础能力；MCP 相当于“公司的通讯录和电话系统”，统一管理所有外部联系方式，员工不必自己记每个人的号码和通话方式，新增一个联系人只要加进通讯录，所有员工都能用；Skills 相当于“岗位培训手册”，告诉员工遇到某类事情按什么流程处理、用什么模板和方法，教的是做事的方法和规范，而不是打电话的技术。[原文§一个统一的比喻](https://xiaolinnote.com/agent/concept/agent.html#%E4%B8%80%E4%B8%AA%E7%BB%9F%E4%B8%80%E7%9A%84%E6%AF%94%E5%96%BB)
+
+### 补充考点
+
+- **K1-44** Anthropic 的建议是从最简单的方案开始，只在明确需要时才增加复杂度：步骤固定、可提前规划，或对可靠性要求很高（如金融交易、医疗系统）时用 Workflow；任务开放、无法预知所有步骤，或需要灵活应对意外时用 Agent。[原文§什么时候用 Workflow，什么时候用 Agent？](https://xiaolinnote.com/agent/concept/agent.html#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E7%94%A8-workflow-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E7%94%A8-agent)
 
 ## 2. OpenClaw 的系统组成与运行方式
 
@@ -81,3 +87,7 @@
 - **K2-27** token 是大模型的计费单位，你对大模型说的每一句话和它回的每一句话都会拆成一个个 token 来算钱；1 个 token 差不多是半个汉字，话越长，花的 token 越多。[原文§9. 为什么 OpenClaw 那么烧 token？](https://xiaolinnote.com/agent/concept/openclaw.html#_9-%E4%B8%BA%E4%BB%80%E4%B9%88-openclaw-%E9%82%A3%E4%B9%88%E7%83%A7-token)
 - **K2-28** 它是全天候待命的守护进程，假设每半小时心跳一次，一天就要自动唤醒四十八次；每次唤醒系统都要把人物设定、操作规范、可用工具清单和心跳任务大纲组装成一段巨大的提示词发给云端大模型，哪怕什么异常都没发生，也在消耗大量输入 Token。[原文§9. 为什么 OpenClaw 那么烧 token？](https://xiaolinnote.com/agent/concept/openclaw.html#_9-%E4%B8%BA%E4%BB%80%E4%B9%88-openclaw-%E9%82%A3%E4%B9%88%E7%83%A7-token)
 - **K2-29** 自主试错：命令行报错时它会把长长的报错日志读进去、分析原因、生成新方案再执行，循环往复不断累积上下文；记忆压缩：短期日志快触碰上下文极限时，后台拉起独立的总结任务，让大模型阅读大量聊天记录并提炼写入长期记忆，后续还要把召回的记忆塞回提示词；系统提示词沉重：性格文件、操作手册和工具清单每次处理任务都要全文带上。[原文§9. 为什么 OpenClaw 那么烧 token？](https://xiaolinnote.com/agent/concept/openclaw.html#_9-%E4%B8%BA%E4%BB%80%E4%B9%88-openclaw-%E9%82%A3%E4%B9%88%E7%83%A7-token)
+
+### 补充考点
+
+- **K2-30** 短期记忆存放在 sessions 目录下按天生成的日志文件里；系统启动时只把最近一两天的日志加载到提示词里，既保证短期对话的连贯性，又不会白白消耗大模型的处理资源。[原文§5、OpenClaw 的记忆化机制是怎么实现的？](https://xiaolinnote.com/agent/concept/openclaw.html#_5%E3%80%81openclaw-%E7%9A%84%E8%AE%B0%E5%BF%86%E5%8C%96%E6%9C%BA%E5%88%B6%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)

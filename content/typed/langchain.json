@@ -1,0 +1,2599 @@
+{
+  "prefix": "E",
+  "chapters": {
+    "E1": {
+      "status": "draft",
+      "questions": [
+        { "id": "E1-1", "type": "short" },
+        {
+          "id": "E1-2",
+          "type": "single",
+          "stem": "LangChain 与 LangGraph 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "LangChain 的 Agent 运行在 LangGraph 之上，二者是上下层关系",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "二者互不相关，一个处理数据，一个处理模型接入",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "LangGraph 的工作流运行在 LangChain 之上，二者是上下层关系",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "二者功能相同，是互相替代的关系，选一个即可",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E1-3", "type": "short" },
+        { "id": "E1-4", "type": "short" },
+        {
+          "id": "E1-5",
+          "type": "single",
+          "stem": "原文对 CrewAI 的定位是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "更偏微软生态或存量项目",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用角色、目标、任务和团队表达多 Agent 协作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "强调在私有数据之上构建应用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "适合以 OpenAI 模型和接口为主的轻量 Agent",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E1-6", "type": "short" },
+        { "id": "E1-7", "type": "short" },
+        {
+          "id": "E1-8",
+          "type": "fill",
+          "stem": "LlamaIndex、LangChain 和 LangGraph 配合使用时，分别解决三个问题：LlamaIndex 解决 ____，LangChain 解决 ____，LangGraph 解决 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "E1-9",
+          "type": "single",
+          "stem": "选型时，最外层应先判断什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "哪个框架的 Demo 最容易跑通",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是否需要同时引入三个框架",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "哪个框架集成的模型供应商最多",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "任务是否真的需要 Agent",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E1-10",
+          "type": "multiple",
+          "stem": "“Demo 能跑只完成了选型的一半”，流程越长越要追问哪些问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "中断后能否恢复",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "敏感动作是否需要审批",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "重复执行会不会产生副作用",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "高层接口写起来是否足够简短",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "不同用户的数据能否隔离",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E1-11",
+          "type": "single",
+          "stem": "LangChain 的高层抽象在什么情况下不够用，要进一步用 LangGraph？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要减少协议适配和样板代码时",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要快速实现 RAG Agent、SQL Agent 或客服助手时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "业务出现复杂循环、精细分支、长时间暂停和断点恢复时",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要切换模型供应商或接入搜索、数据库等外部工具时",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E1-12", "type": "short" }
+      ]
+    },
+    "E2": {
+      "status": "draft",
+      "questions": [
+        { "id": "E2-1", "type": "short" },
+        { "id": "E2-2", "type": "short" },
+        {
+          "id": "E2-3",
+          "type": "single",
+          "stem": "LCEL 怎样表示顺序执行和并行执行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "顺序执行和并行执行都用 |，区别只在并行时要调用 batch 而不是 invoke",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "顺序执行用 LLMChain，并行执行用 SequentialChain，两者都来自 langchain-classic",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "顺序执行用 | 把 Runnable 接成 RunnableSequence，并行执行用 RunnableParallel 把同一输入交给多条子链",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "顺序执行用 RunnableParallel 把同一输入交给多条子链，并行执行用 | 把 Runnable 接成 RunnableSequence",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E2-4",
+          "type": "single",
+          "stem": "输入是一批数据时，应使用 Runnable 的哪个方法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ainvoke",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "batch",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "stream",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "invoke",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E2-5",
+          "type": "single",
+          "stem": "为什么新的应用一般不再首选旧式 LLMChain、SequentialChain？",
+          "options": [
+            {
+              "key": "A",
+              "text": "各个专用 Chain 类接口不一致、难以自由拼装，LangChain v1 已把它们移入 langchain-classic",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "这些旧类运行在 LangGraph 之上，使用前必须先定义状态和节点",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这些旧类只支持流式输出，不支持处理单个输入的普通调用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这些旧类已经被彻底删除，任何版本的 LangChain 里都无法再导入和使用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E2-6",
+          "type": "fill",
+          "stem": "三种方式的选择：开发前就知道下一步去哪里用 ____，运行时由模型决定下一步用 ____，需要精确控制循环、分支、状态持久化和人工介入用 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "E2-7", "type": "short" },
+        {
+          "id": "E2-8",
+          "type": "single",
+          "stem": "LangChain 组合式设计的核心理念是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "封装越多越好",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个类解决一类问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型决定全部流程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "组合优于堆积封装",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E2-9", "type": "short" },
+        {
+          "id": "E2-10",
+          "type": "single",
+          "stem": "Chain 只能从左到右线性执行吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，它描述的是一张事先确定好的数据流图，可以有并行分支和条件分支",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是的，并行和条件分支只能交给 Agent 在运行时决定",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，Chain 只能把组件按顺序一个接一个地串起来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，Chain 的流程拓扑由内部的 LLM 在运行时动态生成",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E2-11", "type": "short" },
+        {
+          "id": "E2-12",
+          "type": "single",
+          "stem": "统一的 Runnable 接口能自动解决类型不匹配吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，管道符会根据业务语义猜出应当怎样转换数据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能，所以 Runnable 之间根本无法组合成更长的链",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，Runnable 会在组合时自动把任意类型转换成下一步需要的类型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能，前一步输出的类型后一步必须能接住，接不上就会在运行时报错",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E2-13", "type": "short" },
+        {
+          "id": "E2-14",
+          "type": "single",
+          "stem": "RunnableSequence 的流式输出在什么情况下会被推迟？",
+          "options": [
+            {
+              "key": "A",
+              "text": "链的最后一步是输出解析器时",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "中间某个组件不支持流式转换时",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "用 ainvoke 而不是 invoke 调用时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "链里的组件超过三个时",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E2-15", "type": "short" },
+        { "id": "E2-16", "type": "short" }
+      ]
+    },
+    "E3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "E3-1",
+          "type": "fill",
+          "stem": "langchain-core 主要提供三类标准协议：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "E3-2", "type": "short" },
+        {
+          "id": "E3-3",
+          "type": "single",
+          "stem": "create_agent 的循环里，模型生成的 AIMessage 没有 tool_calls 时意味着什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这一轮调用失败，需要重试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "运行时会等待人工审批",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这就是最终回答",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "运行时会改为调用默认工具",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E3-4",
+          "type": "single",
+          "stem": "AIMessage 中的 tool_calls 与 ToolMessage 的调用 ID 为什么要对应？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型一轮可能请求多个工具，靠调用 ID 才知道每条结果属于哪次调用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "调用 ID 用来把工具结果保存到跨线程的 Store",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "调用 ID 用来决定这个工具是否需要人工审批",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "调用 ID 用来区分不同租户和用户的数据",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E3-5",
+          "type": "fill",
+          "stem": "三类数据各有归属：保存执行中不断变化的数据的是 ____，一次调用期间不变的可信依赖是 ____，保存跨线程数据的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "E3-6",
+          "type": "multiple",
+          "stem": "按原文，Middleware 适合处理下列哪些横切逻辑？",
+          "options": [
+            {
+              "key": "A",
+              "text": "保存跨线程的用户偏好",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "屏蔽各厂商消息格式的差异",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "人工审批",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "工具筛选",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "模型切换",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "动态提示词",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E3-7", "type": "short" },
+        { "id": "E3-8", "type": "short" },
+        {
+          "id": "E3-9",
+          "type": "single",
+          "stem": "集成适配层和可观测性在分层架构里各负责什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "集成适配层通过运行事件和 Trace 记录调用、耗时和异常，可观测性屏蔽模型、向量库和外部服务的差异",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "集成适配层定义 Message 和 Tool 协议，可观测性负责保存用户偏好和长期事实",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "集成适配层保存每一步的检查点，可观测性负责在敏感动作前暂停等待审批",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "集成适配层屏蔽模型、向量库和外部服务的差异，可观测性通过运行事件和 Trace 记录调用、耗时和异常",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E3-10",
+          "type": "single",
+          "stem": "LCEL 流程和 Agent 在“谁决定下一步”上有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都由模型决定下一步，区别只在 LCEL 不能调用工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都由开发者确定每一步，区别只在 Agent 可以流式输出",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "LCEL 流程的每一步由开发者确定，Agent 允许模型根据上下文决定下一步做什么",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "LCEL 流程由模型根据上下文决定下一步，Agent 的每一步由开发者确定",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E3-11", "type": "short" },
+        {
+          "id": "E3-12",
+          "type": "single",
+          "stem": "只用 while 循环实现 Agent 有什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "循环里无法切换模型供应商，只能使用一个厂商",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "进程退出后中间状态容易丢失，也很难在敏感工具前暂停几小时再继续",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "工具结果无法通过调用 ID 与原请求对应",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型无法在循环里生成 tool_calls，只能输出最终回答",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E3-13",
+          "type": "single",
+          "stem": "LLMChain、ConversationChain 这些旧版 Chain 现在处于什么状态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "已进入 langchain-classic，可用于维护存量项目，但不再代表 v1 的主架构",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "已被彻底删除，存量项目必须立刻全部重写",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "已并入 langchain-core，成为新的标准协议",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "仍是 LangChain v1 的主架构，新项目应优先使用它们",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "E4": {
+      "status": "draft",
+      "questions": [
+        { "id": "E4-1", "type": "short" },
+        { "id": "E4-2", "type": "short" },
+        {
+          "id": "E4-3",
+          "type": "single",
+          "stem": "一个 Tool 同时负责查询、退款和通知，会带来什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型无法为它生成参数，因为 Schema 不允许多个字段",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "运行时无法为它设置超时，因为超时按职责计算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它无法被单元测试覆盖，因为单测只支持查询",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型更容易选错动作，Tool 应当职责单一",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E4-4",
+          "type": "single",
+          "stem": "system_prompt 与 response_format 分别约束什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "system_prompt 保存线程状态，response_format 保存跨线程的用户偏好",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "system_prompt 约束输出的字段和类型，response_format 说明角色、目标、工具规则和失败策略",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "system_prompt 说明角色、目标、工具规则和失败策略，response_format 约束输出的字段和类型",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "system_prompt 保证业务事实正确，response_format 保证工具调用不越权",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E4-5",
+          "type": "fill",
+          "stem": "上线流程里三个组件各管一件事：配合稳定的 thread_id 保存线程状态的是 ____，保存跨线程的用户偏好和长期事实的是 ____，承接重试、摘要、权限和审批的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "E4-6", "type": "short" },
+        {
+          "id": "E4-7",
+          "type": "single",
+          "stem": "流式调用解决了什么，没有解决什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只适合只等最终结果的短任务，不适合展示进度的长任务",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只改善等待体验，超时、取消、并发限制和缓存仍要单独设计",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "同时解决了超时和取消，只有并发限制仍要单独设计",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能自动缓存结果，但会让用户等待最终结果的时间更长",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E4-8", "type": "short" },
+        {
+          "id": "E4-9",
+          "type": "single",
+          "stem": "以原文的订单客服 Agent 为例，下列哪项是它不能自行做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查询订单",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "转人工",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "退款",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "解释物流状态",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E4-10",
+          "type": "single",
+          "stem": "旧资料里的 create_tool_calling_agent 和 AgentExecutor 还该用吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它们是 v1 推荐的新写法，新项目应当用它们替换 create_agent",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它们仍可能出现在存量项目中，但 v1 的新项目应优先使用 create_agent",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它们已经无法运行，存量项目必须立刻删除相关代码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它们只用于流式调用，普通调用仍然要用 create_agent",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E4-11",
+          "type": "fill",
+          "stem": "付款、发邮件、删除数据这类工具必须具备三项能力：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "E4-12", "type": "short" },
+        { "id": "E4-13", "type": "short" }
+      ]
+    },
+    "E5": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "E5-1",
+          "type": "single",
+          "stem": "在 LangChain 中注册 Tool，模型侧与运行时侧分别得到了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型侧得到真正执行的函数或协程；运行时侧得到工具说明，用来判断何时使用和生成参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型侧得到工具的执行结果；运行时侧得到下一次要调用的工具名称",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型侧得到用户身份和租户信息；运行时侧得到模型生成的最终回答",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型侧得到工具说明，用来判断何时使用和生成参数；运行时侧得到真正执行的函数或协程",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E5-2",
+          "type": "single",
+          "stem": "工具要长期持有客户端、管理资源和生命周期时，应考虑哪种定义方式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "继承 BaseTool",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "使用 @tool",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "使用 StructuredTool",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接传普通函数",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E5-3", "type": "short" },
+        {
+          "id": "E5-4",
+          "type": "single",
+          "stem": "用户 ID、租户和权限为什么不能作为模型可填写的参数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这些参数会让工具说明超出 Schema 的长度限制",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型无法生成字符串类型的参数，只能生成数字",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型可能填错用户，也可能被恶意提示诱导去查询其他账户",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "这些参数每次调用都会变化，无法写进类型注解",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E5-5",
+          "type": "fill",
+          "stem": "工具通过 ToolRuntime 读取可信上下文：用户身份、租户和依赖在 ____，当前会话消息和短期状态在 ____，跨会话仍要保留的长期数据在 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "E5-6",
+          "type": "single",
+          "stem": "异步 Tool 里，哪类错误才应该做有上限的重试？",
+          "options": [
+            {
+              "key": "A",
+              "text": "网络超时、限流等临时故障",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "模型填错参数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "业务规则拒绝",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "程序自身的 Bug",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E5-7", "type": "short" },
+        {
+          "id": "E5-8",
+          "type": "single",
+          "stem": "关于异步工具的实现，下列哪种说法符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "I/O 密集型操作不适合异步，应当全部使用同步函数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只把函数声明成 async、内部仍调用阻塞式 HTTP 客户端，不会提高并发能力",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只要把函数声明成 async，内部用什么客户端都能提高并发能力",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "异步工具只能通过 invoke 调用，不能使用异步流式接口",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E5-9", "type": "short" },
+        {
+          "id": "E5-10",
+          "type": "single",
+          "stem": "工具调用的日志与 Trace 不能记录什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "调用失败时的错误类型和发生位置",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "被调用工具的名称和这次调用的耗时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型在这一轮选择了哪一个工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "密钥、完整身份凭证或不必要的敏感数据",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E5-11",
+          "type": "single",
+          "stem": "向 Agent 暴露的工具是不是越多越好？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，应根据用户权限和当前任务动态缩小工具集合",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是的，只要每个工具都有 docstring 就没有影响",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，工具越多模型的选择越准确",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，每个 Agent 只应暴露一个工具",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "E6": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "E6-1",
+          "type": "single",
+          "stem": "同一线程的对话和执行状态靠什么恢复？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型自己记住上一次的对话，调用时无需任何额外参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Store 按 namespace 和 key 保存消息，调用时传入用户 ID",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Checkpointer 把 State 快照持久化，调用时传入稳定的 thread_id",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Middleware 把历史压缩成摘要，调用时放进系统提示词",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E6-2",
+          "type": "single",
+          "stem": "Store 为什么适合保存跨线程的长期记忆？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它绑定 thread_id，同一线程内读取最快",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它把数据保存在 State 里，新线程会自动继承",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它只保存最近几条消息，占用空间很小",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它用 namespace 加 key 定位数据，不绑定线程",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E6-3",
+          "type": "single",
+          "stem": "用户新建对话后，怎样安全地读取旧对话沉淀的偏好？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把旧对话的全部消息原样复制到新线程的 State 里再让模型总结",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "应用把已认证的 user_id 经 Context 注入，工具再从 runtime.store 读取",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "让客户端在请求里指定任意 namespace，由工具直接按它读取",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让模型在工具参数里填写 user_id，再按它读取对应用户的偏好",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E6-4",
+          "type": "fill",
+          "stem": "处理旧消息的三种做法影响不同：只挑部分消息进入本次上下文、持久状态仍继续增长的是 ____，从 State 中永久移除旧消息的是 ____，把早期历史压缩成简短内容的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "E6-5",
+          "type": "single",
+          "stem": "长期记忆应该何时写入？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户明确要求记住的可以实时写入，从对话推断出的偏好更适合会话结束后提炼、去重和脱敏再入库",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只在用户注销账号时统一写入，平时一律不保存",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每一句对话都实时写入，由召回阶段负责过滤掉无关的内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从对话推断出的偏好可以实时写入，用户明确要求记住的要等会话结束后提炼、去重和脱敏再入库",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E6-6", "type": "short" },
+        {
+          "id": "E6-7",
+          "type": "single",
+          "stem": "InMemorySaver 适合什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "适合保存需要审计的聊天档案",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只适合本地演示",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "适合保存跨线程的长期记忆",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "适合多租户的生产环境",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E6-8", "type": "short" },
+        {
+          "id": "E6-9",
+          "type": "multiple",
+          "stem": "长期记忆写入前，按原文要做哪些处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把每段原始对话原样永久保存",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "去重",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "脱敏",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "冲突处理",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "质量判断",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E6-10",
+          "type": "single",
+          "stem": "把记忆带到生产环境时，thread_id、tenant_id 和 user_id 应当来自哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型生成的工具参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "客户端随意指定的字段",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可信的身份体系",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "上一条消息里的文本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E6-11",
+          "type": "fill",
+          "stem": "评测一套记忆有没有用，要看整条链路上的三步是否都有效：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "E6-12",
+          "type": "single",
+          "stem": "以规划旅行为例，下列哪项属于长期记忆而不是短期状态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这次任务的下一步计划",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这次对话里提到的出行日期",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这次对话里提到的预算",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户不吃辣、喜欢住在地铁附近",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E6-13", "type": "short" }
+      ]
+    },
+    "E7": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "E7-1",
+          "type": "single",
+          "stem": "LangChain 和 LlamaIndex 现在是否都能构建 Agent 与 RAG？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能，LangChain 只能构建 Agent，LlamaIndex 只能构建 RAG",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "都能，差别在优势重心：前者偏数据接入与上下文增强，后者偏通用 Agent 组装和工具集成",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能，两者都只能构建 RAG，Agent 要靠其他框架",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "都能，差别在优势重心：前者偏通用 Agent 组装和工具集成，后者偏数据接入与上下文增强",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E7-2", "type": "short" },
+        {
+          "id": "E7-3",
+          "type": "single",
+          "stem": "项目的主要难点是复杂文档解析与检索时，按原文优先评估哪个框架？",
+          "options": [
+            {
+              "key": "A",
+              "text": "LangGraph",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "LangChain",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "LlamaIndex",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "LangChain4j",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E7-4", "type": "short" },
+        { "id": "E7-5", "type": "short" },
+        { "id": "E7-6", "type": "short" },
+        { "id": "E7-7", "type": "short" },
+        {
+          "id": "E7-8",
+          "type": "single",
+          "stem": "按原文，只是简单知识库或单工具 Agent 时，要不要同时引入 LangChain 和 LlamaIndex？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有必要，组合会增加依赖、追踪和调试成本",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "有必要，同时引入两套框架架构才算完整",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "有必要，组合使用能减少依赖和调试成本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有必要，两套框架解决的是同一类难题",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E7-9",
+          "type": "single",
+          "stem": "关于 LangChain 最常见的误区是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "认为固定流程由 Runnable 和 LCEL 承担",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "认为它只会把 Prompt 串成 Chain",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "认为它的主线已经转向 Agent",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "认为它与 LlamaIndex 能力有重叠",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "E8": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "E8-1",
+          "type": "single",
+          "stem": "LangChain4j 是 Python LangChain 的官方 Java 移植版吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，它是 Spring 官方提供的 AI 模块，与 LangChain 没有任何相似之处",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，它逐项复刻了 Python LangChain 的 API，并与之同步发布",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，它是从 Java 习惯出发设计的 JVM 开源库，API、实现和发布周期都独立",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "是的，它由同一个团队维护，内部直接调用 Python 版本的实现",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E8-2", "type": "short" },
+        {
+          "id": "E8-3",
+          "type": "single",
+          "stem": "AI Services 如何减少 Java 应用里的 Prompt 与解析胶水代码？",
+          "options": [
+            {
+              "key": "A",
+              "text": "开发者把 Prompt 写进配置文件，框架在编译期生成对应的 SQL 语句",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "开发者声明一个 Java 接口，框架在运行时提供代理实现，负责参数转消息、响应转返回值",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "开发者为每个模型手写一个适配类，框架只负责统一管理依赖版本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "开发者直接调用各家 SDK，框架只负责把异常转换成统一类型",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E8-4", "type": "short" },
+        {
+          "id": "E8-5",
+          "type": "single",
+          "stem": "Chat Memory 与完整的聊天档案有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chat Memory 是下一次喂给模型的上下文，可以被淘汰或压缩；完整聊天记录是展示和审计用的事实记录",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都只保存在内存里，应用重启之后都会丢失且无法持久化",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者是同一份数据，LangChain4j 会替应用完整保存全部历史",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Chat Memory 是展示和审计用的事实记录；完整聊天记录是下一次喂给模型的上下文，可以被淘汰或压缩",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E8-6",
+          "type": "single",
+          "stem": "模型厂商的差异为什么不会被统一接口完全抹平？",
+          "options": [
+            {
+              "key": "A",
+              "text": "各家的模型能力完全相同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "适配层不允许切换供应商",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "统一接口只支持一家厂商",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "抽象只能覆盖各家的交集",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E8-7", "type": "short" },
+        {
+          "id": "E8-8",
+          "type": "multiple",
+          "stem": "按原文，LangChain4j 的 Guardrails 和可观测性不能替代下列哪些工作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "审计",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "授权",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "认证",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "采集各阶段的请求、响应、耗时和错误",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "在模型调用前后校验输入和输出",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "数据隔离",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E8-9", "type": "short" },
+        {
+          "id": "E8-10",
+          "type": "single",
+          "stem": "LangChain4j 的旧式 Chains 还推荐吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "推荐，它是在低层直接操作模型、消息和存储的唯一方式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不推荐，它已被彻底删除，任何版本都无法再导入使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不推荐，官方文档已把它标为 legacy，新项目不应把它当主入口",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "推荐，官方文档把它列为新项目的主入口，AI Services 只用于存量项目",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E8-11",
+          "type": "single",
+          "stem": "AI Service 返回 record 或 POJO 时，结构化输出能替代业务校验吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能，因为 LangChain4j 无法把响应解析成 Java 对象",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能，反序列化成功只说明数据形状对得上，不代表符合业务规则",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "能，自动生成的 Schema 已经包含金额和权限的业务规则",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能，只要返回类型是 record，模型就不会输出错误的值",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E8-12",
+          "type": "single",
+          "stem": "LangChain4j 的依赖版本应怎样管理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通过 langchain4j-bom 统一管理模块版本",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "始终使用带 beta 后缀的最新模块",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在每个模块的依赖里分别手填版本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让 Spring Starter 自动选择任意版本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E8-13",
+          "type": "single",
+          "stem": "一次 AI Service 调用里，模型和 Java 应用在工具调用上怎样分工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "应用提出调用请求，模型负责真正执行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型和应用各执行一遍，以模型的执行结果为准",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型直接执行 Java 方法，应用只负责展示结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型只负责提出调用请求，真正执行的是 Java 应用",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E8-14",
+          "type": "fill",
+          "stem": "LangChain4j 的两种常用 ChatMemory 实现：按消息数淘汰的是 ____，按 Token 窗口淘汰的是 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "E8-15",
+          "type": "single",
+          "stem": "业务所说的“长期记忆”应该放在 ChatMemory 里吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "应该，ChatMemory 默认就把所有消息永久写进数据库",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不应该，通常应结构化存入业务数据库，或做成可检索的知识再通过 RAG 注入",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "应该，把 ChatMemory 的消息窗口无限增大就能保存全部长期记忆",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不应该，长期记忆只能写进系统提示词里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E8-16",
+          "type": "single",
+          "stem": "LangChain4j 里需要查询改写、多路检索、融合和重排时，用什么组件组合这些阶段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "RetrievalAugmentor",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "ChatMemoryProvider",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "MessageWindowChatMemory",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "ChatMemoryStore",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E8-17", "type": "short" },
+        { "id": "E8-18", "type": "short" },
+        { "id": "E8-19", "type": "short" },
+        { "id": "E8-20", "type": "short" },
+        { "id": "E8-21", "type": "short" },
+        { "id": "E8-22", "type": "short" }
+      ]
+    },
+    "E9": {
+      "status": "draft",
+      "questions": [
+        { "id": "E9-1", "type": "short" },
+        { "id": "E9-2", "type": "short" },
+        {
+          "id": "E9-3",
+          "type": "single",
+          "stem": "LangChain Agent 是否只能线性执行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，循环和分支只有直接编写 LangGraph 才能表达",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，但它每一轮只能调用一个工具，不能并行执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，create_agent 生成的是一条从模型到工具再到结束的直线",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，模型可能直接结束，也可能请求工具后再回到模型，构成条件路由加循环",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E9-4",
+          "type": "multiple",
+          "stem": "下列哪些情况应从预构建 Agent 下沉到自定义 LangGraph？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只需给模型一组工具，让它循环调用直到完成",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "必须精确控制失败补偿和人工节点",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "任务要跨小时或跨天暂停恢复",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "确定性规则与模型决策交替出现",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "多条路径要并行再汇合",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "只是在模型执行某个工具前让人确认一下",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E9-5",
+          "type": "single",
+          "stem": "已构建的 LangChain Agent 能否放进更大的图里复用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能，create_agent 返回的对象只能单独调用，无法嵌入其他流程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能，但放进图之后它的 middleware 会全部失效，需要重新用节点实现",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，它可以作为节点或子图放进更大的 StateGraph，middleware 会跟着一起工作",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不能，LangChain 和 LangGraph 只能二选一，不能组合使用",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E9-6", "type": "short" },
+        { "id": "E9-7", "type": "short" },
+        { "id": "E9-8", "type": "short" },
+        { "id": "E9-9", "type": "short" },
+        {
+          "id": "E9-10",
+          "type": "single",
+          "stem": "LangGraph 的状态为什么需要 reducer？",
+          "options": [
+            {
+              "key": "A",
+              "text": "某个节点执行失败时，由它决定重试几次、每次间隔多久以及何时放弃",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "流程需要暂停等人确认时，由它保存状态并把中断载荷交给外部系统",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "状态快照越积越大时，由它决定哪些旧的检查点可以删除、哪些必须保留",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "多个节点并行或多次更新同一字段时，由它决定怎样合并，避免后写入的覆盖前一份",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E9-11",
+          "type": "single",
+          "stem": "Checkpointer 和 Store 分别保存什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Checkpointer 保存模型的参数，Store 保存工具的参数 Schema",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Checkpointer 保存流式事件，Store 保存 Trace 和评测结果",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Checkpointer 按 thread_id 保存图状态快照，Store 保存图状态之外、跨线程可读取的业务数据",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Checkpointer 保存图状态之外、跨线程可读取的业务数据，Store 按 thread_id 保存图状态快照",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E9-12",
+          "type": "single",
+          "stem": "“LangChain 管记忆，LangGraph 管持久化”这种说法对吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对，LangGraph 不支持长期记忆，记忆只能由 LangChain 的 Memory 类提供",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不对，create_agent 会把 checkpointer 和 store 交给底层图，LangChain Agent 同样能获得记忆和恢复能力",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不对，两者都不提供记忆和持久化，全部要由应用自己实现",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "对，LangChain Agent 没有任何持久化能力，必须改写成 LangGraph 才能恢复",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E9-13",
+          "type": "single",
+          "stem": "下列哪种人工介入，用 HumanInTheLoopMiddleware 就够了？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型想执行某个工具前，先让人确认",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "多位审核人填写意见后按票数路由",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "等一周之后再继续执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让审核员补充几个业务字段",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E9-14",
+          "type": "single",
+          "stem": "LangSmith 是 LangGraph 专属的吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，它只能观察 LangChain Agent，不能观察 LangGraph",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，只有直接编写的 LangGraph 才能接入 LangSmith 的 tracing",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，使用 LangSmith 就必须把应用部署到托管平台",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，它既能观察 LangChain Agent，也能观察直接编写的 LangGraph，还支持其他框架接入",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E9-15",
+          "type": "single",
+          "stem": "LangGraph 更底层，是否意味着它更适合所有场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，LangGraph 只适合不使用 LLM 的纯规则流程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，控制权越大，要自己设计和测试的状态、路由、恢复与副作用就越多",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是的，客服问答这类标准工具调用也应直接从 LangGraph 开始",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，用几十个节点重搭一个标准 Agent 总是更可靠",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "E10": {
+      "status": "draft",
+      "questions": [
+        { "id": "E10-1", "type": "short" },
+        {
+          "id": "E10-2",
+          "type": "single",
+          "stem": "StateGraph（Graph API）与 Functional API 各适合什么流程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "复杂分支、并行汇合或多 Agent 路由用 Graph API；已有普通 Python 流程、只想加检查点和人工暂停用 Functional API",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者只能二选一，同一个项目里不能混合使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者完全等价，区别只在 Functional API 不支持持久化",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "已有普通 Python 流程、只想加检查点和人工暂停用 Graph API；复杂分支、并行汇合或多 Agent 路由用 Functional API",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E10-3",
+          "type": "single",
+          "stem": "长任务从 checkpoint 恢复时，节点里的代码可能重新执行。这对外部副作用提出了什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须交给模型自己判断是否重做",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "必须放在图的最后一个节点",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "必须有幂等保护",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "必须全部改成同步调用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E10-4",
+          "type": "single",
+          "stem": "interrupt() 触发后，流程怎样恢复？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用相同的 thread_id 和 Command(resume=...) 恢复，节点从开头重新执行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "由模型自己判断是否恢复执行，外部系统的输入不会再传回节点内部",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "等待一段固定的时间之后自动恢复，节点从中断的那一行代码继续执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用一个新的 thread_id 重新调用整张图，流程从图的入口节点重新开始",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E10-5",
+          "type": "single",
+          "stem": "checkpoint 重放或时间旅行做不到什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "复现 Agent 为什么走错了路",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "撤销现实中已经发生的操作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "修改旧状态后分出另一条轨迹",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从旧的位置重新执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E10-6",
+          "type": "single",
+          "stem": "并行节点更新同一个 State 字段时，应怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让最后写入的节点覆盖前面的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "改成全部串行执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 Reducer 明确合并方式",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "给每个节点各建一个线程",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E10-7", "type": "short" },
+        { "id": "E10-8", "type": "short" },
+        { "id": "E10-9", "type": "short" },
+        {
+          "id": "E10-10",
+          "type": "fill",
+          "stem": "StateGraph 的三个核心角色是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "E10-11",
+          "type": "fill",
+          "stem": "LangGraph 的两个高级原语：一个节点既要改状态又要改道时返回 ____，运行时才知道要派出多少个任务时用 ____ 动态分发。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        { "id": "E10-12", "type": "short" },
+        { "id": "E10-13", "type": "short" },
+        {
+          "id": "E10-14",
+          "type": "single",
+          "stem": "加了 Checkpointer 就一定不会重复执行吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，只要使用数据库后端，节点里的代码就不会再次运行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，Checkpointer 会记录每个外部调用，恢复时自动跳过已经执行的",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，Checkpointer 只保存最终结果，中间状态一律不保存",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，LangGraph 提供可靠执行的基础设施，但不能替业务自动发明幂等语义",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E10-15", "type": "short" },
+        {
+          "id": "E10-16",
+          "type": "fill",
+          "stem": "LangGraph 的三层节点失败处理机制中，按异常与退避策略重试的是 ____，限制单次尝试时间的是 ____，重试耗尽后接管错误的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "E10-17", "type": "short" },
+        { "id": "E10-18", "type": "short" },
+        {
+          "id": "E10-19",
+          "type": "single",
+          "stem": "用了 LangGraph 就自动高可用了吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，只要图里配置了重试策略就等于高可用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，LangGraph 只能在托管平台上运行，无法自托管",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，自托管时数据库、任务队列、扩缩容、监控和数据保留仍是团队的责任",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "是的，开源 LangGraph 自带托管的数据库、任务队列和监控",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E10-20",
+          "type": "single",
+          "stem": "采购 Agent 的例子里，LangChain 和 LangGraph 怎样组合最自然？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 create_agent 做材料理解或异常解释节点，外层采购流程由 StateGraph 控制",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "整个流程都交给 create_agent，把审批顺序和权限写进 Prompt",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 StateGraph 做材料理解节点，外层采购流程交给 create_agent 自由决定",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "整个流程都用 StateGraph，任何节点都不使用模型",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E10-21", "type": "short" },
+        { "id": "E10-22", "type": "short" }
+      ]
+    },
+    "E11": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "E11-1",
+          "type": "single",
+          "stem": "LangChain 为什么把核心协议与第三方集成拆开？",
+          "options": [
+            {
+              "key": "A",
+              "text": "核心协议只支持一家厂商，拆开是为了给其他厂商各做一套协议",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "厂商 SDK 变化很快，而核心协议应尽量稳定，放在一个包里两种迭代节奏会互相影响",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "第三方集成已经不再需要，拆开是为了逐步把它们全部删除",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "核心协议变化很快，而厂商 SDK 很稳定，拆开是为了让核心协议更频繁地发布",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E11-2", "type": "short" },
+        {
+          "id": "E11-3",
+          "type": "single",
+          "stem": "旧式 AgentExecutor 为什么难以承载复杂状态与断点恢复？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它把循环摊开成 State、Node、Edge，开发者要自己维护的节点太多",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它不支持调用工具，只能让模型直接输出最终回答",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它每一步都保存检查点，恢复时要重放的状态太多",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它把模型判断、调用工具的循环藏在内部，加入规划、并行、审批或故障恢复就难以修改",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E11-4",
+          "type": "single",
+          "stem": "v1 的 create_agent 与 middleware 分别聚焦什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "create_agent 只用于维护存量项目，middleware 只用于实验性功能",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "middleware 是新项目的高层入口，create_agent 是主要扩展方式，把逻辑插入关键执行阶段",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "create_agent 负责统一各厂商的消息格式，middleware 负责保存跨线程的长期记忆",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "create_agent 是新项目的高层入口，middleware 是主要扩展方式，把逻辑插入关键执行阶段",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E11-5", "type": "short" },
+        { "id": "E11-6", "type": "short" },
+        {
+          "id": "E11-7",
+          "type": "single",
+          "stem": "Runnable 的出现代表了怎样的转向？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从少量标准协议转向大量预制类",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "从大量预制类转向少量标准协议加组合",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "从组合转向为每个场景单独封装",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从确定性流程转向全部由模型决定",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E11-8",
+          "type": "single",
+          "stem": "LangChain v1 把旧的 Chain、Retriever、Indexing 和 Hub 等能力主要迁到了哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "langchain-openai",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "langgraph",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "langchain-classic",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "langchain-core",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E11-9", "type": "short" },
+        { "id": "E11-10", "type": "short" },
+        {
+          "id": "E11-11",
+          "type": "single",
+          "stem": "LangChain Python v0.3 在 Pydantic 上做了什么变化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把内部数据模型迁移到 Pydantic 2，并停止使用 Pydantic 1 兼容层",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把内部数据模型迁回 Pydantic 1，并移除对 Pydantic 2 的支持",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "同时保留两个版本的兼容层，由用户在运行时选择",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "完全去掉 Pydantic，工具 Schema 改用普通字典",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "E12": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "E12-1",
+          "type": "single",
+          "stem": "Deep Research 是 LangChain 的一个固定开关，还是一类 Agent 架构？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是 Deep Agents SDK 里的一个搜索工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是一类面向开放问题的研究型 Agent 架构，不是核心包里的固定开关",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是核心包里的一个固定开关，打开之后任何 Agent 都会多搜几轮",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是一个只能用于文献综述的专用模型",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E12-2", "type": "short" },
+        {
+          "id": "E12-3",
+          "type": "single",
+          "stem": "Supervisor 怎样判断子课题能否并行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相对独立的问题才适合并行，后一个问题依赖前一个结论时应串行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "相互依赖的问题才适合并行，相对独立的问题应串行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有子课题一律并行，以便尽快完成",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有子课题一律串行，以便保持口径一致",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E12-4",
+          "type": "single",
+          "stem": "Researcher 为什么应在隔离的上下文里搜集并压缩证据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "隔离之后每个 Researcher 可以各自写出报告里的一章",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "隔离的上下文不计入总 Token 和搜索费用预算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "多个主题共用一个上下文会互相干扰，隔离后只返回压缩的结论和来源",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "隔离的上下文里可以使用主 Agent 没有的密钥和写权限",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E12-5",
+          "type": "single",
+          "stem": "搜到互相矛盾的来源时，应怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "以链接数量多的说法为准",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把矛盾的来源都丢弃",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "挑一个最符合预期的答案",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "继续追查发布时间、统计口径和原始出处",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E12-6",
+          "type": "single",
+          "stem": "为什么通常由统一的写作阶段综合报告，而不让每个子 Agent 各写一章？",
+          "options": [
+            {
+              "key": "A",
+              "text": "各章节可能重复背景、使用不同口径，甚至得出互相冲突的结论",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "子 Agent 的上下文太小，装不下一章的内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "子 Agent 没有调用搜索工具的权限，写不出带引用的内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "统一写作可以省去核验来源这一步",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E12-7",
+          "type": "single",
+          "stem": "下列哪类问题一次权威检索就够，不必使用 Deep Research？",
+          "options": [
+            {
+              "key": "A",
+              "text": "供应商尽调",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "竞品分析",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "文献综述",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "容易核验的事实",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "E12-8", "type": "short" },
+        { "id": "E12-9", "type": "short" },
+        {
+          "id": "E12-10",
+          "type": "single",
+          "stem": "判断研究来源是否可信时，原文提醒要注意什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "转载次数越多的说法越接近原始事实，可以直接采信",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只要来源带有引用链接，就不需要再看原始出处",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "多篇转载可能都来自同一篇文章，不能因为链接数量多就当成交叉验证",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "官方文档和监管文件立场不中立，应优先采用二手解读",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "E12-11",
+          "type": "multiple",
+          "stem": "评测 Deep Research，按原文应该看哪些方面？",
+          "options": [
+            {
+              "key": "A",
+              "text": "引用正确性",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "搜索次数是否足够多",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最终答案",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "研究轨迹",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "来源覆盖率",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "耗时和成本",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "E12-12",
+          "type": "single",
+          "stem": "在金融、医疗、法律和安全决策这类高风险领域，Deep Research 有什么限制？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只需要把并发的研究单元数量调高即可",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只能辅助资料整理，不能因为报告带有引用就取消专家复核",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "完全不能使用，连资料整理也不允许",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只要报告带有引用，就可以直接作为最终决策依据",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "E12-13", "type": "short" }
+      ]
+    }
+  }
+}

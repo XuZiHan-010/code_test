@@ -1,0 +1,32 @@
+
+> xiaolin-quiz@0.1.0 content:check-links
+> tsx scripts/check-links.ts
+
+(node:2784) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+检查了 314 个页面、2432 个小节锚点。
+小节锚点不存在：https://docs.docker.com/build/building/best-practices/#add-or-copy　引用它的有 Y2-28、Y2-30、Y2-33、Y2-34
+小节锚点不存在：https://docs.docker.com/build/building/best-practices/#pin-base-image-versions　引用它的有 Y2-55、Y2-56、Y2-58、Y2-62
+小节锚点不存在：https://docs.docker.com/build/building/variables/#build-arguments　引用它的有 Y2-4、Y2-11、Y2-12
+小节锚点不存在：https://docs.docker.com/build/cache/backends/#cache-mode　引用它的有 Y2-37、Y2-43、Y2-44
+小节锚点不存在：https://docs.docker.com/build/cache/invalidation/#general-rules　引用它的有 Y1-60、Y1-61、Y1-65
+小节锚点不存在：https://docs.docker.com/build/concepts/context/#dockerignore-files　引用它的有 Y2-49、Y2-50、Y2-53
+小节锚点不存在：https://docs.docker.com/engine/containers/runmetrics/#find-the-cgroup-for-a-given-container　引用它的有 Y1-15、Y1-22
+小节锚点不存在：https://docs.docker.com/engine/storage/drivers/#images-and-layers　引用它的有 Y2-62
+小节锚点不存在：https://docs.docker.com/engine/storage/drivers/#the-copy-on-write-cow-strategy　引用它的有 Y1-58、Y1-65
+小节锚点不存在：https://docs.docker.com/reference/cli/docker/container/ls/#filter-by-exit-signal　引用它的有 Y4-26、Y4-28、Y4-36
+小节锚点不存在：https://docs.docker.com/reference/cli/docker/image/pull/#pull-an-image-from-docker-hub　引用它的有 Y1-60、Y1-62、Y1-64、Y1-65
+小节锚点不存在：https://docs.docker.com/reference/dockerfile/#add　引用它的有 Y2-25、Y2-26、Y2-34
+小节锚点不存在：https://docs.docker.com/reference/dockerfile/#entrypoint　引用它的有 Y2-13、Y2-15、Y2-16、Y2-20、Y2-21
+小节锚点不存在：https://docs.docker.com/reference/dockerfile/#user　引用它的有 Y2-6、Y2-11、Y2-12
+小节锚点不存在：https://kubernetes.io/docs/concepts/workloads/pods/init-containers/#detailed-behavior　引用它的有 U9-24
+打不开（状态 0）：https://en.wikipedia.org/wiki/B%2B_tree　引用它的有 S3-95 等 1 处
+打不开（状态 0）：https://github.com/HKUDS/LightRAG/blob/main/docs/ProgramingWithCore.md　引用它的有 L2-56 等 1 处
+打不开（状态 0）：https://github.com/fastapi/fastapi/blob/master/fastapi/params.py　引用它的有 U3-29 等 1 处
+打不开（状态 0）：https://github.com/maximhq/bifrost　引用它的有 C16-13 等 1 处
+打不开（状态 0）：https://github.com/openai/openai-cookbook/blob/main/examples/o-series/o3o4-mini_prompting_guide.ipynb　引用它的有 C8-3、C8-6 等 2 处
+打不开（状态 0）：https://github.com/redis/redis/blob/6.0/redis.conf　引用它的有 O2-21、O2-25 等 2 处
+打不开（状态 0）：https://www.docker.com/resources/what-container/　引用它的有 Y1-24、Y1-36 等 2 处
+页面已不存在，显示的是首页：https://html.spec.whatwg.org/multipage/server-sent-events.html　引用它的有 C14-3 等 1 处
+
+发现 23 个问题。

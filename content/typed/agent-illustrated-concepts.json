@@ -1,0 +1,1126 @@
+{
+  "prefix": "K",
+  "chapters": {
+    "K1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "K1-1",
+          "type": "single",
+          "stem": "按原文，LLM 的工作原理说白了是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从外部数据库里检索出现成的答案，再原样返回给用户",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按开发者预定义的代码路径，一步一步编排各个处理环节",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在循环中自主使用工具，不断思考、行动、观察直到任务完成",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "预测下一个字，根据学到的语言规律一个字一个字往后接",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K1-2",
+          "type": "fill",
+          "stem": "原文列举的普通 LLM 四个弊端是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "K1-3",
+          "type": "fill",
+          "stem": "原文对 Agent 的定义是：____ 在 ____ 中自主使用 ____ 的系统。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "K1-4", "type": "short" },
+        {
+          "id": "K1-5",
+          "type": "fill",
+          "stem": "Agent 的四个核心组成部分是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "K1-6",
+          "type": "single",
+          "stem": "Workflow 和 Agent 的定义有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都由预定义的代码路径决定流程，区别只在 Agent 可以调用工具而 Workflow 不能",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Workflow 通过预定义的代码路径编排 LLM 和工具，Agent 由 LLM 动态主导自身流程与工具调用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都由 LLM 自主决定流程，区别只在 Workflow 有长期记忆而 Agent 没有",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Workflow 由 LLM 动态主导自身流程与工具调用，Agent 通过预定义的代码路径编排 LLM 和工具",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K1-7",
+          "type": "multiple",
+          "stem": "关于 Workflow 和 Agent 的区别，下列哪些说法符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Agent 的流程确定，但灵活性比 Workflow 差",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Workflow 出了问题容易定位",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Workflow 的 token 消耗大约是 Agent 的四倍",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Agent 的决策路径不确定，调试更困难",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "Workflow 的控制权在代码手里，流程可预测、可复现",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K1-8",
+          "type": "single",
+          "stem": "按原文，生产环境里最常见的是哪种做法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "混合架构：整体流程用 Workflow 控制，遇到复杂问题的环节再启动 Agent",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "多 Agent 架构：一开始就把任务拆给多个专业化的 Agent 并行处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "全部交给 Agent：告诉它目标，由它自己决定每一步怎么做",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "全部写成 Workflow：把每一步和每条分支都提前写死在代码里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K1-9",
+          "type": "multiple",
+          "stem": "关于 ReAct 模式，下列哪些说法符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "规划只做一次，token 消耗是几种模式里最少的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在思考、行动、观察之间循环，直到任务完成",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "过程透明可审计，通用性强",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "完成任务后先切换到审查者角色检查一遍再交付",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "有时会陷入循环，反复执行相同的动作",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K1-10",
+          "type": "multiple",
+          "stem": "关于 Plan-and-Execute 模式，下列哪些说法符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由一个 Agent 生成、另一个 Agent 评审，来回迭代",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "执行中情况变了，原计划可能不再适用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "先把完整的执行计划想清楚，再按计划逐步完成",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每走一步都要重新完整推理一次全局",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "规划只做一次，token 消耗比 ReAct 少得多",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K1-11",
+          "type": "fill",
+          "stem": "Reflection 模式的两种实现方式是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "K1-12",
+          "type": "single",
+          "stem": "Anthropic 对 Multi-Agent 模式的提醒是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "多 Agent 系统里的每个 Agent 都不应再使用 ReAct",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "应当从多 Agent 架构起步，任务变简单之后再逐步合并",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不要过早引入，只有任务确实需要拆成多个并行子任务时才值得",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "多 Agent 只适合步骤固定、可以提前规划好的任务",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K1-13",
+          "type": "single",
+          "stem": "ReAct、Plan-and-Execute、Reflection、Multi-Agent 这几种工作模式是互斥的吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，实际中往往组合使用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是，一个系统只能选用其中一种",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，但 Reflection 不能与其他模式组合",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是，只有 ReAct 可以单独使用",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K1-14", "type": "short" },
+        {
+          "id": "K1-15",
+          "type": "fill",
+          "stem": "Function Call 的四步工作流程依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "K1-16",
+          "type": "single",
+          "stem": "Function Call 中，真正执行函数的是谁？",
+          "options": [
+            {
+              "key": "A",
+              "text": "LLM 自己",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型厂商的服务器",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "你的应用程序",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用户的浏览器",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K1-17", "type": "short" },
+        { "id": "K1-18", "type": "short" },
+        {
+          "id": "K1-19",
+          "type": "multiple",
+          "stem": "只用 Function Call 做集成，按原文会遇到哪些困境？",
+          "options": [
+            {
+              "key": "A",
+              "text": "N 个 AI 应用对接 M 个外部服务需要 N×M 个定制集成",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "LLM 无法从自然语言里提取结构化参数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "要为每个服务单独写函数定义和调用逻辑",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "函数只能在外部的 MCP Server 中执行",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "各 LLM 厂商的 Function Call 格式不完全一样",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K1-20",
+          "type": "single",
+          "stem": "MCP 做的是什么事？",
+          "options": [
+            {
+              "key": "A",
+              "text": "提供统一标准，让不同的 AI Agent 能互相发现、互相通信、互相委派任务",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "提供统一标准，让任何 AI 应用都能用同一种方式连接外部工具和数据源",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把自然语言写成的行为指令加载到上下文，教 Agent 按什么方法完成任务",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让 LLM 输出结构化的调用请求，由应用程序执行之后把结果返回给它",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K1-21",
+          "type": "fill",
+          "stem": "MCP 的三个角色中，作为交互发起方的 AI 应用是 ____，住在其中负责通信的是 ____，对外暴露工具能力和数据资源的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "K1-22", "type": "short" },
+        { "id": "K1-23", "type": "short" },
+        {
+          "id": "K1-24",
+          "type": "single",
+          "stem": "SKILL.md 顶部的 YAML 元数据声明的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这个 Agent 的身份和认证要求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这个 Skill 要连接哪个 MCP Server",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个函数的名字、功能说明和参数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这个 Skill 什么时候应该被激活",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K1-25",
+          "type": "single",
+          "stem": "用厨房和菜谱的比喻，MCP 和 Skills 各解决什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "MCP 是菜谱，解决该怎么做；Skills 是装满工具的厨房，解决能做什么",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "MCP 是装满工具的厨房，解决能做什么；Skills 是菜谱，解决该怎么做",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "MCP 和 Skills 都是菜谱，区别只在菜谱写给哪个模型看",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "MCP 和 Skills 都是厨房里的工具，区别只在工具由谁提供",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K1-26", "type": "short" },
+        {
+          "id": "K1-27",
+          "type": "multiple",
+          "stem": "按原文，Skill 除了告诉 Agent 怎么想，还能做哪些事？",
+          "options": [
+            {
+              "key": "A",
+              "text": "代替 MCP Server 对外暴露工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 allowed-tools 字段声明需要使用的工具",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "发布 JSON 名片供其他 Agent 读取",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "指导 Agent 调用 MCP 工具或发起 Function Call",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "打包可执行的脚本文件",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "K1-28", "type": "short" },
+        { "id": "K1-29", "type": "short" },
+        {
+          "id": "K1-30",
+          "type": "multiple",
+          "stem": "关于 Function Call、MCP、Skills 的运行位置和标准化程度，下列哪些说法符合原文？",
+          "options": [
+            {
+              "key": "A",
+              "text": "MCP 是统一的开放标准，跨厂商通用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Skills 在 Agent 的上下文窗口内生效",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Function Call 的函数在你的应用程序中执行",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Function Call 在各 LLM 厂商之间格式统一",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "MCP 的工具在外部的 MCP Server 中执行",
+              "correct": true
+            },
+            {
+              "key": "F",
+              "text": "Skills 已经有各平台通用的统一标准",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K1-31", "type": "short" },
+        { "id": "K1-32", "type": "short" },
+        { "id": "K1-33", "type": "short" },
+        {
+          "id": "K1-34",
+          "type": "single",
+          "stem": "A2A 中的消息与制品分别用来传递什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "消息沟通过程中的信息，制品传递最终结果",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "消息描述 Agent 的能力，制品描述认证要求",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "消息记录任务状态，制品记录工具参数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "消息传递最终结果，制品沟通过程中的信息",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K1-35",
+          "type": "single",
+          "stem": "A2A 中的 Agent Card 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Agent 之间协作时创建的任务记录，包含从创建到完成的各个状态",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Agent 加载的 Markdown 指令文件，顶部用 YAML 声明什么时候被激活",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Agent 发布的 JSON 格式名片，描述自己的身份、能力、交互方式和认证要求",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Agent 完成任务之后返回给请求方的最终结果，例如一份分析报告",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K1-36", "type": "short" },
+        {
+          "id": "K1-37",
+          "type": "single",
+          "stem": "A2A 和 MCP 是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都处理 Agent 到工具的连接，A2A 是用来取代 MCP 的新一代协议",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都处理 Agent 到 Agent 的协作，区别只在由不同的厂商发布",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "MCP 是横向的，处理 Agent 到 Agent；A2A 是竖向的，处理 Agent 到工具；两者互补",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "MCP 是竖向的，处理 Agent 到工具；A2A 是横向的，处理 Agent 到 Agent；两者互补",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K1-38",
+          "type": "single",
+          "stem": "A2A 的“模态无关”指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不需要引入新的基础设施，现有技术栈就能支持",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "同步任务和长时间运行的任务都能处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不管 Agent 用什么框架开发，都能互相通信",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "除了文本，还能交换音频、视频、图像和结构化数据",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K1-39",
+          "type": "fill",
+          "stem": "A2A 为异步和长时间运行的任务提供的三项支持是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "K1-40",
+          "type": "fill",
+          "stem": "A2A 完全基于现有的 Web 标准：传输用 ____，消息格式用 ____，实时流式通信用 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "K1-41", "type": "short" },
+        { "id": "K1-42", "type": "short" },
+        {
+          "id": "K1-43",
+          "type": "single",
+          "stem": "把 Agent 比作新入职的员工，Skills 相当于什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "岗位培训手册",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "公司的通讯录和电话系统",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "打电话的能力",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "员工对外发的名片",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K1-44", "type": "short" }
+      ]
+    },
+    "K2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "K2-1",
+          "type": "single",
+          "stem": "在 OpenClaw 的架构中，Gateway 负责什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "调用大模型，把想法拆成执行计划，协调工具并汇报结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "作为所有消息的入口，负责身份鉴权、管理会话状态并路由请求",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "在各台设备上提供摄像头、地理位置等本地高权限能力",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把各聊天平台的消息转成统一内容，再把回复转回平台格式",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K2-2", "type": "short" },
+        {
+          "id": "K2-3",
+          "type": "single",
+          "stem": "OpenClaw 的 Nodes 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "开一个本地文件、发一封邮件、调一个软件接口这类单个的基础小工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "连接飞书、微信等聊天平台并把各平台消息转成统一内容的转换层",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "运行在手机、电脑等设备上的小节点，为智能体提供摄像头、位置等本地高权限能力",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把读邮件、拉进度、写文档等好几个工具串起来的一套完整干活流程",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K2-4", "type": "short" },
+        {
+          "id": "K2-5",
+          "type": "single",
+          "stem": "OpenClaw 里的 Tools 和 Skills 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Tools 运行在本地设备上，Skills 只能运行在云端的虚拟沙盒里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Tools 是把好几个技能串起来的一套完整流程，Skills 是单个的基础小工具",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Tools 是单个的基础小工具，Skills 是把好几个工具串起来的一套完整流程",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Tools 由大模型自己生成，Skills 由 Gateway 在路由请求时生成",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K2-6",
+          "type": "single",
+          "stem": "原文为什么称 OpenClaw 的记忆是永久记忆？",
+          "options": [
+            {
+              "key": "A",
+              "text": "记忆存进 SQLite 之后无法删除",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "大模型的上下文窗口不会被压缩",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "全部聊天记录都原样保存在云端",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "有价值的内容会被提炼后写进本地文件",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "K2-7", "type": "short" },
+        {
+          "id": "K2-8",
+          "type": "single",
+          "stem": "OpenClaw 靠什么做到 7×24 小时主动干活？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户每隔一段时间在聊天软件里发一条消息把它重新唤醒",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "定时自动跑心跳文档主动自检和做事，并支持自定义定时任务",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把全部记忆常驻在上下文里，由大模型自己决定什么时候醒来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "运行在云端的虚拟沙盒里，不受本地设备关机或断网的影响",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K2-9", "type": "short" },
+        { "id": "K2-10", "type": "short" },
+        {
+          "id": "K2-11",
+          "type": "single",
+          "stem": "SOUL.md 和 AGENTS.md 怎样分工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "SOUL.md 定义价值观和语气，决定怎么说话；AGENTS.md 是操作手册，决定怎么做事",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "SOUL.md 是日常巡检的任务清单；AGENTS.md 按天存放短期的对话流水账",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "SOUL.md 是操作手册，决定怎么做事；AGENTS.md 定义价值观和语气，决定怎么说话",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "SOUL.md 注册可用的工具和技能；AGENTS.md 存放提炼后的长期记忆和偏好",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K2-12",
+          "type": "single",
+          "stem": "TOOLS.md 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "注册智能体可用的全部本地工具和技能，执行任务前先查看",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "列出日常巡检的任务清单，心跳时间一到优先读取",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "定义智能体的价值观、语气和幽默感",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "存放提炼后的长期记忆和用户的事实偏好",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K2-13",
+          "type": "single",
+          "stem": "HEARTBEAT.md 是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按天存放的对话流水账，上下文压缩时系统读取它",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "处理任务的标准流程，执行任务时系统必须遵守它",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "日常巡检的任务清单，心跳时间一到系统优先读取它",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "可用工具和技能的注册表，执行任务前系统先查看它",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K2-14",
+          "type": "single",
+          "stem": "MEMORY.md 和 sessions 文件夹各放什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "MEMORY.md 放向量化后的缓存索引，sessions 放人类可读的记忆原文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "MEMORY.md 放提炼后的长期记忆和事实偏好，sessions 按天放短期对话流水账",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "MEMORY.md 按天放短期对话流水账，sessions 放提炼后的长期记忆和事实偏好",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "MEMORY.md 放可用工具和技能的清单，sessions 放每次心跳的巡检任务",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K2-15", "type": "short" },
+        { "id": "K2-16", "type": "short" },
+        { "id": "K2-17", "type": "short" },
+        {
+          "id": "K2-18",
+          "type": "single",
+          "stem": "OpenClaw 的记忆里，Markdown 文件和 SQLite 各起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "人类可读的记忆存在 SQLite 里，Markdown 文件只作高速缓存索引",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Markdown 文件存工具清单，SQLite 存每次心跳的巡检结果",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Markdown 文件存短期对话，SQLite 存提炼之后的长期记忆",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "人类可读的记忆留在 Markdown 文件里，SQLite 只作高速缓存索引",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K2-19",
+          "type": "single",
+          "stem": "OpenClaw 的长期记忆是在什么时机自动写入的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户关闭聊天界面、设备进入锁屏时",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "聊天记录越来越长、快要触发上下文压缩时",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每一次心跳时间到、开始读取巡检清单时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户每发来一条消息、还没开始处理时",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K2-20",
+          "type": "fill",
+          "stem": "记忆文件变大后，OpenClaw 用双路召回取出最相关的内容，这两路分别是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "K2-21",
+          "type": "single",
+          "stem": "OpenClaw 记错了用户的喜好，原文说应该怎样纠正？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把 sessions 文件夹整个删除，让它重新学习",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "进入 SQLite 数据库，手工改掉对应的那条向量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在聊天里反复纠正，等下一次心跳时自动覆盖",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接打开 MEMORY.md，把写错的那行字删掉保存",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "K2-22",
+          "type": "fill",
+          "stem": "原文归纳的 OpenClaw 解决的三个痛点是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "K2-23",
+          "type": "single",
+          "stem": "设备关机或断网后，OpenClaw 会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "心跳失效，也收不到远程指令",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "远程指令先排队，心跳改由 Gateway 代跑",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "自动切换到云端沙盒继续执行任务",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "心跳照常运行，只是收不到远程指令",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K2-24",
+          "type": "single",
+          "stem": "OpenClaw 运行在本地设备上，是否就不消耗大模型 Token？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，只有接入聊天平台时才会消耗 Token",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，但只有心跳发现异常时才消耗 Token",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，它仍要请求大模型接口并消耗 Token",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "是的，本地运行意味着模型也在本地推理",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K2-25",
+          "type": "single",
+          "stem": "针对 OpenClaw 的安全风险，原文说生产环境部署时必须做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "关闭心跳机制，改成只在用户发消息时运行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把性格文件和操作手册从系统提示词里去掉",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "谨慎地设置沙箱隔离和严格的工具使用边界",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把本地的记忆文件全部迁移到云端统一保管",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "K2-26",
+          "type": "single",
+          "stem": "原文对比 Coze、n8n 与 OpenClaw 时，对 n8n 的描述是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "定时跑心跳文档，主动自检并执行巡检任务",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按触发器和条件执行固定流程，没有自主思考能力",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "数据和权限都在云端，碰不到本地的文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能自己规划步骤，并拥有本地系统的操作权限",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "K2-27", "type": "short" },
+        { "id": "K2-28", "type": "short" },
+        {
+          "id": "K2-29",
+          "type": "fill",
+          "stem": "除了心跳，原文列出的 OpenClaw 额外消耗 Token 的三个原因是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "K2-30", "type": "short" }
+      ]
+    }
+  }
+}

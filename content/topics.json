@@ -13,5 +13,16 @@
   { "prefix": "N", "slug": "codex", "title": "Codex 工程化、使用与源码", "column": "Codex", "order": 12 },
   { "prefix": "K", "slug": "agent-illustrated-concepts", "title": "概念与 OpenClaw", "column": "图解 Agent", "order": 13 },
   { "prefix": "L", "slug": "agent-illustrated-retrieval", "title": "RAG、GraphRAG 与 LightRAG", "column": "图解 Agent", "order": 14 },
-  { "prefix": "M", "slug": "agent-illustrated-engineering", "title": "Harness、Loop 与 Graph Engineering", "column": "图解 Agent", "order": 15 }
+  { "prefix": "M", "slug": "agent-illustrated-engineering", "title": "Harness、Loop 与 Graph Engineering", "column": "图解 Agent", "order": 15 },
+  { "prefix": "Q", "slug": "python", "title": "Python 面试", "column": "Python 面试题", "order": 16 },
+  { "prefix": "R", "slug": "data-structures", "title": "数据结构与算法", "column": "计算机基础", "order": 17 },
+  { "prefix": "S", "slug": "mysql", "title": "MySQL", "column": "数据库", "order": 18 },
+  { "prefix": "T", "slug": "network", "title": "计算机网络", "column": "计算机基础", "order": 19 },
+  { "prefix": "U", "slug": "fastapi", "title": "FastAPI", "column": "Python 面试题", "order": 20 },
+  { "prefix": "V", "slug": "os", "title": "操作系统", "column": "计算机基础", "order": 21 },
+  { "prefix": "W", "slug": "linux", "title": "Linux 命令", "column": "工具使用", "order": 22 },
+  { "prefix": "X", "slug": "git", "title": "Git", "column": "工具使用", "order": 23 },
+  { "prefix": "Y", "slug": "docker", "title": "Docker", "column": "工具使用", "order": 24 },
+  { "prefix": "Z", "slug": "rpa", "title": "RPA 开发", "column": "RPA", "order": 25, "guide": "rpa" },
+  { "prefix": "O", "slug": "redis", "title": "Redis", "column": "数据库", "order": 26 }
 ]

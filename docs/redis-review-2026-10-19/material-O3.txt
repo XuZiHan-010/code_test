@@ -1,0 +1,155 @@
+O3-1 [single] 多个客户端同时对同一个 key 调用 INCR，为什么不会出现“都读到 10，最后都写成 11”的问题？
+A 因为 INCR 会自动给这个 key 加上写锁，其他客户端的命令必须等锁释放之后才能对它执行 | B * 因为普通命令由主线程串行执行，INCR 一条命令就完成读取、加一、写回，不会被其他客户端的命令插进来 | C 因为 INCR 执行期间 Redis 会暂停接收新的连接请求，直到这条命令执行结束才恢复接收 | D 因为 INCR 会把读取和写回拆成两条命令，并用事务自动保证这两条命令不被其他命令打断
+Answer (L292): Redis 普通命令由主线程串行执行，所以单条命令执行时不会被其他客户端的命令插进来；INCR 一个命令就能完成读取、加一、写回，多个客户端同时调用也不会发生“都读到 10，最后都写成 11”的问题。给 key 加写锁、暂停接收连接、拆成两条命令，都不是原文的解释。[原文§如何实现redis 原子性？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0redis-%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-2 [single] 应用先用 GET 读取一个 key，再在代码里加一，最后用 SET 写回。按原文，能不能因为 Redis 是单线程，就认为这一组操作是安全的？
+A 能，因为 Redis 是单线程，整组操作会按顺序一起执行，不会被打断 | B * 不能，这是两个命令，中间可能被其他客户端修改 | C 能，因为同一个连接上的 GET 和 SET 会被自动合并成一条命令执行 | D 只有在 Redis Cluster 中不安全，单机部署下这一组操作一定是安全的
+Answer (L293): 先 GET，再在代码里加一，最后 SET，这是两个命令，中间可能被其他客户端修改，不能因为 Redis 是单线程就认为这一组操作也安全。[原文§如何实现redis 原子性？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0redis-%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-3 [single] 按原文，如果要保证多个相关操作不被其他命令打断，可以考虑用什么？
+A 在客户端代码里先 GET 判断，再根据结果 SET 修改 | B 使用 Pipeline 批量发送这些命令 | C * Lua 脚本，把判断和修改放在 Redis 服务端一起执行 | D 把相关 key 分散到 Redis Cluster 的不同哈希槽上分别执行
+Answer (L294): 可以考虑用 Lua 脚本，把判断和修改放在 Redis 服务端一起执行。客户端先判断再修改是两个命令，Pipeline 只是减少网络往返而不保证不被穿插，把 key 分散到不同哈希槽则与保证不被打断无关。[原文§如何实现redis 原子性？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0redis-%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-4 [single] 分布式锁解锁需要先判断锁是不是自己的，是自己的才能删除。按原文，用 Lua 脚本可以避免什么问题？
+A 删除锁的命令在主线程中被多个线程同时执行，造成死锁 | B * 刚判断完锁是自己的，锁就过期并被别人拿走，接着又把别人的锁删掉 | C 判断锁时读到过期的数据，导致误以为锁已经被释放 | D 锁被删除后，其他客户端永远无法再获得同一把锁
+Answer (L295): 用 Lua 把判断和删除放在服务端一起执行，可以避免“刚判断完，锁就过期并被别人拿走，接着又删掉别人的锁”的问题。[原文§如何实现redis 原子性？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0redis-%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-5 [single] 按原文释放锁的 Lua 脚本，在什么条件下才会执行 del 删除锁？
+A * 用 get 取到的锁的值与传入的 unique_value 相等时 | B 只要锁对应的 key 存在，就直接执行 del | C 用 get 取到的锁的值与传入的 unique_value 不相等时 | D 锁对应的 key 已经过期并被别人重新设置之后
+Answer (L296): 脚本先比较 key 的值是否等于传入的 unique_value，相等才执行 del 删除，否则返回 0，这样可以避免锁的误释放。只要 key 存在就删，或不相等时才删，都会误删别人的锁。[原文§如何实现redis 原子性？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0redis-%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-6 [single] 按原文，Lua 脚本的原子执行是否意味着出错后会自动回滚？
+A 意味着：脚本中任何一条命令报错，Redis 都会自动撤销此前已经做出的所有修改 | B * 不意味着：脚本先成功修改一个 key、后面的命令报错时，前面的修改不会撤销 | C 意味着：只要脚本只修改了一个 key，出错之后 Redis 就会自动把它回滚到原值 | D 意味着：脚本报错后 Redis 会重新执行整个脚本，直到所有命令都成功为止
+Answer (L297): Lua 的原子执行不等于出错后自动回滚。如果脚本先成功修改了一个 key，后面的命令报错，前面的修改不会撤销。[原文§如何实现redis 原子性？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0redis-%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-7 [single] 按原文，既然 Lua 脚本出错不会自动回滚，写脚本时应该怎么做？
+A 先执行所有写操作，再检查参数和业务条件，出错时依赖 Redis 回滚 | B 把检查逻辑放到脚本执行结束之后，由客户端根据返回值再判断 | C 在脚本中循环重试写操作，直到所有命令都执行成功 | D * 尽量先检查参数、数据类型和业务条件，再执行写操作
+Answer (L298): 因为出错不会回滚，脚本应尽量先检查参数、数据类型和业务条件，再执行写操作。[原文§如何实现redis 原子性？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0redis-%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-8 [multiple] 按原文，使用 Lua 脚本时有哪些需要注意的地方？
+A Lua 执行期间，Redis 会继续并行处理其他客户端的命令 | B * Lua 执行期间会占用主线程 | C 在 Redis Cluster 中，脚本访问的多个 key 可以分布在任意哈希槽 | D * 不适合在脚本里做长时间循环或者扫描大量数据 | E * 在 Redis Cluster 中，脚本访问的多个 key 需要位于同一个哈希槽
+Answer (L299): 正确的是：Lua 执行期间会占用主线程；不适合在脚本里做长时间循环或扫描大量数据；在 Redis Cluster 中脚本访问的多个 key 需要位于同一个哈希槽。Lua 执行期间占用主线程，其他命令并不会并行执行；key 也不能分布在任意哈希槽。[原文§如何实现redis 原子性？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0redis-%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-9 [short] 如何实现redis 原子性？
+
+Answer (L300): Redis 普通命令由主线程串行执行，单条命令（比如 INCR，读取、加一、写回一步完成）不会被其他客户端的命令插进来；但应用先 GET、在代码里加一、再 SET 是两个命令，中间可能被其他客户端修改，不能因为 Redis 是单线程就认为这一组操作安全。要保证多个相关操作不被其他命令打断，可以用 Lua 脚本，把判断和修改放在服务端一起执行，比如分布式锁解锁时先比较 unique_value 再 del，避免刚判断完锁就过期并被别人拿走、接着又删掉别人的锁。需要注意：Lua 的原子执行不等于出错后自动回滚，先成功修改的 key 不会撤销，所以应先检查参数、数据类型和业务条件再写；Lua 执行期间会占用主线程，不适合长时间循环或扫描大量数据；在 Redis Cluster 中，脚本访问的多个 key 需要位于同一个哈希槽。[原文§如何实现redis 原子性？](https://xiaolincoding.com/interview/redis.html#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0redis-%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-10 [single] 按原文，除了 Lua 脚本，Redis 里还可以用什么把多个命令放在一起连续执行？
+A * Redis 事务，也就是 MULTI 和 EXEC | B Pipeline 流水线 | C 在客户端代码里先 GET 再 SET | D 把相关 key 分散到 Redis Cluster 的不同哈希槽
+Answer (L304): 可以使用 Redis 事务，也就是 MULTI 和 EXEC，把多个命令放在一起执行。Pipeline 只是减少网络往返，不是事务；客户端先 GET 再 SET 是两个命令；Redis Cluster 中脚本访问的多个 key 反而需要位于同一个哈希槽，分散到不同槽并不能让它们连续执行。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-11 [single] 按原文，MULTI 开启事务后，后面的命令处于什么状态？
+A 立即执行，EXEC 时才把所有结果一起返回 | B 先进入队列，收到 EXEC 后由多个线程并行执行 | C * 先进入队列，直到收到 EXEC 才按顺序执行 | D 立即执行，如果 EXEC 没有到来就自动回滚
+Answer (L305): MULTI 开启事务后，后面的命令先进入队列，直到收到 EXEC 才按顺序执行，而不是立即执行或并行执行。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-12 [single] 按原文，Redis 事务执行期间，其他客户端的命令会怎样？
+A 会穿插在事务的各条命令之间执行 | B 会被丢弃，客户端需要重新发送 | C * 不会插到事务中间 | D 只有读命令能插到事务中间，写命令不能
+Answer (L306): 事务执行期间，其他客户端的命令不会插到事务中间。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-13 [single] 按原文，Redis 事务能不能像数据库事务那样，在出错时全部回滚？
+A * 不能，Redis 不提供数据库事务那样的回滚机制 | B 能，EXEC 时只要有一条命令失败，就会撤销已经成功的修改 | C 能，但只有在所有命令都对同一个 key 操作时才支持 | D 能，需要在 MULTI 之后手动调用回滚命令
+Answer (L307): Redis 事务可以保证命令连续执行，但不提供数据库事务那样的回滚机制，所以回答这个问题时要区分“执行过程不被打断”和“失败时全部回滚”。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-14 [multiple] 按原文，下列哪些属于 Redis 事务“入队时出错”的情形？
+A * 命令不存在 | B * 命令的参数数量不正确 | C 对一个类型不匹配的 key 执行命令时返回 WRONGTYPE | D 对一个 String 类型的 key 使用 LPOP
+Answer (L308): 入队时出错的例子是命令不存在、参数数量不正确，Redis 会标记事务有错误。对 String 使用 LPOP 这类类型不匹配的问题要到执行时才会出错。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-15 [single] 按原文，Redis 事务在入队时出错（比如命令不存在）后，执行 EXEC 会怎样？
+A EXEC 只跳过出错的那条命令，继续执行其余命令 | B EXEC 会执行所有命令，随后再把出错那条命令造成的修改回滚 | C EXEC 会忽略入队时的错误，照常执行所有命令 | D * 因为事务已被标记有错误，EXEC 会拒绝执行整个事务
+Answer (L309): 入队时出错（比如命令不存在、参数数量不正确）时，Redis 会标记事务有错误，执行 EXEC 时拒绝执行整个事务。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-16 [single] 按原文，Redis 事务在执行时出错（比如对 String 使用 LPOP）后会怎样？
+A 整个事务都不会生效，此前已经执行成功的命令也会全部回滚 | B 出错命令之后的命令不再执行，之前已经成功的修改也会被回滚 | C * 只有这条命令失败，其他已入队的命令仍然会执行，已经成功的修改也不会回滚 | D EXEC 会停止执行并让事务重新排队，等待 Redis 下一次再来执行
+Answer (L310): 执行时出错，只有这条命令失败，其他已入队的命令仍然会执行，已经成功的修改也不会回滚。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-17 [single] a:stock 被设置为字符串 10，b:stock 被设置为 9。MULTI 之后依次入队 LPOP a:stock 和 DECR b:stock，再执行 EXEC，结果是什么？
+A * LPOP 报 WRONGTYPE 错误，DECR 仍执行成功，b:stock 变成 8 | B EXEC 会拒绝执行整个事务，a:stock 与 b:stock 都保持原来的值 | C 两条命令都被回滚，a:stock 保持 10，b:stock 保持 9 | D 两条命令都执行成功，a:stock 变成空，b:stock 变成 8
+Answer (L311): LPOP 对 String 执行时会报 WRONGTYPE 错误，但 DECR 仍然执行成功，b:stock 变成 8。这说明 Redis 事务可以保证命令连续执行，但不保证出错时“要么全成功，要么全失败”。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-18 [single] 按原文，下列关于 Redis 事务保证的说法，哪项正确？
+A 能保证命令连续执行，并且出错时一定能做到要么全成功、要么全失败 | B * 能保证命令连续执行，但不保证出错时要么全成功、要么全失败 | C 既不保证命令连续执行，也不保证出错时全成功或全失败 | D 不保证命令连续执行，但出错时一定能全部回滚
+Answer (L312): Redis 事务可以保证命令连续执行，但不保证出错时“要么全成功，要么全失败”。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-19 [single] 按原文，如果业务还需要根据读到的值决定是否更新，Redis 事务可以配合什么实现乐观锁？
+A Pipeline | B INCR 这类单条命令 | C Lua 脚本里的 unique_value 比较 | D * WATCH
+Answer (L313): 如果业务还需要根据读到的值决定是否更新，可以配合 WATCH 实现乐观锁。Pipeline 只减少网络往返；INCR 这类单条命令靠的是主线程串行执行；unique_value 比较是分布式锁解锁的 Lua 写法，都不是配合事务实现乐观锁的方式。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-20 [short] 除了lua有没有什么也能保证redis的原子性？
+
+Answer (L314): 可以使用 Redis 事务，也就是 MULTI 和 EXEC。MULTI 开启事务后，后面的命令先进入队列，直到收到 EXEC 才按顺序执行，事务执行期间其他客户端的命令不会插到事务中间，但 Redis 不提供数据库事务那样的回滚机制。出错分两种：入队时出错（命令不存在、参数数量不正确）会让事务被标记有错误，EXEC 时拒绝执行整个事务；执行时出错（比如对 String 使用 LPOP）只有这条命令失败，其他已入队的命令仍然执行，成功的修改也不回滚。例如 a:stock 是字符串、b:stock 是 9 时，LPOP a:stock 报 WRONGTYPE，而 DECR b:stock 仍然成功得到 8。所以 Redis 事务保证命令连续执行，但不保证出错时全成功或全失败；若还要根据读到的值决定是否更新，可以配合 WATCH 实现乐观锁。[原文§除了lua有没有什么也能保证redis的原子性？](https://xiaolincoding.com/interview/redis.html#%E9%99%A4%E4%BA%86lua%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E4%BF%9D%E8%AF%81redis%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7)
+
+O3-21 [single] 按原文，被 WATCH 监视的 key 在 WATCH 之后、EXEC 之前发生了变化，EXEC 会怎样？
+A 照常执行事务，同时把被改动的 key 恢复成监视时的值 | B 只执行没有涉及被改动 key 的命令，其余命令放弃 | C 阻塞等待，直到被监视的 key 恢复原值才执行 | D * 放弃执行整个事务并返回空结果，由客户端决定是否重新读取并重试
+Answer (L318): WATCH 会监视指定的 key，如果这些 key 在 WATCH 之后、EXEC 之前发生变化，EXEC 就会放弃执行整个事务，返回空结果，由客户端决定是否重新读取并重试。[原文§WATCH 是怎么实现乐观锁的？](https://xiaolincoding.com/interview/redis.html#watch-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84)
+
+O3-22 [single] 按原文，使用 WATCH 的库存示例里，EXEC 返回空结果说明什么？
+A * 监视期间库存发生了变化，事务没有执行，需要限次重试 | B 事务已经执行成功，只是没有需要返回的内容 | C 事务只执行了一半，剩余部分需要手动补执行 | D Redis 服务端发生了故障，需要重启后再执行
+Answer (L319): 如果 EXEC 返回空结果，说明期间有变化，事务没有执行，客户端应限次重试。[原文§WATCH 是怎么实现乐观锁的？](https://xiaolincoding.com/interview/redis.html#watch-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84)
+
+O3-23 [fill] 按原文示例，客户端用 WATCH 扣减库存时，在 WATCH stock、读取并判断库存足够之后，提交修改的命令依次是：____ → SET stock 新库存 → ____。
+
+Answer (L320): 2 个空依次是 MULTI、EXEC。库存足够时，计算扣减后的库存，先 MULTI 开启事务，再入队 SET stock 新库存，最后 EXEC 提交。[原文§WATCH 是怎么实现乐观锁的？](https://xiaolincoding.com/interview/redis.html#watch-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84)
+
+O3-24 [single] 按原文的库存示例，读取库存后发现库存不足时，应该怎么做？
+A * UNWATCH 并返回失败 | B 继续执行 MULTI，并在 EXEC 时让命令自动失败 | C 不做任何处理，保留对 stock 的监视直到连接断开 | D 直接 SET stock 为 0，再执行 EXEC
+Answer (L321): 示例流程中，如果库存不足，就 UNWATCH 并返回失败；库存足够才计算扣减后的库存，再进入 MULTI。[原文§WATCH 是怎么实现乐观锁的？](https://xiaolincoding.com/interview/redis.html#watch-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84)
+
+O3-25 [single] 按原文，WATCH 为什么被称为乐观锁？
+A 它会在 WATCH 时锁住这个 key，其他客户端必须等到本事务 EXEC 之后才能修改它 | B * 它不锁住 key，也不阻止其他客户端修改，只在 EXEC 时发现被监视的 key 变化才放弃事务 | C 它会在 EXEC 时自动合并其他客户端与本客户端对该 key 的修改 | D 它会让其他客户端针对该 key 的写命令排队等待，直到本事务结束
+Answer (L322): 这里的读取和业务判断发生在 MULTI 之前，WATCH 不会锁住这个 key，也不会阻止其他客户端修改它，所以叫乐观锁。[原文§WATCH 是怎么实现乐观锁的？](https://xiaolincoding.com/interview/redis.html#watch-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84)
+
+O3-26 [single] 按原文，WATCH 和事务命令（MULTI、EXEC）需要使用什么样的连接？
+A 不同的连接，WATCH 单独用一条，事务命令另用一条 | B 任意连接都可以，Redis 会按 key 自动关联 | C 必须使用不同客户端的连接，才能互相监视 | D * 同一条连接
+Answer (L323): WATCH 和事务命令要使用同一条连接。[原文§WATCH 是怎么实现乐观锁的？](https://xiaolincoding.com/interview/redis.html#watch-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84)
+
+O3-27 [multiple] 按原文，使用 WATCH 做重试时，下列哪些说法正确？
+A * 竞争激烈时 EXEC 可能频繁失败 | B * 要有重试上限和退避，不能无限重试 | C 只要 EXEC 返回空结果，就应立即无间隔地反复重试直到成功 | D EXEC 结束后监视仍然有效，重试时不需要重新 WATCH | E 竞争激烈时 WATCH 也不会失败，所以可以无限重试 | F * EXEC 结束后会取消监视，重试时要重新 WATCH
+Answer (L324): 正确的是：EXEC 结束后会取消监视，重试时要重新 WATCH；竞争激烈时可能频繁失败；因此要有重试上限和退避，不能无限重试。[原文§WATCH 是怎么实现乐观锁的？](https://xiaolincoding.com/interview/redis.html#watch-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84)
+
+O3-28 [single] 按原文，对于简单的库存扣减，如果能用一段 Lua 一次完成判断和修改，通常和客户端 WATCH、读取、再提交相比怎么样？
+A * 通常比客户端 WATCH、读取、再提交更直接 | B 通常更复杂，应该优先使用客户端 WATCH | C 通常效果相同，没有必要区分 | D 通常无法保证不被其他命令打断，所以不适合用来扣减库存
+Answer (L325): 对于简单扣减，如果能用一段 Lua 一次完成判断和修改，通常比客户端 WATCH、读取、再提交更直接。[原文§WATCH 是怎么实现乐观锁的？](https://xiaolincoding.com/interview/redis.html#watch-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84)
+
+O3-29 [short] WATCH 是怎么实现乐观锁的？
+
+Answer (L326): WATCH 会监视指定的 key，如果这些 key 在 WATCH 之后、EXEC 之前发生变化，EXEC 就会放弃执行整个事务并返回空结果，由客户端决定是否重新读取并重试。以扣减库存为例：先 WATCH stock，读取当前库存；库存不足就 UNWATCH 并返回失败；库存足够就计算扣减后的库存，再 MULTI、SET stock 新库存、EXEC；如果 EXEC 返回空结果，说明期间有变化，限次重试。读取和业务判断发生在 MULTI 之前，WATCH 不会锁住 key，也不会阻止其他客户端修改，所以叫乐观锁。需要注意 WATCH 和事务命令要使用同一条连接，EXEC 结束后会取消监视，重试时要重新 WATCH，竞争激烈时要有重试上限和退避；对于简单扣减，能用一段 Lua 一次完成判断和修改时通常更直接。[原文§WATCH 是怎么实现乐观锁的？](https://xiaolincoding.com/interview/redis.html#watch-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84)
+
+O3-30 [single] 按原文，Pipeline（流水线）主要用来解决什么问题？
+A 保证多条命令不被其他客户端的命令穿插 | B 让 Redis 同时并行执行多条命令 | C * 减少网络往返和网络读写的开销 | D 在命令失败时自动回滚已成功的修改
+Answer (L330): Pipeline 主要用来减少网络往返和网络读写的开销。它不保证命令不被穿插，也不会让 Redis 并行执行命令，更不提供失败回滚。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)
+
+O3-31 [single] 按原文，应用依次执行 100 条命令，每条都发出去等结果再发下一条，会带来什么问题？
+A Redis 会把这 100 条命令合并为一个事务 | B * 产生很多次网络往返 | C Redis 会拒绝处理超过一定数量的连续命令 | D 这 100 条命令会被同时并行执行，导致结果乱序
+Answer (L331): 每条命令都发出去等结果再发下一条，就会产生很多次网络往返；Pipeline 可以先批量发送命令，再批量读取结果来减少这种开销。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)
+
+O3-32 [single] 按原文，Pipeline 特别适合哪类命令？
+A 后一条命令必须依赖前一条命令返回值的操作 | B 需要保证全部成功或全部失败的操作 | C * 互相独立的批量查询、写入 | D 需要在服务端根据前面结果做判断的操作
+Answer (L332): Pipeline 先批量发送命令，再批量读取结果，特别适合互相独立的批量查询、写入。普通 Pipeline 不能在服务端完成依赖前面结果的判断，也不提供全成全败。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)
+
+O3-33 [single] 按原文，下列关于 Pipeline 的说法，哪项正确？
+A 它是一种事务，整批命令会连续执行，不会被其他客户端的请求打断，失败时也能回滚 | B 它会让 Redis 同时并行执行整批命令，所以整体速度更快 | C * 它不是事务，同一连接上的命令仍按顺序处理，也不会让 Redis 并行执行它们 | D 它会在某条命令失败时，把整批命令已经做出的修改全部回滚
+Answer (L333): Pipeline 不是事务，也不是让 Redis 同时并行执行这些命令。同一连接上的命令仍然按顺序处理。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)
+
+O3-34 [multiple] 按原文，下列关于 Pipeline 的说法，哪些正确？
+A 整批命令执行期间不会被其他客户端的请求穿插 | B * 整批命令不保证不被其他客户端的请求穿插 | C * Pipeline 不提供失败回滚 | D 某条命令失败时，已成功执行的修改会被回滚
+Answer (L334): 正确的是：整批命令不保证不被其他客户端的请求穿插，Pipeline 也不提供失败回滚。Pipeline 不是事务，说成执行期间不会被穿插、失败时会回滚，都不是原文的说法。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)
+
+O3-35 [single] 按原文，在 Pipeline、MULTI / EXEC 和 Lua 三种方式中，哪一种可以把判断和修改放在服务端一起执行，并根据前面的结果做判断？
+A * Lua | B 普通 Pipeline | C MULTI / EXEC（命令先排队，不能直接拿前面的结果决定后面入队的命令） | D 把多条命令依次放在同一条连接上发送
+Answer (L335): Lua 把判断和修改放在服务端一起执行，可以根据前面的结果做判断。普通 Pipeline 不能在服务端完成这种判断；MULTI / EXEC 的命令先排队，不能直接拿前面的结果决定后面入队的命令。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)
+
+O3-36 [single] 按原文，MULTI / EXEC 主要解决什么问题？
+A * 多条命令连续执行，避免其他命令插入 | B 减少网络往返和系统调用的开销，让批量命令更快 | C 把判断和修改放在服务端一起执行，让后面的命令依赖前面的结果 | D 在命令失败时保证全部回滚，做到全成功或全失败
+Answer (L336): MULTI / EXEC 主要解决多条命令连续执行、避免其他命令插入的问题。减少网络往返和系统调用开销是 Pipeline 的作用，把判断和修改放在服务端一起执行是 Lua 的作用，Redis 事务也不提供失败回滚。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)
+
+O3-37 [multiple] 按原文，使用 Pipeline 时，下列哪些说法正确？
+A * 请求超时后，可能无法确认哪些命令已经执行，重试时要考虑幂等 | B * 客户端也要接收和处理结果，批次不能无限增大 | C * 批次太大时，Redis 需要缓存响应，可能增加内存和延迟 | D 批次越大越好，不存在上限 | E 请求超时后可以确定所有命令都没有执行，直接重试即可
+Answer (L337): 正确的是：批次太大时 Redis 需要缓存响应、客户端也要接收和处理结果，可能增加内存和延迟；请求超时后可能无法确认哪些命令已执行，重试时要考虑幂等。批次不能无限增大，超时后也不能认定命令没有执行。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)
+
+O3-38 [short] Pipeline、MULTI / EXEC 和 Lua 三种方式分别主要解决什么问题，区别在哪里？
+
+Answer (L338): Pipeline 主要减少网络往返和系统调用开销，不能靠普通 Pipeline 在服务端完成根据前面结果做判断的逻辑；MULTI / EXEC 让多条命令连续执行、避免其他命令插入，命令先排队，不能直接拿前面的结果决定后面入队的命令；Lua 把判断和修改放在服务端一起执行，可以根据前面的结果做判断。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)
+
+O3-39 [short] Pipeline 是什么？它能保证原子性吗？
+
+Answer (L339): Pipeline 也就是流水线，主要用来减少网络往返和网络读写的开销：如果依次执行 100 条命令，每条都发出去等结果再发下一条，会产生很多次网络往返，而 Pipeline 先批量发送命令、再批量读取结果，特别适合互相独立的批量查询、写入。但 Pipeline 不是事务，也不是让 Redis 同时并行执行这些命令；同一连接上的命令仍按顺序处理，但整批命令不保证不被其他客户端的请求穿插，也不提供失败回滚，所以不能保证原子性。另外批次不能无限增大，Redis 需要缓存响应，客户端也要接收和处理结果，批次太大可能增加内存和延迟；请求超时后还可能无法确认哪些命令已经执行，重试时要考虑幂等。[原文§Pipeline 是什么？它能保证原子性吗？](https://xiaolincoding.com/interview/redis.html#pipeline-%E6%98%AF%E4%BB%80%E4%B9%88-%E5%AE%83%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97)

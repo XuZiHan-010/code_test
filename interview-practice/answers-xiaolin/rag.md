@@ -38,8 +38,8 @@
 - **B2-4** LLM 在预训练时把文本里的知识编码进参数权重，像一本印刷完成就无法再改的百科全书；训练数据收集到什么时候，模型就只知道那个时间点之前的事，之后外部世界怎么变化，参数都不会自动更新。[原文§LLM 的「知识冻结」问题](https://xiaolinnote.com/ai/rag/2_rag_problems.html#llm-%E7%9A%84%E3%80%8C%E7%9F%A5%E8%AF%86%E5%86%BB%E7%BB%93%E3%80%8D%E9%97%AE%E9%A2%98)
 - **B2-5** 训练一次 GPT 级别的模型成本是千万美元级别，不可能每周来一遍；微调能注入一些新知识，但成本也不低，而且微调出来的知识没法溯源，出错了找不到原因。它是 LLM 架构的固有特性。[原文§LLM 的「知识冻结」问题](https://xiaolinnote.com/ai/rag/2_rag_problems.html#llm-%E7%9A%84%E3%80%8C%E7%9F%A5%E8%AF%86%E5%86%BB%E7%BB%93%E3%80%8D%E9%97%AE%E9%A2%98)
 - **B2-6** 模型不知道训练截止之后的事，但它不会说不知道，而是用见过的历史规律推测出一个听起来合理的答案，并且说得很自信；例如不知道某公司最新一季财报，给出的分析就基于过期信息。训练数据越陈旧，时效性问题越严重。[原文§知识过期：训练数据有截止日期](https://xiaolinnote.com/ai/rag/2_rag_problems.html#%E7%9F%A5%E8%AF%86%E8%BF%87%E6%9C%9F-%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E6%9C%89%E6%88%AA%E6%AD%A2%E6%97%A5%E6%9C%9F)
-- **B2-7** 它的核心机制是预测下一个词，天然倾向于一直生成下去，没有内置我不确定就停下来的开关，也无法知道自己不知道；参数里的知识不够用时，只能硬着头皮把相关的、不相关的知识拼凑成听起来合理的答案。[原文§知识缺失的副产品：幻觉](https://xiaolinnote.com/ai/rag/2_rag_problems.html#%E7%9F%A5%E8%AF%86%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%89%AF%E4%BA%A7%E5%93%81-%E5%B9%BB%E8%A7%89)
-- **B2-8** 不是。幻觉是知识缺失的副产品，是模型在没有可靠依据时的应急策略：知识过期会导致幻觉，知识缺失也会导致幻觉，根源都是参数里没有对应的知识；RAG 解决的是这个根源，而不是单独在治幻觉。[原文§知识缺失的副产品：幻觉](https://xiaolinnote.com/ai/rag/2_rag_problems.html#%E7%9F%A5%E8%AF%86%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%89%AF%E4%BA%A7%E5%93%81-%E5%B9%BB%E8%A7%89)
+- **B2-7** 它的核心机制是预测下一个词，天然倾向于一直生成下去，没有内置我不确定就停下来的开关，也无法知道自己不知道；原文认为参数里的知识不够用时，它会硬着头皮把相关的、不相关的知识拼凑成听起来合理的答案；缺少可靠知识只是幻觉的主要风险来源，并非唯一原因，即使有了资料，它也可能误读或超出资料发挥（见 B17-1、B17-5）。[原文§知识缺失的副产品：幻觉](https://xiaolinnote.com/ai/rag/2_rag_problems.html#%E7%9F%A5%E8%AF%86%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%89%AF%E4%BA%A7%E5%93%81-%E5%B9%BB%E8%A7%89)
+- **B2-8** 不是。原文认为幻觉是知识缺失的副产品，是模型在没有可靠依据时的应急策略：知识过期和知识缺失都会增大幻觉的风险，原文把根源归为参数里没有对应的知识；RAG 补上依据，针对的是这个主要风险来源，而不是单独在治幻觉。但这不是全部：有依据时模型也可能误读或超出资料发挥，所以 RAG 之后仍要单独治理（见 B17-1、B17-5）。[原文§知识缺失的副产品：幻觉](https://xiaolinnote.com/ai/rag/2_rag_problems.html#%E7%9F%A5%E8%AF%86%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%89%AF%E4%BA%A7%E5%93%81-%E5%B9%BB%E8%A7%89)
 - **B2-9** 知识存在外部，用的时候检索出来看：更新知识不需要碰模型，扩充领域知识只需要扩充知识库；而且每条答案都能追溯到来源，用户可以自己去原文核实。这是它成为企业 AI 落地首选方案的根本原因。[原文§RAG 是怎么解决这三个问题的](https://xiaolinnote.com/ai/rag/2_rag_problems.html#rag-%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98%E7%9A%84)
 
 ## 3. RAG 与微调
@@ -73,16 +73,17 @@
 - **B4-6** 向量、原始文本和 metadata：向量像索引卡，表示内容在语义空间的位置，用于相似度检索；原文像书页，是检索命中后原封不动塞进 prompt 给 LLM 读的内容；metadata 像书签，记录来源文件名、页码、章节等，用于过滤和溯源。[原文§文档是怎么存的？](https://xiaolinnote.com/ai/rag/4_chunking.html#%E6%96%87%E6%A1%A3%E6%98%AF%E6%80%8E%E4%B9%88%E5%AD%98%E7%9A%84)
 - **B4-7** 两者角色完全不同：向量是一串浮点数，LLM 看不懂，只有检索系统会用；原文是纯文字，没有向量就无法做相似度检索。向量负责找到，原文负责阅读，缺一不可。[原文§文档是怎么存的？](https://xiaolinnote.com/ai/rag/4_chunking.html#%E6%96%87%E6%A1%A3%E6%98%AF%E6%80%8E%E4%B9%88%E5%AD%98%E7%9A%84)
 - **B4-8** 一篇文档会变成多条记录：一篇 5000 字的文档按 500 字一个 chunk 切，就是 10 条记录，100 篇文档就是 1000 条记录，这是 RAG 存储的核心特点。[原文§文档是怎么存的？](https://xiaolinnote.com/ai/rag/4_chunking.html#%E6%96%87%E6%A1%A3%E6%98%AF%E6%80%8E%E4%B9%88%E5%AD%98%E7%9A%84)
-- **B4-9** 固定大小切割实现简单、chunk 大小可控，但可能在句子中间截断；加上重叠后，前一个 chunk 的末尾和下一个 chunk 的开头有一段相同内容，例如 chunk_size 为 500、overlap 为 100，这样跨边界的句子一定完整地出现在某一个 chunk 里。它适合没有明显结构的纯文本，是保底选择。[原文§策略一：固定大小切割（Fixed Size Chunking）](https://xiaolinnote.com/ai/rag/4_chunking.html#%E7%AD%96%E7%95%A5%E4%B8%80-%E5%9B%BA%E5%AE%9A%E5%A4%A7%E5%B0%8F%E5%88%87%E5%89%B2-fixed-size-chunking)
+- **B4-9** 固定大小切割实现简单、chunk 大小可控，但可能在句子中间截断；加上重叠后，前一个 chunk 的末尾和下一个 chunk 的开头有一段相同内容，例如 chunk_size 为 500、overlap 为 100，原文认为这样跨边界的句子一定完整地出现在某一个 chunk 里，需要限定边界：只有长度不超过 overlap 的内容才有保证（例如窗口 [0,500) 和 [400,900)，位于 [350,550) 的句子两个窗口都只含一部分），所以重叠只是缓解截断，不能保证任意句子完整，B5-1 也指出重叠太小保护不足。它适合没有明显结构的纯文本，是保底选择。[原文§策略一：固定大小切割（Fixed Size Chunking）](https://xiaolinnote.com/ai/rag/4_chunking.html#%E7%AD%96%E7%95%A5%E4%B8%80-%E5%9B%BA%E5%AE%9A%E5%A4%A7%E5%B0%8F%E5%88%87%E5%89%B2-fixed-size-chunking)
 - **B4-10** 按标题层级切：每个 chunk 对应一个完整章节，metadata 里自动带上所属的标题路径，例如产品手册下的退款政策、申请流程，既语义独立，又方便过滤和溯源。[原文§策略二：语义边界切割（Semantic/Structure Based Chunking）](https://xiaolinnote.com/ai/rag/4_chunking.html#%E7%AD%96%E7%95%A5%E4%BA%8C-%E8%AF%AD%E4%B9%89%E8%BE%B9%E7%95%8C%E5%88%87%E5%89%B2-semantic-structure-based-chunking)
 - **B4-11** 它由 Jina AI 在 2024 年提出，先编码后切分：先把整篇文档交给支持长上下文的 Embedding 模型做一次前向传播，得到每个 token 的向量，再按 chunk 边界把同一 chunk 内的 token 向量做 mean pooling；这样每个 chunk 的向量天然融入全文语境。代价是模型必须支持足够长的上下文，还要保留 token 级中间结果，开销更大。[原文§策略四：父子切割（Parent-Child Chunking）](https://xiaolinnote.com/ai/rag/4_chunking.html#%E7%AD%96%E7%95%A5%E5%9B%9B-%E7%88%B6%E5%AD%90%E5%88%87%E5%89%B2-parent-child-chunking)
 - **B4-12** 粒度没有银弹，500 到 1000 token 是起点，关键是按文档类型选策略：固定大小加重叠做兜底，对结构化文档用语义边界切割，对质量要求高的场景用父子切割。[原文§🎯 面试总结](https://xiaolinnote.com/ai/rag/4_chunking.html#%F0%9F%8E%AF-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93)
+- **B4-13** 模型必须支持足够长的上下文，还要保留 token 级的中间结果，开销更大。[原文§策略四：父子切割（Parent-Child Chunking）](https://xiaolinnote.com/ai/rag/4_chunking.html#%E7%AD%96%E7%95%A5%E5%9B%9B-%E7%88%B6%E5%AD%90%E5%88%87%E5%89%B2-parent-child-chunking)
 
 ## 5. 切分后的语义补全
 
 原文：[5. 怎么规避语义被切割掉的问题？](https://xiaolinnote.com/ai/rag/5_semantic_cuts.html)。
 
-- **B5-1** 让相邻 chunk 之间有一段内容重叠，即使边界切在语义中间，跨边界的内容也会完整出现在其中一个 chunk 里；重叠量通常是 chunk_size 的 10% 到 20%，太小覆盖不了跨边界语义，太大则重复内容多，存储和检索成本上升，还会干扰 LLM 阅读。它只是兜底，只能保证跨边界的文字不丢，解决不了一个完整语义被拆散的根本问题。[原文§方案一：重叠切割（Overlap）](https://xiaolinnote.com/ai/rag/5_semantic_cuts.html#%E6%96%B9%E6%A1%88%E4%B8%80-%E9%87%8D%E5%8F%A0%E5%88%87%E5%89%B2-overlap)
+- **B5-1** 让相邻 chunk 之间有一段内容重叠，边界切在语义中间时，原文认为跨边界的内容会完整出现在其中一个 chunk 里，实际只对长度不超过重叠量的内容成立，更长的内容仍可能两边都不完整；重叠量通常是 chunk_size 的 10% 到 20%，太小覆盖不了跨边界语义，太大则重复内容多，存储和检索成本上升，还会干扰 LLM 阅读。它只是兜底，只能保证跨边界的文字不丢，解决不了一个完整语义被拆散的根本问题。[原文§方案一：重叠切割（Overlap）](https://xiaolinnote.com/ai/rag/5_semantic_cuts.html#%E6%96%B9%E6%A1%88%E4%B8%80-%E9%87%8D%E5%8F%A0%E5%88%87%E5%89%B2-overlap)
 - **B5-2** 存储时把文档切成单个句子，每个句子单独做向量，用于精准检索；命中一个句子后不只返回这一句，而是把它前后各 N 个句子一起返回，形成上下文窗口交给 LLM。这样检索粒度细、定位准，LLM 拿到的内容又是完整的；缺点是存储量大，库里的记录数等于文档的句子总数。[原文§方案三：句子窗口检索（Sentence Window Retrieval）](https://xiaolinnote.com/ai/rag/5_semantic_cuts.html#%E6%96%B9%E6%A1%88%E4%B8%89-%E5%8F%A5%E5%AD%90%E7%AA%97%E5%8F%A3%E6%A3%80%E7%B4%A2-sentence-window-retrieval)
 - **B5-3** 命题化切割不按文本位置切，而是用 LLM 把文档分解成一条条独立的命题：每个命题是完整、自包含的陈述句，只包含一个核心事实，带着表达这个事实所需的全部上下文，单独拿出来就能看懂；例如一句话拆成“企业用户享有优先客服通道”等三条。优势是语义密度最高、检索精度好，缺点是要额外的 LLM 调用，成本高。[原文§方案五：命题化切割（Propositions-based Chunking）](https://xiaolinnote.com/ai/rag/5_semantic_cuts.html#%E6%96%B9%E6%A1%88%E4%BA%94-%E5%91%BD%E9%A2%98%E5%8C%96%E5%88%87%E5%89%B2-propositions-based-chunking)
 - **B5-4** 它不改变 chunk 本身，而是在向量化之前补上缺失的语境：让 LLM 看着整篇原始文档，为每个 chunk 生成一段 1 到 2 句的背景说明，说明它在文档里的位置和主题，再把这段 Context 前置拼到 chunk 前面，整体去做 Embedding 和 BM25 索引。因为孤立的 chunk 如“此条款自 2024 年 1 月 1 日起生效”在向量里没有主题信息，容易被无关内容干扰。[原文§方案六：Contextual Retrieval（Anthropic）](https://xiaolinnote.com/ai/rag/5_semantic_cuts.html#%E6%96%B9%E6%A1%88%E5%85%AD-contextual-retrieval-anthropic)
@@ -199,6 +200,7 @@
 - **B10-8** 向量检索捕获语义相似，但对产品型号、专有名词、错误拼写这类精确词语识别较弱；BM25 全文检索对关键词精确匹配更在行。两路各有所长，结果通过 RRF 互倒排名融合算法合并，覆盖面比单路更广、质量更高。[原文§第三步：向量检索（ANN 搜索）+ 多路召回](https://xiaolinnote.com/ai/rag/10_online_workflow.html#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2-ann-%E6%90%9C%E7%B4%A2-%E5%A4%9A%E8%B7%AF%E5%8F%AC%E5%9B%9E)
 - **B10-9** 大模型即使有参考资料，仍可能过度发挥或误读资料；要求它在答案里标注每句话来自哪个片段，用户就能追溯到原始文档验证答案，判断哪些内容可靠、哪些需要再确认。[原文§第六步：大模型生成 + 溯源](https://xiaolinnote.com/ai/rag/10_online_workflow.html#%E7%AC%AC%E5%85%AD%E6%AD%A5-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%94%9F%E6%88%90-%E6%BA%AF%E6%BA%90)
 - **B10-10** Query 改写几十毫秒，向量检索几十毫秒，Rerank 几百毫秒，Prompt 组装可忽略，大模型生成按输出长度在 1 到 10 秒不等；常见优化是缓存高频 Query 的检索结果，以及把向量检索和 BM25 检索并行执行，把两路延迟从串行叠加变成取最大值。[原文§第六步：大模型生成 + 溯源](https://xiaolinnote.com/ai/rag/10_online_workflow.html#%E7%AC%AC%E5%85%AD%E6%AD%A5-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%94%9F%E6%88%90-%E6%BA%AF%E6%BA%90)
+- **B10-11** Query 改写几十毫秒，向量检索几十毫秒，Rerank 几百毫秒，Prompt 组装可忽略；常见优化是缓存高频 Query 的检索结果，以及把向量检索和 BM25 检索并行执行，把两路延迟从串行叠加变成取最大值。[原文§第六步：大模型生成 + 溯源](https://xiaolinnote.com/ai/rag/10_online_workflow.html#%E7%AC%AC%E5%85%AD%E6%AD%A5-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%94%9F%E6%88%90-%E6%BA%AF%E6%BA%90)
 
 ## 11. 关键词与向量检索
 
@@ -294,6 +296,7 @@
 - **B15-11** 核心价值在于兜底：知识库覆盖不到的问题不会直接乱答，而是自动去网上找答案，大幅提升系统的健壮性；它把知识库当主力、网络搜索当备胎，打破了 RAG 只能用本地知识库回答的限制。[原文§CRAG（Corrective RAG）：检索质量差时自动纠错](https://xiaolinnote.com/ai/rag/15_advanced_paradigms.html#crag-corrective-rag-%E6%A3%80%E7%B4%A2%E8%B4%A8%E9%87%8F%E5%B7%AE%E6%97%B6%E8%87%AA%E5%8A%A8%E7%BA%A0%E9%94%99)
 - **B15-12** 先用 LLM 从文档里抽取实体和关系建成知识图谱，再用 Leiden 等社区发现算法把紧密关联的实体聚成社区，然后为每个社区生成 LLM 摘要，形成从细到粗的多层结构；它是微软 2024 年 7 月发布论文的方案，代价是构建图谱和社区摘要需要大量 LLM 调用，预处理成本较高。[原文§GraphRAG：用知识图谱增强全局理解](https://xiaolinnote.com/ai/rag/15_advanced_paradigms.html#graphrag-%E7%94%A8%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%A2%9E%E5%BC%BA%E5%85%A8%E5%B1%80%E7%90%86%E8%A7%A3)
 - **B15-13** 流程不是写死的，而是 LLM 在运行时自己决定：Self-RAG 是加了一个要不要检索的开关，CRAG 是加了一个检索不好怎么办的兜底，Agentic RAG 把整个检索流程变成一个可以不断循环、不断调整的智能体，特别适合需要多次、有针对性检索的多步推理问题。[原文§Agentic RAG：把 RAG 做成 Agent](https://xiaolinnote.com/ai/rag/15_advanced_paradigms.html#agentic-rag-%E6%8A%8A-rag-%E5%81%9A%E6%88%90-agent)
+- **B15-14** Naive RAG 是提问、向量检索、拼 Prompt、生成的直连流程，不做优化；Modular RAG 把各环节拆成可替换的模块，按需组合。[原文§三代 RAG 的演进](https://xiaolinnote.com/ai/rag/15_advanced_paradigms.html#%E4%B8%89%E4%BB%A3-rag-%E7%9A%84%E6%BC%94%E8%BF%9B)
 
 ## 16. 图增强检索
 
@@ -310,6 +313,7 @@
 - **B16-6** 图数据库专门存实体和关系：节点是实体，如公司、人、疾病、药物，边是关系，如投资、竞争、治疗；它不能替代向量检索，Cypher 这类图查询语言擅长精确的关系查询，对语义相似这种模糊匹配并不擅长。[原文§图数据库是干什么的，为什么能解决这个问题](https://xiaolinnote.com/ai/rag/16_graph_db.html#%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%B9%B2%E4%BB%80%E4%B9%88%E7%9A%84-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98)
 - **B16-7** 向量检索像导航定位，帮你找到出发点在哪；图遍历像沿着路线一站一站走，把沿途站点的信息都收集起来。前者解决在哪的问题，后者解决能到哪的问题。[原文§向量检索 + 图数据库的组合用法](https://xiaolinnote.com/ai/rag/16_graph_db.html#%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2-%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%BB%84%E5%90%88%E7%94%A8%E6%B3%95)
 - **B16-8** 看问题里是否同时出现多个具体实体名，并且在问这些实体之间有什么关系，或者通过关系能找到什么：是，就值得考虑图增强；如果主要是找某段描述性的内容，向量检索就够了。[原文§什么时候不值得上图数据库](https://xiaolinnote.com/ai/rag/16_graph_db.html#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%B8%8D%E5%80%BC%E5%BE%97%E4%B8%8A%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93)
+- **B16-9** 不能这样理解。原文称 Neo4j 等现代图数据库虽然也在加向量索引能力，但那本质上是把向量检索嫁接进图里，不是图遍历本身在做；传统图查询语言擅长的仍是精确的关系查询。[原文§图数据库是干什么的，为什么能解决这个问题](https://xiaolinnote.com/ai/rag/16_graph_db.html#%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%B9%B2%E4%BB%80%E4%B9%88%E7%9A%84-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98)
 
 ## 17. RAG 幻觉
 
@@ -322,7 +326,7 @@
 
 ### 补充考点
 
-- **B17-5** 把资料塞进 prompt 不等于 LLM 一定照着说：它有预训练带来的知识储备，资料和它学到的不一致时可能绕开资料自己发挥；更根本的是检索失败时，prompt 里是空的或全是无关内容，它不会说不知道，而是用训练时见过的知识编一个像答案的东西，还说得很自信。[原文§幻觉是什么，为什么 RAG 里会有幻觉？](https://xiaolinnote.com/ai/rag/17_hallucination.html#%E5%B9%BB%E8%A7%89%E6%98%AF%E4%BB%80%E4%B9%88-%E4%B8%BA%E4%BB%80%E4%B9%88-rag-%E9%87%8C%E4%BC%9A%E6%9C%89%E5%B9%BB%E8%A7%89)
+- **B17-5** 把资料塞进 prompt 不等于 LLM 一定照着说：它有预训练带来的知识储备，资料和它学到的不一致时可能绕开资料自己发挥；另一类是检索失败时，prompt 里是空的或全是无关内容，原文指出它往往不会说“我不知道”，而是用训练时见过的知识编一个像答案的东西，还说得很自信（这不是它做不到拒答，B17-6 的做法就是用提示约束让它在依据不足时拒答）。[原文§幻觉是什么，为什么 RAG 里会有幻觉？](https://xiaolinnote.com/ai/rag/17_hallucination.html#%E5%B9%BB%E8%A7%89%E6%98%AF%E4%BB%80%E4%B9%88-%E4%B8%BA%E4%BB%80%E4%B9%88-rag-%E9%87%8C%E4%BC%9A%E6%9C%89%E5%B9%BB%E8%A7%89)
 - **B17-6** 只能使用参考资料里的信息，是让 LLM 知道自己的边界，只是传话人而不是百科全书；资料不足时必须明确回答无法回答，是给它一个合法的出口，说不知道比编造好；回答时标明依据来自哪条资料，相当于让它主动对照原文做自检。[原文§方案一：用 Prompt 告诉 LLM「只准照着资料说」](https://xiaolinnote.com/ai/rag/17_hallucination.html#%E6%96%B9%E6%A1%88%E4%B8%80-%E7%94%A8-prompt-%E5%91%8A%E8%AF%89-llm%E3%80%8C%E5%8F%AA%E5%87%86%E7%85%A7%E7%9D%80%E8%B5%84%E6%96%99%E8%AF%B4%E3%80%8D)
 - **B17-7** 没有通用数字，要按自己的业务数据调：用答案在库和不在库两类测试集跑出 Rerank 分数分布，找能把两类分开的切点；经验值一般在 0.3 到 0.6 之间，金融、医疗等对精度要求高的偏高，闲聊型问答偏低，先取中间值再按线上误判样例调整。[原文§方案二：检索质量差时，直接拒绝回答](https://xiaolinnote.com/ai/rag/17_hallucination.html#%E6%96%B9%E6%A1%88%E4%BA%8C-%E6%A3%80%E7%B4%A2%E8%B4%A8%E9%87%8F%E5%B7%AE%E6%97%B6-%E7%9B%B4%E6%8E%A5%E6%8B%92%E7%BB%9D%E5%9B%9E%E7%AD%94)
 - **B17-8** 用户问了知识库覆盖不到的问题，最好的回答是我不知道、请联系人工；让 LLM 在低质量上下文里强行生成，会让用户误以为答案是对的并据此操作，而拒答虽然显得不那么智能，至少不会给出错误信息。[原文§方案二：检索质量差时，直接拒绝回答](https://xiaolinnote.com/ai/rag/17_hallucination.html#%E6%96%B9%E6%A1%88%E4%BA%8C-%E6%A3%80%E7%B4%A2%E8%B4%A8%E9%87%8F%E5%B7%AE%E6%97%B6-%E7%9B%B4%E6%8E%A5%E6%8B%92%E7%BB%9D%E5%9B%9E%E7%AD%94)
@@ -350,12 +354,13 @@
 - **B18-12** 每次评估都要调用 LLM 打分，几千条测试集的 token 和时间成本很可观；一是对核心测试集抽样，只跑最有代表性的 200 到 500 条；二是把评判模型降级到更小的型号，成本降低约 10 倍，精度损失可以接受。[原文§第二层：生成层评估（RAGAs 框架）](https://xiaolinnote.com/ai/rag/18_evaluation.html#%E7%AC%AC%E4%BA%8C%E5%B1%82-%E7%94%9F%E6%88%90%E5%B1%82%E8%AF%84%E4%BC%B0-ragas-%E6%A1%86%E6%9E%B6)
 - **B18-13** Context Precision 低说明检索召回了太多噪音，稀释了 LLM 的注意力，应加强 Rerank、减少最终送给 LLM 的 chunk 数量；Faithfulness 低说明 LLM 在编造，应加强 Prompt 约束、引入引用核查，或做检索质量门控，防止低质量上下文进入生成阶段。[原文§通过指标定位问题](https://xiaolinnote.com/ai/rag/18_evaluation.html#%E9%80%9A%E8%BF%87%E6%8C%87%E6%A0%87%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98)
 - **B18-14** 空回答率是系统主动说不知道的比例，过高说明知识库亟需扩充；会话解决率衡量一次对话能否解决用户的问题，是最综合、最贴近用户体验的指标。[原文§线上指标：最终衡量标准](https://xiaolinnote.com/ai/rag/18_evaluation.html#%E7%BA%BF%E4%B8%8A%E6%8C%87%E6%A0%87-%E6%9C%80%E7%BB%88%E8%A1%A1%E9%87%8F%E6%A0%87%E5%87%86)
+- **B18-15** 说明检索召回了太多噪音，稀释了 LLM 的注意力；应加强 Rerank，减少最终送给 LLM 的 chunk 数量。[原文§通过指标定位问题](https://xiaolinnote.com/ai/rag/18_evaluation.html#%E9%80%9A%E8%BF%87%E6%8C%87%E6%A0%87%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98)
 
 ## 19. 知识库更新
 
 原文：[19. RAG 知识库如何实现动态与持续更新？](https://xiaolinnote.com/ai/rag/19_dynamic_update.html)。
 
-- **B19-1** 文档和向量是一对多关系：一篇文档被切成几十上百个 chunk 并各自 Embedding。内容一改切割边界就变，新旧 chunk 无法一一对应，所以要先删掉该文档全部旧 chunk 再重新切割入库。[原文§为什么更新 RAG 知识库比更新普通数据库麻烦？](https://xiaolinnote.com/ai/rag/19_dynamic_update.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E6%96%B0-rag-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%AF%94%E6%9B%B4%E6%96%B0%E6%99%AE%E9%80%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E9%BA%BB%E7%83%A6)
+- **B19-1** 文档和向量是一对多关系：一篇文档被切成几十上百个 chunk 并各自 Embedding。文档内容变了，切割结果可能完全不同，chunk 的数量、边界和内容都会跟着变，没法把新旧 chunk 一一对应起来打补丁，所以工程上最可靠的做法是先删掉该文档全部旧 chunk 再重新切割入库。[原文§为什么更新 RAG 知识库比更新普通数据库麻烦？](https://xiaolinnote.com/ai/rag/19_dynamic_update.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E6%96%B0-rag-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%AF%94%E6%9B%B4%E6%96%B0%E6%99%AE%E9%80%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E9%BA%BB%E7%83%A6)
 - **B19-2** 轮询按固定间隔扫描全部文档并对比 hash，简单但有延迟；事件驱动由数据源经 Kafka、RabbitMQ 或 Webhook 主动推送，秒级生效；内容 hash 是入库时保存摘要，再次计算后比对是否变化。[原文§两种主流的变更感知方式](https://xiaolinnote.com/ai/rag/19_dynamic_update.html#%E4%B8%A4%E7%A7%8D%E4%B8%BB%E6%B5%81%E7%9A%84%E5%8F%98%E6%9B%B4%E6%84%9F%E7%9F%A5%E6%96%B9%E5%BC%8F)
 - **B19-3** 让 chunk ID 以文档 ID 为前缀，或在 chunk 的 metadata 里存文档 ID，以便按前缀或字段批量找出并删除该文档的全部 chunk。[原文§文档 ID 和 chunk ID 的设计](https://xiaolinnote.com/ai/rag/19_dynamic_update.html#%E6%96%87%E6%A1%A3-id-%E5%92%8C-chunk-id-%E7%9A%84%E8%AE%BE%E8%AE%A1)
 - **B19-4** 知识库很小，或更换 Embedding 模型、修改 Chunking 策略导致新旧向量不兼容时才全量重建；平时用 hash 检测加先删后增做增量更新。[原文§全量重建是最后的手段](https://xiaolinnote.com/ai/rag/19_dynamic_update.html#%E5%85%A8%E9%87%8F%E9%87%8D%E5%BB%BA%E6%98%AF%E6%9C%80%E5%90%8E%E7%9A%84%E6%89%8B%E6%AE%B5)
@@ -369,6 +374,7 @@
 - **B19-9** chunk ID 的命名规范如果一开始不设计好，后面做更新会非常痛苦；无论是让 chunk ID 带文档 ID 前缀，还是在 metadata 里存文档 ID 字段再按字段过滤批量删除，关键都是从一开始就建立关联，等到需要更新时再临时想办法会很被动。[原文§文档 ID 和 chunk ID 的设计](https://xiaolinnote.com/ai/rag/19_dynamic_update.html#%E6%96%87%E6%A1%A3-id-%E5%92%8C-chunk-id-%E7%9A%84%E8%AE%BE%E8%AE%A1)
 - **B19-10** 它实现简单、不依赖外部系统，适合文档更新频率低、对实时性要求不高的场景，如内部知识库、产品文档；缺点是有延迟，文档改完要等下一个轮询周期才生效，而且文档很多时全量扫描本身也是开销，大多数没变的文档每次都要算一遍 hash。[原文§两种主流的变更感知方式](https://xiaolinnote.com/ai/rag/19_dynamic_update.html#%E4%B8%A4%E7%A7%8D%E4%B8%BB%E6%B5%81%E7%9A%84%E5%8F%98%E6%9B%B4%E6%84%9F%E7%9F%A5%E6%96%B9%E5%BC%8F)
 - **B19-11** 数据源变更时主动发消息，更新服务收到事件立刻处理，文档变更后几秒内就能生效，适合客服知识库、新闻资讯这类实时性要求高的场景；代价是需要数据源具备发消息的能力，系统架构也更复杂。Confluence、Notion、语雀等工具支持 Webhook，天然适合这种方式，不必引入消息队列。[原文§两种主流的变更感知方式](https://xiaolinnote.com/ai/rag/19_dynamic_update.html#%E4%B8%A4%E7%A7%8D%E4%B8%BB%E6%B5%81%E7%9A%84%E5%8F%98%E6%9B%B4%E6%84%9F%E7%9F%A5%E6%96%B9%E5%BC%8F)
+- **B19-12** 定时轮询实现简单、不依赖外部系统，适合文档更新频率低、对实时性要求不高的场景，如内部知识库、产品文档。[原文§两种主流的变更感知方式](https://xiaolinnote.com/ai/rag/19_dynamic_update.html#%E4%B8%A4%E7%A7%8D%E4%B8%BB%E6%B5%81%E7%9A%84%E5%8F%98%E6%9B%B4%E6%84%9F%E7%9F%A5%E6%96%B9%E5%BC%8F)
 
 ## 20. 落地难点
 
@@ -426,6 +432,10 @@
 - **B22-11** 把检索命中的片段当作位置线索，再读取所属的完整章节，正文引用附件或其他规则时继续补齐；检索负责缩小查找范围，长上下文负责在该范围内做较完整的阅读。但读全文补不回完全没被召回的另一份资料，检索后还要检查证据能否回答问题，缺少范围、条件或依据时继续补查。[原文§大窗口与检索配合，怎样保留必要的完整性？](https://xiaolinnote.com/ai/rag/22_rag_long_context.html#%E5%A4%A7%E7%AA%97%E5%8F%A3%E4%B8%8E%E6%A3%80%E7%B4%A2%E9%85%8D%E5%90%88-%E6%80%8E%E6%A0%B7%E4%BF%9D%E7%95%99%E5%BF%85%E8%A6%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7)
 - **B22-12** 少量资料、需要通读、总结或整体比较的，直接使用长上下文；大资料库、问题集中在局部事实的，检索后组织相关证据；需要跨段条件或文档关系的，检索定位后再扩大阅读范围。要求全量总结或检查所有例外的任务，排名靠前的少量结果不能代替完整范围，相关性排名不证明没有遗漏。[原文§大窗口与检索配合，怎样保留必要的完整性？](https://xiaolinnote.com/ai/rag/22_rag_long_context.html#%E5%A4%A7%E7%AA%97%E5%8F%A3%E4%B8%8E%E6%A3%80%E7%B4%A2%E9%85%8D%E5%90%88-%E6%80%8E%E6%A0%B7%E4%BF%9D%E7%95%99%E5%BF%85%E8%A6%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7)
 - **B22-13** 全文能做对而 RAG 做错，要检查召回是否遗漏；全文混用不同版本，要检查输入范围和资料组织。验证时先看问题有没有答全、规则有没有用对，再比较延迟和成本。[原文§大窗口与检索配合，怎样保留必要的完整性？](https://xiaolinnote.com/ai/rag/22_rag_long_context.html#%E5%A4%A7%E7%AA%97%E5%8F%A3%E4%B8%8E%E6%A3%80%E7%B4%A2%E9%85%8D%E5%90%88-%E6%80%8E%E6%A0%B7%E4%BF%9D%E7%95%99%E5%BF%85%E8%A6%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7)
+
+### 补充考点
+
+- **B22-14** 要检查输入范围和资料组织。验证时先看问题有没有答全、规则有没有用对，再比较延迟和成本。[原文§大窗口与检索配合，怎样保留必要的完整性？](https://xiaolinnote.com/ai/rag/22_rag_long_context.html#%E5%A4%A7%E7%AA%97%E5%8F%A3%E4%B8%8E%E6%A3%80%E7%B4%A2%E9%85%8D%E5%90%88-%E6%80%8E%E6%A0%B7%E4%BF%9D%E7%95%99%E5%BF%85%E8%A6%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7)
 
 ## 23. RAG 与自主文件检索的选型
 

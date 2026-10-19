@@ -1,0 +1,9 @@
+﻿{
+    "command":  "CONTENT_INCLUDE_DRAFTS=1 npm run content:build (temporary process environment; restored afterward)",
+    "exitCode":  0,
+    "questionCount":  6995,
+    "gitQuestionCount":  252,
+    "gitQuestionsEqualVerifiedSnapshot":  true,
+    "chapterStatuses":  "draft",
+    "warning":  "Existing V14 R3-139; no Git warnings"
+}

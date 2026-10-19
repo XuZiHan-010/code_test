@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-16",
+  "reviewIndexCounts": {
+    "Y1-review.md": 65,
+    "Y2-review.md": 62,
+    "Y3-Y4-review.md": 125
+  },
+  "reviewedUniqueQuestions": 252,
+  "indexOrderAndSourceLineNumbersMatch": true,
+  "indexTypesAndCorrectKeysAndFillConfigurationMatch": true,
+  "mustFixGroups": 16,
+  "affectedUniqueQuestionsIncludingExplanationUpdates": 44,
+  "affectedByChapter": {
+    "Y1": 7,
+    "Y2": 12,
+    "Y3": 9,
+    "Y4": 16
+  },
+  "bankSourceFilesUnchanged": true,
+  "initialSha256": {
+    "interview-practice/docker.md": "5fa488b163d55740efb8abec4764741fe469d994ebb125212e12faab4e5fc178",
+    "interview-practice/answers-xiaolin/docker.md": "1412e5e5eed40c1f3e3677f3184390a7524d1d1da4a72132c756de1385975343",
+    "content/typed/docker.json": "6cf92ca93b841e36296e493a73e69eb89b0dff50df546233a4026f401a9df685"
+  },
+  "finalSha256": {
+    "interview-practice/docker.md": "5fa488b163d55740efb8abec4764741fe469d994ebb125212e12faab4e5fc178",
+    "interview-practice/answers-xiaolin/docker.md": "1412e5e5eed40c1f3e3677f3184390a7524d1d1da4a72132c756de1385975343",
+    "content/typed/docker.json": "6cf92ca93b841e36296e493a73e69eb89b0dff50df546233a4026f401a9df685"
+  },
+  "brokenLocalEvidenceLinks": [],
+  "commandsAlreadyExecuted": {
+    "contentValidateWithDrafts": {
+      "exitCode": 0,
+      "questionCount": 7247,
+      "warnings": [
+        "V14 R3-139"
+      ]
+    },
+    "unitTests": {
+      "exitCode": 0,
+      "filesPassed": 9,
+      "testsPassed": 103
+    },
+    "dockerAudit": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    "sourceIndex": {
+      "exitCode": 0,
+      "sections": 22,
+      "questions": 252
+    }
+  },
+  "limits": [
+    "结构与材料检查不替代人工语义审核",
+    "未运行Docker示例或清理资源",
+    "未调用DeepSeek",
+    "未运行生产构建、数据库集成测试或浏览器端到端测试",
+    "章节状态仍为draft"
+  ]
+}

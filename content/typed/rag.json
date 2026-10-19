@@ -1,0 +1,4348 @@
+{
+  "prefix": "B",
+  "chapters": {
+    "B1": {
+      "status": "draft",
+      "questions": [
+        { "id": "B1-1", "type": "short" },
+        {
+          "id": "B1-2",
+          "type": "fill",
+          "stem": "构建 RAG 知识库的离线流程依次是四步：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "B1-3",
+          "type": "fill",
+          "stem": "用户提问后的在线流程依次是四步：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "B1-4",
+          "type": "single",
+          "stem": "“苹果手机怎么截图”和“iPhone 如何截屏”用词不同，为什么向量检索能把它们对上？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Rerank 模型会在检索之前把两句话改写成完全相同的句子",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Embedding 把语义相近的文本放在相近的位置，检索比较的是意思而不是关键词",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Embedding 会先把两句话拆成关键词，再统计相同关键词出现的次数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "向量数据库里预先存了一张同义词表，检索时先做同义词替换",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B1-5",
+          "type": "single",
+          "stem": "为什么不靠微调来更新模型的知识？",
+          "options": [
+            {
+              "key": "A",
+              "text": "微调需要先建好向量数据库，比直接检索多了一道工序",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "微调只能改变输出格式，完全无法让模型记住任何新的知识",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "微调成本高、耗时长，而且知识写进参数后，以后想更新就得重新训练",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "微调之后模型会失去阅读理解能力，无法再读懂上下文里的内容",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B1-6", "type": "short" },
+        { "id": "B1-7", "type": "short" },
+        {
+          "id": "B1-8",
+          "type": "single",
+          "stem": "chunk 切得太大或太小，各有什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "太大向量数据库存不下；太小 Embedding 模型无法生成向量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "太大检索速度变慢；太小 Rerank 模型无法排序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "太大语义不完整，上下文被切断；太小信息太杂，容易召回不相关的内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "太大信息太杂，容易召回不相关的内容；太小语义不完整，上下文被切断",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B1-9",
+          "type": "single",
+          "stem": "向量数据库的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "专门优化高维向量的存储和相似度搜索，能在千万量级的向量里快速找到最相近的几条",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "读取 PDF、Word、网页等几十种格式的原始数据，并统一转成纯文本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把用户问题和每个候选拼在一起深度理解相关性，再重新排序并过滤",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把口语化的用户问题改写成更适合检索的形式，并从对话历史里补充上下文",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B1-10",
+          "type": "single",
+          "stem": "在线阶段为什么要先做 Query 处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户的提问里常有敏感信息，必须先脱敏才能交给模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用户的提问通常太长，超过了 Embedding 模型的输入长度限制",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用户的提问往往口语化或依赖对话上下文，直接拿去检索效果不一定好",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用户的提问需要先存进向量数据库，才能和文档比较",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B1-11",
+          "type": "single",
+          "stem": "向量检索作为粗排，不足在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "速度很慢，百万量级的向量通常要几十秒才能返回结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每次只能返回一条结果，无法交给后面的精排",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能做关键词的精确匹配，换一种说法就检索不到",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只比较两个向量的距离，没有深度理解语义关系，会混入看着近但其实不相关的内容",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B1-12",
+          "type": "single",
+          "stem": "Rerank 精排是怎样工作的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 Cross-Encoder 把问题和每个候选拼在一起理解后重排，更准但更慢，所以只处理粗排的前若干条",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把问题和候选分别转成向量再比较距离，更快但更粗，所以要处理向量库里的全部内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让 LLM 把问题改写成多个版本，再分别到向量库里检索一遍",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把候选按在原文档里出现的先后顺序重新排列，再全部交给 LLM",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B1-13",
+          "type": "single",
+          "stem": "生成阶段的 Prompt 通常会给 LLM 什么约束？",
+          "options": [
+            {
+              "key": "A",
+              "text": "优先使用自己的知识，资料只作补充参考",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只根据提供的资料回答，资料里没有就说不知道",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "资料里没有时，根据常识给出最合理的推测",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "回答尽量详细，不必标注内容来自哪里",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B1-14",
+          "type": "fill",
+          "stem": "RAG 最核心的两项价值是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "B1-15", "type": "short" }
+      ]
+    },
+    "B2": {
+      "status": "draft",
+      "questions": [
+        { "id": "B2-1", "type": "short" },
+        {
+          "id": "B2-2",
+          "type": "single",
+          "stem": "企业私有知识为什么不能期待模型在预训练时已经掌握？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型见过这些内容，但训练截止之后忘记了",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这些内容太专业，模型的推理能力不够理解",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "产品手册、客服知识库这类内容根本不会出现在公开训练数据里",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型见过这些内容，但出于安全考虑拒绝回答",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B2-3", "type": "short" },
+        {
+          "id": "B2-4",
+          "type": "single",
+          "stem": "什么是 LLM 的“知识冻结”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "知识在预训练时编码进参数，训练数据截止之后的变化，参数不会自动更新",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "模型在一次对话里读过的内容，对话结束后不会保留",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型拒绝回答涉及私有数据的问题",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型的上下文窗口有上限，超出的内容会被截断",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B2-5", "type": "short" },
+        {
+          "id": "B2-6",
+          "type": "single",
+          "stem": "知识过期时，模型通常会怎样表现？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自动去外部知识库检索最新内容，再基于检索结果回答",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不会说不知道，而是用见过的历史规律推测出听起来合理的答案，并且说得很自信",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "输出一段乱码，或者直接返回空的回答",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "明确告诉用户自己的训练数据截止到哪一天，然后拒绝回答",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B2-7",
+          "type": "single",
+          "stem": "LLM 为什么会产生幻觉？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它会主动核对每个事实的来源，核对失败时就用随机生成的内容替代",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它在训练时被要求尽量少说话，所以回答总是不完整、需要自己补全",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它的上下文窗口太小，装不下检索回来的参考资料，只能丢掉一部分内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它的核心机制是预测下一个词，没有内置的“不确定就停下来”的开关，参数里缺少可靠知识时更容易拼凑出听起来合理的答案",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B2-8",
+          "type": "single",
+          "stem": "幻觉是一个需要单独治理的独立 bug 吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，原文认为它是知识缺失的副产品，知识过期和知识缺失都会增大它出现的风险",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是的，它与知识是否缺失无关，只能靠单独的过滤器拦截",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，它是用户提问方式不当造成的，与模型无关",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，它只在模型做数学计算时才会出现",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B2-9", "type": "short" }
+      ]
+    },
+    "B3": {
+      "status": "draft",
+      "questions": [
+        { "id": "B3-1", "type": "short" },
+        {
+          "id": "B3-2",
+          "type": "single",
+          "stem": "微调与 RAG 组合使用时，各自解决什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都解决怎么说，区别只在延迟",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "微调解决怎么说，RAG 解决说什么",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都解决说什么，区别只在成本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "微调解决说什么，RAG 解决怎么说",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B3-3",
+          "type": "single",
+          "stem": "RAG 相比微调，要付出什么代价？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要准备大量标注数据并租用 GPU 跑训练",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "回答来自参数，不知道依据哪条知识，出错难以定位",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "多了检索步骤、延迟增加，而且答案的上限被检索质量卡住",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每次更新知识都要重新训练，周期长、成本高",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B3-4", "type": "short" },
+        {
+          "id": "B3-5",
+          "type": "fill",
+          "stem": "原文概括的微调三个主要痛点是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "B3-6",
+          "type": "single",
+          "stem": "为什么说 RAG 调优的主战场是检索，而不是换更强的 LLM？",
+          "options": [
+            {
+              "key": "A",
+              "text": "更强的 LLM 无法读取向量数据库，换了之后检索会直接失效",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "更强的 LLM 上下文窗口更小，能放进去的 chunk 更少",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "检索层的成本远高于生成层，所以优化检索最省钱",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "生成层只是在复述和整理检索到的内容，相关的 chunk 没被检索回来，LLM 再强也答不出来",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B3-7",
+          "type": "single",
+          "stem": "除了延迟和检索上限，RAG 相比微调还有什么局限？",
+          "options": [
+            {
+              "key": "A",
+              "text": "答案无法追溯到具体来源",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "无法回答涉及私有知识的问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对复杂推理能力的提升有限",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "知识库更新之后不能立刻生效",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B3-8",
+          "type": "single",
+          "stem": "微调和 RAG 的知识上限各受什么限制？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都受限于向量数据库的容量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "微调受限于训练数据的质量和规模，RAG 受限于检索质量和 context 长度",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都受限于 GPU 的数量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "微调受限于检索质量和 context 长度，RAG 受限于训练数据的质量和规模",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "B4": {
+      "status": "draft",
+      "questions": [
+        { "id": "B4-1", "type": "short" },
+        { "id": "B4-2", "type": "short" },
+        { "id": "B4-3", "type": "short" },
+        {
+          "id": "B4-4",
+          "type": "single",
+          "stem": "代码和表格应怎样切分？",
+          "options": [
+            {
+              "key": "A",
+              "text": "代码以函数或类为单位切，表格整块保留并转成 Markdown",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "代码整个文件作为一个 chunk，表格只保留表头",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "代码和表格都按固定的 token 数切，再加上重叠",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "代码按固定行数切，表格按行截断成多条记录",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B4-5",
+          "type": "single",
+          "stem": "父子切分为什么采用“小块检索、大块返回”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "小 chunk 用来保存表格，大 chunk 用来保存代码",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "小 chunk 占用存储少，可以替代大 chunk，把存储量减半",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "小 chunk 带着前后上下文，交给 LLM 才读得懂；大 chunk 语义聚焦，检索精度高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "小 chunk 语义聚焦，检索精度高；大 chunk 带着前后上下文，交给 LLM 才读得懂",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B4-6",
+          "type": "fill",
+          "stem": "向量库的每条记录包含三部分：用于相似度检索的 ____，供模型阅读的 ____，记录来源并支持过滤和溯源的 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "B4-7", "type": "short" },
+        { "id": "B4-8", "type": "short" },
+        {
+          "id": "B4-9",
+          "type": "single",
+          "stem": "固定大小切割加上重叠，有什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "chunk 的总数量会减少一半",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能缓解边界截断：不超过重叠长度的跨边界内容可完整保留",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每个 chunk 都对应一个完整的章节",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个 chunk 的大小可以随内容自动变化",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B4-10", "type": "short" },
+        {
+          "id": "B4-11",
+          "type": "single",
+          "stem": "Late Chunking 是什么思路？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先切分后编码：把文档切成小块之后，每一块单独交给 Embedding 模型生成向量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先检索后切分：等用户提问时，再把命中的整篇文档临时切成小块",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先摘要后编码：让 LLM 给每个 chunk 写一句摘要，只对摘要生成向量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先编码后切分：整篇文档先过一遍 Embedding 模型得到每个 token 的向量，再按 chunk 边界做 pooling",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B4-12", "type": "short" },
+        { "id": "B4-13", "type": "short" }
+      ]
+    },
+    "B5": {
+      "status": "draft",
+      "questions": [
+        { "id": "B5-1", "type": "short" },
+        {
+          "id": "B5-2",
+          "type": "single",
+          "stem": "句子窗口检索是怎样补回命中片段的上下文的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "存储时让 LLM 给每个句子写背景说明，命中后只返回背景说明",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "存储时让相邻 chunk 重叠一段内容，命中后只返回重叠的部分",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "存储时按单个句子做向量，命中一个句子后把它前后各 N 个句子一起返回",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "存储时按整篇文档做向量，命中后再把文档临时切成句子返回",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B5-3",
+          "type": "single",
+          "stem": "命题化切分与普通段落切分有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它用 LLM 把文档分解成一条条完整、自包含、只含一个核心事实的陈述句",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它按固定的 token 数切分，再让相邻的块重叠一部分",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它按句子切分，命中之后再动态扩展前后的句子",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它按标题层级切分，每个块对应一个完整的章节",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B5-4",
+          "type": "single",
+          "stem": "Contextual Retrieval 在向量化之前为 chunk 增加了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给每个 chunk 加上所属文件名和页码的 metadata",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让 LLM 看着整篇文档，为每个 chunk 生成一段背景说明并前置拼接",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把每个 chunk 拆成只含一个事实的多条命题",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把每个 chunk 前后各扩展一个 chunk 的原文",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B5-5",
+          "type": "single",
+          "stem": "用 LLM 为大量 chunk 生成背景说明时，怎样控制成本？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只给每篇文档的第一个 chunk 生成背景说明，其余 chunk 直接复用同一段说明",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "改用 Embedding 模型生成背景说明，完全不再调用 LLM",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把文档先压缩成一句话摘要，再让 LLM 只看着这句摘要给每个 chunk 写说明",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 Prompt Caching：完整文档是所有 chunk 请求的相同前缀，后续请求命中缓存的部分计费很低",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B5-6",
+          "type": "single",
+          "stem": "语义截断的核心问题是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "被截断的那句话会从知识库里彻底丢失，再也无法检索到",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "被截断的 chunk 向量维度会变小，无法和查询比较",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是信息丢了，而是信息被拆散之后每一半都不够强，可能都不会被召回",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "被截断的 chunk 会超出 Embedding 模型的输入长度限制",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B5-7", "type": "short" },
+        {
+          "id": "B5-8",
+          "type": "single",
+          "stem": "加了 overlap 之后，语义截断就解决了吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有，它只是兜底，只能保证跨边界的文字不丢，解决不了完整语义被拆散的根本问题",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "没有，重叠会让跨边界的文字丢失得更多，所以多数系统都不开启",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "解决了，重叠越大效果越好，重叠到四成以上就不会再有截断",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "解决了，重叠之后每个 chunk 都带着整篇文档的主题信息",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B5-9", "type": "short" },
+        { "id": "B5-10", "type": "short" },
+        {
+          "id": "B5-11",
+          "type": "single",
+          "stem": "句子窗口检索和父子切割有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "句子窗口是大粒度检索、小粒度返回，父子切割是小粒度检索、大粒度返回",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "句子窗口是命中后动态扩展上下文，不用维护父子 ID；父子切割提前存好关系，父 chunk 的大小可以精确控制",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "句子窗口提前存好父子关系，父 chunk 的大小可以精确控制；父子切割是命中后动态扩展上下文，不用维护 ID",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "句子窗口只能用于代码，父子切割只能用于表格",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B5-12", "type": "short" },
+        {
+          "id": "B5-13",
+          "type": "single",
+          "stem": "孤立的 chunk 为什么召回质量低？",
+          "options": [
+            {
+              "key": "A",
+              "text": "向量化时模型只能看到这段文字本身，向量里没有它来自哪篇文档、讲什么主题的信息",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "孤立的 chunk 字数太少，Embedding 模型无法为它生成向量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "孤立的 chunk 没有和相邻的 chunk 重叠，所以不会被写进向量库",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "孤立的 chunk 在向量库里没有原文，只保存了一串浮点数",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B5-14", "type": "short" },
+        { "id": "B5-15", "type": "short" }
+      ]
+    },
+    "B6": {
+      "status": "draft",
+      "questions": [
+        { "id": "B6-1", "type": "short" },
+        {
+          "id": "B6-2",
+          "type": "fill",
+          "stem": "原文给出的选择 Embedding 模型的三个判断点是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "B6-3",
+          "type": "single",
+          "stem": "向量维度怎样影响精度、存储和检索速度？",
+          "options": [
+            {
+              "key": "A",
+              "text": "维度只影响存储空间，与精度和检索时间无关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "维度越低精度越好，存储空间和检索时间也越少",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "维度越高精度越差，但存储空间和检索时间都会减少",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "维度越高精度越好，但存储空间和检索时间都会增加",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B6-4",
+          "type": "single",
+          "stem": "为什么在业务检索集上的测试比只看通用排行榜更有说服力？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通用排行榜只评测英文模型，中文模型完全不在榜上",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "通用排行榜的分数由厂商自己填写，没有统一的评测方法",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "通用排行榜用的是通用数据集，与业务数据的分布差异很大",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "通用排行榜只比较向量维度大小，不比较实际的检索效果",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B6-5",
+          "type": "single",
+          "stem": "衡量向量相似度为什么用余弦而不是直线距离？",
+          "options": [
+            {
+              "key": "A",
+              "text": "余弦的计算量比直线距离小得多，检索速度更快",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "直线距离只能用于二维向量，高维空间里无法计算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "余弦只看模长不看方向，能反映文本的长度差异",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "余弦只看方向不看模长，能把意思相近从文本长短里剥离出来",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B6-6", "type": "short" },
+        {
+          "id": "B6-7",
+          "type": "single",
+          "stem": "OpenAI 的 text-embedding 系列有什么缺点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不支持降维，向量只能按固定的维度存储，占用的空间没有办法再压缩",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "API 调用有费用，数据要发到 OpenAI 的服务器，有些企业有数据出境的合规问题",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只能本地部署，需要自己准备 GPU 并承担全部的运维工作，上手门槛很高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只支持中文文本，英文文档的检索效果很差，无法用于海外业务的知识库",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B6-8",
+          "type": "single",
+          "stem": "原文对 bge-m3 的描述是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "多语言版本，支持稠密、稀疏和多向量三种检索模式，适合中英文混排",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "商业闭源模型，英文检索精度超过 OpenAI 的同类模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "支持 128K 超长上下文，专门面向超长文档的整篇编码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "经典的中文开源模型，只支持中文，不支持其他任何一种语言",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B6-9", "type": "short" }
+      ]
+    },
+    "B7": {
+      "status": "draft",
+      "questions": [
+        { "id": "B7-1", "type": "short" },
+        {
+          "id": "B7-2",
+          "type": "single",
+          "stem": "ELMo 和 BERT 分别用什么结构让词的向量随上下文变化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ELMo 用 Transformer 并引入 Masked Language Model 预训练任务，BERT 用双向 LSTM",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ELMo 用对比学习拉近正样本，BERT 用 dropout 构造负样本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "ELMo 用双向 LSTM，BERT 用 Transformer 并引入 Masked Language Model 预训练任务",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "ELMo 对词共现矩阵做分解，BERT 把词拆成字符级的 n-gram 子词",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B7-3",
+          "type": "single",
+          "stem": "为什么普通 BERT 不适合海量句子的相似度检索？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的句子向量维度太高，向量数据库里存不下",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它给每个词只生成一个固定向量，无法区分多义词",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次检索都要把查询和每个候选拼在一起跑一遍，百万条文档就要跑百万次",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它只能处理英文句子，中文句子无法编码",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B7-4", "type": "short" },
+        { "id": "B7-5", "type": "short" },
+        {
+          "id": "B7-6",
+          "type": "fill",
+          "stem": "Word2Vec 的两种训练方式中，用周围词预测中心词的是 ____，用中心词预测周围词、对低频词更友好的是 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "B7-7",
+          "type": "single",
+          "stem": "GloVe 和 Word2Vec 有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "GloVe 用双向 LSTM 同时从两个方向扫描句子",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "GloVe 让同一个词在不同上下文里得到不同的向量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "GloVe 把词拆成字符级的 n-gram 子词，能估算没见过的新词",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "GloVe 直接对整个语料库的词共现矩阵做分解，对全局统计信息利用更充分",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B7-8",
+          "type": "single",
+          "stem": "FastText 怎样处理训练时没见过的新词？",
+          "options": [
+            {
+              "key": "A",
+              "text": "遇到新词时重新训练整个模型，再为它生成向量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把词拆成字符级的 n-gram 子词，子片段见过就能估算出向量",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "直接用新词周围那些词的向量的平均值代替它",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "给所有没见过的新词统一分配同一个固定的向量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B7-9",
+          "type": "single",
+          "stem": "第一代静态词向量的共同局限是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个词只有一个固定向量，不管上下文如何都一样",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "句向量都挤在一个窄小的锥形区域里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能处理英文，无法为中文词生成向量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次比较都要把两个句子拼在一起推理，速度太慢",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B7-10",
+          "type": "single",
+          "stem": "SBERT 的 bi-encoder 结构付出了什么代价，换来了什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "代价是编码时看不到两句话 token 之间的交叉关系，换来文档向量可提前算好、速度提升几个数量级",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "代价是每个词只有一个固定向量，换来模型体积大幅缩小",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "代价是每次都要把两句话拼在一起推理，换来在微妙匹配上比 Cross-Encoder 更准",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "代价是需要大量人工标注的句子对，换来支持多模态输入",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B7-11",
+          "type": "single",
+          "stem": "SimCSE 的对比学习怎样构造正负样本？",
+          "options": [
+            {
+              "key": "A",
+              "text": "人工标注的同义句作正样本，人工标注的反义句作负样本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "被遮盖的词作正样本，随机替换的词作负样本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "同一 batch 里其他句子的向量作正样本，同一句话做两次 dropout 的向量作负样本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "同一句话做两次 dropout 得到的两个向量作正样本，同一 batch 里其他句子的向量作负样本",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B7-12", "type": "short" },
+        {
+          "id": "B7-13",
+          "type": "fill",
+          "stem": "原文列出的第三代 Embedding 模型三个新趋势是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        }
+      ]
+    },
+    "B8": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B8-1",
+          "type": "single",
+          "stem": "向量数据库与普通关系数据库擅长的事有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "关系数据库擅长语义相似，向量数据库擅长精确匹配，核心操作是等值查询",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都擅长语义相似，区别只在向量数据库不支持过滤",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "关系数据库擅长精确匹配，向量数据库擅长语义相似，核心操作是近似最近邻搜索",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者擅长的事相同，向量数据库只是关系数据库的升级版",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B8-2", "type": "short" },
+        {
+          "id": "B8-3",
+          "type": "single",
+          "stem": "HNSW 与 IVF 在索引思路和资源取舍上有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "HNSW 只能用于关键词检索，IVF 只能用于 metadata 过滤",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "HNSW 构建多层图，召回率高、查询快但内存消耗大；IVF 先聚类分桶，内存占用小但精度略低",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "HNSW 暴力遍历全部向量，精度最高；IVF 用 B-tree 做一维的有序索引",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "HNSW 先聚类分桶，内存占用小但精度略低；IVF 构建多层图，召回率高、查询快但内存消耗大",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B8-4",
+          "type": "single",
+          "stem": "什么情况下可以先用 pgvector，而不引入独立的向量数据库？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数据在千万到亿级，需要分布式部署时",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "对检索性能有极致要求，要专用向量库时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "已经在用 PostgreSQL，数据量不是特别大时",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不想自己运维，数据又全部在云上时",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B8-5", "type": "short" },
+        { "id": "B8-6", "type": "short" },
+        { "id": "B8-7", "type": "short" },
+        { "id": "B8-8", "type": "short" },
+        {
+          "id": "B8-9",
+          "type": "single",
+          "stem": "Metadata 过滤为什么要先过滤再做 ANN 搜索？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先过滤可以让向量的维度变小，检索精度更高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先过滤之后就不需要再做向量相似度计算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先搜完再过滤会修改向量库里的原始数据",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先搜完再过滤，Top-K 里可能大部分都不满足条件，白白浪费检索名额",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B8-10",
+          "type": "single",
+          "stem": "向量索引建好之后还能更新吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以新增，但不能修改或删除已有的向量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可以，主流向量数据库支持在线写入和增量构建索引，不需要停服重建",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不可以，索引建好之后向量库变成只读",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不可以，任何新增或修改都必须停服之后全量重建索引",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B8-11",
+          "type": "single",
+          "stem": "为什么向量数据库还要支持与关键词检索融合？",
+          "options": [
+            {
+              "key": "A",
+              "text": "纯向量检索对产品型号、专有名词这类精确词语效果不好",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "纯向量检索无法处理同义词和不同的表达方式",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "纯向量检索不支持给向量挂 metadata",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "纯向量检索的速度太慢，要靠关键词检索来加速",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B8-12", "type": "short" },
+        { "id": "B8-13", "type": "short" },
+        {
+          "id": "B8-14",
+          "type": "single",
+          "stem": "按原文，Milvus 适合什么情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只做原型验证，希望零配置、本地内存运行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "完全不想运维，希望按用量付费使用全托管服务",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "已经在用 PostgreSQL，想和业务数据做 SQL JOIN",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "数据在千万到亿级、需要分布式，团队有足够的运维人力",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B8-15",
+          "type": "single",
+          "stem": "做向量数据库选型时，原文提醒要避免什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "比较各选项的适用场景",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "拿 GitHub Star 数量当选型依据",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "考虑数据规模和部署方式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "了解 HNSW 和 IVF 的区别",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "B9": {
+      "status": "draft",
+      "questions": [
+        { "id": "B9-1", "type": "short" },
+        {
+          "id": "B9-2",
+          "type": "single",
+          "stem": "高维向量带来的内存压力，原文案例是怎样缓解的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把 HNSW 的 M 调大，让图结构更密",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把查询时的 ef 调大，扩大候选集",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "开启标量量化 SQ8，把每个 float32 压成 int8",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把向量维度从 1024 提高到更高",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B9-3",
+          "type": "single",
+          "stem": "标量量化 SQ8 对召回率有什么影响？",
+          "options": [
+            {
+              "key": "A",
+              "text": "精度损失极小，召回率通常只有很小的下降",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "召回率不可预测，每次查询的结果都不一样",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "召回率会下降一半左右，只适合对精度不敏感的场景",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "召回率反而明显提升，因为向量变得更紧凑",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B9-4",
+          "type": "single",
+          "stem": "批量写入为什么可能拖慢线上查询？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写入期间整个 Collection 会被锁住，所有查询都必须排队等待",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "后台会触发 Segment 合并并建索引，这个过程很耗 CPU 和磁盘 IO",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "写入会清空内存里的索引，查询只能回退到暴力遍历",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "新写入的向量维度与旧向量不同，查询时要逐条转换",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B9-5", "type": "short" },
+        { "id": "B9-6", "type": "short" },
+        {
+          "id": "B9-7",
+          "type": "single",
+          "stem": "Milvus 里的 Collection 和 Segment 分别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Collection 类似关系数据库里的表，Segment 是内部管理数据的基本单位",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Collection 是索引的参数，Segment 是查询时的候选集大小",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Collection 是量化后的向量，Segment 是未量化的原始向量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Segment 类似关系数据库里的表，Collection 是内部管理数据的基本单位",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B9-8",
+          "type": "fill",
+          "stem": "HNSW 的三个参数各管一件事：每个节点最多连接几个邻居由 ____ 控制，建图时每个节点考察多少候选由 ____ 控制，查询时搜索的候选集大小由 ____ 控制。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "B9-9", "type": "short" },
+        {
+          "id": "B9-10",
+          "type": "single",
+          "stem": "原文案例里没开量化时查询延迟飙升，根本原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "向量数据库的版本过旧",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "HNSW 索引算法本身存在缺陷",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "内存不够，索引加载后频繁 swap",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "查询的并发量超过了上限",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B9-11",
+          "type": "fill",
+          "stem": "批量写入引起查询抖动时，原文给出的两种解法是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "B9-12", "type": "short" }
+      ]
+    },
+    "B10": {
+      "status": "draft",
+      "questions": [
+        { "id": "B10-1", "type": "short" },
+        {
+          "id": "B10-2",
+          "type": "single",
+          "stem": "Rerank 模型更准，为什么不能直接用它来检索整个知识库？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它只能处理向量，不能直接读取 chunk 的原始文本",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它需要先把知识库重新切分一遍，无法使用已有的 chunk",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它只能给出相关或不相关两种结果，无法对候选做排序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它要把查询和每个候选都过一遍模型，对百万条数据逐一算分，延迟不可接受",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B10-3",
+          "type": "multiple",
+          "stem": "把检索到的片段组装成 Prompt 时，原文提到哪些做法？",
+          "options": [
+            {
+              "key": "A",
+              "text": "要求只根据参考资料回答",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "要求资料里没有相关信息时回答“根据现有资料无法回答”",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "鼓励模型用自己的记忆补全资料里缺失的部分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把粗排召回的全部候选原样放进去",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "给参考资料带上编号，方便引用溯源",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B10-4", "type": "short" },
+        { "id": "B10-5", "type": "short" },
+        {
+          "id": "B10-6",
+          "type": "single",
+          "stem": "HyDE 用假设答案去检索，为什么命中率往往更高？",
+          "options": [
+            {
+              "key": "A",
+              "text": "假设答案会被写进知识库，下次可以直接命中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "假设答案一定是正确的，可以直接当作最终回答",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "假设答案比原始问题更短，向量计算更快",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "假设答案和真实答案的用词更接近，语义空间天然更匹配",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B10-7",
+          "type": "single",
+          "stem": "问题向量化时，为什么必须用和建库时相同的 Embedding 模型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不同模型的速度不同，混用会让延迟无法预测",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不同模型的计费方式不同，混用会让成本无法统计",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不同模型的向量空间不同，甚至维度都对不上，距离计算没有意义",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不同模型的调用接口不同，混用会让代码难以维护",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B10-8", "type": "short" },
+        { "id": "B10-9", "type": "short" },
+        {
+          "id": "B10-10",
+          "type": "single",
+          "stem": "在线阶段各环节里，耗时最长的通常是哪一步？",
+          "options": [
+            {
+              "key": "A",
+              "text": "大模型生成",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Query 改写",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "向量检索",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Prompt 组装",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B10-11", "type": "short" }
+      ]
+    },
+    "B11": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B11-1",
+          "type": "single",
+          "stem": "BM25 打分主要看什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查询和文档两个向量之间的余弦相似度，方向越一致越高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "词频和稀缺度，并加饱和度限制防止权重无限叠加",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "查询和文档拼在一起之后模型给出的相关性分数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "文档在各路召回结果里的排名的倒数，各路相加",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B11-2", "type": "short" },
+        {
+          "id": "B11-3",
+          "type": "single",
+          "stem": "为什么产品型号、数字和专有名词可能让向量检索漏召回？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这类词不在倒排索引里，查询时无法定位到文档",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这类词出现的频率太高，会被稀缺度降权",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这类词超过了 Embedding 模型的输入长度限制",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这类词在 Embedding 空间里彼此的距离可能并不近，容易被混淆在一起",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B11-4", "type": "short" },
+        {
+          "id": "B11-5",
+          "type": "fill",
+          "stem": "检索中“相关”的两种含义是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "B11-6",
+          "type": "single",
+          "stem": "倒排索引记录的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个词出现在哪些文档里",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每篇文档的向量坐标",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每篇文档里有哪些词",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个词的同义词列表",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B11-7",
+          "type": "single",
+          "stem": "BM25 里的 IDF 起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "给新文档加权、给旧文档降权",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "给长文档加权、给短文档降权",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "给常见词降权、给罕见词加权",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "给常见词加权、给罕见词降权",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B11-8",
+          "type": "single",
+          "stem": "BM25 最明显的劣势是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "无法处理产品型号",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "遇到同义词就束手无策",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "对专有名词命中率很低",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "查询速度比向量检索慢",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B11-9",
+          "type": "single",
+          "stem": "混合检索在工程上为什么几乎没有额外的时间代价？",
+          "options": [
+            {
+              "key": "A",
+              "text": "向量检索和 BM25 共用同一个索引，只需要查询一次",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "向量检索和 BM25 两路可以并行执行，总延迟取两路中的最大值",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "BM25 的结果会被缓存，第二次查询不再计算",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "混合检索只在向量检索没有结果时才启动 BM25",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B11-10",
+          "type": "single",
+          "stem": "RRF 为什么只看排名，而不把两路分数加权平均？",
+          "options": [
+            {
+              "key": "A",
+              "text": "加权平均的计算量太大，会明显拖慢在线查询的速度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两路检索返回的结果里都不包含原始分数，只有排名",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "排名比原始分数更容易缓存，也更节省存储空间",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "余弦相似度和 BM25 分数的量纲完全不同，直接相加没有意义",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "B12": {
+      "status": "draft",
+      "questions": [
+        { "id": "B12-1", "type": "short" },
+        {
+          "id": "B12-2",
+          "type": "single",
+          "stem": "直接改写解决不了什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模糊：问题里含糊的说法无法改得更精准",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "指代：问题里的代词无法结合对话历史补全",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "文体差异：问题改得再规范仍是问句，而文档是陈述句",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "口语化：问题里的口语表达无法改成书面表述",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B12-3", "type": "short" },
+        {
+          "id": "B12-4",
+          "type": "single",
+          "stem": "Step-back Prompting 是怎样做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把具体问题后退一步，转化成更抽象的背景问题，先检索背景知识再回答具体问题",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把问题改写成 3 到 5 个不同角度的版本，分别检索后合并去重",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "结合对话历史，把问题里的代词替换成具体的名称",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先让 LLM 生成一段假设性的答案，再用假设答案的向量去检索",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B12-5", "type": "short" },
+        {
+          "id": "B12-6",
+          "type": "single",
+          "stem": "HyDE 生成的假设答案需要准确吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要准确，因为它会直接返回给用户",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不需要准确，只需要风格像文档",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "需要准确，否则检索结果一定是错的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不需要准确，但必须写成问句的形式",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B12-7", "type": "short" },
+        {
+          "id": "B12-8",
+          "type": "single",
+          "stem": "多 Query 扩展是怎样做的，代价是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 LLM 生成假设答案再去检索，代价是答案可能不准确",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用同一个问题重复检索几次再取平均，代价是多几次向量计算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用更大的 Top-K 一次检索更多结果，代价是上下文变长",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 LLM 把问题改写成几个不同角度的版本分别检索再合并去重，代价是多几次 LLM 调用",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "B13": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B13-1",
+          "type": "single",
+          "stem": "多路召回为什么比只扩大单一路径的 Top K 更有价值？",
+          "options": [
+            {
+              "key": "A",
+              "text": "单一路径扩大 Top K 之后检索会变慢，而多路召回完全不增加延迟",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "单一路径每次只能返回一条结果，多路召回才能返回多条",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "单一路径的盲区是固有的，取再多也补不上，而两种方式的盲区恰好互补",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "单一路径的结果无法交给 Rerank，只有多路召回的结果才能精排",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B13-2",
+          "type": "fill",
+          "stem": "三路召回各补一类盲区：负责语义层面覆盖的是 ____，负责精确词匹配的是 ____，覆盖提问角度与文档表述差异的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "B13-3", "type": "short" },
+        {
+          "id": "B13-4",
+          "type": "single",
+          "stem": "RRF 融合之后为什么还要接精排？",
+          "options": [
+            {
+              "key": "A",
+              "text": "RRF 本质上还是粗排，对最终精度要求高时，还要用 Cross-Encoder 精排模型做深度打分",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "RRF 需要用标注数据训练才能使用，精排模型负责为它提供训练数据",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "RRF 的计算量很大，需要靠精排模型提前减少它要处理的候选文档数量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "RRF 会丢掉只被其中一路召回的文档，精排的作用是把这些文档重新补回来",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B13-5", "type": "short" },
+        {
+          "id": "B13-6",
+          "type": "single",
+          "stem": "向量检索召不回精确词，换一个更好的 Embedding 模型能解决吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，只要把 top-K 调大，精确词一定会被召回",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能，因为所有 Embedding 模型都不支持中文",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能，这是向量检索只看语义、不看字面的固有局限",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "能，只要换成维度更高的模型就能精确匹配型号",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B13-7",
+          "type": "single",
+          "stem": "中文场景下使用 BM25，需要先做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "生成摘要",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "重排序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "向量化",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "分词",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B13-8", "type": "short" },
+        {
+          "id": "B13-9",
+          "type": "single",
+          "stem": "知识库里有大量专有名词、产品型号和数字的场景，原文认为标配的召回组合是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只用多 Query 扩展",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "向量检索加 BM25 双路",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只用 BM25",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只用向量检索",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "B14": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B14-1",
+          "type": "fill",
+          "stem": "索引层 Small-to-Big 思路的三种实现是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "B14-2",
+          "type": "fill",
+          "stem": "查询层加工 query 的四种方法是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        { "id": "B14-3", "type": "short" },
+        {
+          "id": "B14-4",
+          "type": "single",
+          "stem": "为什么说检索优化是 RAG 里投入产出比最高的环节？",
+          "options": [
+            {
+              "key": "A",
+              "text": "LLM 只能根据送进去的 context 回答，检索召回的内容就是整个系统的天花板",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "检索层的代码量在整个系统里最少，改动起来比其他环节都快",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "检索层不需要调用任何模型，所以做优化完全不花成本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "生成层已经没有任何可以优化的地方，只剩检索层还能改进",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B14-5",
+          "type": "fill",
+          "stem": "RAG 检索优化分四层：决定知识怎么存的是 ____，在检索前加工用户 query 的是 ____，用多条检索路径并行捞取候选的是 ____，从候选里挑出最好几件的是 ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        { "id": "B14-6", "type": "short" },
+        {
+          "id": "B14-7",
+          "type": "single",
+          "stem": "摘要索引为什么有效？",
+          "options": [
+            {
+              "key": "A",
+              "text": "摘要是对核心意思的提炼，语义更聚焦，在向量空间里和用户问题更接近",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "摘要直接交给 LLM 阅读，省去了取回原始段落这一步",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "摘要不需要建向量索引，可以节省存储空间",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "摘要比原文长，包含的关键词更多，更容易被关键词检索命中",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B14-8", "type": "short" },
+        {
+          "id": "B14-9",
+          "type": "single",
+          "stem": "使用多 Query 扩展时，对原始问题要注意什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "原始问题要先翻译成英文再检索",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "原始问题一定要保留在检索列表里",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "原始问题只用于 Rerank，不参与检索",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "原始问题应当丢弃，只用改写版本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B14-10",
+          "type": "single",
+          "stem": "HyDE 在什么情况下会把检索带偏？",
+          "options": [
+            {
+              "key": "A",
+              "text": "假设答案的风格像文档的时候",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "知识库的领域比较明确的时候",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "LLM 生成的假设答案方向错了的时候",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "问题和文档用词差异很大的时候",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B14-11",
+          "type": "single",
+          "stem": "RRF 里的 k 起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "决定每一路检索各自召回多少条候选，再交给融合环节",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "决定融合之后最终保留多少条结果，再交给 LLM 阅读",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "决定向量检索和 BM25 两路的分数各占多少比例的权重",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "相当于一个保底分，不让排名靠后的候选因为偶尔失误就被完全淘汰",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B14-12",
+          "type": "multiple",
+          "stem": "多路召回后的候选为什么不能全部塞给 LLM？",
+          "options": [
+            {
+              "key": "A",
+              "text": "候选越多，向量检索的召回率就越低",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "上下文太长，LLM 容易只关注开头和结尾、忽略中间",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "token 消耗暴涨，成本直线上升",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "候选来自不同的检索路径，无法拼进同一个 Prompt",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B14-13",
+          "type": "single",
+          "stem": "Bi-encoder 和 Cross-encoder 在结构上有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Bi-encoder 把 query 和 chunk 拼成一对整体判断，Cross-encoder 让两者各自独立编码再算相似度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Bi-encoder 用于生成答案，Cross-encoder 用于改写问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Bi-encoder 只能处理关键词，Cross-encoder 只能处理向量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Bi-encoder 让 query 和 chunk 各自独立编码再算相似度，Cross-encoder 把两者拼成一对整体判断",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B14-14", "type": "short" },
+        {
+          "id": "B14-15",
+          "type": "single",
+          "stem": "四层优化在生产中的典型搭配是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只在查询层做 Query 改写，其他三层全部保持朴素实现",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只把生成模型换成更强的型号，检索层不做任何改动",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Parent-Child 索引、向量加 BM25 多路召回，再加 Rerank 精排",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "四层里的全部方法同时启用，一个也不能少，否则质量没有保证",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "B15": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B15-1",
+          "type": "single",
+          "stem": "三种范式里，Advanced RAG 的特点是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "提问、向量检索、拼 Prompt、生成直连，不做任何优化",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在检索前加 Query 改写与扩展、检索后加 Rerank 与压缩，但流程固定",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把各个环节拆成可以替换的模块，按需组合",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "由 LLM 在运行时自己决定检索几次、搜什么",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B15-2", "type": "short" },
+        {
+          "id": "B15-3",
+          "type": "fill",
+          "stem": "CRAG 检索后做三级路由：判断为相关时 ____，判断为不相关时 ____，判断为模糊时 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "B15-4",
+          "type": "single",
+          "stem": "相比普通向量检索，GraphRAG 主要解决哪类问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要全局理解或跨文档关联的问题",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不需要检索就能回答的问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "知识库完全没有覆盖的问题",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只需查到一条具体事实的问题",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B15-5",
+          "type": "single",
+          "stem": "Agentic RAG 怎样防止检索陷入死循环？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把流程写死成固定步骤",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "设置最大迭代次数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每次只检索一条结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "禁止 LLM 追加检索",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B15-6", "type": "short" },
+        { "id": "B15-7", "type": "short" },
+        {
+          "id": "B15-8",
+          "type": "single",
+          "stem": "Advanced RAG 为什么成为大多数生产系统的形态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不用改框架，只需在原有流程上插入几个步骤，工程改动小、效果提升明显",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它预先构建知识图谱，查询时不再需要向量检索",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它需要专门微调的模型，效果远好于其他任何范式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它的流程完全由 LLM 动态决定，能应对所有类型的问题",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B15-9",
+          "type": "single",
+          "stem": "使用 Self-RAG 有什么容易被忽略的前提？",
+          "options": [
+            {
+              "key": "A",
+              "text": "系统必须接入网络搜索工具，作为本地检索失败时的唯一兜底",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "知识库必须先构建成知识图谱并完成社区发现，否则无法运行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个问题都必须至少检索三轮，才允许模型生成最终答案",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "reflection token 不是通用 LLM 自带的，要在专门构造的数据集上做监督微调",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B15-10", "type": "short" },
+        {
+          "id": "B15-11",
+          "type": "single",
+          "stem": "CRAG 的核心价值是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "省掉检索：不需要检索的问题直接由模型回答",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "全局归纳：用社区摘要回答需要通读全部文档的问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "兜底：知识库覆盖不到的问题不会直接乱答，而是自动去网络搜索",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "多步推理：让 LLM 自己决定检索的次数和内容",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B15-12", "type": "short" },
+        {
+          "id": "B15-13",
+          "type": "single",
+          "stem": "Agentic RAG 与 Self-RAG、CRAG 相比，最大的区别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它不使用 LLM，全部由规则决定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它不使用向量检索，只用网络搜索",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "流程不是写死的，而是 LLM 在运行时自己决定",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它只检索一次，不做任何追加检索",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B15-14", "type": "short" }
+      ]
+    },
+    "B16": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B16-1",
+          "type": "single",
+          "stem": "多跳实体关系问题，为什么单靠向量检索回答不了？",
+          "options": [
+            {
+              "key": "A",
+              "text": "向量检索速度太慢，来不及在限定时间内把多个实体都检索完",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "向量检索是单跳的，没有关系的概念，不知道下一步该沿哪条边搜什么",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "向量检索不支持中文实体名，需要先把实体翻译成英文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "向量检索只能返回一条结果，无法同时拿到多个实体的文档",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B16-2",
+          "type": "single",
+          "stem": "向量检索和图查询在同一个问题里怎样配合？",
+          "options": [
+            {
+              "key": "A",
+              "text": "图数据库先做入口，找到相关片段并定位实体节点，向量检索再沿关系边遍历",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者各自独立回答一遍，由用户选择采用哪一个答案",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "图查询失败时才启用向量检索，平时只用图查询",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "向量检索先做入口，找到相关片段并定位实体节点，图数据库再沿关系边遍历",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B16-3",
+          "type": "multiple",
+          "stem": "按原文，哪些业务场景值得维护图结构？",
+          "options": [
+            {
+              "key": "A",
+              "text": "医疗知识图谱",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "企业股权与任职关系分析",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "概念解释类问答",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "代码调用与依赖关系",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "功能用法类问答",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "供应链溯源",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B16-4",
+          "type": "single",
+          "stem": "什么时候上图数据库属于过度设计？",
+          "options": [
+            {
+              "key": "A",
+              "text": "问题多为概念解释或功能用法，向量检索加 Rerank 已经够用时",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "问题涉及药物之间的相互作用，没有文档直接写出结论时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "问题涉及函数之间的间接依赖，答案藏在多节点路径上时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "问题需要沿着多个实体之间的关系逐跳推理才能得出答案时",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B16-5", "type": "short" },
+        {
+          "id": "B16-6",
+          "type": "single",
+          "stem": "图数据库能替代向量检索吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，只要图里的节点和边足够多，就不再需要任何向量索引",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能，图查询擅长精确的关系查询，对语义相似这种模糊匹配并不擅长",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "不能，因为图数据库只能存关系，无法保存实体本身的信息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能，图查询语言同时支持精确的关系查询和语义相似的模糊匹配",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B16-7", "type": "short" },
+        {
+          "id": "B16-8",
+          "type": "single",
+          "stem": "判断要不要用图数据库，原文给的简单原则是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "看知识库里的文档数量是否已经超过向量库能承载的规模",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "看团队是否已经在用关系数据库，能否复用现有的运维能力",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "看用户的提问是否足够口语化，与文档的表述差异有多大",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "看问题里是否同时出现多个具体实体名，并且在问它们之间的关系",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B16-9", "type": "short" }
+      ]
+    },
+    "B17": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B17-1",
+          "type": "single",
+          "stem": "“没检到依据”和“有依据却额外编造”这两类幻觉，应怎样分别治理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两类都靠换一个更强的生成模型解决，不需要在检索层和提示词上做任何处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两类都靠扩大 Top-K 解决，让模型看到更多资料之后自己判断该用哪些",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "没检到依据用检索质量门控，分数不达标就拒答；有依据却编造用 Prompt 强约束，只准用资料",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "没检到依据用 Prompt 强约束，只准用资料；有依据却编造用检索质量门控，分数不达标就拒答",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B17-2",
+          "type": "single",
+          "stem": "检索质量门控怎样让系统在没有相关资料时拒答？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Rerank 给候选打分，最高分低于阈值就直接返回知识库无相关信息",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每次只把排名第一的候选交给 LLM，其余候选一律丢弃",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "向量检索返回的结果少于固定条数时，自动改用模型自己的知识回答",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让 LLM 先生成答案，再由用户决定这个答案是否可信",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B17-3",
+          "type": "single",
+          "stem": "怎样验证答案里的每条关键结论确实有引用片段支持？",
+          "options": [
+            {
+              "key": "A",
+              "text": "生成前把 Top-K 调大，让模型看到尽可能多的 chunk",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "生成后再发起一次 LLM 调用，把答案和 chunk 一起送去逐条核查",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "生成后只检查答案的字数是否与 chunk 的字数接近",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "生成时提高采样的随机性，让模型多给出几种说法",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B17-4",
+          "type": "single",
+          "stem": "强制 LLM 输出带来源编号的结构化结果，能起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "促使模型对照资料，系统也能程序化校验编号是否存在、与结论是否相关",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "让模型不再需要参考资料，直接凭编号就能回忆起内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让答案变得更短，从而减少生成阶段的延迟和成本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让检索阶段可以跳过 Rerank，直接按编号顺序返回",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B17-5", "type": "short" },
+        { "id": "B17-6", "type": "short" },
+        {
+          "id": "B17-7",
+          "type": "single",
+          "stem": "拒答用的 Rerank 分数阈值一般怎样设定？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由 LLM 在每次回答时自己决定阈值，不需要准备任何测试集",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "阈值越高越好，直接设成满分，保证只有完全匹配才回答",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "有通用数字，所有业务都固定用同一个阈值，不需要再根据线上的误判样例调整",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "没有通用数字，要用答案在库和不在库两类测试集跑出分数分布，找能把两类分开的切点",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B17-8",
+          "type": "single",
+          "stem": "为什么说“答错比不答更危险”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "拒答说明知识库有盲区，而答错说明知识库是完整的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "答错会消耗更多 token，而拒答完全没有成本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "强行生成会让用户误以为答案是对的并据此操作，而拒答至少不会给出错误信息",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "拒答会让用户流失，而答错的问题用户通常不会发现",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B17-9", "type": "short" },
+        {
+          "id": "B17-10",
+          "type": "single",
+          "stem": "普通企业知识库和客服问答，原文认为必做的防幻觉基础配置是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "四个方案全上，包括生成后逐条核查",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Prompt 约束加检索质量门控",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只做生成后的逐条核查",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只要求输出来源编号",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "B18": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B18-1",
+          "type": "single",
+          "stem": "Hit@K 与 MRR 分别度量什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hit@K 取排名倒数的平均，看正确内容排得多靠前，MRR 看正确 chunk 是否出现在前 K 条里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Hit@K 看答案里的每句话是否有出处，MRR 看答案是否回答了用户的问题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Hit@K 看用户点踩的比例，MRR 看用户转人工的比例",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Hit@K 看正确 chunk 是否出现在前 K 条里，MRR 取排名倒数的平均，看正确内容排得多靠前",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B18-2",
+          "type": "single",
+          "stem": "Faithfulness 与 Answer Relevancy 分别检查答案的什么性质？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Faithfulness 检查正确 chunk 是否被召回，Answer Relevancy 检查正确 chunk 排在第几位",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Faithfulness 检查是否回答了用户的问题，Answer Relevancy 检查每句话在检索到的 chunk 里是否有出处",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Faithfulness 检查每句话在检索到的 chunk 里是否有出处，Answer Relevancy 检查是否回答了用户的问题",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Faithfulness 检查答案的长度是否合适，Answer Relevancy 检查答案的语气是否礼貌",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B18-3",
+          "type": "single",
+          "stem": "Context Recall 低，通常应优先排查哪个环节？",
+          "options": [
+            {
+              "key": "A",
+              "text": "检索层：换更强的 Embedding 模型、调整 Chunking 策略，或加多路召回",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "展示层：调整答案的排版和引用格式，让来源编号更容易点击",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "评估层：换一个更小的评判模型，降低每次打分的 token 成本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "生成层：加强 Prompt 约束，要求模型只根据提供的资料回答，不得补充",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B18-4",
+          "type": "fill",
+          "stem": "三个线上指标各反映一件事：最直接的负反馈是 ____，反映答非所问的是 ____，反映系统放弃回答的频率和知识库覆盖的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "B18-5",
+          "type": "single",
+          "stem": "检索层评估需要准备什么样的测评数据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一批未经标注的原始文档",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一批用户点踩的会话记录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一批“问题加对应的正确 chunk ID”",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "一批“问题加模型生成的答案”",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B18-6", "type": "short" },
+        { "id": "B18-7", "type": "short" },
+        {
+          "id": "B18-8",
+          "type": "multiple",
+          "stem": "按原文，RAG 评估难在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "答案是自然语言，没有唯一的标准答案",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "人工标注成本高，难以大规模持续做",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "检索层没有任何可以量化的指标",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "出了问题不知道是检索层还是生成层的责任",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "LLM 无法用来给答案打分",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B18-9",
+          "type": "single",
+          "stem": "Hit@5 很高但 MRR 很低，说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相关内容大多能在前 5 条里找到，但排得很靠后",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "检索没有问题，是生成阶段在编造内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "相关内容大多找不到，但找到的都排在第一位",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "测评数据标注有误，两个指标不可能不一致",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B18-10",
+          "type": "single",
+          "stem": "RAGAs 的核心思路是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "关键词匹配：统计答案与标准答案之间相同的词的比例",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "LLM-as-a-Judge：用 LLM 当裁判自动给答案打分，不需要人工标注每一条",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "人工逐条标注：每条答案都由领域专家打分后取平均",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户反馈：只根据线上的点踩率和转人工率评估",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B18-11",
+          "type": "single",
+          "stem": "Context Precision 和 Context Recall 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Context Precision 看答案是否有出处，Context Recall 看答案是否跑题",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Context Precision 看该找的有没有找全，Context Recall 看有用的内容是否排在前面",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者衡量的是同一件事，只是计算时使用的评判模型不同",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Context Precision 看有用的内容是否排在前面，Context Recall 看该找的有没有找全",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B18-12", "type": "short" },
+        {
+          "id": "B18-13",
+          "type": "single",
+          "stem": "Faithfulness 低说明什么，应怎样优化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "说明知识库亟需扩充，应补充新的文档",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "说明检索召回了太多噪音，应加强 Rerank 并减少送给 LLM 的 chunk 数量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "说明检索没有召回所需信息，应换更强的 Embedding 模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "说明 LLM 在编造，应加强 Prompt 约束、引入引用核查，或做检索质量门控",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B18-14",
+          "type": "single",
+          "stem": "空回答率过高，说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "LLM 编造的内容太多",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用户的提问质量太好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "知识库亟需扩充",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Rerank 模型的精度太高",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B18-15",
+          "type": "single",
+          "stem": "Context Precision 低说明什么，应怎样优化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "说明 LLM 在编造，应加强 Prompt 约束、引入引用核查",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "说明检索召回了太多噪音，应加强 Rerank、减少送给 LLM 的 chunk 数量",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "说明检索召回的内容太少，应增加送给 LLM 的 chunk 数量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "说明 LLM 的注意力被稀释，应去掉 Rerank 环节",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "B19": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B19-1",
+          "type": "single",
+          "stem": "文档原文修改后，为什么不能只更新向量库里的某一条记录？",
+          "options": [
+            {
+              "key": "A",
+              "text": "修改后的文档必须换一个新的 Embedding 模型才能生成向量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "切割结果可能完全不同，新旧 chunk 难以一一对应，最可靠的是删掉全部旧 chunk 再重新切割入库",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "向量库只保存向量不保存原文，所以修改原文不需要任何操作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "向量库里的记录一旦写入就不允许修改，只能把整个知识库清空后全量重建",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B19-2",
+          "type": "single",
+          "stem": "事件驱动的变更发现是怎样做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "数据源在变更时主动推送消息，更新服务收到后立刻处理",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "由用户在提问时告诉系统哪篇文档已经过期",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按固定间隔扫描全部文档，逐篇对比内容是否变化",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "入库时保存内容摘要，下次再计算一遍进行比对",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B19-3",
+          "type": "single",
+          "stem": "chunk ID 应怎样设计，才能批量删除某篇文档的旧向量？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让 chunk ID 使用完全随机的字符串，避免重复",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让所有文档的 chunk 共用同一个 ID",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让 chunk ID 等于 chunk 内容的向量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让 chunk ID 以文档 ID 为前缀，或在 metadata 里存文档 ID",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B19-4",
+          "type": "single",
+          "stem": "什么时候才需要全量重建，而不是增量更新？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文档数量超过一百万篇，增量更新的脚本运行变慢时",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每天固定的业务低峰期到来，系统有空闲的计算资源时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "更换 Embedding 模型或修改 Chunking 策略，导致新旧向量不兼容时",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每次有一篇文档被修改或删除，需要让知识库保持最新时",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B19-5",
+          "type": "single",
+          "stem": "灰度切换新索引后发现质量下降，怎样回滚？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把新版本的 chunk 全部删除后，重新做一次全量重建",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把检索的版本过滤条件切回旧版本，即可秒级回滚",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把 Embedding 模型换回旧版本，再重新生成向量",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "暂停服务，等新版本的问题修复后再恢复",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B19-6", "type": "short" },
+        { "id": "B19-7", "type": "short" },
+        {
+          "id": "B19-8",
+          "type": "single",
+          "stem": "用 hash 检测文档变更，还能怎样进一步优化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先用最后修改时间做粗筛，只对时间戳变化的文档计算 hash",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只对文档的标题计算 hash，正文不参与",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把 hash 的计算放到用户提问的时候再做",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "改用更长的 hash 算法，降低漏掉变更的概率",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B19-9", "type": "short" },
+        {
+          "id": "B19-10",
+          "type": "single",
+          "stem": "定时轮询有什么缺点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次轮询都要更换一次 Embedding 模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只能发现新增的文档，发现不了修改和删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "实现复杂，必须依赖消息队列和数据源的推送能力",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "有延迟，文档改完要等下一个周期才生效，而且全量扫描本身也是开销",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B19-11", "type": "short" },
+        {
+          "id": "B19-12",
+          "type": "single",
+          "stem": "定时轮询适合什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文档更新频繁、要求改完立刻生效的场景",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文档数量很大、希望避免全量扫描开销的场景",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要依赖外部系统推送变更事件的场景",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "文档更新频率低、对实时性要求不高的场景",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "B20": {
+      "status": "draft",
+      "questions": [
+        { "id": "B20-1", "type": "short" },
+        { "id": "B20-2", "type": "short" },
+        { "id": "B20-3", "type": "short" },
+        {
+          "id": "B20-4",
+          "type": "fill",
+          "stem": "原文认为 RAG 落地最头疼的三块是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "B20-5",
+          "type": "single",
+          "stem": "pypdf 这类通用 PDF 解析库，在复杂版面上为什么会出问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它们提取速度太慢，一篇文档要处理几个小时",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它们会把每一页都转成图片，导致文字无法检索",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它们主要做文本流提取，遇到表格、双栏、嵌套会把内容顺序搞乱",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它们只能处理扫描件，遇到文字版 PDF 会直接报错",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B20-6",
+          "type": "single",
+          "stem": "什么情况下才值得用多模态模型来解析文档？",
+          "options": [
+            {
+              "key": "A",
+              "text": "单价高、内容复杂且数量可控的文档，如合同、财报、专利",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "数量巨大、内容简单的普通文档",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "更新非常频繁、每天都要重新解析的文档",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "已经是纯文本、没有任何版面的文档",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B20-7", "type": "short" },
+        {
+          "id": "B20-8",
+          "type": "single",
+          "stem": "什么是“假设性问题增强”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "检索时让 LLM 先生成一个假设性的答案再去检索",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "存文档时为每个 chunk 生成几个可能的提问形式，一起存进去",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "检索后让 LLM 判断每个 chunk 是否与问题相关",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "生成后让 LLM 逐条核查答案里的结论",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B20-9", "type": "short" },
+        { "id": "B20-10", "type": "short" }
+      ]
+    },
+    "B21": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B21-1",
+          "type": "single",
+          "stem": "相似度最高的文档为什么不一定是应采用的依据？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相似度是由生成模型临时估算的，每次计算的结果都不一样",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "相似度最高的文档通常篇幅最短，包含的信息不足以支撑一个完整的回答",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "相似度只说明内容与问题相关，不能证明来源更权威、更及时或适用于当前用户",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "相似度最高的文档一定是草稿，已生效的文档相似度总是偏低",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B21-2", "type": "short" },
+        { "id": "B21-3", "type": "short" },
+        {
+          "id": "B21-4",
+          "type": "single",
+          "stem": "两份同等有效的资料互相矛盾时，系统应怎样回答？",
+          "options": [
+            {
+              "key": "A",
+              "text": "选发布时间更新的那一份作答，把另一份资料直接从知识库里删除",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不偷偷二选一，说明存在两个版本并分别列出、附上原文链接，再请用户补充条件或转人工审核",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把两份资料的规定取一个中间值，作为折中的结论告诉用户",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "选相似度更高的那一份作答，不必向用户提及另一份资料的存在",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B21-5", "type": "short" },
+        {
+          "id": "B21-6",
+          "type": "single",
+          "stem": "“知识冲突时信谁”这道题实际考查的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "向量检索的相似度算法是否足够精确",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "系统能不能在最短的时间内返回一个答案",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型能不能凭自己的常识判断哪段文字更可信",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "知识库有没有一套能解释、能审核、能回滚的知识治理规则",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B21-7", "type": "short" },
+        {
+          "id": "B21-8",
+          "type": "single",
+          "stem": "元数据里为什么要把发布时间和生效时间分开？",
+          "options": [
+            {
+              "key": "A",
+              "text": "发布时间最新的制度可能下个月才生效，今天还不能执行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者总是相同，分开保存只是为了方便备份",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "发布时间用于向量检索，生效时间用于关键词检索",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "发布时间由系统自动生成，生效时间只能由模型推断",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B21-9",
+          "type": "single",
+          "stem": "各来源的权威顺序应该怎样确定？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按文档的相似度得分从高到低排列，分数高的更权威",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "由开发人员写成全公司统一的常量，所有领域共用同一套顺序",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "维护一个来源注册表，由业务负责人定义各领域的来源等级、覆盖关系和审批流程",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "由模型在每次回答时根据文档的措辞自行判断",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B21-10",
+          "type": "single",
+          "stem": "冲突检测中，规则和大模型应怎样分工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有冲突都只用规则判断，自然语言表述的矛盾一律忽略",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "结构化知识用规则比较，模型识别出的矛盾只作为告警线索，不能自动决定谁胜出",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "模型负责比较数字和日期，规则负责理解自然语言的表述",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有冲突都交给模型判断，由模型自动决定采用哪一份并删除另一份",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B21-11",
+          "type": "single",
+          "stem": "在线检索时发现多个高分片段互相矛盾，系统应怎么处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把矛盾的片段都混进 Prompt，让模型自己选",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只保留得分最高的片段，其余直接丢弃",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "忽略这次检索，改用模型自己的知识回答",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把“存在冲突”作为正式状态传给生成层",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "B21-12", "type": "short" },
+        {
+          "id": "B21-13",
+          "type": "multiple",
+          "stem": "评测冲突处理能力时，按原文至少要关注哪些结果？",
+          "options": [
+            {
+              "key": "A",
+              "text": "该拒答时是否乱下结论",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是否选了正确的来源",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是否采用了相似度最高的片段",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "无法裁决时是否暴露了冲突",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "是否误用了过期文档",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    "B22": {
+      "status": "draft",
+      "questions": [
+        { "id": "B22-1", "type": "short" },
+        {
+          "id": "B22-2",
+          "type": "single",
+          "stem": "上下文窗口变大，扩大的是什么，没有保证什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "扩大的是一次能读取的容量，没有保证模型能有效利用这些内容得出正确结果",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "扩大的是外部知识库的规模，没有保证检索的速度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "扩大的是模型参数里的知识，没有保证知识是最新的",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "扩大的是模型有效利用内容的能力，没有保证一次能读取更多的资料",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B22-3",
+          "type": "single",
+          "stem": "RAG 的作用只是把超长资料压进小窗口吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，它的作用是把外部知识训练进模型参数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不是，它在生成前从外部资料中查找相关内容，缓解窗口不足只是其中一个作用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是的，RAG 的全部工作就是把长文档压缩成摘要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，窗口足够大之后 RAG 就没有任何存在的必要",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B22-4", "type": "short" },
+        { "id": "B22-5", "type": "short" },
+        { "id": "B22-6", "type": "short" },
+        {
+          "id": "B22-7",
+          "type": "single",
+          "stem": "“相关”和“适用”有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "相关要由授权机制来判断，适用则完全由相似度分数的高低来判断",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "相关指内容已经生效并属于当前对象，适用指内容与问题谈论同一主题",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "相似度高只表示谈论同一主题，不能判断规则是否已生效、是否属于当前对象",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者没有任何区别，相似度高的内容就一定适用于当前的问题和对象",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B22-8",
+          "type": "single",
+          "stem": "访问权限应由什么来判断？",
+          "options": [
+            {
+              "key": "A",
+              "text": "授权机制",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "上下文窗口的大小",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "相似度分数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型自己",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B22-9", "type": "short" },
+        { "id": "B22-10", "type": "short" },
+        {
+          "id": "B22-11",
+          "type": "single",
+          "stem": "大窗口和检索怎样配合，才能减少检索遗漏的损失？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只读取每篇文档的开头和结尾，跳过中间部分",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把检索命中的片段直接当作全部证据，不再读取任何额外内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次都把整个资料库放进窗口，不再做任何检索",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把检索命中的片段当作位置线索，再读取它所属的完整章节，并按引用继续补齐",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B22-12",
+          "type": "single",
+          "stem": "少量资料、需要通读、总结或整体比较的任务，适合哪种方式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "检索后只组织排名靠前的证据",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把资料训练进模型参数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先建复杂的检索链路再回答",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接使用长上下文",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B22-13",
+          "type": "single",
+          "stem": "同样的模型和资料下，全文能做对而 RAG 做错，应该先检查什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型的上下文窗口大小",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "请求的延迟和成本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "召回是否遗漏",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "输入范围和资料组织",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B22-14", "type": "short" }
+      ]
+    },
+    "B23": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "B23-1",
+          "type": "single",
+          "stem": "预建索引 RAG 和 Agent 自主文件检索，选型主要看什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "任务是否需要根据中间结果继续探索",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "资料是中文还是英文",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型的上下文窗口有多大",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用的是语义检索还是关键词检索",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B23-2", "type": "short" },
+        { "id": "B23-3", "type": "short" },
+        { "id": "B23-4", "type": "short" },
+        { "id": "B23-5", "type": "short" },
+        {
+          "id": "B23-6",
+          "type": "single",
+          "stem": "自主检索的灵活性来自哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "预先建好的索引：所有问题都走同一条固定链路",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "观察与决策的循环：下一次搜索由上一次观察决定",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "更大的上下文窗口：一次读入全部资料",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "更强的排序模型：候选排得更准",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B23-7", "type": "short" },
+        { "id": "B23-8", "type": "short" },
+        {
+          "id": "B23-9",
+          "type": "single",
+          "stem": "模型先生成同义词再交给 grep 搜索，是 grep 有了语义理解吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，是模型改变了搜索策略，grep 做的仍是词面匹配",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是的，grep 在这种用法下会调用语义索引",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，grep 此时根本没有参与搜索",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "是的，grep 会自动把查询词扩展成同义词再匹配",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B23-10", "type": "short" },
+        {
+          "id": "B23-11",
+          "type": "single",
+          "stem": "大量资料上的高频局部问答，更适合哪条路线？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Agent 完全自主探索",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每次临时重建一遍索引",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "直接读取全部资料的全文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "预建索引与相对固定的检索链路",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "B23-12",
+          "type": "single",
+          "stem": "无论选哪种方案，权限方面的要求是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由模型根据问题内容判断是否可以读取",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "由程序按当前身份控制，能搜到不代表有权读取",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "搜索结果里出现的内容默认都可以读取",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "索引检索需要权限控制，原文读取不需要",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "B23-13",
+          "type": "single",
+          "stem": "索引定位和 Agent 原文探索怎样组合？",
+          "options": [
+            {
+              "key": "A",
+              "text": "索引给出的摘要直接作为答案，Agent 不再读取原文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Agent 负责找到候选入口，索引负责阅读原文并判断还缺什么",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "索引负责找到候选入口，Agent 负责阅读原文并判断还缺什么",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Agent 探索完之后再建索引，索引不参与当前任务",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "B23-14", "type": "short" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,380 @@
+{
+  "sequence": [
+    7,
+    0,
+    1,
+    2,
+    0,
+    3,
+    0,
+    4,
+    2,
+    3,
+    0,
+    3,
+    2
+  ],
+  "initiallyEmptyFrames": 3,
+  "results": {
+    "OPT": {
+      "faults": 7,
+      "replacements": 4,
+      "trace": [
+        {
+          "page": 7,
+          "fault": true,
+          "resident": [
+            7
+          ]
+        },
+        {
+          "page": 0,
+          "fault": true,
+          "resident": [
+            7,
+            0
+          ]
+        },
+        {
+          "page": 1,
+          "fault": true,
+          "resident": [
+            7,
+            0,
+            1
+          ]
+        },
+        {
+          "page": 2,
+          "fault": true,
+          "resident": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "page": 0,
+          "fault": false,
+          "resident": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "page": 3,
+          "fault": true,
+          "resident": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "page": 0,
+          "fault": false,
+          "resident": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "page": 4,
+          "fault": true,
+          "resident": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "page": 2,
+          "fault": false,
+          "resident": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "page": 3,
+          "fault": false,
+          "resident": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "page": 0,
+          "fault": true,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "page": 3,
+          "fault": false,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "page": 2,
+          "fault": false,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        }
+      ]
+    },
+    "FIFO": {
+      "faults": 10,
+      "replacements": 7,
+      "trace": [
+        {
+          "page": 7,
+          "fault": true,
+          "resident": [
+            7
+          ]
+        },
+        {
+          "page": 0,
+          "fault": true,
+          "resident": [
+            7,
+            0
+          ]
+        },
+        {
+          "page": 1,
+          "fault": true,
+          "resident": [
+            7,
+            0,
+            1
+          ]
+        },
+        {
+          "page": 2,
+          "fault": true,
+          "resident": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "page": 0,
+          "fault": false,
+          "resident": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "page": 3,
+          "fault": true,
+          "resident": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "page": 0,
+          "fault": true,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "page": 4,
+          "fault": true,
+          "resident": [
+            3,
+            0,
+            4
+          ]
+        },
+        {
+          "page": 2,
+          "fault": true,
+          "resident": [
+            0,
+            4,
+            2
+          ]
+        },
+        {
+          "page": 3,
+          "fault": true,
+          "resident": [
+            4,
+            2,
+            3
+          ]
+        },
+        {
+          "page": 0,
+          "fault": true,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "page": 3,
+          "fault": false,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "page": 2,
+          "fault": false,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        }
+      ]
+    },
+    "LRU": {
+      "faults": 9,
+      "replacements": 6,
+      "trace": [
+        {
+          "page": 7,
+          "fault": true,
+          "resident": [
+            7
+          ]
+        },
+        {
+          "page": 0,
+          "fault": true,
+          "resident": [
+            7,
+            0
+          ]
+        },
+        {
+          "page": 1,
+          "fault": true,
+          "resident": [
+            7,
+            0,
+            1
+          ]
+        },
+        {
+          "page": 2,
+          "fault": true,
+          "resident": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "page": 0,
+          "fault": false,
+          "resident": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "page": 3,
+          "fault": true,
+          "resident": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "page": 0,
+          "fault": false,
+          "resident": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "page": 4,
+          "fault": true,
+          "resident": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "page": 2,
+          "fault": true,
+          "resident": [
+            0,
+            4,
+            2
+          ]
+        },
+        {
+          "page": 3,
+          "fault": true,
+          "resident": [
+            4,
+            2,
+            3
+          ]
+        },
+        {
+          "page": 0,
+          "fault": true,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "page": 3,
+          "fault": false,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "page": 2,
+          "fault": false,
+          "resident": [
+            2,
+            3,
+            0
+          ]
+        }
+      ]
+    }
+  }
+}

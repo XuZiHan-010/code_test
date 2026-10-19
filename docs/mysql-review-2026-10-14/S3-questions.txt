@@ -1,0 +1,1024 @@
+S3-1 [single]
+??: 索引类似于什么，它的主要作用是什么？
+??: {"id": "S3-1", "type": "single", "stem": "原文把索引类比为书籍的目录，索引的主要作用是下列哪一项？", "options": [{"key": "A", "text": "让表的增删改操作变得更快", "correct": false}, {"key": "B", "text": "减少表占用的物理存储空间", "correct": false}, {"key": "C", "text": "把完整的用户记录另存一份，作为表的备份", "correct": false}, {"key": "D", "text": "减少扫描的数据量，提高查询效率", "correct": true}]}
+??: 索引类似于书籍的目录，可以减少扫描的数据量，提高查询效率。[原文§索引是什么？有什么好处？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84)
+
+S3-2 [fill]
+??: [填空题·有序] 没有合适索引时，通常要逐行扫描整张表，查找的时间复杂度可以理解为 O(____)；有合适索引时，可以沿 B+ 树逐层定位，查找的时间复杂度可以理解为 O(____)。
+??: {"id": "S3-2", "type": "fill", "stem": "没有合适索引时，通常要逐行扫描整张表，查找的时间复杂度可以理解为 O(____)；有合适索引时，可以沿 B+ 树逐层定位，查找的时间复杂度可以理解为 O(____)。", "blankCount": 2, "blankOrder": "ordered"}
+??: 没有合适索引时通常需要扫描整张表、逐行判断是否满足条件，时间复杂度可以理解为 O(N)；有合适索引时可以沿 B+ 树逐层定位，查找复杂度可以理解为 O(log N)，再扫描满足条件的记录。[原文§索引是什么？有什么好处？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84)
+
+S3-3 [multiple]
+??: 除了“找得快”，索引还能帮助完成哪些事情？
+??: {"id": "S3-3", "type": "multiple", "stem": "下列哪些属于原文所说的、索引除了“找得快”之外的价值？", "options": [{"key": "A", "text": "帮助完成排序", "correct": true}, {"key": "B", "text": "帮助完成分组", "correct": true}, {"key": "C", "text": "通过覆盖索引减少回表", "correct": true}, {"key": "D", "text": "使范围查询不论返回多少数据，成本都保持不变", "correct": false}]}
+??: 索引的价值不只是“找得快”，还可以帮助完成排序、分组，或者通过覆盖索引减少回表。[原文§索引是什么？有什么好处？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84)
+
+S3-4 [single]
+??: 对于范围查询，用了索引是否整条 SQL 就一定很快？
+??: {"id": "S3-4", "type": "single", "stem": "关于使用索引的范围查询，原文的观点是下列哪一项？", "options": [{"key": "A", "text": "返回的数据越多成本越大，不能认为用了索引整条 SQL 就一定很快", "correct": true}, {"key": "B", "text": "只要用了索引，无论返回多少数据，扫描和读取的成本都保持不变", "correct": false}, {"key": "C", "text": "返回的数据越多，索引带来的优势越明显，整条 SQL 就一定越快", "correct": false}, {"key": "D", "text": "范围查询无法使用索引，只能依靠全表扫描来完成", "correct": false}]}
+??: 对于范围查询，返回的数据越多，扫描和读取的成本也越大，不能认为只要用了索引，整条 SQL 就一定很快。[原文§索引是什么？有什么好处？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84)
+
+S3-5 [fill]
+??: [填空题·无序] MySQL 可以从四个角度对索引分类，分别是按「____」「____」「____」「____」分类。
+??: {"id": "S3-5", "type": "fill", "stem": "MySQL 可以从四个角度对索引分类，分别是按「____」「____」「____」「____」分类。", "blankCount": 4, "blankOrder": "unordered"}
+??: MySQL 可以按四个角度分类索引：按「数据结构」分类、按「物理存储」分类、按「字段特性」分类、按「字段个数」分类。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-6 [fill]
+??: [填空题·无序] 按数据结构分类，MySQL 常见的索引有：____、____、____。
+??: {"id": "S3-6", "type": "fill", "stem": "按数据结构分类，MySQL 常见的索引有：____、____、____。", "blankCount": 3, "blankOrder": "unordered"}
+??: 按数据结构分类，MySQL 常见索引有 B+Tree 索引、Hash 索引、Full-Text 索引。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-7 [fill]
+??: [填空题·有序] InnoDB 是在 MySQL ____ 之后成为默认存储引擎的。
+??: {"id": "S3-7", "type": "fill", "stem": "InnoDB 是在 MySQL ____ 之后成为默认存储引擎的。", "blankCount": 1, "blankOrder": "ordered"}
+??: InnoDB 是在 MySQL 5.5 之后成为默认的 MySQL 存储引擎，B+Tree 索引类型也是 MySQL 存储引擎采用最多的索引类型。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-8 [single]
+??: InnoDB 创建的主键索引和二级索引默认使用什么类型的索引？
+??: {"id": "S3-8", "type": "single", "stem": "InnoDB 中创建的主键索引和二级索引，默认使用的是下列哪种索引类型？", "options": [{"key": "A", "text": "Hash 索引", "correct": false}, {"key": "B", "text": "Full-Text 索引", "correct": false}, {"key": "C", "text": "B+Tree 索引", "correct": true}, {"key": "D", "text": "前缀索引", "correct": false}]}
+??: 创建的主键索引和二级索引默认使用的是 B+Tree 索引。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-9 [single]
+??: 表里没有主键时，InnoDB 怎样选择聚簇索引的索引键？
+??: {"id": "S3-9", "type": "single", "stem": "表中没有主键时，InnoDB 会优先选择什么作为聚簇索引的索引键？", "options": [{"key": "A", "text": "直接生成一个 6 字节的隐藏行 ID，不再考虑其他索引", "correct": false}, {"key": "B", "text": "第一个所有索引列都定义为 NOT NULL 的唯一索引", "correct": true}, {"key": "C", "text": "第一个所有索引列都定义为 NOT NULL 的普通索引", "correct": false}, {"key": "D", "text": "第一个建立的二级索引，不要求索引列是否为 NOT NULL", "correct": false}]}
+??: 如果没有主键，就选择第一个所有索引列都定义为 NOT NULL 的唯一索引作为聚簇索引的索引键。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-10 [single]
+??: 既没有主键、也没有合适的唯一索引时，InnoDB 怎样处理聚簇索引？
+??: {"id": "S3-10", "type": "single", "stem": "表中既没有主键，也没有所有索引列都为 NOT NULL 的唯一索引时，InnoDB 会怎样处理？", "options": [{"key": "A", "text": "不创建聚簇索引，表数据按插入顺序堆放", "correct": false}, {"key": "B", "text": "选择第一个二级索引的索引列作为聚簇索引的索引键", "correct": false}, {"key": "C", "text": "生成一个 8 字节的隐藏主键，并要求用户手动补充主键", "correct": false}, {"key": "D", "text": "生成一个 6 字节的隐藏行 ID，作为聚簇索引的索引键", "correct": true}]}
+??: 在没有主键、也没有符合条件的唯一索引的情况下，InnoDB 会生成一个 6 字节的隐藏行 ID，作为聚簇索引的索引键。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-11 [single]
+??: InnoDB 里聚簇索引以外的其他索引属于什么索引，还有哪些叫法？
+??: {"id": "S3-11", "type": "single", "stem": "在 InnoDB 中，聚簇索引以外的其他索引属于哪类索引？", "options": [{"key": "A", "text": "辅助索引，也称二级索引或非聚簇索引", "correct": true}, {"key": "B", "text": "主键索引，也称聚簇索引或唯一索引", "correct": false}, {"key": "C", "text": "前缀索引，也称联合索引或复合索引", "correct": false}, {"key": "D", "text": "全文索引，也称 Full-Text 索引或普通索引", "correct": false}]}
+??: 聚簇索引以外的其它索引都属于辅助索引（Secondary Index），也被称为二级索引或非聚簇索引。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-12 [fill]
+??: [填空题·无序] 按物理存储分类，索引分为：____、____。
+??: {"id": "S3-12", "type": "fill", "stem": "按物理存储分类，索引分为：____、____。", "blankCount": 2, "blankOrder": "unordered"}
+??: 从物理存储的角度来看，索引分为聚簇索引（主键索引）、二级索引（辅助索引）。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-13 [single]
+??: 聚簇索引和二级索引的 B+Tree 叶子节点分别存放什么？
+??: {"id": "S3-13", "type": "single", "stem": "聚簇索引（主键索引）和二级索引的 B+Tree 叶子节点，分别存放什么内容？", "options": [{"key": "A", "text": "主键索引叶子节点保存索引列的值和主键值；二级索引叶子节点存放完整的用户记录", "correct": false}, {"key": "B", "text": "两者的叶子节点都存放完整的用户记录，区别只在于排列的顺序", "correct": false}, {"key": "C", "text": "主键索引叶子节点存放完整的用户记录；二级索引叶子节点保存索引列的值和主键值，不含完整行", "correct": true}, {"key": "D", "text": "两者的叶子节点都只保存索引列的值和主键值，完整行另存于其他文件", "correct": false}]}
+??: 主键索引的 B+Tree 叶子节点存放的是实际数据，所有完整的用户记录都存放在主键索引的叶子节点里；二级索引的 B+Tree 叶子节点保存索引列的值和主键值，不保存完整的行数据。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-14 [short]
+??: 使用二级索引查询时，什么情况下不需要回表，什么情况下需要回表，回表是怎样的过程？
+??: {"id": "S3-14", "type": "short"}
+??: 使用二级索引查询时，如果查询的数据能在二级索引里查到，就不需要回表，这个过程就是覆盖索引；如果查询的数据不在二级索引里，就会先检索二级索引，找到对应的叶子节点，获取到主键值后，再检索主键索引，就能查询到数据了，这个过程就是回表。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-15 [fill]
+??: [填空题·无序] 按字段特性分类，索引分为：____、____、____、____。
+??: {"id": "S3-15", "type": "fill", "stem": "按字段特性分类，索引分为：____、____、____、____。", "blankCount": 4, "blankOrder": "unordered"}
+??: 从字段特性的角度来看，索引分为主键索引、唯一索引、普通索引、前缀索引。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-16 [single]
+??: 主键索引建立在哪里？一张表最多有几个？索引列允许有空值吗？
+??: {"id": "S3-16", "type": "single", "stem": "关于主键索引，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "建立在主键字段上，一张表可以有多个，索引列的值不允许有空值", "correct": false}, {"key": "B", "text": "建立在主键字段上，一张表最多只有一个，但索引列的值允许有空值", "correct": false}, {"key": "C", "text": "建立在主键字段上，一张表最多只有一个，索引列的值不允许有空值", "correct": true}, {"key": "D", "text": "建立在普通字段上，一张表可以有多个，既不要求字段为主键也不要求 UNIQUE", "correct": false}]}
+??: 主键索引就是建立在主键字段上的索引，通常在创建表的时候一起创建，一张表最多只有一个主键索引，索引列的值不允许有空值。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-17 [multiple]
+??: 唯一索引有什么特点？联合唯一索引限制的是什么？唯一索引允许 NULL 吗？
+??: {"id": "S3-17", "type": "multiple", "stem": "关于唯一索引，下列哪些说法符合原文？", "options": [{"key": "A", "text": "一张表中可以同时存在多个唯一索引", "correct": true}, {"key": "B", "text": "联合唯一索引限制的是多个字段的组合唯一", "correct": true}, {"key": "C", "text": "联合唯一索引限制的是其中每个字段分别唯一，缺一不可", "correct": false}, {"key": "D", "text": "唯一索引允许多个 NULL，需禁止空值时再加 NOT NULL", "correct": true}, {"key": "E", "text": "一张表最多只能有一个唯一索引，与主键索引一样", "correct": false}]}
+??: 唯一索引用来限制索引键不重复，一张表可以有多个唯一索引。如果是联合唯一索引，限制的是多个字段的组合唯一，不是每个字段分别唯一。MySQL 的唯一索引允许多个 NULL，需要禁止空值时再加 NOT NULL。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-18 [single]
+??: 建表后，怎样为某些字段创建唯一索引？
+??: {"id": "S3-18", "type": "single", "stem": "建表之后，原文给出的创建唯一索引的语句是下列哪一项？", "options": [{"key": "A", "text": "CREATE INDEX index_name ON table_name(index_column_1,index_column_2,...);", "correct": false}, {"key": "B", "text": "CREATE UNIQUE INDEX index_name ON table_name(index_column_1,index_column_2,...);", "correct": true}, {"key": "C", "text": "CREATE INDEX index_name ON table_name(column_name(length));", "correct": false}, {"key": "D", "text": "PRIMARY KEY (index_column_1) USING BTREE", "correct": false}]}
+??: 建表后如果要创建唯一索引，可以使用 `CREATE UNIQUE INDEX index_name ON table_name(index_column_1,index_column_2,...);`；建表时则在表定义里写 `UNIQUE KEY(index_column_1,index_column_2,...)`。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-19 [single]
+??: 什么是普通索引？
+??: {"id": "S3-19", "type": "single", "stem": "关于普通索引，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "建立在主键字段上，一张表最多只有一个，索引列不允许有空值", "correct": false}, {"key": "B", "text": "建立在普通字段上，既不要求是主键，也不要求是 UNIQUE", "correct": true}, {"key": "C", "text": "只对字符类型字段的前几个字符建立，目的是减少索引占用的空间", "correct": false}, {"key": "D", "text": "用来限制索引键不重复，一张表可以有多个这样的索引", "correct": false}]}
+??: 普通索引就是建立在普通字段上的索引，既不要求字段为主键，也不要求字段为 UNIQUE。建表时可写 `INDEX(index_column_1,index_column_2,...)`，建表后可用 `CREATE INDEX index_name ON table_name(index_column_1,index_column_2,...);`。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-20 [single]
+??: 什么是前缀索引？使用它的目的是什么？
+??: {"id": "S3-20", "type": "single", "stem": "关于前缀索引及其使用目的，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "在整个字段的完整值上建立，目的是保证字段取值不重复且有序", "correct": false}, {"key": "B", "text": "把多个字段组合成一个索引，目的是让查询满足最左匹配原则", "correct": false}, {"key": "C", "text": "只对主键字段的前几位建立，目的是让主键保持递增并便于分页", "correct": false}, {"key": "D", "text": "只对字符类型字段的前几个字符建立，目的是减少索引占用空间、提升查询效率", "correct": true}]}
+??: 前缀索引是指对字符类型字段的前几个字符建立的索引，而不是在整个字段上建立的索引；使用前缀索引的目的是为了减少索引占用的存储空间，提升查询效率。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-21 [single]
+??: 哪些类型的列可以建立前缀索引？TEXT、BLOB 列建普通 B+ 树索引有什么要求？
+??: {"id": "S3-21", "type": "single", "stem": "关于前缀索引可以建立的列，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "可建立在 CHAR、VARCHAR 等列上；TEXT、BLOB 列建普通 B+ 树索引也要指定前缀长度", "correct": true}, {"key": "B", "text": "只能建立在 CHAR 列上；TEXT、BLOB 列不能建立任何类型的索引，也不能指定前缀", "correct": false}, {"key": "C", "text": "只能建立在 TEXT、BLOB 列上；其他类型的列建立索引时都不需要指定前缀长度", "correct": false}, {"key": "D", "text": "可以建立在所有数值类型的列上；TEXT、BLOB 列建索引时必须指定为唯一索引", "correct": false}]}
+??: 前缀索引可以建立在 CHAR、VARCHAR、BINARY、VARBINARY 等列上；TEXT、BLOB 列建立普通 B+ 树索引时也需要指定前缀长度。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-22 [single]
+??: 建表后怎样创建前缀索引？
+??: {"id": "S3-22", "type": "single", "stem": "建表之后，原文给出的创建前缀索引的语句是下列哪一项？", "options": [{"key": "A", "text": "CREATE UNIQUE INDEX index_name ON table_name(index_column_1,index_column_2,...);", "correct": false}, {"key": "B", "text": "CREATE INDEX index_name ON table_name(index_column_1,index_column_2,...);", "correct": false}, {"key": "C", "text": "CREATE INDEX index_name ON table_name(column_name(length));", "correct": true}, {"key": "D", "text": "PRIMARY KEY (index_column_1) USING BTREE", "correct": false}]}
+??: 建表后如果要创建前缀索引，可以使用 `CREATE INDEX index_name ON table_name(column_name(length));`；建表时则在表定义里写 `INDEX(column_name(length))`。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-23 [fill]
+??: [填空题·有序] 建立在单列上的索引称为____，建立在多列上的索引称为____。
+??: {"id": "S3-23", "type": "fill", "stem": "建立在单列上的索引称为____，建立在多列上的索引称为____。", "blankCount": 2, "blankOrder": "ordered"}
+??: 从字段个数的角度来看，建立在单列上的索引称为单列索引（比如主键索引），建立在多列上的索引称为联合索引（复合索引）。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-24 [single]
+??: 联合索引 (product_no, name) 的 B+Tree 里，查询时先比较哪个字段，排序规则是什么？
+??: {"id": "S3-24", "type": "single", "stem": "对于联合索引 (product_no, name)，在联合索引里查询数据时，比较和排序的规则是下列哪一项？", "options": [{"key": "A", "text": "先按 product_no 比较，product_no 相同的情况下再按 name 比较", "correct": true}, {"key": "B", "text": "先按 name 比较，name 相同的情况下再按 product_no 比较", "correct": false}, {"key": "C", "text": "product_no 和 name 各自独立排序，两个字段互不影响", "correct": false}, {"key": "D", "text": "非叶子节点只用 product_no 作 key，name 只存放在叶子节点中", "correct": false}]}
+??: 联合索引的非叶子节点用两个字段的值作为 B+Tree 的 key 值。在联合索引查询数据时，先按 product_no 字段比较，在 product_no 相同的情况下再按 name 字段比较；也就是先按 product_no 排序，product_no 相同时再按 name 排序。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-25 [single]
+??: 什么是联合索引的最左匹配原则？
+??: {"id": "S3-25", "type": "single", "stem": "原文所说的联合索引“最左匹配原则”是指下列哪一项？", "options": [{"key": "A", "text": "联合索引中位于最左边的字段必须是主键字段", "correct": false}, {"key": "B", "text": "查询条件中必须按索引列定义的顺序依次书写，否则优化器无法识别", "correct": false}, {"key": "C", "text": "使用联合索引定位数据时，从最左边的字段开始，连续匹配索引列", "correct": true}, {"key": "D", "text": "联合索引只有最左边那一个字段会被保存在 B+Tree 中", "correct": false}]}
+??: 使用联合索引定位数据时，要关注最左匹配原则，也就是从最左边的字段开始，连续匹配索引列。跳过最左列后，通常就不能直接按后面的字段定位到一段连续的索引范围。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-26 [multiple]
+??: 创建了 (a, b, c) 联合索引后，哪些查询条件可以匹配上联合索引？
+??: {"id": "S3-26", "type": "multiple", "stem": "已创建 (a, b, c) 联合索引，下列哪些查询条件可以匹配上这个联合索引？", "options": [{"key": "A", "text": "where a=1", "correct": true}, {"key": "B", "text": "where b=2", "correct": false}, {"key": "C", "text": "where a=1 and b=2", "correct": true}, {"key": "D", "text": "where c=3", "correct": false}, {"key": "E", "text": "where a=1 and b=2 and c=3", "correct": true}, {"key": "F", "text": "where b=2 and c=3", "correct": false}]}
+??: 创建了 (a, b, c) 联合索引后，where a=1、where a=1 and b=2、where a=1 and b=2 and c=3 可以匹配上联合索引；where b=2、where c=3、where b=2 and c=3 缺少最左边的 a，通常不能使用这个索引进行常规的前缀定位。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-27 [single]
+??: (a, b, c) 联合索引的查询里，a 字段在 where 子句中的先后顺序重要吗？
+??: {"id": "S3-27", "type": "single", "stem": "对于 (a, b, c) 联合索引，a 字段在 where 子句中的书写顺序会影响能否匹配联合索引吗？", "options": [{"key": "A", "text": "不影响，因为有查询优化器，a 字段在 where 子句里的顺序并不重要", "correct": true}, {"key": "B", "text": "影响，a 必须写在 where 子句的最前面，否则无法匹配", "correct": false}, {"key": "C", "text": "影响，where 子句的条件顺序必须与索引列的定义顺序完全一致", "correct": false}, {"key": "D", "text": "不影响，因为即使缺少 a，b 和 c 同样能按最左前缀定位", "correct": false}]}
+??: 因为有查询优化器，所以 a 字段在 where 子句的顺序并不重要。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-28 [fill]
+??: [填空题·有序] (a, b, c) 联合索引先按 a 排序，a 相同再按 b 排序，b 也相同再按 c 排序，所以 b 和 c 是全局____、局部____的。
+??: {"id": "S3-28", "type": "fill", "stem": "(a, b, c) 联合索引先按 a 排序，a 相同再按 b 排序，b 也相同再按 c 排序，所以 b 和 c 是全局____、局部____的。", "blankCount": 2, "blankOrder": "ordered"}
+??: 因为 (a, b, c) 联合索引先按 a 排序，a 相同再按 b 排序，b 也相同再按 c 排序，所以 b 和 c 是全局无序、局部有序的。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-29 [multiple]
+??: 缺少最左列 a 时，联合索引还会被用到吗？
+??: {"id": "S3-29", "type": "multiple", "stem": "查询条件缺少 (a, b, c) 联合索引的最左列 a 时，下列哪些说法符合原文？", "options": [{"key": "A", "text": "通常不能使用这个索引进行常规的最左前缀定位", "correct": true}, {"key": "B", "text": "覆盖索引时仍可能全索引扫描", "correct": true}, {"key": "C", "text": "MySQL 8.0 在满足条件时还可能采用索引跳跃扫描", "correct": true}, {"key": "D", "text": "联合索引一定不会被读取", "correct": false}, {"key": "E", "text": "只要条件里含有 b，就一定能按 b 快速定位", "correct": false}]}
+??: 缺少最左边的 a，通常不能按常规最左前缀快速定位，但不代表索引完全不会被读取：覆盖索引时仍可能全索引扫描，MySQL 8.0 在满足条件时还可能采用索引跳跃扫描，最终要看执行计划。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-30 [single]
+??: 查询用上了联合索引，是否代表联合索引里的所有字段都用上了？
+??: {"id": "S3-30", "type": "single", "stem": "关于查询使用联合索引与联合索引字段的使用，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "代表，只要使用了联合索引，其中的所有字段就都会用于索引查询", "correct": false}, {"key": "B", "text": "不代表，没有用到的字段会使整个联合索引转为全表扫描", "correct": false}, {"key": "C", "text": "代表，但前提是所有字段都出现在 where 子句里", "correct": false}, {"key": "D", "text": "不代表，可能部分字段用到联合索引的 B+Tree，部分字段没有用到", "correct": true}]}
+??: 并不是查询过程使用了联合索引查询，就代表联合索引中的所有字段都用到了联合索引进行索引查询，也就是可能存在部分字段用到联合索引的 B+Tree，部分字段没有用到联合索引的 B+Tree 的情况。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-31 [single]
+??: 对于联合索引 (a, b, c)，WHERE a = 1 AND b > 2 AND c = 3 中哪些字段可以确定扫描范围？
+??: {"id": "S3-31", "type": "single", "stem": "已知联合索引为 (a, b, c)，对于 WHERE a = 1 AND b > 2 AND c = 3，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "a、b、c 三个条件都可以用来确定扫描范围，c = 3 能继续缩小扫描范围", "correct": false}, {"key": "B", "text": "只有 a 可以确定扫描范围，b 的范围条件和 c 都不能用来确定扫描范围", "correct": false}, {"key": "C", "text": "这个联合索引完全不会被使用，因为条件中同时出现了范围条件和等值条件", "correct": false}, {"key": "D", "text": "a、b 可确定扫描范围，但范围内 c 并非全局有序，不能再用 c = 3 缩小扫描范围", "correct": true}]}
+??: 对于 `WHERE a = 1 AND b > 2 AND c = 3`，a、b 可以确定扫描范围，但这个范围里 c 并不是全局有序的，所以不能继续用 c = 3 把整段扫描范围缩成只包含目标记录的区间。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-32 [multiple]
+??: 后面的字段不能继续缩小扫描范围，是不是就完全没用？
+??: {"id": "S3-32", "type": "multiple", "stem": "关于联合索引中不能继续缩小扫描范围的后面字段，下列哪些说法符合原文？", "options": [{"key": "A", "text": "不能继续缩小扫描范围，不代表完全没用", "correct": true}, {"key": "B", "text": "它仍可能用于索引下推、覆盖索引等优化", "correct": true}, {"key": "C", "text": "IN 等条件还可能拆成多个等值范围", "correct": true}, {"key": "D", "text": "出现范围条件之后，后面的所有字段一律失效", "correct": false}, {"key": "E", "text": "出现范围条件之后，联合索引整体都不会被使用", "correct": false}]}
+??: 后面的字段不能继续缩小扫描范围，不代表完全没用，它仍可能用于索引下推、覆盖索引等优化。IN 等条件还可能拆成多个等值范围，面试时不要把所有写法都机械地归成「范围之后全部失效」。[原文§讲讲索引的分类是什么？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E8%AE%B2%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-33 [multiple]
+??: 哈希索引的优势和短板分别是什么？
+??: {"id": "S3-33", "type": "multiple", "stem": "下列哪些符合原文对哈希索引优势和短板的描述？", "options": [{"key": "A", "text": "等值查询的速度极快", "correct": true}, {"key": "B", "text": "可直接用哈希函数定位数据", "correct": true}, {"key": "C", "text": "支持高效的范围查询", "correct": false}, {"key": "D", "text": "支持对查询结果排序", "correct": false}, {"key": "E", "text": "支持前缀匹配查询", "correct": false}]}
+??: 哈希索引的优势是等值查询极快、能直接通过哈希函数定位数据位置，短板是不支持范围查询、排序和前缀匹配。[原文§哈希索引使用场景是什么？](https://xiaolincoding.com/interview/mysql.html#%E5%93%88%E5%B8%8C%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-34 [single]
+??: 哈希索引适合什么样的使用场景？
+??: {"id": "S3-34", "type": "single", "stem": "按原文的说法，哈希索引适合下列哪种使用场景？", "options": [{"key": "A", "text": "需要频繁做范围查询、并按结果排序的场景", "correct": false}, {"key": "B", "text": "需要对索引列做前缀匹配和范围扫描的场景", "correct": false}, {"key": "C", "text": "需要同时服务等值查询和范围查询的场景", "correct": false}, {"key": "D", "text": "以等值查询为核心，且不需要复杂查询操作的场景", "correct": true}]}
+??: 哈希索引优势是等值查询极快，短板是不支持范围查询、排序和前缀匹配，所以使用场景必然是那些以等值查询为核心，且不需要复杂查询操作的场景。[原文§哈希索引使用场景是什么？](https://xiaolincoding.com/interview/mysql.html#%E5%93%88%E5%B8%8C%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-35 [fill]
+??: [填空题·有序] MySQL 的____存储引擎默认使用哈希索引。
+??: {"id": "S3-35", "type": "fill", "stem": "MySQL 的____存储引擎默认使用哈希索引。", "blankCount": 1, "blankOrder": "ordered"}
+??: MySQL 的 Memory 存储引擎默认就用哈希索引。[原文§哈希索引使用场景是什么？](https://xiaolincoding.com/interview/mysql.html#%E5%93%88%E5%B8%8C%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-36 [short]
+??: 为什么 Memory 存储引擎默认用哈希索引？以缓存用户登录信息为例说明哈希索引怎样发挥作用。
+??: {"id": "S3-36", "type": "short"}
+??: 内存表本身基于内存存储，追求极致的查询速度，而这类场景通常是简单的等值查询。比如缓存用户登录信息，通过用户 ID 快速查找对应的登录状态、权限信息，哈希索引能直接通过用户 ID 计算哈希值，定位到数据所在的桶，查询效率接近 O(1)，比 B+ 树索引的等值查询更快。[原文§哈希索引使用场景是什么？](https://xiaolincoding.com/interview/mysql.html#%E5%93%88%E5%B8%8C%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-37 [fill]
+??: [填空题·无序] 原文从四个方面比较聚簇索引和非聚簇索引的区别，分别是：____、____、____、____。
+??: {"id": "S3-37", "type": "fill", "stem": "原文从四个方面比较聚簇索引和非聚簇索引的区别，分别是：____、____、____、____。", "blankCount": 4, "blankOrder": "unordered"}
+??: 原文从数据存储、索引与数据关系、唯一性、效率四个方面比较聚簇索引和非聚簇索引。[原文§MySQL聚簇索引和非聚簇索引的区别是什么？](https://xiaolincoding.com/interview/mysql.html#mysql%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-38 [single]
+??: 聚簇索引和非聚簇索引在数据存储上有什么区别？
+??: {"id": "S3-38", "type": "single", "stem": "在数据存储方面，聚簇索引和非聚簇索引的区别是下列哪一项？", "options": [{"key": "A", "text": "聚簇索引叶子节点只含指向数据行的指针；非聚簇索引叶子节点含完整的数据行及指针", "correct": false}, {"key": "B", "text": "聚簇索引叶子节点含实际数据行；非聚簇索引叶子节点不含完整数据行，含指向数据行的指针或主键值", "correct": true}, {"key": "C", "text": "两者的叶子节点都含完整的数据行，区别只在于数据行的排列顺序是否有序", "correct": false}, {"key": "D", "text": "两者的叶子节点都只含主键值，数据行统一存放在另外单独的数据文件中", "correct": false}]}
+??: 在聚簇索引中，数据行在 B+ 树中按照索引键值组织，索引的叶子节点包含了实际的数据行，索引结构本身就是数据的物理存储结构。非聚簇索引的叶子节点不包含完整的数据行，而是包含指向数据行的指针或主键值，数据行本身存储在聚簇索引中。[原文§MySQL聚簇索引和非聚簇索引的区别是什么？](https://xiaolincoding.com/interview/mysql.html#mysql%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-39 [single]
+??: 通过聚簇索引和非聚簇索引查找数据，过程有什么不同？
+??: {"id": "S3-39", "type": "single", "stem": "关于通过聚簇索引和非聚簇索引查找数据的过程，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "聚簇索引可直接从索引中获得数据行；非聚簇索引先找到主键值，再回溯聚簇索引查数据行（回表）", "correct": true}, {"key": "B", "text": "聚簇索引先找到主键值，再回溯到非聚簇索引查数据行；非聚簇索引可直接获得数据行", "correct": false}, {"key": "C", "text": "两者都要先在非聚簇索引中找到主键值，再回溯到聚簇索引查找数据行（回表）", "correct": false}, {"key": "D", "text": "两者都可以直接从索引中获得数据行，查找时不需要额外步骤，也不会回表", "correct": false}]}
+??: 由于数据与索引紧密相连，通过聚簇索引查找数据时，可以直接从索引中获得数据行，不需要额外步骤去查找数据所在的位置。通过非聚簇索引查找数据时，首先在非聚簇索引中找到对应的主键值，然后通过这个主键值回溯到聚簇索引中查找实际的数据行，这个过程称为“回表”。[原文§MySQL聚簇索引和非聚簇索引的区别是什么？](https://xiaolincoding.com/interview/mysql.html#mysql%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-40 [single]
+??: 为什么一张表只能有一个聚簇索引，却可以有多个非聚簇索引？
+??: {"id": "S3-40", "type": "single", "stem": "关于聚簇索引和非聚簇索引的数量，原文给出的理由是下列哪一项？", "options": [{"key": "A", "text": "聚簇索引占用空间太大，数据库限制每张表只能创建一个；非聚簇索引占用空间小，可以有多个", "correct": false}, {"key": "B", "text": "聚簇索引通常基于主键，数据只能有一种物理排序方式，所以只有一个；非聚簇索引不影响数据物理位置，可以有多个", "correct": true}, {"key": "C", "text": "聚簇索引不能建立在主键上，所以只能有一个；非聚簇索引建立在主键上，因此可以有多个", "correct": false}, {"key": "D", "text": "两者都会改变数据的物理存储位置，所以每张表都只能各建一个聚簇索引和一个非聚簇索引", "correct": false}]}
+??: 聚簇索引通常是基于主键构建的，因此每个表只能有一个聚簇索引，因为数据只能有一种物理排序方式。一个表可以有多个非聚簇索引，因为它们不直接影响数据的物理存储位置。[原文§MySQL聚簇索引和非聚簇索引的区别是什么？](https://xiaolincoding.com/interview/mysql.html#mysql%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-41 [multiple]
+??: 聚簇索引和非聚簇索引在效率上各有什么特点？
+??: {"id": "S3-41", "type": "multiple", "stem": "关于聚簇索引和非聚簇索引的效率，下列哪些说法符合原文？", "options": [{"key": "A", "text": "对于范围查询和排序查询，聚簇索引通常更有效率，因为避免了额外的寻址开销", "correct": true}, {"key": "B", "text": "非聚簇索引在使用覆盖索引查询时效率更高，因为不需要读取完整的数据行", "correct": true}, {"key": "C", "text": "需要回表时，使用非聚簇索引效率比较低，因为要进行额外的回表操作", "correct": true}, {"key": "D", "text": "对于范围查询和排序查询，非聚簇索引通常比聚簇索引更有效率", "correct": false}]}
+??: 对于范围查询和排序查询，聚簇索引通常更有效率，因为它避免了额外的寻址开销。非聚簇索引在使用覆盖索引进行查询时效率更高，因为不需要读取完整的数据行；但需要进行回表操作时，使用非聚簇索引效率比较低，因为需要额外的回表操作。[原文§MySQL聚簇索引和非聚簇索引的区别是什么？](https://xiaolincoding.com/interview/mysql.html#mysql%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-42 [single]
+??: 聚簇索引的数据更新时，存储要不要变化？
+??: {"id": "S3-42", "type": "single", "stem": "聚簇索引的数据更新时，存储需要变化吗？原文的回答是下列哪一项？", "options": [{"key": "A", "text": "不需要，只要更新的不是主键，存储就一定不会变化", "correct": false}, {"key": "B", "text": "需要，任何字段更新后聚簇索引都必须整体重建", "correct": false}, {"key": "C", "text": "要看更新的是哪个字段，以及记录长度有没有变化", "correct": true}, {"key": "D", "text": "不需要，更新操作只修改 Buffer Pool 中的数据，不影响存储结构", "correct": false}]}
+??: 要看更新的是哪个字段，以及记录长度有没有变化。[原文§如果聚簇索引的数据更新，它的存储要不要变化？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0-%E5%AE%83%E7%9A%84%E5%AD%98%E5%82%A8%E8%A6%81%E4%B8%8D%E8%A6%81%E5%8F%98%E5%8C%96)
+
+S3-43 [single]
+??: 更新主键时，聚簇索引和二级索引会受到什么影响？
+??: {"id": "S3-43", "type": "single", "stem": "更新主键字段时，会产生下列哪种影响？", "options": [{"key": "A", "text": "只需调整聚簇索引，二级索引保存的是索引列的值，不受主键变化的影响", "correct": false}, {"key": "B", "text": "记录在聚簇索引中的排序位置会变，需调整聚簇索引；二级索引也保存主键值，同样要维护", "correct": true}, {"key": "C", "text": "聚簇索引中的排序位置不变，只需要维护保存了主键值的二级索引", "correct": false}, {"key": "D", "text": "聚簇索引和二级索引都不需要调整，原位置直接更新，不涉及任何维护", "correct": false}]}
+??: 更新主键时，记录在聚簇索引中的排序位置会变化，需要调整聚簇索引；二级索引里也保存了主键值，所以也要维护。[原文§如果聚簇索引的数据更新，它的存储要不要变化？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0-%E5%AE%83%E7%9A%84%E5%AD%98%E5%82%A8%E8%A6%81%E4%B8%8D%E8%A6%81%E5%8F%98%E5%8C%96)
+
+S3-44 [single]
+??: 更新二级索引列时，聚簇索引和二级索引会受到什么影响？
+??: {"id": "S3-44", "type": "single", "stem": "更新二级索引列时，会产生下列哪种影响？", "options": [{"key": "A", "text": "聚簇索引的主键顺序也会随之改变，相关二级索引不受影响", "correct": false}, {"key": "B", "text": "聚簇索引和相关二级索引中的记录都不需要调整", "correct": false}, {"key": "C", "text": "只能删除原来的二级索引后重新创建", "correct": false}, {"key": "D", "text": "聚簇索引中的主键顺序不变，但相关二级索引中的记录需要调整", "correct": true}]}
+??: 更新二级索引列时，聚簇索引中的主键顺序不变，但相关二级索引中的记录需要调整。[原文§如果聚簇索引的数据更新，它的存储要不要变化？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0-%E5%AE%83%E7%9A%84%E5%AD%98%E5%82%A8%E8%A6%81%E4%B8%8D%E8%A6%81%E5%8F%98%E5%8C%96)
+
+S3-45 [single]
+??: 更新普通非索引列时，存储结构会不会变化？
+??: {"id": "S3-45", "type": "single", "stem": "更新普通非索引列时，关于记录存储，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "无论记录长度是否变化，都只会在原位置更新，不会涉及记录迁移或页分裂等额外处理", "correct": false}, {"key": "B", "text": "记录长度基本不变时通常原位置更新；变长字段增长致页空间不足时，仍可能记录迁移、页分裂或页外存储", "correct": true}, {"key": "C", "text": "只要更新了非索引列，就一定要重新调整聚簇索引中记录的排序位置并分裂页", "correct": false}, {"key": "D", "text": "记录长度基本不变时也必须发生页分裂，并把记录迁移到新的数据页中", "correct": false}]}
+??: 更新普通非索引列时，如果记录长度基本不变，通常可以在原位置更新；如果变长字段增长导致当前页空间不足，仍可能涉及记录迁移、页分裂或页外存储等处理。[原文§如果聚簇索引的数据更新，它的存储要不要变化？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0-%E5%AE%83%E7%9A%84%E5%AD%98%E5%82%A8%E8%A6%81%E4%B8%8D%E8%A6%81%E5%8F%98%E5%8C%96)
+
+S3-46 [single]
+??: 能不能说“更新非索引字段，存储结构一定不会变”？
+??: {"id": "S3-46", "type": "single", "stem": "对于“更新非索引字段，存储结构一定不会变”这一说法，原文的看法是下列哪一项？", "options": [{"key": "A", "text": "不能简单地说，变长字段增长等情况仍可能涉及记录迁移、页分裂或页外存储", "correct": true}, {"key": "B", "text": "可以这样说，非索引字段不参与任何索引，存储结构必然不会变", "correct": false}, {"key": "C", "text": "可以这样说，只要更新的不是主键，存储结构就不会发生任何变化", "correct": false}, {"key": "D", "text": "不能这样说，因为更新非索引字段一定会导致页分裂和记录迁移", "correct": false}]}
+??: 不能简单说“更新非索引字段，存储结构一定不会变”：如果变长字段增长导致当前页空间不足，仍可能涉及记录迁移、页分裂或页外存储等处理。[原文§如果聚簇索引的数据更新，它的存储要不要变化？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0-%E5%AE%83%E7%9A%84%E5%AD%98%E5%82%A8%E8%A6%81%E4%B8%8D%E8%A6%81%E5%8F%98%E5%8C%96)
+
+S3-47 [single]
+??: InnoDB 中，主键是不是以聚簇索引的形式存储的？
+??: {"id": "S3-47", "type": "single", "stem": "在 InnoDB 存储引擎中，关于主键与聚簇索引，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "主键不是聚簇索引，主键索引是二级索引，叶节点只保存指向数据行的指针", "correct": false}, {"key": "B", "text": "主键是聚簇索引，但叶节点只保存主键值，数据行存放在单独的文件中", "correct": false}, {"key": "C", "text": "主键以聚簇索引形式存储：主键索引的 B+ 树就是聚簇索引，叶节点包含实际数据行", "correct": true}, {"key": "D", "text": "只有为表额外创建了唯一索引时，主键才会被存储成聚簇索引的形式", "correct": false}]}
+??: 在 MySQL 的 InnoDB 存储引擎中，主键确实是以聚簇索引的形式存储的。InnoDB 将数据存储在 B+ 树的结构中，其中主键索引的 B+ 树就是所谓的聚簇索引，聚簇索引的叶节点包含了实际的数据行。[原文§MySQL主键是聚簇索引吗？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BB%E9%94%AE%E6%98%AF%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-48 [single]
+??: 表中的数据行在 B+ 树中按主键有序组织，是否说明这些页在磁盘上一定连续存放？
+??: {"id": "S3-48", "type": "single", "stem": "聚簇索引中的数据行在 B+ 树中按主键有序组织，关于这里的“有序”，原文的说明是下列哪一项？", "options": [{"key": "A", "text": "说的是物理顺序，这些页在磁盘上一定按主键值连续存放", "correct": false}, {"key": "B", "text": "说的是页内记录有序，页与页之间没有任何顺序关系", "correct": false}, {"key": "C", "text": "说的是索引的逻辑顺序，不代表这些页在磁盘上一定连续存放", "correct": true}, {"key": "D", "text": "说的是只有叶节点有序，非叶节点中的索引值无序", "correct": false}]}
+??: 表中的数据行在 B+ 树中按主键有序组织，但有序说的是索引的逻辑顺序，不代表这些页在磁盘上一定连续存放。[原文§MySQL主键是聚簇索引吗？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BB%E9%94%AE%E6%98%AF%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-49 [fill]
+??: [填空题·有序] InnoDB 创建聚簇索引时，有主键就默认用____作为索引键；没有主键则选第一个所有索引列都定义为 NOT NULL 的____；两者都没有，则生成一个____字节的隐藏行 ID 作为索引键。
+??: {"id": "S3-49", "type": "fill", "stem": "InnoDB 创建聚簇索引时，有主键就默认用____作为索引键；没有主键则选第一个所有索引列都定义为 NOT NULL 的____；两者都没有，则生成一个____字节的隐藏行 ID 作为索引键。", "blankCount": 3, "blankOrder": "ordered"}
+??: InnoDB 在创建聚簇索引时，如果有主键，默认会使用主键作为聚簇索引的索引键；如果没有主键，就选择第一个所有索引列都定义为 NOT NULL 的唯一索引作为聚簇索引的索引键；在上面两个都没有的情况下，InnoDB 会生成一个 6 字节的隐藏行 ID，作为聚簇索引的索引键。[原文§MySQL主键是聚簇索引吗？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BB%E9%94%AE%E6%98%AF%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-50 [single]
+??: 一张表能有几个聚簇索引？非主键字段想要快速搜索怎么办？
+??: {"id": "S3-50", "type": "single", "stem": "关于聚簇索引的数量，以及非主键字段的快速搜索，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "一张表可以有多个聚簇索引；非主键字段的快速搜索靠聚簇索引，叶子节点包含完整的行数据", "correct": false}, {"key": "B", "text": "一张表只能有一个聚簇索引；非主键字段的快速搜索靠二级索引，其叶子节点保存索引列和主键值，不含完整行", "correct": true}, {"key": "C", "text": "一张表只能有一个聚簇索引；非主键字段无法建立索引，只能靠全表扫描来完成快速搜索", "correct": false}, {"key": "D", "text": "一张表只能有一个聚簇索引；非主键字段的快速搜索靠二级索引，二级索引的叶子节点包含完整的行数据", "correct": false}]}
+??: 一张表只能有一个聚簇索引，那为了实现非主键字段的快速搜索，就引出了二级索引（非聚簇索引/辅助索引），它也是利用了 B+ 树的数据结构，不过叶子节点保存的是索引列和主键值，不包含完整的行数据。[原文§MySQL主键是聚簇索引吗？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BB%E9%94%AE%E6%98%AF%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-51 [multiple]
+??: 适合当做主键的字段有哪些特点？
+??: {"id": "S3-51", "type": "multiple", "stem": "下列哪些符合原文对适合当做主键的字段的描述？", "options": [{"key": "A", "text": "字段具有唯一性，且不能为空", "correct": true}, {"key": "B", "text": "字段尽量短、稳定、不频繁修改", "correct": true}, {"key": "C", "text": "字段最好有递增的趋势", "correct": true}, {"key": "D", "text": "优先使用会员卡号、订单号等业务数据", "correct": false}, {"key": "E", "text": "字段的值最好随机无序", "correct": false}]}
+??: 适合当做主键的字段：具有唯一性且不能为空；尽量短、稳定、不频繁修改；最好有递增的趋势；不建议用会员卡号、订单号、学生号之类的业务数据；通常用自增字段。[原文§什么字段适合当做主键？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E5%AD%97%E6%AE%B5%E9%80%82%E5%90%88%E5%BD%93%E5%81%9A%E4%B8%BB%E9%94%AE)
+
+S3-52 [single]
+??: 为什么主键字段要尽量短、稳定、不频繁修改？
+??: {"id": "S3-52", "type": "single", "stem": "原文认为主键字段要尽量短、稳定、不频繁修改，原因是下列哪一项？", "options": [{"key": "A", "text": "主键越短，聚簇索引才能保存完整的用户记录，主键过长会导致记录丢失", "correct": false}, {"key": "B", "text": "主键一旦被修改，其他表中引用该主键的数据也会被数据库自动删除", "correct": false}, {"key": "C", "text": "二级索引也保存主键值，主键越宽，所有二级索引的空间和维护成本也会增加", "correct": true}, {"key": "D", "text": "二级索引不保存主键值，只有主键索引的空间受主键宽度的影响", "correct": false}]}
+??: 字段尽量短、稳定、不频繁修改，因为二级索引也要保存主键值，主键越宽，所有二级索引的空间和维护成本也会增加。[原文§什么字段适合当做主键？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E5%AD%97%E6%AE%B5%E9%80%82%E5%90%88%E5%BD%93%E5%81%9A%E4%B8%BB%E9%94%AE)
+
+S3-53 [single]
+??: 为什么主键字段最好有递增的趋势？
+??: {"id": "S3-53", "type": "single", "stem": "原文认为主键字段最好有递增的趋势，是因为下列哪一项？", "options": [{"key": "A", "text": "递增的值才能保证主键具有唯一性，随机值无法保证唯一", "correct": false}, {"key": "B", "text": "随机无序的值无法存入 B+ 树，所以主键必须是递增的", "correct": false}, {"key": "C", "text": "递增的主键可以避免二级索引保存主键值，节省空间", "correct": false}, {"key": "D", "text": "字段值随机无序时，可能引发页分裂的问题，造成性能影响", "correct": true}]}
+??: 字段最好有递增的趋势，如果字段的值是随机无序的，可能会引发页分裂的问题，造成性能影响。[原文§什么字段适合当做主键？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E5%AD%97%E6%AE%B5%E9%80%82%E5%90%88%E5%BD%93%E5%81%9A%E4%B8%BB%E9%94%AE)
+
+S3-54 [single]
+??: 为什么不建议用业务数据（会员卡号、订单号、学生号）作为主键？
+??: {"id": "S3-54", "type": "single", "stem": "原文不建议用会员卡号、订单号、学生号之类的业务数据作为主键，理由是下列哪一项？", "options": [{"key": "A", "text": "业务数据通常是单调递增的，用作主键反而会导致频繁页分裂", "correct": false}, {"key": "B", "text": "无法预测未来会不会因业务需要，出现业务字段重复或重用的情况", "correct": true}, {"key": "C", "text": "业务数据的长度一定比自增字段短，用作主键会浪费索引空间", "correct": false}, {"key": "D", "text": "业务数据不能被二级索引保存，所以不适合再用作主键字段", "correct": false}]}
+??: 不建议用业务数据作为主键，比如会员卡号、订单号、学生号之类的，因为我们无法预测未来会不会因为业务需要，而出现业务字段重复或者重用的情况。[原文§什么字段适合当做主键？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E5%AD%97%E6%AE%B5%E9%80%82%E5%90%88%E5%BD%93%E5%81%9A%E4%B8%BB%E9%94%AE)
+
+S3-55 [single]
+??: 用自增字段做主键在什么情况下不一定适用？
+??: {"id": "S3-55", "type": "single", "stem": "通常用自增字段做主键，对单机系统没问题；在下列哪种情况下，它就不一定适用了？", "options": [{"key": "A", "text": "多台服务器各自录入数据，合并时可能出现主键重复，需考虑分布式 id", "correct": true}, {"key": "B", "text": "表里的字段个数超过十个，自增字段就无法保证主键值不重复", "correct": false}, {"key": "C", "text": "只有一台服务器写入数据，但表中的数据量非常大，写入非常频繁", "correct": false}, {"key": "D", "text": "主键字段需要具有唯一性，并且不能为空，不允许出现 NULL", "correct": false}]}
+??: 通常情况下会用自增字段来做主键，对于单机系统来说是没问题的。但是，如果有多台服务器，各自都可以录入数据，那就不一定适用了：如果每台机器各自产生的数据需要合并，就可能会出现主键重复的问题，这时候就需要考虑分布式 id 的方案了。[原文§什么字段适合当做主键？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E5%AD%97%E6%AE%B5%E9%80%82%E5%90%88%E5%BD%93%E5%81%9A%E4%B8%BB%E9%94%AE)
+
+S3-56 [single]
+??: 性别字段能加索引吗？
+??: {"id": "S3-56", "type": "single", "stem": "对于性别这类只有两种取值的字段，原文的回答是下列哪一项？", "options": [{"key": "A", "text": "能加，但如果只是建立性别的单列索引，通常收益不大", "correct": true}, {"key": "B", "text": "不能加，MySQL 不允许在取值很少的字段上建立索引", "correct": false}, {"key": "C", "text": "能加，而且单列索引一定会让查询变快", "correct": false}, {"key": "D", "text": "能加，但只有建立成唯一索引才有效", "correct": false}]}
+??: 能加，但如果只是建立性别的单列索引，通常收益不大。[原文§性别字段能加索引么？为啥？](https://xiaolincoding.com/interview/mysql.html#%E6%80%A7%E5%88%AB%E5%AD%97%E6%AE%B5%E8%83%BD%E5%8A%A0%E7%B4%A2%E5%BC%95%E4%B9%88-%E4%B8%BA%E5%95%A5)
+
+S3-57 [single]
+??: 100 万条数据中男女各 50 万，执行 SELECT * FROM users WHERE sex = '男'，优化器为什么可能放弃性别索引？
+??: {"id": "S3-57", "type": "single", "stem": "有 100 万条数据，男女各 50 万，执行 `SELECT * FROM users WHERE sex = '男'` 时，优化器可能放弃性别索引，原因是下列哪一项？", "options": [{"key": "A", "text": "二级索引不能用于等值查询，只能在范围查询时才会被使用", "correct": false}, {"key": "B", "text": "性别字段不能为空，所以索引中不会保存它的取值信息", "correct": false}, {"key": "C", "text": "50 万条记录超过了一个 B+ 树能容纳的叶子节点数量上限", "correct": false}, {"key": "D", "text": "先通过二级索引找到 50 万条记录后还要大量回表，可能不如全表扫描", "correct": true}]}
+??: 比如有 100 万条数据，男女各 50 万条，执行 `SELECT * FROM users WHERE sex = '男'`，即使先通过二级索引找到 50 万条记录，还要大量回表读取其他字段，这时可能不如全表扫描，优化器就可能放弃这个索引。[原文§性别字段能加索引么？为啥？](https://xiaolincoding.com/interview/mysql.html#%E6%80%A7%E5%88%AB%E5%AD%97%E6%AE%B5%E8%83%BD%E5%8A%A0%E7%B4%A2%E5%BC%95%E4%B9%88-%E4%B8%BA%E5%95%A5)
+
+S3-58 [multiple]
+??: 值的种类少的字段（如性别），在哪些场景下索引仍可能有效？
+??: {"id": "S3-58", "type": "multiple", "stem": "原文指出值的种类少不代表任何场景都不适合索引，下列哪些场景索引仍可能有效？", "options": [{"key": "A", "text": "数据分布很不均匀，查询的是数量很少的那一类", "correct": true}, {"key": "B", "text": "只统计数量，索引可以覆盖查询，避免为获取其他列而回表", "correct": true}, {"key": "C", "text": "与其他字段组成联合索引，如 (sex, age)，查询某个性别下指定年龄范围的用户", "correct": true}, {"key": "D", "text": "男女各占一半，查询还要 SELECT * 取出所有列", "correct": false}]}
+??: 值的种类少，不代表任何场景都不适合索引：如果数据分布很不均匀，查询的是数量很少的那一类，索引可能有效；如果只统计数量，索引可以覆盖查询，避免为获取其他列而回表；如果和其他字段组成联合索引，例如 `(sex, age)`，查询某个性别下指定年龄范围的用户，也可能有效。[原文§性别字段能加索引么？为啥？](https://xiaolincoding.com/interview/mysql.html#%E6%80%A7%E5%88%AB%E5%AD%97%E6%AE%B5%E8%83%BD%E5%8A%A0%E7%B4%A2%E5%BC%95%E4%B9%88-%E4%B8%BA%E5%95%A5)
+
+S3-59 [fill]
+??: [填空题·无序] 判断这类字段该不该建索引，要结合实际的____、____和____来判断，不能只看字段有几种取值。
+??: {"id": "S3-59", "type": "fill", "stem": "判断这类字段该不该建索引，要结合实际的____、____和____来判断，不能只看字段有几种取值。", "blankCount": 3, "blankOrder": "unordered"}
+??: 要结合实际查询、命中比例和回表成本判断，不能只看字段有几种取值。[原文§性别字段能加索引么？为啥？](https://xiaolincoding.com/interview/mysql.html#%E6%80%A7%E5%88%AB%E5%AD%97%E6%AE%B5%E8%83%BD%E5%8A%A0%E7%B4%A2%E5%BC%95%E4%B9%88-%E4%B8%BA%E5%95%A5)
+
+S3-60 [single]
+??: 表中十个字段，主键用自增 ID 还是 UUID？为什么随机 UUID 不如自增 id？
+??: {"id": "S3-60", "type": "single", "stem": "原文选择用自增 id 做主键，认为随机 UUID 不如自增 id 的根本原因是下列哪一项？", "options": [{"key": "A", "text": "UUID 的长度一定超过一个数据页的大小，无法作为键值放进 B+ 树的节点中", "correct": false}, {"key": "B", "text": "UUID 生成后不能保证全局唯一，会导致主键重复，使 InnoDB 无法插入新行", "correct": false}, {"key": "C", "text": "UUID 的值总是比自增 id 小，所以新行总被插入到索引最前面，导致大量数据后移", "correct": false}, {"key": "D", "text": "UUID 的生成顺序与索引排序顺序不一致，新行的值不一定更大，无法总是插入到索引最后", "correct": true}]}
+??: 原文用的是自增 id。因为常见的随机 UUID 相对顺序的自增 id 来说，生成顺序和索引排序顺序不一致，新行的值不一定要比之前的主键的值要大，所以 innodb 无法做到总是把新行插入到索引的最后，而是需要为新行寻找新的合适的位置从而来分配新的空间。[原文§表中十个字段，你主键用自增ID还是UUID，为什么？](https://xiaolincoding.com/interview/mysql.html#%E8%A1%A8%E4%B8%AD%E5%8D%81%E4%B8%AA%E5%AD%97%E6%AE%B5-%E4%BD%A0%E4%B8%BB%E9%94%AE%E7%94%A8%E8%87%AA%E5%A2%9Eid%E8%BF%98%E6%98%AFuuid-%E4%B8%BA%E4%BB%80%E4%B9%88)
+
+S3-61 [multiple]
+??: 主键数据毫无顺序，会带来哪些问题？
+??: {"id": "S3-61", "type": "multiple", "stem": "随机 UUID 作主键导致数据分布散乱，会带来下列哪些问题？", "options": [{"key": "A", "text": "大量随机 IO：目标页可能不在缓存中，需先从磁盘读入内存", "correct": true}, {"key": "B", "text": "频繁的页分裂：为新行分配空间，需要移动大量数据", "correct": true}, {"key": "C", "text": "数据碎片：频繁页分裂使页变得稀疏、被不规则填充", "correct": true}, {"key": "D", "text": "新行总是追加在索引末尾，写入的目标页总是在缓存中", "correct": false}, {"key": "E", "text": "二级索引不再需要保存主键值，空间占用因此减少", "correct": false}]}
+??: 数据的毫无顺序会导致数据分布散乱，带来：写入的目标页很可能已经刷新到磁盘并且从缓存上移除，或者还没有被加载到缓存中，需要先从磁盘读取目标页，导致大量随机 IO；写入乱序，不得不频繁页分裂，移动大量数据，影响性能；频繁页分裂使页变得稀疏并被不规则填充，最终导致数据有碎片。[原文§表中十个字段，你主键用自增ID还是UUID，为什么？](https://xiaolincoding.com/interview/mysql.html#%E8%A1%A8%E4%B8%AD%E5%8D%81%E4%B8%AA%E5%AD%97%E6%AE%B5-%E4%BD%A0%E4%B8%BB%E9%94%AE%E7%94%A8%E8%87%AA%E5%A2%9Eid%E8%BF%98%E6%98%AFuuid-%E4%B8%BA%E4%BB%80%E4%B9%88)
+
+S3-62 [short]
+??: 随机 UUID 乱序写入时，为什么会出现随机 IO、页分裂和数据碎片？
+??: {"id": "S3-62", "type": "short"}
+??: 随机 UUID 写入是乱序的：目标页很可能已经刷新到磁盘并且从缓存上移除，或者还没有被加载到缓存中，innodb 在插入之前不得不先找到并从磁盘读取目标页到内存中，导致大量随机 IO；innodb 不得不频繁地做页分裂操作来为新的行分配空间，页分裂导致移动大量的数据，影响性能；频繁的页分裂使页变得稀疏并被不规则地填充，最终会导致数据有碎片。[原文§表中十个字段，你主键用自增ID还是UUID，为什么？](https://xiaolincoding.com/interview/mysql.html#%E8%A1%A8%E4%B8%AD%E5%8D%81%E4%B8%AA%E5%AD%97%E6%AE%B5-%E4%BD%A0%E4%B8%BB%E9%94%AE%E7%94%A8%E8%87%AA%E5%A2%9Eid%E8%BF%98%E6%98%AFuuid-%E4%B8%BA%E4%BB%80%E4%B9%88)
+
+S3-63 [single]
+??: 单机业务和分布式系统在主键选择上有什么区别？
+??: {"id": "S3-63", "type": "single", "stem": "关于主键的选择，原文的建议是下列哪一项？", "options": [{"key": "A", "text": "单机业务和分布式系统都应该使用随机 UUID，以保证主键全局唯一且无需考虑顺序", "correct": false}, {"key": "B", "text": "单机业务优先选短小、递增的主键；分布式系统还要考虑跨节点唯一性，可用合适的分布式 ID", "correct": true}, {"key": "C", "text": "单机业务应优先使用随机 UUID；分布式系统应统一使用自增 id，以保证主键有序", "correct": false}, {"key": "D", "text": "单机业务无需考虑主键的长度；分布式系统不需要考虑跨节点的唯一性", "correct": false}]}
+??: 单机业务通常优先选择短小、递增的主键。分布式系统还要考虑跨节点唯一性，可以使用合适的分布式 ID。[原文§表中十个字段，你主键用自增ID还是UUID，为什么？](https://xiaolincoding.com/interview/mysql.html#%E8%A1%A8%E4%B8%AD%E5%8D%81%E4%B8%AA%E5%AD%97%E6%AE%B5-%E4%BD%A0%E4%B8%BB%E9%94%AE%E7%94%A8%E8%87%AA%E5%A2%9Eid%E8%BF%98%E6%98%AFuuid-%E4%B8%BA%E4%BB%80%E4%B9%88)
+
+S3-64 [single]
+??: 能不能把所有 UUID 都当成完全随机？
+??: {"id": "S3-64", "type": "single", "stem": "关于“UUID 无序”的说法，原文的提醒是下列哪一项？", "options": [{"key": "A", "text": "所有 UUID 都是完全随机的，不存在任何有序的 UUID 生成方案，写入都是乱序", "correct": false}, {"key": "B", "text": "所有 UUID 都是严格递增的，因此不会引发页分裂，只有自增 id 才会出现无序写入", "correct": false}, {"key": "C", "text": "说的主要是随机 UUID，不同 UUID 方案的有序性不同，不能把所有 UUID 都当成完全随机", "correct": true}, {"key": "D", "text": "UUID 是否有序由 InnoDB 在插入时自动决定，与具体生成方案无关", "correct": false}]}
+??: 原文这里主要说的是随机 UUID，不同 UUID 方案的有序性不同，不能把所有 UUID 都当成完全随机。[原文§表中十个字段，你主键用自增ID还是UUID，为什么？](https://xiaolincoding.com/interview/mysql.html#%E8%A1%A8%E4%B8%AD%E5%8D%81%E4%B8%AA%E5%AD%97%E6%AE%B5-%E4%BD%A0%E4%B8%BB%E9%94%AE%E7%94%A8%E8%87%AA%E5%A2%9Eid%E8%BF%98%E6%98%AFuuid-%E4%B8%BA%E4%BB%80%E4%B9%88)
+
+S3-65 [single]
+??: UUID 在 B+ 树里存储是有序的吗？问题出在哪里？
+??: {"id": "S3-65", "type": "single", "stem": "关于 UUID 在 B+ 树里的存储，原文的说法是下列哪一项？", "options": [{"key": "A", "text": "放进 B+ 树之后是无序的，所以无法按顺序读取，也无法进行范围查询", "correct": false}, {"key": "B", "text": "放进 B+ 树之后是有序的，新生成的 UUID 一定比前一个大，所以总是追加在末尾", "correct": false}, {"key": "C", "text": "放进 B+ 树后也是有序的，问题在于新 UUID 不一定比前一个大，插入位置可能落在树中间", "correct": true}, {"key": "D", "text": "放进 B+ 树之后是否有序，取决于 UUID 字符串的长度和数据页的大小", "correct": false}]}
+??: UUID 放进 B+ 树之后也是有序的，问题在于新生成的 UUID 不一定比前一个大，所以插入位置可能落到树的中间。[原文§什么自增ID更快一些，UUID不快吗，它在B+树里面存储是有序的吗?](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E8%87%AA%E5%A2%9Eid%E6%9B%B4%E5%BF%AB%E4%B8%80%E4%BA%9B-uuid%E4%B8%8D%E5%BF%AB%E5%90%97-%E5%AE%83%E5%9C%A8b-%E6%A0%91%E9%87%8C%E9%9D%A2%E5%AD%98%E5%82%A8%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84%E5%90%97)
+
+S3-66 [single]
+??: 自增 ID 为什么通常比随机 UUID 写入更快？
+??: {"id": "S3-66", "type": "single", "stem": "原文认为自增 ID 通常比随机 UUID 写入更快，主要原因是下列哪一项？", "options": [{"key": "A", "text": "自增 ID 通常在聚簇索引右侧追加，新记录集中在已缓存的页上，减少随机读页、页分裂和碎片", "correct": true}, {"key": "B", "text": "自增 ID 不需要保存在聚簇索引中，所以插入新记录时不需要再写入数据页", "correct": false}, {"key": "C", "text": "自增 ID 的值是随机分布的，因此每次写入的目标页总是已经在缓存中", "correct": false}, {"key": "D", "text": "自增 ID 完全不会产生页分裂，也不会额外占用任何二级索引空间", "correct": false}]}
+??: 自增 ID 通常在聚簇索引的右侧追加，新插入的记录更容易集中在已经缓存的页上，减少随机读页、页分裂和空间碎片。随机 UUID 则可能需要访问不同的数据页，写入成本更高。[原文§什么自增ID更快一些，UUID不快吗，它在B+树里面存储是有序的吗?](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E8%87%AA%E5%A2%9Eid%E6%9B%B4%E5%BF%AB%E4%B8%80%E4%BA%9B-uuid%E4%B8%8D%E5%BF%AB%E5%90%97-%E5%AE%83%E5%9C%A8b-%E6%A0%91%E9%87%8C%E9%9D%A2%E5%AD%98%E5%82%A8%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84%E5%90%97)
+
+S3-67 [fill]
+??: [填空题·有序] BIGINT 只有____字节，而常见的 UUID 字符串有____个字符。
+??: {"id": "S3-67", "type": "fill", "stem": "BIGINT 只有____字节，而常见的 UUID 字符串有____个字符。", "blankCount": 2, "blankOrder": "ordered"}
+??: BIGINT 只有 8 字节，常见的 UUID 字符串有 36 个字符。[原文§什么自增ID更快一些，UUID不快吗，它在B+树里面存储是有序的吗?](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E8%87%AA%E5%A2%9Eid%E6%9B%B4%E5%BF%AB%E4%B8%80%E4%BA%9B-uuid%E4%B8%8D%E5%BF%AB%E5%90%97-%E5%AE%83%E5%9C%A8b-%E6%A0%91%E9%87%8C%E9%9D%A2%E5%AD%98%E5%82%A8%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84%E5%90%97)
+
+S3-68 [single]
+??: 主键越宽，会带来什么影响？
+??: {"id": "S3-68", "type": "single", "stem": "主键越宽，会带来下列哪种影响？", "options": [{"key": "A", "text": "一个索引页能容纳的记录更多，而二级索引保持原来的大小不变", "correct": false}, {"key": "B", "text": "一个索引页能容纳的记录更少，所有二级索引都要保存这个主键值，也一起变大", "correct": true}, {"key": "C", "text": "只有聚簇索引会变大，所有二级索引都不受主键宽度的影响", "correct": false}, {"key": "D", "text": "只影响写入速度，不影响索引占用的空间，也不影响页容量", "correct": false}]}
+??: BIGINT 只有 8 字节，常见的 UUID 字符串有 36 个字符。主键越宽，一个索引页能容纳的记录就越少，而且所有二级索引都要保存这个主键值，也会一起变大。[原文§什么自增ID更快一些，UUID不快吗，它在B+树里面存储是有序的吗?](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E8%87%AA%E5%A2%9Eid%E6%9B%B4%E5%BF%AB%E4%B8%80%E4%BA%9B-uuid%E4%B8%8D%E5%BF%AB%E5%90%97-%E5%AE%83%E5%9C%A8b-%E6%A0%91%E9%87%8C%E9%9D%A2%E5%AD%98%E5%82%A8%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84%E5%90%97)
+
+S3-69 [multiple]
+??: 如果要用 UUID，有哪些办法可以降低它的成本？
+??: {"id": "S3-69", "type": "multiple", "stem": "关于降低 UUID 作主键的成本，原文提到了下列哪些做法？", "options": [{"key": "A", "text": "用 BINARY(16) 保存 UUID，减少字符串存储和比较的开销", "correct": true}, {"key": "B", "text": "采用按时间有序的 UUID 方案，改善插入局部性", "correct": true}, {"key": "C", "text": "继续用 36 个字符的字符串保存，以减少比较开销", "correct": false}, {"key": "D", "text": "放弃 B+ 树索引，改用哈希索引保存主键", "correct": false}]}
+??: UUID 也可以用 `BINARY(16)` 保存，减少字符串存储和比较的开销；如果采用按时间有序的 UUID 方案，还可以改善插入局部性。[原文§什么自增ID更快一些，UUID不快吗，它在B+树里面存储是有序的吗?](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E8%87%AA%E5%A2%9Eid%E6%9B%B4%E5%BF%AB%E4%B8%80%E4%BA%9B-uuid%E4%B8%8D%E5%BF%AB%E5%90%97-%E5%AE%83%E5%9C%A8b-%E6%A0%91%E9%87%8C%E9%9D%A2%E5%AD%98%E5%82%A8%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84%E5%90%97)
+
+S3-70 [single]
+??: 自增主键是不是就完全不会有页分裂或竞争？
+??: {"id": "S3-70", "type": "single", "stem": "对于“自增主键”，原文的提醒是下列哪一项？", "options": [{"key": "A", "text": "自增主键完全不会产生页分裂，在并发写入时也不存在任何竞争", "correct": false}, {"key": "B", "text": "自增也不意味着完全没有页分裂或竞争，只是一般更适合 InnoDB 的写入方式", "correct": true}, {"key": "C", "text": "自增主键比随机 UUID 更容易产生页分裂，所以不适合 InnoDB", "correct": false}, {"key": "D", "text": "自增主键只适合 MyISAM，不适合 InnoDB 的写入方式", "correct": false}]}
+??: 自增也不意味着完全没有页分裂或竞争，只是一般更适合 InnoDB 的写入方式。[原文§什么自增ID更快一些，UUID不快吗，它在B+树里面存储是有序的吗?](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E8%87%AA%E5%A2%9Eid%E6%9B%B4%E5%BF%AB%E4%B8%80%E4%BA%9B-uuid%E4%B8%8D%E5%BF%AB%E5%90%97-%E5%AE%83%E5%9C%A8b-%E6%A0%91%E9%87%8C%E9%9D%A2%E5%AD%98%E5%82%A8%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84%E5%90%97)
+
+S3-71 [single]
+??: 自增主键一定连续吗？自增保证的是什么？
+??: {"id": "S3-71", "type": "single", "stem": "关于自增主键是否连续，原文的结论是下列哪一项？", "options": [{"key": "A", "text": "一定连续，自增保证分配出的 ID 之间没有空洞", "correct": false}, {"key": "B", "text": "一定连续，只是事务回滚时 ID 会被退回重新分配", "correct": false}, {"key": "C", "text": "只有在单个事务内才不连续，跨事务一定连续", "correct": false}, {"key": "D", "text": "不一定连续，自增保证的是自动分配 ID，不保证没有空洞", "correct": true}]}
+??: 不一定。自增保证的是自动分配 ID，不保证没有空洞。[原文§自增主键一定连续吗？](https://xiaolincoding.com/interview/mysql.html#%E8%87%AA%E5%A2%9E%E4%B8%BB%E9%94%AE%E4%B8%80%E5%AE%9A%E8%BF%9E%E7%BB%AD%E5%90%97)
+
+S3-72 [multiple]
+??: 自增 ID 为什么可能出现空洞？
+??: {"id": "S3-72", "type": "multiple", "stem": "下列哪些情况可能让自增 ID 留下空洞？", "options": [{"key": "A", "text": "事务拿到自增 ID，插入后又回滚，这个 ID 通常不会退回", "correct": true}, {"key": "B", "text": "插入失败", "correct": true}, {"key": "C", "text": "并发批量插入预分配 ID", "correct": true}, {"key": "D", "text": "事务提交之后，已分配的 ID 会被自动回收并重新分配", "correct": false}]}
+??: 一个事务拿到了自增 ID，插入后又回滚，这个 ID 通常不会退回；插入失败、并发批量插入预分配 ID，也可能留下空洞。[原文§自增主键一定连续吗？](https://xiaolincoding.com/interview/mysql.html#%E8%87%AA%E5%A2%9E%E4%B8%BB%E9%94%AE%E4%B8%80%E5%AE%9A%E8%BF%9E%E7%BB%AD%E5%90%97)
+
+S3-73 [single]
+??: 自增 ID 的分配顺序等于事务的提交顺序吗？能否用 ID 连续判断数据是否完整？
+??: {"id": "S3-73", "type": "single", "stem": "事务 A 先拿到自增 ID 100，事务 B 后拿到 101，关于这两个 ID 的顺序，原文的结论是下列哪一项？", "options": [{"key": "A", "text": "分配顺序等于提交顺序，A 一定先于 B 提交，所以 ID 顺序可以当成业务完成顺序", "correct": false}, {"key": "B", "text": "ID 连续就说明数据一定完整，ID 的顺序就是业务完成的先后顺序，可以直接使用", "correct": false}, {"key": "C", "text": "分配顺序不等于提交顺序，B 可能先提交，所以不能用 ID 连续判断数据完整，也不能把 ID 顺序当成业务完成顺序", "correct": true}, {"key": "D", "text": "B 可能先提交，但只要 ID 保持连续，就仍然可以用来判断数据是否完整", "correct": false}]}
+??: 自增 ID 的分配顺序不等于事务提交顺序。事务 A 先拿到 100，事务 B 后拿到 101，但 B 完全可能先提交。所以，不能用「ID 连续」判断数据是否完整，也不能把 ID 顺序直接当成业务完成顺序。[原文§自增主键一定连续吗？](https://xiaolincoding.com/interview/mysql.html#%E8%87%AA%E5%A2%9E%E4%B8%BB%E9%94%AE%E4%B8%80%E5%AE%9A%E8%BF%9E%E7%BB%AD%E5%90%97)
+
+S3-74 [single]
+??: InnoDB 用什么数据结构实现索引？这种结构的节点怎么存放数据？
+??: {"id": "S3-74", "type": "single", "stem": "关于 InnoDB 的索引实现，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "用 B+ 树作索引的数据结构，是多叉树，叶子节点才存放数据，非叶子节点只存放索引", "correct": true}, {"key": "B", "text": "用哈希表作索引的数据结构，每个键通过哈希函数映射到一个桶", "correct": false}, {"key": "C", "text": "用 B+ 树作索引的数据结构，非叶子节点和叶子节点都存放完整的数据记录", "correct": false}, {"key": "D", "text": "用二叉树作索引的数据结构，每个节点最多只有两个子节点，叶子节点存放数据", "correct": false}]}
+??: MySQL InnoDB 引擎是用了 B+ 树作为索引的数据结构。B+Tree 是一种多叉树，叶子节点才存放数据，非叶子节点只存放索引。[原文§Mysql中的索引是怎么实现的 ？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+S3-75 [single]
+??: B+ 树每个节点里的记录是按什么排序的？
+??: {"id": "S3-75", "type": "single", "stem": "B+Tree 每个节点里的记录按索引的键值有序组织，具体来说，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "聚簇索引按主键排序，二级索引也只按主键排序", "correct": false}, {"key": "B", "text": "聚簇索引按插入顺序排序，二级索引按索引列排序", "correct": false}, {"key": "C", "text": "聚簇索引和二级索引都只按索引列排序，与主键值无关", "correct": false}, {"key": "D", "text": "聚簇索引按主键排序，二级索引按索引列及主键值排序", "correct": true}]}
+??: 每个节点里的记录都按该索引的键值有序组织：聚簇索引按主键排序，二级索引按索引列及主键值排序。[原文§Mysql中的索引是怎么实现的 ？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+S3-76 [multiple]
+??: InnoDB 的 B+ 树，父子节点之间和叶子节点之间是什么关系？
+??: {"id": "S3-76", "type": "multiple", "stem": "关于 InnoDB B+Tree 的父子节点及叶子节点，下列哪些说法符合原文？", "options": [{"key": "A", "text": "每一层父节点的索引值都会出现在下层子节点的索引值中", "correct": true}, {"key": "B", "text": "叶子节点中包括了所有的索引值信息，不会遗漏", "correct": true}, {"key": "C", "text": "每个叶子节点都有指向上一个和下一个叶子节点的指针，形成双向链表", "correct": true}, {"key": "D", "text": "非叶子节点同样存放完整的数据记录，叶子节点只存放索引键", "correct": false}, {"key": "E", "text": "叶子节点之间互不相连，范围查询只能靠重新遍历树", "correct": false}]}
+??: 每一层父节点的索引值都会出现在下层子节点的索引值中，因此在叶子节点中，包括了所有的索引值信息，并且每一个叶子节点都有两个指针，分别指向下一个叶子节点和上一个叶子节点，形成一个双向链表。[原文§Mysql中的索引是怎么实现的 ？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+S3-77 [short]
+??: 以 `select * from product where id= 5;` 为例，B+Tree 是怎样自顶向下逐层查找 id 为 5 的记录的？
+??: {"id": "S3-77", "type": "short"}
+??: B+Tree 自顶向下逐层查找：先将 5 与根节点的索引数据 (1，10，20) 比较，5 在 1 和 10 之间，找到第二层的索引数据 (1，4，7)；在第二层中查找，5 在 4 和 7 之间，找到第三层的索引数据（4，5，6）；在叶子节点的索引数据（4，5，6）中查找，就找到了索引值为 5 的行数据。[原文§Mysql中的索引是怎么实现的 ？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+S3-78 [single]
+??: 如果索引页都不在 Buffer Pool 中，上面的定位过程要读几个页？页已经在缓存里呢？
+??: {"id": "S3-78", "type": "single", "stem": "按原文的近似算法，如果这些索引页都不在 Buffer Pool 中，上述三层 B+Tree 的定位过程要读取几个页？", "options": [{"key": "A", "text": "读取一个节点近似一次磁盘 I/O，需读取 3 个页；已在缓存里的页不必再读磁盘", "correct": true}, {"key": "B", "text": "只需读取 1 个页，因为根节点已经包含了所有叶子节点中的数据", "correct": false}, {"key": "C", "text": "需读取 3 个页，即使这些页已经在缓存里，也必须再次读取磁盘", "correct": false}, {"key": "D", "text": "需读取 2 个页，根节点和叶子节点各读取一次，中间层不用读", "correct": false}]}
+??: 如果这些索引页都不在 Buffer Pool 中，可以把读取一个节点近似看成一次磁盘 I/O，上面的定位过程就需要读取 3 个页。如果页已经在缓存里，就不需要为它再次读取磁盘。[原文§Mysql中的索引是怎么实现的 ？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+S3-79 [single]
+??: 千万级数据的 B+ 树一般有几层？能否把 3～4 次当成整条查询固定的 I/O 上限？
+??: {"id": "S3-79", "type": "single", "stem": "关于“千万级数据只需要 3～4 层”，原文的说明是下列哪一项？", "options": [{"key": "A", "text": "千万级数据一定正好是 3 层，所以任何查询都只需要 3 次 I/O，与回表无关", "correct": false}, {"key": "B", "text": "很多场景 3～4 层就够，但回表、页外数据和范围扫描会增加访问量，不能当成整条查询固定的 I/O 上限", "correct": true}, {"key": "C", "text": "层数只取决于数据行数，与主键宽度、记录大小、页面填充率都无关，因此是固定值", "correct": false}, {"key": "D", "text": "3～4 层就是整条查询固定的 I/O 上限，回表和范围扫描不会再增加任何访问量", "correct": false}]}
+??: B+Tree 的分叉数很大，千万级数据在很多场景下只需要 3～4 层就能组织起来，所以定位一条记录需要访问的页比较少。具体高度还取决于主键宽度、记录大小和页面填充率；二级索引回表、页外数据和范围扫描也会增加访问量，不能把 3～4 次当成整条查询固定的 I/O 上限。[原文§Mysql中的索引是怎么实现的 ？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+S3-80 [fill]
+??: [填空题·无序] B+Tree 的具体高度，除了数据量以外，还取决于____、____和____。
+??: {"id": "S3-80", "type": "fill", "stem": "B+Tree 的具体高度，除了数据量以外，还取决于____、____和____。", "blankCount": 3, "blankOrder": "unordered"}
+??: 具体高度还取决于主键宽度、记录大小和页面填充率。[原文§Mysql中的索引是怎么实现的 ？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+
+S3-81 [single]
+??: 聚簇索引数据页中的记录是怎样组织的？这种组织方式有什么特点？
+??: {"id": "S3-81", "type": "single", "stem": "关于聚簇索引数据页中记录的组织方式，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "记录按主键顺序组成双向链表，因此插入、删除和检索的效率都很高", "correct": false}, {"key": "B", "text": "记录按插入顺序组成单向链表，检索时可以对链表直接做二分查找", "correct": false}, {"key": "C", "text": "记录按主键顺序组成单向链表，插入、删除方便，但检索效率不高，最差要遍历所有节点", "correct": true}, {"key": "D", "text": "记录按主键顺序组成单向链表，检索效率很高，但插入、删除很不方便", "correct": false}]}
+??: 聚簇索引数据页中的记录按照「主键」顺序组成单向链表，单向链表的特点就是插入、删除非常方便，但是检索效率不高，最差的情况下需要遍历链表上的所有节点才能完成检索。[原文§查询数据时，到了B+树的叶子节点，之后的查找数据是如何做？](https://xiaolincoding.com/interview/mysql.html#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%97%B6-%E5%88%B0%E4%BA%86b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9-%E4%B9%8B%E5%90%8E%E7%9A%84%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A)
+
+S3-82 [single]
+??: 数据页里的页目录起什么作用？
+??: {"id": "S3-82", "type": "single", "stem": "数据页中的页目录起什么作用？", "options": [{"key": "A", "text": "保存页内所有记录的完整内容，用来替代页内的记录链表", "correct": false}, {"key": "B", "text": "记录该页前后相邻数据页的位置，用来连接页与页之间", "correct": false}, {"key": "C", "text": "起到记录索引的作用，帮助快速找到页内对应的记录", "correct": true}, {"key": "D", "text": "保存页内被标记删除的记录，用来在后台做物理清理", "correct": false}]}
+??: 数据页中有一个页目录，起到记录的索引作用，就像书中针对每个章节设立的目录，想看某个章节时可以查看目录，快速找到对应的页数，数据页中的页目录就是为了能快速找到记录。[原文§查询数据时，到了B+树的叶子节点，之后的查找数据是如何做？](https://xiaolincoding.com/interview/mysql.html#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%97%B6-%E5%88%B0%E4%BA%86b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9-%E4%B9%8B%E5%90%8E%E7%9A%84%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A)
+
+S3-83 [single]
+??: 创建页目录时，怎样给记录分组？被标记删除的记录会怎样？
+??: {"id": "S3-83", "type": "single", "stem": "创建页目录的第一步是把记录划分成几个组，关于这一步，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "分组的记录只包括用户插入的记录，不含最小和最大记录；被标记删除的记录会立刻被物理清理", "correct": false}, {"key": "B", "text": "分组的记录包括最小记录和最大记录；被标记删除的记录会立刻从页内链表中移除", "correct": false}, {"key": "C", "text": "每条记录单独成一组，不需要划分成几个组，也不需要记录组内记录数", "correct": false}, {"key": "D", "text": "分组的记录包括最小记录和最大记录；被标记删除但尚未 purge 的记录仍可能留在页内链表中", "correct": true}]}
+??: 页目录创建的过程：将所有的记录划分成几个组，这些记录包括最小记录和最大记录。被标记删除、但还没有被 purge 物理清理的记录，仍可能留在页内链表中。[原文§查询数据时，到了B+树的叶子节点，之后的查找数据是如何做？](https://xiaolincoding.com/interview/mysql.html#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%97%B6-%E5%88%B0%E4%BA%86b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9-%E4%B9%8B%E5%90%8E%E7%9A%84%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A)
+
+S3-84 [fill]
+??: [填空题·有序] 页目录中每个记录组的最后一条记录，就是组内____的那条记录，它的头信息中存储该组一共有多少条记录，这个字段叫做____。
+??: {"id": "S3-84", "type": "fill", "stem": "页目录中每个记录组的最后一条记录，就是组内____的那条记录，它的头信息中存储该组一共有多少条记录，这个字段叫做____。", "blankCount": 2, "blankOrder": "ordered"}
+??: 每个记录组的最后一条记录就是组内最大的那条记录，并且最后一条记录的头信息中会存储该组一共有多少条记录，作为 n_owned 字段。[原文§查询数据时，到了B+树的叶子节点，之后的查找数据是如何做？](https://xiaolincoding.com/interview/mysql.html#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%97%B6-%E5%88%B0%E4%BA%86b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9-%E4%B9%8B%E5%90%8E%E7%9A%84%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A)
+
+S3-85 [fill]
+??: [填空题·有序] 页目录用来存储每组最后一条记录的____，每组的这个值也被称为____（slot）。
+??: {"id": "S3-85", "type": "fill", "stem": "页目录用来存储每组最后一条记录的____，每组的这个值也被称为____（slot）。", "blankCount": 2, "blankOrder": "ordered"}
+??: 页目录用来存储每组最后一条记录的地址偏移量，每组的地址偏移量也被称之为槽（slot），每个槽相当于指针指向了不同组的最后一个记录。[原文§查询数据时，到了B+树的叶子节点，之后的查找数据是如何做？](https://xiaolincoding.com/interview/mysql.html#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%97%B6-%E5%88%B0%E4%BA%86b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9-%E4%B9%8B%E5%90%8E%E7%9A%84%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A)
+
+S3-86 [single]
+??: 借助页目录，怎样在数据页里快速定位记录？
+??: {"id": "S3-86", "type": "single", "stem": "通过页目录的槽查找记录时，原文说的做法是下列哪一项？", "options": [{"key": "A", "text": "从最小记录开始，沿单向链表依次遍历页中的所有记录，直到找到目标", "correct": false}, {"key": "B", "text": "根据主键值直接计算出记录的地址偏移量，不需要再遍历链表", "correct": false}, {"key": "C", "text": "记录按主键从小到大排序，可用二分法定位记录所在的槽，再遍历槽内记录", "correct": true}, {"key": "D", "text": "用二分法直接定位到目标记录本身，不需要再遍历槽内的记录", "correct": false}]}
+??: 页目录就是由多个槽组成的，槽相当于分组记录的索引。因为记录是按照「主键值」从小到大排序的，所以通过槽查找记录时，可以使用二分法快速定位要查询的记录在哪个槽（哪个记录分组），定位到槽后，再遍历槽内的所有记录，找到对应的记录，无需从最小记录开始遍历整个页中的记录链表。[原文§查询数据时，到了B+树的叶子节点，之后的查找数据是如何做？](https://xiaolincoding.com/interview/mysql.html#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%97%B6-%E5%88%B0%E4%BA%86b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9-%E4%B9%8B%E5%90%8E%E7%9A%84%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A)
+
+S3-87 [short]
+??: 页目录有 5 个槽（编号 0 到 4），怎样查找主键为 11 的记录？
+??: {"id": "S3-87", "type": "short"}
+??: 先二分得出槽中间位是 (0+4)/2=2，2 号槽里最大的记录为 8，因为 11 > 8，所以需要从 2 号槽后继续搜索；再二分出 2 号和 4 号槽的中间位是 (2+4)/2=3，3 号槽里最大的记录为 12，因为 11 < 12，所以主键为 11 的记录在 3 号槽里。3 号槽实际指向该组最后一条记录，也就是主键为 12 的记录；确定目标属于这一组后，从前一个槽指向的记录（主键为 8）沿单向链表向后遍历 9、10、11，就能找到目标记录。[原文§查询数据时，到了B+树的叶子节点，之后的查找数据是如何做？](https://xiaolincoding.com/interview/mysql.html#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%97%B6-%E5%88%B0%E4%BA%86b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9-%E4%B9%8B%E5%90%8E%E7%9A%84%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A)
+
+S3-88 [fill]
+??: [填空题·有序] 页与页之间是____链表，页内记录之间是____链表。
+??: {"id": "S3-88", "type": "fill", "stem": "页与页之间是____链表，页内记录之间是____链表。", "blankCount": 2, "blankOrder": "ordered"}
+??: 页与页之间是双向链表，页内记录之间是单向链表。[原文§查询数据时，到了B+树的叶子节点，之后的查找数据是如何做？](https://xiaolincoding.com/interview/mysql.html#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%97%B6-%E5%88%B0%E4%BA%86b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9-%E4%B9%8B%E5%90%8E%E7%9A%84%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A)
+
+S3-89 [single]
+??: 二级索引页也有页目录吗？记录按什么排序？
+??: {"id": "S3-89", "type": "single", "stem": "关于二级索引页，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "二级索引页也有类似的页目录，但记录按对应索引键排序，不全按主键排序", "correct": true}, {"key": "B", "text": "二级索引页没有页目录，只能从页内第一条记录开始逐条遍历", "correct": false}, {"key": "C", "text": "二级索引页也有页目录，但记录全部按主键排序，与索引键无关", "correct": false}, {"key": "D", "text": "二级索引页的页目录与聚簇索引页完全相同，记录都按主键排序", "correct": false}]}
+??: 二级索引页也有类似的页目录，不过记录按对应索引键排序，并不是全部按主键排序。[原文§查询数据时，到了B+树的叶子节点，之后的查找数据是如何做？](https://xiaolincoding.com/interview/mysql.html#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%97%B6-%E5%88%B0%E4%BA%86b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9-%E4%B9%8B%E5%90%8E%E7%9A%84%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A)
+
+S3-90 [single]
+??: B+ 树“所有叶子节点都在同一层”意味着什么？
+??: {"id": "S3-90", "type": "single", "stem": "关于 B+ 树“所有叶子节点都在同一层”这一特性，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "使所有记录的查询耗时完全相同，与缓存命中情况无关", "correct": false}, {"key": "B", "text": "使单条记录定位经过的树层数相同，但实际 I/O 延迟还要看缓存命中情况", "correct": true}, {"key": "C", "text": "使叶子节点之间不再需要用链表相连，也不需要再记录相邻节点指针", "correct": false}, {"key": "D", "text": "使非叶子节点也可以存放完整的数据记录，减少回表次数", "correct": false}]}
+??: 所有叶子节点都在同一层，使单条记录定位经过的树层数相同，实际 I/O 延迟还要看缓存命中情况，提高了搜索效率。[原文§B+树的特性是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-91 [single]
+??: B+ 树叶子节点之间的链表有什么作用？
+??: {"id": "S3-91", "type": "single", "stem": "B+ 树的叶子节点之间用指针链接成链表，这样做的好处是下列哪一项？", "options": [{"key": "A", "text": "让点查询不需要从根节点开始，直接从链表头起逐个比较", "correct": false}, {"key": "B", "text": "让非叶子节点可以省略，只保留叶子节点来完成全部查找", "correct": false}, {"key": "C", "text": "让每个叶子节点都保存整棵树的高度信息，便于范围定位", "correct": false}, {"key": "D", "text": "适合范围查询和排序扫描，可沿叶子链表顺序访问，无需多次随机访问", "correct": true}]}
+??: 每个叶子节点都包含指向相邻叶子节点的指针，形成一个链表，由于叶子节点之间的链接，B+ 树非常适合进行范围查询和排序扫描。可以沿着叶子节点的链表顺序访问数据，而无需进行多次随机访问。[原文§B+树的特性是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-92 [single]
+??: B+ 树的非叶子节点存储什么？这对树的高度有什么影响？
+??: {"id": "S3-92", "type": "single", "stem": "关于 B+ 树的非叶子节点，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "只存键值和子节点指针，不含数据记录，用来指导搜索路径；数据量大时层高比 B 树更少", "correct": true}, {"key": "B", "text": "存键值、子节点指针以及数据记录，用来指导搜索路径；数据量大时层高比 B 树更多", "correct": false}, {"key": "C", "text": "只存数据记录，不存键值，用来指导搜索路径；数据量大时层高与 B 树相同", "correct": false}, {"key": "D", "text": "只存指向兄弟节点的指针，用来在叶子节点间移动；数据量大时层高比 B 树更少", "correct": false}]}
+??: 非叶子节点仅存储键值和指向子节点的指针，不包含数据记录。这些键值用于指导搜索路径，帮助快速定位到正确的叶子节点。并且，由于非叶子节点只存放键值，当数据量比较大时，相对于 B 树，B+ 树的层高更少，查找效率也就更高。[原文§B+树的特性是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-93 [single]
+??: B+ 树的叶子节点存储什么？每次搜索是否都会到达叶子节点？
+??: {"id": "S3-93", "type": "single", "stem": "关于 B+ 树的叶子节点，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "叶子节点存实际数据记录或指向数据记录的指针，每次搜索都会到达叶子节点", "correct": true}, {"key": "B", "text": "叶子节点只存键值，数据记录存放在非叶子节点，所以搜索不一定要到达叶子节点", "correct": false}, {"key": "C", "text": "叶子节点存实际的数据记录，但搜索时常在非叶子节点就找到所需数据", "correct": false}, {"key": "D", "text": "叶子节点只存指向非叶子节点的指针，搜索到达叶子节点后还要返回上层", "correct": false}]}
+??: 与 B 树不同，B+ 树的叶子节点存储实际的数据记录或指向数据记录的指针。这意味着每次搜索都会到达叶子节点，才能找到所需数据。[原文§B+树的特性是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-94 [single]
+??: B+ 树的“自平衡”指什么？
+??: {"id": "S3-94", "type": "single", "stem": "B+ 树的“自平衡”特性，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "只在新建索引时平衡一次，此后无论怎样增删改，树的高度都不再变化", "correct": false}, {"key": "B", "text": "插入、删除和更新后会自动重新平衡，树的高度保持相对稳定，搜索性能良好", "correct": true}, {"key": "C", "text": "插入、删除和更新操作都不会改变树的结构，所以根本不需要平衡", "correct": false}, {"key": "D", "text": "需要用户手动执行优化命令，树才会重新平衡，否则性能会越来越差", "correct": false}]}
+??: B+ 树在插入、删除和更新操作后会自动重新平衡，确保树的高度保持相对稳定，从而保持良好的搜索性能。[原文§B+树的特性是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-95 [fill]
+??: [填空题·有序] B+ 树中，每个节点最多可以有____个子节点，最少可以有____个子节点（除了根节点），其中 M 是树的阶数。
+??: {"id": "S3-95", "type": "fill", "stem": "B+ 树中，每个节点最多可以有____个子节点，最少可以有____个子节点（除了根节点），其中 M 是树的阶数。", "blankCount": 2, "blankOrder": "ordered"}
+??: 每个节点最多可以有 M 个子节点，最少可以有 ceil(M/2) 个子节点（除了根节点），这里的 M 是树的阶数。[原文§B+树的特性是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-96 [single]
+??: B+ 树和 B 树在数据存放位置上有什么区别？
+??: {"id": "S3-96", "type": "single", "stem": "B+ 树和 B 树在数据存放位置上的区别是下列哪一项？", "options": [{"key": "A", "text": "B+ 树非叶子节点既存索引也存部分数据；B 树数据都在叶子节点，非叶子节点只存索引信息", "correct": false}, {"key": "B", "text": "两者的数据都只存储在叶子节点上，非叶子节点只存索引，区别只在节点的大小", "correct": false}, {"key": "C", "text": "两者的非叶子节点都既存储索引信息，也存储部分数据，区别只在叶子节点", "correct": false}, {"key": "D", "text": "B+ 树数据都在叶子节点，非叶子节点只存索引信息；B 树非叶子节点既存索引也存部分数据", "correct": true}]}
+??: 在 B+ 树中，数据都存储在叶子节点上，而非叶子节点只存储索引信息；而 B 树的非叶子节点既存储索引信息也存储部分数据。[原文§说说B+树和B树的区别](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E8%AF%B4b-%E6%A0%91%E5%92%8Cb%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S3-97 [single]
+??: B+ 树和 B 树的叶子节点在连接方式上有什么区别？
+??: {"id": "S3-97", "type": "single", "stem": "B+ 树和 B 树的叶子节点在连接方式上的区别是下列哪一项？", "options": [{"key": "A", "text": "B 树的叶子节点使用链表相连，便于范围查询；B+ 树的叶子节点没有链表连接", "correct": false}, {"key": "B", "text": "两者的叶子节点都使用链表相连，区别只在于链表是单向还是双向", "correct": false}, {"key": "C", "text": "两者的叶子节点都没有链表连接，范围查询都只能靠遍历整棵树来完成", "correct": false}, {"key": "D", "text": "B+ 树叶子节点用链表相连，便于范围查询和顺序访问；B 树叶子节点没有链表连接", "correct": true}]}
+??: B+ 树的叶子节点使用链表相连，便于范围查询和顺序访问；B 树的叶子节点没有链表连接。[原文§说说B+树和B树的区别](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E8%AF%B4b-%E6%A0%91%E5%92%8Cb%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S3-98 [single]
+??: B+ 树和 B 树的查找性能稳定性有什么区别？
+??: {"id": "S3-98", "type": "single", "stem": "B+ 树和 B 树在查找性能稳定性上的区别是下列哪一项？", "options": [{"key": "A", "text": "B 树每次查找都必须到叶子节点，性能更稳定；B+ 树可能在非叶子节点就找到数据", "correct": false}, {"key": "B", "text": "两者每次查找都可能在非叶子节点就结束，查找性能同样都不稳定，没有区别", "correct": false}, {"key": "C", "text": "B+ 树每次查找都要到叶子节点，性能更稳定；B 树可能在非叶子节点就找到数据，性能相对不稳定", "correct": true}, {"key": "D", "text": "两者每次查找都必须到叶子节点才能找到数据，性能稳定程度没有区别", "correct": false}]}
+??: B+ 树的查找性能更稳定，每次查找都需要查找到叶子节点；而 B 树的查找可能会在非叶子节点找到数据，性能相对不稳定。[原文§说说B+树和B树的区别](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E8%AF%B4b-%E6%A0%91%E5%92%8Cb%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S3-99 [multiple]
+??: B+ 树和 B 树有哪些区别？
+??: {"id": "S3-99", "type": "multiple", "stem": "下列哪些属于原文所说的 B+ 树区别于 B 树的特点？", "options": [{"key": "A", "text": "数据都存储在叶子节点，非叶子节点只存储索引信息", "correct": true}, {"key": "B", "text": "叶子节点使用链表相连，便于范围查询和顺序访问", "correct": true}, {"key": "C", "text": "每次查找都需要查找到叶子节点，性能更稳定", "correct": true}, {"key": "D", "text": "查找可能在非叶子节点就找到数据，性能相对更不稳定", "correct": false}, {"key": "E", "text": "叶子节点没有链表连接，范围查询只能靠遍历树完成", "correct": false}]}
+??: B+ 树和 B 树的区别：B+ 树的数据都存储在叶子节点上，非叶子节点只存储索引信息；B+ 树的叶子节点使用链表相连，便于范围查询和顺序访问；B+ 树的查找性能更稳定，每次查找都需要查找到叶子节点。[原文§说说B+树和B树的区别](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E8%AF%B4b-%E6%A0%91%E5%92%8Cb%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S3-100 [single]
+??: B 树和 B+ 树的共同点是什么？为什么它们适合检索存于磁盘中的数据？
+??: {"id": "S3-100", "type": "single", "stem": "B 树和 B+ 树都适合检索存于磁盘中的数据，原因是下列哪一项？", "options": [{"key": "A", "text": "它们都是通过多叉树的方式，会将树的高度变矮", "correct": true}, {"key": "B", "text": "它们都把完整记录保存在非叶子节点中", "correct": false}, {"key": "C", "text": "它们的叶子节点之间都用链表相连", "correct": false}, {"key": "D", "text": "它们都不需要在磁盘上保存索引", "correct": false}]}
+??: B 树和 B+ 树都是通过多叉树的方式，会将树的高度变矮，所以这两个数据结构非常适合检索存于磁盘中的数据。[原文§B+树的好处是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E5%A5%BD%E5%A4%84%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-101 [single]
+??: B+ 树为什么比 B 树更“矮胖”，磁盘 I/O 次数更少？
+??: {"id": "S3-101", "type": "single", "stem": "InnoDB 采用 B+ 树的原因之一是 B+ 树比 B 树更“矮胖”，磁盘 I/O 次数更少，原因是下列哪一项？", "options": [{"key": "A", "text": "非叶子节点同时存放索引和记录数据，所以每个节点能容纳更多的内容", "correct": false}, {"key": "B", "text": "叶子节点不存放记录数据，所以整棵树的层数更少，磁盘 I/O 更少", "correct": false}, {"key": "C", "text": "每个节点只存放一个索引，所以从根节点到叶子节点的路径更短", "correct": false}, {"key": "D", "text": "非叶子节点不存放记录数据，仅存放索引，同样数据量下可以容纳更多索引", "correct": true}]}
+??: B+ 树的非叶子节点不存放实际的记录数据，仅存放索引，因此数据量相同的情况下，相比存储即存索引又存记录的 B 树，B+ 树的非叶子节点可以存放更多的索引，因此 B+ 树可以比 B 树更「矮胖」，查询底层节点的磁盘 I/O 次数会更少。[原文§B+树的好处是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E5%A5%BD%E5%A4%84%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-102 [single]
+??: B+ 树把完整记录集中在叶子节点有什么好处？能不能说它的每次操作都比 B 树快？
+??: {"id": "S3-102", "type": "single", "stem": "关于 B+ 树把完整记录集中在叶子节点这一点，原文的说法是下列哪一项？", "options": [{"key": "A", "text": "插入和删除永远不会触发页分裂、合并或父节点调整，因此每次操作都一定比 B 树快", "correct": false}, {"key": "B", "text": "非叶子节点只负责导航，适合按页组织和缓存；但插入、删除仍可能触发页分裂、合并，不能认为一定比 B 树快", "correct": true}, {"key": "C", "text": "叶子节点不再需要按页组织，也不需要缓存，整棵树改为按单行读取，所以磁盘 I/O 大大减少", "correct": false}, {"key": "D", "text": "非叶子节点也要保存完整的记录，用来加快导航，因此整棵树会变得更矮胖，更适合缓存", "correct": false}]}
+??: B+ 树把完整记录集中在叶子节点，非叶子节点只负责导航，比较适合按页组织和缓存。插入、删除仍可能触发页分裂、合并以及父节点调整，不能认为一定比 B 树的每次操作都快。[原文§B+树的好处是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E5%A5%BD%E5%A4%84%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-103 [single]
+??: B+ 树的叶子节点链表对范围查询有什么好处？B 树怎么做范围查询？
+??: {"id": "S3-103", "type": "single", "stem": "关于范围查询，B+ 树和 B 树的区别是下列哪一项？", "options": [{"key": "A", "text": "B 树叶子节点用链表连接，范围查询效率更高；B+ 树只能靠树的遍历，涉及多个节点的磁盘 I/O", "correct": false}, {"key": "B", "text": "两者都只能通过树的遍历来完成范围查询，涉及多个节点的磁盘 I/O，效率相同", "correct": false}, {"key": "C", "text": "B+ 树叶子节点用链表连接，有利于范围查询；B 树只能靠树的遍历，涉及多个节点的磁盘 I/O，效率不如 B+ 树", "correct": true}, {"key": "D", "text": "两者叶子节点之间都用链表连接，范围查询的效率没有任何区别，磁盘 I/O 也相同", "correct": false}]}
+??: B+ 树叶子节点之间用链表连接了起来，有利于范围查询，而 B 树要实现范围查询，只能通过树的遍历来完成，这会涉及多个节点的磁盘 I/O 操作，范围查询效率不如 B+ 树。[原文§B+树的好处是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E5%A5%BD%E5%A4%84%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-104 [multiple]
+??: InnoDB 采用 B+ 树作为索引数据结构的原因有哪些？
+??: {"id": "S3-104", "type": "multiple", "stem": "下列哪些属于原文所说的 InnoDB 采用 B+ 树作为索引数据结构的原因？", "options": [{"key": "A", "text": "非叶子节点不存放记录数据，树更矮胖，磁盘 I/O 次数更少", "correct": true}, {"key": "B", "text": "完整记录集中在叶子节点，非叶子节点只负责导航，比较适合按页组织和缓存", "correct": true}, {"key": "C", "text": "叶子节点之间用链表连接，有利于范围查询", "correct": true}, {"key": "D", "text": "插入、删除操作一定比 B 树的每次操作都快", "correct": false}]}
+??: InnoDB 采用 B+ 树的原因：非叶子节点不存放实际的记录数据，仅存放索引，B+ 树更「矮胖」，磁盘 I/O 次数更少；完整记录集中在叶子节点，非叶子节点只负责导航，比较适合按页组织和缓存；叶子节点之间用链表连接，有利于范围查询。[原文§B+树的好处是什么？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E5%A5%BD%E5%A4%84%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S3-105 [single]
+??: B+ 树的叶子节点链表是单向还是双向的？为什么？
+??: {"id": "S3-105", "type": "single", "stem": "InnoDB 的 B+ 树叶子节点之间用什么链表连接？这样做的目的是什么？", "options": [{"key": "A", "text": "用双向链表连接，既能向右也能向左遍历，用来实现倒序遍历或排序", "correct": true}, {"key": "B", "text": "用单向链表连接，只能向右遍历，目的是节省指针占用的空间", "correct": false}, {"key": "C", "text": "用双向链表连接，目的是让点查询不用从根节点开始，直接沿链表查找", "correct": false}, {"key": "D", "text": "用单向链表连接，只能向右遍历，目的是实现倒序遍历和排序", "correct": false}]}
+??: 双向的，为了实现倒序遍历或者排序。B+ 树的叶子节点之间是用「双向链表」进行连接，这样的好处是既能向右遍历，也能向左遍历。[原文§B+树的叶子节点链表是单向还是双向？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E9%93%BE%E8%A1%A8%E6%98%AF%E5%8D%95%E5%90%91%E8%BF%98%E6%98%AF%E5%8F%8C%E5%90%91)
+
+S3-106 [fill]
+??: [填空题·有序] InnoDB 的 B+ 树，节点的内容是____，每个这样的单位默认大小是____ KB。
+??: {"id": "S3-106", "type": "fill", "stem": "InnoDB 的 B+ 树，节点的内容是____，每个这样的单位默认大小是____ KB。", "blankCount": 2, "blankOrder": "ordered"}
+??: B+ 树的节点内容是数据页，数据页里存放了用户的记录以及各种信息，每个数据页默认大小是 16 KB。[原文§B+树的叶子节点链表是单向还是双向？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E9%93%BE%E8%A1%A8%E6%98%AF%E5%8D%95%E5%90%91%E8%BF%98%E6%98%AF%E5%8F%8C%E5%90%91)
+
+S3-107 [single]
+??: 为什么 InnoDB 一定会为表创建聚簇索引，而且聚簇索引只能有一个？
+??: {"id": "S3-107", "type": "single", "stem": "InnoDB 一定会为表创建聚簇索引，且聚簇索引只能有一个，原文给出的理由是下列哪一项？", "options": [{"key": "A", "text": "聚簇索引只保存索引列和主键值，所以只需要一个，而二级索引则保存完整的数据", "correct": false}, {"key": "B", "text": "表的数据都存放在聚簇索引的叶子节点里，数据物理上只保存一份，所以只能有一个，二级索引可有多个", "correct": true}, {"key": "C", "text": "表的数据保存在多份聚簇索引里，所以每个表都至少要有一个聚簇索引，也可以有多个", "correct": false}, {"key": "D", "text": "聚簇索引占用空间大，所以 InnoDB 限制每个表只能创建一个，数据另存于二级索引", "correct": false}]}
+??: InnoDB 根据索引类型不同，分为聚簇索引和二级索引。聚簇索引的叶子节点保存行数据，二级索引的叶子节点保存索引列和主键值，不保存完整行。因为表的数据都是存放在聚集索引的叶子节点里，所以 InnoDB 存储引擎一定会为表创建一个聚集索引，且由于数据在物理上只会保存一份，所以聚簇索引只能有一个，而二级索引可以创建多个。[原文§B+树的叶子节点链表是单向还是双向？](https://xiaolincoding.com/interview/mysql.html#b-%E6%A0%91%E7%9A%84%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E9%93%BE%E8%A1%A8%E6%98%AF%E5%8D%95%E5%90%91%E8%BF%98%E6%98%AF%E5%8F%8C%E5%90%91)
+
+S3-108 [single]
+??: B+Tree 相比 B 树，为什么让树更矮、定位记录访问的页更少？
+??: {"id": "S3-108", "type": "single", "stem": "原文比较 B+Tree 和 B 树时，认为 B+Tree 能让树更矮、定位记录访问的页更少，原因是下列哪一项？", "options": [{"key": "A", "text": "B+Tree 的非叶子节点除了索引键还保存数据，所以同样大小的页里能容纳更多导航项", "correct": false}, {"key": "B", "text": "B+Tree 的叶子节点不保存索引键，所以占用空间更小", "correct": false}, {"key": "C", "text": "B+Tree 的每个节点只能有两个子节点，所以路径更短", "correct": false}, {"key": "D", "text": "B+Tree 的非叶子节点只保存索引键和子节点指针，同样大小的页里通常可以容纳更多导航项", "correct": true}]}
+??: B+Tree 的非叶子节点只保存索引键和子节点指针，而 B 树的非叶子节点还要保存数据。因此同样大小的页里，B+Tree 通常可以容纳更多导航项，让树更矮，定位记录需要访问的页更少。[原文§MySQL为什么用B+树结构？和其他结构比的优点？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8b-%E6%A0%91%E7%BB%93%E6%9E%84-%E5%92%8C%E5%85%B6%E4%BB%96%E7%BB%93%E6%9E%84%E6%AF%94%E7%9A%84%E4%BC%98%E7%82%B9)
+
+S3-109 [single]
+??: B+Tree 相比 B 树，范围查询有什么优势？
+??: {"id": "S3-109", "type": "single", "stem": "范围查询时，InnoDB 的 B+Tree 相比 B 树的优势是下列哪一项？", "options": [{"key": "A", "text": "叶子节点用双向链表连接，找到起点后就能顺序扫描；B 树通常需要通过树的遍历获取范围内的数据", "correct": true}, {"key": "B", "text": "叶子节点之间没有链表，但非叶子节点保存了数据，可以直接返回范围内的数据", "correct": false}, {"key": "C", "text": "B+Tree 范围查询不需要找到起点，直接从根节点顺序扫描", "correct": false}, {"key": "D", "text": "B 树的叶子节点用链表连接，B+Tree 通过树的遍历获取范围内的数据", "correct": false}]}
+??: InnoDB 的 B+Tree 叶子节点用双向链表连接，范围查询找到起点后就能顺序扫描；B 树通常需要通过树的遍历获取范围内的数据。[原文§MySQL为什么用B+树结构？和其他结构比的优点？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8b-%E6%A0%91%E7%BB%93%E6%9E%84-%E5%92%8C%E5%85%B6%E4%BB%96%E7%BB%93%E6%9E%84%E6%AF%94%E7%9A%84%E4%BC%98%E7%82%B9)
+
+S3-110 [single]
+??: B+Tree 相比二叉树，为什么更适合磁盘存储？
+??: {"id": "S3-110", "type": "single", "stem": "B+Tree 与平衡二叉树相比，更适合磁盘存储的原因是下列哪一项？", "options": [{"key": "A", "text": "B+Tree 每个节点最多只有两个子节点，而平衡二叉树一个节点可以有很多子节点，所以 B+Tree 高度更低", "correct": false}, {"key": "B", "text": "B+Tree 一个节点可有很多子节点，而平衡二叉树最多两个；同样数据量下高度更低，更适合以页读取和缓存", "correct": true}, {"key": "C", "text": "平衡二叉树一个节点可以有很多子节点，所以高度更低，但不适合以页为单位读取和缓存", "correct": false}, {"key": "D", "text": "B+Tree 的高度与数据量无关，始终保持 3～4 层，所以更适合以页为单位读取", "correct": false}]}
+??: B+Tree 一个节点可以有很多子节点，而平衡二叉树每个节点最多只有两个子节点。相同数据量下，B+Tree 的高度通常更低，更适合以页为单位读取和缓存的磁盘存储。千万级数据的索引在很多场景下只有 3～4 层，实际磁盘 I/O 还要结合缓存命中、回表和扫描范围判断。[原文§MySQL为什么用B+树结构？和其他结构比的优点？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8b-%E6%A0%91%E7%BB%93%E6%9E%84-%E5%92%8C%E5%85%B6%E4%BB%96%E7%BB%93%E6%9E%84%E6%AF%94%E7%9A%84%E4%BC%98%E7%82%B9)
+
+S3-111 [multiple]
+??: B+Tree 和 Hash 相比，各有什么特点？
+??: {"id": "S3-111", "type": "multiple", "stem": "关于 B+Tree 和 Hash 的对比，下列哪些说法符合原文？", "options": [{"key": "A", "text": "Hash 做等值查询很快，平均查找复杂度接近 O(1)", "correct": true}, {"key": "B", "text": "Hash 需要处理哈希冲突", "correct": true}, {"key": "C", "text": "Hash 不适合范围查询、排序和前缀匹配", "correct": true}, {"key": "D", "text": "B+Tree 可以同时服务等值和范围查询，所以适用场景更广", "correct": true}, {"key": "E", "text": "Hash 同时适合等值查询和范围查询", "correct": false}]}
+??: Hash 做等值查询很快，平均查找复杂度接近 O(1)，不过需要处理哈希冲突，而且不适合范围查询、排序和前缀匹配。B+Tree 可以同时服务等值和范围查询，所以适用场景更广。[原文§MySQL为什么用B+树结构？和其他结构比的优点？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8b-%E6%A0%91%E7%BB%93%E6%9E%84-%E5%92%8C%E5%85%B6%E4%BB%96%E7%BB%93%E6%9E%84%E6%AF%94%E7%9A%84%E4%BC%98%E7%82%B9)
+
+S3-112 [single]
+??: 千万级数据的 B+Tree 只有 3～4 层，是否意味着实际磁盘 I/O 一定只有 3～4 次？
+??: {"id": "S3-112", "type": "single", "stem": "对于“千万级数据的索引在很多场景下只有 3～4 层”，原文的补充说明是下列哪一项？", "options": [{"key": "A", "text": "实际磁盘 I/O 一定恰好等于索引的层数，与其他因素无关", "correct": false}, {"key": "B", "text": "只要索引只有 3～4 层，查询过程中就不会再发生回表和范围扫描", "correct": false}, {"key": "C", "text": "实际磁盘 I/O 还要结合缓存命中、回表和扫描范围判断", "correct": true}, {"key": "D", "text": "缓存命中与否不影响实际磁盘 I/O，只由索引的层数决定", "correct": false}]}
+??: 千万级数据的索引在很多场景下只有 3～4 层，实际磁盘 I/O 还要结合缓存命中、回表和扫描范围判断。[原文§MySQL为什么用B+树结构？和其他结构比的优点？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8b-%E6%A0%91%E7%BB%93%E6%9E%84-%E5%92%8C%E5%85%B6%E4%BB%96%E7%BB%93%E6%9E%84%E6%AF%94%E7%9A%84%E4%BC%98%E7%82%B9)
+
+S3-113 [single]
+??: 为什么 MySQL 不用跳表？
+??: {"id": "S3-113", "type": "single", "stem": "原文认为 MySQL 不用跳表的原因是下列哪一项？", "options": [{"key": "A", "text": "跳表不支持有序存储，无法用来维护索引键的顺序，所以不能用于索引", "correct": false}, {"key": "B", "text": "同样数据量下，跳表层数过高，磁盘 I/O 次数增多，B+ 树的磁盘 I/O 更少", "correct": true}, {"key": "C", "text": "跳表的层数太低，导致每一层存放的数据过多，磁盘 I/O 次数增多", "correct": false}, {"key": "D", "text": "跳表无法存储千万级的数据，数据量超过上限后只能改用 B+ 树", "correct": false}]}
+??: B+ 树的高度在 3 层时存储的数据可能已达千万级别，但对于跳表而言同样去维护千万的数据量，所造成的跳表层数过高而导致的磁盘 I/O 次数增多，也就是使用 B+ 树在存储同样的数据下磁盘 I/O 次数更少。[原文§为什么 MySQL 不用跳表？](https://xiaolincoding.com/interview/mysql.html#%E4%B8%BA%E4%BB%80%E4%B9%88-mysql-%E4%B8%8D%E7%94%A8%E8%B7%B3%E8%A1%A8)
+
+S3-114 [fill]
+??: [填空题·有序] 按原文的说法，B+ 树的高度在____层时存储的数据可能已达千万级别。
+??: {"id": "S3-114", "type": "fill", "stem": "按原文的说法，B+ 树的高度在____层时存储的数据可能已达千万级别。", "blankCount": 1, "blankOrder": "ordered"}
+??: B+ 树的高度在 3 层时存储的数据可能已达千万级别。[原文§为什么 MySQL 不用跳表？](https://xiaolincoding.com/interview/mysql.html#%E4%B8%BA%E4%BB%80%E4%B9%88-mysql-%E4%B8%8D%E7%94%A8%E8%B7%B3%E8%A1%A8)
+
+S3-115 [single]
+??: 什么是联合索引？
+??: {"id": "S3-115", "type": "single", "stem": "原文对联合索引的定义是下列哪一项？", "options": [{"key": "A", "text": "只对字符类型字段的前几个字符建立索引", "correct": false}, {"key": "B", "text": "将多个字段组合成一个索引", "correct": true}, {"key": "C", "text": "把同一个字段同时建成多个索引", "correct": false}, {"key": "D", "text": "建立在主键字段上、不允许有空值的索引", "correct": false}]}
+??: 将多个字段组合成一个索引，该索引就被称为联合索引。[原文§联合索引的实现原理？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+S3-116 [single]
+??: 联合索引 (product_no, name) 的非叶子节点用什么作 key？比较顺序是什么？
+??: {"id": "S3-116", "type": "single", "stem": "对于联合索引 (product_no, name)，关于它的 B+Tree 实现，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "非叶子节点用两个字段的值作为 key，查询时先按 product_no 比较，相同再按 name 比较", "correct": true}, {"key": "B", "text": "非叶子节点只用 product_no 作为 key，name 不参与比较", "correct": false}, {"key": "C", "text": "非叶子节点用两个字段的值作为 key，查询时先按 name 比较，相同再按 product_no 比较", "correct": false}, {"key": "D", "text": "product_no 和 name 各自建立一棵 B+Tree，查询时分别比较", "correct": false}]}
+??: 联合索引的非叶子节点用两个字段的值作为 B+Tree 的 key 值。当在联合索引查询数据时，先按 product_no 字段比较，在 product_no 相同的情况下再按 name 字段比较，也就是先按 product_no 排序，product_no 相同时再按 name 排序。[原文§联合索引的实现原理？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+S3-117 [single]
+??: 什么是最左匹配原则？跳过最左列后会怎样？
+??: {"id": "S3-117", "type": "single", "stem": "关于最左匹配原则，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "可以从联合索引中的任意字段开始匹配索引列，跳过最左列也能定位到一段连续的索引范围", "correct": false}, {"key": "B", "text": "只要联合索引中包含查询用到的字段，无论位置和顺序如何，都能按该字段直接定位", "correct": false}, {"key": "C", "text": "必须同时匹配联合索引的全部字段，只要少一个字段就完全不能使用该索引", "correct": false}, {"key": "D", "text": "从最左字段开始连续匹配索引列；跳过最左列后，通常不能直接按后面的字段定位到连续的索引范围", "correct": true}]}
+??: 使用联合索引定位数据时，要关注最左匹配原则，也就是从最左边的字段开始，连续匹配索引列。跳过最左列后，通常就不能直接按后面的字段定位到一段连续的索引范围。[原文§联合索引的实现原理？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+S3-118 [multiple]
+??: 对 (a, b, c) 联合索引，哪些查询条件缺少最左列，通常不能按常规最左前缀定位？
+??: {"id": "S3-118", "type": "multiple", "stem": "已创建 (a, b, c) 联合索引，下列哪些查询条件因为缺少最左边的 a，通常不能使用这个索引进行常规的前缀定位？", "options": [{"key": "A", "text": "where a=1", "correct": false}, {"key": "B", "text": "where b=2", "correct": true}, {"key": "C", "text": "where a=1 and b=2", "correct": false}, {"key": "D", "text": "where c=3", "correct": true}, {"key": "E", "text": "where a=1 and b=2 and c=3", "correct": false}, {"key": "F", "text": "where b=2 and c=3", "correct": true}]}
+??: 缺少最左边的 a 的查询条件（where b=2、where c=3、where b=2 and c=3）通常不能使用这个索引进行常规的前缀定位；where a=1、where a=1 and b=2、where a=1 and b=2 and c=3 则可以匹配上联合索引。[原文§联合索引的实现原理？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+S3-119 [single]
+??: (a, b, c) 联合索引中，为什么缺少 a 时 b、c 不能定位？
+??: {"id": "S3-119", "type": "single", "stem": "原文解释 (a, b, c) 联合索引缺少 a 时通常无法按 b、c 定位的原因是下列哪一项？", "options": [{"key": "A", "text": "联合索引只保存了 a 的值，b 和 c 的值没有保存在索引中，所以无法定位", "correct": false}, {"key": "B", "text": "联合索引先按 c 排序，c 相同再按 b 排序，b 也相同再按 a 排序，所以 a 是局部有序的", "correct": false}, {"key": "C", "text": "联合索引中 a、b、c 各自都是全局有序的，但彼此之间没有关联，所以无法定位", "correct": false}, {"key": "D", "text": "联合索引先按 a 排序，a 相同再按 b，b 也相同再按 c，所以 b 和 c 全局无序、局部有序", "correct": true}]}
+??: 原因是 (a, b, c) 联合索引先按 a 排序，a 相同再按 b 排序，b 也相同再按 c 排序。所以，b 和 c 是全局无序、局部有序的。[原文§联合索引的实现原理？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+S3-120 [single]
+??: 联合索引 (a, b) 的示例中，a 和 b 的有序性如何？为什么 where a = 2 and b = 7 能用到联合索引？
+??: {"id": "S3-120", "type": "single", "stem": "联合索引 (a, b) 的示例里，a 是全局有序的，b 是全局无序的，关于 `where a = 2 and b = 7` 能用到联合索引的原因，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "b 本身是全局有序的，所以不管 a 取什么值，b 都能按索引直接定位，并不依赖 a", "correct": false}, {"key": "B", "text": "只有 a 是局部有序的，b 无论如何都用不到联合索引，所以只能用到 a 一个字段", "correct": false}, {"key": "C", "text": "b 只在 a 相同时局部有序（如 a=2 时为 7、8），所以 a 和 b 都能用到联合索引", "correct": true}, {"key": "D", "text": "a 和 b 都是全局无序的，所以这个查询不能使用联合索引，只能全表扫描", "correct": false}]}
+??: 联合索引（a，b）的 B+ Tree 中，a 是全局有序的（1, 2, 2, 3, 4, 5, 6, 7, 8），而 b 是全局无序的（12，7，8，2，3，8，10，5，2）。只有在 a 相同的情况下，b 才是有序的，比如 a 等于 2 的时候，b 的值为（7，8），这个有序状态是局部的，因此执行 where a = 2 and b = 7，a 和 b 字段能用到联合索引，也就是联合索引生效了。[原文§联合索引的实现原理？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+S3-121 [single]
+??: WHERE b = 2 和 WHERE a = 2 AND b = 2 在使用联合索引 (a, b) 时有什么区别？
+??: {"id": "S3-121", "type": "single", "stem": "对于联合索引 (a, b)，直接执行 `WHERE b = 2` 与 `WHERE a = 2 AND b = 2` 的区别，原文强调要区分什么？", "options": [{"key": "A", "text": "要区分「聚簇索引」和「二级索引」，两者的叶子节点内容不一样", "correct": false}, {"key": "B", "text": "要区分「等值查询」和「范围查询」，两者的成本一定相同", "correct": false}, {"key": "C", "text": "要区分「利用索引定位」和「扫描索引后过滤」，两者的查询成本并不一样", "correct": true}, {"key": "D", "text": "要区分「回表」和「覆盖索引」，两者一定都需要读取完整的数据行", "correct": false}]}
+??: 直接执行 `WHERE b = 2`，通常不能像 `WHERE a = 2 AND b = 2` 那样按最左前缀定位。这里要区分「利用索引定位」和「扫描索引后过滤」，两者的查询成本并不一样。[原文§联合索引的实现原理？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+S3-122 [fill]
+??: [填空题·有序] 缺少最左列时，覆盖索引仍可能进行____扫描，MySQL 8.0 在满足条件时还可能采用____扫描，最终要看执行计划。
+??: {"id": "S3-122", "type": "fill", "stem": "缺少最左列时，覆盖索引仍可能进行____扫描，MySQL 8.0 在满足条件时还可能采用____扫描，最终要看执行计划。", "blankCount": 2, "blankOrder": "ordered"}
+??: 这里说的是不能按常规最左前缀快速定位，不代表索引完全不会被读取：覆盖索引时仍可能全索引扫描，MySQL 8.0 在满足条件时还可能采用索引跳跃扫描，最终要看执行计划。[原文§联合索引的实现原理？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+S3-123 [single]
+??: where 条件里，a 字段写在前面还是后面，会影响 (a, b, c) 联合索引吗？
+??: {"id": "S3-123", "type": "single", "stem": "对于 (a, b, c) 联合索引，`where b=2 and a=1` 能匹配联合索引吗？", "options": [{"key": "A", "text": "能，因为有查询优化器，a 字段在 where 子句里的先后顺序并不重要", "correct": true}, {"key": "B", "text": "不能，a 必须写在 b 的前面才能匹配联合索引", "correct": false}, {"key": "C", "text": "不能，where 子句里的条件必须与联合索引的字段顺序完全一致", "correct": false}, {"key": "D", "text": "能，因为缺少 a 的情况下 b 也能按最左前缀定位", "correct": false}]}
+??: 因为有查询优化器，所以 a 字段在 where 子句的顺序并不重要。[原文§联合索引的实现原理？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+S3-124 [single]
+??: 创建联合索引时，字段顺序应该怎样决定？
+??: {"id": "S3-124", "type": "single", "stem": "关于联合索引的字段顺序，原文的建议是下列哪一项？", "options": [{"key": "A", "text": "一律把区分度最高的字段放在最前面，不需要再考虑具体的 SQL 写法", "correct": false}, {"key": "B", "text": "一律把取值种类最少的字段放在最前面，其余字段的顺序可以随意排列", "correct": false}, {"key": "C", "text": "先看常用 SQL 的过滤、排序和返回字段，再定字段顺序，不能只背「区分度高的放前面」", "correct": true}, {"key": "D", "text": "字段顺序对联合索引没有影响，只需要保证联合索引的字段个数足够多", "correct": false}]}
+??: 先看常用 SQL 的过滤、排序和返回字段，再决定字段顺序，不能只背「区分度高的字段放前面」。[原文§创建联合索引时需要注意什么？](https://xiaolincoding.com/interview/mysql.html#%E5%88%9B%E5%BB%BA%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+
+S3-125 [single]
+??: 订单表常执行 WHERE user_id = 100 AND status = 0 ORDER BY created_at DESC LIMIT 20，可以考虑什么联合索引？为什么 status 放在这里仍然有作用？
+??: {"id": "S3-125", "type": "single", "stem": "订单表经常执行 `WHERE user_id = 100 AND status = 0 ORDER BY created_at DESC LIMIT 20`，原文考虑建立 `(user_id, status, created_at)`，status 虽然只有几种值，放在这里仍有作用，原因是下列哪一项？", "options": [{"key": "A", "text": "前两列是等值条件，先缩小候选范围，再按 created_at 的索引顺序取最近的订单", "correct": true}, {"key": "B", "text": "status 的区分度很高，所以放在联合索引的中间位置最合适，能最大程度缩小范围", "correct": false}, {"key": "C", "text": "status 只有几种值，放在这里是为了让索引不被使用，转而全表扫描", "correct": false}, {"key": "D", "text": "created_at 放在最后，是因为排序列根本不需要用到索引，只靠内存排序", "correct": false}]}
+??: 可以考虑 `(user_id, status, created_at)`：前两列是等值条件，先缩小候选范围，再按 created_at 的索引顺序获取最近的订单。虽然 status 只有几种值，放在这里仍然有作用。[原文§创建联合索引时需要注意什么？](https://xiaolincoding.com/interview/mysql.html#%E5%88%9B%E5%BB%BA%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+
+S3-126 [multiple]
+??: 创建联合索引时主要考虑哪几个方面？
+??: {"id": "S3-126", "type": "multiple", "stem": "原文认为创建联合索引时主要要考虑下列哪些方面？", "options": [{"key": "A", "text": "最左前缀能否复用", "correct": true}, {"key": "B", "text": "等值、范围和排序怎么配合", "correct": true}, {"key": "C", "text": "是否能覆盖查询", "correct": true}, {"key": "D", "text": "索引宽度和维护成本", "correct": true}, {"key": "E", "text": "只把区分度最高的字段放在最前面，其他方面无需考虑", "correct": false}, {"key": "F", "text": "字段越多越好，把所有列都塞进索引", "correct": false}]}
+??: 创建时主要考虑几个方面：最左前缀能否复用；等值、范围和排序怎么配合；是否能覆盖查询；索引宽度和维护成本。字段越多、越长，索引越大，写入成本也越高，不是把所有列塞进去就好。[原文§创建联合索引时需要注意什么？](https://xiaolincoding.com/interview/mysql.html#%E5%88%9B%E5%BB%BA%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+
+S3-127 [single]
+??: 为什么常按 user_id 单独查询时，要把 user_id 放在联合索引前面？
+??: {"id": "S3-127", "type": "single", "stem": "如果经常单独按 user_id 查询，把它放在联合索引的前面有什么好处？", "options": [{"key": "A", "text": "能让这个联合索引自动变成聚簇索引，从而避免回表", "correct": false}, {"key": "B", "text": "能让其他字段不再需要保存在索引里，从而节省索引空间", "correct": false}, {"key": "C", "text": "能避免所有查询的回表操作，包括返回非索引字段的查询", "correct": false}, {"key": "D", "text": "能利用最左前缀，同时服务这类单独按 user_id 的 SQL", "correct": true}]}
+??: 最左前缀能否复用：如果常按 user_id 单独查询，把它放前面就能同时服务这类 SQL。[原文§创建联合索引时需要注意什么？](https://xiaolincoding.com/interview/mysql.html#%E5%88%9B%E5%BB%BA%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+
+S3-128 [single]
+??: 联合索引中，等值条件、范围条件和 ORDER BY 怎么配合？
+??: {"id": "S3-128", "type": "single", "stem": "关于联合索引中等值条件、范围条件与 ORDER BY 的配合，原文说的常见做法是下列哪一项？", "options": [{"key": "A", "text": "先安排 ORDER BY 的列，再安排等值条件，范围条件放在最后，不用考虑其他列", "correct": false}, {"key": "B", "text": "先排等值条件，再结合范围条件和 ORDER BY 决定后续列，避免排序列前面还有未固定的字段", "correct": true}, {"key": "C", "text": "把范围条件放在最前面，等值条件和排序列依次放在后面，排序列在最后", "correct": false}, {"key": "D", "text": "等值条件、范围条件与排序之间没有联系，列的顺序可以随意安排", "correct": false}]}
+??: 等值、范围和排序怎么配合：常见做法是先安排等值条件，再结合范围条件和 ORDER BY 决定后续列，避免排序列前面还有未固定的字段。[原文§创建联合索引时需要注意什么？](https://xiaolincoding.com/interview/mysql.html#%E5%88%9B%E5%BB%BA%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+
+S3-129 [single]
+??: 联合索引怎样做到覆盖查询？
+??: {"id": "S3-129", "type": "single", "stem": "原文在订单查询示例中，为什么说联合索引可能让 `SELECT id, created_at` 直接从索引里取得返回字段？", "options": [{"key": "A", "text": "聚簇索引的叶子节点不保存完整的行，所以返回字段只能从联合索引中取得", "correct": false}, {"key": "B", "text": "二级索引自带主键值，返回的 id 和索引中的 created_at 可能直接从索引取得", "correct": true}, {"key": "C", "text": "联合索引会把表中所有的列都复制进索引，所以任何查询都不需要回表", "correct": false}, {"key": "D", "text": "created_at 是主键，所以任何查询都不需要回表", "correct": false}]}
+??: 是否能覆盖查询：二级索引自带主键值，上面的返回字段就可能直接从索引里取得。[原文§创建联合索引时需要注意什么？](https://xiaolincoding.com/interview/mysql.html#%E5%88%9B%E5%BB%BA%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+
+S3-130 [single]
+??: 为什么不是把所有列塞进联合索引就好？
+??: {"id": "S3-130", "type": "single", "stem": "关于联合索引的索引宽度和维护成本，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "字段越多，索引越小，写入成本越低", "correct": false}, {"key": "B", "text": "索引宽度只影响查询，不影响写入成本", "correct": false}, {"key": "C", "text": "字段越长，索引的查询效率一定越高", "correct": false}, {"key": "D", "text": "字段越多、越长，索引越大，写入成本也越高", "correct": true}]}
+??: 索引宽度和维护成本：字段越多、越长，索引越大，写入成本也越高，不是把所有列塞进去就好。[原文§创建联合索引时需要注意什么？](https://xiaolincoding.com/interview/mysql.html#%E5%88%9B%E5%BB%BA%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+
+S3-131 [single]
+??: 是否存在“命中超过 30% 就一定不走索引”的固定规则？怎样验证优化器是否选择索引？
+??: {"id": "S3-131", "type": "single", "stem": "关于优化器是否选择索引，原文的说法是下列哪一项？", "options": [{"key": "A", "text": "取决于成本，没有「命中超过 30% 就一定不走索引」的固定规则，最后用 EXPLAIN 和实际执行验证", "correct": true}, {"key": "B", "text": "命中比例超过 30% 就一定不走索引，这是固定规则，无需用 EXPLAIN 验证", "correct": false}, {"key": "C", "text": "优化器只看索引的字段个数，不看成本估算，字段越多越优先被选择，不必验证", "correct": false}, {"key": "D", "text": "只要建立了索引，优化器一定会选择它，所以不需要再用 EXPLAIN 验证", "correct": false}]}
+??: 优化器是否选择索引取决于成本，没有「命中超过 30% 就一定不走索引」这种固定规则。最后通过 EXPLAIN 和实际执行情况验证。[原文§创建联合索引时需要注意什么？](https://xiaolincoding.com/interview/mysql.html#%E5%88%9B%E5%BB%BA%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+
+S3-132 [single]
+??: 联合索引 (A, B, C)，执行 A = XXX AND C < XXX，A 和 C 分别能起什么作用？
+??: {"id": "S3-132", "type": "single", "stem": "如果优化器选择 (A, B, C) 联合索引，执行 `A = XXX AND C < XXX` 时，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "A 和 C 的条件都可以用于定位，C 也能继续缩小索引扫描范围，与 B 无关", "correct": false}, {"key": "B", "text": "A 的条件不能用于定位，因为 C 是范围条件，整个索引只能用于过滤", "correct": false}, {"key": "C", "text": "整个联合索引完全不会被使用，因为条件中缺少了中间的 B 列", "correct": false}, {"key": "D", "text": "A 的等值条件可用于定位，但中间缺少 B，通常不能继续用 C 的条件缩小索引扫描范围", "correct": true}]}
+??: 如果优化器选择 (A, B, C) 这个索引，A 的等值条件可以用于定位，但因为中间缺少 B，通常不能继续用 C 的条件缩小索引扫描范围。[原文§联合索引ABC，现在有个执行语句是A = XXX and C < XXX，索引怎么走](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95abc-%E7%8E%B0%E5%9C%A8%E6%9C%89%E4%B8%AA%E6%89%A7%E8%A1%8C%E8%AF%AD%E5%8F%A5%E6%98%AFa-xxx-and-c-xxx-%E7%B4%A2%E5%BC%95%E6%80%8E%E4%B9%88%E8%B5%B0)
+
+S3-133 [single]
+??: 查询需要回表时，C 的条件还能起作用吗？
+??: {"id": "S3-133", "type": "single", "stem": "对于上述查询，如果需要回表并且满足索引下推的条件，C 的条件可以怎样发挥作用？", "options": [{"key": "A", "text": "必须先把所有候选记录都回表，再判断 C 是否符合条件", "correct": false}, {"key": "B", "text": "C 不在二级索引里，所以只能在回表读到完整行之后再判断", "correct": false}, {"key": "C", "text": "C 的条件会让优化器直接放弃使用这个联合索引，改为全表扫描", "correct": false}, {"key": "D", "text": "C 已在二级索引里，可先判断 C 是否符合条件，符合的记录才回表", "correct": true}]}
+??: C 已经保存在二级索引里。如果查询需要回表，并且满足索引下推的条件，就可以先判断 C 是否符合条件，只有符合的记录才回表。[原文§联合索引ABC，现在有个执行语句是A = XXX and C < XXX，索引怎么走](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95abc-%E7%8E%B0%E5%9C%A8%E6%9C%89%E4%B8%AA%E6%89%A7%E8%A1%8C%E8%AF%AD%E5%8F%A5%E6%98%AFa-xxx-and-c-xxx-%E7%B4%A2%E5%BC%95%E6%80%8E%E4%B9%88%E8%B5%B0)
+
+S3-134 [single]
+??: 查询被索引覆盖时，C 的条件还能起作用吗？
+??: {"id": "S3-134", "type": "single", "stem": "对于上述查询，如果查询被索引覆盖，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "仍然必须回表读取完整的数据行后再过滤", "correct": false}, {"key": "B", "text": "只能对 A 过滤，C 的条件必须在内存中另外处理", "correct": false}, {"key": "C", "text": "直接在索引中完成过滤和取值", "correct": true}, {"key": "D", "text": "优化器一定会放弃联合索引改为全表扫描", "correct": false}]}
+??: 如果查询被索引覆盖，就直接在索引中完成过滤和取值。[原文§联合索引ABC，现在有个执行语句是A = XXX and C < XXX，索引怎么走](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95abc-%E7%8E%B0%E5%9C%A8%E6%9C%89%E4%B8%AA%E6%89%A7%E8%A1%8C%E8%AF%AD%E5%8F%A5%E6%98%AFa-xxx-and-c-xxx-%E7%B4%A2%E5%BC%95%E6%80%8E%E4%B9%88%E8%B5%B0)
+
+S3-135 [single]
+??: C 不能用于连续的前缀定位，是否代表 C 完全没有参与查询？
+??: {"id": "S3-135", "type": "single", "stem": "对于“C 不能用于连续的前缀定位”，原文的结论是下列哪一项？", "options": [{"key": "A", "text": "代表 C 完全没有参与查询，C 的条件会被优化器直接忽略掉", "correct": false}, {"key": "B", "text": "不代表 C 完全没参与查询，C 仍可能通过索引下推或覆盖索引发挥作用", "correct": true}, {"key": "C", "text": "代表这个联合索引完全失效，查询只能退化为全表扫描", "correct": false}, {"key": "D", "text": "代表 C 的条件只能靠全表扫描来判断，不可能借助索引", "correct": false}]}
+??: C 不能用于连续的前缀定位，不代表 C 完全没有参与查询。[原文§联合索引ABC，现在有个执行语句是A = XXX and C < XXX，索引怎么走](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95abc-%E7%8E%B0%E5%9C%A8%E6%9C%89%E4%B8%AA%E6%89%A7%E8%A1%8C%E8%AF%AD%E5%8F%A5%E6%98%AFa-xxx-and-c-xxx-%E7%B4%A2%E5%BC%95%E6%80%8E%E4%B9%88%E8%B5%B0)
+
+S3-136 [single]
+??: 联合索引 (a,b,c)，查询条件 where b > xxx and a = x 会生效吗？
+??: {"id": "S3-136", "type": "single", "stem": "对于联合索引 (a, b, c)，查询条件 `where b > xxx and a = x`，原文的结论是下列哪一项？", "options": [{"key": "A", "text": "不会生效，因为 b 的范围条件写在了 a 的等值条件前面", "correct": false}, {"key": "B", "text": "a 的等值条件和 b 的范围条件符合最左匹配原则，可利用联合索引定位扫描范围", "correct": true}, {"key": "C", "text": "只有 a 的等值条件会生效，b 的范围条件不能利用联合索引定位", "correct": false}, {"key": "D", "text": "不会生效，因为联合索引不能同时包含等值条件和范围条件", "correct": false}]}
+??: a 的等值条件和 b 的范围条件符合最左匹配原则，可以利用联合索引定位扫描范围。[原文§联合索引(a,b,c) ，查询条件 where b > xxx and a = x 会生效吗](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-a-b-c-%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6-where-b-xxx-and-a-x-%E4%BC%9A%E7%94%9F%E6%95%88%E5%90%97)
+
+S3-137 [single]
+??: WHERE 中先写 b 再写 a，会影响联合索引的使用吗？
+??: {"id": "S3-137", "type": "single", "stem": "WHERE 中先写 b 的条件、再写 a 的条件，对联合索引的使用有什么影响？", "options": [{"key": "A", "text": "不影响，优化器会分析条件，不是按 SQL 文本从左往右匹配", "correct": true}, {"key": "B", "text": "有影响，必须按 SQL 文本从左往右依次匹配索引列", "correct": false}, {"key": "C", "text": "有影响，b 写在前面会导致 a 的条件不能用于定位", "correct": false}, {"key": "D", "text": "不影响，因为联合索引会按 SQL 文本的顺序重新排序", "correct": false}]}
+??: WHERE 中先写 b 再写 a 不影响这个判断，优化器会分析条件，不是按 SQL 文本从左往右匹配。[原文§联合索引(a,b,c) ，查询条件 where b > xxx and a = x 会生效吗](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-a-b-c-%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6-where-b-xxx-and-a-x-%E4%BC%9A%E7%94%9F%E6%95%88%E5%90%97)
+
+S3-138 [single]
+??: 满足最左匹配的条件，一定会选择这个联合索引吗？
+??: {"id": "S3-138", "type": "single", "stem": "查询条件符合最左匹配原则后，是否一定会选择这个联合索引？", "options": [{"key": "A", "text": "一定会选择，符合最左匹配原则的索引总是优先于其他执行计划", "correct": false}, {"key": "B", "text": "一定不会选择，范围条件会让联合索引失效", "correct": false}, {"key": "C", "text": "不一定，最终是否选择这个索引，还要看成本估算", "correct": true}, {"key": "D", "text": "是否选择取决于 WHERE 中条件的书写顺序", "correct": false}]}
+??: 不过最终是否选择这个索引，还要看成本估算。[原文§联合索引(a,b,c) ，查询条件 where b > xxx and a = x 会生效吗](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-a-b-c-%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6-where-b-xxx-and-a-x-%E4%BC%9A%E7%94%9F%E6%95%88%E5%90%97)
+
+S3-139 [single]
+??: 联合索引 (a,b,c)，where 条件是 a=2 and c=1，能用到联合索引吗？
+??: {"id": "S3-139", "type": "single", "stem": "对于联合索引 (a, b, c)，`where a=2 and c=1` 能用到联合索引吗？", "options": [{"key": "A", "text": "能，a = 2 符合最左前缀，可定位其索引范围；缺少 b，c = 1 通常不能再缩小扫描范围", "correct": true}, {"key": "B", "text": "不能，条件里缺少了中间的 b，整个联合索引都用不上，只能全表扫描", "correct": false}, {"key": "C", "text": "能，a = 2 和 c = 1 都符合要求，都能用来定位并继续缩小扫描范围", "correct": false}, {"key": "D", "text": "能，但只有 c = 1 能用来定位，a = 2 只能用来在回表后过滤", "correct": false}]}
+??: 能，a = 2 符合最左前缀，可以用来定位 a 对应的索引范围。但缺少 b，c = 1 通常不能继续缩小扫描范围。[原文§联合索引 (a, b，c)，where条件是 a=2 and c = 1，能用到联合索引吗？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-a-b-c-where%E6%9D%A1%E4%BB%B6%E6%98%AF-a-2-and-c-1-%E8%83%BD%E7%94%A8%E5%88%B0%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-140 [single]
+??: 需要回表时，c = 1 可以怎样处理？
+??: {"id": "S3-140", "type": "single", "stem": "对于上述查询，如果需要回表，c = 1 可能通过什么方式处理？", "options": [{"key": "A", "text": "必须先全部回表读出完整记录，再判断 c = 1", "correct": false}, {"key": "B", "text": "c = 1 会让优化器把联合索引换成哈希索引", "correct": false}, {"key": "C", "text": "可能通过索引下推，在读取完整记录前先过滤一部分数据", "correct": true}, {"key": "D", "text": "c = 1 只能通过全表扫描来判断", "correct": false}]}
+??: 如果查询需要回表，c 的条件可能通过索引下推，在读取完整记录前先过滤一部分数据。[原文§联合索引 (a, b，c)，where条件是 a=2 and c = 1，能用到联合索引吗？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-a-b-c-where%E6%9D%A1%E4%BB%B6%E6%98%AF-a-2-and-c-1-%E8%83%BD%E7%94%A8%E5%88%B0%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-141 [single]
+??: 查询被索引覆盖时，c = 1 可以怎样处理？具体采用哪种方式看什么？
+??: {"id": "S3-141", "type": "single", "stem": "对于上述查询，如果查询被索引覆盖，c = 1 如何处理？具体采用哪种方式要看什么？", "options": [{"key": "A", "text": "必须回表读取完整记录才能判断；具体要看表的行数", "correct": false}, {"key": "B", "text": "c 不在索引里，无法判断；具体要看 SQL 的书写顺序", "correct": false}, {"key": "C", "text": "只能在内存中重新排序后判断；具体要看 Buffer Pool 的大小", "correct": false}, {"key": "D", "text": "可以直接利用索引里的 c 进行判断；具体要看执行计划", "correct": true}]}
+??: 如果查询被索引覆盖，也可以直接利用索引里的 c 进行判断。具体采用哪种方式要看执行计划。[原文§联合索引 (a, b，c)，where条件是 a=2 and c = 1，能用到联合索引吗？](https://xiaolincoding.com/interview/mysql.html#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-a-b-c-where%E6%9D%A1%E4%BB%B6%E6%98%AF-a-2-and-c-1-%E8%83%BD%E7%94%A8%E5%88%B0%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-142 [single]
+??: 面试里说的“索引失效”通常指什么？
+??: {"id": "S3-142", "type": "single", "stem": "原文所说的面试里的“索引失效”，通常指下列哪一项？", "options": [{"key": "A", "text": "索引文件被损坏，需要重建", "correct": false}, {"key": "B", "text": "索引被自动删除，不再占用空间", "correct": false}, {"key": "C", "text": "查询语法错误，导致 SQL 无法执行", "correct": false}, {"key": "D", "text": "查询条件没办法利用索引快速定位", "correct": true}]}
+??: 面试里说的「索引失效」，通常是指查询条件没办法利用索引快速定位。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-143 [single]
+??: LIKE 左模糊匹配和右模糊匹配，哪个可能使用索引？
+??: {"id": "S3-143", "type": "single", "stem": "下列查询条件中，哪一个可能使用普通 B+ 树索引做范围扫描？", "options": [{"key": "A", "text": "LIKE '%小林'", "correct": false}, {"key": "B", "text": "LIKE '小林%'", "correct": true}, {"key": "C", "text": "LIKE '%小林%'", "correct": false}, {"key": "D", "text": "YEAR(created_at) = 2024", "correct": false}]}
+??: `LIKE '%小林'`、`LIKE '%小林%'` 不能按普通 B+ 树索引的前缀定位，`LIKE '小林%'` 则可能使用范围扫描。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-144 [single]
+??: 对索引列使用函数或计算，会怎样？
+??: {"id": "S3-144", "type": "single", "stem": "对索引列使用函数或计算（如 `YEAR(created_at) = 2024`、`price + 1 = 10`）时，普通索引通常怎样？", "options": [{"key": "A", "text": "通常不能直接用于定位", "correct": true}, {"key": "B", "text": "仍然可以按前缀定位，而且速度更快", "correct": false}, {"key": "C", "text": "会被自动改写成联合索引", "correct": false}, {"key": "D", "text": "只在表数据很少时才不能用于定位", "correct": false}]}
+??: 对索引列使用函数或计算，比如 `YEAR(created_at) = 2024`、`price + 1 = 10`，普通索引通常不能直接用于定位。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-145 [fill]
+??: [填空题·有序] 对 `YEAR(created_at) = 2024` 这类条件，可以改成____；MySQL 8.0 的____索引也可以服务匹配的表达式。
+??: {"id": "S3-145", "type": "fill", "stem": "对 `YEAR(created_at) = 2024` 这类条件，可以改成____；MySQL 8.0 的____索引也可以服务匹配的表达式。", "blankCount": 2, "blankOrder": "ordered"}
+??: 可以改成时间范围，或者将 `price + 1 = 10` 改写为 `price = 9`；MySQL 8.0 的函数索引也可以服务匹配的表达式。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-146 [single]
+??: phone 是 VARCHAR，却写 phone = 13800138000，会怎样？应该怎么做？
+??: {"id": "S3-146", "type": "single", "stem": "phone 是 VARCHAR 类型，却写 `phone = 13800138000`，原文认为会有什么问题？", "options": [{"key": "A", "text": "可能需要把索引列转成数字再比较，应保持参数类型和列类型一致", "correct": true}, {"key": "B", "text": "可能需要把数字转成日期再比较，应把该列改成日期类型", "correct": false}, {"key": "C", "text": "不会有任何问题，类型不一致也不影响索引的正常使用", "correct": false}, {"key": "D", "text": "会让整张表被锁住，应先对该表加上读锁再执行查询", "correct": false}]}
+??: 隐式类型转换：比如 phone 是 VARCHAR，却写 `phone = 13800138000`，可能需要把索引列转换成数字再比较。应该保持参数类型和列类型一致。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-147 [single]
+??: 只有 (a, b, c) 联合索引，只按 b 查询，会怎样？
+??: {"id": "S3-147", "type": "single", "stem": "只有 (a, b, c) 联合索引，却只按 b 查询，原文认为通常会怎样？", "options": [{"key": "A", "text": "仍然能按最左前缀定位，因为 b 在联合索引里", "correct": false}, {"key": "B", "text": "缺少联合索引最左列，通常不能按最左前缀定位", "correct": true}, {"key": "C", "text": "会自动生成一个单列索引 (b)", "correct": false}, {"key": "D", "text": "会报语法错误，必须带上 a 才能执行", "correct": false}]}
+??: 缺少联合索引最左列：例如只有 (a, b, c)，却只按 b 查询，通常不能按最左前缀定位。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-148 [single]
+??: OR 的某个分支无法利用索引，会怎样？多个分支都有索引呢？
+??: {"id": "S3-148", "type": "single", "stem": "关于 OR 条件和索引，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "a 有索引、b 没有时，`a = 1 OR b = 2` 一定能用上 a 的索引快速定位，不会全表扫描", "correct": false}, {"key": "B", "text": "a、b 都有索引时一定使用 index_merge，不需要再考虑成本；只有一个分支无索引时才全表扫描", "correct": false}, {"key": "C", "text": "a 有索引、b 没有时，`a = 1 OR b = 2` 往往要全表扫描；各分支都有索引时才可能 index_merge，取决于成本", "correct": true}, {"key": "D", "text": "出现 OR 条件时，a 的索引总能定位，b 无索引的分支则由 index_merge 自动补全，无需成本估算", "correct": false}]}
+??: OR 的某个分支无法利用索引：比如 a 有索引、b 没有索引，`a = 1 OR b = 2` 往往需要全表扫描。多个分支都有索引时，也可能使用 index_merge，但是否采用仍取决于成本。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-149 [fill]
+??: [填空题·有序] 原文列举的常见索引失效情况：左模糊匹配；对索引列使用____；____；缺少联合索引的____列；OR 的某个分支无法利用索引。
+??: {"id": "S3-149", "type": "fill", "stem": "原文列举的常见索引失效情况：左模糊匹配；对索引列使用____；____；缺少联合索引的____列；OR 的某个分支无法利用索引。", "blankCount": 3, "blankOrder": "ordered"}
+??: 常见情况有：左模糊匹配；对索引列使用函数或计算；隐式类型转换；缺少联合索引最左列；OR 的某个分支无法利用索引。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-150 [single]
+??: 能用索引但优化器选择全表扫描，和条件本身无法使用索引是一回事吗？
+??: {"id": "S3-150", "type": "single", "stem": "关于“优化器认为全表扫描更便宜”与“条件本身无法使用索引”，原文的看法是下列哪一项？", "options": [{"key": "A", "text": "是一回事，只要出现了全表扫描，就一定说明条件无法利用索引快速定位", "correct": false}, {"key": "B", "text": "是两回事，但优化器无论成本如何都不会主动选择全表扫描代替索引", "correct": false}, {"key": "C", "text": "是一回事，条件无法使用索引时，优化器仍必然选择走索引扫描", "correct": false}, {"key": "D", "text": "是两回事：前者能用索引但全表扫描成本更低，后者是条件无法利用索引快速定位", "correct": true}]}
+??: 能用索引，但优化器认为全表扫描更便宜，和条件本身无法使用索引是两回事。比如查询命中大部分记录，还要大量回表，优化器可能主动选择全表扫描。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-151 [fill]
+??: [填空题·无序] 左模糊匹配、缺少最左列也不代表索引绝对不会被读取，判断时要结合 EXPLAIN 的____、____和____。
+??: {"id": "S3-151", "type": "fill", "stem": "左模糊匹配、缺少最左列也不代表索引绝对不会被读取，判断时要结合 EXPLAIN 的____、____和____。", "blankCount": 3, "blankOrder": "unordered"}
+??: 左模糊匹配、缺少最左列也不代表索引绝对不会被读取，仍可能存在覆盖索引全扫描或索引跳跃扫描。判断时要结合 EXPLAIN 的 key、type 和 Extra。[原文§索引失效有哪些？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+S3-152 [single]
+??: 什么是索引下推？
+??: {"id": "S3-152", "type": "single", "stem": "原文对索引下推（ICP）的描述是下列哪一项？", "options": [{"key": "A", "text": "查询需要的列都在索引里，可以直接从索引获取，不需要再回表读取完整行", "correct": false}, {"key": "B", "text": "把能用索引列判断的条件交给存储引擎，先过滤再决定是否回表，减少完整行读取次数", "correct": true}, {"key": "C", "text": "把二级索引的叶子节点整体复制到聚簇索引中，避免以后再出现回表", "correct": false}, {"key": "D", "text": "把多个单列索引合并成一个联合索引，减少索引的个数和占用空间", "correct": false}]}
+??: 索引下推，也叫 ICP，是把能够利用索引列判断的条件交给存储引擎，先过滤，再决定是否回表，减少完整行的读取次数。[原文§什么是索引下推？和覆盖索引有什么区别？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8-%E5%92%8C%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S3-153 [short]
+??: 用户表有联合索引 (name, age)，查询 WHERE name LIKE '张%' AND age = 20，有索引下推和没有索引下推时，执行过程分别是怎样的？
+??: {"id": "S3-153", "type": "short"}
+??: 没有索引下推时，先根据 name 找到候选记录，再逐条回表读取整行，之后判断 age 是否等于 20；有索引下推时，在二级索引里就判断 age 是否等于 20，不满足的记录直接跳过，只有满足的记录才回表。[原文§什么是索引下推？和覆盖索引有什么区别？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8-%E5%92%8C%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S3-154 [fill]
+??: [填空题·有序] 索引下推在执行计划中通常表现为 Extra 里的____，覆盖索引通常表现为 Extra 里的____。
+??: {"id": "S3-154", "type": "fill", "stem": "索引下推在执行计划中通常表现为 Extra 里的____，覆盖索引通常表现为 Extra 里的____。", "blankCount": 2, "blankOrder": "ordered"}
+??: 执行计划中，索引下推通常表现为 `Using index condition`；覆盖索引则通常表现为 `Using index`。[原文§什么是索引下推？和覆盖索引有什么区别？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8-%E5%92%8C%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S3-155 [single]
+??: 对于 InnoDB，索引下推主要用于哪种索引？为什么？
+??: {"id": "S3-155", "type": "single", "stem": "对于 InnoDB，索引下推主要用于哪种索引？", "options": [{"key": "A", "text": "二级索引，因为聚簇索引本身已经拿到了完整行", "correct": true}, {"key": "B", "text": "聚簇索引，因为聚簇索引的叶子节点不含完整行", "correct": false}, {"key": "C", "text": "聚簇索引和二级索引的作用完全相同，没有区别", "correct": false}, {"key": "D", "text": "哈希索引，因为哈希索引不需要回表", "correct": false}]}
+??: 对于 InnoDB，索引下推主要用于二级索引，因为聚簇索引本身已经拿到了完整行。[原文§什么是索引下推？和覆盖索引有什么区别？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8-%E5%92%8C%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S3-156 [single]
+??: 索引下推和覆盖索引有什么区别？
+??: {"id": "S3-156", "type": "single", "stem": "索引下推与覆盖索引的区别，原文的概括是下列哪一项？", "options": [{"key": "A", "text": "两者是同一个概念，只是在 Extra 里显示的名称不同，都表示不用回表", "correct": false}, {"key": "B", "text": "一个直接从索引取得所需字段，一个把完整行缓存在内存里以减少回表", "correct": false}, {"key": "C", "text": "一个减少回表次数，一个直接从索引取得所需字段，不能把这两个 Extra 当成一个意思", "correct": true}, {"key": "D", "text": "一个只用于聚簇索引，一个只用于哈希索引，两者适用的索引类型不同", "correct": false}]}
+??: 覆盖索引则是查询需要的列都在索引里，可以直接从索引获取，通常表现为 `Using index`。一个是减少回表次数，一个是直接从索引取得所需字段，不能把这两个 Extra 当成一个意思。[原文§什么是索引下推？和覆盖索引有什么区别？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8-%E5%92%8C%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S3-157 [single]
+??: 覆盖索引是什么？在执行计划里通常怎么表现？
+??: {"id": "S3-157", "type": "single", "stem": "关于覆盖索引，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "先在索引里过滤部分条件再回表，通常表现为 `Using index`", "correct": false}, {"key": "B", "text": "查询需要的列都在索引里，通常表现为 `Using index condition`", "correct": false}, {"key": "C", "text": "查询需要的列都在索引里，可以直接从索引获取，通常表现为 `Using index`", "correct": true}, {"key": "D", "text": "把条件交给存储引擎，通常表现为 `Using where`", "correct": false}]}
+??: 覆盖索引是查询需要的列都在索引里，可以直接从索引获取，通常表现为 `Using index`。[原文§什么是索引下推？和覆盖索引有什么区别？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8-%E5%92%8C%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S3-158 [single]
+??: 什么是回表？
+??: {"id": "S3-158", "type": "single", "stem": "按原文的说法，什么是回表？", "options": [{"key": "A", "text": "查询的数据在二级索引里时，直接从二级索引返回结果，这也叫回表", "correct": false}, {"key": "B", "text": "先检索主键索引得到二级索引的键值，再检索二级索引取得数据", "correct": false}, {"key": "C", "text": "查询前先把整张表读入内存，再回到磁盘上校验数据是否一致", "correct": false}, {"key": "D", "text": "查询的数据不在二级索引里时，先检索二级索引得到主键值，再检索主键索引取数据", "correct": true}]}
+??: 如果查询的数据不在二级索引里，就会先检索二级索引，找到对应的叶子节点，获取到主键值后，然后再检索主键索引，就能查询到数据了，这个过程就是回表。[原文§什么情况下会回表查询](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E5%9B%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S3-159 [single]
+??: 什么情况下使用二级索引查询不需要回表？
+??: {"id": "S3-159", "type": "single", "stem": "使用二级索引查询时，在什么情况下不需要回表？", "options": [{"key": "A", "text": "查询的数据不在二级索引里，需要再去主键索引取数据", "correct": false}, {"key": "B", "text": "查询使用了主键索引以外的任何索引", "correct": false}, {"key": "C", "text": "二级索引叶子节点保存了完整的行数据", "correct": false}, {"key": "D", "text": "查询的数据能在二级索引里查到，这个过程就是覆盖索引", "correct": true}]}
+??: 在查询时使用了二级索引，如果查询的数据能在二级索引里查询的到，那么就不需要回表，这个过程就是覆盖索引。[原文§什么情况下会回表查询](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E5%9B%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S3-160 [single]
+??: 为什么二级索引查询可能需要回表？
+??: {"id": "S3-160", "type": "single", "stem": "使用二级索引查询时可能需要回表，是因为二级索引的叶子节点保存了什么？", "options": [{"key": "A", "text": "完整的用户记录，包含表中所有的列", "correct": false}, {"key": "B", "text": "索引列的值和主键值，不含完整行数据", "correct": true}, {"key": "C", "text": "指向磁盘数据文件的物理地址，不含主键值", "correct": false}, {"key": "D", "text": "整张表所有列的备份，包括非索引列", "correct": false}]}
+??: 二级索引的 B+Tree 叶子节点保存索引列的值和主键值，不保存完整的行数据；主键索引的叶子节点才存放实际数据。[原文§什么情况下会回表查询](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E5%9B%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S3-161 [fill]
+??: [填空题·有序] 查询的数据不在二级索引里时：先检索____，在叶子节点中获取____，再检索____，才能查询到数据，这个过程就是回表。
+??: {"id": "S3-161", "type": "fill", "stem": "查询的数据不在二级索引里时：先检索____，在叶子节点中获取____，再检索____，才能查询到数据，这个过程就是回表。", "blankCount": 3, "blankOrder": "ordered"}
+??: 先检索二级索引，找到对应的叶子节点，获取到主键值，然后再检索主键索引，就能查询到数据了，这个过程就是回表。[原文§什么情况下会回表查询](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E5%9B%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S3-162 [single]
+??: 什么是覆盖索引？
+??: {"id": "S3-162", "type": "single", "stem": "原文对覆盖索引的定义是下列哪一项？", "options": [{"key": "A", "text": "一个索引包含了查询所需的所有列，因此不需要访问表中的数据行就能完成查询", "correct": true}, {"key": "B", "text": "一个索引覆盖了表中所有的行，因此不需要创建其他索引", "correct": false}, {"key": "C", "text": "一个索引覆盖了表中的所有列，因此可以替代主键索引", "correct": false}, {"key": "D", "text": "一个索引包含了 WHERE 条件中用到的全部列，但仍需要回表取其他列", "correct": false}]}
+??: 覆盖索引是指一个索引包含了查询所需的所有列，因此不需要访问表中的数据行就能完成查询。换句话说，查询所需的所有数据都能从索引中直接获取，而不需要进行回表查询。[原文§什么是覆盖索引？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95)
+
+S3-163 [single]
+??: 覆盖索引为什么能显著提高查询性能？
+??: {"id": "S3-163", "type": "single", "stem": "覆盖索引能显著提高查询性能的原因是下列哪一项？", "options": [{"key": "A", "text": "减少了访问数据页的次数，从而减少 I/O 操作", "correct": true}, {"key": "B", "text": "增加了数据页的数量，让数据分布得更分散", "correct": false}, {"key": "C", "text": "减少了索引占用的物理空间，从而减少 I/O", "correct": false}, {"key": "D", "text": "避免了对索引列的排序，从而减少 I/O 操作", "correct": false}]}
+??: 覆盖索引能够显著提高查询性能，因为减少了访问数据页的次数，从而减少了 I/O 操作。[原文§什么是覆盖索引？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95)
+
+S3-164 [single]
+??: 有索引 idx_name_age_department(name, age, department)，SELECT name, age, department FROM employees WHERE name = 'John' 为什么是覆盖索引？
+??: {"id": "S3-164", "type": "single", "stem": "employees 表有索引 `idx_name_age_department(name, age, department)`，查询 `SELECT name, age, department FROM employees WHERE name = 'John'` 属于覆盖索引的原因是下列哪一项？", "options": [{"key": "A", "text": "该索引包含了 employees 表的全部列，包括 salary，所以不需要回表", "correct": false}, {"key": "B", "text": "该查询的 WHERE 条件使用了主键 id，所以直接命中聚簇索引", "correct": false}, {"key": "C", "text": "该查询会先回表读取完整行，再从中返回所需的三个字段", "correct": false}, {"key": "D", "text": "该索引包含了查询所需的全部列 name、age、department，字段可直接从索引取得", "correct": true}]}
+??: idx_name_age_department 是一个覆盖索引，因为它包含了查询所需的所有列：name、age 和 department。查询所需字段可以直接从索引取得。[原文§什么是覆盖索引？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95)
+
+S3-165 [multiple]
+??: 对于 InnoDB，在 idx_name_age_department(name, age, department) 上，哪些查询仍可以被覆盖？
+??: {"id": "S3-165", "type": "multiple", "stem": "employees 表有 `id`（主键）、`name`、`age`、`department`、`salary` 列，并有索引 `idx_name_age_department(name, age, department)`。对于 InnoDB，下列哪些查询通常仍然可以被这个索引覆盖？", "options": [{"key": "A", "text": "SELECT name, age, department FROM employees WHERE name = 'John'", "correct": true}, {"key": "B", "text": "SELECT id, name, age, department FROM employees WHERE name = 'John'", "correct": true}, {"key": "C", "text": "SELECT name, age, department, salary FROM employees WHERE name = 'John'", "correct": false}, {"key": "D", "text": "SELECT * FROM employees WHERE name = 'John'", "correct": false}]}
+??: 对于 InnoDB，二级索引还保存了主键 id，所以查询增加 id 列通常仍然可以覆盖。如果查询增加 salary，就需要回表。[原文§什么是覆盖索引？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95)
+
+S3-166 [single]
+??: 覆盖索引能完全避免访问聚簇索引记录吗？
+??: {"id": "S3-166", "type": "single", "stem": "关于覆盖索引与聚簇索引记录的访问，原文的补充说明是下列哪一项？", "options": [{"key": "A", "text": "覆盖索引在任何情况下都不会再访问聚簇索引记录，包括锁定读和 MVCC 检查", "correct": false}, {"key": "B", "text": "覆盖索引指索引能提供所需列；但锁定读、MVCC 可见性检查等仍可能需访问聚簇索引记录", "correct": true}, {"key": "C", "text": "只要索引里包含主键 id，覆盖索引就一定不会再访问聚簇索引记录", "correct": false}, {"key": "D", "text": "覆盖索引会让 MVCC 可见性检查失效，所以无需访问聚簇索引记录", "correct": false}]}
+??: 覆盖索引说的是索引能提供所需列；锁定读、MVCC 可见性检查等情况仍可能需要访问聚簇索引记录。[原文§什么是覆盖索引？](https://xiaolincoding.com/interview/mysql.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95)
+
+S3-167 [single]
+??: 一个列既有单列索引又有联合索引，单独查它时先走哪个？
+??: {"id": "S3-167", "type": "single", "stem": "同时有单列索引 (a) 和联合索引 (a, b)，单独按 a 查询时优先走哪个？原文的回答是下列哪一项？", "options": [{"key": "A", "text": "总是优先走单列索引 (a)，因为单列索引更小", "correct": false}, {"key": "B", "text": "总是优先走联合索引 (a, b)，因为它包含更多列", "correct": false}, {"key": "C", "text": "没有固定的优先顺序，优化器会估算成本再选执行计划", "correct": true}, {"key": "D", "text": "按索引创建的先后顺序，先创建的索引优先被选择", "correct": false}]}
+??: 没有固定的优先顺序，优化器会估算成本，再选择执行计划。[原文§如果一个列即使单列索引，又是联合索引，单独查它的话先走哪个？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E5%88%97%E5%8D%B3%E4%BD%BF%E5%8D%95%E5%88%97%E7%B4%A2%E5%BC%95-%E5%8F%88%E6%98%AF%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-%E5%8D%95%E7%8B%AC%E6%9F%A5%E5%AE%83%E7%9A%84%E8%AF%9D%E5%85%88%E8%B5%B0%E5%93%AA%E4%B8%AA)
+
+S3-168 [single]
+??: 同时有单列索引 (a) 和联合索引 (a, b)，执行 SELECT a FROM t WHERE a = 1，哪个索引可能成本更低？
+??: {"id": "S3-168", "type": "single", "stem": "同时有单列索引 (a) 和联合索引 (a, b)，执行 `SELECT a FROM t WHERE a = 1` 时，原文的分析是下列哪一项？", "options": [{"key": "A", "text": "只有联合索引能覆盖，单列索引需要回表", "correct": false}, {"key": "B", "text": "两个索引都能覆盖，单列索引更小，可能成本更低", "correct": true}, {"key": "C", "text": "两个索引都需要回表，成本完全相同", "correct": false}, {"key": "D", "text": "两个索引都不能使用，只能全表扫描", "correct": false}]}
+??: 第一条 `SELECT a FROM t WHERE a = 1`：两个索引都能覆盖，单列索引更小，可能成本更低。[原文§如果一个列即使单列索引，又是联合索引，单独查它的话先走哪个？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E5%88%97%E5%8D%B3%E4%BD%BF%E5%8D%95%E5%88%97%E7%B4%A2%E5%BC%95-%E5%8F%88%E6%98%AF%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-%E5%8D%95%E7%8B%AC%E6%9F%A5%E5%AE%83%E7%9A%84%E8%AF%9D%E5%85%88%E8%B5%B0%E5%93%AA%E4%B8%AA)
+
+S3-169 [single]
+??: 同时有单列索引 (a) 和联合索引 (a, b)，执行 SELECT a, b FROM t WHERE a = 1，哪个索引通常更有优势？
+??: {"id": "S3-169", "type": "single", "stem": "同时有单列索引 (a) 和联合索引 (a, b)，执行 `SELECT a, b FROM t WHERE a = 1` 时，原文的分析是下列哪一项？", "options": [{"key": "A", "text": "联合索引可以提供 a、b，通常更有优势", "correct": true}, {"key": "B", "text": "单列索引可以提供 a、b，通常更有优势", "correct": false}, {"key": "C", "text": "两个索引都不能提供 b，都需要回表", "correct": false}, {"key": "D", "text": "联合索引必须回表，单列索引不需要回表", "correct": false}]}
+??: 第二条 `SELECT a, b FROM t WHERE a = 1`：联合索引可以提供 a、b，通常更有优势。[原文§如果一个列即使单列索引，又是联合索引，单独查它的话先走哪个？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E5%88%97%E5%8D%B3%E4%BD%BF%E5%8D%95%E5%88%97%E7%B4%A2%E5%BC%95-%E5%8F%88%E6%98%AF%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-%E5%8D%95%E7%8B%AC%E6%9F%A5%E5%AE%83%E7%9A%84%E8%AF%9D%E5%85%88%E8%B5%B0%E5%93%AA%E4%B8%AA)
+
+S3-170 [single]
+??: 同时有单列索引 (a) 和联合索引 (a, b)，执行 SELECT * FROM t WHERE a = 1，该看什么因素？
+??: {"id": "S3-170", "type": "single", "stem": "同时有单列索引 (a) 和联合索引 (a, b)，执行 `SELECT * FROM t WHERE a = 1` 时，原文的分析是下列哪一项？", "options": [{"key": "A", "text": "联合索引一定不需要回表，所以一定优先于单列索引", "correct": false}, {"key": "B", "text": "单列索引一定不需要回表，所以一定优先于联合索引", "correct": false}, {"key": "C", "text": "两个索引都可能需要回表，还要看统计信息、命中行数等因素", "correct": true}, {"key": "D", "text": "两个索引都因为 SELECT * 而不能使用，只能全表扫描", "correct": false}]}
+??: 第三条 `SELECT * FROM t WHERE a = 1`：两个索引都可能需要回表，还要看统计信息、命中行数等因素。[原文§如果一个列即使单列索引，又是联合索引，单独查它的话先走哪个？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E5%88%97%E5%8D%B3%E4%BD%BF%E5%8D%95%E5%88%97%E7%B4%A2%E5%BC%95-%E5%8F%88%E6%98%AF%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-%E5%8D%95%E7%8B%AC%E6%9F%A5%E5%AE%83%E7%9A%84%E8%AF%9D%E5%85%88%E8%B5%B0%E5%93%AA%E4%B8%AA)
+
+S3-171 [single]
+??: 联合索引已经能服务按 a 查询时，单列索引 (a) 是不是一定要删？
+??: {"id": "S3-171", "type": "single", "stem": "联合索引 (a, b) 已经能服务按 a 查询的场景，此时单列索引 (a) 是否应当直接删除？", "options": [{"key": "A", "text": "一定要删除，因为联合索引已经覆盖，单列索引必然冗余", "correct": false}, {"key": "B", "text": "一定不能删除，因为单列索引在任何查询里都总是比联合索引更快", "correct": false}, {"key": "C", "text": "可能冗余，但是否删除要结合其他查询和写入成本评估，不能只看列名重复", "correct": true}, {"key": "D", "text": "只要列名重复就应当立刻删除，不需要评估其他查询", "correct": false}]}
+??: 联合索引已经能服务按 a 查询的场景时，单列索引 (a) 可能冗余，但是否删除要结合其他查询和写入成本评估，不能只看列名重复就直接删除。[原文§如果一个列即使单列索引，又是联合索引，单独查它的话先走哪个？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E5%88%97%E5%8D%B3%E4%BD%BF%E5%8D%95%E5%88%97%E7%B4%A2%E5%BC%95-%E5%8F%88%E6%98%AF%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95-%E5%8D%95%E7%8B%AC%E6%9F%A5%E5%AE%83%E7%9A%84%E8%AF%9D%E5%85%88%E8%B5%B0%E5%93%AA%E4%B8%AA)
+
+S3-172 [single]
+??: 再插入一条数据，索引会有哪些变化？
+??: {"id": "S3-172", "type": "single", "stem": "索引建好之后再插入一条数据，原文对索引变化的描述是下列哪一项？", "options": [{"key": "A", "text": "可能导致 B+ 树结构调整和索引信息更新以保持平衡，这些变化通常由数据库自动处理", "correct": true}, {"key": "B", "text": "索引保持不变，只有数据页发生变化，B+ 树的结构不会被调整", "correct": false}, {"key": "C", "text": "必须由用户手动重建索引，才能让 B+ 树保持平衡和有效", "correct": false}, {"key": "D", "text": "索引会被自动删除，下次查询时数据库再自动重新创建一遍", "correct": false}]}
+??: 插入新数据可能导致 B+ 树结构的调整和索引信息的更新，以保持 B+ 树的平衡性和正确性，这些变化通常由数据库系统自动处理，确保数据的一致性和索引的有效性。[原文§索引已经建好了，那我再插入一条数据，索引会有哪些变化？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%B7%B2%E7%BB%8F%E5%BB%BA%E5%A5%BD%E4%BA%86-%E9%82%A3%E6%88%91%E5%86%8D%E6%8F%92%E5%85%A5%E4%B8%80%E6%9D%A1%E6%95%B0%E6%8D%AE-%E7%B4%A2%E5%BC%95%E4%BC%9A%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8F%98%E5%8C%96)
+
+S3-173 [single]
+??: 插入数据导致叶子节点已满时会怎样？
+??: {"id": "S3-173", "type": "single", "stem": "插入的数据导致叶子节点已满时，可能发生什么？", "options": [{"key": "A", "text": "会把新数据丢弃，等下一次再重新插入", "correct": false}, {"key": "B", "text": "会把整棵 B+ 树整体降低一层高度", "correct": false}, {"key": "C", "text": "会把叶子节点中的数据全部转移到非叶子节点", "correct": false}, {"key": "D", "text": "可能触发叶子节点分裂，以保持 B+ 树的平衡", "correct": true}]}
+??: 如果插入的数据导致叶子节点已满，可能会触发叶子节点的分裂操作，以保持 B+ 树的平衡性。[原文§索引已经建好了，那我再插入一条数据，索引会有哪些变化？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%B7%B2%E7%BB%8F%E5%BB%BA%E5%A5%BD%E4%BA%86-%E9%82%A3%E6%88%91%E5%86%8D%E6%8F%92%E5%85%A5%E4%B8%80%E6%9D%A1%E6%95%B0%E6%8D%AE-%E7%B4%A2%E5%BC%95%E4%BC%9A%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8F%98%E5%8C%96)
+
+S3-174 [single]
+??: 索引字段是不是建得越多越好？
+??: {"id": "S3-174", "type": "single", "stem": "对于“索引字段是不是建得越多越好”，原文的回答是下列哪一项？", "options": [{"key": "A", "text": "是，索引越多查询越快，而且没有任何额外代价", "correct": false}, {"key": "B", "text": "不是，越多越占空间，而且写入频繁时 B+ 树的维护消耗也越大", "correct": true}, {"key": "C", "text": "是，只要内存足够大，写入再频繁也不会有额外消耗", "correct": false}, {"key": "D", "text": "不是，但索引越多占用的空间反而越小，写入也更快", "correct": false}]}
+??: 不是，建的越多会占用越多的空间，而且在写入频繁的场景下，对于 B+ 树的维护所付出的性能消耗也会越大。[原文§索引字段是不是建的越多越好？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%AD%97%E6%AE%B5%E6%98%AF%E4%B8%8D%E6%98%AF%E5%BB%BA%E7%9A%84%E8%B6%8A%E5%A4%9A%E8%B6%8A%E5%A5%BD)
+
+S3-175 [fill]
+??: [填空题·有序] 索引建得越多会占用越多的____，而且在写入频繁的场景下，对于 B+ 树的____所付出的性能消耗也会越大。
+??: {"id": "S3-175", "type": "fill", "stem": "索引建得越多会占用越多的____，而且在写入频繁的场景下，对于 B+ 树的____所付出的性能消耗也会越大。", "blankCount": 2, "blankOrder": "ordered"}
+??: 建得越多会占用越多的空间，而且在写入频繁的场景下，对于 B+ 树的维护所付出的性能消耗也会越大。[原文§索引字段是不是建的越多越好？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E5%AD%97%E6%AE%B5%E6%98%AF%E4%B8%8D%E6%98%AF%E5%BB%BA%E7%9A%84%E8%B6%8A%E5%A4%9A%E8%B6%8A%E5%A5%BD)
+
+S3-176 [single]
+??: 只有 0 和 1 两种取值的 status 字段适合建索引吗？
+??: {"id": "S3-176", "type": "single", "stem": "对于只有 0、1 两种取值的 status 字段，原文的回答是下列哪一项？", "options": [{"key": "A", "text": "要看数据分布和查询方式，不能因为只有 0、1 两种值就否定索引", "correct": true}, {"key": "B", "text": "不适合，只有两种取值的字段在任何情况下都不应该建索引", "correct": false}, {"key": "C", "text": "适合，只有两种取值的字段建索引一定会让查询变快", "correct": false}, {"key": "D", "text": "是否适合只取决于表的行数，与查询方式和数据分布无关", "correct": false}]}
+??: 要看数据分布和查询方式，不能只因为只有 0、1 两种值就否定索引。[原文§如果有一个字段是status值为0或者1，适合建索引吗](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%98%AFstatus%E5%80%BC%E4%B8%BA0%E6%88%96%E8%80%851-%E9%80%82%E5%90%88%E5%BB%BA%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-177 [single]
+??: 订单表中 99.9% 已处理、0.1% 待处理，经常查 WHERE status = 0，索引有用吗？
+??: {"id": "S3-177", "type": "single", "stem": "订单表里 99.9% 的订单已经处理，只有 0.1% 待处理，后台经常查询 `WHERE status = 0` 获取少量待处理订单，原文认为索引是否有效？", "options": [{"key": "A", "text": "一定无效，因为 status 只有两种值", "correct": false}, {"key": "B", "text": "无效，因为命中的是已处理的大部分订单", "correct": false}, {"key": "C", "text": "可能有效，因为每次查询只命中少量记录", "correct": true}, {"key": "D", "text": "有效，但前提是必须改成唯一索引", "correct": false}]}
+??: 比如订单表里，99.9% 的订单已经处理，只有 0.1% 待处理。后台经常查询 `WHERE status = 0` 获取少量待处理订单，索引就可能有效。[原文§如果有一个字段是status值为0或者1，适合建索引吗](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%98%AFstatus%E5%80%BC%E4%B8%BA0%E6%88%96%E8%80%851-%E9%80%82%E5%90%88%E5%BB%BA%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-178 [fill]
+??: [填空题·有序] 经常查询某个用户的订单，可以考虑联合索引____；如果按状态取最近的订单，可以结合查询建立联合索引____。
+??: {"id": "S3-178", "type": "fill", "stem": "经常查询某个用户的订单，可以考虑联合索引____；如果按状态取最近的订单，可以结合查询建立联合索引____。", "blankCount": 2, "blankOrder": "ordered"}
+??: 如果经常查询某个用户的订单，可以考虑 `(user_id, status)`；如果按状态取最近的订单，可以结合查询建立 `(status, created_at)`。[原文§如果有一个字段是status值为0或者1，适合建索引吗](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%98%AFstatus%E5%80%BC%E4%B8%BA0%E6%88%96%E8%80%851-%E9%80%82%E5%90%88%E5%BB%BA%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-179 [single]
+??: status 0、1 各占一半，查询还要 SELECT *，单列索引有没有收益？
+??: {"id": "S3-179", "type": "single", "stem": "如果 status 的 0、1 各占一半，查询还要 `SELECT *`，原文认为单列索引的收益如何？", "options": [{"key": "A", "text": "不会产生回表，所以单列索引的收益通常很大", "correct": false}, {"key": "B", "text": "单列索引一定比全表扫描更快，没有例外", "correct": false}, {"key": "C", "text": "只有改建成哈希索引之后，才可能有收益", "correct": false}, {"key": "D", "text": "大量回表可能比全表扫描更贵，单列索引通常收益不大", "correct": true}]}
+??: 反过来，如果 0、1 各占一半，查询还要 SELECT *，大量回表就可能比全表扫描更贵，这时单列索引通常收益不大。[原文§如果有一个字段是status值为0或者1，适合建索引吗](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E6%9E%9C%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%98%AFstatus%E5%80%BC%E4%B8%BA0%E6%88%96%E8%80%851-%E9%80%82%E5%90%88%E5%BB%BA%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-180 [single]
+??: 索引最大的好处是什么？
+??: {"id": "S3-180", "type": "single", "stem": "原文认为索引最大的好处是下列哪一项？", "options": [{"key": "A", "text": "提高查询速度", "correct": true}, {"key": "B", "text": "减少物理空间占用", "correct": false}, {"key": "C", "text": "提高增删改的效率", "correct": false}, {"key": "D", "text": "缩短创建索引的时间", "correct": false}]}
+??: 索引最大的好处是提高查询速度。[原文§索引的优缺点？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9)
+
+S3-181 [multiple]
+??: 索引有哪些缺点？
+??: {"id": "S3-181", "type": "multiple", "stem": "下列哪些属于原文所说的索引的缺点？", "options": [{"key": "A", "text": "需要占用物理空间，索引越多占用越大", "correct": true}, {"key": "B", "text": "创建和维护索引要耗费时间，数据量增加则耗时增加", "correct": true}, {"key": "C", "text": "会降低表的增删改的效率", "correct": true}, {"key": "D", "text": "会降低表的查询速度，使范围查询变慢", "correct": false}, {"key": "E", "text": "会让表的数据变得无序，需要定期手工整理", "correct": false}, {"key": "F", "text": "会缩小表占用的物理空间，但创建时耗时更长", "correct": false}]}
+??: 索引的缺点：需要占用物理空间，数量越大，占用空间越大；创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增大；会降低表的增删改的效率。[原文§索引的优缺点？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9)
+
+S3-182 [single]
+??: 为什么索引会降低表的增删改效率？
+??: {"id": "S3-182", "type": "single", "stem": "索引会降低表的增删改效率，原文给出的原因是下列哪一项？", "options": [{"key": "A", "text": "索引会让表数据被重复写入磁盘上的多个备份文件", "correct": false}, {"key": "B", "text": "索引会让增删改操作必须等待所有查询先执行结束", "correct": false}, {"key": "C", "text": "每次增删改，B+ 树为维护索引有序性都要动态维护", "correct": true}, {"key": "D", "text": "索引会让 B+ 树退化成无序结构，需要重新排序", "correct": false}]}
+??: 会降低表的增删改的效率，因为每次增删改索引，B+ 树为了维护索引有序性，都需要进行动态维护。[原文§索引的优缺点？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9)
+
+S3-183 [fill]
+??: [填空题·有序] 索引的缺点有：需要占用____，创建和维护索引要耗费____，会降低表的____效率。
+??: {"id": "S3-183", "type": "fill", "stem": "索引的缺点有：需要占用____，创建和维护索引要耗费____，会降低表的____效率。", "blankCount": 3, "blankOrder": "ordered"}
+??: 索引的缺点：需要占用物理空间；创建索引和维护索引要耗费时间；会降低表的增删改的效率。所以索引不是万能钥匙，也是根据场景来使用的。[原文§索引的优缺点？](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9)
+
+S3-184 [multiple]
+??: 什么时候适用索引？
+??: {"id": "S3-184", "type": "multiple", "stem": "下列哪些属于原文所说的适合建立索引的情况？", "options": [{"key": "A", "text": "字段有唯一性限制的，比如商品编码", "correct": true}, {"key": "B", "text": "经常用于 WHERE 查询条件的字段", "correct": true}, {"key": "C", "text": "经常用于 GROUP BY 和 ORDER BY 的字段", "correct": true}, {"key": "D", "text": "WHERE、GROUP BY、ORDER BY 里都用不到的字段", "correct": false}, {"key": "E", "text": "表数据太少的时候", "correct": false}]}
+??: 适用索引的情况：字段有唯一性限制的，比如商品编码；经常用于 WHERE 查询条件的字段，如果查询条件不是一个字段，可以建立联合索引；经常用于 GROUP BY 和 ORDER BY 的字段。[原文§怎么决定建立哪些索引?](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E5%86%B3%E5%AE%9A%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%B4%A2%E5%BC%95)
+
+S3-185 [single]
+??: 查询条件不止一个字段时怎么建索引？
+??: {"id": "S3-185", "type": "single", "stem": "如果 WHERE 查询条件不止一个字段，原文的建议是下列哪一项？", "options": [{"key": "A", "text": "为每个字段单独建一个哈希索引", "correct": false}, {"key": "B", "text": "只能放弃建立索引", "correct": false}, {"key": "C", "text": "必须把所有字段设为主键", "correct": false}, {"key": "D", "text": "可以建立联合索引", "correct": true}]}
+??: 经常用于 WHERE 查询条件的字段，这样能够提高整个表的查询速度，如果查询条件不是一个字段，可以建立联合索引。[原文§怎么决定建立哪些索引?](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E5%86%B3%E5%AE%9A%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%B4%A2%E5%BC%95)
+
+S3-186 [single]
+??: 为什么经常用于 GROUP BY 和 ORDER BY 的字段适合建索引？
+??: {"id": "S3-186", "type": "single", "stem": "经常用于 GROUP BY 和 ORDER BY 的字段适合建立索引，原因是下列哪一项？", "options": [{"key": "A", "text": "索引会让这些字段的值全部变成唯一的，从而不再需要分组", "correct": false}, {"key": "B", "text": "索引使 B+Tree 中的记录有序，合适的索引顺序有机会减少排序或分组开销", "correct": true}, {"key": "C", "text": "索引会自动缓存 GROUP BY 的结果，查询时不再计算", "correct": false}, {"key": "D", "text": "索引会取消 ORDER BY 的排序要求，直接返回无序结果", "correct": false}]}
+??: 经常用于 GROUP BY 和 ORDER BY 的字段，合适的索引顺序有机会减少排序或分组开销，因为我们都已经知道了建立索引之后在 B+Tree 中的记录都是排序好的。[原文§怎么决定建立哪些索引?](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E5%86%B3%E5%AE%9A%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%B4%A2%E5%BC%95)
+
+S3-187 [multiple]
+??: 什么时候不需要创建索引？
+??: {"id": "S3-187", "type": "multiple", "stem": "下列哪些属于原文所说的不需要创建索引的情况？", "options": [{"key": "A", "text": "WHERE 条件、GROUP BY、ORDER BY 里用不到的字段", "correct": true}, {"key": "B", "text": "字段区分度低、查询命中比例高，并且需要大量回表时的单列索引", "correct": true}, {"key": "C", "text": "表数据太少的时候", "correct": true}, {"key": "D", "text": "经常更新、但很少参与过滤或排序的字段", "correct": true}, {"key": "E", "text": "字段有唯一性限制的，比如商品编码", "correct": false}, {"key": "F", "text": "经常用于 WHERE 查询条件的字段", "correct": false}]}
+??: 不需要创建索引的情况：WHERE 条件、GROUP BY、ORDER BY 里用不到的字段；字段区分度低、查询命中比例高，并且需要大量回表时，单列索引通常收益不大；表数据太少的时候；经常更新、但很少参与过滤或排序的字段。[原文§怎么决定建立哪些索引?](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E5%86%B3%E5%AE%9A%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%B4%A2%E5%BC%95)
+
+S3-188 [single]
+??: 为什么起不到定位作用的字段通常不需要创建索引？
+??: {"id": "S3-188", "type": "single", "stem": "原文认为起不到定位作用的字段通常不需要创建索引，原因是下列哪一项？", "options": [{"key": "A", "text": "索引只能用于主键字段，其他字段无法建立索引", "correct": false}, {"key": "B", "text": "索引会让这些字段的值变得不唯一", "correct": false}, {"key": "C", "text": "索引的价值是快速定位，而索引会占用物理空间", "correct": true}, {"key": "D", "text": "索引会使表无法再插入新数据", "correct": false}]}
+??: WHERE 条件，GROUP BY，ORDER BY 里用不到的字段，索引的价值是快速定位，如果起不到定位的字段通常是不需要创建索引的，因为索引是会占用物理空间的。[原文§怎么决定建立哪些索引?](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E5%86%B3%E5%AE%9A%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%B4%A2%E5%BC%95)
+
+S3-189 [single]
+??: 字段区分度低就一定不适合建索引吗？
+??: {"id": "S3-189", "type": "single", "stem": "对于区分度低的字段，原文的说法是下列哪一项？", "options": [{"key": "A", "text": "区分度低的字段在任何情况下都不适合建索引，即使查询的只是少数值或需要覆盖查询", "correct": false}, {"key": "B", "text": "区分度低、命中比例高且大量回表时单列索引收益不大；查少数值、覆盖查询或合适的联合索引仍可能有效", "correct": true}, {"key": "C", "text": "区分度低的字段建索引一定会提高查询速度，即使命中比例很高、需要大量回表", "correct": false}, {"key": "D", "text": "只有区分度低的字段才适合建联合索引，区分度高的字段只适合建单列索引", "correct": false}]}
+??: 字段区分度低、查询命中比例高，并且需要大量回表时，单列索引通常收益不大。但查询少数值、覆盖查询或组成合适的联合索引时，仍可能有效。[原文§怎么决定建立哪些索引?](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E5%86%B3%E5%AE%9A%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%B4%A2%E5%BC%95)
+
+S3-190 [single]
+??: 经常更新的字段要不要建索引？
+??: {"id": "S3-190", "type": "single", "stem": "对于经常更新、但很少参与过滤或排序的字段，原文的看法是下列哪一项？", "options": [{"key": "A", "text": "通常不值得建索引，频繁更新会增加索引维护和日志开销；但承担关键查询时要权衡读写成本，不能一概不建", "correct": true}, {"key": "B", "text": "必须建立索引，因为经常更新的字段一定是查询最频繁的字段，索引能抵消更新开销", "correct": false}, {"key": "C", "text": "绝对不能建立索引，无论它是否承担关键查询，只要更新频繁就一律不建，也不用权衡", "correct": false}, {"key": "D", "text": "只要更新频繁，就应当改成哈希索引来降低索引的维护成本和日志开销", "correct": false}]}
+??: 经常更新、但很少参与过滤或排序的字段，通常不值得建立索引。频繁更新会增加索引维护和日志开销，不过如果它承担关键查询，也需要权衡读写成本，不能一概不建。[原文§怎么决定建立哪些索引?](https://xiaolincoding.com/interview/mysql.html#%E6%80%8E%E4%B9%88%E5%86%B3%E5%AE%9A%E5%BB%BA%E7%AB%8B%E5%93%AA%E4%BA%9B%E7%B4%A2%E5%BC%95)
+
+S3-191 [single]
+??: 怎样根据实际 SQL 设计联合索引？
+??: {"id": "S3-191", "type": "single", "stem": "关于“根据实际 SQL 设计联合索引”，原文的做法是下列哪一项？", "options": [{"key": "A", "text": "只考虑过滤条件，不考虑排序和返回字段，字段顺序随意排列", "correct": false}, {"key": "B", "text": "把所有字段都放进联合索引，字段越多越好，不必考虑写入成本", "correct": false}, {"key": "C", "text": "只按字段区分度从高到低排列，不考虑具体的查询语句", "correct": false}, {"key": "D", "text": "把过滤条件、排序和返回字段一起考虑，利用最左前缀，不要只按区分度排序", "correct": true}]}
+??: 根据实际 SQL 设计联合索引：把过滤条件、排序和返回字段一起考虑，利用最左前缀，不要只按字段区分度排序。[原文§索引优化详细讲讲](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%AE%B2)
+
+S3-192 [single]
+??: 覆盖索引优化怎么做？
+??: {"id": "S3-192", "type": "single", "stem": "关于覆盖索引优化，原文的做法是下列哪一项？", "options": [{"key": "A", "text": "查询一律用 SELECT *，让索引自动补全所需的全部字段", "correct": false}, {"key": "B", "text": "把所有高频查询都改成直接使用聚簇索引来读取完整行", "correct": false}, {"key": "C", "text": "尽量让高频查询回表读取完整行，保证读到的数据最新", "correct": false}, {"key": "D", "text": "查询只取需要的列，让高频查询尽量从二级索引直接得到所需字段，减少回表", "correct": true}]}
+??: 覆盖索引优化：查询只取需要的列，尽量让高频查询从二级索引直接得到所需字段，减少回表。[原文§索引优化详细讲讲](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%AE%B2)
+
+S3-193 [single]
+??: 前缀索引优化怎么做？要注意什么取舍？
+??: {"id": "S3-193", "type": "single", "stem": "关于前缀索引优化，原文的说法是下列哪一项？", "options": [{"key": "A", "text": "对所有字符串都建立前缀索引，前缀越短越好，不必考虑区分度", "correct": false}, {"key": "B", "text": "对很长的字符串建前缀索引，目的是获得比完整值更高的区分度", "correct": false}, {"key": "C", "text": "对很长的字符串只建前缀索引以节省空间，但要在前缀长度和区分度间取舍", "correct": true}, {"key": "D", "text": "前缀索引不节省空间，只能提升区分度，所以要尽量用完整长度", "correct": false}]}
+??: 前缀索引优化：对很长的字符串只建立前缀索引，节省空间，但要在前缀长度和区分度之间做取舍。[原文§索引优化详细讲讲](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%AE%B2)
+
+S3-194 [single]
+??: 主键为什么要尽量短小、稳定、递增？
+??: {"id": "S3-194", "type": "single", "stem": "原文建议主键尽量短小、稳定、递增，主要是为了下列哪一项？", "options": [{"key": "A", "text": "让主键不再具有唯一性约束，减少插入时的校验开销", "correct": false}, {"key": "B", "text": "减少聚簇索引随机插入的成本，也减少二级索引存储主键的开销", "correct": true}, {"key": "C", "text": "让二级索引不再需要保存主键值，从而完全避免回表", "correct": false}, {"key": "D", "text": "让聚簇索引变成非聚簇索引，从而可以建立多个聚簇索引", "correct": false}]}
+??: 主键尽量短小、稳定、递增：减少聚簇索引随机插入的成本，也减少二级索引存储主键的开销。[原文§索引优化详细讲讲](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%AE%B2)
+
+S3-195 [single]
+??: 怎样让条件便于使用索引？
+??: {"id": "S3-195", "type": "single", "stem": "为了让条件便于使用索引，原文的做法是下列哪一项？", "options": [{"key": "A", "text": "对索引列尽量多用函数和计算，让优化器自行改写成可用索引的形式", "correct": false}, {"key": "B", "text": "时间条件优先写成对列的函数运算，如 YEAR(created_at) = 2024", "correct": false}, {"key": "C", "text": "避免对普通索引列做不必要的函数、计算和隐式转换，时间条件写成范围", "correct": true}, {"key": "D", "text": "让参数类型与列类型尽量不一致，由 MySQL 自动做隐式类型转换", "correct": false}]}
+??: 让条件便于使用索引：避免对普通索引列做不必要的函数、计算和隐式类型转换，时间条件优先写成范围。[原文§索引优化详细讲讲](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%AE%B2)
+
+S3-196 [single]
+??: 清理重复和低收益索引有什么好处？删除前要注意什么？
+??: {"id": "S3-196", "type": "single", "stem": "关于清理重复和低收益索引，原文的说法是下列哪一项？", "options": [{"key": "A", "text": "让查询速度必然变快，所以删除前无需再确认其他查询", "correct": false}, {"key": "B", "text": "减少磁盘占用和增删改的维护成本，但删除前要确认没有影响其他查询", "correct": true}, {"key": "C", "text": "增加磁盘占用，换取更高的写入速度，删除前无需确认", "correct": false}, {"key": "D", "text": "只要索引的列名重复就应当立刻删除，不用评估对查询的影响", "correct": false}]}
+??: 清理重复和低收益索引：减少磁盘占用和增删改时的维护成本，删除前需要确认没有影响其他查询。[原文§索引优化详细讲讲](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%AE%B2)
+
+S3-197 [single]
+??: 索引优化之后，怎样验证优化效果？
+??: {"id": "S3-197", "type": "single", "stem": "索引优化之后，原文的验证方法是下列哪一项？", "options": [{"key": "A", "text": "只要 EXPLAIN 的 key 有值，就说明优化已经成功，不必再看实际执行情况", "correct": false}, {"key": "B", "text": "用 EXPLAIN 和实际执行情况验证，不能只看 key 有值就认为优化成功", "correct": true}, {"key": "C", "text": "只要建立了索引就不需要再验证，索引一定会被正确使用", "correct": false}, {"key": "D", "text": "只看表的行数是否变少，行数变少就说明优化成功", "correct": false}]}
+??: 最后用 EXPLAIN 和实际执行情况验证，关注扫描行数、回表次数、排序和耗时。不能只看 key 有值，就认为优化成功了。[原文§索引优化详细讲讲](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%AE%B2)
+
+S3-198 [fill]
+??: [填空题·无序] 索引优化后用 EXPLAIN 和实际执行情况验证，关注____、____、排序和耗时。
+??: {"id": "S3-198", "type": "fill", "stem": "索引优化后用 EXPLAIN 和实际执行情况验证，关注____、____、排序和耗时。", "blankCount": 2, "blankOrder": "unordered"}
+??: 最后用 EXPLAIN 和实际执行情况验证，关注扫描行数、回表次数、排序和耗时。[原文§索引优化详细讲讲](https://xiaolincoding.com/interview/mysql.html#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%AE%B2)
+
+S3-199 [single]
+??: 什么是前缀索引？举例说明怎么创建。
+??: {"id": "S3-199", "type": "single", "stem": "原文用邮箱举例，对前 20 个字符建前缀索引的语句是下列哪一项？", "options": [{"key": "A", "text": "CREATE UNIQUE INDEX idx_email_prefix ON users(email);", "correct": false}, {"key": "B", "text": "CREATE INDEX idx_email_prefix ON users(email, 20);", "correct": false}, {"key": "C", "text": "CREATE INDEX idx_email_prefix ON users(email(20));", "correct": true}, {"key": "D", "text": "CREATE INDEX idx_email_prefix ON users(email) PREFIX 20;", "correct": false}]}
+??: 前缀索引就是只取字符串前面一部分建立索引，比如邮箱比较长，可以先对前 20 个字符建索引：`CREATE INDEX idx_email_prefix ON users(email(20));`[原文§了解过前缀索引吗？](https://xiaolincoding.com/interview/mysql.html#%E4%BA%86%E8%A7%A3%E8%BF%87%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-200 [single]
+??: 前缀索引有什么好处？
+??: {"id": "S3-200", "type": "single", "stem": "前缀索引的好处是下列哪一项？", "options": [{"key": "A", "text": "可以提供完整字符串，不需要读取完整记录", "correct": false}, {"key": "B", "text": "可以保证按完整字符串排序", "correct": false}, {"key": "C", "text": "可以让唯一索引限制完整值不重复", "correct": false}, {"key": "D", "text": "索引更小，一个页里可以放下更多索引项", "correct": true}]}
+??: 这样索引更小，一个页里可以放下更多索引项。[原文§了解过前缀索引吗？](https://xiaolincoding.com/interview/mysql.html#%E4%BA%86%E8%A7%A3%E8%BF%87%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-201 [single]
+??: 前缀长度为什么不能只图短？
+??: {"id": "S3-201", "type": "single", "stem": "如果很多邮箱的前 20 个字符相同，使用前缀索引会出现什么问题？", "options": [{"key": "A", "text": "需扫描更多候选记录再检查完整值，所以前缀长度不能只图短", "correct": true}, {"key": "B", "text": "索引会因为前缀重复而无法创建，必须改用完整长度", "correct": false}, {"key": "C", "text": "前缀索引会自动扩展为完整值，不会有额外的扫描开销", "correct": false}, {"key": "D", "text": "查询会因前缀重复而直接返回错误的结果，无法使用", "correct": false}]}
+??: 如果很多邮箱前 20 个字符相同，就需要扫描更多候选记录，再检查完整值，所以前缀长度不能只图短。[原文§了解过前缀索引吗？](https://xiaolincoding.com/interview/mysql.html#%E4%BA%86%E8%A7%A3%E8%BF%87%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-202 [single]
+??: 怎样选择合适的前缀长度？
+??: {"id": "S3-202", "type": "single", "stem": "选择前缀索引的长度时，原文给出的方法是下列哪一项？", "options": [{"key": "A", "text": "比较完整值和不同长度前缀的区分度，选尽量接近完整值区分度的长度", "correct": true}, {"key": "B", "text": "总是选择最短的前缀长度，因为长度越短索引越小", "correct": false}, {"key": "C", "text": "总是选择整个字段的完整长度，这样才能保证区分度", "correct": false}, {"key": "D", "text": "按表的行数除以 100 来确定前缀长度，与区分度无关", "correct": false}]}
+??: 可以比较完整值和不同长度前缀的区分度，选择一个尽量接近完整值区分度的长度。[原文§了解过前缀索引吗？](https://xiaolincoding.com/interview/mysql.html#%E4%BA%86%E8%A7%A3%E8%BF%87%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-203 [single]
+??: 前缀索引能直接提供完整字符串吗？要返回完整 email 怎么办？
+??: {"id": "S3-203", "type": "single", "stem": "查询要返回 email 完整值时，前缀索引的局限是下列哪一项？", "options": [{"key": "A", "text": "前缀索引可以直接提供完整字符串，不需要读取完整记录", "correct": false}, {"key": "B", "text": "前缀索引会自动补全字符串，保证按完整字符串排序", "correct": false}, {"key": "C", "text": "前缀索引不能直接提供完整字符串，仍需要读取完整记录", "correct": true}, {"key": "D", "text": "前缀索引只能在返回完整值时才被使用", "correct": false}]}
+??: 前缀索引不能直接提供完整字符串，也不能保证按完整字符串排序。如果查询要返回 email 完整值，仍需要读取完整记录。[原文§了解过前缀索引吗？](https://xiaolincoding.com/interview/mysql.html#%E4%BA%86%E8%A7%A3%E8%BF%87%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-204 [single]
+??: 唯一前缀索引限制的是什么？可能带来什么问题？
+??: {"id": "S3-204", "type": "single", "stem": "关于唯一前缀索引，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "限制的是完整值唯一，前缀相同的记录不会被当成冲突", "correct": false}, {"key": "B", "text": "不限制任何形式的唯一性，只起到普通索引的作用", "correct": false}, {"key": "C", "text": "只对前缀不同的记录检查冲突，前缀相同的记录一律放行", "correct": false}, {"key": "D", "text": "限制的是前缀唯一，可能把前缀相同、完整值不同的两条记录当成冲突", "correct": true}]}
+??: 唯一前缀索引限制的也是前缀唯一，可能把前缀相同、完整值不同的两条记录当成冲突。[原文§了解过前缀索引吗？](https://xiaolincoding.com/interview/mysql.html#%E4%BA%86%E8%A7%A3%E8%BF%87%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95%E5%90%97)
+
+S3-205 [multiple]
+??: 前缀索引有哪些局限？
+??: {"id": "S3-205", "type": "multiple", "stem": "下列哪些属于原文所说的前缀索引的局限？", "options": [{"key": "A", "text": "不能直接提供完整字符串，返回完整值仍要读记录", "correct": true}, {"key": "B", "text": "不能保证查询结果按完整字符串排序", "correct": true}, {"key": "C", "text": "唯一前缀索引只限制前缀唯一，完整值不同也可能冲突", "correct": true}, {"key": "D", "text": "前缀越短，索引对完整值的区分度就越高", "correct": false}, {"key": "E", "text": "前缀索引可以直接提供完整字符串，并保证按完整值排序", "correct": false}]}
+??: 前缀索引不能直接提供完整字符串，也不能保证按完整字符串排序；唯一前缀索引限制的也是前缀唯一，可能把前缀相同、完整值不同的两条记录当成冲突。[原文§了解过前缀索引吗？](https://xiaolincoding.com/interview/mysql.html#%E4%BA%86%E8%A7%A3%E8%BF%87%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95%E5%90%97)

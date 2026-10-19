@@ -1,0 +1,21 @@
+{
+  "formula": "(waitingTime + serviceTime) / serviceTime",
+  "cases": [
+    {
+      "wait": 0,
+      "shortService": 2,
+      "longService": 3,
+      "shortRatio": "1",
+      "longRatio": "1",
+      "shortStrictlyHigher": false
+    },
+    {
+      "wait": 6,
+      "shortService": 2,
+      "longService": 3,
+      "shortRatio": "4",
+      "longRatio": "3",
+      "shortStrictlyHigher": true
+    }
+  ]
+}

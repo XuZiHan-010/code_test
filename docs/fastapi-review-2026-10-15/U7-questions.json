@@ -1,0 +1,876 @@
+[
+  {
+    "id": "U7-1",
+    "typed": {
+      "id": "U7-1",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 中的“中间件”是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "只在应用启动时运行一次的初始化函数，用来加载整个应用共享的资源",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "一个在每个请求交给路径操作之前、以及每个响应返回之前都会运行的函数",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "一个在应用关闭时执行、用来释放数据库连接池等资源的函数",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "一个在响应发出之后才运行的函数，用来执行客户端不必等待的操作",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 中的“中间件”是什么？",
+    "answer": "中间件是一个函数，它会在每个特定的路径操作处理每个请求之前运行，也会在返回每个响应之前运行：先接收请求并做一些处理，再把请求交给路径操作，拿到响应后可以再处理，最后返回响应。A 说的是 lifespan 的启动逻辑，C 说的是 lifespan 的关闭逻辑，D 说的是后台任务，三者都不是中间件。[原文§中间件](https://fastapi.tiangolo.com/zh/tutorial/middleware/#middleware)"
+  },
+  {
+    "id": "U7-2",
+    "typed": {
+      "id": "U7-2",
+      "type": "fill",
+      "stem": "按官方文档，用 @app.middleware(\"http\") 装饰的中间件函数会接收两个参数：____、____。",
+      "blankCount": 2,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档，用 @app.middleware(\"http\") 装饰的中间件函数会接收两个参数：____、____。",
+    "answer": "中间件函数接收 `request` 和 `call_next`，所以两个空是：request、call_next。[原文§中间件 · 创建中间件](https://fastapi.tiangolo.com/zh/tutorial/middleware/#create-a-middleware)"
+  },
+  {
+    "id": "U7-3",
+    "typed": {
+      "id": "U7-3",
+      "type": "short"
+    },
+    "question": "中间件函数里的 call_next 起什么作用？为什么中间件既能在路径操作处理请求之前、也能在响应返回之前执行自己的逻辑？",
+    "answer": "call_next 是中间件接收的一个函数，它把 request 作为参数，把请求传递给相应的路径操作，然后返回路径操作生成的 response。所以在 `await call_next(request)` 之前写的代码会在路径操作接收请求之前运行，之后写的代码可以在返回之前进一步修改 response，例如添加 `X-Process-Time` 响应头。[原文§中间件 · 创建中间件](https://fastapi.tiangolo.com/zh/tutorial/middleware/#create-a-middleware) [原文§中间件 · 在 response 之前与之后](https://fastapi.tiangolo.com/zh/tutorial/middleware/#before-and-after-the-response)"
+  },
+  {
+    "id": "U7-4",
+    "typed": {
+      "id": "U7-4",
+      "type": "single",
+      "stem": "按官方文档，如果依赖使用了 yield，依赖中 yield 之后的退出代码相对中间件在什么时候运行？",
+      "options": [
+        {
+          "key": "A",
+          "text": "在中间件之前运行",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "与中间件同时运行，两者没有先后顺序",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "在中间件之后运行",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "在应用关闭（shutdown）时才运行",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，如果依赖使用了 yield，依赖中 yield 之后的退出代码相对中间件在什么时候运行？",
+    "answer": "官方文档的技术细节说明：如果有使用 yield 的依赖，依赖中的退出代码会在中间件之后运行。它既不早于中间件，也不是与中间件并行，更不是等到应用关闭才运行。[原文§中间件](https://fastapi.tiangolo.com/zh/tutorial/middleware/#middleware)"
+  },
+  {
+    "id": "U7-5",
+    "typed": {
+      "id": "U7-5",
+      "type": "single",
+      "stem": "按官方文档，后台任务相对于中间件在什么时候运行？",
+      "options": [
+        {
+          "key": "A",
+          "text": "在请求到达路径操作之前，先于所有中间件运行",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "与带 yield 的依赖的退出代码一起，在中间件之前运行",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "在应用关闭（shutdown）时才运行",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "在所有中间件之后运行",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，后台任务相对于中间件在什么时候运行？",
+    "answer": "官方文档说明：如果有任何后台任务，它们会在所有中间件之后运行。因此后台任务不会先于中间件，也不是等到应用关闭才运行。[原文§中间件](https://fastapi.tiangolo.com/zh/tutorial/middleware/#middleware)"
+  },
+  {
+    "id": "U7-6",
+    "typed": {
+      "id": "U7-6",
+      "type": "single",
+      "stem": "中间件给响应加了一个自定义响应头，并希望浏览器中的客户端能够读取它，按官方文档应该怎么做？",
+      "options": [
+        {
+          "key": "A",
+          "text": "把它加到 CORS 配置的 expose_headers 参数中",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "把它加到 CORS 配置的 allow_headers 参数中",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "把它加到 CORS 配置的 allow_origins 参数中",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "给它加上 X- 前缀即可，浏览器会自动让客户端读取到它",
+          "correct": false
+        }
+      ]
+    },
+    "question": "中间件给响应加了一个自定义响应头，并希望浏览器中的客户端能够读取它，按官方文档应该怎么做？",
+    "answer": "可以用 X- 前缀添加专有的自定义请求头，但如果希望浏览器中的客户端能看到这些自定义头，需要把它们加到 CORS 配置的 expose_headers 参数中。allow_headers 针对的是请求头，allow_origins 列的是允许的源；只加 X- 前缀只是命名约定，并不会让浏览器中的客户端读到它。[原文§中间件 · 创建中间件](https://fastapi.tiangolo.com/zh/tutorial/middleware/#create-a-middleware)"
+  },
+  {
+    "id": "U7-7",
+    "typed": {
+      "id": "U7-7",
+      "type": "short"
+    },
+    "question": "添加多个中间件时，它们的执行顺序是怎样的？为什么说它们形成了一个栈？",
+    "answer": "使用 `@app.middleware()` 装饰器或 `app.add_middleware()` 添加多个中间件时，每个新中间件都会包裹应用，形成一个栈：最后添加的中间件是“最外层”，最先添加的是“最内层”。在请求路径上，最外层的中间件先运行；在响应路径上，它最后运行。[原文§中间件 · 多个中间件的执行顺序](https://fastapi.tiangolo.com/zh/tutorial/middleware/#multiple-middleware-execution-order)"
+  },
+  {
+    "id": "U7-8",
+    "typed": {
+      "id": "U7-8",
+      "type": "fill",
+      "stem": "按官方文档，CORS 里的“源”是由哪三部分组合而成的：____、____、____。",
+      "blankCount": 3,
+      "blankOrder": "unordered"
+    },
+    "question": "[填空题·无序] 按官方文档，CORS 里的“源”是由哪三部分组合而成的：____、____、____。",
+    "answer": "源是协议（http、https）、域（如 myapp.com、localhost）以及端口（如 80、443、8080）的组合，所以三个空是：协议、域、端口。[原文§CORS（跨域资源共享） · 源](https://fastapi.tiangolo.com/zh/tutorial/cors/#origin)"
+  },
+  {
+    "id": "U7-9",
+    "typed": {
+      "id": "U7-9",
+      "type": "single",
+      "stem": "前端运行在 http://localhost:8080，它的 JavaScript 去请求运行在 http://localhost（未指定端口，浏览器采用默认的 80 端口）的后端。按官方文档，它们为什么属于不同的“源”？",
+      "options": [
+        {
+          "key": "A",
+          "text": "因为两者使用的协议不同",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "因为两者使用的域不同",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "因为两者使用的端口不同",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "因为后端还没有配置允许的源列表",
+          "correct": false
+        }
+      ]
+    },
+    "question": "前端运行在 http://localhost:8080，它的 JavaScript 去请求运行在 http://localhost（未指定端口，浏览器采用默认的 80 端口）的后端。按官方文档，它们为什么属于不同的“源”？",
+    "answer": "官方文档指出，即使都在 localhost 上，只要协议或端口不同就是不同的源；这里协议都是 http、域都是 localhost，区别只在端口（8080 与默认的 80）。后端有没有配置允许的源列表影响的是是否放行，而不是是否属于不同的源。[原文§CORS（跨域资源共享） · 源](https://fastapi.tiangolo.com/zh/tutorial/cors/#origin) [原文§CORS（跨域资源共享） · 步骤](https://fastapi.tiangolo.com/zh/tutorial/cors/#steps)"
+  },
+  {
+    "id": "U7-10",
+    "typed": {
+      "id": "U7-10",
+      "type": "short"
+    },
+    "question": "前端和后端处于不同的“源”时，浏览器与后端之间的 CORS 通信是怎样进行的？后端需要提供什么？",
+    "answer": "浏览器会先向后端发送一个 HTTP OPTIONS 请求；如果后端发送了适当的 headers 来授权这个不同源的通信，浏览器才允许前端中的 JavaScript 向后端发送请求。为此后端必须有一个“允许的源”列表，并且其中要包含前端所在的源（例如 http://localhost:8080）。[原文§CORS（跨域资源共享） · 步骤](https://fastapi.tiangolo.com/zh/tutorial/cors/#steps)"
+  },
+  {
+    "id": "U7-11",
+    "typed": {
+      "id": "U7-11",
+      "type": "single",
+      "stem": "按官方文档，把允许的源声明为通配符 \"*\" 意味着什么？下列哪项说法正确？",
+      "options": [
+        {
+          "key": "A",
+          "text": "通配符表示全部源都允许，连 Cookies 和 Bearer 令牌的 Authorization 请求头这类涉及凭据的通信也一并允许",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "通配符表示只允许与后端同源的请求，其他任何源的请求都不被允许",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "通配符必须同时设置 allow_credentials 为 True 才会生效，否则所有跨域请求都不被允许",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "通配符表示全部源都允许，但这不包括涉及凭据的通信，例如 Cookies 以及使用 Bearer 令牌的 Authorization 请求头",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，把允许的源声明为通配符 \"*\" 意味着什么？下列哪项说法正确？",
+    "answer": "使用 \"*\" 表示允许全部源，但这只允许某些类型的通信，不包括所有涉及凭据的内容，比如 Cookies，以及使用 Bearer 令牌的 Authorization 请求头等。所以为了一切都能正常工作，最好显式指定允许的源。[原文§CORS（跨域资源共享） · 通配符](https://fastapi.tiangolo.com/zh/tutorial/cors/#wildcards)"
+  },
+  {
+    "id": "U7-12",
+    "typed": {
+      "id": "U7-12",
+      "type": "multiple",
+      "stem": "当 allow_credentials 设为 True 时，CORSMiddleware 的哪些参数不能设为 ['*']，必须显式指定？",
+      "options": [
+        {
+          "key": "A",
+          "text": "allow_origins",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "expose_headers",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "allow_methods",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "max_age",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "allow_headers",
+          "correct": true
+        }
+      ]
+    },
+    "question": "当 allow_credentials 设为 True 时，CORSMiddleware 的哪些参数不能设为 ['*']，必须显式指定？",
+    "answer": "官方文档说明：当 allow_credentials 设为 True 时，allow_origins、allow_methods 和 allow_headers 都不能设为 ['*']，它们必须显式指定。expose_headers 和 max_age 不在此限制之内。[原文§CORS（跨域资源共享） · 使用 CORSMiddleware](https://fastapi.tiangolo.com/zh/tutorial/cors/#use-corsmiddleware)"
+  },
+  {
+    "id": "U7-13",
+    "typed": {
+      "id": "U7-13",
+      "type": "multiple",
+      "stem": "关于 CORSMiddleware 的参数，下列说法哪些成立？",
+      "options": [
+        {
+          "key": "A",
+          "text": "allow_origin_regex 接受一个正则表达式字符串，匹配的源允许跨域请求",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "allow_methods 默认允许所有 HTTP 方法",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "allow_credentials 默认是 False",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "max_age 的单位是毫秒",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "expose_headers 指示哪些响应头可以被浏览器访问",
+          "correct": true
+        }
+      ]
+    },
+    "question": "关于 CORSMiddleware 的参数，下列说法哪些成立？",
+    "answer": "allow_origin_regex 用正则匹配允许的源；allow_credentials 默认是 False；expose_headers 指示可以被浏览器访问的响应头。allow_methods 默认只有 ['GET']，要允许所有标准方法需显式设为 ['*']；max_age 的单位是秒（默认 600），不是毫秒。[原文§CORS（跨域资源共享） · 使用 CORSMiddleware](https://fastapi.tiangolo.com/zh/tutorial/cors/#use-corsmiddleware)"
+  },
+  {
+    "id": "U7-14",
+    "typed": {
+      "id": "U7-14",
+      "type": "fill",
+      "stem": "CORSMiddleware 的参数中，列出允许跨域请求的源的是 ____，用正则表达式匹配允许的源的是 ____，设置浏览器缓存 CORS 响应最长时间的是 ____。",
+      "blankCount": 3,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] CORSMiddleware 的参数中，列出允许跨域请求的源的是 ____，用正则表达式匹配允许的源的是 ____，设置浏览器缓存 CORS 响应最长时间的是 ____。",
+    "answer": "三个参数依次是：allow_origins（允许跨域请求的源列表）、allow_origin_regex（匹配允许源的正则表达式字符串）、max_age（浏览器缓存 CORS 响应的最长时间，单位秒）。[原文§CORS（跨域资源共享） · 使用 CORSMiddleware](https://fastapi.tiangolo.com/zh/tutorial/cors/#use-corsmiddleware)"
+  },
+  {
+    "id": "U7-15",
+    "typed": {
+      "id": "U7-15",
+      "type": "single",
+      "stem": "按官方文档，下列哪一项是 CORS 预检请求？",
+      "options": [
+        {
+          "key": "A",
+          "text": "带有 Origin 和 Access-Control-Request-Method 请求头的 OPTIONS 请求",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "任何带有 Origin 请求头的请求，不论使用什么 HTTP 方法",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "带有 Access-Control-Request-Method 请求头的 POST 请求",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "没有 Origin 请求头的 OPTIONS 请求",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，下列哪一项是 CORS 预检请求？",
+    "answer": "CORS 预检请求是带有 Origin 和 Access-Control-Request-Method 请求头的 OPTIONS 请求，CORSMiddleware 会拦截它并直接响应。B 描述的是简单请求；预检请求是 OPTIONS 请求且带有 Origin 请求头，所以 C、D 都不对。[原文§CORS（跨域资源共享） · CORS 预检请求](https://fastapi.tiangolo.com/zh/tutorial/cors/#cors-preflight-requests)"
+  },
+  {
+    "id": "U7-16",
+    "typed": {
+      "id": "U7-16",
+      "type": "short"
+    },
+    "question": "CORSMiddleware 会响应哪两种特定类型的 HTTP 请求？它对这两种请求的处理方式有什么不同？",
+    "answer": "一种是 CORS 预检请求（带有 Origin 和 Access-Control-Request-Method 请求头的 OPTIONS 请求）：中间件会拦截并直接响应，出于提供信息的目的返回带有适当 CORS headers 的 200 或 400 响应。另一种是简单请求（任何带有 Origin 请求头的请求）：中间件像平常一样把请求传下去，只是在响应中包含适当的 CORS headers。[原文§CORS（跨域资源共享） · CORS 预检请求](https://fastapi.tiangolo.com/zh/tutorial/cors/#cors-preflight-requests) [原文§CORS（跨域资源共享） · 简单请求](https://fastapi.tiangolo.com/zh/tutorial/cors/#simple-requests)"
+  },
+  {
+    "id": "U7-17",
+    "typed": {
+      "id": "U7-17",
+      "type": "single",
+      "stem": "按官方文档，后台任务适合用来做什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "在应用开始接收请求之前，加载整个应用共享的机器学习模型",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "执行请求之后的操作，客户端不必等操作完成就能收到响应，例如发送邮件通知",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "执行响应返回前必须完成的计算，并把计算结果放进响应里返回给客户端",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "拦截每一个请求，并给每个响应统一加上自定义响应头",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，后台任务适合用来做什么？",
+    "answer": "后台任务在返回响应后运行，适合需要在请求之后执行、但客户端不必等待的操作，例如发送邮件通知，或把收到的文件在后台慢慢处理并先返回 202 响应。A 是 lifespan 的用途，D 是中间件的用途，C 恰好相反：后台任务的结果进不了已返回的响应。[原文§后台任务](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/#background-tasks)"
+  },
+  {
+    "id": "U7-18",
+    "typed": {
+      "id": "U7-18",
+      "type": "single",
+      "stem": "按官方文档，在路径操作函数里怎样使用 BackgroundTasks 添加后台任务？",
+      "options": [
+        {
+          "key": "A",
+          "text": "给函数加上 @app.middleware(\"http\") 装饰器，在 call_next 之后调用任务函数",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "在 FastAPI(...) 构造时通过 lifespan 参数传入任务函数",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "用类型声明 BackgroundTasks 定义一个参数，再调用它的 .add_task() 方法",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "在 @app.on_event(\"startup\") 处理器里调用 .add_task() 注册任务",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，在路径操作函数里怎样使用 BackgroundTasks 添加后台任务？",
+    "answer": "首先导入 BackgroundTasks，并在路径操作函数中用类型声明 BackgroundTasks 定义一个参数；FastAPI 会创建一个 BackgroundTasks 对象并作为该参数传入，然后在函数里用 .add_task() 把任务函数加进去。其余做法分别属于中间件、lifespan 和 startup 事件，都不是添加后台任务的方式。[原文§后台任务 · 使用 BackgroundTasks](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/#using-backgroundtasks) [原文§后台任务 · 添加后台任务](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/#add-the-background-task)"
+  },
+  {
+    "id": "U7-19",
+    "typed": {
+      "id": "U7-19",
+      "type": "fill",
+      "stem": "按官方文档，.add_task() 依次接收：在后台运行的____、按顺序传给它的____、传给它的____。",
+      "blankCount": 3,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，.add_task() 依次接收：在后台运行的____、按顺序传给它的____、传给它的____。",
+    "answer": "add_task() 接收：在后台运行的任务函数（如 write_notification）、按顺序传给任务函数的任意参数序列（位置参数）、传给任务函数的任意关键字参数，所以三个空依次是：任务函数、位置参数（参数序列）、关键字参数。[原文§后台任务 · 添加后台任务](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/#add-the-background-task)"
+  },
+  {
+    "id": "U7-20",
+    "typed": {
+      "id": "U7-20",
+      "type": "single",
+      "stem": "后台任务的任务函数可以怎样定义？",
+      "options": [
+        {
+          "key": "A",
+          "text": "只能是 async def 函数，普通 def 函数不被支持",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "只能是普通 def 函数，因为它在响应发出之后才运行",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "必须是一个返回 Starlette Response 对象的函数",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "async def 和普通 def 都可以，FastAPI 知道如何正确处理",
+          "correct": true
+        }
+      ]
+    },
+    "question": "后台任务的任务函数可以怎样定义？",
+    "answer": "任务函数只是一个可以接收参数的标准函数，它可以是 async def 或普通的 def 函数，FastAPI 知道如何正确处理。示例里写文件的操作不使用 async 和 await，所以用普通 def 定义。[原文§后台任务 · 创建一个任务函数](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/#create-a-task-function)"
+  },
+  {
+    "id": "U7-21",
+    "typed": {
+      "id": "U7-21",
+      "type": "single",
+      "stem": "在路径操作函数和它所依赖的某个依赖项中都声明了 BackgroundTasks 参数，并各自添加了任务，按官方文档会怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "FastAPI 会复用同一个对象，所有后台任务被合并在一起并在响应之后运行",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "只有路径操作函数里添加的任务会运行，依赖里添加的会被忽略",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "依赖中不允许声明 BackgroundTasks 参数，这样写会直接报错",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "每个声明各得到一个独立对象，依赖里的任务先于路径操作函数运行",
+          "correct": false
+        }
+      ]
+    },
+    "question": "在路径操作函数和它所依赖的某个依赖项中都声明了 BackgroundTasks 参数，并各自添加了任务，按官方文档会怎样？",
+    "answer": "BackgroundTasks 也适用于依赖注入，可以在路径操作函数、依赖、子依赖等多个级别声明；FastAPI 知道如何复用同一对象，所以所有后台任务被合并在一起并随后在后台运行。[原文§后台任务 · 依赖注入](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/#dependency-injection)"
+  },
+  {
+    "id": "U7-22",
+    "typed": {
+      "id": "U7-22",
+      "type": "short"
+    },
+    "question": "什么情况下应该使用 Celery 这类更大的工具，什么情况下直接用 BackgroundTasks 就够了？",
+    "answer": "如果需要执行繁重的后台计算，并且不一定需要由同一进程运行（例如不需要共享内存、变量），用 Celery 之类更大的工具可能更好：它们往往需要更复杂的配置和消息/作业队列管理器（如 RabbitMQ 或 Redis），但允许在多个进程甚至多台服务器中运行后台任务。如果需要从同一个 FastAPI 应用访问变量和对象，或者只是执行小型后台任务（如发送邮件通知），直接使用 BackgroundTasks 即可。[原文§后台任务 · 告诫](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/#caveat)"
+  },
+  {
+    "id": "U7-23",
+    "typed": {
+      "id": "U7-23",
+      "type": "multiple",
+      "stem": "按官方文档，下列哪些适合放在 lifespan 中处理？",
+      "options": [
+        {
+          "key": "A",
+          "text": "在应用开始接收请求之前，加载一个在请求之间共享的机器学习模型",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "为每个请求单独加载一份模型，请求结束后立刻卸载",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "创建在整个应用中共享的数据库连接池",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "应用关闭时，释放启动时占用的内存或 GPU 等资源",
+          "correct": true
+        },
+        {
+          "key": "E",
+          "text": "在每个响应返回之前修改它的响应头",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，下列哪些适合放在 lifespan 中处理？",
+    "answer": "lifespan 用来定义应用开始接收请求前只执行一次的启动逻辑，以及应用关闭时执行一次的关闭逻辑，适合设置在整个应用中共享、之后需要释放的资源，例如数据库连接池或共享的机器学习模型。模型在请求之间共享，并非每个请求或每个用户各一份；修改响应头是中间件的事。[原文§生命周期事件](https://fastapi.tiangolo.com/zh/advanced/events/#lifespan-events) [原文§生命周期事件 · 用例](https://fastapi.tiangolo.com/zh/advanced/events/#use-case) [原文§生命周期事件 · Lifespan](https://fastapi.tiangolo.com/zh/advanced/events/#lifespan)"
+  },
+  {
+    "id": "U7-24",
+    "typed": {
+      "id": "U7-24",
+      "type": "single",
+      "stem": "按官方文档，为什么不把加载机器学习模型的代码直接写在模块/文件顶部？",
+      "options": [
+        {
+          "key": "A",
+          "text": "因为那样模型无法在请求之间共享，每个请求都要各自重新加载一份",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "因为那样即使只是运行简单的自动化测试也会加载模型，测试会变慢",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "因为模块顶部的代码要等到应用关闭时才会被执行",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "因为每个用户都需要各自独立的一份模型，不能放在模块级别",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，为什么不把加载机器学习模型的代码直接写在模块/文件顶部？",
+    "answer": "放在模块顶部意味着即使只是运行一个简单的自动化测试也会加载模型，测试要等待模型加载完成而变慢。要解决的问题是：在应用开始接收请求之前加载模型，而不是在代码被加载时。模型本来就是在请求之间共享的，并非每个用户各自一份。[原文§生命周期事件 · 用例](https://fastapi.tiangolo.com/zh/advanced/events/#use-case)"
+  },
+  {
+    "id": "U7-25",
+    "typed": {
+      "id": "U7-25",
+      "type": "single",
+      "stem": "在 lifespan 函数中，yield 之前和 yield 之后的代码分别在什么时候执行？",
+      "options": [
+        {
+          "key": "A",
+          "text": "yield 之前的代码在应用关闭时执行，yield 之后的代码在应用启动时执行",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "两部分都在应用启动时执行，yield 之后的部分先于第一个请求运行",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "yield 之前的代码在应用开始接收请求之前（启动）执行，yield 之后的代码在应用处理完请求后、关闭之前执行",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "yield 之前的代码在每个请求之前执行，yield 之后的代码在每个请求之后执行",
+          "correct": false
+        }
+      ]
+    },
+    "question": "在 lifespan 函数中，yield 之前和 yield 之后的代码分别在什么时候执行？",
+    "answer": "yield 之前的部分在应用启动前执行（例如加载模型），yield 之后的部分在应用完成请求处理后、即关闭之前执行（例如卸载模型、释放内存或 GPU）。它们只执行一次，不是每个请求各执行一次。[原文§生命周期事件 · 生命周期函数](https://fastapi.tiangolo.com/zh/advanced/events/#lifespan-function) [原文§生命周期事件 · Lifespan](https://fastapi.tiangolo.com/zh/advanced/events/#lifespan)"
+  },
+  {
+    "id": "U7-26",
+    "typed": {
+      "id": "U7-26",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 应用的 lifespan 参数接受什么样的对象？",
+      "options": [
+        {
+          "key": "A",
+          "text": "一个带 yield 的依赖函数，退出代码在请求处理完之后运行",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "一对分别用 @app.on_event(\"startup\") 和 @app.on_event(\"shutdown\") 装饰的函数",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "一个在每个请求之前被调用的中间件类",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "一个异步上下文管理器，例如带 yield 的异步函数加上 @asynccontextmanager 得到的对象",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 应用的 lifespan 参数接受什么样的对象？",
+    "answer": "FastAPI 的 lifespan 参数接受一个异步上下文管理器：带有 yield 的异步函数加上 @asynccontextmanager 装饰器，就被转化为异步上下文管理器，进入时执行 yield 之前的代码，离开时执行 yield 之后的代码。on_event 是另一套已不推荐的做法。[原文§生命周期事件 · 异步上下文管理器](https://fastapi.tiangolo.com/zh/advanced/events/#async-context-manager)"
+  },
+  {
+    "id": "U7-27",
+    "typed": {
+      "id": "U7-27",
+      "type": "single",
+      "stem": "按官方文档，如果同时给应用提供了 lifespan 参数，又用 @app.on_event(\"startup\") 注册了事件处理器，会怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "startup 和 shutdown 事件处理器不再生效，要么用 lifespan，要么配置所有事件，两者不能共用",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "两者都会生效，startup 事件处理器先于 lifespan 中 yield 之前的代码运行",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "只有 shutdown 事件处理器会失效，startup 事件处理器仍然生效",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "startup 事件处理器会取代 lifespan，lifespan 里的代码不再执行",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，如果同时给应用提供了 lifespan 参数，又用 @app.on_event(\"startup\") 注册了事件处理器，会怎样？",
+    "answer": "官方文档的警告：配置启动和关闭的推荐方法是使用 lifespan 参数；如果提供了 lifespan 参数，startup 和 shutdown 事件处理器将不再生效。要么使用 lifespan，要么配置所有事件，两者不能共用。事件处理器属于已不推荐的替代方式。[原文§生命周期事件 · 替代事件（弃用）](https://fastapi.tiangolo.com/zh/advanced/events/#alternative-events-deprecated)"
+  },
+  {
+    "id": "U7-28",
+    "typed": {
+      "id": "U7-28",
+      "type": "short"
+    },
+    "question": "为什么官方文档推荐使用 lifespan，而不是分别定义 startup 和 shutdown 事件处理器？",
+    "answer": "启动和关闭的逻辑很可能是连在一起的，例如启动某个东西再结束它、获取一个资源再释放它。如果把它们放在不共享逻辑或变量的两个不同函数里，就比较困难，需要借助全局变量存值之类的方式；而 lifespan 把前后两段逻辑放在同一个带 yield 的函数里，所以官方推荐 lifespan，startup/shutdown 事件属于已弃用的替代方式。[原文§生命周期事件 · startup 和 shutdown 一起使用](https://fastapi.tiangolo.com/zh/advanced/events/#startup-and-shutdown-together) [原文§生命周期事件 · 替代事件（弃用）](https://fastapi.tiangolo.com/zh/advanced/events/#alternative-events-deprecated)"
+  },
+  {
+    "id": "U7-29",
+    "typed": {
+      "id": "U7-29",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 为什么可以使用任意 ASGI 中间件？",
+      "options": [
+        {
+          "key": "A",
+          "text": "因为 FastAPI 自己定义了一套专用的中间件规范，第三方中间件都按它编写",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "因为所有第三方中间件都必须继承 fastapi.middleware 里提供的基类",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "因为 FastAPI 基于 Starlette 并执行 ASGI 规范，中间件只要遵循 ASGI 规范即可",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "因为只要用 @app.middleware(\"http\") 装饰，任何函数都能当作中间件",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 为什么可以使用任意 ASGI 中间件？",
+    "answer": "因为 FastAPI 基于 Starlette，且执行 ASGI 规范，所以可以使用任意 ASGI 中间件；中间件不必是专为 FastAPI 或 Starlette 定制的，只要遵循 ASGI 规范即可。[原文§高级中间件 · 添加 ASGI 中间件](https://fastapi.tiangolo.com/zh/advanced/middleware/#adding-asgi-middlewares)"
+  },
+  {
+    "id": "U7-30",
+    "typed": {
+      "id": "U7-30",
+      "type": "fill",
+      "stem": "按官方文档，强制所有请求必须是 https 或 wss 的中间件是____，校验 Host 请求头以防 HTTP 主机头攻击的中间件是____，处理 Accept-Encoding 中包含 gzip 的请求并返回 GZip 响应的中间件是____。",
+      "blankCount": 3,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，强制所有请求必须是 https 或 wss 的中间件是____，校验 Host 请求头以防 HTTP 主机头攻击的中间件是____，处理 Accept-Encoding 中包含 gzip 的请求并返回 GZip 响应的中间件是____。",
+    "answer": "三个中间件依次是：HTTPSRedirectMiddleware（强制 https 或 wss，http 或 ws 的请求会被重定向到安全方案）、TrustedHostMiddleware（强制请求正确设置 Host 请求头）、GZipMiddleware（处理 Accept-Encoding 包含 gzip 的请求）。[原文§高级中间件 · HTTPSRedirectMiddleware](https://fastapi.tiangolo.com/zh/advanced/middleware/#httpsredirectmiddleware) [原文§高级中间件 · TrustedHostMiddleware](https://fastapi.tiangolo.com/zh/advanced/middleware/#trustedhostmiddleware) [原文§高级中间件 · GZipMiddleware](https://fastapi.tiangolo.com/zh/advanced/middleware/#gzipmiddleware)"
+  },
+  {
+    "id": "U7-31",
+    "typed": {
+      "id": "U7-31",
+      "type": "single",
+      "stem": "TrustedHostMiddleware 收到的请求没有通过 Host 请求头验证时，会怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "发送 400 响应",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "把请求重定向到 https 或 wss 这样的安全方案",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "把请求重定向到允许主机的 www 版本",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "放行请求，因为这个中间件只负责重定向、并不拒绝请求",
+          "correct": false
+        }
+      ]
+    },
+    "question": "TrustedHostMiddleware 收到的请求没有通过 Host 请求头验证时，会怎样？",
+    "answer": "TrustedHostMiddleware 用 allowed_hosts 列出允许的主机名（可用 *.example.com 这样的通配符匹配子域名）；如果传入的请求没有通过验证，则发送 400 响应。重定向到安全方案是 HTTPSRedirectMiddleware 的行为。[原文§高级中间件 · TrustedHostMiddleware](https://fastapi.tiangolo.com/zh/advanced/middleware/#trustedhostmiddleware)"
+  },
+  {
+    "id": "U7-32",
+    "typed": {
+      "id": "U7-32",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 中 WebSocket 端点的基本写法是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "用 @app.get 声明路径，函数参数是 Request，在函数里 return 要发送给客户端的文本",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "用 @app.websocket 声明路径，函数参数是 WebSocket，先 await websocket.accept()，再用 await 收发消息",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "用 @app.middleware(\"http\") 装饰函数，函数参数是 request 和 call_next，通过 call_next 收发消息",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "声明 BackgroundTasks 类型的参数，调用 .add_task() 把收发消息的函数作为后台任务添加进去",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 中 WebSocket 端点的基本写法是什么？",
+    "answer": "用 @app.websocket(\"/ws\") 声明 WebSocket 路由，函数接收 WebSocket 参数，先 `await websocket.accept()`，之后在循环里用 `await websocket.receive_text()` 等待消息、`await websocket.send_text(...)` 发送消息；可以接收和发送二进制、文本和 JSON 数据。[原文§WebSockets · 创建 websocket](https://fastapi.tiangolo.com/zh/advanced/websockets/#create-a-websocket) [原文§WebSockets · 等待消息并发送消息](https://fastapi.tiangolo.com/zh/advanced/websockets/#await-for-messages-and-send-messages)"
+  },
+  {
+    "id": "U7-33",
+    "typed": {
+      "id": "U7-33",
+      "type": "single",
+      "stem": "WebSocket 端点所用的依赖项在校验失败时，按官方文档应该抛出什么异常？",
+      "options": [
+        {
+          "key": "A",
+          "text": "HTTPException",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "WebSocketDisconnect",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "WebSocketException",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "HTTPException，并把 status.WS_1008_POLICY_VIOLATION 作为它的 status_code",
+          "correct": false
+        }
+      ]
+    },
+    "question": "WebSocket 端点所用的依赖项在校验失败时，按官方文档应该抛出什么异常？",
+    "answer": "在 WebSocket 端点中同样可以使用 Depends、Security、Cookie、Header、Path、Query。但由于这是 WebSocket，抛出 HTTPException 并不合理，应当抛出 WebSocketException，并可以使用规范中定义的有效关闭代码（示例里是 `status.WS_1008_POLICY_VIOLATION`）。WebSocketDisconnect 是连接断开时由接收消息的调用引发的，不是用来拒绝连接的。[原文§WebSockets · 使用 Depends 和其他依赖项](https://fastapi.tiangolo.com/zh/advanced/websockets/#using-depends-and-others)"
+  },
+  {
+    "id": "U7-34",
+    "typed": {
+      "id": "U7-34",
+      "type": "single",
+      "stem": "客户端关闭 WebSocket 连接后，服务端正在 await 的 websocket.receive_text() 会发生什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "引发 WebSocketException，需要用 status 里的关闭代码来处理",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "正常返回，并由 ConnectionManager 自动把连接从 active_connections 中移除",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "引发 HTTPException，由 FastAPI 自动返回错误响应",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "引发 WebSocketDisconnect 异常，可以捕获并处理",
+          "correct": true
+        }
+      ]
+    },
+    "question": "客户端关闭 WebSocket 连接后，服务端正在 await 的 websocket.receive_text() 会发生什么？",
+    "answer": "当 WebSocket 连接关闭时，`await websocket.receive_text()` 将引发 WebSocketDisconnect 异常，可以捕获并处理，例如把连接从活动连接列表里移除，再向其他客户端广播有人离开。[原文§WebSockets · 处理断开连接和多个客户端](https://fastapi.tiangolo.com/zh/advanced/websockets/#handling-disconnections-and-multiple-clients)"
+  },
+  {
+    "id": "U7-35",
+    "typed": {
+      "id": "U7-35",
+      "type": "short"
+    },
+    "question": "官方文档里的多客户端聊天示例是怎样处理连接断开和广播的？这个示例有什么局限？",
+    "answer": "示例用一个 ConnectionManager 在 active_connections 列表中保存所有连接：连接时 accept 并加入列表，在端点里用 try/except 捕获 WebSocketDisconnect，断开时把连接从列表移除并向其他客户端广播离开的消息。局限是所有内容都在内存里以单个列表处理，只能在进程运行期间、且只能在单个进程中工作；需要更简单但更健壮、支持 Redis、PostgreSQL 等的方案，可以看 encode/broadcaster。[原文§WebSockets · 处理断开连接和多个客户端](https://fastapi.tiangolo.com/zh/advanced/websockets/#handling-disconnections-and-multiple-clients)"
+  }
+]

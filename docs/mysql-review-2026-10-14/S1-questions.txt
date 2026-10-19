@@ -1,0 +1,677 @@
+S1-1 [single]
+??: 关于关系型数据库存储数据的方式，下列说法符合原文的是哪一项？
+??: {"id": "S1-1", "type": "single", "stem": "关于关系型数据库存储数据的方式，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "数据主要是非结构化的，逻辑上不再区分属性，每一行代表一个数据实体", "correct": false}, {"key": "B", "text": "数据逻辑上以行列二维表的形式存在，每一行代表数据的一种属性，每一列代表一个数据实体", "correct": false}, {"key": "C", "text": "数据逻辑上以 JSON 文档或哈希表的形式存在，每一个文档代表一个数据实体", "correct": false}, {"key": "D", "text": "数据逻辑上以行列二维表的形式存在，每一列代表数据的一种属性，每一行代表一个数据实体", "correct": true}]}
+??: 关系型数据库（SQL 数据库）存储结构化数据，主要代表有 SQL Server、Oracle、MySQL（开源）、PostgreSQL（开源）。这些数据逻辑上以行列二维表的形式存在，每一列代表数据的一种属性，每一行代表一个数据实体。[原文§NOSQL和SQL的区别？](https://xiaolincoding.com/interview/mysql.html#nosql%E5%92%8Csql%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S1-2 [single]
+??: 关于 NoSQL 数据库，下列说法符合原文的是哪一项？
+??: {"id": "S1-2", "type": "single", "stem": "关于 NoSQL 数据库，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "它指非关系型数据库，逻辑上提供不同于二维表的存储方式，可以是 JSON 文档、哈希表或其他方式", "correct": true}, {"key": "B", "text": "它指非关系型数据库，主要代表是 SQL Server、Oracle 和 PostgreSQL", "correct": false}, {"key": "C", "text": "它指非关系型数据库，但逻辑上同样只能以行列二维表的形式来存储数据", "correct": false}, {"key": "D", "text": "它指关系型数据库，逻辑上以行列二维表存储数据，MongoDB 和 Redis 是它的主要代表", "correct": false}]}
+??: NoSQL 指非关系型数据库，主要代表有 MongoDB、Redis。NoSQL 数据库逻辑上提供了不同于二维表的存储方式，存储方式可以是 JSON 文档、哈希表或者其他方式。[原文§NOSQL和SQL的区别？](https://xiaolincoding.com/interview/mysql.html#nosql%E5%92%8Csql%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S1-3 [fill]
+??: [填空题·有序] 关系型数据库通常支持 ACID，它的四个特性依次是：____、____、____、____。
+??: {"id": "S1-3", "type": "fill", "stem": "关系型数据库通常支持 ACID，它的四个特性依次是：____、____、____、____。", "blankCount": 4, "blankOrder": "ordered"}
+??: ACID 依次是原子性、一致性、隔离性和持久性。[原文§NOSQL和SQL的区别？](https://xiaolincoding.com/interview/mysql.html#nosql%E5%92%8Csql%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S1-4 [fill]
+??: [填空题·有序] 部分 NoSQL 系统更强调 BASE，它的三个要素依次是：____、____、____。
+??: {"id": "S1-4", "type": "fill", "stem": "部分 NoSQL 系统更强调 BASE，它的三个要素依次是：____、____、____。", "blankCount": 3, "blankOrder": "ordered"}
+??: BASE 依次是基本可用、软状态和最终一致性。[原文§NOSQL和SQL的区别？](https://xiaolincoding.com/interview/mysql.html#nosql%E5%92%8Csql%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S1-5 [single]
+??: 关于 SQL 与 NoSQL 对事务的支持，下列说法符合原文的是哪一项？
+??: {"id": "S1-5", "type": "single", "stem": "关于 SQL 与 NoSQL 对事务的支持，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "SQL 数据库都完整支持事务，NoSQL 数据库都不支持事务，可以直接据此来选型", "correct": false}, {"key": "B", "text": "MySQL 的事务能力与存储引擎无关，只要是 SQL 数据库就一定支持完整事务", "correct": false}, {"key": "C", "text": "不能简单认为 SQL 一定支持完整事务、NoSQL 一定不支持事务，具体要看数据库的实现和配置", "correct": true}, {"key": "D", "text": "MongoDB 属于 NoSQL 数据库，所以不支持多文档事务，只能靠最终一致性", "correct": false}]}
+??: 不能简单认为 SQL 就一定支持完整事务、NoSQL 就一定不支持事务。比如 MySQL 的事务能力和存储引擎有关，MongoDB 也支持多文档事务，具体还是要看数据库的实现和配置。[原文§NOSQL和SQL的区别？](https://xiaolincoding.com/interview/mysql.html#nosql%E5%92%8Csql%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S1-6 [single]
+??: 选择数据库时，原文认为哪类应用必须保证 ACID，原因是什么？
+??: {"id": "S1-6", "type": "single", "stem": "选择数据库时，原文认为哪类应用必须保证 ACID，原因是什么？", "options": [{"key": "A", "text": "所有应用都必须保证 ACID，选型时不需要结合应用场景来考虑", "correct": false}, {"key": "B", "text": "银行应用，否则一笔钱可能被使用两次", "correct": true}, {"key": "C", "text": "社交软件，否则一条状态的更新在不同用户读取时会有先后差异", "correct": false}, {"key": "D", "text": "使用 NoSQL 的应用，否则数据无法达到最终一致性", "correct": false}]}
+??: 要从应用场景判断 ACID 是否必须。银行应用就必须保证 ACID，否则一笔钱可能被使用两次；社交软件不必保证 ACID，因为一条状态的更新对所有用户读取先后时间有数秒不同并不影响使用。[原文§NOSQL和SQL的区别？](https://xiaolincoding.com/interview/mysql.html#nosql%E5%92%8Csql%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S1-7 [multiple]
+??: 关于 SQL 与 NoSQL 的选型，下列哪些说法符合原文？
+??: {"id": "S1-7", "type": "multiple", "stem": "关于 SQL 与 NoSQL 的选型，下列哪些说法符合原文？", "options": [{"key": "A", "text": "一个系统只能在关系型数据库和 NoSQL 数据库中选择其中一种，不能同时使用两者", "correct": false}, {"key": "B", "text": "缓存、文档存储等场景，可以考虑对应的 NoSQL 数据库", "correct": true}, {"key": "C", "text": "需要事务和复杂关联查询的应用，通常优先考虑关系型数据库", "correct": true}, {"key": "D", "text": "一个系统也可以同时使用两者，比如 MySQL 存业务数据、Redis 缓存热点数据", "correct": true}]}
+??: 对于需要事务和复杂关联查询的应用，通常优先考虑关系型数据库；对于缓存、文档存储等场景，可以考虑对应的 NoSQL 数据库。一个系统也可以同时使用两者，比如 MySQL 存业务数据，Redis 缓存热点数据。[原文§NOSQL和SQL的区别？](https://xiaolincoding.com/interview/mysql.html#nosql%E5%92%8Csql%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S1-8 [short]
+??: NoSQL 数据库在扩展性上有什么特点？以 Redis 为例，扩展时仍然需要考虑哪些问题？
+??: {"id": "S1-8", "type": "short"}
+??: 很多 NoSQL 数据库围绕特定的数据模型设计，较少依赖跨节点 JOIN，因此更容易按键分片。比如 Redis 支持主从复制、哨兵和 Cluster，但扩展时仍然需要考虑热点数据、跨分片操作和一致性等问题。[原文§NOSQL和SQL的区别？](https://xiaolincoding.com/interview/mysql.html#nosql%E5%92%8Csql%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S1-9 [single]
+??: 关系型数据库的水平扩展为什么较难？
+??: {"id": "S1-9", "type": "single", "stem": "关系型数据库的水平扩展为什么较难？", "options": [{"key": "A", "text": "数据之间存在关联性，需要解决跨服务器 JOIN、分布式事务等问题", "correct": true}, {"key": "B", "text": "不支持主从复制、哨兵和 Cluster，无法部署到多台服务器上", "correct": false}, {"key": "C", "text": "不支持 ACID，因此无法在多台服务器之间保持数据一致", "correct": false}, {"key": "D", "text": "围绕特定的数据模型设计，较少依赖跨节点 JOIN，所以难以按键分片", "correct": false}]}
+??: 关系型数据库的数据之间存在关联性，水平扩展较难，需要解决跨服务器 JOIN、分布式事务等问题。[原文§NOSQL和SQL的区别？](https://xiaolincoding.com/interview/mysql.html#nosql%E5%92%8Csql%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S1-10 [single]
+??: 第一范式（1NF）对数据库表的每一列有什么要求？
+??: {"id": "S1-10", "type": "single", "stem": "第一范式（1NF）对数据库表的每一列有什么要求？", "options": [{"key": "A", "text": "每一列都必须完全依赖于候选码", "correct": false}, {"key": "B", "text": "每一列都是不可分割的原子数据项", "correct": true}, {"key": "C", "text": "每一列都和主键直接相关，不能间接相关", "correct": false}, {"key": "D", "text": "每一列都只能与联合主键的某一部分相关", "correct": false}]}
+??: 第一范式（1NF）要求数据库表的每一列都是不可分割的原子数据项。[原文§数据库三大范式是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S1-11 [fill]
+??: [填空题·无序] 原文举例的表中，不满足第一范式原子性要求的两列是：____、____。
+??: {"id": "S1-11", "type": "fill", "stem": "原文举例的表中，不满足第一范式原子性要求的两列是：____、____。", "blankCount": 2, "blankOrder": "unordered"}
+??: “家庭信息”和“学校信息”两列都不满足原子性的要求，故不满足第一范式；调整之后每一列都是不可再分的，就满足第一范式（1NF）了。[原文§数据库三大范式是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S1-12 [single]
+??: 第二范式（2NF）是在 1NF 的基础上提出的什么要求？
+??: {"id": "S1-12", "type": "single", "stem": "第二范式（2NF）是在 1NF 的基础上提出的什么要求？", "options": [{"key": "A", "text": "每一列都是不可分割的原子数据项，即消除可分割的列", "correct": false}, {"key": "B", "text": "任何非主属性都不依赖于其它非主属性，即消除传递依赖", "correct": false}, {"key": "C", "text": "非码属性必须完全依赖于候选码，即消除非主属性对主码的部分函数依赖", "correct": true}, {"key": "D", "text": "每一列都只与主键的某一部分相关，即允许部分函数依赖", "correct": false}]}
+??: 第二范式（2NF）在 1NF 的基础上，要求非码属性必须完全依赖于候选码，也就是在 1NF 基础上消除非主属性对主码的部分函数依赖。[原文§数据库三大范式是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S1-13 [single]
+??: 第二范式要确保每一列都和主键相关，而不能只与主键的某一部分相关，这条要求主要针对哪种情况？
+??: {"id": "S1-13", "type": "single", "stem": "第二范式要确保每一列都和主键相关，而不能只与主键的某一部分相关，这条要求主要针对哪种情况？", "options": [{"key": "A", "text": "存在传递依赖的表", "correct": false}, {"key": "B", "text": "含有可再分的列、不满足原子性的表", "correct": false}, {"key": "C", "text": "只有一个字段的主键", "correct": false}, {"key": "D", "text": "由多个字段联合组成的主键（联合主键）", "correct": true}]}
+??: 第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关，这主要针对联合主键而言。[原文§数据库三大范式是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S1-14 [short]
+??: 原文的订单示例（订单号和产品号联合组成主键）为什么不满足第二范式？应该怎样调整？
+??: {"id": "S1-14", "type": "short"}
+??: 同一个订单中可能包含不同的产品，所以主键必须由“订单号”和“产品号”联合组成。产品数量、产品折扣、产品价格与订单号和产品号都相关，但订单金额和订单时间仅与订单号相关，与产品号无关，这就不满足第二范式的要求，需要拆分成两个表。[原文§数据库三大范式是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S1-15 [single]
+??: 第三范式（3NF）是在 2NF 的基础上提出的什么要求？
+??: {"id": "S1-15", "type": "single", "stem": "第三范式（3NF）是在 2NF 的基础上提出的什么要求？", "options": [{"key": "A", "text": "任何非主属性都不依赖于其它非主属性，即消除传递依赖，每一列都和主键直接相关", "correct": true}, {"key": "B", "text": "每一列数据只要和主键间接相关即可，不要求直接相关", "correct": false}, {"key": "C", "text": "非码属性必须完全依赖于候选码，即消除非主属性对主码的部分函数依赖", "correct": false}, {"key": "D", "text": "每一列都是不可分割的原子数据项，不再要求和主键的关系", "correct": false}]}
+??: 第三范式（3NF）在 2NF 基础上，要求任何非主属性不依赖于其它非主属性，也就是在 2NF 基础上消除传递依赖；需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。[原文§数据库三大范式是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S1-16 [fill]
+??: [填空题·有序] 原文的学生表示例中，“班主任性别”和“班主任年龄”直接依赖的是____，而不是主键____。
+??: {"id": "S1-16", "type": "fill", "stem": "原文的学生表示例中，“班主任性别”和“班主任年龄”直接依赖的是____，而不是主键____。", "blankCount": 2, "blankOrder": "ordered"}
+??: 示例表中所有属性都完全依赖于学号，所以满足第二范式；但“班主任性别”和“班主任年龄”直接依赖的是“班主任姓名”，而不是主键“学号”，不满足第三范式，需要拆表调整，调整之后就满足第三范式的要求了。[原文§数据库三大范式是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S1-17 [fill]
+??: [填空题·有序] 第二范式在 1NF 基础上消除非主属性对主码的____依赖；第三范式在 2NF 基础上消除____依赖。
+??: {"id": "S1-17", "type": "fill", "stem": "第二范式在 1NF 基础上消除非主属性对主码的____依赖；第三范式在 2NF 基础上消除____依赖。", "blankCount": 2, "blankOrder": "ordered"}
+??: 第二范式是在 1NF 基础上消除非主属性对主码的部分函数依赖；第三范式是在 2NF 基础上消除传递依赖。[原文§数据库三大范式是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S1-18 [fill]
+??: [填空题·无序] 原文列出的数据库联表查询类型有四种：____、____、____、____。
+??: {"id": "S1-18", "type": "fill", "stem": "原文列出的数据库联表查询类型有四种：____、____、____、____。", "blankCount": 4, "blankOrder": "unordered"}
+??: 内连接（INNER JOIN）、左外连接（LEFT JOIN）、右外连接（RIGHT JOIN）和全外连接（FULL JOIN）。[原文§MySQL 怎么连表查询？](https://xiaolincoding.com/interview/mysql.html#mysql-%E6%80%8E%E4%B9%88%E8%BF%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S1-19 [single]
+??: 内连接（INNER JOIN）返回什么？
+??: {"id": "S1-19", "type": "single", "stem": "内连接（INNER JOIN）返回什么？", "options": [{"key": "A", "text": "两个表中的所有行，包括没有匹配关系的行", "correct": false}, {"key": "B", "text": "右表中的所有行，左表没有匹配时左表列包含 NULL", "correct": false}, {"key": "C", "text": "左表中的所有行，右表没有匹配时右表列包含 NULL", "correct": false}, {"key": "D", "text": "两个表中有匹配关系的行", "correct": true}]}
+??: 内连接返回两个表中有匹配关系的行。例如用 INNER JOIN 按 employees.department_id = departments.id 关联，返回每个员工及其所在的部门名称。[原文§MySQL 怎么连表查询？](https://xiaolincoding.com/interview/mysql.html#mysql-%E6%80%8E%E4%B9%88%E8%BF%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S1-20 [multiple]
+??: 关于左外连接（LEFT JOIN），下列哪些说法符合原文？
+??: {"id": "S1-20", "type": "multiple", "stem": "关于左外连接（LEFT JOIN），下列哪些说法符合原文？", "options": [{"key": "A", "text": "返回左表中的所有行，即使右表中没有匹配的行", "correct": true}, {"key": "B", "text": "用员工表 LEFT JOIN 部门表，会返回所有员工，包括没有分配部门的员工", "correct": true}, {"key": "C", "text": "只返回两个表中有匹配关系的行，右表没有匹配的左表行会被丢弃", "correct": false}, {"key": "D", "text": "未匹配的右表列会包含 NULL", "correct": true}]}
+??: 左外连接返回左表中的所有行，即使在右表中没有匹配的行，未匹配的右表列会包含 NULL。例如 employees LEFT JOIN departments 返回所有员工及其部门名称，包括那些没有分配部门的员工。[原文§MySQL 怎么连表查询？](https://xiaolincoding.com/interview/mysql.html#mysql-%E6%80%8E%E4%B9%88%E8%BF%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S1-21 [single]
+??: 右外连接（RIGHT JOIN）返回什么？
+??: {"id": "S1-21", "type": "single", "stem": "右外连接（RIGHT JOIN）返回什么？", "options": [{"key": "A", "text": "只返回两个表中有匹配关系的行，没有匹配的行一律丢弃", "correct": false}, {"key": "B", "text": "右表中的所有行，即使左表中没有匹配的行，未匹配的左表列包含 NULL", "correct": true}, {"key": "C", "text": "两个表中的所有行，包括非匹配行，在 MySQL 中用 RIGHT JOIN 直接实现", "correct": false}, {"key": "D", "text": "左表中的所有行，即使右表中没有匹配的行，未匹配的右表列包含 NULL", "correct": false}]}
+??: 右外连接返回右表中的所有行，即使左表中没有匹配的行，未匹配的左表列会包含 NULL。例如 employees RIGHT JOIN departments 返回所有部门及其员工，包括那些没有分配员工的部门。[原文§MySQL 怎么连表查询？](https://xiaolincoding.com/interview/mysql.html#mysql-%E6%80%8E%E4%B9%88%E8%BF%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S1-22 [single]
+??: 在 MySQL 中怎样实现全外连接（FULL JOIN）？
+??: {"id": "S1-22", "type": "single", "stem": "在 MySQL 中怎样实现全外连接（FULL JOIN）？", "options": [{"key": "A", "text": "只需要把 LEFT JOIN 换成 RIGHT JOIN，就能返回两个表中的所有行", "correct": false}, {"key": "B", "text": "MySQL 不直接支持 FULL JOIN，只能用 INNER JOIN 单独来实现", "correct": false}, {"key": "C", "text": "MySQL 不直接支持 FULL JOIN，需要使用 UNION 来实现", "correct": true}, {"key": "D", "text": "MySQL 直接支持 FULL JOIN，写法和 INNER JOIN 相同，只需要换掉关键字", "correct": false}]}
+??: 全外连接返回两个表中所有行，包括非匹配行。在 MySQL 中，FULL JOIN 需要使用 UNION 来实现，因为 MySQL 不直接支持 FULL JOIN。[原文§MySQL 怎么连表查询？](https://xiaolincoding.com/interview/mysql.html#mysql-%E6%80%8E%E4%B9%88%E8%BF%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S1-23 [short]
+??: 原文用 UNION ALL 实现全外连接时，两部分查询分别取什么数据？为什么用 UNION ALL 合并？
+??: {"id": "S1-23", "type": "short"}
+??: 第一部分是员工表 LEFT JOIN 部门表，返回所有员工及其匹配的部门；第二部分是员工表 RIGHT JOIN 部门表并加上 WHERE employees.id IS NULL，只取右表没有匹配到员工的行，再用 UNION ALL 合并。这样既不会重复返回已经匹配的行，也不会把姓名相同的不同员工误当成重复结果去掉。[原文§MySQL 怎么连表查询？](https://xiaolincoding.com/interview/mysql.html#mysql-%E6%80%8E%E4%B9%88%E8%BF%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2)
+
+S1-24 [multiple]
+??: 下列哪些做法能够避免向表中重复插入数据？
+??: {"id": "S1-24", "type": "multiple", "stem": "下列哪些做法能够避免向表中重复插入数据？", "options": [{"key": "A", "text": "只在插入前先用 SELECT 判断记录不存在，再执行 INSERT，并发时也能保证不会重复", "correct": false}, {"key": "B", "text": "使用 INSERT IGNORE 忽略因重复键而导致的插入错误", "correct": true}, {"key": "C", "text": "在相关列上添加 UNIQUE 约束，确保每个值在该列中唯一", "correct": true}, {"key": "D", "text": "使用 INSERT ... ON DUPLICATE KEY UPDATE 处理重复键的情况", "correct": true}]}
+??: 原文给出三种方式：一是在相关列上使用 UNIQUE 约束，保证每个值在该列中唯一；二是使用 INSERT ... ON DUPLICATE KEY UPDATE，在插入记录与现有记录冲突时处理重复键；三是使用 INSERT IGNORE，忽略因重复键而导致的插入错误。[原文§MySQL如何避免重复插入数据？](https://xiaolincoding.com/interview/mysql.html#mysql%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE)
+
+S1-25 [single]
+??: 给 users 表的 email 列加上 UNIQUE 约束后，再插入重复的 email 会怎样？
+??: {"id": "S1-25", "type": "single", "stem": "给 users 表的 email 列加上 UNIQUE 约束后，再插入重复的 email 会怎样？", "options": [{"key": "A", "text": "MySQL 会返回错误", "correct": true}, {"key": "B", "text": "这条插入被忽略，既不报错也不插入", "correct": false}, {"key": "C", "text": "自动更新已有记录的 name 字段", "correct": false}, {"key": "D", "text": "两条记录都会保存，MySQL 只给出警告", "correct": false}]}
+??: 在表的相关列上添加 UNIQUE 约束，可以确保每个值在该列中唯一。如果尝试插入重复的 email，MySQL 会返回错误。[原文§MySQL如何避免重复插入数据？](https://xiaolincoding.com/interview/mysql.html#mysql%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE)
+
+S1-26 [single]
+??: INSERT ... ON DUPLICATE KEY UPDATE 在插入的记录与现有记录冲突时会怎样？
+??: {"id": "S1-26", "type": "single", "stem": "INSERT ... ON DUPLICATE KEY UPDATE 在插入的记录与现有记录冲突时会怎样？", "options": [{"key": "A", "text": "直接返回错误并终止这条语句", "correct": false}, {"key": "B", "text": "把冲突降为警告，同时保留重复的两条记录", "correct": false}, {"key": "C", "text": "忽略这条插入，不更新任何数据", "correct": false}, {"key": "D", "text": "可以选择更新现有记录", "correct": true}]}
+??: INSERT ... ON DUPLICATE KEY UPDATE 允许在插入记录时处理重复键的情况：如果插入的记录与现有记录冲突，可以选择更新现有记录。[原文§MySQL如何避免重复插入数据？](https://xiaolincoding.com/interview/mysql.html#mysql%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE)
+
+S1-27 [single]
+??: 在 ON DUPLICATE KEY UPDATE 中引用新插入的值，原文关于写法和版本是怎么说的？
+??: {"id": "S1-27", "type": "single", "stem": "在 ON DUPLICATE KEY UPDATE 中引用新插入的值，原文关于写法和版本是怎么说的？", "options": [{"key": "A", "text": "新行别名写法从 8.0.20 开始支持，VALUES(name) 从 8.0.19 开始被弃用", "correct": false}, {"key": "B", "text": "VALUES(name) 是 8.0.19 及之后才支持的新写法，新行别名写法从 8.0.20 开始被弃用", "correct": false}, {"key": "C", "text": "8.0.19 及之后支持新行别名写法，较早版本可写 VALUES(name)，后者从 8.0.20 开始被弃用", "correct": true}, {"key": "D", "text": "所有 8.0 版本都只能写 VALUES(name)，没有新行别名写法，也不存在弃用", "correct": false}]}
+??: 原文示例用的是 MySQL 8.0.19 及之后支持的新行别名写法。较早版本可以写 name = VALUES(name)，不过这种写法从 MySQL 8.0.20 开始被弃用。[原文§MySQL如何避免重复插入数据？](https://xiaolincoding.com/interview/mysql.html#mysql%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE)
+
+S1-28 [single]
+??: 关于 INSERT IGNORE，下列说法符合原文的是哪一项？
+??: {"id": "S1-28", "type": "single", "stem": "关于 INSERT IGNORE，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "email 已经存在时它会更新已有记录，并且不会产生任何警告", "correct": false}, {"key": "B", "text": "email 已经存在时这条插入会被忽略，但 IGNORE 还可能把部分数据转换错误降为警告，要注意检查警告", "correct": true}, {"key": "C", "text": "它只忽略重复键错误，其他任何错误仍然会导致这条语句失败，所以不用检查警告", "correct": false}, {"key": "D", "text": "它会把重复键错误降为警告，同时把重复的记录也插入表中", "correct": false}]}
+??: INSERT IGNORE 在插入记录时会忽略因重复键而导致的插入错误，如果 email 已经存在，这条插入语句就会被忽略。不过，IGNORE 还可能把部分数据转换错误降为警告，不能把它理解成只忽略重复键错误，使用时要注意检查警告。[原文§MySQL如何避免重复插入数据？](https://xiaolincoding.com/interview/mysql.html#mysql%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE)
+
+S1-29 [multiple]
+??: 在选择避免重复插入的方式时，下列哪些说法符合原文？
+??: {"id": "S1-29", "type": "multiple", "stem": "在选择避免重复插入的方式时，下列哪些说法符合原文？", "options": [{"key": "A", "text": "需要插入和更新结合时，应该使用 INSERT IGNORE", "correct": false}, {"key": "B", "text": "需要插入和更新结合时，可以使用 ON DUPLICATE KEY UPDATE", "correct": true}, {"key": "C", "text": "需要保证表内某个业务键唯一，先建立 UNIQUE 约束", "correct": true}, {"key": "D", "text": "联合唯一索引可以保证多个字段的组合不重复", "correct": true}]}
+??: 如果需要保证表内某个业务键唯一，先建立 UNIQUE 约束，联合唯一索引可以保证多个字段的组合不重复；如果需要插入和更新结合，可以使用 ON DUPLICATE KEY UPDATE；对于允许忽略重复插入的场景，可以使用 INSERT IGNORE，同时注意检查警告。[原文§MySQL如何避免重复插入数据？](https://xiaolincoding.com/interview/mysql.html#mysql%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE)
+
+S1-30 [single]
+??: 原文认为防止重复插入的关键是什么？
+??: {"id": "S1-30", "type": "single", "stem": "原文认为防止重复插入的关键是什么？", "options": [{"key": "A", "text": "唯一约束（主键或唯一索引）", "correct": true}, {"key": "B", "text": "ON DUPLICATE KEY UPDATE 语句本身，即使没有任何唯一约束也能判断重复", "correct": false}, {"key": "C", "text": "插入前先用 SELECT 判断记录是否已经存在", "correct": false}, {"key": "D", "text": "INSERT IGNORE 语句本身，即使没有任何唯一约束也能判断重复", "correct": false}]}
+??: 防重复的关键还是唯一约束，ON DUPLICATE KEY UPDATE 和 INSERT IGNORE 都是建立在主键或唯一索引冲突的基础上处理数据。[原文§MySQL如何避免重复插入数据？](https://xiaolincoding.com/interview/mysql.html#mysql%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE)
+
+S1-31 [short]
+??: 只靠先 SELECT 判断记录不存在、再 INSERT，为什么仍然可能重复插入数据？
+??: {"id": "S1-31", "type": "short"}
+??: 并发时两个请求都可能查到记录不存在，然后各自执行 INSERT，结果还是会重复插入，所以防重复的关键还是唯一约束。[原文§MySQL如何避免重复插入数据？](https://xiaolincoding.com/interview/mysql.html#mysql%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE)
+
+S1-32 [fill]
+??: [填空题·无序] 唯一索引允许多个 NULL，如果业务要求该字段一定唯一，通常还要给它加上____约束。
+??: {"id": "S1-32", "type": "fill", "stem": "唯一索引允许多个 NULL，如果业务要求该字段一定唯一，通常还要给它加上____约束。", "blankCount": 1, "blankOrder": "unordered"}
+??: 唯一索引允许多个 NULL，如果业务要求该字段一定唯一，通常还要加上 NOT NULL。[原文§MySQL如何避免重复插入数据？](https://xiaolincoding.com/interview/mysql.html#mysql%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE)
+
+S1-33 [single]
+??: 关于 CHAR 类型，下列说法符合原文的是哪一项？
+??: {"id": "S1-33", "type": "single", "stem": "关于 CHAR 类型，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "它是变长字符串，除内容外还需要 1 或 2 个字节记录长度，适合长度不固定的数据", "correct": false}, {"key": "B", "text": "它是变长字符串，不足的部分会补空格，读取时保留末尾的填充空格", "correct": false}, {"key": "C", "text": "它是定长字符串，括号里的数字表示最多占用的字节数，与字符集无关，适合姓名、地址", "correct": false}, {"key": "D", "text": "它是定长字符串，不足的部分在存储时补空格，读取时通常去掉末尾的填充空格，适合长度比较固定的数据", "correct": true}]}
+??: CHAR 是定长字符串，比如 CHAR(10)，不足的部分会在存储时补空格，读取时通常会去掉末尾的填充空格，适合长度比较固定的数据。[原文§CHAR 和 VARCHAR有什么区别？](https://xiaolincoding.com/interview/mysql.html#char-%E5%92%8C-varchar%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-34 [single]
+??: 关于 VARCHAR 类型，下列说法符合原文的是哪一项？
+??: {"id": "S1-34", "type": "single", "stem": "关于 VARCHAR 类型，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "它是变长字符串，VARCHAR(100) 表示最多保存 100 个字节，不需要额外记录长度", "correct": false}, {"key": "B", "text": "它是变长字符串，VARCHAR(100) 表示最多保存 100 个字符，另需 1 或 2 个字节记录长度", "correct": true}, {"key": "C", "text": "它是定长字符串，VARCHAR(100) 总是占用 100 个字符的空间，不足的部分补空格", "correct": false}, {"key": "D", "text": "它是变长字符串，适合身份证号等长度比较固定的数据，不适合姓名、地址", "correct": false}]}
+??: VARCHAR 是变长字符串，比如 VARCHAR(100)，100 表示最多保存 100 个字符，实际占用空间取决于内容的字节数，还需要 1 或 2 个字节记录长度，适合姓名、地址等长度不固定的数据。[原文§CHAR 和 VARCHAR有什么区别？](https://xiaolincoding.com/interview/mysql.html#char-%E5%92%8C-varchar%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-35 [single]
+??: CHAR(10) 和 VARCHAR(100) 括号里的长度，单位是什么？
+??: {"id": "S1-35", "type": "single", "stem": "CHAR(10) 和 VARCHAR(100) 括号里的长度，单位是什么？", "options": [{"key": "A", "text": "字节数，使用多字节字符集时 CHAR(10) 仍然只占 10 个字节", "correct": false}, {"key": "B", "text": "CHAR 括号里是字节数，VARCHAR 括号里是字符数", "correct": false}, {"key": "C", "text": "字符数，使用多字节字符集时不能简单认为 CHAR(10) 只占 10 个字节", "correct": true}, {"key": "D", "text": "CHAR 括号里是字符数，VARCHAR 括号里是字节数", "correct": false}]}
+??: 这里的长度是字符数，不是字节数。尤其使用多字节字符集时，不能简单认为 CHAR(10) 就只占 10 个字节。[原文§CHAR 和 VARCHAR有什么区别？](https://xiaolincoding.com/interview/mysql.html#char-%E5%92%8C-varchar%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-36 [single]
+??: 在 CHAR 和 VARCHAR 之间做选择，原文的看法是什么？
+??: {"id": "S1-36", "type": "single", "stem": "在 CHAR 和 VARCHAR 之间做选择，原文的看法是什么？", "options": [{"key": "A", "text": "CHAR 是定长的，所以一定比 VARCHAR 快，应该优先选择 CHAR", "correct": false}, {"key": "B", "text": "主要看数据特点，不能直接认为 CHAR 一定比 VARCHAR 快", "correct": true}, {"key": "C", "text": "只看所用的字符集，和数据长度是否固定的特点没有关系", "correct": false}, {"key": "D", "text": "VARCHAR 是变长的，所以一定比 CHAR 快，应该优先选择 VARCHAR", "correct": false}]}
+??: 选择哪一种主要看数据特点：长度比较固定的数据适合 CHAR，姓名、地址等长度不固定的数据适合 VARCHAR，也不能直接认为 CHAR 一定比 VARCHAR 快。[原文§CHAR 和 VARCHAR有什么区别？](https://xiaolincoding.com/interview/mysql.html#char-%E5%92%8C-varchar%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-37 [single]
+??: VARCHAR(10) 括号里的 10 表示什么？
+??: {"id": "S1-37", "type": "single", "stem": "VARCHAR(10) 括号里的 10 表示什么？", "options": [{"key": "A", "text": "该字段最多存储 10 个字节，字符集不同时存储的字符数相同", "correct": false}, {"key": "B", "text": "该字段恰好存储 10 个字符，不足的部分会补空格", "correct": false}, {"key": "C", "text": "该字段最多占用 10 个字节，与所使用的字符集无关", "correct": false}, {"key": "D", "text": "该字段最多可以存储 10 个字符，字符占用的字节数取决于所使用的字符集", "correct": true}]}
+??: VARCHAR 后面括号里的数字代表的是字符数，而不是字节数。比如 VARCHAR(10)，表示该字段最多可以存储 10 个字符，字符的字节长度取决于所使用的字符集。[原文§VARCHAR 后面代表字节还是字符？](https://xiaolincoding.com/interview/mysql.html#varchar-%E5%90%8E%E9%9D%A2%E4%BB%A3%E8%A1%A8%E5%AD%97%E8%8A%82%E8%BF%98%E6%98%AF%E5%AD%97%E7%AC%A6)
+
+S1-38 [fill]
+??: [填空题·有序] 每个字符占用的字节数：ASCII 字符集占____个字节，utf8mb4 最多占____个字节，utf8mb3 最多占____个字节。
+??: {"id": "S1-38", "type": "fill", "stem": "每个字符占用的字节数：ASCII 字符集占____个字节，utf8mb4 最多占____个字节，utf8mb3 最多占____个字节。", "blankCount": 3, "blankOrder": "ordered"}
+??: ASCII 字符集每个字符占用 1 个字节，所以 VARCHAR(10) 最多存储 10 个 ASCII 字符、占用最多 10 个字节（不考虑额外的长度记录开销）；utf8mb4 每个字符最多占用 4 个字节；MySQL 的 utf8mb3 每个字符最多占 3 个字节，不能和 utf8mb4 混为一谈。[原文§VARCHAR 后面代表字节还是字符？](https://xiaolincoding.com/interview/mysql.html#varchar-%E5%90%8E%E9%9D%A2%E4%BB%A3%E8%A1%A8%E5%AD%97%E8%8A%82%E8%BF%98%E6%98%AF%E5%AD%97%E7%AC%A6)
+
+S1-39 [single]
+??: 字符集为 utf8mb4 时，VARCHAR(10) 的存储情况是怎样的？
+??: {"id": "S1-39", "type": "single", "stem": "字符集为 utf8mb4 时，VARCHAR(10) 的存储情况是怎样的？", "options": [{"key": "A", "text": "最多存储 10 个字符，内容最多占 40 个字节，另外还需要长度记录开销", "correct": true}, {"key": "B", "text": "最多存储 10 个字符，内容最多占 10 个字节，不需要长度记录开销", "correct": false}, {"key": "C", "text": "最多存储 40 个字符，内容最多占 40 个字节，另外还需要长度记录开销", "correct": false}, {"key": "D", "text": "最多存储 10 个字符，内容最多占 30 个字节，另外还需要长度记录开销", "correct": false}]}
+??: 字符集是 utf8mb4 时，每个字符最多占用 4 个字节，VARCHAR(10) 最多可以存储 10 个字符，内容最多占 40 个字节，另外还需要长度记录开销。[原文§VARCHAR 后面代表字节还是字符？](https://xiaolincoding.com/interview/mysql.html#varchar-%E5%90%8E%E9%9D%A2%E4%BB%A3%E8%A1%A8%E5%AD%97%E8%8A%82%E8%BF%98%E6%98%AF%E5%AD%97%E7%AC%A6)
+
+S1-40 [single]
+??: VARCHAR 括号里的数字可以随意设得很大吗？
+??: {"id": "S1-40", "type": "single", "stem": "VARCHAR 括号里的数字可以随意设得很大吗？", "options": [{"key": "A", "text": "可以，只要字符集支持，括号里的数字不受其他限制", "correct": false}, {"key": "B", "text": "可以，括号里的数字只是字符数，不会影响存储空间和行大小", "correct": false}, {"key": "C", "text": "不可以，最大可声明长度还受字符集和整行 65,535 字节上限等限制", "correct": true}, {"key": "D", "text": "不可以，最大可声明长度只受整行 65,535 字节上限限制，与字符集无关", "correct": false}]}
+??: VARCHAR 的最大可声明长度还受到字符集和整行 65,535 字节上限等限制，并不是可以随意把括号里的数字设得很大。[原文§VARCHAR 后面代表字节还是字符？](https://xiaolincoding.com/interview/mysql.html#varchar-%E5%90%8E%E9%9D%A2%E4%BB%A3%E8%A1%A8%E5%AD%97%E8%8A%82%E8%BF%98%E6%98%AF%E5%AD%97%E7%AC%A6)
+
+S1-41 [single]
+??: INT(1) 和 INT(10) 的区别主要在哪里？
+??: {"id": "S1-41", "type": "single", "stem": "INT(1) 和 INT(10) 的区别主要在哪里？", "options": [{"key": "A", "text": "主要在于显示宽度，而不是存储范围或数据类型本身的大小", "correct": true}, {"key": "B", "text": "INT(1) 是定长类型，INT(10) 是变长类型", "correct": false}, {"key": "C", "text": "INT(1) 只能存 1 位数字，INT(10) 最多能存 10 位数字", "correct": false}, {"key": "D", "text": "INT(1) 占用 1 个字节的存储空间，INT(10) 占用 10 个字节", "correct": false}]}
+??: INT(1) 和 INT(10) 的区别主要在于显示宽度，而不是存储范围或数据类型本身的大小。括号内的数值（如 1 或 10）是显示宽度，用于在特定场景下控制数值的展示格式。[原文§int(1) int(10) 在mysql有什么不同？](https://xiaolincoding.com/interview/mysql.html#int-1-int-10-%E5%9C%A8mysql%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C)
+
+S1-42 [fill]
+??: [填空题·无序] 无论写成 INT(1) 还是 INT(10)，INT 的存储空间都固定为____个字节。
+??: {"id": "S1-42", "type": "fill", "stem": "无论写成 INT(1) 还是 INT(10)，INT 的存储空间都固定为____个字节。", "blankCount": 1, "blankOrder": "unordered"}
+??: INT 的存储固定为 4 字节，所有 INT（无论写成 INT(1) 还是 INT(10)）占用的存储空间均为 4 字节。[原文§int(1) int(10) 在mysql有什么不同？](https://xiaolincoding.com/interview/mysql.html#int-1-int-10-%E5%9C%A8mysql%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C)
+
+S1-43 [single]
+??: INT 括号里的显示宽度，唯一起作用的场景是什么？
+??: {"id": "S1-43", "type": "single", "stem": "INT 括号里的显示宽度，唯一起作用的场景是什么？", "options": [{"key": "A", "text": "限制能存入的数值位数，超出宽度的数字会被拒绝", "correct": false}, {"key": "B", "text": "字段设置 ZEROFILL 时，数字显示会用前导零填充至指定宽度", "correct": true}, {"key": "C", "text": "决定该字段能表示的数值范围上限", "correct": false}, {"key": "D", "text": "决定该字段占用的存储字节数", "correct": false}]}
+??: 显示宽度唯一的作用场景是 ZEROFILL 补零显示：当字段设置 ZEROFILL 时，数字显示时会用前导零填充至指定宽度。[原文§int(1) int(10) 在mysql有什么不同？](https://xiaolincoding.com/interview/mysql.html#int-1-int-10-%E5%9C%A8mysql%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C)
+
+S1-44 [single]
+??: 字段类型为 INT(4) ZEROFILL，存入 5 和 12345 时，分别显示为什么？
+??: {"id": "S1-44", "type": "single", "stem": "字段类型为 INT(4) ZEROFILL，存入 5 和 12345 时，分别显示为什么？", "options": [{"key": "A", "text": "分别显示为 0005 和 2345，超出宽度的部分被截断", "correct": false}, {"key": "B", "text": "5 显示为 0005，12345 存入失败，超过宽度的数字会被拒绝", "correct": false}, {"key": "C", "text": "分别显示为 0005 和 12345，宽度超限时不截断", "correct": true}, {"key": "D", "text": "分别显示为 5 和 12345，ZEROFILL 对显示没有影响", "correct": false}]}
+??: 字段类型为 INT(4) ZEROFILL 时，实际存入 5 显示为 0005，实际存入 12345 显示仍为 12345，宽度超限时不截断。[原文§int(1) int(10) 在mysql有什么不同？](https://xiaolincoding.com/interview/mysql.html#int-1-int-10-%E5%9C%A8mysql%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C)
+
+S1-45 [single]
+??: 按原文的例子，num2 字段为 INT(10) ZEROFILL，插入数据 1 后查询会显示什么？
+??: {"id": "S1-45", "type": "single", "stem": "按原文的例子，num2 字段为 INT(10) ZEROFILL，插入数据 1 后查询会显示什么？", "options": [{"key": "A", "text": "1", "correct": false}, {"key": "B", "text": "00001", "correct": false}, {"key": "C", "text": "0000000010", "correct": false}, {"key": "D", "text": "0000000001", "correct": true}]}
+??: num1 字段是 INT(1) ZEROFILL，显示宽度为 1，插入数据 1 时显示为 1；num2 字段是 INT(10) ZEROFILL，显示宽度为 10，插入数据 1 时会在前面填充零，显示为 0000000001。[原文§int(1) int(10) 在mysql有什么不同？](https://xiaolincoding.com/interview/mysql.html#int-1-int-10-%E5%9C%A8mysql%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C)
+
+S1-46 [single]
+??: 对于整数显示宽度和 ZEROFILL，原文给出了什么建议？
+??: {"id": "S1-46", "type": "single", "stem": "对于整数显示宽度和 ZEROFILL，原文给出了什么建议？", "options": [{"key": "A", "text": "从 8.0.17 开始被弃用，新表直接用 INT，需要补零展示可以交给应用处理", "correct": true}, {"key": "B", "text": "从 8.0.20 开始被弃用，新表直接用 INT，需要补零展示可以交给应用处理", "correct": false}, {"key": "C", "text": "从 8.0.17 开始成为推荐写法，新表应该为 INT 指定显示宽度并使用 ZEROFILL", "correct": false}, {"key": "D", "text": "从 8.0.17 开始被弃用，但补零展示仍然必须靠 ZEROFILL，不能交给应用处理", "correct": false}]}
+??: 整数显示宽度和 ZEROFILL 从 MySQL 8.0.17 开始被弃用，新表直接用 INT 就好，需要补零展示可以交给应用处理。[原文§int(1) int(10) 在mysql有什么不同？](https://xiaolincoding.com/interview/mysql.html#int-1-int-10-%E5%9C%A8mysql%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C)
+
+S1-47 [single]
+??: TEXT 数据类型可以无限大吗？
+??: {"id": "S1-47", "type": "single", "stem": "TEXT 数据类型可以无限大吗？", "options": [{"key": "A", "text": "可以，LONGTEXT 没有长度上限，可以保存任意大的内容", "correct": false}, {"key": "B", "text": "不能，4 种 TEXT 类型的最大长度都是按字符数计算的", "correct": false}, {"key": "C", "text": "不能，MySQL 有 4 种 TEXT 类型，各有最大长度，按字节计算", "correct": true}, {"key": "D", "text": "不能，MySQL 只有 TEXT 一种类型，最大长度约 64 KB", "correct": false}]}
+??: 不能。MySQL 有 4 种 TEXT 类型：TINYTEXT、TEXT、MEDIUMTEXT 和 LONGTEXT，最大长度按字节计算。[原文§Text数据类型可以无限大吗？](https://xiaolincoding.com/interview/mysql.html#text%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%AF%E4%BB%A5%E6%97%A0%E9%99%90%E5%A4%A7%E5%90%97)
+
+S1-48 [fill]
+??: [填空题·有序] MySQL 的 TINYTEXT、TEXT、MEDIUMTEXT、LONGTEXT 四种类型，最大长度（按字节计）依次约为：____、____、____、____。
+??: {"id": "S1-48", "type": "fill", "stem": "MySQL 的 TINYTEXT、TEXT、MEDIUMTEXT、LONGTEXT 四种类型，最大长度（按字节计）依次约为：____、____、____、____。", "blankCount": 4, "blankOrder": "ordered"}
+??: TINYTEXT 最大 255 字节；TEXT 最大 65,535 字节，约 64 KB；MEDIUMTEXT 最大 16,777,215 字节，约 16 MB；LONGTEXT 最大 4,294,967,295 字节，约 4 GB。[原文§Text数据类型可以无限大吗？](https://xiaolincoding.com/interview/mysql.html#text%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%AF%E4%BB%A5%E6%97%A0%E9%99%90%E5%A4%A7%E5%90%97)
+
+S1-49 [single]
+??: TEXT 类型的最大长度按字节计算，这意味着用 utf8mb4 存储中文或表情时会怎样？
+??: {"id": "S1-49", "type": "single", "stem": "TEXT 类型的最大长度按字节计算，这意味着用 utf8mb4 存储中文或表情时会怎样？", "options": [{"key": "A", "text": "能放下的字符数等于对应的字节数上限", "correct": false}, {"key": "B", "text": "能放下的字符数会少于对应的字节数上限", "correct": true}, {"key": "C", "text": "最大长度会自动改按字符数计算，不再受字节数限制", "correct": false}, {"key": "D", "text": "能放下的字符数会多于对应的字节数上限", "correct": false}]}
+??: 这里限制的是字节数，所以使用 utf8mb4 存储中文或表情时，能放下的字符数会少于这个数字。[原文§Text数据类型可以无限大吗？](https://xiaolincoding.com/interview/mysql.html#text%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%AF%E4%BB%A5%E6%97%A0%E9%99%90%E5%A4%A7%E5%90%97)
+
+S1-50 [single]
+??: 需要保存大文件时，原文建议怎么处理？
+??: {"id": "S1-50", "type": "single", "stem": "需要保存大文件时，原文建议怎么处理？", "options": [{"key": "A", "text": "拆成多个 TINYTEXT 字段分别保存，数据库里不需要保存文件地址", "correct": false}, {"key": "B", "text": "直接放进 LONGTEXT 字段，因为它的实际读写没有其他限制", "correct": false}, {"key": "C", "text": "调大 max_allowed_packet 后放进 TEXT 字段即可，不再有其他限制", "correct": false}, {"key": "D", "text": "通常更适合放到对象存储，数据库里保存文件地址", "correct": true}]}
+??: TEXT 实际读写还会受到 max_allowed_packet、内存和传输成本等限制，大文件通常更适合放到对象存储，数据库里保存文件地址。[原文§Text数据类型可以无限大吗？](https://xiaolincoding.com/interview/mysql.html#text%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%AF%E4%BB%A5%E6%97%A0%E9%99%90%E5%A4%A7%E5%90%97)
+
+S1-51 [single]
+??: 金额为什么建议用 DECIMAL，而不是 FLOAT 或 DOUBLE？
+??: {"id": "S1-51", "type": "single", "stem": "金额为什么建议用 DECIMAL，而不是 FLOAT 或 DOUBLE？", "options": [{"key": "A", "text": "DECIMAL 保存精确的十进制数，但金额的精度误差不会影响对账，可以不用关心", "correct": false}, {"key": "B", "text": "DECIMAL 保存精确的十进制数，FLOAT 和 DOUBLE 保存近似值，金额有精度误差可能导致对账不一致", "correct": true}, {"key": "C", "text": "三者保存的都是精确值，区别只是 DECIMAL 能表示的数值范围更大", "correct": false}, {"key": "D", "text": "FLOAT 和 DOUBLE 保存精确的十进制数，DECIMAL 保存近似值，金额误差只会出现在 DECIMAL 上", "correct": false}]}
+??: 因为 DECIMAL 保存的是精确的十进制数，而 FLOAT 和 DOUBLE 保存的是近似值。金额计算如果存在精度误差，就可能出现对账不一致的问题。[原文§金额为什么建议用 DECIMAL，而不是 FLOAT 或 DOUBLE？](https://xiaolincoding.com/interview/mysql.html#%E9%87%91%E9%A2%9D%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E8%AE%AE%E7%94%A8-decimal-%E8%80%8C%E4%B8%8D%E6%98%AF-float-%E6%88%96-double)
+
+S1-52 [fill]
+??: [填空题·有序] DECIMAL(10, 2) 中，10 表示____，2 表示____，因此整数部分最多____位。
+??: {"id": "S1-52", "type": "fill", "stem": "DECIMAL(10, 2) 中，10 表示____，2 表示____，因此整数部分最多____位。", "blankCount": 3, "blankOrder": "ordered"}
+??: DECIMAL(10, 2) 中，10 表示总位数，2 表示小数位数，也就是整数部分最多 8 位，小数部分最多 2 位。[原文§金额为什么建议用 DECIMAL，而不是 FLOAT 或 DOUBLE？](https://xiaolincoding.com/interview/mysql.html#%E9%87%91%E9%A2%9D%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E8%AE%AE%E7%94%A8-decimal-%E8%80%8C%E4%B8%8D%E6%98%AF-float-%E6%88%96-double)
+
+S1-53 [single]
+??: 不用 DECIMAL 时，原文提到的另一种保存金额的方式是什么？
+??: {"id": "S1-53", "type": "single", "stem": "不用 DECIMAL 时，原文提到的另一种保存金额的方式是什么？", "options": [{"key": "A", "text": "用整数保存最小货币单位，比如用 BIGINT 保存「分」，100 元保存为 10000", "correct": true}, {"key": "B", "text": "用 FLOAT 保存元，再在应用中统一做一次四舍五入", "correct": false}, {"key": "C", "text": "用整数保存最小货币单位，比如用 BIGINT 保存「分」，100 元保存为 100", "correct": false}, {"key": "D", "text": "用 VARCHAR 保存金额文本，需要计算时再转换成数字", "correct": false}]}
+??: 也可以用整数保存最小货币单位，比如用 BIGINT 保存「分」，100 元保存为 10000。[原文§金额为什么建议用 DECIMAL，而不是 FLOAT 或 DOUBLE？](https://xiaolincoding.com/interview/mysql.html#%E9%87%91%E9%A2%9D%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E8%AE%AE%E7%94%A8-decimal-%E8%80%8C%E4%B8%8D%E6%98%AF-float-%E6%88%96-double)
+
+S1-54 [single]
+??: 无论用 DECIMAL 还是整数保存金额，应用里的金额计算还要注意什么？
+??: {"id": "S1-54", "type": "single", "stem": "无论用 DECIMAL 还是整数保存金额，应用里的金额计算还要注意什么？", "options": [{"key": "A", "text": "只要最终结果保留两位小数，计算过程用什么类型都可以", "correct": false}, {"key": "B", "text": "应用里不用关心舍入规则，因为数据库会自动按业务需要处理", "correct": false}, {"key": "C", "text": "也要使用对应的精确类型并明确舍入规则，不能先用浮点数算错再存到 DECIMAL", "correct": true}, {"key": "D", "text": "应用里可以先用浮点数计算，只要最后存进 DECIMAL 就不会有误差", "correct": false}]}
+??: 无论采用哪一种方式，应用里的金额计算也要使用对应的精确类型，并明确舍入规则，不能在应用中先用浮点数算错了，再存到 DECIMAL 里。[原文§金额为什么建议用 DECIMAL，而不是 FLOAT 或 DOUBLE？](https://xiaolincoding.com/interview/mysql.html#%E9%87%91%E9%A2%9D%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E8%AE%AE%E7%94%A8-decimal-%E8%80%8C%E4%B8%8D%E6%98%AF-float-%E6%88%96-double)
+
+S1-55 [fill]
+??: [填空题·有序] IPv4 地址是一个____位的二进制数；把它转换成无符号整数存储时，常用的数据类型是____。
+??: {"id": "S1-55", "type": "fill", "stem": "IPv4 地址是一个____位的二进制数；把它转换成无符号整数存储时，常用的数据类型是____。", "blankCount": 2, "blankOrder": "ordered"}
+??: IPv4 地址是一个 32 位的二进制数，通常以点分十进制表示法呈现，例如 192.168.1.1；转换为 32 位无符号整数存储时，常用的数据类型是 INT UNSIGNED。[原文§IP地址如何在数据库里存储？](https://xiaolincoding.com/interview/mysql.html#ip%E5%9C%B0%E5%9D%80%E5%A6%82%E4%BD%95%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%E5%AD%98%E5%82%A8)
+
+S1-56 [multiple]
+??: 把 IPv4 地址直接当作字符串（如 VARCHAR(15)）存储，有哪些特点？
+??: {"id": "S1-56", "type": "multiple", "stem": "把 IPv4 地址直接当作字符串（如 VARCHAR(15)）存储，有哪些特点？", "options": [{"key": "A", "text": "占用存储空间较大", "correct": true}, {"key": "B", "text": "不需要进行额外的转换操作", "correct": true}, {"key": "C", "text": "字符串比较操作的性能较高，便于进行范围查询", "correct": false}, {"key": "D", "text": "直观易懂，方便直接插入、查询和显示", "correct": true}]}
+??: 优点：直观易懂，方便直接进行数据的插入、查询和显示，不需要进行额外的转换操作。缺点：占用存储空间较大，字符串比较操作的性能相对较低，不利于进行范围查询。[原文§IP地址如何在数据库里存储？](https://xiaolincoding.com/interview/mysql.html#ip%E5%9C%B0%E5%9D%80%E5%A6%82%E4%BD%95%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%E5%AD%98%E5%82%A8)
+
+S1-57 [fill]
+??: [填空题·有序] 用 INT UNSIGNED 存储 IPv4 时，写入前用函数____把 IP 转成整数，查询时用函数____把整数转回 IP。
+??: {"id": "S1-57", "type": "fill", "stem": "用 INT UNSIGNED 存储 IPv4 时，写入前用函数____把 IP 转成整数，查询时用函数____把整数转回 IP。", "blankCount": 2, "blankOrder": "ordered"}
+??: 写入时用 INET_ATON('192.168.1.1') 把 IP 转换成整数，查询时用 INET_NTOA(ip_address) 把整数转换回 IP 地址。[原文§IP地址如何在数据库里存储？](https://xiaolincoding.com/interview/mysql.html#ip%E5%9C%B0%E5%9D%80%E5%A6%82%E4%BD%95%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%E5%AD%98%E5%82%A8)
+
+S1-58 [single]
+??: 把 IPv4 地址存成 INT UNSIGNED，与存成字符串相比，原文怎么评价？
+??: {"id": "S1-58", "type": "single", "stem": "把 IPv4 地址存成 INT UNSIGNED，与存成字符串相比，原文怎么评价？", "options": [{"key": "A", "text": "占用空间大、整数比较性能较低、不便于范围查询，但直观易懂，不需要额外转换", "correct": false}, {"key": "B", "text": "占用空间小、便于范围查询，但整数比较性能比字符串更低", "correct": false}, {"key": "C", "text": "占用空间小、整数比较性能较高，也不需要任何转换，直观易懂", "correct": false}, {"key": "D", "text": "占用空间小、整数比较性能较高、便于范围查询，但需要额外转换、不够直观，增加开发复杂度", "correct": true}]}
+??: 优点：占用存储空间小，整数比较操作的性能较高，便于进行范围查询。缺点：需要进行额外的转换操作，不够直观，增加了开发的复杂度。[原文§IP地址如何在数据库里存储？](https://xiaolincoding.com/interview/mysql.html#ip%E5%9C%B0%E5%9D%80%E5%A6%82%E4%BD%95%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%E5%AD%98%E5%82%A8)
+
+S1-59 [fill]
+??: [填空题·有序] 还要支持 IPv6 时，可以用____类型保存二进制地址，写入时用函数____，读取时用函数____。
+??: {"id": "S1-59", "type": "fill", "stem": "还要支持 IPv6 时，可以用____类型保存二进制地址，写入时用函数____，读取时用函数____。", "blankCount": 3, "blankOrder": "ordered"}
+??: 如果还要支持 IPv6，就不能只用 INT UNSIGNED 了，可以用 VARBINARY(16) 保存二进制地址，写入时用 INET6_ATON()，读取时用 INET6_NTOA()。这两个函数也能处理 IPv4 地址。[原文§IP地址如何在数据库里存储？](https://xiaolincoding.com/interview/mysql.html#ip%E5%9C%B0%E5%9D%80%E5%A6%82%E4%BD%95%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%E5%AD%98%E5%82%A8)
+
+S1-60 [single]
+??: 外键约束的作用是什么？
+??: {"id": "S1-60", "type": "single", "stem": "外键约束的作用是什么？", "options": [{"key": "A", "text": "在删除子表记录时，自动把关联的父表记录一起删除", "correct": false}, {"key": "B", "text": "保证表内某个业务键的值唯一，避免插入重复记录", "correct": false}, {"key": "C", "text": "避免出现父表引用的子表记录不存在的情况", "correct": false}, {"key": "D", "text": "维护表与表之间的引用关系，避免子表引用的父表记录不存在", "correct": true}]}
+??: 外键约束的作用是维护表与表之间的引用关系，避免出现“子表引用的父表记录不存在”的情况。[原文§说一下外键约束](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F)
+
+S1-61 [single]
+??: 一个学生可以选多门课程，一门课程也可以被多个学生选择，原文是怎样建表的？
+??: {"id": "S1-61", "type": "single", "stem": "一个学生可以选多门课程，一门课程也可以被多个学生选择，原文是怎样建表的？", "options": [{"key": "A", "text": "在学生表里放一个 course_id 即可，一个学生只对应一门课程", "correct": false}, {"key": "B", "text": "这是多对多关系，需要用选课表关联，不能只在学生表里放一个 course_id", "correct": true}, {"key": "C", "text": "在课程表里放一个 student_id 即可，一门课程只对应一个学生", "correct": false}, {"key": "D", "text": "多对多关系不能用外键来表达，只能由应用自己去维护", "correct": false}]}
+??: 学生与课程是多对多关系，需要用选课表来关联，不能只在学生表里放一个 course_id。示例中的 student_courses 表以 (student_id, course_id) 为联合主键，并分别用外键引用 students(id) 和 courses(id)。[原文§说一下外键约束](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F)
+
+S1-62 [single]
+??: 在原文示例里，给 student_courses 表添加选课记录时，如果学生或课程不存在，会怎样？
+??: {"id": "S1-62", "type": "single", "stem": "在原文示例里，给 student_courses 表添加选课记录时，如果学生或课程不存在，会怎样？", "options": [{"key": "A", "text": "数据库会允许插入，直到删除父表记录时才报错", "correct": false}, {"key": "B", "text": "数据库会自动在 students 或 courses 表中补一条对应记录", "correct": false}, {"key": "C", "text": "数据库会拒绝", "correct": true}, {"key": "D", "text": "数据库会允许插入，但把对应的外键字段设置为 NULL", "correct": false}]}
+??: 有了外键约束，给一个不存在的学生添加选课记录，或者选择不存在的课程，数据库都会拒绝。[原文§说一下外键约束](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F)
+
+S1-63 [fill]
+??: [填空题·无序] 删除父表记录时，原文提到可以指定的三种处理方式是：____、____、____。
+??: {"id": "S1-63", "type": "fill", "stem": "删除父表记录时，原文提到可以指定的三种处理方式是：____、____、____。", "blankCount": 3, "blankOrder": "unordered"}
+??: 删除父表记录时可以指定处理方式：RESTRICT、CASCADE 和 SET NULL。[原文§说一下外键约束](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F)
+
+S1-64 [multiple]
+??: 关于删除父表记录时的处理方式，下列哪些说法符合原文？
+??: {"id": "S1-64", "type": "multiple", "stem": "关于删除父表记录时的处理方式，下列哪些说法符合原文？", "options": [{"key": "A", "text": "CASCADE：删除父表记录时，把关联的子表记录一起删除", "correct": true}, {"key": "B", "text": "RESTRICT：如果还有子表记录引用，就拒绝删除", "correct": true}, {"key": "C", "text": "在 InnoDB 中，NO ACTION 的效果与 CASCADE 相同，都会连带删除子表记录", "correct": false}, {"key": "D", "text": "SET NULL：把子表的外键字段设置为 NULL，前提是该字段允许为空", "correct": true}]}
+??: RESTRICT：如果还有子表记录引用，就拒绝删除，InnoDB 的 NO ACTION 也是这种效果；CASCADE：删除父表记录时，把关联的子表记录一起删除；SET NULL：把子表的外键字段设置为 NULL，前提是该字段允许为空。[原文§说一下外键约束](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F)
+
+S1-65 [single]
+??: 关于是否使用外键，原文的看法是什么？
+??: {"id": "S1-65", "type": "single", "stem": "关于是否使用外键，原文的看法是什么？", "options": [{"key": "A", "text": "外键把完整性检查交给数据库，但增加检查和加锁开销，要结合写入压力、分库分表需求判断", "correct": true}, {"key": "B", "text": "不使用外键时，数据库仍然会自动帮应用维护表之间的引用关系", "correct": false}, {"key": "C", "text": "外键没有额外的检查和加锁开销，所有表都应该使用外键", "correct": false}, {"key": "D", "text": "外键会增加检查和加锁开销，所以任何情况下都不应该使用", "correct": false}]}
+??: 外键可以把引用完整性检查交给数据库，不过也会增加检查和加锁开销。实际是否使用，要结合写入压力、分库分表需求来判断；如果不用外键，就需要应用自己维护这些关系。[原文§说一下外键约束](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F)
+
+S1-66 [single]
+??: IN 关键字用来检查什么？
+??: {"id": "S1-66", "type": "single", "stem": "IN 关键字用来检查什么？", "options": [{"key": "A", "text": "左边的表达式是否小于右边列表中的所有值", "correct": false}, {"key": "B", "text": "两个表中是否存在可以相互连接的行", "correct": false}, {"key": "C", "text": "左边的表达式是否存在于右边的列表或子查询的结果集中", "correct": true}, {"key": "D", "text": "子查询是否至少能返回一行数据，不关心返回的具体内容", "correct": false}]}
+??: IN 用于检查左边的表达式是否存在于右边的列表或子查询的结果集中。如果存在，则 IN 返回 TRUE，否则返回 FALSE。[原文§MySQL的关键字 IN 和 EXISTS](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97-in-%E5%92%8C-exists)
+
+S1-67 [single]
+??: EXISTS 关键字用来判断什么？
+??: {"id": "S1-67", "type": "single", "stem": "EXISTS 关键字用来判断什么？", "options": [{"key": "A", "text": "子查询返回的行数是否恰好等于一行", "correct": false}, {"key": "B", "text": "子查询返回的数据是否全部都不为 NULL", "correct": false}, {"key": "C", "text": "左边的表达式是否属于子查询返回的值的集合", "correct": false}, {"key": "D", "text": "子查询是否至少能返回一行数据，不关心返回什么数据，只关心是否有结果", "correct": true}]}
+??: EXISTS 用于判断子查询是否至少能返回一行数据，它不关心子查询返回什么数据，只关心是否有结果。如果子查询有结果，则 EXISTS 返回 TRUE，否则返回 FALSE。[原文§MySQL的关键字 IN 和 EXISTS](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97-in-%E5%92%8C-exists)
+
+S1-68 [single]
+??: IN 和 EXISTS 在语义上的区别是什么？
+??: {"id": "S1-68", "type": "single", "stem": "IN 和 EXISTS 在语义上的区别是什么？", "options": [{"key": "A", "text": "IN 比较值是否属于一个集合，EXISTS 判断子查询有没有返回行", "correct": true}, {"key": "B", "text": "IN 判断子查询有没有返回行，EXISTS 比较值是否属于一个集合", "correct": false}, {"key": "C", "text": "两者语义完全相同，只是写法不同", "correct": false}, {"key": "D", "text": "IN 只能用于值列表，EXISTS 只能用于子查询，两者语义没有重叠", "correct": false}]}
+??: IN 比较值是否属于一个集合，EXISTS 判断子查询有没有返回行。[原文§MySQL的关键字 IN 和 EXISTS](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97-in-%E5%92%8C-exists)
+
+S1-69 [single]
+??: EXISTS (SELECT NULL) 的结果是什么，原因是什么？
+??: {"id": "S1-69", "type": "single", "stem": "EXISTS (SELECT NULL) 的结果是什么，原因是什么？", "options": [{"key": "A", "text": "结果为 NULL（UNKNOWN），因为子查询返回的值是 NULL", "correct": false}, {"key": "B", "text": "结果为 TRUE，因为子查询确实返回了一行", "correct": true}, {"key": "C", "text": "结果为 FALSE，因为子查询返回的值是 NULL", "correct": false}, {"key": "D", "text": "语法错误，因为 EXISTS 的子查询不能返回 NULL", "correct": false}]}
+??: EXISTS (SELECT NULL) 也为 TRUE，因为它确实返回了一行，EXISTS 只关心有没有结果，不关心返回的内容。[原文§MySQL的关键字 IN 和 EXISTS](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97-in-%E5%92%8C-exists)
+
+S1-70 [single]
+??: 「大表用 EXISTS、小表用 IN」这个说法，原文怎么看？
+??: {"id": "S1-70", "type": "single", "stem": "「大表用 EXISTS、小表用 IN」这个说法，原文怎么看？", "options": [{"key": "A", "text": "应该照做，因为 EXISTS 在大表上总是比 IN 更快", "correct": false}, {"key": "B", "text": "不能简单照背，具体性能取决于索引、数据分布和执行计划", "correct": true}, {"key": "C", "text": "应该照做，因为 IN 会对子查询结果做物化，而 EXISTS 不会", "correct": false}, {"key": "D", "text": "不用考虑，两者的性能只取决于写法，与索引和数据分布无关", "correct": false}]}
+??: 不能简单背「大表用 EXISTS、小表用 IN」。MySQL 优化器可能把它们转成半连接或者对子查询结果做物化，具体性能取决于索引、数据分布和执行计划。[原文§MySQL的关键字 IN 和 EXISTS](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97-in-%E5%92%8C-exists)
+
+S1-71 [single]
+??: IN 在没有找到匹配值、但集合中包含 NULL 时，结果是什么？
+??: {"id": "S1-71", "type": "single", "stem": "IN 在没有找到匹配值、但集合中包含 NULL 时，结果是什么？", "options": [{"key": "A", "text": "UNKNOWN，但在 WHERE 中仍然会被保留", "correct": false}, {"key": "B", "text": "FALSE，在 WHERE 中不会被保留，和集合中没有 NULL 时没有区别", "correct": false}, {"key": "C", "text": "UNKNOWN，在 WHERE 中不会被保留，使用 NOT IN 时尤其容易踩坑", "correct": true}, {"key": "D", "text": "TRUE，在 WHERE 中会被保留", "correct": false}]}
+??: IN 在没有找到匹配值、但集合中包含 NULL 时，结果是 UNKNOWN，在 WHERE 中不会被保留。尤其使用 NOT IN 时，这一点很容易踩坑。[原文§MySQL的关键字 IN 和 EXISTS](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97-in-%E5%92%8C-exists)
+
+S1-72 [single]
+??: SELECT 1 NOT IN (2, NULL); 的结果是什么？
+??: {"id": "S1-72", "type": "single", "stem": "SELECT 1 NOT IN (2, NULL); 的结果是什么？", "options": [{"key": "A", "text": "语法错误", "correct": false}, {"key": "B", "text": "TRUE", "correct": false}, {"key": "C", "text": "FALSE", "correct": false}, {"key": "D", "text": "NULL", "correct": true}]}
+??: 结果是 NULL，而不是 TRUE。集合中包含 NULL 时，没有找到匹配值的结果是 UNKNOWN，使用 NOT IN 时这一点很容易踩坑。[原文§MySQL的关键字 IN 和 EXISTS](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97-in-%E5%92%8C-exists)
+
+S1-73 [single]
+??: 要查询「没有订单的客户」，原文推荐怎么写，为什么更稳妥？
+??: {"id": "S1-73", "type": "single", "stem": "要查询「没有订单的客户」，原文推荐怎么写，为什么更稳妥？", "options": [{"key": "A", "text": "用相关子查询的 NOT EXISTS，这样 Orders 中有 CustomerID 为 NULL 的行，也不会把所有客户都排除掉", "correct": true}, {"key": "B", "text": "用 NOT IN，因为子查询结果里的 NULL 会被自动忽略，不会影响结果", "correct": false}, {"key": "C", "text": "用 EXISTS，这样 Orders 里没有匹配订单的客户会被保留下来", "correct": false}, {"key": "D", "text": "用 NOT IN，这样 Orders 中的 NULL 会让所有客户都被保留下来", "correct": false}]}
+??: 通常可以用相关子查询的 NOT EXISTS：SELECT c.* FROM Customers c WHERE NOT EXISTS (SELECT 1 FROM Orders o WHERE o.CustomerID = c.CustomerID)。这样，Orders 中有 CustomerID 为 NULL 的行，也不会把所有客户都排除掉。[原文§MySQL的关键字 IN 和 EXISTS](https://xiaolincoding.com/interview/mysql.html#mysql%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97-in-%E5%92%8C-exists)
+
+S1-74 [fill]
+??: [填空题·无序] 原文把 MySQL 的基本函数分成哪四类：____、____、____、____。
+??: {"id": "S1-74", "type": "fill", "stem": "原文把 MySQL 的基本函数分成哪四类：____、____、____、____。", "blankCount": 4, "blankOrder": "unordered"}
+??: 原文把基本函数分成字符串函数、数值函数、日期和时间函数、聚合函数四类。[原文§mysql中的一些基本函数，你知道哪些？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0-%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B)
+
+S1-75 [fill]
+??: [填空题·有序] 字符串函数中，连接多个字符串用____，截取指定长度的子字符串用____，把字符串中的某部分替换为另一个字符串用____。
+??: {"id": "S1-75", "type": "fill", "stem": "字符串函数中，连接多个字符串用____，截取指定长度的子字符串用____，把字符串中的某部分替换为另一个字符串用____。", "blankCount": 3, "blankOrder": "ordered"}
+??: CONCAT(str1, str2, ...)：连接多个字符串，返回合并后的字符串；SUBSTRING(str, pos, len)：从指定位置开始，截取指定长度的子字符串；REPLACE(str, from_str, to_str)：将字符串中的某部分替换为另一个字符串。[原文§mysql中的一些基本函数，你知道哪些？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0-%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B)
+
+S1-76 [single]
+??: LENGTH(str) 和 CHAR_LENGTH(str) 有什么区别？
+??: {"id": "S1-76", "type": "single", "stem": "LENGTH(str) 和 CHAR_LENGTH(str) 有什么区别？", "options": [{"key": "A", "text": "LENGTH 返回字符串的字节数，统计字符数要使用 CHAR_LENGTH", "correct": true}, {"key": "B", "text": "两者都返回字符串的字符数，只是名称不同", "correct": false}, {"key": "C", "text": "两者都返回字符串的字节数，统计字符数要使用 SUBSTRING", "correct": false}, {"key": "D", "text": "LENGTH 返回字符串的字符数，CHAR_LENGTH 返回字符串的字节数", "correct": false}]}
+??: LENGTH(str) 返回字符串的字节数；如果要统计字符数，使用 CHAR_LENGTH(str)。例如对 '小林' 调用，LENGTH 返回字节数，CHAR_LENGTH 返回字符数。[原文§mysql中的一些基本函数，你知道哪些？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0-%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B)
+
+S1-77 [fill]
+??: [填空题·有序] 数值函数中，返回数字绝对值的是____，返回指定数字的指定幂次方的是____。
+??: {"id": "S1-77", "type": "fill", "stem": "数值函数中，返回数字绝对值的是____，返回指定数字的指定幂次方的是____。", "blankCount": 2, "blankOrder": "ordered"}
+??: ABS(num) 返回数字的绝对值；POWER(num, exponent) 返回指定数字的指定幂次方。[原文§mysql中的一些基本函数，你知道哪些？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0-%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B)
+
+S1-78 [fill]
+??: [填空题·有序] 日期和时间函数中，返回当前日期和时间的是____，只返回当前日期的是____。
+??: {"id": "S1-78", "type": "fill", "stem": "日期和时间函数中，返回当前日期和时间的是____，只返回当前日期的是____。", "blankCount": 2, "blankOrder": "ordered"}
+??: NOW() 返回当前日期和时间；CURDATE() 返回当前日期。[原文§mysql中的一些基本函数，你知道哪些？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0-%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B)
+
+S1-79 [single]
+??: 聚合函数 COUNT(column) 和 COUNT(*) 有什么区别？
+??: {"id": "S1-79", "type": "single", "stem": "聚合函数 COUNT(column) 和 COUNT(*) 有什么区别？", "options": [{"key": "A", "text": "两者都只统计非 NULL 的值，不统计列值为 NULL 的行", "correct": false}, {"key": "B", "text": "COUNT(column) 统计包括 NULL 在内的所有行，COUNT(*) 只统计指定列非 NULL 的行", "correct": false}, {"key": "C", "text": "两者都统计列值为 NULL 的行，没有任何区别", "correct": false}, {"key": "D", "text": "COUNT(column) 计算指定列中非 NULL 值的个数，COUNT(*) 统计结果集中的行数，包括列值为 NULL 的行", "correct": true}]}
+??: COUNT(column) 计算指定列中的非 NULL 值的个数；COUNT(*) 统计结果集中的行数，包括列值为 NULL 的行。[原文§mysql中的一些基本函数，你知道哪些？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0-%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B)
+
+S1-80 [fill]
+??: [填空题·有序] 聚合函数中，计算指定列总和的是____，平均值的是____，最大值的是____，最小值的是____。
+??: {"id": "S1-80", "type": "fill", "stem": "聚合函数中，计算指定列总和的是____，平均值的是____，最大值的是____，最小值的是____。", "blankCount": 4, "blankOrder": "ordered"}
+??: SUM(column) 计算指定列的总和；AVG(column) 计算指定列的平均值；MAX(column) 返回指定列的最大值；MIN(column) 返回指定列的最小值。[原文§mysql中的一些基本函数，你知道哪些？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0-%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B)
+
+S1-81 [multiple]
+??: 关于 COUNT(*)、COUNT(1) 和 COUNT(字段)，下列哪些说法符合原文？
+??: {"id": "S1-81", "type": "multiple", "stem": "关于 COUNT(*)、COUNT(1) 和 COUNT(字段)，下列哪些说法符合原文？", "options": [{"key": "A", "text": "COUNT(1) 对每一行统计常量 1，1 不为 NULL，所以结果和 COUNT(*) 一样", "correct": true}, {"key": "B", "text": "无论字段是否定义为 NOT NULL，COUNT(字段) 的结果都和 COUNT(*) 相同", "correct": false}, {"key": "C", "text": "COUNT(*) 统计行数，不管某一列是不是 NULL", "correct": true}, {"key": "D", "text": "COUNT(字段) 只统计该字段不为 NULL 的行", "correct": true}]}
+??: COUNT(*)：统计行数，不管某一列是不是 NULL。COUNT(1)：对每一行统计常量 1，1 不为 NULL，所以统计结果和 COUNT(*) 一样。COUNT(字段)：只统计该字段不为 NULL 的行，如果字段定义为 NOT NULL，结果才和 COUNT(*) 相同。[原文§COUNT(*)、COUNT(1) 和 COUNT(字段) 有什么区别？](https://xiaolincoding.com/interview/mysql.html#count-%E3%80%81count-1-%E5%92%8C-count-%E5%AD%97%E6%AE%B5-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-82 [single]
+??: COUNT(字段) 的结果在什么情况下才和 COUNT(*) 相同？
+??: {"id": "S1-82", "type": "single", "stem": "COUNT(字段) 的结果在什么情况下才和 COUNT(*) 相同？", "options": [{"key": "A", "text": "字段允许为 NULL 时", "correct": false}, {"key": "B", "text": "字段定义为 NOT NULL 时", "correct": true}, {"key": "C", "text": "字段上建有唯一索引时", "correct": false}, {"key": "D", "text": "字段的值全部相同时", "correct": false}]}
+??: COUNT(字段) 只统计该字段不为 NULL 的行，所以只有字段定义为 NOT NULL 时，结果才和 COUNT(*) 相同。[原文§COUNT(*)、COUNT(1) 和 COUNT(字段) 有什么区别？](https://xiaolincoding.com/interview/mysql.html#count-%E3%80%81count-1-%E5%92%8C-count-%E5%AD%97%E6%AE%B5-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-83 [single]
+??: 为什么 InnoDB 不能直接读取一个固定的总行数返回？
+??: {"id": "S1-83", "type": "single", "stem": "为什么 InnoDB 不能直接读取一个固定的总行数返回？", "options": [{"key": "A", "text": "因为 COUNT(字段) 的结果总是和 COUNT(*) 不同", "correct": false}, {"key": "B", "text": "因为 COUNT(*) 必须逐行判断某一列是不是 NULL", "correct": false}, {"key": "C", "text": "因为不同事务的可见数据可能不同", "correct": true}, {"key": "D", "text": "因为 COUNT(1) 需要先把常量 1 转成 NULL 才能统计", "correct": false}]}
+??: 对于 InnoDB，不能直接读取一个固定的总行数返回，因为不同事务的可见数据可能不同。[原文§COUNT(*)、COUNT(1) 和 COUNT(字段) 有什么区别？](https://xiaolincoding.com/interview/mysql.html#count-%E3%80%81count-1-%E5%92%8C-count-%E5%AD%97%E6%AE%B5-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-84 [single]
+??: 没有 WHERE 条件时，InnoDB 统计行数通常是怎样扫描的？
+??: {"id": "S1-84", "type": "single", "stem": "没有 WHERE 条件时，InnoDB 统计行数通常是怎样扫描的？", "options": [{"key": "A", "text": "先扫描聚簇索引，没有聚簇索引时才选择较小的二级索引", "correct": false}, {"key": "B", "text": "总是直接扫描聚簇索引，不会使用二级索引", "correct": false}, {"key": "C", "text": "直接读取表元数据中保存的固定总行数，不需要扫描", "correct": false}, {"key": "D", "text": "通常选择较小的二级索引扫描，没有合适的二级索引再扫描聚簇索引", "correct": true}]}
+??: 没有 WHERE 条件时，MySQL 通常会选择较小的二级索引扫描；没有合适的二级索引，再扫描聚簇索引。[原文§COUNT(*)、COUNT(1) 和 COUNT(字段) 有什么区别？](https://xiaolincoding.com/interview/mysql.html#count-%E3%80%81count-1-%E5%92%8C-count-%E5%AD%97%E6%AE%B5-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-85 [single]
+??: 统计行数时，原文对 COUNT(*) 和 COUNT(1) 的建议是什么？
+??: {"id": "S1-85", "type": "single", "stem": "统计行数时，原文对 COUNT(*) 和 COUNT(1) 的建议是什么？", "options": [{"key": "A", "text": "应该改用 COUNT(1)，因为它比 COUNT(*) 更快", "correct": false}, {"key": "B", "text": "应该改用 COUNT(字段)，因为它比 COUNT(*) 更快", "correct": false}, {"key": "C", "text": "不需要为了性能把 COUNT(*) 改成 COUNT(1)，直接用 COUNT(*) 表达统计行数即可", "correct": true}, {"key": "D", "text": "应该避免使用 COUNT，任何时候都改为维护汇总数据", "correct": false}]}
+??: 不需要为了性能把 COUNT(*) 改成 COUNT(1)，通常直接用 COUNT(*) 表达「统计行数」就好。[原文§COUNT(*)、COUNT(1) 和 COUNT(字段) 有什么区别？](https://xiaolincoding.com/interview/mysql.html#count-%E3%80%81count-1-%E5%92%8C-count-%E5%AD%97%E6%AE%B5-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-86 [single]
+??: 大表需要频繁统计行数、并且允许有延迟时，原文建议怎么做？
+??: {"id": "S1-86", "type": "single", "stem": "大表需要频繁统计行数、并且允许有延迟时，原文建议怎么做？", "options": [{"key": "A", "text": "把 COUNT(*) 改成 COUNT(1)", "correct": false}, {"key": "B", "text": "可以考虑维护汇总数据", "correct": true}, {"key": "C", "text": "改用 COUNT(字段) 并去掉所有 WHERE 条件", "correct": false}, {"key": "D", "text": "直接读取 InnoDB 保存的固定总行数", "correct": false}]}
+??: 大表频繁统计且允许有延迟时，可以考虑维护汇总数据。[原文§COUNT(*)、COUNT(1) 和 COUNT(字段) 有什么区别？](https://xiaolincoding.com/interview/mysql.html#count-%E3%80%81count-1-%E5%92%8C-count-%E5%AD%97%E6%AE%B5-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-87 [single]
+??: NULL 和空字符串的区别是什么？
+??: {"id": "S1-87", "type": "single", "stem": "NULL 和空字符串的区别是什么？", "options": [{"key": "A", "text": "NULL 表示值未知或缺失，空字符串表示值已知、但内容为空", "correct": true}, {"key": "B", "text": "NULL 表示长度为 0 的字符串，空字符串表示值缺失", "correct": false}, {"key": "C", "text": "两者含义相同，只是写法不同", "correct": false}, {"key": "D", "text": "NULL 表示值已知但内容为空，空字符串表示值未知或缺失", "correct": false}]}
+??: NULL 表示值未知或者缺失，空字符串表示值已知，但内容为空，两者不是一回事。[原文§NULL 和空字符串有什么区别？](https://xiaolincoding.com/interview/mysql.html#null-%E5%92%8C%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-88 [single]
+??: 判断字段是否为 NULL，应该怎样写？
+??: {"id": "S1-88", "type": "single", "stem": "判断字段是否为 NULL，应该怎样写？", "options": [{"key": "A", "text": "用 COUNT(name) 统计 NULL 的行数后再判断", "correct": false}, {"key": "B", "text": "用 IS NULL 或 IS NOT NULL，不能写 name = NULL", "correct": true}, {"key": "C", "text": "用 name = ''，它与 IS NULL 等价", "correct": false}, {"key": "D", "text": "用 name = NULL 和 name != NULL", "correct": false}]}
+??: 判断 NULL 要用 IS NULL 或 IS NOT NULL，不能写 name = NULL。[原文§NULL 和空字符串有什么区别？](https://xiaolincoding.com/interview/mysql.html#null-%E5%92%8C%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-89 [single]
+??: 普通比较运算遇到 NULL 时结果通常是什么，WHERE 会如何处理？
+??: {"id": "S1-89", "type": "single", "stem": "普通比较运算遇到 NULL 时结果通常是什么，WHERE 会如何处理？", "options": [{"key": "A", "text": "结果通常是 UNKNOWN，WHERE 会保留结果为 UNKNOWN 的行", "correct": false}, {"key": "B", "text": "结果通常是 TRUE，WHERE 会保留这些行", "correct": false}, {"key": "C", "text": "结果通常是 UNKNOWN，WHERE 只保留结果为 TRUE 的行", "correct": true}, {"key": "D", "text": "结果通常是 FALSE，WHERE 会保留结果为 FALSE 的行", "correct": false}]}
+??: 普通比较运算遇到 NULL，结果通常是 UNKNOWN，WHERE 只保留结果为 TRUE 的行。[原文§NULL 和空字符串有什么区别？](https://xiaolincoding.com/interview/mysql.html#null-%E5%92%8C%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-90 [fill]
+??: [填空题·无序] 如果需要把两个 NULL 也当成相等，可以使用 MySQL 的 NULL 安全等于运算符____。
+??: {"id": "S1-90", "type": "fill", "stem": "如果需要把两个 NULL 也当成相等，可以使用 MySQL 的 NULL 安全等于运算符____。", "blankCount": 1, "blankOrder": "unordered"}
+??: 如果需要把两个 NULL 也当成相等，可以用 MySQL 的 NULL 安全等于运算符 <=>。[原文§NULL 和空字符串有什么区别？](https://xiaolincoding.com/interview/mysql.html#null-%E5%92%8C%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-91 [multiple]
+??: 关于 NULL，下列哪些说法符合原文？
+??: {"id": "S1-91", "type": "multiple", "stem": "关于 NULL，下列哪些说法符合原文？", "options": [{"key": "A", "text": "唯一索引允许多个 NULL", "correct": true}, {"key": "B", "text": "COUNT(字段) 不会统计 NULL", "correct": true}, {"key": "C", "text": "含有 NULL 的列一定无法使用索引，IS NULL 查询必然全表扫描", "correct": false}, {"key": "D", "text": "NULL 并不意味着不能走索引，IS NULL 也可能使用索引", "correct": true}]}
+??: NULL 并不意味着不能走索引，IS NULL 也可能使用索引；唯一索引允许多个 NULL，而 COUNT(字段) 不会统计 NULL，这些都是面试里容易追问的点。[原文§NULL 和空字符串有什么区别？](https://xiaolincoding.com/interview/mysql.html#null-%E5%92%8C%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-92 [multiple]
+??: 关于 DELETE，下列哪些说法符合原文？
+??: {"id": "S1-92", "type": "multiple", "stem": "关于 DELETE，下列哪些说法符合原文？", "options": [{"key": "A", "text": "会产生 undo 和 redo，也会逐行触发 DELETE 触发器", "correct": true}, {"key": "B", "text": "可以带 WHERE 条件，表结构保留", "correct": true}, {"key": "C", "text": "对于 InnoDB，它是事务操作，在事务提交前可以回滚", "correct": true}, {"key": "D", "text": "不能带 WHERE 条件，只能清空整张表", "correct": false}]}
+??: DELETE 用于删除表中的记录，可以带 WHERE 条件，表结构保留。对于 InnoDB，它是事务操作，在事务提交前可以回滚，会产生 undo 和 redo，也会逐行触发 DELETE 触发器。[原文§DELETE、TRUNCATE 和 DROP 有什么区别？](https://xiaolincoding.com/interview/mysql.html#delete%E3%80%81truncate-%E5%92%8C-drop-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-93 [multiple]
+??: 关于 TRUNCATE，下列哪些说法符合原文？
+??: {"id": "S1-93", "type": "multiple", "stem": "关于 TRUNCATE，下列哪些说法符合原文？", "options": [{"key": "A", "text": "不会逐行触发 DELETE 触发器", "correct": true}, {"key": "B", "text": "清空整张表，不能带 WHERE，表结构保留", "correct": true}, {"key": "C", "text": "通常会重建表并重置自增计数器", "correct": true}, {"key": "D", "text": "可以带 WHERE 条件，只清空满足条件的部分记录", "correct": false}]}
+??: TRUNCATE 用于清空整张表，不能带 WHERE，表结构保留，通常会重建表并重置自增计数器，不会逐行触发 DELETE 触发器。[原文§DELETE、TRUNCATE 和 DROP 有什么区别？](https://xiaolincoding.com/interview/mysql.html#delete%E3%80%81truncate-%E5%92%8C-drop-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-94 [single]
+??: DROP 的作用是什么？
+??: {"id": "S1-94", "type": "single", "stem": "DROP 的作用是什么？", "options": [{"key": "A", "text": "清空整张表，保留表结构并重置自增计数器", "correct": false}, {"key": "B", "text": "删除表中的记录，表结构保留", "correct": false}, {"key": "C", "text": "只删除满足 WHERE 条件的记录，表结构保留", "correct": false}, {"key": "D", "text": "删除整张表，表结构和数据都不再保留", "correct": true}]}
+??: DROP 用于删除整张表，表结构和数据都不再保留。[原文§DELETE、TRUNCATE 和 DROP 有什么区别？](https://xiaolincoding.com/interview/mysql.html#delete%E3%80%81truncate-%E5%92%8C-drop-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-95 [fill]
+??: [填空题·有序] DELETE、TRUNCATE、DROP 中，可以带 WHERE 条件删除记录的是____，清空整张表但保留表结构的是____，连表结构一起删除的是____。
+??: {"id": "S1-95", "type": "fill", "stem": "DELETE、TRUNCATE、DROP 中，可以带 WHERE 条件删除记录的是____，清空整张表但保留表结构的是____，连表结构一起删除的是____。", "blankCount": 3, "blankOrder": "ordered"}
+??: DELETE 删除表中的记录，可以带 WHERE 条件；TRUNCATE 清空整张表，不能带 WHERE，表结构保留；DROP 删除整张表，表结构和数据都不再保留。[原文§DELETE、TRUNCATE 和 DROP 有什么区别？](https://xiaolincoding.com/interview/mysql.html#delete%E3%80%81truncate-%E5%92%8C-drop-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-96 [single]
+??: TRUNCATE 和普通 DROP TABLE 属于哪类语句，能否通过应用执行 ROLLBACK 撤销？
+??: {"id": "S1-96", "type": "single", "stem": "TRUNCATE 和普通 DROP TABLE 属于哪类语句，能否通过应用执行 ROLLBACK 撤销？", "options": [{"key": "A", "text": "都属于 DDL，会隐式提交，不能通过应用执行 ROLLBACK 撤销", "correct": true}, {"key": "B", "text": "都属于 DDL，但在事务提交前可以通过 ROLLBACK 撤销", "correct": false}, {"key": "C", "text": "都属于 DML，在事务提交前可以通过 ROLLBACK 撤销", "correct": false}, {"key": "D", "text": "TRUNCATE 属于 DDL 不能回滚，DROP TABLE 属于 DML 可以回滚", "correct": false}]}
+??: TRUNCATE 和普通 DROP TABLE 都属于 DDL，会隐式提交，不能通过应用执行 ROLLBACK 撤销。[原文§DELETE、TRUNCATE 和 DROP 有什么区别？](https://xiaolincoding.com/interview/mysql.html#delete%E3%80%81truncate-%E5%92%8C-drop-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-97 [single]
+??: MySQL 8.0 的原子 DDL 保证的是什么？
+??: {"id": "S1-97", "type": "single", "stem": "MySQL 8.0 的原子 DDL 保证的是什么？", "options": [{"key": "A", "text": "DDL 可以像普通事务一样通过 ROLLBACK 手动撤销", "correct": false}, {"key": "B", "text": "DDL 不再隐式提交，可以和 DML 放进同一个事务里一起提交", "correct": false}, {"key": "C", "text": "TRUNCATE 之后表结构也不再保留，需要重新建表", "correct": false}, {"key": "D", "text": "崩溃时操作的一致性，不能理解成 DDL 可以像普通事务一样手动回滚", "correct": true}]}
+??: MySQL 8.0 的原子 DDL 保证的是崩溃时操作的一致性，不能把它理解成 DDL 可以像普通事务一样手动回滚。[原文§DELETE、TRUNCATE 和 DROP 有什么区别？](https://xiaolincoding.com/interview/mysql.html#delete%E3%80%81truncate-%E5%92%8C-drop-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+S1-98 [single]
+??: SQL 查询语句的执行顺序，原文说的是哪种意义上的顺序？
+??: {"id": "S1-98", "type": "single", "stem": "SQL 查询语句的执行顺序，原文说的是哪种意义上的顺序？", "options": [{"key": "A", "text": "SQL 的逻辑处理顺序，不是数据库内部实际执行每一步的顺序", "correct": true}, {"key": "B", "text": "每条查询语句实际都会依次生成临时表的顺序", "correct": false}, {"key": "C", "text": "语句中各子句的书写顺序，与逻辑处理顺序完全一致", "correct": false}, {"key": "D", "text": "数据库内部实际执行每一步的物理顺序", "correct": false}]}
+??: 这里说的是 SQL 的逻辑处理顺序，不是数据库内部实际执行每一步的顺序。[原文§SQL查询语句的执行顺序是怎么样的？](https://xiaolincoding.com/interview/mysql.html#sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84)
+
+S1-99 [fill]
+??: [填空题·有序] SQL 的逻辑处理顺序中，FROM / JOIN 之后依次是：____ → ____ → ____ → ____。
+??: {"id": "S1-99", "type": "fill", "stem": "SQL 的逻辑处理顺序中，FROM / JOIN 之后依次是：____ → ____ → ____ → ____。", "blankCount": 4, "blankOrder": "ordered"}
+??: 逻辑处理顺序为：FROM / JOIN → ON → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY → LIMIT。先确定从哪些表取数据，按 ON 条件关联，再用 WHERE 过滤记录，然后分组、计算聚合结果，通过 HAVING 过滤分组。[原文§SQL查询语句的执行顺序是怎么样的？](https://xiaolincoding.com/interview/mysql.html#sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84)
+
+S1-100 [fill]
+??: [填空题·有序] SQL 的逻辑处理顺序中，HAVING 之后依次是：____ → ____ → ____ → ____。
+??: {"id": "S1-100", "type": "fill", "stem": "SQL 的逻辑处理顺序中，HAVING 之后依次是：____ → ____ → ____ → ____。", "blankCount": 4, "blankOrder": "ordered"}
+??: HAVING 之后是最后几步：选择输出的列（SELECT）、去重（DISTINCT）、排序（ORDER BY），再限制返回行数（LIMIT）。[原文§SQL查询语句的执行顺序是怎么样的？](https://xiaolincoding.com/interview/mysql.html#sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84)
+
+S1-101 [single]
+??: WHERE 和 HAVING 过滤的对象有什么区别？
+??: {"id": "S1-101", "type": "single", "stem": "WHERE 和 HAVING 过滤的对象有什么区别？", "options": [{"key": "A", "text": "WHERE 过滤分组后的结果，HAVING 过滤分组前的记录", "correct": false}, {"key": "B", "text": "WHERE 过滤分组前的记录，HAVING 过滤分组后的结果", "correct": true}, {"key": "C", "text": "两者都过滤分组后的结果，只是 WHERE 不能使用别名", "correct": false}, {"key": "D", "text": "两者都过滤分组前的记录，只是 HAVING 可以使用聚合结果", "correct": false}]}
+??: WHERE 过滤的是分组前的记录，HAVING 过滤的是分组后的结果。[原文§SQL查询语句的执行顺序是怎么样的？](https://xiaolincoding.com/interview/mysql.html#sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84)
+
+S1-102 [multiple]
+??: 在 MySQL 中，SELECT 里定义的别名可以在下列哪些子句中直接使用？
+??: {"id": "S1-102", "type": "multiple", "stem": "在 MySQL 中，SELECT 里定义的别名可以在下列哪些子句中直接使用？", "options": [{"key": "A", "text": "HAVING 子句", "correct": true}, {"key": "B", "text": "GROUP BY 子句", "correct": true}, {"key": "C", "text": "WHERE 子句", "correct": false}, {"key": "D", "text": "ORDER BY 子句", "correct": true}]}
+??: SELECT 中定义的别名通常不能直接用于 WHERE，不过 MySQL 允许在 GROUP BY、HAVING 和 ORDER BY 中使用。[原文§SQL查询语句的执行顺序是怎么样的？](https://xiaolincoding.com/interview/mysql.html#sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84)
+
+S1-103 [single]
+??: 实际执行时，数据库是否严格按逻辑处理顺序一步步生成中间结果？
+??: {"id": "S1-103", "type": "single", "stem": "实际执行时，数据库是否严格按逻辑处理顺序一步步生成中间结果？", "options": [{"key": "A", "text": "不是，但优化器可以提前过滤条件，必须每一步都真正生成一张临时表", "correct": false}, {"key": "B", "text": "是，优化器不会调整连接顺序，也不会提前过滤条件", "correct": false}, {"key": "C", "text": "不是，优化器可能调整连接顺序、提前过滤条件或利用索引省掉排序，不会每一步都生成临时表", "correct": true}, {"key": "D", "text": "是，每一步都会真正生成一张临时表，再交给下一步处理", "correct": false}]}
+??: 实际执行时，优化器可能调整连接顺序、提前过滤条件，或者利用索引省掉排序，并不会每一步都真正生成一张临时表。[原文§SQL查询语句的执行顺序是怎么样的？](https://xiaolincoding.com/interview/mysql.html#sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84)
+
+S1-104 [code]
+??: 有学生表 Student（sid 学生编号、sname 学生姓名等）和成绩表 Score（sid 学生编号、cid 课程编号、score 分数），用 SQL 查询不存在 01 课程但存在 02 课程的学生的成绩，返回学生编号、姓名、课程编号和分数。
+??: {"id": "S1-104", "type": "code", "stem": "有学生表 Student（sid 学生编号、sname 学生姓名等）和成绩表 Score（sid 学生编号、cid 课程编号、score 分数），用 SQL 查询不存在 01 课程但存在 02 课程的学生的成绩，返回学生编号、姓名、课程编号和分数。"}
+??: 可以使用子查询、LEFT JOIN 或者 EXISTS 来实现，原文给出两种方法：一是对 Score 分别以 01、02 课程为条件左连接两次，再用 IS NULL / IS NOT NULL 筛选；二是先与 02 课程的成绩连接，再用 NOT EXISTS 排除有 01 课程成绩的学生。
+
+  ```sql
+  -- 方法 1：LEFT JOIN + IS NULL
+  SELECT s.sid, s.sname, sc2.cid, sc2.score
+  FROM Student s
+  LEFT JOIN Score AS sc1 ON s.sid = sc1.sid AND sc1.cid = '01'
+  LEFT JOIN Score AS sc2 ON s.sid = sc2.sid AND sc2.cid = '02'
+  WHERE sc1.cid IS NULL AND sc2.cid IS NOT NULL;
+  ```
+
+  ```sql
+  -- 方法 2：NOT EXISTS
+  SELECT s.sid, s.sname, sc.cid, sc.score
+  FROM Student s
+  JOIN Score sc ON s.sid = sc.sid AND sc.cid = '02'
+  WHERE NOT EXISTS (
+      SELECT 1 FROM Score sc1 WHERE sc1.sid = s.sid AND sc1.cid = '01'
+  );
+  ```
+
+  要点：方法 1 中课程条件写在 ON 里，WHERE 要求 sc1.cid IS NULL（不存在 01 课程）且 sc2.cid IS NOT NULL（存在 02 课程）；方法 2 用 NOT EXISTS 排除存在 01 课程成绩的学生；两种写法都不会返回没有任何成绩的学生、只有 01 课程的学生，以及同时有 01 和 02 课程的学生。[原文§sql题：给学生表、课程成绩表，求不存在01课程但存在02课程的学生的成绩](https://xiaolincoding.com/interview/mysql.html#sql%E9%A2%98-%E7%BB%99%E5%AD%A6%E7%94%9F%E8%A1%A8%E3%80%81%E8%AF%BE%E7%A8%8B%E6%88%90%E7%BB%A9%E8%A1%A8-%E6%B1%82%E4%B8%8D%E5%AD%98%E5%9C%A801%E8%AF%BE%E7%A8%8B%E4%BD%86%E5%AD%98%E5%9C%A802%E8%AF%BE%E7%A8%8B%E7%9A%84%E5%AD%A6%E7%94%9F%E7%9A%84%E6%88%90%E7%BB%A9)
+
+S1-105 [single]
+??: 用 LEFT JOIN 求“不存在 01 课程但存在 02 课程”的学生，原文是怎样判断这两个条件的？
+??: {"id": "S1-105", "type": "single", "stem": "用 LEFT JOIN 求“不存在 01 课程但存在 02 课程”的学生，原文是怎样判断这两个条件的？", "options": [{"key": "A", "text": "分别左连接 01 和 02 课程的成绩，WHERE 中要求两个课程的 cid 都不为 NULL", "correct": false}, {"key": "B", "text": "分别左连接 01 和 02 课程的成绩，WHERE 中要求 01 的 cid 为 NULL、02 的 cid 不为 NULL", "correct": true}, {"key": "C", "text": "分别左连接 01 和 02 课程的成绩，WHERE 中要求两个课程的 cid 都为 NULL", "correct": false}, {"key": "D", "text": "分别左连接 01 和 02 课程的成绩，WHERE 中要求 01 的 cid 不为 NULL、02 的 cid 为 NULL", "correct": false}]}
+??: 方法 1 使用 LEFT JOIN 和 IS NULL：把 Score 分别以 01 课程和 02 课程为条件左连接两次（课程条件写在 ON 中），再在 WHERE 中要求 01 课程的 cid IS NULL（即不存在 01 课程）且 02 课程的 cid IS NOT NULL（即存在 02 课程）。[原文§sql题：给学生表、课程成绩表，求不存在01课程但存在02课程的学生的成绩](https://xiaolincoding.com/interview/mysql.html#sql%E9%A2%98-%E7%BB%99%E5%AD%A6%E7%94%9F%E8%A1%A8%E3%80%81%E8%AF%BE%E7%A8%8B%E6%88%90%E7%BB%A9%E8%A1%A8-%E6%B1%82%E4%B8%8D%E5%AD%98%E5%9C%A801%E8%AF%BE%E7%A8%8B%E4%BD%86%E5%AD%98%E5%9C%A802%E8%AF%BE%E7%A8%8B%E7%9A%84%E5%AD%A6%E7%94%9F%E7%9A%84%E6%88%90%E7%BB%A9)
+
+S1-106 [single]
+??: 用 NOT EXISTS 求同一个问题，原文的写法是怎样的？
+??: {"id": "S1-106", "type": "single", "stem": "用 NOT EXISTS 求同一个问题，原文的写法是怎样的？", "options": [{"key": "A", "text": "先连接 02 课程的成绩，再用 NOT EXISTS 子查询排除存在 01 课程成绩的学生", "correct": true}, {"key": "B", "text": "先左连接 01 课程的成绩，再用 NOT EXISTS 子查询要求不存在 02 课程的成绩", "correct": false}, {"key": "C", "text": "先连接 01 课程的成绩，再用 NOT EXISTS 子查询排除存在 02 课程成绩的学生", "correct": false}, {"key": "D", "text": "先连接 02 课程的成绩，再用 EXISTS 子查询要求同时存在 01 课程的成绩", "correct": false}]}
+??: 方法 2 使用 NOT EXISTS：先让学生表与 02 课程的成绩连接，再用 NOT EXISTS 子查询排除存在 01 课程成绩的学生。[原文§sql题：给学生表、课程成绩表，求不存在01课程但存在02课程的学生的成绩](https://xiaolincoding.com/interview/mysql.html#sql%E9%A2%98-%E7%BB%99%E5%AD%A6%E7%94%9F%E8%A1%A8%E3%80%81%E8%AF%BE%E7%A8%8B%E6%88%90%E7%BB%A9%E8%A1%A8-%E6%B1%82%E4%B8%8D%E5%AD%98%E5%9C%A801%E8%AF%BE%E7%A8%8B%E4%BD%86%E5%AD%98%E5%9C%A802%E8%AF%BE%E7%A8%8B%E7%9A%84%E5%AD%A6%E7%94%9F%E7%9A%84%E6%88%90%E7%BB%A9)
+
+S1-107 [code]
+??: 给定学生成绩表 student_score（stu_id 学生 id、subject_id 科目 id、score 分数），用 SQL 查询总分排名在第 5 到第 10 名的学生 id 及对应的总分；同分的学生名次并列，后面的名次跳号，结果按名次、学生 id 排序。
+??: {"id": "S1-107", "type": "code", "stem": "给定学生成绩表 student_score（stu_id 学生 id、subject_id 科目 id、score 分数），用 SQL 查询总分排名在第 5 到第 10 名的学生 id 及对应的总分；同分的学生名次并列，后面的名次跳号，结果按名次、学生 id 排序。"}
+??: 先按学生分组计算每个学生的总分，再用窗口函数 RANK() 按总分从高到低分配排名，最后在主查询中检索排名在 5 到 10 之间的记录。
+
+  ```sql
+  WITH StudentTotalScores AS (
+      SELECT
+          stu_id,
+          SUM(score) AS total_score
+      FROM
+          student_score
+      GROUP BY
+          stu_id
+  ),
+  RankedStudents AS (
+      SELECT
+          stu_id,
+          total_score,
+          RANK() OVER (ORDER BY total_score DESC) AS ranking
+      FROM
+          StudentTotalScores
+  )
+  SELECT
+      stu_id,
+      total_score
+  FROM
+      RankedStudents
+  WHERE
+      ranking BETWEEN 5 AND 10
+  ORDER BY ranking, stu_id;
+  ```
+
+  要点：子查询 StudentTotalScores 对 stu_id 分组并用 SUM(score) 求总分；子查询 RankedStudents 用 RANK() OVER (ORDER BY total_score DESC) 分配排名；最后用 ranking BETWEEN 5 AND 10 筛选，并按 ranking、stu_id 排序；这个写法需要 MySQL 8.0 及以上版本；RANK() 并列名次、后面的名次会跳号，所以有并列时结果里可能没有恰好第 5 名的行；不足 5 个学生时结果为空。[原文§给定一个学生表 student_score（stu_id，subject_id，score），查询总分排名在5-10名的学生id及对应的总分](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E5%AD%A6%E7%94%9F%E8%A1%A8-student-score-stu-id-subject-id-score-%E6%9F%A5%E8%AF%A2%E6%80%BB%E5%88%86%E6%8E%92%E5%90%8D%E5%9C%A85-10%E5%90%8D%E7%9A%84%E5%AD%A6%E7%94%9Fid%E5%8F%8A%E5%AF%B9%E5%BA%94%E7%9A%84%E6%80%BB%E5%88%86)
+
+S1-108 [multiple]
+??: 求总分排名时处理同分，下列哪些说法符合原文？
+??: {"id": "S1-108", "type": "multiple", "stem": "求总分排名时处理同分，下列哪些说法符合原文？", "options": [{"key": "A", "text": "RANK() 并列名次后，后面的名次连续不跳号，DENSE_RANK() 才会跳号", "correct": false}, {"key": "B", "text": "RANK() 是并列名次，后面的名次会跳号", "correct": true}, {"key": "C", "text": "DENSE_RANK() 是并列名次，后面的名次不跳号", "correct": true}, {"key": "D", "text": "只取排序后的第 5 到第 10 条记录时，可用 ROW_NUMBER()，并用 stu_id 保证同分时排序稳定", "correct": true}]}
+??: 要先问清楚同分怎么算：RANK() 是并列名次、后面的名次会跳号；DENSE_RANK() 是并列名次、不跳号；如果只是取排序后的第 5 到第 10 条记录，可以用 ROW_NUMBER() OVER (ORDER BY total_score DESC, stu_id)，用 stu_id 保证同分时排序稳定。[原文§给定一个学生表 student_score（stu_id，subject_id，score），查询总分排名在5-10名的学生id及对应的总分](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E5%AD%A6%E7%94%9F%E8%A1%A8-student-score-stu-id-subject-id-score-%E6%9F%A5%E8%AF%A2%E6%80%BB%E5%88%86%E6%8E%92%E5%90%8D%E5%9C%A85-10%E5%90%8D%E7%9A%84%E5%AD%A6%E7%94%9Fid%E5%8F%8A%E5%AF%B9%E5%BA%94%E7%9A%84%E6%80%BB%E5%88%86)
+
+S1-109 [single]
+??: 原文给出的用 WITH 和窗口函数求排名的写法，对 MySQL 版本有什么要求？
+??: {"id": "S1-109", "type": "single", "stem": "原文给出的用 WITH 和窗口函数求排名的写法，对 MySQL 版本有什么要求？", "options": [{"key": "A", "text": "需要 MySQL 8.0.19 及以上版本", "correct": false}, {"key": "B", "text": "任何 MySQL 版本都可以，没有版本要求", "correct": false}, {"key": "C", "text": "MySQL 5.7 及以上版本即可", "correct": false}, {"key": "D", "text": "需要 MySQL 8.0 及以上版本", "correct": true}]}
+??: 这个写法需要 MySQL 8.0 及以上版本。[原文§给定一个学生表 student_score（stu_id，subject_id，score），查询总分排名在5-10名的学生id及对应的总分](https://xiaolincoding.com/interview/mysql.html#%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E5%AD%A6%E7%94%9F%E8%A1%A8-student-score-stu-id-subject-id-score-%E6%9F%A5%E8%AF%A2%E6%80%BB%E5%88%86%E6%8E%92%E5%90%8D%E5%9C%A85-10%E5%90%8D%E7%9A%84%E5%AD%A6%E7%94%9Fid%E5%8F%8A%E5%AF%B9%E5%BA%94%E7%9A%84%E6%80%BB%E5%88%86)
+
+S1-110 [code]
+??: 有三张表：学生信息表 students（student_id 主键、student_name、class_id）、学生选课表 course_selections（selection_id 主键、student_id、course_name）、学生班级表 classes（class_id 主键、class_name）。用 SQL 查询班级名称为 'Class A' 的班级下所有学生的选课情况，返回学生 id、学生姓名和所选课程名称；没有选课的学生也要返回，课程名称为 NULL。
+??: {"id": "S1-110", "type": "code", "stem": "有三张表：学生信息表 students（student_id 主键、student_name、class_id）、学生选课表 course_selections（selection_id 主键、student_id、course_name）、学生班级表 classes（class_id 主键、class_name）。用 SQL 查询班级名称为 'Class A' 的班级下所有学生的选课情况，返回学生 id、学生姓名和所选课程名称；没有选课的学生也要返回，课程名称为 NULL。"}
+??: 以学生表为主表，用 LEFT JOIN 关联选课表（保留没有选课的学生），再关联班级表，并用 WHERE 限定班级名称。
+
+  ```sql
+  SELECT
+      s.student_id,
+      s.student_name,
+      cs.course_name
+  FROM
+      students s
+  LEFT JOIN
+      course_selections cs ON s.student_id = cs.student_id
+  JOIN
+      classes c ON s.class_id = c.class_id
+  WHERE
+      c.class_name = 'Class A';
+  ```
+
+  要点：选课表必须用 LEFT JOIN，因为题目要求的是「所有学生」，没有选课的学生也要返回，对应的 course_name 为 NULL；班级名称的过滤写在 WHERE 中，作用于学生所属班级；如果要对选课表加限制条件，写到 WHERE 中会把未匹配的学生过滤掉，需要保留时应把右表的限制条件放在 ON 中。[原文§SQL题：查某个班级下所有学生的选课情况](https://xiaolincoding.com/interview/mysql.html#sql%E9%A2%98-%E6%9F%A5%E6%9F%90%E4%B8%AA%E7%8F%AD%E7%BA%A7%E4%B8%8B%E6%89%80%E6%9C%89%E5%AD%A6%E7%94%9F%E7%9A%84%E9%80%89%E8%AF%BE%E6%83%85%E5%86%B5)
+
+S1-111 [single]
+??: 查某个班级下所有学生的选课情况时，为什么选课表这里要用 LEFT JOIN？
+??: {"id": "S1-111", "type": "single", "stem": "查某个班级下所有学生的选课情况时，为什么选课表这里要用 LEFT JOIN？", "options": [{"key": "A", "text": "只有 LEFT JOIN 才能把学生表和班级表关联起来", "correct": false}, {"key": "B", "text": "选课表是主表，需要保留所有选课记录，即使对应的学生不存在", "correct": false}, {"key": "C", "text": "题目要求的是“所有学生”，没有选课的学生也要返回，对应的 course_name 为 NULL", "correct": true}, {"key": "D", "text": "LEFT JOIN 会自动按班级名称过滤出需要的学生", "correct": false}]}
+??: 选课表这里要用 LEFT JOIN，因为题目要求的是「所有学生」，没有选课的学生也要返回，对应的 course_name 为 NULL。[原文§SQL题：查某个班级下所有学生的选课情况](https://xiaolincoding.com/interview/mysql.html#sql%E9%A2%98-%E6%9F%A5%E6%9F%90%E4%B8%AA%E7%8F%AD%E7%BA%A7%E4%B8%8B%E6%89%80%E6%9C%89%E5%AD%A6%E7%94%9F%E7%9A%84%E9%80%89%E8%AF%BE%E6%83%85%E5%86%B5)
+
+S1-112 [single]
+??: 如果把选课表的过滤条件写到 WHERE 中，会有什么风险？应该怎样处理？
+??: {"id": "S1-112", "type": "single", "stem": "如果把选课表的过滤条件写到 WHERE 中，会有什么风险？应该怎样处理？", "options": [{"key": "A", "text": "可能把未匹配的学生过滤掉；需要保留时，应把限制条件放在 HAVING 中", "correct": false}, {"key": "B", "text": "可能把未匹配的学生过滤掉；需要保留时，通常把右表的限制条件放在 ON 中", "correct": true}, {"key": "C", "text": "不会有风险，LEFT JOIN 中 WHERE 与 ON 的效果完全相同", "correct": false}, {"key": "D", "text": "可能把已匹配的学生重复返回；需要保留时，应把限制条件放在 SELECT 中", "correct": false}]}
+??: 如果把选课表的过滤条件写到 WHERE 中，要注意不要把这些未匹配的学生过滤掉；需要保留时，通常把右表的限制条件放在 ON 中。[原文§SQL题：查某个班级下所有学生的选课情况](https://xiaolincoding.com/interview/mysql.html#sql%E9%A2%98-%E6%9F%A5%E6%9F%90%E4%B8%AA%E7%8F%AD%E7%BA%A7%E4%B8%8B%E6%89%80%E6%9C%89%E5%AD%A6%E7%94%9F%E7%9A%84%E9%80%89%E8%AF%BE%E6%83%85%E5%86%B5)
+
+S1-113 [fill]
+??: [填空题·无序] 用 MySQL 实现可重入锁时，锁表需要记录的三项信息是：____、____、____。
+??: {"id": "S1-113", "type": "fill", "stem": "用 MySQL 实现可重入锁时，锁表需要记录的三项信息是：____、____、____。", "blankCount": 3, "blankOrder": "unordered"}
+??: 可以用一张锁表，记录「锁名、持有者、重入次数」（对应 lock_name、holder_id、reentry_count 三列），再通过事务和 SELECT ... FOR UPDATE 保证加锁、解锁过程不会被并发请求打乱。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)
+
+S1-114 [single]
+??: 加锁、解锁的过程怎样避免被并发请求打乱？
+??: {"id": "S1-114", "type": "single", "stem": "加锁、解锁的过程怎样避免被并发请求打乱？", "options": [{"key": "A", "text": "只依靠线程名称的唯一性，不需要数据库参与", "correct": false}, {"key": "B", "text": "使用 ON DUPLICATE KEY UPDATE 覆盖其他持有者的记录", "correct": false}, {"key": "C", "text": "开启事务，并通过 SELECT ... FOR UPDATE 锁住同一条锁记录", "correct": true}, {"key": "D", "text": "使用 INSERT IGNORE 忽略重复的加锁请求", "correct": false}]}
+??: 加锁和解锁都要开启事务，通过 SELECT holder_id, reentry_count FROM lock_table WHERE lock_name = ? FOR UPDATE 锁住同一条锁记录，保证过程不会被并发请求打乱。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)
+
+S1-115 [single]
+??: 锁表里的锁名和持有者应该怎样设计？
+??: {"id": "S1-115", "type": "single", "stem": "锁表里的锁名和持有者应该怎样设计？", "options": [{"key": "A", "text": "锁名可以重复，由持有者来区分；持有者只用线程名称就足够了", "correct": false}, {"key": "B", "text": "锁名必须唯一；持有者只用线程名称就足够，因为不同服务实例的线程名不会相同", "correct": false}, {"key": "C", "text": "锁名可以重复；持有者要用「实例 ID + 线程 ID + 唯一标识」来区分", "correct": false}, {"key": "D", "text": "锁名必须唯一；持有者不能只用线程名称，可以用「实例 ID + 线程 ID + 唯一标识」来区分", "correct": true}]}
+??: 锁名必须唯一（lock_name 是主键）。持有者也不能只用线程名称，不同服务实例可能有同名线程，可以使用「实例 ID + 线程 ID + 唯一标识」来区分。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)
+
+S1-116 [single]
+??: 为什么要提前初始化要使用的锁记录，并且一直保留？
+??: {"id": "S1-116", "type": "single", "stem": "为什么要提前初始化要使用的锁记录，并且一直保留？", "options": [{"key": "A", "text": "避免记录不存在时多个请求同时插入；动态创建锁时也要靠主键唯一约束处理并发插入失败和重试", "correct": true}, {"key": "B", "text": "让 SELECT ... FOR UPDATE 可以不用开启事务也能锁住记录", "correct": false}, {"key": "C", "text": "让不同服务实例可以共用同一个持有者标识", "correct": false}, {"key": "D", "text": "让持有者崩溃后锁记录能够自动被删除", "correct": false}]}
+??: 这里保留固定的锁记录，可以避免「记录不存在时，多个请求同时插入」的问题。如果要动态创建锁，也必须通过主键唯一约束处理并发插入失败和重试。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)
+
+S1-117 [multiple]
+??: 加锁时，下列哪些处理符合原文？
+??: {"id": "S1-117", "type": "multiple", "stem": "加锁时，下列哪些处理符合原文？", "options": [{"key": "A", "text": "holder_id 为 NULL 时说明锁空闲，把 holder_id 设为自己，reentry_count 设为 1", "correct": true}, {"key": "B", "text": "holder_id 是其他持有者时说明加锁失败，结束事务后再决定返回失败还是等待重试", "correct": true}, {"key": "C", "text": "holder_id 是自己时说明是重入，把 reentry_count 加 1", "correct": true}, {"key": "D", "text": "holder_id 是其他持有者时，直接把 holder_id 改为自己，把 reentry_count 设为 1", "correct": false}]}
+??: 开启事务，用 FOR UPDATE 查询该锁记录：holder_id 为 NULL 说明锁空闲，把 holder_id 设为自己、reentry_count 设为 1；holder_id 是自己说明是重入，把 reentry_count 加 1；holder_id 是其他持有者说明加锁失败，结束事务后再决定返回失败还是等待重试；最后提交事务。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)
+
+S1-118 [single]
+??: 加锁最后提交事务时，释放的是什么？业务锁的归属保存在哪里？
+??: {"id": "S1-118", "type": "single", "stem": "加锁最后提交事务时，释放的是什么？业务锁的归属保存在哪里？", "options": [{"key": "A", "text": "释放的是业务锁，同时 reentry_count 会被置为 0", "correct": false}, {"key": "B", "text": "释放的是数据库行锁，业务锁的归属仍然保存在锁记录里", "correct": true}, {"key": "C", "text": "释放的是数据库行锁，业务锁的归属保存在应用的线程变量里", "correct": false}, {"key": "D", "text": "释放的是业务锁，锁记录中的持有者会被清空", "correct": false}]}
+??: 提交事务释放的是数据库行锁，业务锁的归属仍然保存在锁记录里。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)
+
+S1-119 [multiple]
+??: 解锁时，下列哪些处理符合原文？
+??: {"id": "S1-119", "type": "multiple", "stem": "解锁时，下列哪些处理符合原文？", "options": [{"key": "A", "text": "holder_id 不是自己时，不能释放锁", "correct": true}, {"key": "B", "text": "通过 FOR UPDATE 锁住同一条记录，并检查 holder_id 是否是自己", "correct": true}, {"key": "C", "text": "reentry_count 大于 1 时，就减 1", "correct": true}, {"key": "D", "text": "holder_id 不是自己时，只要 reentry_count 大于 0，也可以把它减 1", "correct": false}]}
+??: 开启事务，通过 FOR UPDATE 锁住同一条记录，并检查 holder_id 是否是自己；如果不是自己，不能释放锁；如果 reentry_count 大于 1，就减 1；如果等于 1，就把 holder_id 置为 NULL、reentry_count 置为 0，完全释放业务锁；最后提交事务。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)
+
+S1-120 [fill]
+??: [填空题·有序] 解锁时如果 reentry_count 等于 1，完全释放业务锁需要把 holder_id 置为____，把 reentry_count 置为____。
+??: {"id": "S1-120", "type": "fill", "stem": "解锁时如果 reentry_count 等于 1，完全释放业务锁需要把 holder_id 置为____，把 reentry_count 置为____。", "blankCount": 2, "blankOrder": "ordered"}
+??: 如果 reentry_count 等于 1，就把 holder_id 置为 NULL、reentry_count 置为 0，完全释放业务锁。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)
+
+S1-121 [short]
+??: 这个基于 MySQL 的可重入锁只是基本实现，它有什么不足？生产环境还需要考虑什么？
+??: {"id": "S1-121", "type": "short"}
+??: 持有者崩溃后，数据库事务虽然已经结束，表里的业务锁记录仍可能一直被占用。生产环境还需要考虑租约、续期，以及过期持有者继续写入的问题。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)
+
+S1-122 [single]
+??: 只给这种基于 MySQL 的锁加一个过期时间，能否保证业务操作始终互斥？
+??: {"id": "S1-122", "type": "single", "stem": "只给这种基于 MySQL 的锁加一个过期时间，能否保证业务操作始终互斥？", "options": [{"key": "A", "text": "不能，过期的持有者仍可能继续写入，还需要租约、续期等机制", "correct": true}, {"key": "B", "text": "能，只要把过期时间设得足够长，就不会出现并发写入", "correct": false}, {"key": "C", "text": "能，过期后锁会自动释放，这就足以保证业务操作互斥", "correct": false}, {"key": "D", "text": "能，只要持有者标识使用「实例 ID + 线程 ID + 唯一标识」即可", "correct": false}]}
+??: 只是加一个过期时间，还不能保证业务操作始终互斥；生产环境还需要考虑租约、续期，以及过期持有者继续写入的问题。[原文§如何用 MySQL 实现一个可重入的锁？](https://xiaolincoding.com/interview/mysql.html#%E5%A6%82%E4%BD%95%E7%94%A8-mysql-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%87%8D%E5%85%A5%E7%9A%84%E9%94%81)

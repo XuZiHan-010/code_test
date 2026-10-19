@@ -1,0 +1,235 @@
+{
+  "changes": [
+    {
+      "id": "T3-21",
+      "reason": "补回历史 SYN 与新 SYN 使用同一四元组的必要前提。",
+      "question": "客户端先发送 SYN（seq = 90），随后宕机，且这个 SYN 被网络阻塞；客户端重启后使用相同四元组，以 SYN（seq = 100）发起新连接（不是重传）。客户端当前已在该四元组上等待新连接的响应。若旧 SYN 比最新 SYN 先到达服务端，三次握手怎样阻止这个历史连接？",
+      "answer": "在两次 SYN 使用相同四元组、客户端当前已以 seq = 100 发起新连接的前提下，旧 SYN 先到达服务端时，服务端会回一个 SYN + ACK 报文，确认号是 91（90 + 1）；客户端收到后发现自己期望的确认号应该是 100 + 1，而不是 90 + 1，于是回 RST 报文；服务端收到 RST 报文后释放连接；后续最新的 SYN 抵达服务端后，双方就可以正常完成三次握手。[原文§tcp为什么需要三次握手建立连接？](https://xiaolincoding.com/interview/network.html#tcp%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5)"
+    },
+    {
+      "id": "T3-49",
+      "reason": "明确原文指数退避示例，避免与其他重试模型混淆。",
+      "typed": {
+        "stem": "按原文的指数退避示例，假设 tcp_syn_retries 为 1、tcp_synack_retries 为 2，第二次握手一直丢失，会发生什么？"
+      },
+      "question": "按原文的指数退避示例，假设 tcp_syn_retries 为 1、tcp_synack_retries 为 2，第二次握手一直丢失，会发生什么？",
+      "answer": "按原文的指数退避示例，客户端超时重传 1 次 SYN 后，由于 tcp_syn_retries 为 1，已达到最大重传次数，再等待一段时间（上一次超时时间的 2 倍），仍没收到 SYN-ACK 就断开连接；服务端超时重传 2 次 SYN-ACK 后，由于 tcp_synack_retries 为 2，已达到最大重传次数，再等待一段时间（上一次超时时间的 2 倍），仍没收到 ACK 就断开连接。[原文§服务器收到第一个 SYN 报文，回复的 SYN + ACK 报文丢失了怎么办？](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%B6%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA-syn-%E6%8A%A5%E6%96%87-%E5%9B%9E%E5%A4%8D%E7%9A%84-syn-ack-%E6%8A%A5%E6%96%87%E4%B8%A2%E5%A4%B1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E)"
+    },
+    {
+      "id": "T3-70",
+      "reason": "补回客户端主动关闭、正常四次挥手及最后 ACK 到达的前提。",
+      "typed": {
+        "stem": "客户端主动关闭，按正常四次挥手过程，已收到对本端 FIN 的确认；此后收到服务端 FIN 并回复 ACK，且最后 ACK 正常到达服务端。双方的最终状态变化是怎样的？"
+      },
+      "question": "客户端主动关闭，按正常四次挥手过程，已收到对本端 FIN 的确认；此后收到服务端 FIN 并回复 ACK，且最后 ACK 正常到达服务端。双方的最终状态变化是怎样的？",
+      "answer": "在客户端主动关闭、正常四次挥手且最后 ACK 正常到达的前提下，客户端接收到服务端的 FIN 包并发送 ACK 后进入 TIME_WAIT 状态；服务端收到 ACK 确认包后进入最后的 CLOSED 状态；客户端经过 2MSL 时间之后也进入 CLOSED 状态。[原文§TCP 四次挥手过程说一下？](https://xiaolincoding.com/interview/network.html#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)"
+    },
+    {
+      "id": "T3-75",
+      "reason": "限定只收到 FIN 的确认且未收到对端 FIN，排除 FIN+ACK 合并分支。",
+      "typed": {
+        "stem": "主动关闭方收到只确认本端 FIN 的 ACK，且尚未收到对方 FIN 时，会进入什么状态？此时它在等什么？"
+      },
+      "question": "主动关闭方收到只确认本端 FIN 的 ACK，且尚未收到对方 FIN 时，会进入什么状态？此时它在等什么？",
+      "answer": "主动关闭方只收到对本端 FIN 的 ACK、尚未收到对方 FIN 时进入 FIN_WAIT_2，等待对方的 FIN；此时被动关闭方可能还在 CLOSE_WAIT，继续处理剩余数据。[原文§第三次挥手一直没发，会发生什么？](https://xiaolincoding.com/interview/network.html#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B8%80%E7%9B%B4%E6%B2%A1%E5%8F%91-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)"
+    },
+    {
+      "id": "T3-98",
+      "reason": "明确 HTTP/1.x 场景并消除首次请求未到与复用超时的干扰项歧义。",
+      "typed": {
+        "stem": "按原文的 HTTP/1.x 场景，下列哪些会导致服务端主动断开连接，从而在服务端出现大量 TIME_WAIT？",
+        "options": [
+          {
+            "key": "A",
+            "text": "HTTP 没有使用长连接",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "一次请求结束后，等待复用的 HTTP 长连接空闲超时",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "HTTP 长连接的请求数量达到上限",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "客户端先发出 FIN，服务端回复 ACK 后因应用漏掉关闭而长期停留",
+            "correct": false
+          },
+          {
+            "key": "E",
+            "text": "仅在被动等待客户端首次请求，且尚未达到任何超时或关闭条件",
+            "correct": false
+          }
+        ]
+      },
+      "question": "按原文的 HTTP/1.x 场景，下列哪些会导致服务端主动断开连接，从而在服务端出现大量 TIME_WAIT？",
+      "answer": "按原文的 HTTP/1.x 场景，服务端主动断开连接的三个场景是：HTTP 没有使用长连接、HTTP 长连接超时、HTTP 长连接的请求数量达到上限。主动关闭的一方才会进入 TIME_WAIT，所以这三种情况都会让服务端出现 TIME_WAIT。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)"
+    },
+    {
+      "id": "T3-107",
+      "reason": "按原文先前请求完成后等待复用的解释，明确长连接空闲超时诊断条件。",
+      "typed": {
+        "stem": "在原文的 HTTP/1.x 长连接场景中，客户端已完成一次请求，此后很长一段时间服务端没有收到新请求，且服务端出现大量 TIME_WAIT，大概率是什么原因？"
+      },
+      "question": "在原文的 HTTP/1.x 长连接场景中，客户端已完成一次请求，此后很长一段时间服务端没有收到新请求，且服务端出现大量 TIME_WAIT，大概率是什么原因？",
+      "answer": "在原文的 HTTP/1.x 长连接场景中，如果大量客户端已完成一次请求，此后很长一段时间服务端没有收到新请求，那么大概率就是因为 HTTP 长连接超时，导致服务端主动关闭连接，产生大量处于 TIME_WAIT 状态的连接。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)"
+    },
+    {
+      "id": "T3-108",
+      "reason": "明确 HTTP/1.x 请求完成后等待复用，保留原文网络排查建议。",
+      "typed": {
+        "stem": "在原文的 HTTP/1.x 长连接场景中，客户端已完成一次请求，此后很长一段时间服务端没有收到新请求，服务端出现大量 TIME_WAIT（判断为长连接空闲超时）。原文建议往哪个方向排查？"
+      },
+      "question": "在原文的 HTTP/1.x 长连接场景中，客户端已完成一次请求，此后很长一段时间服务端没有收到新请求，服务端出现大量 TIME_WAIT（判断为长连接空闲超时）。原文建议往哪个方向排查？",
+      "answer": "在上述请求已完成、等待连接复用而发生空闲超时的场景中，原文建议可以往网络问题的方向排查，比如是否因为网络问题，导致客户端发送的数据一直没有被服务端接收到，以至于 HTTP 长连接超时。[原文§服务端出现大量的timewait有哪些原因?](https://xiaolincoding.com/interview/network.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E7%9A%84timewait%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%9B%A0)"
+    },
+    {
+      "id": "T3-165",
+      "reason": "补回此前零窗口与暂不考虑探测的前提，将必然互等改成可能风险。",
+      "typed": {
+        "stem": "接收方此前已通告零窗口，腾出空间后通告窗口重开的报文丢失；暂不考虑持续计时器和零窗口探测，会有什么风险？",
+        "options": [
+          {
+            "key": "A",
+            "text": "发送方会不断重传所有数据，进而造成网络严重拥塞",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "双方可能互相等待：发送方等窗口打开，接收方等新数据",
+            "correct": true
+          },
+          {
+            "key": "C",
+            "text": "接收方会自动关闭这条连接并通知发送方重新建立",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "发送方会立即沿用上一次的窗口大小继续发送数据",
+            "correct": false
+          }
+        ]
+      },
+      "question": "接收方此前已通告零窗口，腾出空间后通告窗口重开的报文丢失；暂不考虑持续计时器和零窗口探测，会有什么风险？",
+      "answer": "接收方此前已通告零窗口，发送方因此暂停发送。若窗口重开的更新报文丢失，暂不考虑持续计时器和零窗口探测，双方可能互相等待：发送方等窗口打开，接收方等新数据。[原文§TCP 接收窗口变成 0，会发生什么？](https://xiaolincoding.com/interview/network.html#tcp-%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3%E5%8F%98%E6%88%90-0-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)"
+    },
+    {
+      "id": "T3-190",
+      "reason": "限定原文模型在门限相等时选择拥塞避免，不泛化其他允许选择。",
+      "typed": {
+        "stem": "按原文模型，慢启动门限 ssthresh 的作用是：当 cwnd < ssthresh 时使用 ____ 算法，当 cwnd >= ssthresh 时使用 ____ 算法。"
+      },
+      "question": "[填空题·有序] 按原文模型，慢启动门限 ssthresh 的作用是：当 cwnd < ssthresh 时使用 ____ 算法，当 cwnd >= ssthresh 时使用 ____ 算法。",
+      "answer": "按原文模型，有一个叫慢启动门限 ssthresh 的状态变量：当 cwnd < ssthresh 时，使用慢启动算法；当 cwnd >= ssthresh 时，就会使用「拥塞避免算法」。标准答案：慢启动、拥塞避免。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+    },
+    {
+      "id": "T3-192",
+      "reason": "补回经典 Reno、MSS 单位与确认新数据 ACK 的前提。",
+      "typed": {
+        "stem": "按原文经典 Reno 简化模型，窗口数值以 MSS 为单位，每个新 ACK 确认一个完整数据段；拥塞避免算法下，cwnd 如何增长？"
+      },
+      "question": "按原文经典 Reno 简化模型，窗口数值以 MSS 为单位，每个新 ACK 确认一个完整数据段；拥塞避免算法下，cwnd 如何增长？",
+      "answer": "按原文经典 Reno 简化模型，窗口数值以 MSS 为单位，进入拥塞避免算法后，每收到确认一个完整新数据段的 ACK 时，cwnd 增加 1/cwnd。拥塞避免算法就是将原本慢启动算法的指数增长变成了线性增长，还是增长阶段，但增长速度缓慢了一些。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+    },
+    {
+      "id": "T3-193",
+      "reason": "将实际可发送量改为原文按轮次近似的窗口计算，明确单位与 ACK 前提。",
+      "typed": {
+        "stem": "按原文经典 Reno 的按轮次近似例子，cwnd 等于发送窗口，窗口数值以 MSS 为单位。ssthresh 为 8，cwnd 已达到 8 并进入拥塞避免；该轮 8 个 ACK 各确认一个完整新数据段，每次按 1/8 增加 cwnd。这些 ACK 到来后，cwnd 约为多少 MSS？",
+        "options": [
+          {
+            "key": "A",
+            "text": "9 MSS",
+            "correct": true
+          },
+          {
+            "key": "B",
+            "text": "8 MSS",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "16 MSS",
+            "correct": false
+          },
+          {
+            "key": "D",
+            "text": "10 MSS",
+            "correct": false
+          }
+        ]
+      },
+      "question": "按原文经典 Reno 的按轮次近似例子，cwnd 等于发送窗口，窗口数值以 MSS 为单位。ssthresh 为 8，cwnd 已达到 8 并进入拥塞避免；该轮 8 个 ACK 各确认一个完整新数据段，每次按 1/8 增加 cwnd。这些 ACK 到来后，cwnd 约为多少 MSS？",
+      "answer": "按原文按轮次近似计算，该轮每个 ACK 增加 1/8，8 个 ACK 共增加 1，因此 cwnd 从 8 MSS 增长到约 9 MSS。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+    },
+    {
+      "id": "T3-194",
+      "reason": "区分真实丢包和乱序引起的误判，注明原文措辞并附官方核对来源。",
+      "typed": {
+        "stem": "拥塞发生时出现丢包，是否可以把丢包和拥塞完全画等号？",
+        "options": [
+          {
+            "key": "A",
+            "text": "可以，丢包一定说明网络拥塞",
+            "correct": false
+          },
+          {
+            "key": "B",
+            "text": "可以，丢包只会由接收窗口不足造成",
+            "correct": false
+          },
+          {
+            "key": "C",
+            "text": "不能，真实丢包也可能来自链路错误；乱序可能使发送方误判丢包",
+            "correct": true
+          },
+          {
+            "key": "D",
+            "text": "不能，因为 TCP 从不根据丢包调整拥塞窗口",
+            "correct": false
+          }
+        ]
+      },
+      "question": "拥塞发生时出现丢包，是否可以把丢包和拥塞完全画等号？",
+      "answer": "不能。真实丢包也可能来自链路错误；乱序可能产生重复 ACK，使发送方误判丢包，并不等于数据段真的被丢弃。经典 Reno 会根据丢包反馈收缩拥塞窗口，拥塞发生时主要区分超时重传和快速重传两种处理方式。（原文写作“丢包也可能来自链路错误或乱序”，这里将乱序引起的丢包误判与真实丢包区分。）[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B) [核对来源：RFC 5681 §3.2](https://www.rfc-editor.org/rfc/rfc5681.html#section-3.2)"
+    },
+    {
+      "id": "T3-196",
+      "reason": "补回原文经典 Reno 简化模型与 cwnd 的 MSS 数值单位。",
+      "question": "按原文经典 Reno 简化模型，窗口数值以 MSS 为单位，超时重传触发拥塞发生算法后，接下来 TCP 怎么做？原文认为这种方式有什么问题？",
+      "answer": "按原文经典 Reno 简化模型，窗口数值以 MSS 为单位，发生超时重传后，cwnd 重置为 1 并重新开始慢启动，慢启动会突然减少数据流，一旦超时重传就马上回到解放前，这种方式太激进，反应也很强烈，会造成网络卡顿。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+    },
+    {
+      "id": "T3-199",
+      "reason": "限定经典 Reno 近似模型和进入快速恢复前的减半步骤。",
+      "typed": {
+        "stem": "按原文经典 Reno 近似模型，将在途数据量近似看作 cwnd，窗口数值以 MSS 为单位；快速重传触发后、进入快速恢复前，cwnd 设置为原来的 ____，ssthresh 设为更新后的 ____ 值，然后进入 ____ 算法。"
+      },
+      "question": "[填空题·有序] 按原文经典 Reno 近似模型，将在途数据量近似看作 cwnd，窗口数值以 MSS 为单位；快速重传触发后、进入快速恢复前，cwnd 设置为原来的 ____，ssthresh 设为更新后的 ____ 值，然后进入 ____ 算法。",
+      "answer": "按原文经典 Reno 近似模型，将在途数据量近似看作 cwnd，窗口数值以 MSS 为单位；进入快速恢复前，快速重传触发的拥塞发生：cwnd = cwnd/2，也就是设置为原来的一半；ssthresh = cwnd；然后进入快速恢复算法。标准答案：一半、cwnd、快速恢复。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+    },
+    {
+      "id": "T3-201",
+      "reason": "明确经典 Reno 简化模型和 MSS 数值单位，使 +3 的含义独立成立。",
+      "typed": {
+        "stem": "按原文经典 Reno 简化模型，cwnd 和 ssthresh 的数值以 MSS 为单位；进入快速恢复算法后，cwnd 怎么设置，并做什么？"
+      },
+      "question": "按原文经典 Reno 简化模型，cwnd 和 ssthresh 的数值以 MSS 为单位；进入快速恢复算法后，cwnd 怎么设置，并做什么？",
+      "answer": "按原文经典 Reno 简化模型，cwnd 和 ssthresh 的数值以 MSS 为单位，进入快速恢复算法后：拥塞窗口 cwnd = ssthresh + 3（3 的意思是确认有 3 个数据包被收到）；重传丢失的数据包。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+    },
+    {
+      "id": "T3-202",
+      "reason": "补回经典 Reno 简化模型与 MSS 单位，保留已有 NewReno/SACK 边界说明。",
+      "typed": {
+        "stem": "按原文经典 Reno 简化模型，窗口数值以 MSS 为单位；快速恢复中，再收到重复 ACK，以及收到确认新数据的 ACK 时，cwnd 分别怎么处理？"
+      },
+      "question": "按原文经典 Reno 简化模型，窗口数值以 MSS 为单位；快速恢复中，再收到重复 ACK，以及收到确认新数据的 ACK 时，cwnd 分别怎么处理？",
+      "answer": "以下窗口数值以 MSS 为单位。快速恢复中，如果再收到重复的 ACK，那么 cwnd 增加 1；在这个经典 Reno 的简化模型里，收到确认新数据的 ACK 后，把 cwnd 收缩到 ssthresh，退出快速恢复，进入拥塞避免。一次丢多个数据段时，NewReno、SACK 等机制还会采用更细致的恢复处理。[原文§TCP的拥塞控制介绍一下？](https://xiaolincoding.com/interview/network.html#tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B)"
+    }
+  ]
+}

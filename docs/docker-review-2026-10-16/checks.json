@@ -1,0 +1,263 @@
+{
+  "hashes": {
+    "interview-practice/docker.md": "5fa488b163d55740efb8abec4764741fe469d994ebb125212e12faab4e5fc178",
+    "interview-practice/answers-xiaolin/docker.md": "1412e5e5eed40c1f3e3677f3184390a7524d1d1da4a72132c756de1385975343",
+    "content/typed/docker.json": "6cf92ca93b841e36296e493a73e69eb89b0dff50df546233a4026f401a9df685"
+  },
+  "questionCount": 252,
+  "counts": {
+    "single": 162,
+    "multiple": 37,
+    "fill": 28,
+    "short": 25,
+    "code": 0
+  },
+  "chapters": [
+    {
+      "id": "Y1",
+      "title": "底层原理与核心概念",
+      "status": "draft",
+      "count": 65,
+      "counts": {
+        "single": 37,
+        "multiple": 13,
+        "fill": 8,
+        "short": 7,
+        "code": 0
+      }
+    },
+    {
+      "id": "Y2",
+      "title": "Dockerfile 与镜像构建",
+      "status": "draft",
+      "count": 62,
+      "counts": {
+        "single": 42,
+        "multiple": 8,
+        "fill": 5,
+        "short": 7,
+        "code": 0
+      }
+    },
+    {
+      "id": "Y3",
+      "title": "存储、网络与编排",
+      "status": "draft",
+      "count": 64,
+      "counts": {
+        "single": 41,
+        "multiple": 10,
+        "fill": 7,
+        "short": 6,
+        "code": 0
+      }
+    },
+    {
+      "id": "Y4",
+      "title": "常用命令与排查",
+      "status": "draft",
+      "count": 61,
+      "counts": {
+        "single": 42,
+        "multiple": 6,
+        "fill": 8,
+        "short": 5,
+        "code": 0
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "sequences": [
+    {
+      "id": "Y1",
+      "contiguous": true,
+      "typedOrderMatches": true
+    },
+    {
+      "id": "Y2",
+      "contiguous": true,
+      "typedOrderMatches": true
+    },
+    {
+      "id": "Y3",
+      "contiguous": true,
+      "typedOrderMatches": true
+    },
+    {
+      "id": "Y4",
+      "contiguous": true,
+      "typedOrderMatches": true
+    }
+  ],
+  "fillMismatches": [],
+  "missingAnsweringQuestions": [],
+  "leaks": [],
+  "singlePositions": {
+    "C": 41,
+    "A": 41,
+    "D": 39,
+    "B": 41
+  },
+  "multipleKeys": [
+    {
+      "id": "Y1-4",
+      "keys": "ACDF"
+    },
+    {
+      "id": "Y1-7",
+      "keys": "ABD"
+    },
+    {
+      "id": "Y1-8",
+      "keys": "BDE"
+    },
+    {
+      "id": "Y1-16",
+      "keys": "BD"
+    },
+    {
+      "id": "Y1-17",
+      "keys": "ACE"
+    },
+    {
+      "id": "Y1-18",
+      "keys": "ACD"
+    },
+    {
+      "id": "Y1-30",
+      "keys": "ACE"
+    },
+    {
+      "id": "Y1-31",
+      "keys": "BCD"
+    },
+    {
+      "id": "Y1-41",
+      "keys": "BCEF"
+    },
+    {
+      "id": "Y1-43",
+      "keys": "ABD"
+    },
+    {
+      "id": "Y1-50",
+      "keys": "ACE"
+    },
+    {
+      "id": "Y1-53",
+      "keys": "ADE"
+    },
+    {
+      "id": "Y1-64",
+      "keys": "BCE"
+    },
+    {
+      "id": "Y2-11",
+      "keys": "BDE"
+    },
+    {
+      "id": "Y2-22",
+      "keys": "BD"
+    },
+    {
+      "id": "Y2-33",
+      "keys": "BDE"
+    },
+    {
+      "id": "Y2-43",
+      "keys": "BCE"
+    },
+    {
+      "id": "Y2-46",
+      "keys": "BD"
+    },
+    {
+      "id": "Y2-50",
+      "keys": "ACE"
+    },
+    {
+      "id": "Y2-52",
+      "keys": "AD"
+    },
+    {
+      "id": "Y2-58",
+      "keys": "BD"
+    },
+    {
+      "id": "Y3-7",
+      "keys": "ABE"
+    },
+    {
+      "id": "Y3-12",
+      "keys": "ACDF"
+    },
+    {
+      "id": "Y3-25",
+      "keys": "ACE"
+    },
+    {
+      "id": "Y3-26",
+      "keys": "ADE"
+    },
+    {
+      "id": "Y3-28",
+      "keys": "BDEF"
+    },
+    {
+      "id": "Y3-37",
+      "keys": "ACD"
+    },
+    {
+      "id": "Y3-50",
+      "keys": "BDE"
+    },
+    {
+      "id": "Y3-55",
+      "keys": "BCEF"
+    },
+    {
+      "id": "Y3-59",
+      "keys": "BE"
+    },
+    {
+      "id": "Y3-62",
+      "keys": "BCD"
+    },
+    {
+      "id": "Y4-13",
+      "keys": "BDE"
+    },
+    {
+      "id": "Y4-22",
+      "keys": "BCE"
+    },
+    {
+      "id": "Y4-35",
+      "keys": "ACDE"
+    },
+    {
+      "id": "Y4-47",
+      "keys": "BCEF"
+    },
+    {
+      "id": "Y4-48",
+      "keys": "ACE"
+    },
+    {
+      "id": "Y4-60",
+      "keys": "BCE"
+    }
+  ],
+  "multiplePrefixPattern": [],
+  "sourceTitle": "Docker面试题 | 小林coding",
+  "anchorCount": 22,
+  "missingAnchors": [],
+  "sectionCount": 22,
+  "questionAnswerOrderMatches": true,
+  "missingAnswerResults": [],
+  "citationPages": [
+    "https://xiaolincoding.com/interview/docker.html"
+  ],
+  "sourceHtmlSha256": "d1d0d791910b37a2d203df54566a17c8939b6b5101a5395bd86a26c1cd8d6244"
+}

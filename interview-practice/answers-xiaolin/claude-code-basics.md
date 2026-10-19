@@ -32,7 +32,7 @@
 - **F1-19** 用 @ 引用之后，Claude 就知道只改指定的文件，不会去动其他代码。[原文§05｜用 @ 精准指定文件](https://xiaolinnote.com/claudecode/basics/cc_use.html#_05-%E7%94%A8-%E7%B2%BE%E5%87%86%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6)
 - **F1-20** 不指定文件时，Claude 为了理解需求会自己搜索和读取很多文件，每一行代码都占上下文空间；用 @ 精准指定后只需读取那几个文件。[原文§05｜用 @ 精准指定文件](https://xiaolinnote.com/claudecode/basics/cc_use.html#_05-%E7%94%A8-%E7%B2%BE%E5%87%86%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6)
 - **F1-21** 原文建议在涉及数据结构设计、多组件协调、要兼顾边界情况和持久化的复杂功能上使用；简单问题不要滥用。[原文§06｜遇到复杂功能？用 ultrathink 深度思考](https://xiaolinnote.com/claudecode/basics/cc_use.html#_06-%E9%81%87%E5%88%B0%E5%A4%8D%E6%9D%82%E5%8A%9F%E8%83%BD-%E7%94%A8-ultrathink-%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83)
-- **F1-22** ultrathink 只让这一轮临时把思考的努力等级拉到最高，用完就恢复原来的设置；用 /effort 或在 /model 里调整的努力等级是全局设置，会在后续所有对话里生效。[原文§06｜遇到复杂功能？用 ultrathink 深度思考](https://xiaolinnote.com/claudecode/basics/cc_use.html#_06-%E9%81%87%E5%88%B0%E5%A4%8D%E6%9D%82%E5%8A%9F%E8%83%BD-%E7%94%A8-ultrathink-%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83)
+- **F1-22** ultrathink 只对这一轮生效：Claude Code 识别到这个关键词后，在上下文里加一条要求更深入推理的指令，不改变会话的努力等级，之后的对话照旧；用 /effort 或在 /model 里调整的努力等级是全局设置，会在后续所有对话里生效。（原文写的是 ultrathink 把这一轮的努力等级临时拉到最高；按 Claude Code 官方文档，发给 API 的努力等级并不变。）[原文§06｜遇到复杂功能？用 ultrathink 深度思考](https://xiaolinnote.com/claudecode/basics/cc_use.html#_06-%E9%81%87%E5%88%B0%E5%A4%8D%E6%9D%82%E5%8A%9F%E8%83%BD-%E7%94%A8-ultrathink-%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83)[核对来源：Claude Code 官方文档·Model configuration](https://code.claude.com/docs/en/model-config)
 - **F1-23** 原文称新版本里只有 ultrathink 这一个关键词真正生效，think、think hard、think harder 只会被当成普通的提示词，不会真的加深思考。[原文§06｜遇到复杂功能？用 ultrathink 深度思考](https://xiaolinnote.com/claudecode/basics/cc_use.html#_06-%E9%81%87%E5%88%B0%E5%A4%8D%E6%9D%82%E5%8A%9F%E8%83%BD-%E7%94%A8-ultrathink-%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83)
 - **F1-24** 原文称思考越深，消耗的 token 越多，响应也会更慢。[原文§06｜遇到复杂功能？用 ultrathink 深度思考](https://xiaolinnote.com/claudecode/basics/cc_use.html#_06-%E9%81%87%E5%88%B0%E5%A4%8D%E6%9D%82%E5%8A%9F%E8%83%BD-%E7%94%A8-ultrathink-%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83)
 
@@ -48,8 +48,8 @@
 - **F1-32** 文件恢复把改错的代码还原到选定节点；对话恢复同时退回当时的上下文，适合 Claude 已走错方向、需要彻底重来。仅口头要求撤销，则只还原文件变更，对话上下文仍保留。 [原文§08｜Claude 改错了怎么办？用 Rewind 回滚](https://xiaolinnote.com/claudecode/basics/cc_use.html#_08-claude-%E6%94%B9%E9%94%99%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E-%E7%94%A8-rewind-%E5%9B%9E%E6%BB%9A)
 - **F1-33** 直接让 Claude 撤销只回滚文件、不回滚对话，适合只是代码改错的情况；用 /rewind 或 Esc+Esc 回到某个节点时文件和对话都回滚，适合 Claude 走错方向、想彻底回到某个节点。[原文§三种「撤销」方式对比](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E4%B8%89%E7%A7%8D%E3%80%8C%E6%92%A4%E9%94%80%E3%80%8D%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94)
 - **F1-34** 原文称 Rewind 只能回滚 Claude Code 直接创建或编辑的文件；执行 npm install 这类命令生成的 node_modules、package-lock.json 等文件，Rewind 无法撤销。[原文§三种「撤销」方式对比](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E4%B8%89%E7%A7%8D%E3%80%8C%E6%92%A4%E9%94%80%E3%80%8D%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94)
-- **F1-35** 原文建议大改动之前先手动 git commit 一份存档，想完整回滚项目状态时用 Git；Claude 一开始跑偏就立刻用 Esc+Esc 回滚，别让它一路错下去。[原文§三种「撤销」方式对比](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E4%B8%89%E7%A7%8D%E3%80%8C%E6%92%A4%E9%94%80%E3%80%8D%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94)
-- **F1-36** 改动前先 git add 并 commit 存档；出了问题再用 git checkout 或 git reset 回退。[原文§08｜Claude 改错了怎么办？用 Rewind 回滚](https://xiaolinnote.com/claudecode/basics/cc_use.html#_08-claude-%E6%94%B9%E9%94%99%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E-%E7%94%A8-rewind-%E5%9B%9E%E6%BB%9A)
+- **F1-35** 原文建议大改动之前先手动 git commit 一份存档，想完整回滚项目状态时用 Git；Claude 一开始跑偏就立刻用 Esc+Esc 回滚，别让它一路错下去。（Git 能还原的是它跟踪的文件；node_modules 这类被忽略的目录不归 Git 管，回滚后要重新安装依赖。）[原文§三种「撤销」方式对比](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E4%B8%89%E7%A7%8D%E3%80%8C%E6%92%A4%E9%94%80%E3%80%8D%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94)[核对来源：Git 官方文档·git-reset](https://git-scm.com/docs/git-reset)
+- **F1-36** 改动前先 git add 并 commit 存档；出了问题，用 git checkout . 丢弃已跟踪文件的未暂存改动（原文只说它能“回到之前的状态”；已 git add 暂存的改动不会被它还原，那种情况用下面的 reset --hard HEAD），新建的未跟踪文件用 git clean -fd 清理，或用 git reset --hard HEAD 回到存档的那次提交。（原文给的是 git reset --hard HEAD~1，那会连刚建的存档提交一起退掉，这里不采用。）[原文§08｜Claude 改错了怎么办？用 Rewind 回滚](https://xiaolinnote.com/claudecode/basics/cc_use.html#_08-claude-%E6%94%B9%E9%94%99%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E-%E7%94%A8-rewind-%E5%9B%9E%E6%BB%9A)[核对来源：Git 官方文档·git-checkout](https://git-scm.com/docs/git-checkout)[核对来源：Git 官方文档·git-reset](https://git-scm.com/docs/git-reset)
 - **F1-37** /context 显示当前上下文占用了多少、还剩多少，以及各部分的占比，例如 skill 调用和对话各占多少；占用超过 70% 时 Claude 开始顾此失彼，需要帮它减负。[原文§先看看 token 占了多少](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E5%85%88%E7%9C%8B%E7%9C%8B-token-%E5%8D%A0%E4%BA%86%E5%A4%9A%E5%B0%91)
 - **F1-38** 继续做同一个功能、之前的上下文还有用时，用 /compact 压缩对话并保留关键信息；切换到不相关的任务或想重新开始时，用 /clear 彻底清空。[原文§小结一下](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E5%B0%8F%E7%BB%93%E4%B8%80%E4%B8%8B)
 - **F1-39** /compact 会把之前的对话压缩成一份摘要，保留关键信息、丢掉冗余细节。[原文§先试 /compact：压缩上下文](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E5%85%88%E8%AF%95-compact-%E5%8E%8B%E7%BC%A9%E4%B8%8A%E4%B8%8B%E6%96%87)
@@ -61,6 +61,10 @@
 - **F1-42** 要用自然语言描述子代理的用途、职责和触发场景，并为它选择可用的工具来控制它能执行的操作，另外还要选作用域、模型和记忆范围；生成的配置文件相当于一份工作说明书。[原文§创建一个代码审查子代理](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E5%AD%90%E4%BB%A3%E7%90%86)
 - **F1-43** Skill 在主对话里工作，加载的指南、读写的文件和生成的代码都占用主会话的上下文；子代理有独立的上下文窗口，读多少文件都只占它自己的空间，结束后只把一份精炼的结果摘要汇报回来。[原文§子代理和 Skills 有什么区别？](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E5%AD%90%E4%BB%A3%E7%90%86%E5%92%8C-skills-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
 - **F1-44** 子代理把审查结果汇报回来后，再让 Claude 针对性地修复，例如只修复标记为严重和中等的问题。[原文§使用子代理审查代码](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E4%BD%BF%E7%94%A8%E5%AD%90%E4%BB%A3%E7%90%86%E5%AE%A1%E6%9F%A5%E4%BB%A3%E7%A0%81)
+
+### 补充考点
+
+- **F1-45** /clear 会彻底清空所有对话历史，Claude 就像一个刚上班的新同事，什么都不记得，需要重新交代任务；它适合接下来的事情和之前的任务没有关联，或者想从完全不同的角度重新开始的情况。清空之后要简单告诉 Claude 当前项目的状态，例如这是什么应用、用了什么技术栈、已经完成了哪些功能、接下来要加什么，它就能快速进入状态。[原文§再考虑 /clear：彻底清空](https://xiaolinnote.com/claudecode/basics/cc_use.html#%E5%86%8D%E8%80%83%E8%99%91-clear-%E5%BD%BB%E5%BA%95%E6%B8%85%E7%A9%BA)
 
 ## 2. `/powerup` 互动课程
 
@@ -76,7 +80,7 @@
 - **F2-6** Normal 每步操作都先征求同意，最稳妥；accept edits 改文件不再问，但执行命令仍要确认；Plan 只看不改，先出方案；auto 编辑和命令都不问，由后台的安全分类器判断哪些动作安全。[原文§四个工作模式](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E5%9B%9B%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F)
 - **F2-7** 原文称 auto 模式下由 Claude 自己用后台的安全分类器判断哪些动作是安全的，这一档的安全感来自 Claude 的判断而不是人工把关；accept edits 则保留了人对命令执行的确认。[原文§四个工作模式](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E5%9B%9B%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F)
 - **F2-8** 只有完全信任、任务又长又重复的场景才考虑切到 auto；日常写代码用 accept edits；复杂任务先用 plan 模式出方案。[原文§我的建议](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E6%88%91%E7%9A%84%E5%BB%BA%E8%AE%AE)
-- **F2-9** 自带的回滚只能恢复 Claude 直接创建或编辑的文件；npm install 之类命令生成的文件它管不了，所以大改动之前要用 Git 存档。[原文§更靠谱的方式：Git](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E6%9B%B4%E9%9D%A0%E8%B0%B1%E7%9A%84%E6%96%B9%E5%BC%8F-git)
+- **F2-9** 自带的回滚只能恢复 Claude 直接创建或编辑的文件；npm install 之类命令生成的文件它管不了，所以大改动之前要用 Git 存档。（Git 存档能还原的是被跟踪的文件；node_modules 通常被忽略，回滚后要重新安装依赖。）[原文§更靠谱的方式：Git](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E6%9B%B4%E9%9D%A0%E8%B0%B1%E7%9A%84%E6%96%B9%E5%BC%8F-git)[核对来源：Git 官方文档·git-reset](https://git-scm.com/docs/git-reset)
 
 ### 后台任务与持久信息
 
@@ -107,7 +111,7 @@
 - **F2-31** hook 脚本不是通过环境变量拿文件路径，而是从标准输入接收一段 JSON，要从里面解析出 tool_input.file_path；项目根目录可以用 $CLAUDE_PROJECT_DIR 取得。[原文§怎么配置 Hooks？](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AE-hooks)
 - **F2-32** 原文举了四个例子：自动格式化，每次修改文件后自动运行 Prettier 或 ESLint；自动测试，每次修改测试文件后自动跑相关测试；安全检查，每次修改配置文件后检查是否有敏感信息泄露；自动提交，每次修改完代码后自动 git add 并 commit。[原文§Hooks 能做什么？](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#hooks-%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88)
 - **F2-33** 子代理有自己独立的上下文空间，读了多少文件、分析了多少代码都只占它自己的上下文，对主会话没有影响；干完后只把一份精炼的结果摘要汇报回来，占用很小。[原文§为什么需要子代理？](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%AD%90%E4%BB%A3%E7%90%86)
-- **F2-34** 向导依次配置作用域、用自然语言描述的职责、可用工具和使用的模型：职责描述决定它做什么，可用工具决定它能使用哪些工具。[原文§怎么创建子代理？](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AD%90%E4%BB%A3%E7%90%86)
+- **F2-34** 向导依次配置作用域、用自然语言描述的职责、可用工具和使用的模型，最后选择标识颜色：职责描述决定它做什么，可用工具决定它能使用哪些工具。[原文§怎么创建子代理？](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AD%90%E4%BB%A3%E7%90%86)
 - **F2-35** 原文列出的场景有代码审查、写测试、查文档和多文件批量修改：审查需要独立视角，查文档则是让子代理读完某个库的文档后总结要点再汇报。[原文§子代理适合什么场景？](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E5%AD%90%E4%BB%A3%E7%90%86%E9%80%82%E5%90%88%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF)
 
 ### 跨设备、模型与会话维护
@@ -135,10 +139,16 @@
 - **F2-53** low、medium、high、xhigh 这四档设定之后会跨 session 记住，下次启动还是这个档；只有 max 是一次性的，会话结束就自动失效，不用担心忘了切回来一直烧 token。[原文§用 /effort 调节思考深度](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E7%94%A8-effort-%E8%B0%83%E8%8A%82%E6%80%9D%E8%80%83%E6%B7%B1%E5%BA%A6)
 - **F2-54** 不是。官方已经明确说明，新版本里只有 ultrathink 这一个关键词真正生效，其他几个只会被当成普通的提示词，不会真的加深思考。[原文§用 /effort 调节思考深度](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E7%94%A8-effort-%E8%B0%83%E8%8A%82%E6%80%9D%E8%80%83%E6%B7%B1%E5%BA%A6)
 - **F2-55** medium 是成本敏感场景的折中档，牺牲一点智能换效率，适合日常修小 bug、写已有模式下的功能。[原文§用 /effort 调节思考深度](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E7%94%A8-effort-%E8%B0%83%E8%8A%82%E6%80%9D%E8%80%83%E6%B7%B1%E5%BA%A6)
-- **F2-56** ultrathink 是遇到硬骨头时这一轮临时拉到最高档；/effort 是长期设定一个巡航档位，两者配合使用。[原文§ultrathink：临时顶到最高挡](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#ultrathink-%E4%B8%B4%E6%97%B6%E9%A1%B6%E5%88%B0%E6%9C%80%E9%AB%98%E6%8C%A1)
-- **F2-57** 边际作用被削弱了不少，因为 xhigh 本来就处在几乎总是深思考的状态；如果还在 high 或更低的档位，ultrathink 仍然是临时拉高一档的有用手段。[原文§模型 + 思考深度的组合策略](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E6%A8%A1%E5%9E%8B-%E6%80%9D%E8%80%83%E6%B7%B1%E5%BA%A6%E7%9A%84%E7%BB%84%E5%90%88%E7%AD%96%E7%95%A5)
+- **F2-56** ultrathink 是遇到硬骨头时让这一轮临时想得更深，用完不影响原来的设置；/effort 是长期设定一个巡航档位，两者配合使用。（原文这一篇写的是临时顶到 high，另一篇写的是拉到最高；按 Claude Code 官方文档，ultrathink 是在上下文里加一条深入推理的指令，发给 API 的努力等级不变。）[原文§ultrathink：临时顶到最高挡](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#ultrathink-%E4%B8%B4%E6%97%B6%E9%A1%B6%E5%88%B0%E6%9C%80%E9%AB%98%E6%8C%A1)[核对来源：Claude Code 官方文档·Model configuration](https://code.claude.com/docs/en/model-config)
+- **F2-57** 原文认为边际作用被削弱了不少，因为 xhigh 本来就处在几乎总是深思考的状态；如果还在 high 或更低的档位，ultrathink 仍然是让这一轮想得更深的有用手段。（原文称它是临时拉高一档；按 Claude Code 官方文档，它不改变努力等级。）[原文§模型 + 思考深度的组合策略](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E6%A8%A1%E5%9E%8B-%E6%80%9D%E8%80%83%E6%B7%B1%E5%BA%A6%E7%9A%84%E7%BB%84%E5%90%88%E7%AD%96%E7%95%A5)[核对来源：Claude Code 官方文档·Model configuration](https://code.claude.com/docs/en/model-config)
 - **F2-58** 它显示当前上下文窗口的使用情况；发现 Claude 开始犯迷糊、答非所问时，先用它看看是不是上下文快满了。[原文§/context：看看 Claude 还有多少「脑容量」](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#context-%E7%9C%8B%E7%9C%8B-claude-%E8%BF%98%E6%9C%89%E5%A4%9A%E5%B0%91%E3%80%8C%E8%84%91%E5%AE%B9%E9%87%8F%E3%80%8D)
 - **F2-59** 上下文用了 70% 以上，Claude 就容易顾此失彼；这时用 /compact 把之前的对话压缩成摘要，保留关键信息、丢掉冗余细节，让它重新清醒过来。[原文§/compact：给 Claude 减负](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#compact-%E7%BB%99-claude-%E5%87%8F%E8%B4%9F)
+- **F2-60** 一种是在输入框为空时快速连按两次 Esc 键，另一种是输入 /rewind 命令，两者效果一样；回滚菜单显示一条时间线，列出 Claude 最近做的每一次操作，用方向键选择要回滚到哪一步，Claude Code 就会把代码恢复到那个状态。[原文§两种撤销方式](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E4%B8%A4%E7%A7%8D%E6%92%A4%E9%94%80%E6%96%B9%E5%BC%8F)
+- **F2-61** 执行 /model 会弹出模型选择界面：Sonnet 是速度和智能的平衡，适合大多数日常任务；Opus 推理能力最强，适合复杂的架构设计和难缠的 bug；Haiku 速度最快，适合简单问答、格式转换等轻量任务。不同模型价格不同，Opus 最贵但最强，Haiku 最便宜但最轻量；大多数情况下用 Sonnet 就够了，遇到特别复杂的问题再切到 Opus。[原文§用 /model 切换模型](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E7%94%A8-model-%E5%88%87%E6%8D%A2%E6%A8%A1%E5%9E%8B)
+- **F2-62** low 像随手回答朋友的问题，脱口而出；medium 像做一道日常工作任务，该想的都想了；high 或 ultrathink 像解一道数学竞赛题，绞尽脑汁一步步推演。要注意思考越深，消耗的 token 越多，响应也越慢，简单问题别滥用，复杂问题再用。[原文§不同场景怎么选？](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E4%B8%8D%E5%90%8C%E5%9C%BA%E6%99%AF%E6%80%8E%E4%B9%88%E9%80%89)
+- **F2-63** 它是放在项目根目录的文件，Claude Code 每次启动时都会自动读取，把内容当作理解项目的背景资料，可以理解为 Claude 的“项目记忆”；只要在这个项目目录下启动 Claude Code，它就知道项目是做什么的、用了什么技术栈、代码规范是什么，不用每次重新交代。[原文§CLAUDE.md 是什么？](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#claude-md-%E6%98%AF%E4%BB%80%E4%B9%88)
+- **F2-64** 可以用 /init 让 Claude 扫描项目结构后自动生成，也可以手动创建，把觉得 Claude 需要知道的信息写进去；一份好的 CLAUDE.md 通常包含项目名称和一句话说明项目做什么、技术栈、代码规范（例如用函数式组件、变量和文件的命名方式）以及项目结构（各目录放什么）。[原文§怎么创建 CLAUDE.md？](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA-claude-md)
+- **F2-65** 运行 /reload-plugins，让新 skill 立刻在当前会话生效；哪天不想用了，卸载也是一条命令：/plugin uninstall frontend-design@claude-plugins-official。[原文§实战：用一行命令装上 frontend-design](https://xiaolinnote.com/claudecode/basics/cc_powerup.html#%E5%AE%9E%E6%88%98-%E7%94%A8%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A3%85%E4%B8%8A-frontend-design)
 
 ## 3. Claude Code 工程化六件套
 

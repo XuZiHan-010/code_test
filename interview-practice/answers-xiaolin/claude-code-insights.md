@@ -54,7 +54,7 @@
 - **J2-18** 原文称真碰到复杂架构改造、线上故障或者安全审查，Superpowers 这类完整流程仍然有价值。[原文§为什么模型越强，提示词反而越要少？](https://xiaolinnote.com/claudecode/insights/claude5_context_engineering.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A8%A1%E5%9E%8B%E8%B6%8A%E5%BC%BA-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%8F%8D%E8%80%8C%E8%B6%8A%E8%A6%81%E5%B0%91)
 - **J2-19** 原文的判断方法是看它有没有给模型补充新的信息和能力；如果只是把模型每一步该怎么做重新规定一遍，新模型可能已经会了，再套一层流程反而容易碍事。[原文§为什么模型越强，提示词反而越要少？](https://xiaolinnote.com/claudecode/insights/claude5_context_engineering.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A8%A1%E5%9E%8B%E8%B6%8A%E5%BC%BA-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%8F%8D%E8%80%8C%E8%B6%8A%E8%A6%81%E5%B0%91)
 - **J2-20** 原文称更该删的是替模型做判断的流程性内容；项目内部知识、专用工具、安全边界和验收方法这些模型自己猜不到，该留还是要留。[原文§为什么模型越强，提示词反而越要少？](https://xiaolinnote.com/claudecode/insights/claude5_context_engineering.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A8%A1%E5%9E%8B%E8%B6%8A%E5%BC%BA-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%8F%8D%E8%80%8C%E8%B6%8A%E8%A6%81%E5%B0%91)
-- **J2-21** 删掉重复的指令和示例、简化工具描述之后，评测分数提升约 10% 到 15%，总 Token 减少 41% 到 66%。[原文§为什么模型越强，提示词反而越要少？](https://xiaolinnote.com/claudecode/insights/claude5_context_engineering.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A8%A1%E5%9E%8B%E8%B6%8A%E5%BC%BA-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%8F%8D%E8%80%8C%E8%B6%8A%E8%A6%81%E5%B0%91)
+- **J2-21** 删掉重复的指令和示例、简化工具描述之后，评测分数提升约 10% 到 15%，总 Token 减少 41% 到 66%，成本下降 33% 到 67%。[原文§为什么模型越强，提示词反而越要少？](https://xiaolinnote.com/claudecode/insights/claude5_context_engineering.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A8%A1%E5%9E%8B%E8%B6%8A%E5%BC%BA-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%8F%8D%E8%80%8C%E8%B6%8A%E8%A6%81%E5%B0%91)
 
 ### 补充考点
 

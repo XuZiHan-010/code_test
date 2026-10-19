@@ -1,0 +1,4905 @@
+{
+  "prefix": "H",
+  "chapters": {
+    "H1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "H1-1",
+          "type": "fill",
+          "stem": "原文描述的 Claude Code 四层架构是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "H1-2",
+          "type": "single",
+          "stem": "主引擎不包含具体工具的业务实现，带来什么好处？",
+          "options": [
+            {
+              "key": "A",
+              "text": "引擎层可以直接读写文件，不再需要工具层",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "新增能力只需要新增一个工具，引擎层完全不用改",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每个工具都可以自己决定循环何时结束",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "工具层不再需要遵循统一的规范",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-3",
+          "type": "multiple",
+          "stem": "工具层的统一规范强制每个工具声明哪些安全属性？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能否与其他工具同时执行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是否具有破坏性、需要额外确认",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "是只读还是会修改",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "调用一次要消耗多少 token",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "应当由哪个模型来执行",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-4", "type": "short" },
+        { "id": "H1-5", "type": "short" },
+        {
+          "id": "H1-6",
+          "type": "single",
+          "stem": "Bash 安全模块怎样分析 Shell 命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把命令先执行一遍，再根据结果决定是否回滚",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只用正则表达式匹配命令里是否出现危险关键词",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把命令交给另一个模型，由它判断是否安全",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "做语法级别的分析，检测命令注入、路径逃逸等危险模式",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H1-7",
+          "type": "fill",
+          "stem": "ReAct 把每一步拆成三个阶段并不断循环，依次是：____ → ____ → ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H1-8",
+          "type": "single",
+          "stem": "原生工具调用循环怎样减少对文本行动指令的解析？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型把行动写成自然语言，由应用层用更复杂的正则表达式提取",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型把工具调用写进系统提示词，由下一轮请求读取",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型直接返回 tool_use 类型的响应，不需要用正则表达式从文本里提取 Action",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型不再调用工具，所有操作都由应用层自己决定",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-9", "type": "short" },
+        {
+          "id": "H1-10",
+          "type": "single",
+          "stem": "循环怎样根据停止原因决定结束还是继续？",
+          "options": [
+            {
+              "key": "A",
+              "text": "返回 end_turn 就跳出循环并把结果返回给用户，返回 tool_use 就回到循环开头",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "无论返回什么都继续循环，直到达到固定的轮数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "返回 tool_use 就跳出循环并把结果返回给用户，返回 end_turn 就回到循环开头",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "无论返回什么都立刻结束，每次请求只调用一次模型",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-11",
+          "type": "single",
+          "stem": "输出里没有显式写出 Thought，是否意味着模型没有推理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，推理全部由应用层的代码代替模型完成",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，原生工具调用循环里模型不做任何推理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，推理被写进了工具的返回结果里",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，模型会先在内部做不可见的深度推理",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H1-12",
+          "type": "single",
+          "stem": "按原文的对比，ReAct 和 Tool-Use Loop 各适合什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者适用场景完全相同，只是名字不同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ReAct 适合弱模型加简单工具，Tool-Use Loop 适合强模型加复杂工具集",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "ReAct 适合强模型加复杂工具集，Tool-Use Loop 适合弱模型加简单工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Tool-Use Loop 在任何场景下都优于所有 ReAct 实现",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-13",
+          "type": "single",
+          "stem": "Plan Mode 是怎样实现的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "启动一个独立的规划框架，与主循环使用不同的模型和工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让用户手动写出计划，模型只负责逐条执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "在同一个 Tool-Use Loop 里通过进入和退出两个工具实现，进入后权限降为只读",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把所有工具从工具列表里临时删除，只保留对话能力",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-14", "type": "short" },
+        {
+          "id": "H1-15",
+          "type": "single",
+          "stem": "安全约束先说允许什么、再划定不能做什么，比只写禁令有什么优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先肯定再约束的写法给了模型清晰的判断依据，效果比纯禁止清单好",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "先说允许的内容之后，禁止事项就不再需要写明",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先说允许的内容可以让提示词更短，节省上下文",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只写禁令会让模型拒绝执行所有与安全相关的任务",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-16",
+          "type": "single",
+          "stem": "方案失败之后，系统提示词要求怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "立刻放弃当前方案，换一个完全不同的思路",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "停下来等待用户给出新的指令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先诊断原因，再有针对性地修复",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "立刻把完全相同的操作再执行几遍，直到成功",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-17",
+          "type": "single",
+          "stem": "按可逆性和影响范围判断，下列哪类操作可以直接执行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "删除仓库里的文件或者分支",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "编辑文件、运行测试这类本地可逆操作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "向团队里的其他人发送消息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "强制推送代码到远程的共享分支",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-18",
+          "type": "single",
+          "stem": "用户批准过一次某个操作，能否当作后续所有操作的授权？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能，授权仅对指定的范围有效，批准一次不代表所有场景都批准",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不能，除非模型自己判断场景足够相似",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "能，批准一次之后同类操作永久不再需要确认",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "能，但仅限于同一个会话里的所有操作",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-19", "type": "short" },
+        {
+          "id": "H1-20",
+          "type": "single",
+          "stem": "Git 安全协议为什么要求始终创建新的 commit，而不用 --amend？",
+          "options": [
+            {
+              "key": "A",
+              "text": "amend 会自动把代码强制推送到远程仓库",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "新的 commit 可以跳过 pre-commit hook 的检查",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "amend 会修改 git config 里的用户信息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "被 hook 拒绝的 commit 其实没发生，amend 会改到上一个 commit",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H1-21",
+          "type": "fill",
+          "stem": "原文分析的系统提示词列出的需用户确认的高风险操作有四类：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "H1-22",
+          "type": "fill",
+          "stem": "按工具使用指南：读取文件用 ____，编辑文件用 ____，创建文件用 ____，搜索内容用 ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H1-23",
+          "type": "single",
+          "stem": "环境信息注入怎样帮助模型选择正确的命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型可以因此跳过权限检查，直接执行任何命令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型可以因此把工作目录切换到任意位置",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型知道操作系统和 Shell 类型，不会用错命令和语法",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型可以因此不再读取 CLAUDE.md",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-24", "type": "short" },
+        {
+          "id": "H1-25",
+          "type": "single",
+          "stem": "System Prompt 里静态内容与动态内容为什么分开组织？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前缀完全相同才能命中缓存，稳定内容放前面可以共享",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "动态内容必须放在最前面，否则模型读不到工作目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "分开之后静态内容就不再占用上下文窗口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "静态内容和动态内容由两个不同的模型分别处理",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-26",
+          "type": "fill",
+          "stem": "Prompt 缓存分三级：分割线之上的静态内容使用的是 ____ 缓存，在同一组织内跨会话共享的是 ____ 缓存，同一个 Section 在一次会话内只计算一次的是 ____ 缓存。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H1-27",
+          "type": "single",
+          "stem": "Prompt Cache 命中的条件是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两次请求间隔不超过一秒",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两次请求的 Prompt 前缀完全相同",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两次请求使用同一个工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两次请求的用户消息完全相同",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-28",
+          "type": "fill",
+          "stem": "四类记忆各存一种信息：记用户画像的是 ____，记行为反馈的是 ____，记项目动态的是 ____，记外部指针的是 ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H1-29",
+          "type": "single",
+          "stem": "为什么能从当前代码直接推导出来的信息一律不存进记忆？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这类信息只有小模型能读取，主模型无法使用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这类信息属于敏感数据，不允许写进磁盘",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这类信息体积太大，会超过单条记忆的长度上限",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "代码随时在变，存下来的记忆在重构后会成为权威的错误",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H1-30",
+          "type": "single",
+          "stem": "“独立记忆文件加索引”怎样控制加载成本？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有独立文件始终加载，索引只在用户询问时才加载",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "独立文件合并成一个大文件，每次整份加载",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "索引始终加载，独立文件只按需加载相关的那几条",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "索引和独立文件都只在会话结束时加载一次",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-31", "type": "short" },
+        {
+          "id": "H1-32",
+          "type": "single",
+          "stem": "记忆注入时，为什么要对较旧的记忆附加验证提醒？",
+          "options": [
+            {
+              "key": "A",
+              "text": "较旧的记忆优先级更高，提醒是为了让模型优先采用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "记忆是某个时间点的观察，不是实时状态，当作事实引用之前要先对照当前代码验证",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "较旧的记忆无法被小模型读取，提醒是为了改用主模型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "较旧的记忆会被自动删除，提醒是为了让用户及时备份",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-33",
+          "type": "single",
+          "stem": "并行预取记忆是怎样降低等待时间的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让主模型自己选择记忆，省掉小模型这一步",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "记忆选择放在主模型回复之后再进行，不占用回复时间",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把全部记忆提前写进系统提示词，不再做任何选择",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "小模型的记忆选择在用户提交消息后立刻开始，与主模型的 API 调用并行执行",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H1-34",
+          "type": "single",
+          "stem": "用户正在使用某个工具时，与它相关的记忆怎样过滤？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的使用文档类记忆会被过滤掉，已知 bug 和注意事项类记忆仍会被选中",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "与它相关的所有记忆都会被过滤掉",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "与它相关的所有记忆都会被强制加载",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它的已知 bug 类记忆会被过滤掉，使用文档类记忆仍会被选中",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-35",
+          "type": "single",
+          "stem": "单个工具结果过大时，系统怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把完整内容交给大模型总结成摘要，替换原结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "完整内容写到磁盘，消息里只留预览，需要时再读取",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "拒绝返回这个结果，要求模型换一个工具",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接截断并丢弃超出的部分，之后无法再取回",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-36", "type": "short" },
+        {
+          "id": "H1-37",
+          "type": "single",
+          "stem": "裁剪工具结果时，哪类结果永远不会被裁剪？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 Bash 执行命令得到的输出",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 Read 工具读取到的文件内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "搜索工具返回的匹配结果列表",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "子 Agent 的输出这类不可重复的结果",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H1-38",
+          "type": "single",
+          "stem": "Context Collapse 的“读时投影”是怎样做的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不修改原始消息列表，只在调用 API 的那一刻动态计算一个压缩视图给模型看",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把过大的工具结果写到磁盘，消息里只留预览",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "直接删除对话开头的一批老消息，再插入一个边界标记",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "调用大模型把整段对话总结成摘要，替换原来的全部消息",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-39", "type": "short" },
+        {
+          "id": "H1-40",
+          "type": "single",
+          "stem": "为什么上下文治理应从轻量措施逐步升级？",
+          "options": [
+            {
+              "key": "A",
+              "text": "轻量措施的压缩效果最好，重量级措施只是备用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "各层措施互斥，同一会话里只能启用其中一层",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "压缩有信息损失且代价递增，所以先用代价最小的手段",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "全量摘要完全无损，应当放在最后保证质量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-41",
+          "type": "single",
+          "stem": "压缩失败熔断是怎样防止反复消耗费用的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "全量摘要每次失败后都换一个更贵的模型重试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "全量摘要失败后直接清空全部对话历史",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "全量摘要连续失败达到上限后自动放弃，不再无限重试",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "全量摘要失败后把任务交给用户手动总结",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-42", "type": "short" },
+        { "id": "H1-43", "type": "short" },
+        {
+          "id": "H1-44",
+          "type": "single",
+          "stem": "行为准则对修改没读过的代码有什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先把文件读一遍，理解现有代码之后再提出修改建议",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "没读过的代码一律不允许修改",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可以直接根据文件名推测内容并提出修改建议",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先修改，出了问题再回头阅读",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-45",
+          "type": "single",
+          "stem": "为什么不设一个什么都能存的通用记忆类型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通用类型的记忆会被自动同步给其他用户",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "无约束的记忆会迅速膨胀成垃圾堆",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "通用类型的记忆无法保存成 Markdown 文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "通用类型的记忆不能被小模型检索",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H1-46",
+          "type": "single",
+          "stem": "feedback 类记忆为什么一定要记 Why？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Why 是用来给用户展示的，对 Agent 没有作用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "没有 Why 的记忆无法通过索引的行数检查",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Why 会被用作记忆文件的文件名",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "遇到边缘情况要根据 Why 判断规则是否适用",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H1-47",
+          "type": "single",
+          "stem": "MEMORY.md 索引为什么要同时检查行数和字节数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "有人可能行数没超，但每行写得很长，字节数已经爆了",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "行数用于索引，字节数用于独立的记忆文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "行数和字节数总是成正比，检查两次只是为了保险",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "字节数只对英文有效，行数只对中文有效",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H1-48", "type": "short" },
+        {
+          "id": "H1-49",
+          "type": "fill",
+          "stem": "MEMORY.md 索引有两个上限：行数不超过 ____ 行，大小不超过 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H1-50",
+          "type": "fill",
+          "stem": "Context Collapse 在上下文占用达到两级阈值时触发，这两级分别是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        }
+      ]
+    },
+    "H2": {
+      "status": "draft",
+      "questions": [
+        { "id": "H2-1", "type": "short" },
+        {
+          "id": "H2-2",
+          "type": "fill",
+          "stem": "从输入入口到循环本体的四层调用链，从外到内依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        { "id": "H2-3", "type": "short" },
+        {
+          "id": "H2-4",
+          "type": "single",
+          "stem": "异步生成器怎样让界面即时看到中间事件？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由界面自己读取消息历史文件来获取进度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把所有事件攒到循环结束，再一次性返回给界面",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每隔固定的时间把最新的状态轮询给界面",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每完成一件事就立刻把结果抛出去，各层用 yield* 接力传到最外层",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H2-5", "type": "short" },
+        {
+          "id": "H2-6",
+          "type": "single",
+          "stem": "本篇主循环何时触发补救压缩？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每隔固定的轮数自动压缩一次",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先按原样发送，只有 API 因输入超长拒收时才压缩并重试",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每一轮发送之前都先压缩一遍消息历史",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只有用户手动输入压缩命令时才压缩",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H2-7",
+          "type": "single",
+          "stem": "模型响应中的文字块与工具块，主循环怎样分别处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "tool_use 块往上抛出去即时显示，文字块攒起来准备执行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两种块都攒到响应结束后再一起显示",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "文字块往上抛出去即时显示，tool_use 块攒起来准备执行",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两种块都直接丢弃，只保留停止原因",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H2-8",
+          "type": "single",
+          "stem": "主循环怎样判断是否需要下一轮？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型返回的内容里出现问号就继续循环",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每次都固定循环三轮再结束",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型返回里有 tool_use 块就继续循环，没有就结束",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型返回的文字超过一定长度就继续循环",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H2-9", "type": "short" },
+        { "id": "H2-10", "type": "short" },
+        { "id": "H2-11", "type": "short" },
+        {
+          "id": "H2-12",
+          "type": "single",
+          "stem": "max_turns 这个退出条件什么时候生效？",
+          "options": [
+            {
+              "key": "A",
+              "text": "调用方传了 maxTurns 参数时才生效",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只在工具执行失败时生效",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只在用户按下 Ctrl+C 时生效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "始终生效，默认上限是固定的三轮",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H2-13", "type": "short" },
+        {
+          "id": "H2-14",
+          "type": "single",
+          "stem": "主循环为什么能在整条模型响应结束前启动工具？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它在模型开始输出之前就猜测并预先执行工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它让用户在流式输出期间手动触发工具",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它把模型响应截断在第一个工具调用处",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "流式输出时一旦识别出完整的 tool_use 块，就丢到后台执行",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H2-15", "type": "short" },
+        { "id": "H2-16", "type": "short" },
+        { "id": "H2-17", "type": "short" },
+        {
+          "id": "H2-18",
+          "type": "single",
+          "stem": "工具的并发规则是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会改状态的工具可以并行，只读工具必须串行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只读工具可以并行，会改状态的工具必须串行",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "所有工具都必须串行执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有工具都可以并行执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H2-19",
+          "type": "single",
+          "stem": "开发者忘了声明工具的并发属性时，框架怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "默认当成会改东西的工具，强制串行执行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每次执行前询问用户",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "默认当成只读工具，允许并行执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接拒绝注册这个工具",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H2-20", "type": "short" },
+        {
+          "id": "H2-21",
+          "type": "single",
+          "stem": "继续循环还是停下来的判断，为什么可以做得这么简单？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每一步都由多个模型投票表决后再告诉主循环",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用户在每一轮都会明确告诉主循环是否继续",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "决定下一步做什么本身就是大模型的工作",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "主循环内部有一套复杂的状态机替模型做了决定",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H2-22",
+          "type": "fill",
+          "stem": "在原文分析的源码中，Ctrl+C 中断模型流式输出对应 ____，中断工具执行对应 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H2-23",
+          "type": "single",
+          "stem": "把跨轮状态打包进一个显式的 State 对象，有什么调试优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "状态不再需要保存，调试时不用关心",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "状态会被自动上传，便于远程查看",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "状态藏进闭包后别人无法修改",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "状态都摊在一个对象里，每一轮的现场一目了然",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H2-24", "type": "short" },
+        { "id": "H2-25", "type": "short" },
+        {
+          "id": "H2-26",
+          "type": "single",
+          "stem": "工具调用与结果为什么必须配对？",
+          "options": [
+            {
+              "key": "A",
+              "text": "配对是为了让界面显示得更整齐",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "否则下一轮请求会被 API 直接拒收",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "配对之后工具的执行速度会更快",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不配对的话模型会重复执行同一个工具",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H2-27",
+          "type": "single",
+          "stem": "工具崩溃后，主循环怎样处理这次调用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "重新向模型发一遍完全相同的请求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "合成一个带错误标记的 tool_result 塞回去",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把这次 tool_use 从消息历史里删除",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接结束整个会话并清空历史",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H2-28", "type": "short" },
+        {
+          "id": "H2-29",
+          "type": "multiple",
+          "stem": "哪些情况会在消息历史里留下孤立的 tool_use 块？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型直接给出了文字回答",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工具正常执行并返回了结果",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "工具跑到一半，用户按了 Ctrl+C",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "主循环临时切换到了备用模型",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "模型刚吐完 tool_use 块，网络突然断了",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H2-30", "type": "short" },
+        {
+          "id": "H2-31",
+          "type": "single",
+          "stem": "输出因 token 上限被截断时，恢复分哪两段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两次都直接报错并退出，不做任何恢复",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两次都把已输出的内容丢弃后重新生成",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "首次截断时向模型发续写提示，仍截断就静默调高上限重试",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "首次截断时静默调高上限重试，仍截断就向模型发续写提示",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H2-32", "type": "short" },
+        {
+          "id": "H2-33",
+          "type": "single",
+          "stem": "为什么自动续写必须有次数上限？",
+          "options": [
+            {
+              "key": "A",
+              "text": "否则这种续写可能无限循环下去",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "否则 API 会拒收续写提示",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "否则模型会忘记之前的输出",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "否则用户看不到任何输出",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H2-34",
+          "type": "single",
+          "stem": "stop_hook_prevented 这个退出原因表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "消息历史太长，压缩后仍塞不进窗口",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "传入的图片格式不正确",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "被用户配置的自定义钩子主动喊停",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "循环轮数达到了调用方设定的上限",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H2-35", "type": "short" },
+        {
+          "id": "H2-36",
+          "type": "single",
+          "stem": "原文怎样概括 Claude Code 让 Agent 跑得快的秘密？",
+          "options": [
+            {
+              "key": "A",
+              "text": "使用了比别家更聪明的模型，每一步推理都更快",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "去掉了错误恢复逻辑，减少了多余的检查",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把所有工具都改成只读，从而可以全部并行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "工程上把每一段空闲时间都榨干，让模型生成和工具执行的时间高度重叠",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H2-37", "type": "short" },
+        {
+          "id": "H2-38",
+          "type": "multiple",
+          "stem": "下列哪些属于原文总结的主循环设计哲学？",
+          "options": [
+            {
+              "key": "A",
+              "text": "状态显式管理",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "边干边吐，让感知前置",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "错误恢复优先于优雅",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "引擎层不掺业务",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "把状态藏在闭包变量里",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "H3": {
+      "status": "draft",
+      "questions": [
+        { "id": "H3-1", "type": "short" },
+        { "id": "H3-2", "type": "short" },
+        {
+          "id": "H3-3",
+          "type": "multiple",
+          "stem": "扩大上下文窗口解决不了哪些问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "首个 token 的延迟越来越高",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "模型会拒绝接收超过窗口一半的输入",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上下文越长单次推理的 token 消耗越大，账单跟着膨胀",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "中间段的信息模型照样看不清",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "工具调用和工具结果不再成对出现",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-4",
+          "type": "single",
+          "stem": "Lost in the Middle 指什么现象？",
+          "options": [
+            {
+              "key": "A",
+              "text": "上下文很长时，模型对首尾记得清楚，对中间段记忆模糊",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "上下文超过窗口时，中间的消息会被服务端删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上下文很长时，模型只记得中间段，忘掉首尾",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "上下文被压缩时，中间的摘要会丢失",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-5",
+          "type": "single",
+          "stem": "滑动窗口从最老的消息开始砍，可能丢掉哪些仍然有效的内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "系统提示词里的角色定义",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用户开局说的全局性指令",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "最近一轮刚读取的文件内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最近一次工具调用的结果",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H3-6", "type": "short" },
+        { "id": "H3-7", "type": "short" },
+        {
+          "id": "H3-8",
+          "type": "fill",
+          "stem": "Claude Code 的五层上下文治理从轻到重依次是：____ → ____ → ____ → ____ → ____。",
+          "blankCount": 5,
+          "blankOrder": "ordered"
+        },
+        { "id": "H3-9", "type": "short" },
+        { "id": "H3-10", "type": "short" },
+        {
+          "id": "H3-11",
+          "type": "single",
+          "stem": "Snip 删除远古消息时，模型和本地各负责什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型和本地都不参与，由用户手动删除",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "本地按写死的规则标记消息，真正的删除由模型完成",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型按消息 id 标记，真正的删除在本地完成",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型直接修改磁盘上的消息历史文件",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H3-12", "type": "short" },
+        {
+          "id": "H3-13",
+          "type": "single",
+          "stem": "Snip 释放的 token 数为什么要传给 Auto-Compact？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用来计算这次请求的费用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让模型知道哪些消息被删除了",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让 Auto-Compact 立刻触发",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "避免两层重复压缩",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H3-14", "type": "short" },
+        {
+          "id": "H3-15",
+          "type": "single",
+          "stem": "Micro-Compact 为什么选在距上次 API 调用较久之后触发？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这时服务端的 Prompt Cache 大概率已经过期",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "这时工具结果会自动变成不可重新获取",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这时模型的上下文窗口会自动扩大",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这时用户通常已经离开，清理不会被发现",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-16",
+          "type": "single",
+          "stem": "五层压缩金字塔的设计原则是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "五层同时启用，保证压缩得最彻底",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能不压就不压，必须压的时候从最轻的手段开始",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "能压就压，每一轮都从最重的手段开始",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只在用户手动要求时才压缩",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H3-17", "type": "short" },
+        {
+          "id": "H3-18",
+          "type": "single",
+          "stem": "Context Collapse 和 Auto-Compact 是叠加执行的吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "是的，Auto-Compact 执行后才轮到 Context Collapse",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，两者总是先后各执行一遍",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，两者二选一，不会叠着用",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不是，两者都已被 Snip 取代",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-19",
+          "type": "single",
+          "stem": "Auto-Compact 为什么按剩余 token 的固定缓冲判断触发，而不用比例？",
+          "options": [
+            {
+              "key": "A",
+              "text": "比例无法计算，因为窗口大小是未知的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "固定缓冲可预测，用比例在大窗口上会浪费",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "固定缓冲可以让压缩永远不触发",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "比例会让小窗口的模型无法启动",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H3-20", "type": "short" },
+        { "id": "H3-21", "type": "short" },
+        {
+          "id": "H3-22",
+          "type": "single",
+          "stem": "在几种压缩触发思路里，Claude Code 选了哪一种？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按距离窗口上限的固定缓冲触发",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "按占满窗口的比例触发，例如 80% 就压",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按时间间隔触发，例如每 30 分钟压一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "按对话轮数触发，例如每 50 轮压一次",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-23",
+          "type": "single",
+          "stem": "手动压缩时，怎样影响摘要的重点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把想保留的内容手工复制到新会话里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先手动删除不想保留的消息再压缩",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "传一段自定义指令，让摘要器特别关注某方面",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "手动压缩无法指定重点，只能使用默认摘要",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-24",
+          "type": "single",
+          "stem": "自动压缩为什么要禁止在摘要里生成新的澄清问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "澄清问题会被当成用户的全局指令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "澄清问题无法被写进摘要的固定格式",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "澄清问题会让摘要超过输出上限",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "下一轮 Agent 会卡在问题上等用户回答",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H3-25", "type": "short" },
+        {
+          "id": "H3-26",
+          "type": "single",
+          "stem": "摘要任务为什么必须防止再次触发自身的压缩？",
+          "options": [
+            {
+              "key": "A",
+              "text": "摘要任务没有权限读取消息历史",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "摘要任务的输出不计入上下文窗口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "摘要任务只能在用户空闲时运行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "摘要也要调模型，再触发压缩会死循环",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H3-27",
+          "type": "single",
+          "stem": "Claude Code 的全量摘要与多数框架的做法有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Claude Code 把全部消息都送进摘要器重写，多数框架保留最近若干轮、只压前面的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Claude Code 保留最近若干轮、只压前面的，多数框架把全部消息都送进摘要器重写",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都保留最近若干轮，区别只在保留的轮数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都不做摘要，只删除最老的消息",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-28",
+          "type": "single",
+          "stem": "压缩时，哪些信息走摘要，哪些要原样恢复？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两类信息都原样恢复，不做任何摘要",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "状态信息走摘要，语义信息走附件原样恢复",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "语义信息走摘要，差一个字就接不上的状态信息走附件原样恢复",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两类信息都只走摘要，不做任何原样恢复",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-29",
+          "type": "single",
+          "stem": "Auto-Compact 之前的 microcompact 预处理做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先把用户消息全部删除，只保留工具调用结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先把占大头的工具调用结果清空、只留占位符，再送进摘要器",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "先把最近读过的文件全部重新加载一遍",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先把系统提示词压缩成一句话",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H3-30", "type": "short" },
+        { "id": "H3-31", "type": "short" },
+        {
+          "id": "H3-32",
+          "type": "single",
+          "stem": "翻公开源码时，为什么大多看不到 Context Collapse？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它已经被废弃，代码在很早的版本里就删除了",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它被合并进了 Snip，不再单独存在",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它还是内部灰度的实验特性，对外发布的版本会把这部分代码裁掉",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它由服务端实现，客户端本来就没有相关代码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-33",
+          "type": "single",
+          "stem": "CLAUDE.md 为什么不需要靠摘要器转述？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的内容很短，摘要器总能完整保留",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它在压缩时会被原样写进摘要的开头",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它只在会话第一轮有用，之后不再需要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它是永久存活的上下文，每一轮都会自动重新加载",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H3-34",
+          "type": "single",
+          "stem": "压缩之后，CLAUDE.md 是怎样被重新加载的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "压缩时清掉用户上下文缓存，下一轮发现缓存为空就从磁盘重新读取",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "压缩时把它写进附件，下一轮从附件里读取",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "压缩时把它复制进摘要，下一轮从摘要里读取",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "压缩时保留缓存不动，下一轮继续使用旧缓存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-35",
+          "type": "single",
+          "stem": "压缩之后，工具列表和权限设置怎样保持最新？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它们需要用户在压缩后手动重新配置",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "system prompt 不参与压缩，压缩后会重新构造",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它们被写进摘要，由摘要器负责更新",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它们在压缩时被冻结，直到会话结束都不再变化",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-36",
+          "type": "single",
+          "stem": "压缩时，后台子 Agent 任务的状态怎样保住？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写进摘要的用户消息一栏",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "压缩时直接丢弃",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "作为附件重新注入",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "由子 Agent 重新执行一遍",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-37",
+          "type": "single",
+          "stem": "摘要器为什么要禁用工具？",
+          "options": [
+            {
+              "key": "A",
+              "text": "摘要器使用的模型不支持工具调用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "做摘要只是生成文字，一旦调了工具这次摘要就废了",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "工具的结果无法写进摘要的固定格式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "工具调用会让摘要变得更准确，但成本太高",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H3-38", "type": "short" },
+        { "id": "H3-39", "type": "short" },
+        {
+          "id": "H3-40",
+          "type": "single",
+          "stem": "摘要里为什么要枚举而不是概括所有用户消息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户消息里包含工具结果，必须原样保留",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用户消息通常很长，概括会超过输出上限",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "枚举比概括消耗的 token 更少",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用户中途改的需求和新约束，丢一个就可能走偏",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H3-41",
+          "type": "single",
+          "stem": "“当前工作”这一项为什么要写得比已完成事项更细？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写得越细接续越流畅，写粗了 Agent 可能把上下文重新探索一遍",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "已完成事项会被自动删除，所以不需要写",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "当前工作会被展示给用户，所以要写得详细",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "写得越细，下一次压缩触发得越晚",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-42",
+          "type": "multiple",
+          "stem": "Claude Code 为什么用当前对话的同一个模型做摘要？",
+          "options": [
+            {
+              "key": "A",
+              "text": "小模型没有能力读取完整的消息历史",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "保证质量，便宜的小模型丢东西多",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "能复用主对话 system prompt 部分的 Prompt Cache",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "同一个模型生成的摘要不会被计入费用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-43",
+          "type": "fill",
+          "stem": "压缩后的对话被重写成四段，依次是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        { "id": "H3-44", "type": "short" },
+        { "id": "H3-45", "type": "short" },
+        { "id": "H3-46", "type": "short" },
+        {
+          "id": "H3-47",
+          "type": "single",
+          "stem": "压缩之后，旧消息还能原样找回吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，摘要可以随时还原成原始消息",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能，压缩前后的两套消息都会保留在对话里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "回不来，除非开启了 transcript 备份",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不能，即使开启 transcript 备份也无法回查",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H3-48",
+          "type": "single",
+          "stem": "接续提示怎样让模型明确自己在继续既有任务？",
+          "options": [
+            {
+              "key": "A",
+              "text": "摘要要求模型从第一步重新开始整个任务",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "摘要结尾要求模型先向用户确认想做什么",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "摘要里删除所有关于当前进度的描述",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "摘要开头说明本会话是从中断的对话延续过来的",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H3-49", "type": "short" },
+        {
+          "id": "H3-50",
+          "type": "single",
+          "stem": "摘要输出里的 analysis 块起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它是草稿区，让模型先想清楚再写，最终会被剥离，不进入压缩后的对话",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它是摘要的正文，会完整保留在压缩后的对话里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它保存最近读过的文件内容，作为附件注入",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它记录压缩前的 token 数，供下次触发判断使用",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H3-51", "type": "short" },
+        {
+          "id": "H3-52",
+          "type": "fill",
+          "stem": "原文总结的 Auto-Compact 三个核心设计是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "H3-53", "type": "short" },
+        { "id": "H3-54", "type": "short" }
+      ]
+    },
+    "H4": {
+      "status": "draft",
+      "questions": [
+        { "id": "H4-1", "type": "short" },
+        {
+          "id": "H4-2",
+          "type": "fill",
+          "stem": "代码 RAG 的四个步骤依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H4-3",
+          "type": "single",
+          "stem": "按文本长度切代码，为什么容易出问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "切片之后原文件会被自动删除",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "函数被从中间切开，片段没法单独使用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "代码文件太短，切不出足够多的片段",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "切出来的片段无法被转成向量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-4",
+          "type": "single",
+          "stem": "查找精确符号时，向量相似度检索有什么局限？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的本质是找相似的，不是找对的，会召回一堆名字相近的函数",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它每次只能返回一个结果，覆盖面太窄",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它只能检索注释，检索不到代码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它只能精确匹配，完全无法处理模糊的描述",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H4-5", "type": "short" },
+        {
+          "id": "H4-6",
+          "type": "single",
+          "stem": "向量索引的冷启动带来什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "索引会占满模型的上下文窗口",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "大代码库建索引要很久，用户得等着才能开始用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "索引只能在联网时使用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "索引建好之后每次查询都要重新建一遍",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-7",
+          "type": "single",
+          "stem": "黑盒召回为什么增加排查难度？",
+          "options": [
+            {
+              "key": "A",
+              "text": "召回结果每次都完全相同，无法对比",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "召回过程会修改原始代码文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "召回的片段总是空的，没有内容可供排查",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "答错时分不清是召回错了，还是召回对了但模型理解错了",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H4-8",
+          "type": "single",
+          "stem": "让模型迭代调用搜索工具，与一次 RAG 召回有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都只检索一次，区别只在返回的片段数量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "迭代搜索一次性召回、错了只能将错就错，RAG 每一步都能根据结果调整",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "RAG 一次性召回、错了只能将错就错，迭代搜索每一步都能根据结果调整",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都由工程师预先写死检索的关键字",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-9",
+          "type": "fill",
+          "stem": "检索三件套各管一件事：按文件名 pattern 找文件的是 ____，按内容关键字找代码的是 ____，按需读文件内容的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H4-10",
+          "type": "fill",
+          "stem": "原文说把高频搜索封装成专用工具有三层考虑：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "H4-11",
+          "type": "single",
+          "stem": "Grep 的底层 ripgrep 有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用向量相似度匹配，能理解代码的语义",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "默认会搜索 node_modules 这类目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 Rust 写成，多线程并行，并自动尊重 .gitignore",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要先给整个项目建好索引才能搜索",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-12",
+          "type": "single",
+          "stem": "Grep 的工具描述为什么用 ALWAYS 和 NEVER 这样强硬的措辞？",
+          "options": [
+            {
+              "key": "A",
+              "text": "强制模型走专用工具，不许用 Bash 调 grep 抄近路",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "要求模型每次搜索都同时使用三个工具",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "提醒模型每次搜索都必须先征求用户同意",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "禁止模型在任何情况下搜索代码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-13",
+          "type": "single",
+          "stem": "Grep 的默认输出模式是哪一种？",
+          "options": [
+            {
+              "key": "A",
+              "text": "content，返回匹配的具体行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "files_with_matches，只返回路径",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "三种模式的结果一起返回",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "count，返回匹配的数量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-14",
+          "type": "single",
+          "stem": "Grep 的工具描述对开放式、需要多轮迭代的搜索给了什么建议？",
+          "options": [
+            {
+              "key": "A",
+              "text": "改用 Read 逐个读文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "改用更宽泛的正则",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "改用 Bash 里的 grep",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "改用 Agent 工具",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H4-15", "type": "short" },
+        {
+          "id": "H4-16",
+          "type": "single",
+          "stem": "Glob 的结果为什么按修改时间倒序排列？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文件系统只能按修改时间返回结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这样可以保证结果永远不超过上限",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "修改时间越早的文件越重要，所以排在最前",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最近改过的大多与当前任务最相关，这是一个朴素的启发式",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H4-17",
+          "type": "single",
+          "stem": "Glob 的结果超过数量上限被截断后，模型应怎么办？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把上限调到无限大",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "改用 Read 读取整个目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "收紧 pattern 再搜一次",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "放弃搜索并询问用户",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-18",
+          "type": "single",
+          "stem": "Read 怎样帮助控制读取量？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自动把文件压缩成摘要再返回",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可以用 offset 和 limit 分段读取",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只允许读取小于固定大小的文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次都必须把整个文件完整读入",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H4-19", "type": "short" },
+        {
+          "id": "H4-20",
+          "type": "single",
+          "stem": "Read 怎样降低索引滞后的风险？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次都直接读磁盘上的最新内容，没有索引层",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只读取已经提交到 Git 的版本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把读过的内容永久缓存，不再读磁盘",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次读取前先重建一遍向量索引",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H4-21", "type": "short" },
+        {
+          "id": "H4-22",
+          "type": "single",
+          "stem": "Explore 子 Agent 被禁止做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不能编辑和写入文件，也不能再派子 Agent",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不能执行只读的 Bash 命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能使用 Grep 和 Glob 搜索",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不能读取任何文件内容",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-23",
+          "type": "single",
+          "stem": "开放式代码探索为什么适合交给独立子代理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "子 Agent 不消耗任何 token",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "子 Agent 使用的模型一定比主 Agent 更强",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "子 Agent 可以直接修改主 Agent 的代码",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "中间结果留在子 Agent 的独立上下文里，只把最终结论返回",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H4-24",
+          "type": "single",
+          "stem": "什么时候该派 Explore 子 Agent，而不是直接用三件套？",
+          "options": [
+            {
+              "key": "A",
+              "text": "目标明确、一两次搜索就能定位的时候",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "预期要查询的次数比较多、属于开放式探索的时候",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "任何搜索都应先派子 Agent",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只需要读取一个已知路径的文件的时候",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H4-25", "type": "short" },
+        { "id": "H4-26", "type": "short" },
+        {
+          "id": "H4-27",
+          "type": "multiple",
+          "stem": "原文认为哪些场景仍然适合 RAG？",
+          "options": [
+            {
+              "key": "A",
+              "text": "单项目里查找一个精确的函数名",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要读到刚修改的最新文件内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "纯语义的、描述性的模糊查询",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "巨型代码库加跨仓库检索",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "代码、文档和 Wiki 混合的知识库查询",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H4-28", "type": "short" },
+        { "id": "H4-29", "type": "short" },
+        {
+          "id": "H4-30",
+          "type": "single",
+          "stem": "“Claude Code 不采用 RAG”能否推导出“RAG 应被淘汰”？",
+          "options": [
+            {
+              "key": "A",
+              "text": "能，原文明确说 RAG 已经过时",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不能，因为 Claude Code 内部其实也在用 RAG",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能，工具是为场景服务的，RAG 仍有它的舞台",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "能，RAG 在任何场景下都不如 grep",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-31",
+          "type": "single",
+          "stem": "需要同时调研多个模块时，子 Agent 可以怎样派？",
+          "options": [
+            {
+              "key": "A",
+              "text": "并行派多个，各干一块，同时回来报告",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只能派一个，按顺序逐个模块调研",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不能派，只能由主 Agent 自己完成",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让一个子 Agent 再派出更多子 Agent",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-32",
+          "type": "single",
+          "stem": "Claude Code 的检索方案，本质上把检索的决策权交给了谁？",
+          "options": [
+            {
+              "key": "A",
+              "text": "工程师预先写好的规则",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "向量数据库",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "LLM 自己",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用户",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H4-33",
+          "type": "fill",
+          "stem": "Grep 的三种输出模式：返回匹配的具体行的是 ____，只返回文件路径的是 ____，返回匹配数量的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        }
+      ]
+    },
+    "H5": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "H5-1",
+          "type": "single",
+          "stem": "聊天时模型看起来“记得”前面的话，实际是怎么发生的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型每次只读最后一条消息，其余靠推测",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "客户端把历史消息又一起发了过去，模型本身是无状态的",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "模型在服务端为每个用户保存了一份专属的参数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型把上一轮的内容写进了自己的权重",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H5-2",
+          "type": "single",
+          "stem": "短期记忆和长期记忆分别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都保存在上下文窗口里，区别只在位置前后",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都保存在磁盘上，区别只在文件格式",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "长期记忆就是上下文窗口本身，短期记忆持久化到磁盘、能跨会话保留",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "短期记忆就是上下文窗口本身，长期记忆持久化到磁盘、能跨会话保留",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H5-3", "type": "short" },
+        { "id": "H5-4", "type": "short" },
+        {
+          "id": "H5-5",
+          "type": "single",
+          "stem": "记忆系统“重检索、轻写入”会带来什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对该不该存、存什么放任不管，结果是垃圾进、垃圾出",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "写入的内容会被自动加密，无法再读取",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "检索速度会越来越慢，直到无法返回结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "记忆只能写入一次，之后无法更新",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H5-6",
+          "type": "single",
+          "stem": "静态规则与动态记忆怎样分工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都按需检索，区别只在存放的目录",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "动态层是启动时全量加载的声明式指令，静态层是 Agent 学到后按需检索的偏好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都在启动时全量加载，区别只在由谁编写",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "静态层是启动时全量加载的声明式指令，动态层是 Agent 学到后按需检索的偏好",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H5-7",
+          "type": "fill",
+          "stem": "三个规则层级的作用域不同：只有管理员能改、承载公司级强制策略的是 ____，放在用户家目录、在哪个项目都生效的是 ____，放在项目里签入 git 让团队共享的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "H5-8", "type": "short" },
+        {
+          "id": "H5-9",
+          "type": "single",
+          "stem": "六个层级里的 Auto 和 Team 两层分别存什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Auto 存公司级强制策略，Team 存个人的全局偏好",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Auto 存自动写入的偏好，Team 存团队共享的偏好",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两层都存用户手写的项目规范",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Auto 存项目根目录的规则，Team 存本地调试的约定",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H5-10",
+          "type": "single",
+          "stem": "CLAUDE.md 的六个层级之间是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "互斥关系，每次会话只加载其中一层",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "覆盖关系，只有优先级最高的一层生效",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "叠加关系，启动时全部拼接进 system prompt",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "轮换关系，每一轮对话换一层加载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H5-11",
+          "type": "single",
+          "stem": "CLAUDE.md 的 @ 文件引用机制，背后还要防什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文件内容超过一行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "引用的文件是 Markdown 格式",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "多个项目共用同一份规范",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "循环引用和路径遍历",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H5-12", "type": "short" },
+        { "id": "H5-13", "type": "short" },
+        {
+          "id": "H5-14",
+          "type": "single",
+          "stem": "MEMORY.md 索引被截断时，系统会怎样告知模型？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把被截掉的部分写进下一轮的用户消息",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "什么都不说，模型看不出索引是否完整",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "主动追加一条警告，说明索引被截过、部分内容没有加载",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "直接报错并终止这次会话",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H5-15", "type": "short" },
+        {
+          "id": "H5-16",
+          "type": "fill",
+          "stem": "feedback 类记忆的正文必须包含三段：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "H5-17", "type": "short" },
+        { "id": "H5-18", "type": "short" },
+        {
+          "id": "H5-19",
+          "type": "single",
+          "stem": "记忆文件 frontmatter 里，哪个字段决定这条记忆能不能被检索到？",
+          "options": [
+            {
+              "key": "A",
+              "text": "type，它标明四种类型之一",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "description，它说明这条记忆是什么",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "paths，它限定生效的文件路径",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "name，它是这条记忆的标识",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H5-20", "type": "short" },
+        {
+          "id": "H5-21",
+          "type": "multiple",
+          "stem": "让主对话自己写记忆，有哪两个坑？",
+          "options": [
+            {
+              "key": "A",
+              "text": "主对话写入的记忆会在下一轮被自动删除",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每轮都要塞一段记偏好的指令，浪费 token",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "主对话没有写入记忆目录的权限",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型要分神判断记不记，回复质量打折",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H5-22",
+          "type": "single",
+          "stem": "extractMemories 在什么时机触发？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每轮 query loop 结束、给出最终回复之后",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每一次工具调用开始执行之前",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上下文快要满了、触发压缩的时候",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次会话启动、加载记忆索引的时候",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H5-23",
+          "type": "single",
+          "stem": "后台抽取代理怎样降低额外开销？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它从零启动一个新对话，重新加载全部提示词",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它把抽取任务交给用户手动完成",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它 fork 主对话，共享父对话的 prompt cache",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "它不调用模型，只用规则匹配关键词",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H5-24", "type": "short" },
+        { "id": "H5-25", "type": "short" },
+        {
+          "id": "H5-26",
+          "type": "single",
+          "stem": "选择记忆时，怎样减少扫描阶段的输入量？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只扫描每个记忆文件的头部信息",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只读取文件名，不读文件里的任何内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把所有记忆文件的全文都读进来再筛选",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "随机抽取其中几个文件完整读取",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H5-27", "type": "short" },
+        {
+          "id": "H5-28",
+          "type": "single",
+          "stem": "选择记忆时，为什么宁可少选也不选不确定的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次最多只允许选择一条记忆",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不确定的记忆会被自动删除",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "选得越多，小模型的调用费用越高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "错的记忆一旦进了上下文，整个回复都会被污染",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H5-29",
+          "type": "single",
+          "stem": "选择器为什么宁可用贵一点的 Sonnet，而不用更便宜的 Haiku？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Haiku 不支持按固定结构返回结果",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "记忆相关性判错的代价，远大于多花的那点钱",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "Haiku 无法读取记忆文件的头部信息",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Sonnet 的调用其实比 Haiku 更便宜",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H5-30",
+          "type": "single",
+          "stem": "alreadySurfaced 过滤做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "排除所有超过两天的记忆",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "排除从未被选中过的记忆，只保留老记忆",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "排除上一轮已经出现过的记忆，把名额留给新候选",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "排除所有与当前工具相关的记忆",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H5-31", "type": "short" },
+        {
+          "id": "H5-32",
+          "type": "single",
+          "stem": "CLAUDE.md 这套静态体系的根本局限是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "得人主动去写，它不会自己长出新内容",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它不能引用其他文件的内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它每次只能加载其中的一层",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它无法签入 git 给团队共享",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H5-33",
+          "type": "single",
+          "stem": "记忆内容为什么要用 system-reminder 标签包裹后再注入？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让记忆内容的优先级高于系统提示词",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让记忆内容不占用上下文窗口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让记忆内容对模型不可见，只给用户看",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "避免模型把它当成用户刚说的话，并提醒据此行动前先核实",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H5-34",
+          "type": "single",
+          "stem": "模型应当以什么姿态对待记忆内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "当作用户刚刚下达的最新指令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "当作历史快照，而不是现在的状态",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "当作无关信息，一律忽略",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "当作绝对正确的事实，直接据此行动",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H5-35", "type": "short" },
+        {
+          "id": "H5-36",
+          "type": "single",
+          "stem": "让小模型把检索当成选择题来挑，相比向量相似度有什么优势？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它给出的是可解释的判断，比调相似度阈值容易",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它的结果完全确定，每次都返回同样的文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它不需要任何候选清单就能找到记忆",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它在候选有几百万条时仍然最快",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H5-37", "type": "short" },
+        { "id": "H5-38", "type": "short" },
+        {
+          "id": "H5-39",
+          "type": "single",
+          "stem": "Claude Code 的自动记忆闭环用了什么、没用什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用滑动窗口保留最近若干轮，没有任何持久化",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用对话摘要定期压缩，没有类型划分",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用结构化文件加一个小模型当选择器，没有 embedding 和向量数据库",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用向量数据库加 embedding 召回，没有结构化文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H5-40",
+          "type": "fill",
+          "stem": "为应对召回过时记忆的风险，原文介绍的两道防线是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "H5-41", "type": "short" },
+        {
+          "id": "H5-42",
+          "type": "single",
+          "stem": "滑动窗口 Memory 的原理是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把每条对话转成向量存进数据库",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把记忆分成多层，由 Agent 自己搬运",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "定期用 LLM 把旧对话总结成摘要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把最近 N 轮对话原样保留，超过的就丢掉",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H5-43", "type": "short" },
+        { "id": "H5-44", "type": "short" },
+        { "id": "H5-45", "type": "short" },
+        { "id": "H5-46", "type": "short" },
+        {
+          "id": "H5-47",
+          "type": "fill",
+          "stem": "MemGPT（现在叫 Letta）一派把记忆分成三层：常驻上下文的是 ____，最近对话可召回的是 ____，远期归档的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "H5-48", "type": "short" }
+      ]
+    },
+    "H6": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "H6-1",
+          "type": "fill",
+          "stem": "原文说单个 Agent 干复杂任务有三个麻烦：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "H6-2",
+          "type": "fill",
+          "stem": "Multi-Agent 落地的三种形态：主 Agent 遇到子问题派 subagent、拿结果回来接着干的是 ____，几个 Agent 职责对等、靠共享状态或消息协作的是 ____，协调者自己不干活、只派活和合成的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "H6-3", "type": "short" },
+        {
+          "id": "H6-4",
+          "type": "single",
+          "stem": "Claude Code 的 Coordinator 模式对应哪种形态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "平级协作型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "主从型",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "父子型",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "父子型的缓存优化版",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-5",
+          "type": "single",
+          "stem": "工具隔离与上下文隔离分别管什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "上下文隔离管不给子 Agent 不该有的工具，工具隔离管不让它搅乱父的运行时状态",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "工具隔离管不给子 Agent 不该有的工具，上下文隔离管不让它搅乱父的运行时状态",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都只限制父 Agent，对子 Agent 没有约束",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者管的是同一件事，只需要实现其中一个",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H6-6", "type": "short" },
+        {
+          "id": "H6-7",
+          "type": "single",
+          "stem": "为什么要禁止子代理再派新的子代理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "否则子代理会抢走主 Agent 的对话权",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "否则子代理的结果无法返回给父",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "否则会层层嵌套没完没了，token 消耗飞涨",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "否则子代理无法读取父的文件缓存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-8",
+          "type": "single",
+          "stem": "为什么禁止子代理直接向用户提问？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用户是在跟主 Agent 说话，子 Agent 不该抢对话权",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用户的回答会被写进全局黑名单",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "子 Agent 没有读取用户消息的能力",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "子 Agent 提问会让缓存全部失效",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-9",
+          "type": "single",
+          "stem": "用户自定义的 Agent 为什么要比内置 Agent 多套一层工具黑名单？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的工具池默认是空的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它只能在后台运行，不能前台执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它使用的模型比内置 Agent 更弱",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它没有经过官方审核，多防一道更安全",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H6-10", "type": "short" },
+        { "id": "H6-11", "type": "short" },
+        {
+          "id": "H6-12",
+          "type": "single",
+          "stem": "默认的 subagent 与团队模式，在通信上有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都不传递任何消息",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "默认是子到父的单向通知，团队模式才升级成双向消息",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "默认是双向消息，团队模式降级成子到父的单向通知",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都是双向消息，区别只在消息的格式",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-13",
+          "type": "single",
+          "stem": "没开团队模式时，主 Agent 为什么不能给在跑的子 Agent 发消息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "主 Agent 在子 Agent 运行期间处于休眠状态",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "子 Agent 在运行期间会屏蔽所有外部输入",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "发消息需要用户每次手动确认",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "发消息的 SendMessage 工具没开团队模式时根本没有",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H6-14",
+          "type": "single",
+          "stem": "子任务的结果怎样回传给父 Agent？",
+          "options": [
+            {
+              "key": "A",
+              "text": "无论快慢，结果都直接写进父 Agent 的 system prompt 里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "很快跑完时放进父的消息队列，转入后台的完成后作为工具返回值交回",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "很快跑完时作为工具返回值交回，转入后台的完成后放进父的消息队列",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "无论快慢，结果都要由用户手动复制粘贴给父 Agent",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-15",
+          "type": "multiple",
+          "stem": "子任务的完成通知为什么用 XML 并伪装成用户消息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "XML 是纯文本，可以直接塞进对话历史",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "XML 消耗的 token 比其他格式少一半",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "伪装成用户消息后，天然复用 agentic loop 的处理逻辑",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "LLM 对 XML 非常友好，能自然解析出语义",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "用户消息不会计入上下文窗口",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H6-16", "type": "short" },
+        {
+          "id": "H6-17",
+          "type": "single",
+          "stem": "团队模式下，子 Agent 在什么时机读取父发来的消息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每一轮工具调用结束后，去看一眼自己的信箱",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "在每个工具执行到一半时随时中断读取",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只在启动时读取一次",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只在自己全部任务完成之后才读取",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-18",
+          "type": "single",
+          "stem": "给已经停止的子 Agent 发 SendMessage，会发生什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "消息被转发给用户，由用户决定是否处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "系统新建一个没有任何历史的子 Agent 来处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "消息被直接丢弃，并返回一个错误",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它被自动唤醒，恢复对话历史后带着新消息重新跑",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H6-19",
+          "type": "single",
+          "stem": "每派一个带独立 system prompt 的子代理，为什么会产生额外费用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "子代理的输出要按双倍价格计费",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "子代理会把父的对话历史复制成两份",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上万 token 的 system prompt 要重算",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "子代理必须改用更贵的模型来运行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-20",
+          "type": "single",
+          "stem": "Fork 怎样提高前缀缓存的命中？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让子 Agent 的请求前缀与父 Agent 字节级一致",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "让子 Agent 使用一份更短的专用 system prompt",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让子 Agent 不携带任何对话历史",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让子 Agent 把工具池的顺序重新排列",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-21",
+          "type": "single",
+          "stem": "prompt 缓存命中的条件是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "前缀语义相同即可，措辞可以不同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "前缀字节级完全相同，内容大致相同不行",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "前缀长度相同即可，内容可以不同",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只要使用同一个模型就能命中",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-22",
+          "type": "single",
+          "stem": "Fork 为什么直接使用父已经渲染好的系统提示词，而不重新生成？",
+          "options": [
+            {
+              "key": "A",
+              "text": "重新生成的提示词一定比原来更长",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "重新生成需要用户再次授权",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "重新生成可能和父差一个字符，缓存就没了",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "重新生成会清空父的对话历史",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H6-23", "type": "short" },
+        { "id": "H6-24", "type": "short" },
+        {
+          "id": "H6-25",
+          "type": "single",
+          "stem": "什么任务适合 Fork，什么任务适合定制的常规子代理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有任务都应使用定制子代理，Fork 只用于测试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要父的完整上下文、又不想污染父主循环的适合 Fork，有明确专业分工的适合定制子代理",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "所有任务都应使用 Fork，定制子代理已被弃用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "有明确专业分工的适合 Fork，需要父的完整上下文、又不想污染父主循环的适合定制子代理",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-26",
+          "type": "single",
+          "stem": "Fork 机制和 Coordinator 模式是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者互斥，职责重叠所以只留一个",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者毫无关系，可以随意叠加",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者必须同时开启才能工作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Fork 是 Coordinator 模式的一个子功能",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-27",
+          "type": "single",
+          "stem": "Fork 带来的成本下降，对 Agent 系统意味着什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "subagent 不再需要独立的上下文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有任务都可以不调用模型",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "主 Agent 不再需要 system prompt",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "subagent 可以调得更频繁，系统的能力边界随之扩大",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H6-28",
+          "type": "single",
+          "stem": "Coordinator 模式下，主 Agent 的角色有什么变化？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它不干实际工作，只派 worker、收结果、合成答案",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它退出循环，由 worker 直接面向用户",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它变成全能选手，读写代码和测试都自己干",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它只负责执行，由 worker 来做规划",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H6-29", "type": "short" },
+        {
+          "id": "H6-30",
+          "type": "single",
+          "stem": "协调者为什么必须亲自合成结果，而不能只转发？",
+          "options": [
+            {
+              "key": "A",
+              "text": "转发会让 worker 的上下文超出窗口",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "理解全局、做决策是它存在的意义",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "合成可以省掉验证这一步",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "worker 的结果无法直接读取",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H6-31", "type": "short" },
+        {
+          "id": "H6-32",
+          "type": "single",
+          "stem": "Coordinator 模式怎样才会开启？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只要用户输入一条斜杠命令即可",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "默认开启，不需要任何配置",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只要代码里存在功能开关就自动生效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "要同时满足编译时的功能开关和运行时的环境变量",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H6-33",
+          "type": "fill",
+          "stem": "Coordinator 模式的四个阶段依次是：____ → ____ → ____ → ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H6-34",
+          "type": "single",
+          "stem": "协调者的 prompt 对并行提出了什么要求？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只有验证阶段才允许并行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "并行会造成冲突，应尽量避免",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "独立的 worker 要尽量并发启动，能同时跑的不要串行",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每次只派一个 worker，等它结束再派下一个",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H6-35", "type": "short" },
+        {
+          "id": "H6-36",
+          "type": "single",
+          "stem": "什么情况下应让有背景知识的旧 worker 继续工作？",
+          "options": [
+            {
+              "key": "A",
+              "text": "任何时候都应优先复用旧 worker",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它刚刚写完的代码需要自己检查时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "需要用新鲜眼光做独立验证时",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "新任务与它现有的上下文高度相关时",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H6-37",
+          "type": "single",
+          "stem": "独立审查为什么更适合派新的 worker？",
+          "options": [
+            {
+              "key": "A",
+              "text": "旧 worker 完成任务后会被立刻销毁",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "新 worker 不消耗任何 token",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "验证需要新鲜眼光，不能让写代码的 worker 自己验自己",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "新 worker 的模型一定比旧 worker 更强",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-38",
+          "type": "single",
+          "stem": "为什么不给 worker 派生新 worker 的权力？",
+          "options": [
+            {
+              "key": "A",
+              "text": "否则 worker 的缓存无法命中",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "否则整个系统会变成没完没了的递归树",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "否则 worker 会抢走用户的对话权",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "否则协调者无法读取 worker 的结果",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-39",
+          "type": "single",
+          "stem": "INTERNAL_WORKER_TOOLS 这组常量的真实用途是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它是给 worker 用的黑名单，摘掉团队管理类工具",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它是 worker 必须使用的工具清单",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它是用户可以自定义的工具配置",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它是只有协调者才拥有的工具白名单",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-40",
+          "type": "single",
+          "stem": "agent-teams 模式和 Coordinator 模式是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它们是同一个功能的两个名字",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "开启 agent-teams 就自动开启 Coordinator",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它们是两个独立的开关，不能当成一回事",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "Coordinator 是 agent-teams 的旧称",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H6-41",
+          "type": "single",
+          "stem": "给每个 subagent 发独立 ID 并让深度加 1，有什么用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让每个 subagent 可以共享父的全局状态",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "让 subagent 的缓存与父保持字节一致",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "让 subagent 可以无限制地再派子代理",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "系统随时知道它在嵌套的第几层，超过阈值就报警或强制停止",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H6-42",
+          "type": "single",
+          "stem": "从三道工具准入门可以总结出什么权限设计原则？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按 Agent 类型做细粒度的权限控制",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "所有 Agent 统一使用同一份完整的工具池",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "工具越多越安全，应尽量全部开放",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "权限只在主 Agent 上检查，子 Agent 不需要",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H6-43", "type": "short" },
+        {
+          "id": "H6-44",
+          "type": "single",
+          "stem": "给子 Agent 一份全新的空上下文，为什么也不行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它的输出会直接显示给用户",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它收不到主线程广播的中止信号",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "它会自动继承父的全部写权限",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它无法调用任何工具",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H6-45", "type": "short" },
+        {
+          "id": "H6-46",
+          "type": "single",
+          "stem": "并发是团队模式的专利吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，默认形态配合自动转后台也能并发",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "是的，只有团队模式才能同时派多个 subagent",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，默认形态下父必须等子跑完才能继续",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，但并发必须依赖直接的函数调用和锁",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H6-47", "type": "short" },
+        {
+          "id": "H6-48",
+          "type": "fill",
+          "stem": "从 Coordinator 模式可以提炼出四条设计思想：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        { "id": "H6-49", "type": "short" },
+        { "id": "H6-50", "type": "short" }
+      ]
+    },
+    "H7": {
+      "status": "draft",
+      "questions": [
+        { "id": "H7-1", "type": "short" },
+        {
+          "id": "H7-2",
+          "type": "single",
+          "stem": "Skill 这种格式现在的开放状态是怎样的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只对付费的企业用户开放规范",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "已定名为 Agent Skills 并开源，想成为行业通用标准",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "仍是 Claude Code 私有的格式，不对外公开",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "已被弃用，改用新的二进制格式",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H7-3",
+          "type": "single",
+          "stem": "Skill 数量增加时，为什么不能把正文全部常驻？",
+          "options": [
+            {
+              "key": "A",
+              "text": "正文常驻后模型就无法再调用工具",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "正文常驻会让 skill 的名字无法显示",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "全文常驻会占掉大部分窗口，而多数手册当前根本用不上",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "正文只允许在会话结束时加载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H7-4",
+          "type": "fill",
+          "stem": "Skill 的三层渐进式披露：第一层常驻的是 ____，第二层在选中时才读进来的是 ____，第三层等模型真需要时才读取的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "H7-5", "type": "short" },
+        { "id": "H7-6", "type": "short" },
+        {
+          "id": "H7-7",
+          "type": "single",
+          "stem": "SkillTool 的工具说明怎样防止模型看到匹配的 Skill 却不调用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让用户在每次请求里手动指定要用哪个 skill",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "允许模型只在回复里提到 skill 而不调用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把所有 skill 的正文都提前加载进来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把调用匹配的 skill 写成阻塞性要求，必须先调用再生成其他回应",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H7-8",
+          "type": "single",
+          "stem": "清单预算不够时，内置 Skill 和第三方 Skill 的描述怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两类都直接从清单里移除",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "内置 skill 的描述永不截断，先受损的是第三方 skill",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两类都同等截断，没有任何区别",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "第三方 skill 的描述永不截断，先受损的是内置 skill",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H7-9",
+          "type": "single",
+          "stem": "选中 Skill 后，SKILL.md 的正文以什么形式进入会话？",
+          "options": [
+            {
+              "key": "A",
+              "text": "作为工具的参数说明附在工具定义里",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "改写系统提示词，把正文插到最前面",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "写进磁盘文件，由模型自己再去读取",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "包装成一条用户消息插进对话流，并标记为元消息",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H7-10",
+          "type": "single",
+          "stem": "用追加消息的方式注入 Skill 正文，对前缀缓存有什么好处？",
+          "options": [
+            {
+              "key": "A",
+              "text": "追加是纯增量，前面的缓存一点不受影响",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "追加之后系统提示词会自动变短",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "追加的消息不会被模型看到",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "追加会让全部缓存失效并重新计费",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H7-11", "type": "short" },
+        {
+          "id": "H7-12",
+          "type": "single",
+          "stem": "Skill 里固定的机械操作，为什么应写成脚本？",
+          "options": [
+            {
+              "key": "A",
+              "text": "脚本会在加载时自动把源码放进上下文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型无法理解正文里的任何步骤",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型现想有失败率，脚本每次跑出来都一样",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "脚本可以绕过工具的权限检查",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H7-13", "type": "short" },
+        {
+          "id": "H7-14",
+          "type": "single",
+          "stem": "纯靠模型阅读清单来选 Skill，软肋是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型升级之后匹配能力反而会下降",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只装几十个 skill 时就已经无法匹配",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "skill 多到几百个、描述被截得只剩名字时，匹配准确率会掉",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "需要额外维护一套向量数据库和意图分类器",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H7-15",
+          "type": "single",
+          "stem": "用户斜杠入口与模型工具入口怎样复用同一份 Skill？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者统一成一套 Command 体系，人手动敲和模型自主调用都能触发",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两个入口互斥，开启一个就必须关闭另一个",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "斜杠入口只能触发内置 skill，模型入口只能触发第三方 skill",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每个 skill 要分别写两份文件，各对应一个入口",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H7-16", "type": "short" },
+        {
+          "id": "H7-17",
+          "type": "single",
+          "stem": "disable-model-invocation 设为 true，适合哪类 Skill？",
+          "options": [
+            {
+              "key": "A",
+              "text": "纯背景知识，例如数据库表结构说明",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需要模型随时自主翻阅的参考资料",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "高频的只读查询，例如搜索文档",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "危险操作，例如一键发布上线，必须留给人来触发",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H7-18",
+          "type": "single",
+          "stem": "user-invocable 设为 false，适合哪类 Skill？",
+          "options": [
+            {
+              "key": "A",
+              "text": "希望出现在斜杠菜单最前面的 skill",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "纯背景知识类 skill，人敲它没有意义",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "危险操作类 skill，必须由人亲自触发",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要用户传入参数的命令类 skill",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H7-19", "type": "short" },
+        {
+          "id": "H7-20",
+          "type": "single",
+          "stem": "Skill 正文怎样把当前 Git 状态这类实时信息带进来？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 frontmatter 里写上要读取的文件路径",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用感叹号加反引号包住一段 shell 命令嵌在正文里",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把命令写进 description 里",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让用户每次调用前手动粘贴命令输出",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H7-21",
+          "type": "single",
+          "stem": "Skill 正文里内嵌命令的结果，在哪个阶段生成？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会话启动、加载清单的时候",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "skill 被安装的时候，一次生成永久使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "skill 被调用的那一刻，填好之后才交给模型",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "模型读完正文之后再决定是否执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H7-22",
+          "type": "single",
+          "stem": "远程 Skill 中的内嵌命令为什么不执行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "远程 skill 的正文无法被读取",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "远程 skill 不支持任何正文内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "远程服务器没有安装 shell",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "远程内容不可信，可能带恶意命令",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "H7-23", "type": "short" },
+        { "id": "H7-24", "type": "short" },
+        { "id": "H7-25", "type": "short" },
+        {
+          "id": "H7-26",
+          "type": "single",
+          "stem": "同名 Skill 冲突时按什么规则处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先到先得，后来的重名直接跳过",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "后来的覆盖先加载的",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两个都不加载并报错",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两个都加载并合并正文",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H7-27",
+          "type": "single",
+          "stem": "为什么说 Skill 没有给模型增加新能力？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它全是文本，模型能力没变，只多了一份说明书",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它是一个安装到模型里的二进制插件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它替换了模型原有的工具集",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它会更新模型的参数权重",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "H7-28",
+          "type": "fill",
+          "stem": "SKILL.md 的 frontmatter 里，限制这个 skill 能用哪些工具的字段是 ____，指定用哪个模型来执行的字段是 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "H7-29",
+          "type": "single",
+          "stem": "怎样写好 Skill 的 description？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只写一个名字，不写任何场景",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "重点写什么时候用，把字数花在触发场景上",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "尽量把所有功能都罗列一遍",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "写得越长越好，不必考虑截断",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "H7-30", "type": "short" },
+        {
+          "id": "H7-31",
+          "type": "single",
+          "stem": "把 Skill 放在项目级目录里，对团队协作有什么好处？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它不占用任何上下文预算",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它会覆盖所有人的用户级同名 skill",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它只对创建者本人生效，不会影响别人",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它跟着代码一起进 git，新同事克隆项目时自动就位",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "H7-32",
+          "type": "single",
+          "stem": "Skill 与普通提示词的区别在哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有任何区别，只是叫法不同",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在内容：skill 是代码，提示词是文字",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "提示词是知识本身，skill 是知识的加载策略",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "在作用对象：skill 给人看，提示词给模型看",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

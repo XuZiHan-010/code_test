@@ -1,0 +1,194 @@
+S2-1 [fill]
+??: [填空题·有序] 原文所述 MySQL 执行一条 SQL 查询语句的流程，依次经过的四个功能模块是：____ → ____ → ____ → ____。
+??: {"id": "S2-1", "type": "fill", "stem": "原文所述 MySQL 执行一条 SQL 查询语句的流程，依次经过的四个功能模块是：____ → ____ → ____ → ____。", "blankCount": 4, "blankOrder": "ordered"}
+??: 依次是连接器、查询缓存、解析 SQL（通过解析器做词法分析、语法分析并构建语法树）、执行 SQL。其中查询缓存这个模块在 MySQL 8.0 已删除。[原文§执行一条SQL请求的过程是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1sql%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S2-2 [single]
+??: 连接器在 MySQL 执行 SQL 的流程中负责什么？
+??: {"id": "S2-2", "type": "single", "stem": "原文所述，连接器在 MySQL 执行 SQL 的流程中负责下列哪一项？", "options": [{"key": "A", "text": "对 SQL 查询语句做词法分析和语法分析，构建语法树", "correct": false}, {"key": "B", "text": "建立连接、管理连接并校验用户身份", "correct": true}, {"key": "C", "text": "检查表或字段是否存在，并扩展 select * 中的 * 符号", "correct": false}, {"key": "D", "text": "基于查询成本的考虑，选择查询成本最小的执行计划", "correct": false}]}
+??: 连接器负责建立连接，管理连接、校验用户身份。[原文§执行一条SQL请求的过程是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1sql%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S2-3 [single]
+??: 查询缓存在 SQL 执行流程中起什么作用？MySQL 8.0 里还有这个模块吗？
+??: {"id": "S2-3", "type": "single", "stem": "关于 MySQL 执行流程中的查询缓存，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "命中后仍要继续解析 SQL，未命中才返回结果；8.0 保留该模块", "correct": false}, {"key": "B", "text": "它缓存的是数据页和索引页，由后台线程把脏页刷回磁盘", "correct": false}, {"key": "C", "text": "命中就直接返回结果，未命中则报错；8.0 起新增了该模块", "correct": false}, {"key": "D", "text": "命中就直接返回结果，未命中继续往下执行；8.0 已删除该模块", "correct": true}]}
+??: 查询语句如果命中查询缓存则直接返回，否则继续往下执行；MySQL 8.0 已删除该模块。[原文§执行一条SQL请求的过程是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1sql%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S2-4 [single]
+??: 解析器在 SQL 执行流程中做了什么？
+??: {"id": "S2-4", "type": "single", "stem": "解析器对 SQL 查询语句所做的工作是下列哪一项？", "options": [{"key": "A", "text": "做词法分析、语法分析并构建语法树，方便后续模块读取表名、字段、语句类型", "correct": true}, {"key": "B", "text": "检查表或字段是否存在，并把 select * 中的 * 符号扩展为所有列", "correct": false}, {"key": "C", "text": "基于查询成本的考虑，选择查询成本最小的执行计划，再交给存储引擎", "correct": false}, {"key": "D", "text": "建立连接、管理连接，并在连接建立时校验用户身份是否合法", "correct": false}]}
+??: 解析器对 SQL 查询语句进行词法分析、语法分析，然后构建语法树，方便后续模块读取表名、字段、语句类型。[原文§执行一条SQL请求的过程是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1sql%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S2-5 [fill]
+??: [填空题·有序] 原文所述，MySQL 执行 SQL 共有三个阶段，依次是：____ → ____ → ____。
+??: {"id": "S2-5", "type": "fill", "stem": "原文所述，MySQL 执行 SQL 共有三个阶段，依次是：____ → ____ → ____。", "blankCount": 3, "blankOrder": "ordered"}
+??: 依次是预处理阶段、优化阶段、执行阶段。[原文§执行一条SQL请求的过程是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1sql%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S2-6 [single]
+??: 执行 SQL 的预处理阶段做什么？
+??: {"id": "S2-6", "type": "single", "stem": "原文所述，执行 SQL 的预处理阶段会做下列哪一项？", "options": [{"key": "A", "text": "基于查询成本的考虑，选择查询成本最小的执行计划", "correct": false}, {"key": "B", "text": "根据执行计划从存储引擎读取记录并返回给客户端", "correct": false}, {"key": "C", "text": "检查表或字段是否存在，并把 select * 中的 * 扩展为表上的所有列", "correct": true}, {"key": "D", "text": "对查询语句做词法分析和语法分析，构建语法树", "correct": false}]}
+??: 预处理阶段检查表或字段是否存在，并把 select * 中的 * 符号扩展为表上的所有列。[原文§执行一条SQL请求的过程是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1sql%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S2-7 [short]
+??: 执行 SQL 的优化阶段和执行阶段分别做什么？
+??: {"id": "S2-7", "type": "short"}
+??: 优化阶段基于查询成本的考虑，选择查询成本最小的执行计划；执行阶段根据执行计划执行 SQL 查询语句，从存储引擎读取记录，返回给客户端。[原文§执行一条SQL请求的过程是什么？](https://xiaolincoding.com/interview/mysql.html#%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1sql%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88)
+
+S2-8 [multiple]
+??: InnoDB 引擎有哪些特性？适用于什么场景？
+??: {"id": "S2-8", "type": "multiple", "stem": "原文介绍的 MySQL 默认存储引擎 InnoDB，具备下列哪些特性？", "options": [{"key": "A", "text": "支持 ACID 事务", "correct": true}, {"key": "B", "text": "使用行级锁", "correct": true}, {"key": "C", "text": "支持外键约束", "correct": true}, {"key": "D", "text": "数据存储在内存中，服务器重启或崩溃时数据会丢失", "correct": false}, {"key": "E", "text": "数据和索引分开保存，使用表级锁", "correct": false}]}
+??: InnoDB 是 MySQL 的默认存储引擎，具有 ACID 事务支持、行级锁、外键约束等特性，适用于高并发的读写操作，数据完整性和并发控制较好。[原文§讲一讲mysql的引擎吧，你有什么了解？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E4%B8%80%E8%AE%B2mysql%E7%9A%84%E5%BC%95%E6%93%8E%E5%90%A7-%E4%BD%A0%E6%9C%89%E4%BB%80%E4%B9%88%E4%BA%86%E8%A7%A3)
+
+S2-9 [multiple]
+??: MyISAM 引擎有哪些特点？
+??: {"id": "S2-9", "type": "multiple", "stem": "原文介绍的 MyISAM 存储引擎，具备下列哪些特点？", "options": [{"key": "A", "text": "数据和索引分开保存", "correct": true}, {"key": "B", "text": "使用表级锁", "correct": true}, {"key": "C", "text": "不支持事务和外键", "correct": true}, {"key": "D", "text": "支持 ACID 事务和行级锁", "correct": false}, {"key": "E", "text": "将数据存储在内存中，服务器重启后数据会丢失", "correct": false}]}
+??: MyISAM 是较早版本中常用的存储引擎，数据和索引分开保存，使用表级锁，不支持事务和外键。[原文§讲一讲mysql的引擎吧，你有什么了解？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E4%B8%80%E8%AE%B2mysql%E7%9A%84%E5%BC%95%E6%93%8E%E5%90%A7-%E4%BD%A0%E6%9C%89%E4%BB%80%E4%B9%88%E4%BA%86%E8%A7%A3)
+
+S2-10 [single]
+??: 原文怎样看待 MyISAM 的适用场景？读多的业务是否就一定适合 MyISAM？
+??: {"id": "S2-10", "type": "single", "stem": "关于 MyISAM 的适用场景，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "在部分只读场景有优势，但读多的业务不一定适合，还要考虑并发写入和故障恢复需求", "correct": true}, {"key": "B", "text": "只要业务读多就一定适合，不需要再考虑并发写入和故障恢复需求", "correct": false}, {"key": "C", "text": "适用于高并发的读写操作，数据完整性和并发控制都比较好", "correct": false}, {"key": "D", "text": "适用于对性能要求较高的读操作，因为数据全部存储在内存中", "correct": false}]}
+??: MyISAM 在部分只读场景有优势，但不能简单认为读多的业务就一定适合 MyISAM，实际还要考虑并发写入和故障恢复需求。[原文§讲一讲mysql的引擎吧，你有什么了解？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E4%B8%80%E8%AE%B2mysql%E7%9A%84%E5%BC%95%E6%93%8E%E5%90%A7-%E4%BD%A0%E6%9C%89%E4%BB%80%E4%B9%88%E4%BA%86%E8%A7%A3)
+
+S2-11 [single]
+??: Memory 引擎有什么特点？
+??: {"id": "S2-11", "type": "single", "stem": "关于 Memory 存储引擎，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "数据存储在内存中，支持事务和行级锁，崩溃后可以通过日志恢复", "correct": false}, {"key": "B", "text": "数据和索引分开保存，使用表级锁，不支持事务和外键", "correct": false}, {"key": "C", "text": "支持 ACID 事务、行级锁和外键约束，适用于高并发的读写", "correct": false}, {"key": "D", "text": "数据存储在内存中，适合性能要求高的读操作，但重启或崩溃时数据会丢失", "correct": true}]}
+??: Memory 引擎将数据存储在内存中，适用于对性能要求较高的读操作，但在服务器重启或崩溃时数据会丢失；它不支持事务、行级锁和外键约束。[原文§讲一讲mysql的引擎吧，你有什么了解？](https://xiaolincoding.com/interview/mysql.html#%E8%AE%B2%E4%B8%80%E8%AE%B2mysql%E7%9A%84%E5%BC%95%E6%93%8E%E5%90%A7-%E4%BD%A0%E6%9C%89%E4%BB%80%E4%B9%88%E4%BA%86%E8%A7%A3)
+
+S2-12 [fill]
+??: [填空题·无序] 原文所述，InnoDB 在三个方面具有优势，因此被 MySQL 选为默认存储引擎，这三个方面是：____、____、____。
+??: {"id": "S2-12", "type": "fill", "stem": "原文所述，InnoDB 在三个方面具有优势，因此被 MySQL 选为默认存储引擎，这三个方面是：____、____、____。", "blankCount": 3, "blankOrder": "unordered"}
+??: 事务支持、并发性能、崩溃恢复。[原文§MySQL为什么InnoDB是默认引擎？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BA%E4%BB%80%E4%B9%88innodb%E6%98%AF%E9%BB%98%E8%AE%A4%E5%BC%95%E6%93%8E)
+
+S2-13 [fill]
+??: [填空题·有序] 原文所述，InnoDB 的事务支持涉及 ACID 四个属性，依次是：____、____、____、____。
+??: {"id": "S2-13", "type": "fill", "stem": "原文所述，InnoDB 的事务支持涉及 ACID 四个属性，依次是：____、____、____、____。", "blankCount": 4, "blankOrder": "ordered"}
+??: ACID 依次是原子性、一致性、隔离性、持久性；InnoDB 提供了对事务的支持，MyISAM 存储引擎不支持事务。[原文§MySQL为什么InnoDB是默认引擎？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BA%E4%BB%80%E4%B9%88innodb%E6%98%AF%E9%BB%98%E8%AE%A4%E5%BC%95%E6%93%8E)
+
+S2-14 [single]
+??: 为什么说 InnoDB 的并发性能比 MyISAM 好？
+??: {"id": "S2-14", "type": "single", "stem": "原文如何从并发性能的角度说明 InnoDB 优于 MyISAM？", "options": [{"key": "A", "text": "InnoDB 采用表级锁定机制，MyISAM 只支持锁粒度更小的行锁", "correct": false}, {"key": "B", "text": "InnoDB 通过 redo log 日志实现并发控制，MyISAM 没有日志", "correct": false}, {"key": "C", "text": "InnoDB 采用行级锁定机制，MyISAM 只支持锁粒度更大的表锁", "correct": true}, {"key": "D", "text": "InnoDB 把数据全部存储在内存中，因此读写时无需加锁", "correct": false}]}
+??: InnoDB 引擎采用行级锁定的机制，可以提供更好的并发性能；MyISAM 存储引擎只支持表锁，锁的粒度比较大。[原文§MySQL为什么InnoDB是默认引擎？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BA%E4%BB%80%E4%B9%88innodb%E6%98%AF%E9%BB%98%E8%AE%A4%E5%BC%95%E6%93%8E)
+
+S2-15 [single]
+??: InnoDB 怎样实现崩溃恢复？MyISAM 呢？
+??: {"id": "S2-15", "type": "single", "stem": "原文如何说明 InnoDB 的崩溃恢复能力？", "options": [{"key": "A", "text": "通过查询缓存实现，断电后从缓存中恢复数据，保证持久性和一致性", "correct": false}, {"key": "B", "text": "通过行级锁实现，断电后重新加锁即可恢复数据，保证持久性和一致性", "correct": false}, {"key": "C", "text": "InnoDB 与 MyISAM 都通过 redo log 日志实现崩溃恢复，保证持久性", "correct": false}, {"key": "D", "text": "通过 redo log 日志实现，断电等异常后可借助日志文件恢复，保证持久性和一致性", "correct": true}]}
+??: InnoDB 通过 redo log 日志实现了崩溃恢复，在数据库发生断电等异常情况时，可以通过日志文件进行恢复，保证数据的持久性和一致性；MyISAM 不支持崩溃恢复。[原文§MySQL为什么InnoDB是默认引擎？](https://xiaolincoding.com/interview/mysql.html#mysql%E4%B8%BA%E4%BB%80%E4%B9%88innodb%E6%98%AF%E9%BB%98%E8%AE%A4%E5%BC%95%E6%93%8E)
+
+S2-16 [single]
+??: 原文认为 MySQL 把默认存储引擎从 MyISAM 换成 InnoDB 的重要原因之一是什么？
+??: {"id": "S2-16", "type": "single", "stem": "原文认为 MySQL 将默认存储引擎从 MyISAM 变成 InnoDB 的重要原因之一是什么？", "options": [{"key": "A", "text": "InnoDB 使用表级锁，并发访问不会受到限制", "correct": false}, {"key": "B", "text": "InnoDB 支持事务，而 MyISAM 不支持事务", "correct": true}, {"key": "C", "text": "InnoDB 保存了整张表的行数，count 查询更快", "correct": false}, {"key": "D", "text": "InnoDB 的索引与数据分开保存，主键索引更小", "correct": false}]}
+??: InnoDB 支持事务，MyISAM 不支持事务，这是 MySQL 将默认存储引擎从 MyISAM 变成 InnoDB 的重要原因之一。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-17 [single]
+??: InnoDB 聚簇索引的叶子节点保存什么？
+??: {"id": "S2-17", "type": "single", "stem": "InnoDB 聚簇索引的叶子节点保存的是下列哪一项？", "options": [{"key": "A", "text": "行数据", "correct": true}, {"key": "B", "text": "数据记录的位置", "correct": false}, {"key": "C", "text": "索引列和主键值", "correct": false}, {"key": "D", "text": "表结构定义", "correct": false}]}
+??: InnoDB 使用聚簇索引组织数据，聚簇索引的叶子节点保存行数据。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-18 [single]
+??: InnoDB 表没有显式主键时怎样组织数据？
+??: {"id": "S2-18", "type": "single", "stem": "InnoDB 表没有显式主键时，原文说它怎样组织数据？", "options": [{"key": "A", "text": "改为由辅助索引保存行数据，不再使用聚簇索引", "correct": false}, {"key": "B", "text": "退化为 MyISAM 的方式，把数据与索引分开保存", "correct": false}, {"key": "C", "text": "选择合适的唯一索引或生成隐藏行 ID 来组织数据", "correct": true}, {"key": "D", "text": "要求必须先显式指定主键，否则无法组织数据", "correct": false}]}
+??: 即使没有显式主键，InnoDB 也会选择合适的唯一索引或生成隐藏行 ID 来组织数据。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-19 [single]
+??: InnoDB 的辅助索引保存什么？
+??: {"id": "S2-19", "type": "single", "stem": "InnoDB 辅助索引中保存的是下列哪一项？", "options": [{"key": "A", "text": "完整的行数据", "correct": false}, {"key": "B", "text": "数据记录的位置", "correct": false}, {"key": "C", "text": "表的元数据信息", "correct": false}, {"key": "D", "text": "索引列和主键值", "correct": true}]}
+??: InnoDB 的辅助索引保存索引列和主键值。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-20 [single]
+??: InnoDB 什么情况下需要回表？覆盖索引查询需要回表吗？
+??: {"id": "S2-20", "type": "single", "stem": "关于 InnoDB 辅助索引的回表，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "只要用辅助索引查询就一定要回表，覆盖索引查询也不例外", "correct": false}, {"key": "B", "text": "只有用主键索引查询时才需要回表，辅助索引查询从不回表", "correct": false}, {"key": "C", "text": "只有需要读取索引中没有的字段时才回表，覆盖索引查询不需要为此回表", "correct": true}, {"key": "D", "text": "回表是通过记录位置访问数据文件的过程，InnoDB 没有回表", "correct": false}]}
+??: 辅助索引保存索引列和主键值，需要读取索引中没有的字段时才会回表；覆盖索引查询不需要为了获取这些字段而回表。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-21 [single]
+??: 为什么 InnoDB 的主键不应该过大？
+??: {"id": "S2-21", "type": "single", "stem": "原文为什么说 InnoDB 的主键不应该过大？", "options": [{"key": "A", "text": "主键太大会使聚簇索引的叶子节点无法保存行数据", "correct": false}, {"key": "B", "text": "主键太大会使 InnoDB 的锁粒度退化为表级锁", "correct": false}, {"key": "C", "text": "主键太大会使覆盖索引查询也必须回表读取字段", "correct": false}, {"key": "D", "text": "辅助索引保存主键值，主键太大，其他索引也都会很大", "correct": true}]}
+??: 因为辅助索引保存主键值，主键太大，其他索引也都会很大，所以主键不应该过大。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-22 [single]
+??: MyISAM 的索引和数据怎样保存？怎样通过索引访问数据？
+??: {"id": "S2-22", "type": "single", "stem": "关于 MyISAM 的索引，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "索引的叶子节点直接保存行数据，辅助索引保存主键值", "correct": false}, {"key": "B", "text": "索引与数据文件分离，索引保存数据记录的位置，主键索引和辅助索引都通过该位置访问数据", "correct": true}, {"key": "C", "text": "只有主键索引保存数据记录的位置，辅助索引保存主键值", "correct": false}, {"key": "D", "text": "索引与数据保存在同一个文件里，叶子节点保存行数据", "correct": false}]}
+??: MyISAM 的数据文件是分离的，索引保存的是数据记录的位置，主键索引和辅助索引都通过这个位置访问数据。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-23 [fill]
+??: [填空题·有序] InnoDB 最小的锁粒度是____，MyISAM 最小的锁粒度是____。
+??: {"id": "S2-23", "type": "fill", "stem": "InnoDB 最小的锁粒度是____，MyISAM 最小的锁粒度是____。", "blankCount": 2, "blankOrder": "ordered"}
+??: InnoDB 最小的锁粒度是行锁，MyISAM 最小的锁粒度是表锁。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-24 [single]
+??: MyISAM 执行一个更新语句会怎样？为什么说它并发访问受限？
+??: {"id": "S2-24", "type": "single", "stem": "原文如何说明 MyISAM 的并发访问受限？", "options": [{"key": "A", "text": "一个更新语句会锁住整张表，导致其他查询和更新都被阻塞", "correct": true}, {"key": "B", "text": "一个更新语句只锁住被更新的行，其他行的查询和更新不受影响", "correct": false}, {"key": "C", "text": "一个更新语句会等待脏页全部刷盘，之后才允许其他查询", "correct": false}, {"key": "D", "text": "一个更新语句只阻塞其他更新，其他查询不受任何影响", "correct": false}]}
+??: MyISAM 的最小锁粒度是表锁，一个更新语句会锁住整张表，导致其他查询和更新都会被阻塞，因此并发访问受限。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-25 [single]
+??: InnoDB 执行无 WHERE 的 COUNT(*) 为什么通常需要扫描索引？
+??: {"id": "S2-25", "type": "single", "stem": "原文如何说明 InnoDB 执行无 WHERE 的 COUNT(*)？", "options": [{"key": "A", "text": "直接读取表中保存的总行数，不需要扫描索引", "correct": false}, {"key": "B", "text": "依赖查询缓存保存的总行数，命中后即可直接返回", "correct": false}, {"key": "C", "text": "必须先给整张表加表锁，再逐行统计所有记录", "correct": false}, {"key": "D", "text": "不保存所有事务都能直接使用的精确总行数，通常要扫描索引并统计当前事务可见的记录", "correct": true}]}
+??: InnoDB 不保存所有事务都能直接使用的精确总行数，执行无 WHERE 的 COUNT(*) 通常需要扫描索引，统计当前事务可见的记录。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-26 [single]
+??: MyISAM 的 count 为什么快？加了 WHERE 条件后还能直接返回吗？
+??: {"id": "S2-26", "type": "single", "stem": "关于 MyISAM 的 COUNT，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "加了 WHERE 条件后，仍然可以直接读取保存的总行数返回结果", "correct": false}, {"key": "B", "text": "保存了整张表的行数，简单的无 WHERE 计数可直接读取，加 WHERE 后不能只靠它", "correct": true}, {"key": "C", "text": "不保存总行数，无 WHERE 的计数同样需要扫描索引来统计", "correct": false}, {"key": "D", "text": "保存的总行数只有在事务内才能直接使用，事务外不能使用", "correct": false}]}
+??: MyISAM 保存了整张表的行数，简单的无 WHERE 计数可以直接读取；加了 WHERE 条件后，也不能只靠这个总行数返回结果。[原文§说一下mysql的innodb与MyISAM的区别？](https://xiaolincoding.com/interview/mysql.html#%E8%AF%B4%E4%B8%80%E4%B8%8Bmysql%E7%9A%84innodb%E4%B8%8Emyisam%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+S2-27 [fill]
+??: [填空题·有序] 原文提到，MySQL 数据目录的实际位置可以通过 SHOW VARIABLES LIKE '____' 查看，引号里应填的变量名是什么？
+??: {"id": "S2-27", "type": "fill", "stem": "原文提到，MySQL 数据目录的实际位置可以通过 SHOW VARIABLES LIKE '____' 查看，引号里应填的变量名是什么？", "blankCount": 1, "blankOrder": "ordered"}
+??: 可以通过 SHOW VARIABLES LIKE 'datadir' 查看数据目录的实际位置；每个数据库通常有对应的目录，用来保存该数据库的表文件。[原文§数据管理里，数据文件大体分成哪几种数据文件？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E9%87%8C-%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E5%A4%A7%E4%BD%93%E5%88%86%E6%88%90%E5%93%AA%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6)
+
+S2-28 [fill]
+??: [填空题·有序] 以 MySQL 5.7、InnoDB 独立表空间为例，原文中 my_test 库的 t_order 表在数据库目录下对应三个文件：保存数据库默认字符集和字符校验规则的是____，保存表结构的是____，保存表数据的是____。
+??: {"id": "S2-28", "type": "fill", "stem": "以 MySQL 5.7、InnoDB 独立表空间为例，原文中 my_test 库的 t_order 表在数据库目录下对应三个文件：保存数据库默认字符集和字符校验规则的是____，保存表结构的是____，保存表数据的是____。", "blankCount": 3, "blankOrder": "ordered"}
+??: 三个文件依次是 db.opt（存储当前数据库的默认字符集和字符校验规则）、t_order.frm（保存表结构定义等表的元数据，即 .frm 文件）、t_order.ibd（保存表数据，即 .ibd 文件）。[原文§数据管理里，数据文件大体分成哪几种数据文件？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E9%87%8C-%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E5%A4%A7%E4%BD%93%E5%88%86%E6%88%90%E5%93%AA%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6)
+
+S2-29 [fill]
+??: [填空题·有序] InnoDB 的表数据可以存放在共享表空间文件中，文件名是____，也可以存放在独占表空间文件中，文件名的形式是____。
+??: {"id": "S2-29", "type": "fill", "stem": "InnoDB 的表数据可以存放在共享表空间文件中，文件名是____，也可以存放在独占表空间文件中，文件名的形式是____。", "blankCount": 2, "blankOrder": "ordered"}
+??: 共享表空间文件名是 ibdata1，独占表空间文件名是“表名字.ibd”。[原文§数据管理里，数据文件大体分成哪几种数据文件？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E9%87%8C-%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E5%A4%A7%E4%BD%93%E5%88%86%E6%88%90%E5%93%AA%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6)
+
+S2-30 [fill]
+??: [填空题·有序] 控制 InnoDB 表数据存放在共享表空间还是独占表空间的参数是____。
+??: {"id": "S2-30", "type": "fill", "stem": "控制 InnoDB 表数据存放在共享表空间还是独占表空间的参数是____。", "blankCount": 1, "blankOrder": "ordered"}
+??: 由参数 innodb_file_per_table 控制。[原文§数据管理里，数据文件大体分成哪几种数据文件？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E9%87%8C-%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E5%A4%A7%E4%BD%93%E5%88%86%E6%88%90%E5%93%AA%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6)
+
+S2-31 [single]
+??: innodb_file_per_table 设为 1 时有什么效果？默认值是多少？新建的表一定使用独立 .ibd 吗？
+??: {"id": "S2-31", "type": "single", "stem": "关于参数 innodb_file_per_table，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "设为 1 时数据和索引存放在共享表空间 ibdata1，5.6.6 起默认值为 0", "correct": false}, {"key": "B", "text": "5.6.6 起默认值为 1，因此包括已有表在内的所有表都使用独立 .ibd 文件", "correct": false}, {"key": "C", "text": "设为 1 时数据和索引单独存储在独占表空间，5.6.6 起默认值为 1，但已有表不一定如此", "correct": true}, {"key": "D", "text": "设为 1 时只保存表结构，表数据仍全部存放在共享表空间 ibdata1 中", "correct": false}]}
+??: 若设置 innodb_file_per_table 为 1，会将存储的数据、索引等信息单独存储在一个独占表空间，从 MySQL 5.6.6 版本开始它的默认值就是 1；默认情况下新建表会使用独立的 .ibd 文件，但已有表或显式使用其他表空间的表不一定如此。[原文§数据管理里，数据文件大体分成哪几种数据文件？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E9%87%8C-%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E5%A4%A7%E4%BD%93%E5%88%86%E6%88%90%E5%93%AA%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6)
+
+S2-32 [single]
+??: MySQL 8.0 的数据文件和 5.7 有什么不同？
+??: {"id": "S2-32", "type": "single", "stem": "原文如何说明 MySQL 8.0 与 5.7 在数据文件上的差异？", "options": [{"key": "A", "text": "8.0 取消了 .ibd 文件，表数据和索引改存事务型数据字典", "correct": false}, {"key": "B", "text": "8.0 保留 .frm 文件保存表结构，另用事务型数据字典保存表数据", "correct": false}, {"key": "C", "text": "8.0 的文件布局与 5.7 完全相同，5.7 的文件布局可以直接套用", "correct": false}, {"key": "D", "text": "8.0 取消了 .frm 文件，表结构等元数据改存事务型数据字典，独立表空间的 .ibd 仍保存表数据和索引", "correct": true}]}
+??: MySQL 8.0 已经取消了 .frm 文件，表结构等元数据改为保存在事务型数据字典中；独立表空间的 .ibd 文件仍然保存表数据和索引，所以不能把 5.7 的文件布局直接套到 8.0 上。[原文§数据管理里，数据文件大体分成哪几种数据文件？](https://xiaolincoding.com/interview/mysql.html#%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E9%87%8C-%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E5%A4%A7%E4%BD%93%E5%88%86%E6%88%90%E5%93%AA%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6)
+
+S2-33 [single]
+??: Buffer Pool 是什么，主要缓存什么？
+??: {"id": "S2-33", "type": "single", "stem": "关于 InnoDB 的 Buffer Pool，下列说法符合原文的是哪一项？", "options": [{"key": "A", "text": "它是 MySQL 的查询结果缓存，主要缓存 SQL 的执行结果", "correct": false}, {"key": "B", "text": "它是 InnoDB 的内存缓冲区，主要缓存数据页和索引页", "correct": true}, {"key": "C", "text": "它是磁盘上的独占表空间文件，主要保存表数据和索引", "correct": false}, {"key": "D", "text": "它是连接管理模块，负责建立连接和校验用户身份", "correct": false}]}
+??: Buffer Pool 是 InnoDB 的内存缓冲区，主要缓存数据页和索引页，可以把它理解成磁盘数据在内存里的“工作区”。[原文§Buffer Pool 是什么？有什么作用？](https://xiaolincoding.com/interview/mysql.html#buffer-pool-%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S2-34 [single]
+??: 查询时 InnoDB 怎样利用 Buffer Pool 读取数据？
+??: {"id": "S2-34", "type": "single", "stem": "查询时，InnoDB 怎样利用 Buffer Pool 读取需要的页？", "options": [{"key": "A", "text": "先看页是否已在 Buffer Pool 中，命中就直接读取，没命中才从磁盘加载", "correct": true}, {"key": "B", "text": "总是先从磁盘读取，再把页复制进 Buffer Pool", "correct": false}, {"key": "C", "text": "没命中时直接返回空结果，不会再去磁盘加载", "correct": false}, {"key": "D", "text": "先由后台线程把脏页刷回磁盘，再读取需要的页", "correct": false}]}
+??: 查询时先看需要的页是否已经在 Buffer Pool 中，命中就直接读取；没命中才从磁盘加载。[原文§Buffer Pool 是什么？有什么作用？](https://xiaolincoding.com/interview/mysql.html#buffer-pool-%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S2-35 [fill]
+??: [填空题·有序] 更新时，InnoDB 通常先修改 Buffer Pool 中的页，修改后的页叫____，再由____择机刷回磁盘。
+??: {"id": "S2-35", "type": "fill", "stem": "更新时，InnoDB 通常先修改 Buffer Pool 中的页，修改后的页叫____，再由____择机刷回磁盘。", "blankCount": 2, "blankOrder": "ordered"}
+??: 修改后的页叫脏页，再由后台线程择机刷回磁盘。[原文§Buffer Pool 是什么？有什么作用？](https://xiaolincoding.com/interview/mysql.html#buffer-pool-%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S2-36 [single]
+??: 事务提交时，为什么不必等所有脏页刷盘？
+??: {"id": "S2-36", "type": "single", "stem": "事务提交时，原文如何说明脏页是否必须先刷盘？", "options": [{"key": "A", "text": "无论 redo log 是否持久化，提交时都必须把所有脏页刷盘", "correct": false}, {"key": "B", "text": "提交时必须先清空 Buffer Pool，再写 redo log", "correct": false}, {"key": "C", "text": "提交时由查询缓存保证脏页不丢失，因此无需刷盘", "correct": false}, {"key": "D", "text": "redo log 已按要求持久化时，不必等所有脏页刷盘，可减少提交时的随机 I/O", "correct": true}]}
+??: 事务提交时，如果 redo log 已经按要求持久化，就不需要等所有脏页刷盘，这样能减少提交时的随机 I/O。[原文§Buffer Pool 是什么？有什么作用？](https://xiaolincoding.com/interview/mysql.html#buffer-pool-%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S2-37 [fill]
+??: [填空题·有序] Buffer Pool 缓存的是____，查询缓存缓存的是____。
+??: {"id": "S2-37", "type": "fill", "stem": "Buffer Pool 缓存的是____，查询缓存缓存的是____。", "blankCount": 2, "blankOrder": "ordered"}
+??: Buffer Pool 缓存的是页（数据页和索引页），查询缓存缓存的是 SQL 的结果；二者不是一回事，查询缓存在 MySQL 8.0 已删除。[原文§Buffer Pool 是什么？有什么作用？](https://xiaolincoding.com/interview/mysql.html#buffer-pool-%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S2-38 [single]
+??: Buffer Pool 为什么要采用改进的 LRU 策略？
+??: {"id": "S2-38", "type": "single", "stem": "Buffer Pool 采用改进的 LRU 策略，原文说是为了避免什么？", "options": [{"key": "A", "text": "避免脏页过多，导致后台线程来不及刷盘", "correct": false}, {"key": "B", "text": "避免一次大表扫描把热点页全部挤出去", "correct": true}, {"key": "C", "text": "避免命中查询缓存后不再需要解析 SQL", "correct": false}, {"key": "D", "text": "避免事务提交时必须等待 redo log 持久化", "correct": false}]}
+??: 为了避免一次大表扫描把热点页全部挤出 Buffer Pool，InnoDB 采用改进的 LRU 策略。[原文§Buffer Pool 是什么？有什么作用？](https://xiaolincoding.com/interview/mysql.html#buffer-pool-%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+S2-39 [short]
+??: 改进的 LRU 策略怎样组织链表，新加载的页放在哪里？
+??: {"id": "S2-39", "type": "short"}
+??: InnoDB 把 LRU 链表分成新、老两个区域，新加载的页先进入老区域，再结合访问时机决定是否移到新区域。[原文§Buffer Pool 是什么？有什么作用？](https://xiaolincoding.com/interview/mysql.html#buffer-pool-%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)

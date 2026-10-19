@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-14",
+  "source_url": "https://xiaolincoding.com/interview/mysql.html",
+  "source_sha256": "18f8c94ae8a8dfaf0c823890d426108f424307e15f81f6dee93d39c6b3348967",
+  "source_h3_count": 115,
+  "local_h3_count": 115,
+  "heading_order_matches": true,
+  "chapter_counts": {
+    "S1": 122,
+    "S2": 39,
+    "S3": 205,
+    "S4": 97,
+    "S5": 39,
+    "S6": 81,
+    "S7": 40,
+    "S8": 46
+  },
+  "ids_and_order_match": true,
+  "duplicate_ids": 0,
+  "missing_anchors": [],
+  "chapter_statuses": {
+    "S1": "draft",
+    "S2": "draft",
+    "S3": "draft",
+    "S4": "draft",
+    "S5": "draft",
+    "S6": "draft",
+    "S7": "draft",
+    "S8": "draft"
+  },
+  "standard_sql_counterexamples_sqlite": {
+    "nullable_column_no_nulls": [
+      2,
+      2
+    ],
+    "in_no_match_null": [
+      null
+    ],
+    "nullable_column_with_null": [
+      2,
+      3
+    ]
+  }
+}

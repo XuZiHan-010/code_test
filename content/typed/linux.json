@@ -1,0 +1,3364 @@
+{
+  "prefix": "W",
+  "chapters": {
+    "W1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "W1-1",
+          "type": "single",
+          "stem": "按原文，下列哪一组命令属于进程相关的常用命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "mv、mkdir、cd、ls",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ps、top、kill、pkill",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "chmod、chown、useradd、groupadd",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "netstat、ip addr、ping、telnet",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-2",
+          "type": "single",
+          "stem": "按原文，下列哪一组命令属于权限相关的常用命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ps、top、kill、pkill",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "mv、mkdir、cd、ls",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "netstat、ip addr、ping、telnet",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "chmod、chown、useradd、groupadd",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W1-3",
+          "type": "fill",
+          "stem": "按原文，Linux 常用命令按用途分为：文件相关、____、____、____、测试相关五类。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "W1-4",
+          "type": "multiple",
+          "stem": "按原文，下列哪些命令属于文件相关的常用命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "mv",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "mkdir",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "cd",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "ls",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "kill",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "chmod",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-5",
+          "type": "single",
+          "stem": "按原文，用哪个命令测试网络连通性？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ping",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "telnet",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "netstat",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "ip addr",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-6",
+          "type": "single",
+          "stem": "按原文，用哪个命令测试端口连通性？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ping",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "netstat",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "telnet",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "ip addr",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-7",
+          "type": "single",
+          "stem": "按原文，netstat 和 ip addr 属于哪一类常用命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文件相关",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "进程相关",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "权限相关",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "网络相关",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W1-8",
+          "type": "short"
+        },
+        {
+          "id": "W1-9",
+          "type": "multiple",
+          "stem": "按原文，ps 命令的展示内容包括下列哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "PID：进程 ID",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "PPID：父进程 ID",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "STAT：进程状态",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "TTY：终端设备",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "Load average：系统平均负载",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "buff/cache：缓冲和缓存内存大小",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-10",
+          "type": "single",
+          "stem": "按原文，ps 输出中的 RSS 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "虚拟内存大小",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "物理内存大小",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "进程累计 CPU 占用时间",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "进程启动时间",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-11",
+          "type": "single",
+          "stem": "按原文，ps 输出中的 VSZ 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "物理内存大小",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "进程状态",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "虚拟内存大小",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "终端设备",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-12",
+          "type": "single",
+          "stem": "按原文，ps 输出中的 STAT 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "进程状态",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "终端设备",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "进程所属用户",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "进程命令或可执行文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-13",
+          "type": "single",
+          "stem": "按原文，ps 输出中的 TIME 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "进程启动时间",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "进程累计 CPU 占用时间",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "进程占用的物理内存大小",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "进程所属用户",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-14",
+          "type": "single",
+          "stem": "按原文，ps 输出中的 TTY 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "进程状态",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "进程启动时间",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "父进程 ID",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "终端设备",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W1-15",
+          "type": "single",
+          "stem": "按原文，ps 的 -e 选项等同于哪个选项？",
+          "options": [
+            {
+              "key": "A",
+              "text": "-A",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "-a",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "-f",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "-o",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-16",
+          "type": "single",
+          "stem": "按原文，ps 的 -a 选项与 -e 选项是什么关系？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者完全等价，都显示系统中所有进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "-a 只显示当前用户自己的进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "-a 只显示与终端关联的进程，并不等同于 -e",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "-a 还会显示会话首进程，所以范围比 -e 更大",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-17",
+          "type": "single",
+          "stem": "按原文，ps 的 -o 选项有什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "显示系统中所有进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "显示详细的进程信息",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "显示与终端关联的所有进程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "自定义输出格式",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W1-18",
+          "type": "single",
+          "stem": "按原文，ps 的 -f 选项有什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自定义输出格式",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "显示详细的进程信息",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "显示系统中所有进程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "显示没有控制终端的进程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-19",
+          "type": "multiple",
+          "stem": "按原文，下列关于 ps 选项的说法哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "-e 显示系统中所有进程，等同于 -A",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "-a 并不等同于 -e",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "-o 用于自定义输出格式",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "-f 用于显示详细的进程信息",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "-a 等同于 -e，都显示系统中所有进程",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "-o 用于显示详细的进程信息",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-20",
+          "type": "short"
+        },
+        {
+          "id": "W1-21",
+          "type": "fill",
+          "stem": "按原文，top 命令主要展示：平均负载、任务、____、内存使用情况、____ 和进程列表。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "W1-22",
+          "type": "single",
+          "stem": "按原文，top 的 Load average 部分显示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "当前运行、睡眠、停止和僵尸状态的进程数量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "物理内存的总量、已使用量和空闲量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "系统在最近 1 分钟、5 分钟和 15 分钟内的平均负载情况",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "交换空间的总量、已使用量和剩余量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-23",
+          "type": "fill",
+          "stem": "按原文，top 的 Tasks 部分显示运行、____、____、____ 四种状态的进程数量。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "W1-24",
+          "type": "multiple",
+          "stem": "按原文，top 展示的内存使用情况包括下列哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "物理内存的总量",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "物理内存的已使用量和空闲量",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "缓冲区和缓存区的使用量",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "最近 1 分钟的平均负载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-25",
+          "type": "single",
+          "stem": "按原文，top 的 CPU usage 部分显示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CPU 的总体使用率以及每个 CPU 核心的使用率",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "运行、睡眠、停止和僵尸状态的进程数量",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最近 1、5、15 分钟的平均负载情况",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "交换空间的总量、已使用量和剩余量",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-26",
+          "type": "single",
+          "stem": "按原文，top 的 Swap usage 部分显示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "物理内存的总量、已使用量和空闲量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "交换空间的总量、已使用量和剩余量",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "CPU 的总体使用率",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "最近 1、5、15 分钟的平均负载情况",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-27",
+          "type": "multiple",
+          "stem": "按原文，top 的进程列表会显示每个进程的哪些信息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "PID",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "用户",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "CPU 占用率和内存占用率",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "进程状态和进程命令",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "TCP 连接的四元组",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "是否出现过 OOM 记录",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-28",
+          "type": "short"
+        },
+        {
+          "id": "W1-29",
+          "type": "single",
+          "stem": "按原文，已知进程名时，推荐的做法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "必须先用 ps 查出 PID，因为没有能按进程名直接杀进程的命令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先用 netstat 查出进程占用的端口，再按端口号杀掉进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先用 top -H 找到线程 ID，再用 kill 杀掉该线程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "直接用 pkill 或 killall 按进程名杀掉，不用手动查 PID",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W1-30",
+          "type": "single",
+          "stem": "按原文，`ps -ef | grep <进程名>` 这一步的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查找进程的 PID",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "直接终止该进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "向该进程发送 SIGTERM 信号",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "强制终止该进程并释放资源",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-31",
+          "type": "fill",
+          "stem": "按原文，`kill <PID>` 发送的是 ____ 信号（编号 ____），让进程优雅终止。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W1-32",
+          "type": "fill",
+          "stem": "按原文，`kill -9 <PID>` 发送的是 ____ 信号（编号 ____），强制终止进程。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W1-33",
+          "type": "single",
+          "stem": "按原文，为什么一般优先用 `kill <PID>` 而不是 `kill -9`？",
+          "options": [
+            {
+              "key": "A",
+              "text": "kill -9 只能杀掉自己启动的进程，权限范围更小",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "kill <PID> 终止得更快更彻底，kill -9 可能杀不掉进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "SIGTERM 能让进程做一些清理工作再退出，而 kill -9 来不及释放资源",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "kill -9 会让进程先完成清理工作再退出，所以更慢",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-34",
+          "type": "single",
+          "stem": "按原文，什么情况下才使用 `kill -9`？",
+          "options": [
+            {
+              "key": "A",
+              "text": "任何时候都应该首选",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只有需要进程优雅退出时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只有进程已经做完清理工作之后",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "进程不响应或卡死时",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W1-35",
+          "type": "single",
+          "stem": "按原文，`pkill <进程名>` 与 `killall <进程名>` 的匹配方式分别是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "pkill 按进程名精确匹配，killall 按进程名模糊匹配",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "pkill 按进程名模糊匹配，killall 按进程名精确匹配",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都按进程名精确匹配",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都按进程名模糊匹配",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-36",
+          "type": "single",
+          "stem": "按原文，`pkill -9 <进程名>` 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按进程名优雅终止进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按 PID 强制终止进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按进程名强制终止进程",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "只查找进程，不终止进程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-37",
+          "type": "multiple",
+          "stem": "按原文，下列哪些方式可以在已知进程名时终止进程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`ps -ef | grep <进程名>` 找到 PID 后用 `kill <PID>`",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "`pkill <进程名>`",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "`killall <进程名>`",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "`pkill -9 <进程名>`",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "`netstat -napt`",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "`top -H`",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-38",
+          "type": "short"
+        },
+        {
+          "id": "W1-39",
+          "type": "single",
+          "stem": "按原文，查看进程状态可以使用哪两个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ps 命令或 top 命令",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "free 命令或 uptime 命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "netstat 命令或 lsof 命令",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "sed 命令或 awk 命令",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-40",
+          "type": "single",
+          "stem": "按原文，top 命令除了能看进程的状态，还能看到什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "端口被哪个进程占用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "系统负载、内存、CPU 使用率等系统信息",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "文件的读写执行权限",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "日志中某个字符串出现的次数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-41",
+          "type": "fill",
+          "stem": "按原文，在 top 命令后加上 ____ 选项，就能查看线程状态。",
+          "blankCount": 1,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W1-42",
+          "type": "single",
+          "stem": "按原文，`ps -eT | grep <进程名或线程名>` 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查看进程占用的端口",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "按进程名杀掉进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "统计日志中某个字符串出现的次数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "查看线程状态",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W1-43",
+          "type": "multiple",
+          "stem": "按原文，下列哪些命令可以用来查看线程状态？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`top -H`",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "`ps -eT | grep <进程名或线程名>`",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "`pkill <进程名>`",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "`netstat -napt`",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W1-44",
+          "type": "fill",
+          "stem": "按原文，执行 top 命令之后，按 ____ 键，就能显示 CPU 有多少个核心。",
+          "blankCount": 1,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W1-45",
+          "type": "single",
+          "stem": "按原文，执行 top 命令后按数字 1，能看到什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CPU 有多少个核心",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "占用 CPU 最高的那个进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最近 1 分钟的平均负载",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "各线程的状态",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "W2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "W2-1",
+          "type": "single",
+          "stem": "按原文，查看服务器的网络连接情况可以使用哪个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "free -m",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "uptime",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "netstat",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "mpstat -P ALL 1",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-2",
+          "type": "single",
+          "stem": "按原文，`netstat -napt` 显示的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "各进程的 CPU 占用率",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "系统内存与交换空间的使用情况",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最近 1、5、15 分钟的平均负载",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "服务器上的 TCP 连接状态",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W2-3",
+          "type": "multiple",
+          "stem": "按原文，通过 `netstat -napt` 可以观察到哪些信息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每一个 TCP 连接的状态",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "连接的源 IP 地址和目标 IP 地址",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "连接的源端口和目标端口",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每个进程的内存占用率",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "系统最近 15 分钟的平均负载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-4",
+          "type": "fill",
+          "stem": "按原文，netstat 能观察到的 TCP 连接四元组是：____、____、____、____。",
+          "blankCount": 4,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "W2-5",
+          "type": "multiple",
+          "stem": "按原文，下列哪些命令可以用来查看端口被哪个进程占用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`lsof -i :80`",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "`netstat -napt | grep ':80 '`",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "`ss -lntp sport = :80`",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "`telnet IP地址 80`",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "`ping IP地址`",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-6",
+          "type": "single",
+          "stem": "按原文，用 `netstat -napt | grep 80` 过滤 80 端口有什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只会匹配刚好是 80 的端口，会漏掉端口号不是 80 的其他连接",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "会匹配所有含 80 的字符（如 8080、PID 里含 80），过滤不准确",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "会把 80 端口的连接全部过滤掉，导致看不到任何结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只能匹配 PID 中含 80 的行，端口列里的 80 匹配不到",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-7",
+          "type": "single",
+          "stem": "按原文，要更精确地定位 80 端口，推荐怎么写？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 grep 80 即可，已经足够精确，不需要额外限定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 grep -c 80 统计含 80 的行数，再根据行数判断",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 grep ':80 '（冒号加空格），或直接用 ss -lntp sport = :80",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用 grep -o 80 | wc -l 统计 80 出现的次数，再判断",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-8",
+          "type": "short"
+        },
+        {
+          "id": "W2-9",
+          "type": "single",
+          "stem": "按原文，下列哪个命令可以测试指定 IP 地址上的指定端口是否可访问？",
+          "options": [
+            {
+              "key": "A",
+              "text": "telnet IP地址 端口号",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "ping IP地址",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "netstat -napt",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "uptime",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-10",
+          "type": "fill",
+          "stem": "按原文，nc 命令也称为 ____，可以用来测试端口的可访问性。",
+          "blankCount": 1,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W2-11",
+          "type": "single",
+          "stem": "按原文，用 telnet 测试端口时，怎样判断端口通畅？",
+          "options": [
+            {
+              "key": "A",
+              "text": "连接超时表示端口通畅，建立连接表示端口不可访问",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "能够建立连接则端口通畅；连接失败或超时则端口不可访问",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只要 IP 地址能 ping 通，端口就一定通畅",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "无论连接成功还是失败，都说明端口通畅",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-12",
+          "type": "multiple",
+          "stem": "按原文，下列哪些情况说明目标端口不可访问？",
+          "options": [
+            {
+              "key": "A",
+              "text": "telnet 连接失败",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "telnet 连接超时",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "`nc -zv` 连接失败",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "`nc -zv` 连接被拒绝",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "telnet 能够建立连接",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "`nc -zv` 能够成功连接",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-13",
+          "type": "short"
+        },
+        {
+          "id": "W2-14",
+          "type": "single",
+          "stem": "按原文，修改文件或目录的权限用哪个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "pkill",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "telnet",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "sed",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "chmod",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W2-15",
+          "type": "fill",
+          "stem": "按原文，chmod 后面的三位数字，依次表示 ____ 的权限、____ 的权限、____ 的权限。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W2-16",
+          "type": "fill",
+          "stem": "按原文，chmod 数字权限中，0 表示没有权限，____ 表示执行权限，____ 表示写权限，____ 表示读权限。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W2-17",
+          "type": "single",
+          "stem": "按原文，`chmod 400 file.txt` 的效果是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "将文件设置为只读权限",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "将文件设置为所有者可读写，其他用户只能读取",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "将文件设置为所有者可读写执行，所属组可读执行，其他用户只能读取",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "将文件设置为所有者没有任何权限",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-18",
+          "type": "single",
+          "stem": "按原文，`chmod 644 file.txt` 的效果是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文件只有只读权限",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有者可读写执行，所属组用户可读执行，其他用户只能读取",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有者可读写，其他用户只能读取",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "所有者只能读取，其他用户可读写",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-19",
+          "type": "single",
+          "stem": "按原文，`chmod 755 file.txt` 的效果是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有者可读写，其他用户只能读取",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "文件只有只读权限",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有者只能读取，所属组和其他用户可读写执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有者可读写执行，所属组用户可读执行，其他用户只能读取",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W2-20",
+          "type": "single",
+          "stem": "按原文的数字规则，所有者拥有读、写、执行全部权限，对应的数字是几？",
+          "options": [
+            {
+              "key": "A",
+              "text": "4",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "7",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "5",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "6",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-21",
+          "type": "single",
+          "stem": "按原文的数字规则，所属组用户拥有读和执行权限，对应的数字是几？",
+          "options": [
+            {
+              "key": "A",
+              "text": "3",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "6",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "5",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "7",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-22",
+          "type": "multiple",
+          "stem": "按原文，chmod 数字权限的取值含义，下列哪些说法正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "0 表示没有权限",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "1 表示执行权限",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "2 表示写权限",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "4 表示读权限",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "4 表示写权限",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "第一位数字表示所属组的权限",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W2-23",
+          "type": "short"
+        }
+      ]
+    },
+    "W3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "W3-1",
+          "type": "single",
+          "stem": "按原文，替换文件中的字符串可以使用哪个命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "sed",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "sort",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "head",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "wc",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-2",
+          "type": "single",
+          "stem": "按原文，`sed -i 's/旧字符串/新字符串/g' 文件名` 中的 -i 选项表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只把结果输出到标准输出，不改动原始文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "直接在原始文件中进行修改，而不是输出到标准输出",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "全局替换，一行中出现多次的旧字符串都被替换",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在替换之前自动备份原始文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-3",
+          "type": "single",
+          "stem": "按原文，`s/旧字符串/新字符串/g` 末尾的 g 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接在原始文件中进行修改",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "替换前备份原始文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只替换每行中第一次出现的旧字符串",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "全局替换，一行中出现多次的旧字符串都会被替换",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W3-4",
+          "type": "single",
+          "stem": "按原文，如果想在替换前备份原始文件，应该怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 -i 选项后面指定备份文件的扩展名，例如 -i.bak",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "在 s 命令的末尾再加一个 g",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把 -i 选项换成输出到标准输出",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在文件名后面加上 .bak",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-5",
+          "type": "fill",
+          "stem": "按原文的示例，`sed -i 's/Hello/Hi/g' example.txt` 的作用是把文件 example.txt 中的 ____ 替换为 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W3-6",
+          "type": "short"
+        },
+        {
+          "id": "W3-7",
+          "type": "single",
+          "stem": "按原文，sed 主要用于什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "处理结构化文本数据，按列对数据进行处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "实现包含条件判断和循环的复杂文本处理逻辑",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "对文本进行替换、删除、插入等操作，适合对整行文本处理",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "统计日志中某个字符串出现的次数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-8",
+          "type": "single",
+          "stem": "按原文，awk 适合处理什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "对整行文本做简单的替换、删除、插入",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只能通过正则表达式匹配整行文本",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只适合简单的文本替换和编辑操作",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "结构化的文本数据，可以按列对数据进行处理",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W3-9",
+          "type": "multiple",
+          "stem": "按原文，下列哪些属于 awk 的特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可以对字段进行操作",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "可以进行条件判断",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "可以使用循环",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "适合按列处理结构化的文本数据",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "只适合对整行文本做简单的替换、删除、插入",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "功能比 sed 更简单",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-10",
+          "type": "single",
+          "stem": "按原文，哪类场景更适合使用 sed？",
+          "options": [
+            {
+              "key": "A",
+              "text": "处理结构化的文本数据并实现更复杂的处理逻辑",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "简单的文本替换和编辑操作",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "需要条件判断和循环的文本处理",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需要按列对数据进行处理",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-11",
+          "type": "single",
+          "stem": "按原文，需要按列处理结构化的文本数据时，更适合用哪个工具？",
+          "options": [
+            {
+              "key": "A",
+              "text": "sed",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "sort",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "awk",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "wc",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-12",
+          "type": "short"
+        },
+        {
+          "id": "W3-13",
+          "type": "single",
+          "stem": "按原文，要统计日志中包含某个字符串的每一行的长度，应该用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`grep \"search_string\" log_file | awk '{ print length }'`",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "`grep -o \"search_string\" log_file | wc -l`",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "`grep -c \"search_string\" log_file`",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "`echo -n \"search_string\" | wc -c`",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-14",
+          "type": "single",
+          "stem": "按原文，`awk '{ print length }'` 输出的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "search_string 本身的长度",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每一行的字符数",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "search_string 出现的次数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "包含 search_string 的行数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-15",
+          "type": "single",
+          "stem": "按原文，`grep -o \"search_string\" log_file | wc -l` 得到的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "包含该字符串的行数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "包含该字符串的每一行的长度",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "该字符串本身的字符数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "该字符串在日志中出现的次数，每一次匹配都算",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W3-16",
+          "type": "single",
+          "stem": "按原文，`grep -c \"search_string\" log_file` 返回的是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "包含该字符串的行数，一行中出现多次只算一次",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "该字符串出现的次数，一行中出现多次每次都算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "包含该字符串的每一行的长度",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "该字符串本身的字符数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-17",
+          "type": "single",
+          "stem": "某一行日志里 search_string 出现了 3 次，其余行都不含它。按原文，`grep -o … | wc -l` 与 `grep -c …` 的结果分别是多少？",
+          "options": [
+            {
+              "key": "A",
+              "text": "1 和 3",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "3 和 3",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "3 和 1",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "1 和 1",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-18",
+          "type": "single",
+          "stem": "按原文，`grep \"c\" log_file | wc -m` 为什么不能用来统计字符 c 出现的次数？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它统计的是包含 c 的行数，一行中出现多次只算一次",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它统计的是 c 出现的次数，但会漏掉大写字符",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它会直接修改日志文件的内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它先取出所有包含 c 的整行，再统计这些行的总字符数，与 c 出现的次数完全不同",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W3-19",
+          "type": "fill",
+          "stem": "按原文，统计某字符串出现的次数（每次匹配都算）用 grep ____ \"search_string\" log_file | wc -l；统计包含该字符串的行数用 grep ____ \"search_string\" log_file。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W3-20",
+          "type": "short"
+        },
+        {
+          "id": "W3-21",
+          "type": "single",
+          "stem": "日志文件第一列是日期，第二列是 IP，第三列是请求耗时。按原文，查出耗时最高的 10 条记录用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`sort -k3 -n 日志文件 | head -n 10`",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "`sort -k3 -nr 日志文件 | head -n 10`",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "`sort -k1 -nr 日志文件 | head -n 10`",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "`sort -k3 -nr 日志文件 | wc -l`",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-22",
+          "type": "fill",
+          "stem": "按原文，`sort -k3 -nr` 中，-k3 表示按第 ____ 列排序，-n 表示按 ____ 排序，-r 表示 ____ 排序。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W3-23",
+          "type": "single",
+          "stem": "按原文，命令里的 `head -n 10` 起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "按第三列对日志进行倒序排序，得到耗时从高到低的记录",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "统计日志文件一共有多少行，再用于计算平均耗时",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "获取排序后的前 10 行，即耗时最高的 10 条记录",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "把每一行的内容反过来输出，方便从后往前查看",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W3-24",
+          "type": "short"
+        }
+      ]
+    },
+    "W4": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "W4-1",
+          "type": "single",
+          "stem": "按原文，free 命令主要用来查看什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "系统的内存使用情况",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "系统的任务情况和各进程的状态",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "系统的 CPU 使用情况",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "系统最近 1、5、15 分钟的平均负载",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-2",
+          "type": "multiple",
+          "stem": "按原文，除了系统内存情况，top 命令还会显示下列哪些信息？",
+          "options": [
+            {
+              "key": "A",
+              "text": "系统任务情况",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "CPU 使用情况",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "各进程的状态",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "TCP 连接的四元组",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-3",
+          "type": "fill",
+          "stem": "按原文，free 命令显示的物理内存字段有：total、used、free、shared、____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "W4-4",
+          "type": "single",
+          "stem": "按原文，free 命令显示的交换内存包括哪些字段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "total、used、free、shared",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "total、used、free",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "total、used、free、available",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "total、shared、buff/cache",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-5",
+          "type": "single",
+          "stem": "按原文，free 输出里的 available 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "共享内存的大小，也就是 free 输出里的 shared 一列",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "缓冲和缓存内存的大小，也就是 buff/cache 一列",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "未使用的内存，也就是 free 输出里的 free 一列",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "当前可用的内存，考虑到了部分缓存可以被快速释放的情况",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W4-6",
+          "type": "single",
+          "stem": "按原文，free 输出里的 buff/cache 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "缓冲和缓存内存的大小",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "共享内存的大小",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "当前可用的内存",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "已使用的内存",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-7",
+          "type": "single",
+          "stem": "按原文，free 输出里的 free 与 available 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "available 只是未使用的内存，free 才考虑了缓存的释放",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者完全相同，只是名字不同",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "free 是未使用的内存，available 还考虑了部分缓存可被快速释放的情况",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "free 是共享内存大小，available 是缓冲和缓存大小",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-8",
+          "type": "short"
+        },
+        {
+          "id": "W4-9",
+          "type": "fill",
+          "stem": "按原文，排查 CPU 跑到 100%，第一步是先通过 ____ 命令定位占用 CPU 高的进程 PID。",
+          "blankCount": 1,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W4-10",
+          "type": "single",
+          "stem": "按原文，定位到占用 CPU 高的进程之后，下一步怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用 pkill 直接杀掉该进程，不再区分进程里的线程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 netstat -napt 查看该进程占用了哪些端口和连接",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "用 free -m 查看该进程所在机器的内存使用情况",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 top -H -p <进程ID> 或 ps -T -p <进程ID> 找到占用 CPU 高的线程 ID",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W4-11",
+          "type": "single",
+          "stem": "按原文，`top -H -p <进程ID>` 的作用是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查看该进程占用的端口",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "查看该进程内各线程的 CPU 占用情况",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "杀掉该进程的所有线程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "查看该进程是否被换出到交换空间",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-12",
+          "type": "single",
+          "stem": "按原文，对于 Java 进程，找到占用 CPU 高的线程 ID 之后怎么查看它的调用栈？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接用 kill -9 杀掉该线程所在的进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用 mpstat -P ALL 1 查看该线程的堆栈",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把线程 ID 转为十六进制，再用 jstack <进程ID> 搜索对应线程的堆栈",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "用 pidstat -u 1 查看该线程的堆栈",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-13",
+          "type": "single",
+          "stem": "按原文，jstack 适用于什么进程？",
+          "options": [
+            {
+              "key": "A",
+              "text": "仅适用于 JVM 进程",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "适用于所有进程，包括 C/C++ 进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "仅适用于 C/C++ 等 native 进程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "仅适用于 root 用户的进程",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-14",
+          "type": "multiple",
+          "stem": "按原文，对 C/C++ 或其他 native 进程，可以用哪些工具观察运行中的热点函数和系统调用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`perf top -p <进程ID>`",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "`gdb -p <进程ID>`",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "`strace -p <线程ID>`",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "`jstack <进程ID>`",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "`mpstat -P ALL 1`",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-15",
+          "type": "multiple",
+          "stem": "按原文，根据堆栈信息定位代码时，要看是否发生了下列哪些情况导致 CPU 跑到 100%？",
+          "options": [
+            {
+              "key": "A",
+              "text": "死循环",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "热点计算",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "频繁系统调用",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "文件权限被设置为只读",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "80 端口被其他进程占用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-16",
+          "type": "single",
+          "stem": "按原文，拿到线程的调用栈信息之后，最后一步是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接重启服务器，不再继续排查",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "去项目中定位代码，看是否存在死循环、热点计算或频繁系统调用",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "用 free -m 判断是否内存不足",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "用 telnet 测试端口是否可访问",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-17",
+          "type": "short"
+        },
+        {
+          "id": "W4-18",
+          "type": "single",
+          "stem": "按原文，系统变慢时，可以执行哪两个命令来查看当前系统的负载情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "free 或 netstat",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "ps 或 kill",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "lsof 或 telnet",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "top 或 uptime",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W4-19",
+          "type": "fill",
+          "stem": "按原文，Load Average 的三个数字依次是过去 ____、____、____ 的平均负载。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W4-20",
+          "type": "single",
+          "stem": "按原文的经验值，负载值大致应该保持在什么范围？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一般不超过 CPU 核数的 1 到 1.5 倍，超过 1.5 倍就要重视",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "一般不超过 CPU 核数的 5 到 10 倍，超过 10 倍才要重视",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只要超过 1，就说明系统已经被严重影响",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "与 CPU 核数无关，只需要看 CPU 使用率",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-21",
+          "type": "multiple",
+          "stem": "按原文，下列关于 load average 趋势的判断哪些正确？",
+          "options": [
+            {
+              "key": "A",
+              "text": "1.00, 5.00, 10.00 表示负载呈下降趋势",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "10.00, 5.00, 1.00 表示负载呈上升趋势",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "0.07, 0.04, 0.0 三个数字相差不大，表示负载平稳",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "1.00, 5.00, 10.00 表示负载呈上升趋势",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "10.00, 5.00, 1.00 表示负载呈下降趋势",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-22",
+          "type": "single",
+          "stem": "按原文，平均负载是指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "单位时间内 CPU 繁忙情况的统计",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "单位时间内正在使用 CPU 的进程数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "单位时间内处于可运行状态和不可中断状态的进程数",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "单位时间内系统中所有进程的总数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-23",
+          "type": "single",
+          "stem": "按原文，平均负载统计的进程包括哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只包括正在使用 CPU 的进程",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只包括正在使用 CPU 和等待 CPU 的进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只包括等待 I/O 的进程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "正在使用 CPU 的进程，以及等待 CPU 和等待 I/O 的进程",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W4-24",
+          "type": "single",
+          "stem": "按原文，CPU 使用率是指什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "单位时间内处于可运行状态和不可中断状态的进程数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "单位时间内 CPU 繁忙情况的统计，跟平均负载并不一定完全对应",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "等同于平均负载，两者永远一致",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "单位时间内等待 I/O 的进程数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-25",
+          "type": "multiple",
+          "stem": "按原文，下列哪些情况会导致平均负载升高？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CPU 密集型进程使用大量 CPU",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "I/O 密集型进程等待 I/O",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "大量进程等待 CPU 调度",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "CPU 空闲率 %idle 升高",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-26",
+          "type": "single",
+          "stem": "按原文，I/O 密集型进程等待 I/O 时，平均负载和 CPU 使用率会怎样？",
+          "options": [
+            {
+              "key": "A",
+              "text": "平均负载降低，CPU 使用率升高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "平均负载和 CPU 使用率都一定很高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "平均负载升高，但 CPU 使用率不一定很高",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都不受影响",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-27",
+          "type": "single",
+          "stem": "按原文，发现平均负载升高后，可以用哪个命令查看 CPU 的性能？",
+          "options": [
+            {
+              "key": "A",
+              "text": "mpstat",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "pidstat",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "free",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "netstat",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-28",
+          "type": "single",
+          "stem": "按原文，判断了平均负载升高是 CPU 使用率还是 iowait 升高造成之后，用哪个命令定位是哪个进程导致的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "mpstat",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "pidstat",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "free",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "uptime",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-29",
+          "type": "fill",
+          "stem": "按原文，`mpstat -P ALL 1` 中，-P ALL 表示监控 ____，后面的数字 1 表示间隔 ____ 后输出一组数据。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W4-30",
+          "type": "single",
+          "stem": "按原文，`pidstat -u 1` 中的 -u 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "内存指标",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "用户名",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "监控所有 CPU",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "CPU 指标",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W4-31",
+          "type": "single",
+          "stem": "按原文，mpstat 输出里的 %iowait 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CPU 的 I/O 等待占用率",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "CPU 用户层的使用率",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "CPU 系统层的使用率",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "CPU 的空闲率",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-32",
+          "type": "single",
+          "stem": "按原文的 mpstat 示例，%usr 约 45%、%sys 约 50%、%iowait 约 0.41%、%idle 只有 2% 到 3%，可以推断出什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "平均负载升高是由 iowait 升高导致的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "平均负载升高是由内存不足导致的",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "平均负载升高是由 CPU 使用率导致的",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "平均负载升高是由 Swap 空间使用过多导致的",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-33",
+          "type": "single",
+          "stem": "按原文，如果只有 CPU 的 %iowait 很高，用户层和系统层使用率都很低，平均负载升高的原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CPU 用户层使用率的升高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "CPU 系统层使用率的升高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "CPU 空闲率的升高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "iowait 的升高",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W4-34",
+          "type": "single",
+          "stem": "按原文的 pidstat 示例，哪两个进程的 CPU 使用率最高、可能是导致平均负载升高的原因？",
+          "options": [
+            {
+              "key": "A",
+              "text": "ksoftirqd/0 和 ksoftirqd/1",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "events/0 和 events/1 这两个内核进程",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "PID 为 616 和 2745 的两个 pppoe 进程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "ksoftirqd/0 和 events/0",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-35",
+          "type": "short"
+        },
+        {
+          "id": "W4-36",
+          "type": "single",
+          "stem": "按原文，查看服务器内存的总体使用情况，用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "mpstat -P ALL 1",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "pidstat -u 1",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "free -m",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "uptime",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-37",
+          "type": "single",
+          "stem": "按原文，free 输出中哪一项更能代表实际可用内存？",
+          "options": [
+            {
+              "key": "A",
+              "text": "available（包括了操作系统缓存）",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "free 列（空闲内存）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "used 列（已使用内存）",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "shared 列（共享内存）",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-38",
+          "type": "single",
+          "stem": "按原文，如果 free 输出中的 available 长期很低，可能说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "可能表明 CPU 使用率过高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可能表明内存不足",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "可能表明 Swap 空间使用过少",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "可能表明平均负载正在下降",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-39",
+          "type": "single",
+          "stem": "按原文，Swap 空间使用过多（例如接近 Swap total）说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "物理内存充足",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "CPU 负载正在下降",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "某个端口被占用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "物理内存不足",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W4-40",
+          "type": "single",
+          "stem": "按原文，检查系统日志里有没有 OOM（Out of Memory）错误，应该用哪条命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "`dmesg | grep -i \"out of memory\"`",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "`free -m | grep -i \"out of memory\"`",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "`top -H | grep -i \"out of memory\"`",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "`netstat -napt | grep -i \"out of memory\"`",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-41",
+          "type": "fill",
+          "stem": "按原文，OOM 是 ____ 的缩写，如果系统日志里存在 OOM 错误，说明内存不足是一个明显的问题。",
+          "blankCount": 1,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W4-42",
+          "type": "multiple",
+          "stem": "按原文，下列哪些方式可以用来检查系统有没有出现 OOM 错误？",
+          "options": [
+            {
+              "key": "A",
+              "text": "查看 /var/log/messages",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "使用 dmesg 命令查看系统日志",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "使用 `top -H` 查看线程状态",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "使用 `mpstat -P ALL 1` 查看每个 CPU",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-43",
+          "type": "single",
+          "stem": "按原文，`vmstat 1` 中的 1 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只刷新一次，并监控 1 号 CPU",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "监控 PID 为 1 的进程",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每秒刷新一次",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "每分钟刷新一次",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-44",
+          "type": "fill",
+          "stem": "按原文，vmstat 中 si 表示 swap ____，so 表示 swap ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W4-45",
+          "type": "single",
+          "stem": "按原文，vmstat 中的 si 和 so 较高说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "物理内存很充足，系统基本不会使用交换空间",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "CPU 的用户层使用率很高，进程正在大量占用 CPU",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "平均负载正在下降，系统整体趋于平稳",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "系统频繁使用交换空间，物理内存可能不足",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W4-46",
+          "type": "fill",
+          "stem": "按原文，用 vmstat 观测内存时要特别关注的字段有：si、so、free、____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "W4-47",
+          "type": "multiple",
+          "stem": "按原文，判断服务器内存是否够用时，可以关注下列哪些方面？",
+          "options": [
+            {
+              "key": "A",
+              "text": "free 输出里 available 是否长期很低",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Swap 空间是否使用过多",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "dmesg 里是否有 OOM 信息",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "vmstat 里 si、so 是否较高",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "top -H 里线程数量是否很多",
+              "correct": false
+            },
+            {
+              "key": "F",
+              "text": "sort 的输出是否有 10 条",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-48",
+          "type": "short"
+        },
+        {
+          "id": "W4-49",
+          "type": "multiple",
+          "stem": "按原文，下列哪些情况说明内存基本上是满的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "free 和 available 都非常低，而 used 很高",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Swap 使用频繁且使用率较高",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "dmesg 日志里出现 OOM 相关信息",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "available 很高而 used 很低",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "Swap 完全没有被使用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-50",
+          "type": "single",
+          "stem": "按原文，free 和 available 都非常低，而 used 很高，说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "内存非常充足",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "内存基本上是满的",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "CPU 的空闲率很高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Swap 空间没有被使用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-51",
+          "type": "single",
+          "stem": "按原文，dmesg 日志里出现 OOM 相关信息说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "CPU 的 iowait 过高导致进程被杀",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "端口被占用导致进程被杀",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "内存不足导致了一些进程被杀掉",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "文件权限不足导致进程被杀",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-52",
+          "type": "single",
+          "stem": "按原文，ps 或 top 显示大部分内存被少数几个进程占用，说明什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "内存基本上是满的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "这些进程一定存在内存泄漏",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Swap 空间一定已经被耗尽",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "系统一定已经发生了 OOM",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-53",
+          "type": "short"
+        },
+        {
+          "id": "W4-54",
+          "type": "single",
+          "stem": "按原文，判断操作系统有没有在做内存回收（内存替换），用哪条命令观察？",
+          "options": [
+            {
+              "key": "A",
+              "text": "mpstat -P ALL 1",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "sar -B 1",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "pidstat -u 1",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "top -H",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-55",
+          "type": "fill",
+          "stem": "按原文，sar -B 1 的三个指标中，____ 是 kswapd 后台回收线程每秒扫描的 page 个数，____ 是应用程序在申请内存过程中每秒直接扫描的 page 个数，____ 是扫描的 page 中每秒被回收的个数。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "W4-56",
+          "type": "single",
+          "stem": "按原文，sar -B 1 中的 pgscank/s 表示什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "应用程序在内存申请过程中每秒直接扫描的 page 个数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "扫描的 page 中每秒被回收的个数",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "系统每秒新分配出去的 page 个数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "kswapd（后台回收线程）每秒扫描的 page 个数",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "W4-57",
+          "type": "single",
+          "stem": "按原文，系统时不时抖动，并且在抖动的时间段里用 sar -B 观察到 pgscand 数值很大，大概率是因为什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接内存回收",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "后台内存回收（kswapd）",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "CPU 使用率过低",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "端口被其他进程占用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "W4-58",
+          "type": "short"
+        }
+      ]
+    }
+  }
+}

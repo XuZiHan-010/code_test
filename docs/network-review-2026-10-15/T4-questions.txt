@@ -1,0 +1,165 @@
+T4-1 [single]
+Original: 按原文，IP 地址和 MAC 地址的主要分工是怎样的？
+Stem: 按原文，IP 地址和 MAC 地址的主要分工是怎样的？
+A [incorrect] IP 地址主要用于当前链路上的帧传输，MAC 地址主要负责跨网络的寻址和路由
+B [correct] IP 地址主要负责跨网络的寻址和路由，MAC 地址主要用于当前链路上的帧传输
+C [incorrect] 两者都主要负责跨网络的寻址和路由，区别只在于适用的协议版本不同
+D [incorrect] IP 地址只在局域网内部通信时使用，MAC 地址负责在互联网上识别用户身份
+Answer: IP 地址主要负责跨网络的寻址和路由，MAC 地址主要用于当前链路上的帧传输。[原文§IP 地址和 MAC 地址有什么区别？](https://xiaolincoding.com/interview/network.html#ip-%E5%9C%B0%E5%9D%80%E5%92%8C-mac-%E5%9C%B0%E5%9D%80%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T4-2 [single]
+Original: 你的电脑访问一个外网服务器，IP 包的目标地址写的是服务器 IP。按原文，从电脑发出的以太网帧，目标 MAC 通常是谁的 MAC？
+Stem: 你的电脑访问一个外网服务器，IP 包的目标地址写的是服务器 IP。按原文，从电脑发出的以太网帧，目标 MAC 通常是谁的 MAC？
+A [incorrect] 远端服务器的 MAC
+B [incorrect] 目标服务器所在网络中最后一跳路由器的 MAC
+C [incorrect] 本机网卡自己的 MAC
+D [correct] 网关的 MAC
+Answer: 访问外网服务器时，IP 包的目标地址写的是服务器 IP，但从电脑发出的以太网帧，目标 MAC 通常写的是网关 MAC，不是远端服务器的 MAC。[原文§IP 地址和 MAC 地址有什么区别？](https://xiaolincoding.com/interview/network.html#ip-%E5%9C%B0%E5%9D%80%E5%92%8C-mac-%E5%9C%B0%E5%9D%80%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T4-3 [short]
+Original: 路由器收到一个以太网帧后，怎样把数据继续转发到下一段链路？
+Stem: 路由器收到一个以太网帧后，怎样把数据继续转发到下一段链路？
+Answer: 路由器收到帧后，取出 IP 包，根据路由表选择下一跳，再为下一段链路重新封装帧。[原文§IP 地址和 MAC 地址有什么区别？](https://xiaolincoding.com/interview/network.html#ip-%E5%9C%B0%E5%9D%80%E5%92%8C-mac-%E5%9C%B0%E5%9D%80%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T4-4 [multiple]
+Original: 在没有 NAT 等地址转换时，一个数据包经过多个路由器逐跳转发，按原文下列哪些说法成立？
+Stem: 在没有 NAT 等地址转换时，一个数据包经过多个路由器逐跳转发，按原文下列哪些说法成立？
+A [correct] MAC 地址会随着经过的链路变化
+B [correct] 源 IP 和目的 IP 通常保持不变
+C [incorrect] 目的 IP 会在每一跳被改写成下一跳路由器的 IP
+D [correct] TTL 会逐跳减少
+E [incorrect] 帧的目标 MAC 始终是远端服务器的 MAC
+F [incorrect] TTL 在整个转发过程中保持不变
+Answer: 路由器要为下一段链路重新封装帧，所以 MAC 地址会随着经过的链路变化；没有 NAT 等地址转换时，源和目的 IP 通常保持不变，TTL 则逐跳减少。[原文§IP 地址和 MAC 地址有什么区别？](https://xiaolincoding.com/interview/network.html#ip-%E5%9C%B0%E5%9D%80%E5%92%8C-mac-%E5%9C%B0%E5%9D%80%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T4-5 [single]
+Original: 按原文，能否拿 MAC 地址作为跨互联网识别用户身份的可靠依据？
+Stem: 按原文，能否拿 MAC 地址作为跨互联网识别用户身份的可靠依据？
+A [correct] 不能，MAC 也不是绝对不能修改
+B [incorrect] 能，MAC 地址由硬件决定，在任何情况下都无法修改
+C [incorrect] 能，因为 MAC 地址在跨互联网的每一跳转发中都保持不变
+D [incorrect] 能，只要同时检查源 IP 保持不变即可
+Answer: MAC 也不是绝对不能修改，更不能拿它作为跨互联网识别用户身份的可靠依据。[原文§IP 地址和 MAC 地址有什么区别？](https://xiaolincoding.com/interview/network.html#ip-%E5%9C%B0%E5%9D%80%E5%92%8C-mac-%E5%9C%B0%E5%9D%80%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T4-6 [single]
+Original: 按原文，ARP 在 IPv4 的本地链路上起什么作用？
+Stem: 按原文，ARP 在 IPv4 的本地链路上起什么作用？
+A [incorrect] 根据 MAC 地址查询对应的 IP 地址
+B [incorrect] 把内网 IP 转换成公网 IP 并记录端口映射
+C [correct] 根据 IP 地址查询对应的 MAC 地址
+D [incorrect] 探测经过的各跳路由器并估算往返时间
+Answer: ARP 用于在 IPv4 的本地链路上，根据 IP 地址查询对应的 MAC 地址。[原文§ARP 是什么？访问外网时查询谁的 MAC 地址？](https://xiaolincoding.com/interview/network.html#arp-%E6%98%AF%E4%BB%80%E4%B9%88-%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91%E6%97%B6%E6%9F%A5%E8%AF%A2%E8%B0%81%E7%9A%84-mac-%E5%9C%B0%E5%9D%80)
+
+T4-7 [short]
+Original: 主机的 ARP 缓存里没有目标 IP 的记录时，ARP 是怎样查到对应 MAC 地址的？
+Stem: 主机的 ARP 缓存里没有目标 IP 的记录时，ARP 是怎样查到对应 MAC 地址的？
+Answer: 如果 ARP 缓存里没有记录，主机会广播询问「谁拥有这个 IP」，对应主机再回复自己的 MAC 地址。[原文§ARP 是什么？访问外网时查询谁的 MAC 地址？](https://xiaolincoding.com/interview/network.html#arp-%E6%98%AF%E4%BB%80%E4%B9%88-%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91%E6%97%B6%E6%9F%A5%E8%AF%A2%E8%B0%81%E7%9A%84-mac-%E5%9C%B0%E5%9D%80)
+
+T4-8 [single]
+Original: 主机访问外网时，要先看路由表。按原文，这时 ARP 通常查询的是谁的 MAC 地址？
+Stem: 主机访问外网时，要先看路由表。按原文，这时 ARP 通常查询的是谁的 MAC 地址？
+A [incorrect] 目标外网服务器的 MAC 地址
+B [incorrect] 本网段内所有主机的 MAC 地址
+C [incorrect] 对端运营商路由器的 MAC 地址
+D [correct] 默认网关的 MAC 地址
+Answer: 访问同一子网的主机时，通常查询目标主机的 MAC；访问外网时，要先看路由表，通常把数据交给默认网关，查询的是网关的 MAC。[原文§ARP 是什么？访问外网时查询谁的 MAC 地址？](https://xiaolincoding.com/interview/network.html#arp-%E6%98%AF%E4%BB%80%E4%B9%88-%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91%E6%97%B6%E6%9F%A5%E8%AF%A2%E8%B0%81%E7%9A%84-mac-%E5%9C%B0%E5%9D%80)
+
+T4-9 [single]
+Original: 按原文，为什么你的电脑不会通过 ARP 直接查出百度服务器的 MAC 地址？
+Stem: 按原文，为什么你的电脑不会通过 ARP 直接查出百度服务器的 MAC 地址？
+A [incorrect] ARP 只能查询 IPv6 地址对应的 MAC，不能查询 IPv4 地址
+B [correct] ARP 广播不会被普通路由器转发到整个互联网
+C [incorrect] 百度服务器的 MAC 地址每次访问都会变化，无法被缓存
+D [incorrect] ARP 只能在 NAT 之后使用，访问外网时不允许使用
+Answer: ARP 广播不会被普通路由器转发到整个互联网，所以你的电脑不会通过 ARP 直接查出百度服务器的 MAC。[原文§ARP 是什么？访问外网时查询谁的 MAC 地址？](https://xiaolincoding.com/interview/network.html#arp-%E6%98%AF%E4%BB%80%E4%B9%88-%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91%E6%97%B6%E6%9F%A5%E8%AF%A2%E8%B0%81%E7%9A%84-mac-%E5%9C%B0%E5%9D%80)
+
+T4-10 [single]
+Original: 按原文，IPv6 通过什么机制完成类似 ARP 的地址查询？
+Stem: 按原文，IPv6 通过什么机制完成类似 ARP 的地址查询？
+A [incorrect] 仍然使用 ARP
+B [incorrect] ICMP 的 Echo Request 报文
+C [correct] 邻居发现机制
+D [incorrect] NAT 的端口映射表
+Answer: IPv6 使用邻居发现机制，不使用 ARP。[原文§ARP 是什么？访问外网时查询谁的 MAC 地址？](https://xiaolincoding.com/interview/network.html#arp-%E6%98%AF%E4%BB%80%E4%B9%88-%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91%E6%97%B6%E6%9F%A5%E8%AF%A2%E8%B0%81%E7%9A%84-mac-%E5%9C%B0%E5%9D%80)
+
+T4-11 [single]
+Original: 关于 ICMP，下列说法符合原文的是哪一项？
+Stem: 关于 ICMP，下列说法符合原文的是哪一项？
+A [correct] 它用于传递网络错误和控制信息，不使用 TCP、UDP 那样的端口
+B [incorrect] 它是传输层协议，和 TCP、UDP 一样通过端口号区分进程
+C [incorrect] 它只用于传递应用数据，不传递网络错误和控制信息
+D [incorrect] 它通过端口号区分 ping 和 traceroute 两种不同用途
+Answer: ICMP 用于传递网络错误和控制信息，不使用 TCP、UDP 那样的端口。[原文§ICMP 是什么？ping 和 traceroute 的原理是什么？](https://xiaolincoding.com/interview/network.html#icmp-%E6%98%AF%E4%BB%80%E4%B9%88-ping-%E5%92%8C-traceroute-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T4-12 [fill]
+Original: [填空题·有序] 按原文，ping 通常发送 ICMP ____ 报文，收到 ICMP ____ 后估算往返时间和丢包情况。
+Stem: 按原文，ping 通常发送 ICMP ____ 报文，收到 ICMP ____ 后估算往返时间和丢包情况。
+Blanks/order: 2/ordered
+Answer: ping 通常发送 ICMP Echo Request，收到 Echo Reply 后估算往返时间和丢包情况。两个空依次是：Echo Request（回显请求）、Echo Reply（回显应答）。[原文§ICMP 是什么？ping 和 traceroute 的原理是什么？](https://xiaolincoding.com/interview/network.html#icmp-%E6%98%AF%E4%BB%80%E4%B9%88-ping-%E5%92%8C-traceroute-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T4-13 [short]
+Original: traceroute 是怎样借助 TTL 观察数据包经过了哪些跳的？
+Stem: traceroute 是怎样借助 TTL 观察数据包经过了哪些跳的？
+Answer: traceroute 从较小的 TTL 开始探测，逐步增加 TTL。路由器发现 TTL 耗尽时，通常返回 ICMP Time Exceeded，借此就能观察到经过了哪些跳。[原文§ICMP 是什么？ping 和 traceroute 的原理是什么？](https://xiaolincoding.com/interview/network.html#icmp-%E6%98%AF%E4%BB%80%E4%B9%88-ping-%E5%92%8C-traceroute-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T4-14 [single]
+Original: traceroute 逐步增加 TTL 时，路由器发现探测包的 TTL 耗尽，按原文通常返回什么？
+Stem: traceroute 逐步增加 TTL 时，路由器发现探测包的 TTL 耗尽，按原文通常返回什么？
+A [incorrect] ICMP Echo Reply
+B [correct] ICMP Time Exceeded
+C [incorrect] ICMP Echo Request
+D [incorrect] ARP 应答
+Answer: 路由器发现 TTL 耗尽，通常返回 ICMP Time Exceeded，traceroute 借此观察经过哪些跳。[原文§ICMP 是什么？ping 和 traceroute 的原理是什么？](https://xiaolincoding.com/interview/network.html#icmp-%E6%98%AF%E4%BB%80%E4%B9%88-ping-%E5%92%8C-traceroute-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T4-15 [fill]
+Original: [填空题·无序] 按原文，不同实现的 traceroute 可能用____、____或____发送探测。
+Stem: 按原文，不同实现的 traceroute 可能用____、____或____发送探测。
+Blanks/order: 3/unordered
+Answer: 不同实现的 traceroute 可能用 UDP、ICMP 或 TCP 发送探测，所以三个空是：UDP、ICMP、TCP（顺序不限）。[原文§ICMP 是什么？ping 和 traceroute 的原理是什么？](https://xiaolincoding.com/interview/network.html#icmp-%E6%98%AF%E4%BB%80%E4%B9%88-ping-%E5%92%8C-traceroute-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T4-16 [single]
+Original: traceroute 的输出里出现星号，按原文应该怎样理解？
+Stem: traceroute 的输出里出现星号，按原文应该怎样理解？
+A [incorrect] 一定表示业务流量已经在那一跳被路由器丢弃，无法继续转发
+B [incorrect] 一定表示那一跳路由器已经宕机，其后所有的跳都无法再到达
+C [incorrect] 一定表示起始 TTL 设置得过大，需要从头重新进行探测
+D [correct] 不一定表示业务流量被丢弃，路由器可能限制或不回应探测
+Answer: 路由器可能限制或不回应探测，所以 traceroute 出现星号不一定表示业务流量在那一跳被丢弃。[原文§ICMP 是什么？ping 和 traceroute 的原理是什么？](https://xiaolincoding.com/interview/network.html#icmp-%E6%98%AF%E4%BB%80%E4%B9%88-ping-%E5%92%8C-traceroute-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T4-17 [single]
+Original: 按原文，ping 不通是否说明目标上的 TCP 服务一定不可用？
+Stem: 按原文，ping 不通是否说明目标上的 TCP 服务一定不可用？
+A [correct] 不能这样推断，ping 不通不等于 TCP 服务一定不可用
+B [incorrect] 可以这样推断，因为 ping 与 TCP 服务使用同一个端口
+C [incorrect] 可以这样推断，因为 ping 不通就说明目标主机没有 IP 地址
+D [incorrect] 可以这样推断，因为 Echo Reply 缺失说明目标发送了 TCP 重置
+Answer: 路由器可能限制或不回应探测，ping 不通也不等于 TCP 服务一定不可用。[原文§ICMP 是什么？ping 和 traceroute 的原理是什么？](https://xiaolincoding.com/interview/network.html#icmp-%E6%98%AF%E4%BB%80%E4%B9%88-ping-%E5%92%8C-traceroute-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T4-18 [fill]
+Original: [填空题·无序] NAT 就是网络地址转换。按原文，家用路由器常见的是同时转换地址和端口的方式，它也叫____或____。
+Stem: NAT 就是网络地址转换。按原文，家用路由器常见的是同时转换地址和端口的方式，它也叫____或____。
+Blanks/order: 2/unordered
+Answer: 家用路由器常见的是同时转换地址和端口，也叫 NAPT/PAT，所以两个空是：NAPT、PAT（顺序不限）。[原文§NAT 是什么？为什么内网多个设备能共用一个公网 IP？](https://xiaolincoding.com/interview/network.html#nat-%E6%98%AF%E4%BB%80%E4%B9%88-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%85%E7%BD%91%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%E8%83%BD%E5%85%B1%E7%94%A8%E4%B8%80%E4%B8%AA%E5%85%AC%E7%BD%91-ip)
+
+T4-19 [short]
+Original: 两台内网电脑访问同一个网站时，路由器怎样让它们共用一个公网 IP，并把服务器的回包转给正确的电脑？
+Stem: 两台内网电脑访问同一个网站时，路由器怎样让它们共用一个公网 IP，并把服务器的回包转给正确的电脑？
+Answer: 路由器可以把两台内网电脑的源地址和端口改成同一个公网 IP 下的两个不同端口，并保存映射关系；服务器回包后，路由器再根据映射，把响应转回对应的内网电脑。[原文§NAT 是什么？为什么内网多个设备能共用一个公网 IP？](https://xiaolincoding.com/interview/network.html#nat-%E6%98%AF%E4%BB%80%E4%B9%88-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%85%E7%BD%91%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%E8%83%BD%E5%85%B1%E7%94%A8%E4%B8%80%E4%B8%AA%E5%85%AC%E7%BD%91-ip)
+
+T4-20 [single]
+Original: 按原文，多个内网设备能共用一个公网 IP，靠的是什么？
+Stem: 按原文，多个内网设备能共用一个公网 IP，靠的是什么？
+A [incorrect] 只靠把每台设备的内网 IP 替换成同一个公网 IP
+B [incorrect] 靠给每台设备分配不同的公网 MAC 地址来区分
+C [correct] 不只是替换 IP，还要通过端口等信息区分会话
+D [incorrect] 靠每次只允许一台内网设备访问外网来区分
+Answer: 多个设备可以共用一个公网 IP，靠的不只是替换 IP，还要通过端口等信息区分会话。[原文§NAT 是什么？为什么内网多个设备能共用一个公网 IP？](https://xiaolincoding.com/interview/network.html#nat-%E6%98%AF%E4%BB%80%E4%B9%88-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%85%E7%BD%91%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%E8%83%BD%E5%85%B1%E7%94%A8%E4%B8%80%E4%B8%AA%E5%85%AC%E7%BD%91-ip)
+
+T4-21 [single]
+Original: 按原文，为什么外部通常不能直接主动连接内网服务？
+Stem: 按原文，为什么外部通常不能直接主动连接内网服务？
+A [incorrect] 内网设备的 MAC 地址不会被公网上的路由器继续转发
+B [incorrect] NAT 会把所有从外部发来的请求都改写成 ICMP 控制报文
+C [incorrect] 内网设备本身没有 IP 地址，所以外部根本无法对它寻址
+D [correct] 没有已有映射、端口转发等连通机制时，路由器不知道请求该交给哪台内网设备
+Answer: 如果没有已有映射、端口转发或其他连通机制，路由器不知道该把外部发来的请求交给哪台内网设备，所以外部通常不能直接主动连接内网服务。[原文§NAT 是什么？为什么内网多个设备能共用一个公网 IP？](https://xiaolincoding.com/interview/network.html#nat-%E6%98%AF%E4%BB%80%E4%B9%88-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%85%E7%BD%91%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%E8%83%BD%E5%85%B1%E7%94%A8%E4%B8%80%E4%B8%AA%E5%85%AC%E7%BD%91-ip)

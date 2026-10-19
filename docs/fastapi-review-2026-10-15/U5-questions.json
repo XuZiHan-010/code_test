@@ -1,0 +1,823 @@
+[
+  {
+    "id": "U5-1",
+    "typed": {
+      "id": "U5-1",
+      "type": "short"
+    },
+    "question": "按官方文档，什么是“依赖注入”？它在 FastAPI 里有什么用？",
+    "answer": "依赖注入指你的代码（这里是路径操作函数）声明自己运行所需要使用的东西，也就是“依赖”，再由系统（这里是 FastAPI）负责执行所有必要的逻辑，把这些依赖提供（“注入”）给你的代码。它适合用来共享业务逻辑、共享数据库连接、实施安全、认证和角色权限等要求，同时尽量减少代码重复。 [原文§依赖项 · 什么是「依赖注入」](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#what-is-dependency-injection)"
+  },
+  {
+    "id": "U5-2",
+    "typed": {
+      "id": "U5-2",
+      "type": "multiple",
+      "stem": "按官方文档，下列哪些属于依赖注入特别有用的场景？",
+      "options": [
+        {
+          "key": "A",
+          "text": "共享业务逻辑（同一段代码逻辑反复复用）",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "共享数据库连接",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "实施安全、认证、角色权限等要求",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "让依赖项的返回值在不同请求之间长期缓存，避免重复执行",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "用依赖项函数直接替代路径操作，不再需要路径操作装饰器",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，下列哪些属于依赖注入特别有用的场景？",
+    "answer": "官方列出的场景有：共享业务逻辑（同一段代码逻辑反复复用）、共享数据库连接、实施安全、认证、角色权限等要求，并且能减少代码重复。依赖项的返回值只在同一个请求内缓存，不是跨请求长期缓存；依赖项只是一个没有 `@app.get(...)` 这类装饰器的路径操作函数，并不会替代路径操作。 [原文§依赖项 · 什么是「依赖注入」](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#what-is-dependency-injection) [原文§依赖项 · 第一步 · 创建依赖项，或“dependable”](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#create-a-dependency-or-dependable) [原文§子依赖项 · 多次使用同一个依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times)"
+  },
+  {
+    "id": "U5-3",
+    "typed": {
+      "id": "U5-3",
+      "type": "single",
+      "stem": "按官方文档，最基本的依赖项（“dependable”）是什么形式？",
+      "options": [
+        {
+          "key": "A",
+          "text": "必须先在 FastAPI 应用中注册的专用类",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "一个函数，可以接收与路径操作函数相同的所有参数",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "一个必须带有路径操作装饰器（如 @app.get）的函数",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "一个只能返回 dict 的 async def 函数",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，最基本的依赖项（“dependable”）是什么形式？",
+    "answer": "最基本的依赖项只是一个函数，它可以接收与路径操作函数相同的所有参数，可以当作没有 `@app.get(...)` 装饰器的路径操作函数，并且可以返回任何你想要的内容。不需要创建专门的类去向 FastAPI “注册”；依赖项也不需要路径操作装饰器；它可以返回任何内容，也可以用 `def` 或 `async def` 定义。 [原文§依赖项 · 第一步 · 创建依赖项，或“dependable”](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#create-a-dependency-or-dependable) [原文§依赖项 · 第一步 · 在“dependant”中声明依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#declare-the-dependency-in-the-dependant)"
+  },
+  {
+    "id": "U5-4",
+    "typed": {
+      "id": "U5-4",
+      "type": "single",
+      "stem": "按官方文档，在参数中给 `Depends` 传入依赖项时，正确的做法是？",
+      "options": [
+        {
+          "key": "A",
+          "text": "传入函数（可调用对象）本身，不要在末尾加括号",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "先调用依赖项函数，再把它的返回值传给 Depends",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "把依赖项和它的全部参数打包成列表传给 Depends",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "同时传入多个可调用对象，让 FastAPI 依次调用它们",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，在参数中给 `Depends` 传入依赖项时，正确的做法是？",
+    "answer": "给 `Depends` 只能传入一个参数，这个参数必须是类似函数的可调用对象；你不需要直接调用它（不要在末尾加括号），只需把它本身传给 `Depends()`，FastAPI 会在处理请求时去调用它。 [原文§依赖项 · 第一步 · 在“dependant”中声明依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#declare-the-dependency-in-the-dependant)"
+  },
+  {
+    "id": "U5-5",
+    "typed": {
+      "id": "U5-5",
+      "type": "short"
+    },
+    "question": "按官方文档，FastAPI 接收到新请求时，会对依赖项做哪几件事？",
+    "answer": "FastAPI 会做三件事：用正确的参数调用你的依赖项（“dependable”）函数；获取函数返回的结果；把这个结果赋值给路径操作函数中对应的参数。这样共享代码只需写一次，FastAPI 会在各个路径操作中为你调用它。 [原文§依赖项 · 第一步 · 在“dependant”中声明依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#declare-the-dependency-in-the-dependant)"
+  },
+  {
+    "id": "U5-6",
+    "typed": {
+      "id": "U5-6",
+      "type": "single",
+      "stem": "官方文档里的 `CommonsDep = Annotated[dict, Depends(common_parameters)]` 这种写法有什么作用和性质？",
+      "options": [
+        {
+          "key": "A",
+          "text": "这是 FastAPI 特有的注册语法，不用这种写法依赖项就不会生效",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "它让依赖项的返回值在整个应用运行期间只计算一次，之后所有请求共用",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "把 Annotated 的值存到变量里当类型别名，多处复用且类型信息仍被保留",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "它会把依赖项变成全局依赖，自动应用到应用中的所有路径操作",
+          "correct": false
+        }
+      ]
+    },
+    "question": "官方文档里的 `CommonsDep = Annotated[dict, Depends(common_parameters)]` 这种写法有什么作用和性质？",
+    "answer": "它把 `Annotated` 的值存到一个变量里，在多个地方复用，减少重复书写；这只是标准 Python 的“类型别名”，并不是 FastAPI 特有的。类型信息会被保留，编辑器的自动补全、行内报错以及 mypy 等工具照常可用，在大型代码库里反复使用同一依赖时尤其有用。 [原文§依赖项 · 共享 Annotated 依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#share-annotated-dependencies)"
+  },
+  {
+    "id": "U5-7",
+    "typed": {
+      "id": "U5-7",
+      "type": "multiple",
+      "stem": "关于依赖项使用 `def` 还是 `async def`，按官方文档，下列哪些说法成立？",
+      "options": [
+        {
+          "key": "A",
+          "text": "可以在普通 def 路径操作函数中声明 async def 依赖项",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "可以在 async def 路径操作函数中声明普通 def 依赖项",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "依赖项必须与使用它的路径操作函数同为 async def",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "依赖项也由 FastAPI 调用，定义函数时与路径操作函数相同的规则同样适用",
+          "correct": true
+        },
+        {
+          "key": "E",
+          "text": "混用 def 与 async def 时 FastAPI 无法处理，必须统一写法",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于依赖项使用 `def` 还是 `async def`，按官方文档，下列哪些说法成立？",
+    "answer": "依赖项也由 FastAPI 调用，所以定义函数时与路径操作函数相同的规则同样适用：可以用 `async def` 或普通 `def`，既可以在 `def` 路径操作函数中声明 `async def` 依赖项，也可以在 `async def` 路径操作函数中声明 `def` 依赖项，FastAPI 知道该怎么处理。所以“必须同为 async def”“必须统一写法”都不对。 [原文§依赖项 · 要不要使用 async？](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#to-async-or-not-to-async)"
+  },
+  {
+    "id": "U5-8",
+    "typed": {
+      "id": "U5-8",
+      "type": "single",
+      "stem": "依赖项及其子依赖项中声明的请求参数、验证和需求，在 OpenAPI 方面会怎样处理？",
+      "options": [
+        {
+          "key": "A",
+          "text": "只有直接写在路径操作函数参数里的那些才会出现在 OpenAPI 模式中",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "必须为每个依赖项手动编写 OpenAPI 描述，交互式文档才会显示它们",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "依赖项里的参数只在运行时参与校验，不会出现在交互式文档里",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "都会集成到同一个 OpenAPI 模式，交互式文档里包含这些依赖项的信息",
+          "correct": true
+        }
+      ]
+    },
+    "question": "依赖项及其子依赖项中声明的请求参数、验证和需求，在 OpenAPI 方面会怎样处理？",
+    "answer": "它们都会集成到同一个 OpenAPI 模式中，因此交互式文档里也会包含这些依赖项的所有信息；FastAPI 会负责把依赖项带来的参数、验证等内容全部加到 OpenAPI 模式里。 [原文§依赖项 · 与 OpenAPI 集成](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#integrated-with-openapi) [原文§依赖项 · 与 OpenAPI 集成（层级依赖）](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#integrated-with-openapi_1)"
+  },
+  {
+    "id": "U5-9",
+    "typed": {
+      "id": "U5-9",
+      "type": "short"
+    },
+    "question": "按官方文档，如何仅靠依赖项及其子依赖项，为不同的 API 端点设置不同的权限要求？",
+    "answer": "依赖项可以再依赖其他依赖项，最终构成一棵依赖项层级树，依赖注入系统会处理所有依赖及其子依赖，并在每一步注入相应的结果。官方示例：`active_user` 依赖 `current_user`，`admin_user` 和 `paying_user` 又依赖 `active_user`；`/items/public/` 只依赖 `current_user`，`/items/private/` 依赖 `active_user`，`/users/{user_id}/activate` 依赖 `admin_user`，`/items/pro/` 依赖 `paying_user`，各端点因此有不同的权限要求。 [原文§依赖项 · 简单而强大](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#simple-and-powerful)"
+  },
+  {
+    "id": "U5-10",
+    "typed": {
+      "id": "U5-10",
+      "type": "single",
+      "stem": "按官方文档，一个对象能作为 FastAPI 依赖项的关键因素是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "它必须是用 def 或 async def 定义的函数",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "它必须是“可调用对象”，即 Python 能像函数一样调用它",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "它必须是一个 Python 类，并且定义了 __init__ 方法",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "它必须是实现了 __call__ 方法的类实例",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，一个对象能作为 FastAPI 依赖项的关键因素是什么？",
+    "answer": "关键因素是依赖项应该是“可调用对象”，也就是 Python 能像函数一样“调用”的对象；函数、类或其他任何可调用对象都行。声明成函数只是更常见的方式，并不是唯一方式；类和带 `__call__` 的类实例都只是可调用对象的具体情形，并不是必须条件。 [原文§类作为依赖项 · 什么构成了依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/classes-as-dependencies/#what-makes-a-dependency) [原文§高级依赖项 · “可调用”的实例](https://fastapi.tiangolo.com/zh/advanced/advanced-dependencies/#a-callable-instance)"
+  },
+  {
+    "id": "U5-11",
+    "typed": {
+      "id": "U5-11",
+      "type": "short"
+    },
+    "question": "为什么 Python 类可以作为 FastAPI 的依赖项？FastAPI 会怎样处理这个类？",
+    "answer": "创建类实例的语法和调用函数一样（例如 `Cat(name=\"Mr Fluffy\")`），所以 Python 类也是可调用对象。FastAPI 检查的是它是不是可调用对象以及它定义的参数，并像处理路径操作函数的参数那样处理这些参数，包括子依赖项；FastAPI 调用这个类，创建出类的一个实例，再把它作为参数传给路径操作函数。 [原文§类作为依赖项 · 类作为依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/classes-as-dependencies/#classes-as-dependencies_1) [原文§类作为依赖项 · 使用它](https://fastapi.tiangolo.com/zh/tutorial/dependencies/classes-as-dependencies/#use-it)"
+  },
+  {
+    "id": "U5-12",
+    "typed": {
+      "id": "U5-12",
+      "type": "single",
+      "stem": "官方文档把依赖项从返回 `dict` 的函数改为类 `CommonQueryParams`，主要是为了解决什么问题？",
+      "options": [
+        {
+          "key": "A",
+          "text": "dict 版本的参数不会被转换、验证，也不会出现在 OpenAPI 中",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "只有类才能声明默认值为 0 的 skip 查询参数",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "编辑器不知道 dict 的键和值类型，改用类后能得到有类型的实例",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "函数依赖项每个请求都调用，类依赖项只在应用启动时调用一次",
+          "correct": false
+        }
+      ]
+    },
+    "question": "官方文档把依赖项从返回 `dict` 的函数改为类 `CommonQueryParams`，主要是为了解决什么问题？",
+    "answer": "原来路径操作函数拿到的是 `dict`，编辑器不知道它的键和值类型，所以不能提供补全等支持；改用类并声明类型后，编辑器就知道传入的是什么，可以帮助补全、类型检查。两种写法下参数都会被转换、验证并在 OpenAPI 模式中文档化，所以并不是 dict 版本缺这些能力。 [原文§类作为依赖项 · 来自前一个例子的dict](https://fastapi.tiangolo.com/zh/tutorial/dependencies/classes-as-dependencies/#a-dict-from-the-previous-example) [原文§类作为依赖项 · 类作为依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/classes-as-dependencies/#classes-as-dependencies_1) [原文§类作为依赖项 · 类型注解 vs Depends](https://fastapi.tiangolo.com/zh/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends)"
+  },
+  {
+    "id": "U5-13",
+    "typed": {
+      "id": "U5-13",
+      "type": "single",
+      "stem": "在 `commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]` 中，真正告诉 FastAPI 依赖项是什么的是哪一部分？",
+      "options": [
+        {
+          "key": "A",
+          "text": "第一个 CommonQueryParams，也就是前面的类型注解",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "外层的 Annotated，由它来决定依赖项是谁",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "路径操作函数里的参数名 commons，按名字匹配依赖项",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "Depends(...) 里传入的那个 CommonQueryParams",
+          "correct": true
+        }
+      ]
+    },
+    "question": "在 `commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]` 中，真正告诉 FastAPI 依赖项是什么的是哪一部分？",
+    "answer": "FastAPI 实际使用的是最后的 `Depends(CommonQueryParams)`：它据此提取依赖项声明的参数，并调用它。第一个 `CommonQueryParams` 类型注解对 FastAPI 没有任何特殊意义，不用于数据转换、验证等，写成 `Annotated[Any, Depends(CommonQueryParams)]` 同样可以工作；但仍鼓励声明类型，这样编辑器知道会传入什么，能补全和做类型检查。 [原文§类作为依赖项 · 类型注解 vs Depends](https://fastapi.tiangolo.com/zh/tutorial/dependencies/classes-as-dependencies/#type-annotation-vs-depends)"
+  },
+  {
+    "id": "U5-14",
+    "typed": {
+      "id": "U5-14",
+      "type": "single",
+      "stem": "依赖项明确是一个类时，`commons: Annotated[CommonQueryParams, Depends()]` 中不带参数的 `Depends()` 表示什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "依赖项就是类型注解里的那个类，等同于 Depends(CommonQueryParams)",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "表示该参数没有依赖项，FastAPI 按普通的请求参数来处理它",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "依赖项是上一个例子里返回 dict 的 common_parameters 函数",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "依赖项由应用的全局依赖项决定，这里不用再单独声明了",
+          "correct": false
+        }
+      ]
+    },
+    "question": "依赖项明确是一个类时，`commons: Annotated[CommonQueryParams, Depends()]` 中不带参数的 `Depends()` 表示什么？",
+    "answer": "这是官方提供的快捷方式：依赖项明确是一个类时，把依赖项声明为参数类型，并使用不带参数的 `Depends()`，就等同于 `Depends(CommonQueryParams)`，避免把类写两遍，FastAPI 知道该怎么处理。官方提示这只是快捷方式，看着更混乱的话可以忽略。 [原文§类作为依赖项 · 快捷方式](https://fastapi.tiangolo.com/zh/tutorial/dependencies/classes-as-dependencies/#shortcut)"
+  },
+  {
+    "id": "U5-15",
+    "typed": {
+      "id": "U5-15",
+      "type": "single",
+      "stem": "路径操作函数只声明了依赖项 `query_or_cookie_extractor`，而它又声明依赖 `query_extractor`。FastAPI 会怎样处理？",
+      "options": [
+        {
+          "key": "A",
+          "text": "路径操作函数必须同时声明 query_extractor，否则会报错",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "先调用 query_or_cookie_extractor，再把它的结果传给 query_extractor",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "先处理 query_extractor，再把它的返回值传给 query_or_cookie_extractor 的参数 q",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "只处理路径操作函数直接声明的依赖项，子依赖项会被忽略",
+          "correct": false
+        }
+      ]
+    },
+    "question": "路径操作函数只声明了依赖项 `query_or_cookie_extractor`，而它又声明依赖 `query_extractor`。FastAPI 会怎样处理？",
+    "answer": "路径操作函数里只声明了一个依赖项 `query_or_cookie_extractor`，但 FastAPI 必须先处理 `query_extractor`，以便在调用 `query_or_cookie_extractor` 时使用 `query_extractor` 返回的结果，并把它赋给参数 `q`。因此路径操作函数无需重复声明子依赖项，子依赖项也不会被忽略。 [原文§子依赖项 · 使用依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/sub-dependencies/#use-the-dependency) [原文§子依赖项 · 第二层依赖项，“dependable”和“dependant”](https://fastapi.tiangolo.com/zh/tutorial/dependencies/sub-dependencies/#second-dependency-dependable-and-dependant)"
+  },
+  {
+    "id": "U5-16",
+    "typed": {
+      "id": "U5-16",
+      "type": "single",
+      "stem": "同一个请求里，同一个依赖项被多个依赖项重复声明（例如共用同一个子依赖项），默认情况下 FastAPI 会怎样？",
+      "options": [
+        {
+          "key": "A",
+          "text": "每声明一次就调用一次，各自得到独立的返回值",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "只调用一次，把返回值“缓存”起来传给同一请求中所有需要它的依赖项",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "只在应用启动时调用一次，之后所有请求共用同一个返回值",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "调用次数取决于路径操作函数是 def 还是 async def",
+          "correct": false
+        }
+      ]
+    },
+    "question": "同一个请求里，同一个依赖项被多个依赖项重复声明（例如共用同一个子依赖项），默认情况下 FastAPI 会怎样？",
+    "answer": "FastAPI 在处理同一请求时只调用一次该依赖项：它不会为同一个请求多次调用同一个依赖项，而是把依赖项的返回值“缓存”起来，并传给同一请求中所有需要它的依赖项。这里的缓存针对的是同一个请求，而不是在应用启动时只调用一次。 [原文§子依赖项 · 多次使用同一个依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times)"
+  },
+  {
+    "id": "U5-17",
+    "typed": {
+      "id": "U5-17",
+      "type": "fill",
+      "stem": "按官方文档，若要让同一请求的每处声明都实际调用依赖项而不使用缓存值，需把 `Depends` 的参数 ____ 设置为 ____。",
+      "blankCount": 2,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，若要让同一请求的每处声明都实际调用依赖项而不使用缓存值，需把 `Depends` 的参数 ____ 设置为 ____。",
+    "answer": "两个空依次是：`use_cache`、`False`，即 `Depends(get_value, use_cache=False)`。 [原文§子依赖项 · 多次使用同一个依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/sub-dependencies/#using-the-same-dependency-multiple-times)"
+  },
+  {
+    "id": "U5-18",
+    "typed": {
+      "id": "U5-18",
+      "type": "single",
+      "stem": "按官方文档，什么情况下适合在路径操作装饰器里用 `dependencies` 参数声明依赖项，而不是在路径操作函数的参数里用 `Depends`？",
+      "options": [
+        {
+          "key": "A",
+          "text": "需要在路径操作函数里使用依赖项返回的值",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "希望依赖项里能够抛出 HTTPException 这类异常",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "依赖项需要再声明子依赖项或请求头等需求项",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "不需要用到依赖项的返回值，或依赖项本来就不返回值，但仍要执行它",
+          "correct": true
+        }
+      ]
+    },
+    "question": "按官方文档，什么情况下适合在路径操作装饰器里用 `dependencies` 参数声明依赖项，而不是在路径操作函数的参数里用 `Depends`？",
+    "answer": "当你不需要在路径操作函数里使用依赖项的返回值，或者依赖项本来就不返回值，但仍要执行或解析这个依赖项时，就可以在路径操作装饰器里添加由 `Depends()` 组成的 `dependencies` 列表。装饰器依赖项同样可以声明请求头等需求项或子依赖项，也可以抛出异常，但这些普通依赖项也能做到，并不是选用它的理由；需要使用返回值时则应在参数里用 `Depends`。 [原文§路径操作装饰器依赖项 · 在路径操作装饰器中添加 dependencies 参数](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-in-path-operation-decorators/#add-dependencies-to-the-path-operation-decorator) [原文§路径操作装饰器依赖项 · 依赖项错误和返回值 · 依赖项的需求项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-in-path-operation-decorators/#dependency-requirements)"
+  },
+  {
+    "id": "U5-19",
+    "typed": {
+      "id": "U5-19",
+      "type": "multiple",
+      "stem": "关于路径操作装饰器里的 `dependencies` 参数，按官方文档，下列哪些说法成立？",
+      "options": [
+        {
+          "key": "A",
+          "text": "它的值是由 Depends() 组成的 list",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "即使依赖项会返回值，这些值也不会传给路径操作函数",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "这类依赖项可以声明请求头等需求项或子依赖项，也可以 raise 异常",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "依赖项返回的值会作为额外参数自动传给路径操作函数",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "只能放入专门为它编写的依赖项，不能复用其他位置用过的普通依赖项",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于路径操作装饰器里的 `dependencies` 参数，按官方文档，下列哪些说法成立？",
+    "answer": "该参数的值是由 `Depends()` 组成的 list；这类依赖项的执行或解析方式和普通依赖项一样，可以声明请求头等需求项或子依赖项，也可以 `raise` 异常；但就算依赖项会返回值，路径操作也不会使用这些值，所以可以复用在其他位置用过的、会返回值的普通依赖项，即使没使用这个值也会执行它。“返回值传给路径操作函数”和“不能复用普通依赖项”都与此相反。 [原文§路径操作装饰器依赖项 · 在路径操作装饰器中添加 dependencies 参数](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-in-path-operation-decorators/#add-dependencies-to-the-path-operation-decorator) [原文§路径操作装饰器依赖项 · 依赖项错误和返回值 · 触发异常](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-in-path-operation-decorators/#raise-exceptions) [原文§路径操作装饰器依赖项 · 依赖项错误和返回值 · 返回值](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-in-path-operation-decorators/#return-values)"
+  },
+  {
+    "id": "U5-20",
+    "typed": {
+      "id": "U5-20",
+      "type": "single",
+      "stem": "把不需要返回值的依赖项放进路径操作装饰器的 `dependencies` 参数，官方文档提到的一个好处是什么？",
+      "options": [
+        {
+          "key": "A",
+          "text": "避免编辑器报“未使用参数”，也避免新人误以为有无用参数",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "该依赖项的执行顺序会被提前到路径操作函数的其他依赖项之前",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "依赖项返回值的缓存时间更长，可以在不同请求之间复用",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "依赖项不再受 def 与 async def 写法规则的限制",
+          "correct": false
+        }
+      ]
+    },
+    "question": "把不需要返回值的依赖项放进路径操作装饰器的 `dependencies` 参数，官方文档提到的一个好处是什么？",
+    "answer": "在装饰器里使用 `dependencies` 参数，可以确保依赖项被执行，同时避免编辑器或工具因为“未使用的函数参数”而报错，也避免开发新人误以为代码里包含无用的未使用参数。 [原文§路径操作装饰器依赖项 · 在路径操作装饰器中添加 dependencies 参数](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-in-path-operation-decorators/#add-dependencies-to-the-path-operation-decorator)"
+  },
+  {
+    "id": "U5-21",
+    "typed": {
+      "id": "U5-21",
+      "type": "fill",
+      "stem": "按官方文档，要为整个应用添加全局依赖项，需在创建应用时写成 `FastAPI(____=[Depends(...)])`，这样该依赖项会应用于所有____。",
+      "blankCount": 2,
+      "blankOrder": "ordered"
+    },
+    "question": "[填空题·有序] 按官方文档，要为整个应用添加全局依赖项，需在创建应用时写成 `FastAPI(____=[Depends(...)])`，这样该依赖项会应用于所有____。",
+    "answer": "两个空依次是：`dependencies`、路径操作。把依赖项放进 `FastAPI(dependencies=[...])`，就会对应用里的所有路径操作生效，思路与在路径操作装饰器中添加 `dependencies` 类似。 [原文§全局依赖项 · 全局依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/global-dependencies/#global-dependencies)"
+  },
+  {
+    "id": "U5-22",
+    "typed": {
+      "id": "U5-22",
+      "type": "short"
+    },
+    "question": "按官方文档，依赖项可以声明在哪几个位置？它们各自作用于哪些路径操作，返回值是否传给路径操作函数？",
+    "answer": "一是在路径操作函数的参数里用 `Depends` 声明，只作用于这个路径操作，依赖项的结果会注入到对应的参数；二是在路径操作装饰器的 `dependencies=[Depends(...)]` 里声明，同样只作用于这个路径操作，但即使依赖项有返回值也不会传给路径操作函数；三是创建应用时用 `FastAPI(dependencies=[Depends(...)])` 声明全局依赖项，应用于所有路径操作。文档还提到，后面会讲到如何为一组路径操作声明单个 `dependencies` 参数。 [原文§依赖项 · 第一步 · 在“dependant”中声明依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/#declare-the-dependency-in-the-dependant) [原文§路径操作装饰器依赖项 · 在路径操作装饰器中添加 dependencies 参数](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-in-path-operation-decorators/#add-dependencies-to-the-path-operation-decorator) [原文§全局依赖项 · 全局依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/global-dependencies/#global-dependencies)"
+  },
+  {
+    "id": "U5-23",
+    "typed": {
+      "id": "U5-23",
+      "type": "single",
+      "stem": "带 `yield` 的依赖项里，`yield` 之前和之后的代码分别在什么时候执行？",
+      "options": [
+        {
+          "key": "A",
+          "text": "yield 前后两部分代码都在路径操作函数运行之前执行",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "yield 之前的代码在响应发送之后执行，yield 之后的代码在响应发送之前执行",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "yield 及其之前的代码在创建响应之前执行，yield 之后的代码在响应发送之后执行",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "yield 之后的代码只有在路径操作函数抛出异常时才会执行",
+          "correct": false
+        }
+      ]
+    },
+    "question": "带 `yield` 的依赖项里，`yield` 之前和之后的代码分别在什么时候执行？",
+    "answer": "在创建响应之前，只会执行 `yield` 语句及其之前的代码；`yield` 语句后面的代码会在响应之后执行。依赖产生的值会注入路径操作和其他依赖项，退出步骤（如关闭数据库会话）放在 `yield` 之后。 [原文§使用 yield 的依赖项 · 使用 yield 的数据库依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#a-database-dependency-with-yield)"
+  },
+  {
+    "id": "U5-24",
+    "typed": {
+      "id": "U5-24",
+      "type": "multiple",
+      "stem": "关于带 `yield` 的依赖项，按官方文档，下列哪些说法成立？",
+      "options": [
+        {
+          "key": "A",
+          "text": "使用 yield 而不是 return，并把完成后要执行的额外步骤写在 yield 之后",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "每个依赖里应只使用一次 yield",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "yield 产生的值会注入到路径操作和其他依赖项中",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "只有 async def 函数才能使用 yield，普通函数不行",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "yield 产生的值只能注入路径操作函数，不能注入其他依赖项",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于带 `yield` 的依赖项，按官方文档，下列哪些说法成立？",
+    "answer": "带 `yield` 的依赖项用 `yield` 而不是 `return`，并把完成后要执行的额外步骤写在后面；每个依赖里应只使用一次 `yield`；`yield` 产生的值会注入到路径操作和其他依赖项中；可以使用 `async` 或普通函数，FastAPI 会像处理普通依赖一样正确处理。所以“只有 async def 才能 yield”和“值只能注入路径操作函数”都不对。 [原文§使用 yield 的依赖项 · 使用 yield 的依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#dependencies-with-yield) [原文§使用 yield 的依赖项 · 使用 yield 的数据库依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#a-database-dependency-with-yield)"
+  },
+  {
+    "id": "U5-25",
+    "typed": {
+      "id": "U5-25",
+      "type": "multiple",
+      "stem": "在带 `yield` 的依赖项里用 `try` 包住 `yield`，按官方文档，下列哪些说法成立？",
+      "options": [
+        {
+          "key": "A",
+          "text": "使用该依赖时抛出的异常（无论发生在路径操作还是另一个依赖中）都会在依赖里收到",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "可以用 except SomeException 捕获其中某个特定异常",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "可以用 finally 确保退出步骤一定会被执行，无论是否发生异常",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "finally 里的退出代码只在没有异常时才会执行",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "路径操作函数里抛出的异常不会传到依赖项里，只能在路径操作函数里处理",
+          "correct": false
+        }
+      ]
+    },
+    "question": "在带 `yield` 的依赖项里用 `try` 包住 `yield`，按官方文档，下列哪些说法成立？",
+    "answer": "用 `try` 包住 `yield` 后，使用该依赖时抛出的任何异常（无论发生在另一个依赖还是路径操作中）都会在依赖里收到，所以可以用 `except SomeException` 捕获特定异常；也可以用 `finally` 确保退出步骤一定会被执行，无论是否发生异常。所以“finally 只在没有异常时执行”和“路径操作里的异常不会传到依赖项”都不对。 [原文§使用 yield 的依赖项 · 同时使用 yield 和 try 的依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#a-dependency-with-yield-and-try)"
+  },
+  {
+    "id": "U5-26",
+    "typed": {
+      "id": "U5-26",
+      "type": "single",
+      "stem": "`dependency_c` 依赖 `dependency_b`，`dependency_b` 又依赖 `dependency_a`，三者都使用 `yield`。关于它们的退出代码，官方文档怎么说？",
+      "options": [
+        {
+          "key": "A",
+          "text": "按正确顺序运行：c 退出时 b 的值仍可用，b 退出时 a 的值仍可用",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "dependency_a 最先创建，所以它的退出代码也最先执行，之后依次是 b、c",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "三个依赖的退出代码执行顺序没有保证，需要开发者自己安排先后",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "只有直接用于路径操作的 dependency_c 的退出代码会被执行，其余不会",
+          "correct": false
+        }
+      ]
+    },
+    "question": "`dependency_c` 依赖 `dependency_b`，`dependency_b` 又依赖 `dependency_a`，三者都使用 `yield`。关于它们的退出代码，官方文档怎么说？",
+    "answer": "FastAPI 会确保每个带 `yield` 的依赖中的“退出代码”按正确的顺序运行：`dependency_c` 在执行退出代码时需要 `dependency_b` 的值仍然可用，而 `dependency_b` 又需要 `dependency_a` 的值在其退出代码中可用。“最先创建就最先退出”“顺序无保证”“只有 dependency_c 会退出”都与此不符。 [原文§使用 yield 的依赖项 · 使用 yield 的子依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#sub-dependencies-with-yield)"
+  },
+  {
+    "id": "U5-27",
+    "typed": {
+      "id": "U5-27",
+      "type": "short"
+    },
+    "question": "在带 `yield` 的依赖项里用 `except` 捕获了异常，却既不重新抛出也不抛出新异常，会发生什么？应该怎么做？",
+    "answer": "FastAPI 将无法察觉发生过异常，就像普通 Python 代码那样：客户端会看到 HTTP 500 Internal Server Error，但服务器没有任何日志或提示说明错误是什么。除非抛出另一个 `HTTPException` 或类似异常，否则应该用 `raise` 重新抛出原始异常，这样客户端仍得到 500，但服务器日志中会有这个自定义的异常。 [原文§使用 yield 的依赖项 · 同时使用 yield 和 except 的依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#dependencies-with-yield-and-except) [原文§使用 yield 的依赖项 · 同时使用 yield 和 except 的依赖项 · 务必 raise](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#always-raise-in-dependencies-with-yield-and-except)"
+  },
+  {
+    "id": "U5-28",
+    "typed": {
+      "id": "U5-28",
+      "type": "single",
+      "stem": "在路径操作函数里抛出异常（包括 `HTTPException`）时，它与带 `yield` 的依赖项是什么关系？",
+      "options": [
+        {
+          "key": "A",
+          "text": "异常已被异常处理器处理，不会再传给依赖项",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "只有 HTTPException 之外的异常才会传给依赖项",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "只有依赖项里显式声明了要接收异常，才会收到该异常",
+          "correct": false
+        },
+        {
+          "key": "D",
+          "text": "都会传给带 yield 的依赖项，通常应在依赖中重新抛出同一或新的异常",
+          "correct": true
+        }
+      ]
+    },
+    "question": "在路径操作函数里抛出异常（包括 `HTTPException`）时，它与带 `yield` 的依赖项是什么关系？",
+    "answer": "在路径操作函数的代码中引发的任何异常，包括 `HTTPException`，都会被传递给带 `yield` 的依赖项；大多数情况下，你会希望在带 `yield` 的依赖中重新抛出相同的异常或一个新的异常，以确保它被正确处理。 [原文§使用 yield 的依赖项 · 使用 yield 的依赖项的执行](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#execution-of-dependencies-with-yield)"
+  },
+  {
+    "id": "U5-29",
+    "typed": {
+      "id": "U5-29",
+      "type": "single",
+      "stem": "按官方文档，FastAPI 在内部是用什么机制实现带 `yield` 的依赖项的？",
+      "options": [
+        {
+          "key": "A",
+          "text": "依赖缓存（use_cache），用它在请求结束时清理缓存的返回值",
+          "correct": false
+        },
+        {
+          "key": "B",
+          "text": "异常处理器，yield 之后的代码相当于在其中运行",
+          "correct": false
+        },
+        {
+          "key": "C",
+          "text": "Python 的上下文管理器（contextlib 的两个装饰器）",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "后台任务，yield 之后的代码被当作后台任务来调度",
+          "correct": false
+        }
+      ]
+    },
+    "question": "按官方文档，FastAPI 在内部是用什么机制实现带 `yield` 的依赖项的？",
+    "answer": "FastAPI 用的是 Python 的上下文管理器：任何可以与 `@contextlib.contextmanager` 或 `@contextlib.asynccontextmanager` 一起使用的函数都可以作为依赖项，FastAPI 在内部就用这两个装饰器。上下文管理器是可以在 `with` 语句中使用的对象，`with` 代码块结束时会确保清理（如关闭文件），即使发生了异常；但你不需要也不应该为 FastAPI 的依赖去使用这些装饰器。 [原文§使用 yield 的依赖项 · 使用 yield 的依赖项](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#dependencies-with-yield) [原文§使用 yield 的依赖项 · 上下文管理器 · 什么是“上下文管理器”](https://fastapi.tiangolo.com/zh/tutorial/dependencies/dependencies-with-yield/#what-are-context-managers)"
+  },
+  {
+    "id": "U5-30",
+    "typed": {
+      "id": "U5-30",
+      "type": "short"
+    },
+    "question": "按官方文档，怎样让依赖项带参数，例如检查查询参数 `q` 是否包含某个可配置的固定内容？",
+    "answer": "声明类的 `__call__` 方法，让类的实例成为可调用对象；用 `__init__` 接收参数来“参数化”实例，例如 `checker = FixedContentQueryChecker(\"bar\")`，FastAPI 不会接触或关心 `__init__`。然后用 `Depends(checker)` 传入实例而不是类，解析依赖时 FastAPI 会像 `checker(q=\"somequery\")` 这样调用它，用 `__call__` 来检查附加参数和子依赖项，并把返回值传给路径操作函数里的参数。 [原文§高级依赖项 · “可调用”的实例](https://fastapi.tiangolo.com/zh/advanced/advanced-dependencies/#a-callable-instance) [原文§高级依赖项 · 参数化实例](https://fastapi.tiangolo.com/zh/advanced/advanced-dependencies/#parameterize-the-instance) [原文§高级依赖项 · 把实例作为依赖项](https://fastapi.tiangolo.com/zh/advanced/advanced-dependencies/#use-the-instance-as-a-dependency)"
+  },
+  {
+    "id": "U5-31",
+    "typed": {
+      "id": "U5-31",
+      "type": "multiple",
+      "stem": "关于带 `__call__` 的参数化依赖项（如 `FixedContentQueryChecker`），按官方文档，下列哪些说法成立？",
+      "options": [
+        {
+          "key": "A",
+          "text": "要让类的实例成为可调用对象，需要声明 __call__ 方法",
+          "correct": true
+        },
+        {
+          "key": "B",
+          "text": "FastAPI 会用 __call__ 来检查附加参数和子依赖项",
+          "correct": true
+        },
+        {
+          "key": "C",
+          "text": "FastAPI 不会接触也不关心 __init__，它由我们自己的代码用来参数化实例",
+          "correct": true
+        },
+        {
+          "key": "D",
+          "text": "应该写 Depends(FixedContentQueryChecker)，传入类本身",
+          "correct": false
+        },
+        {
+          "key": "E",
+          "text": "FastAPI 会调用 __init__，并把查询参数 q 传给 fixed_content",
+          "correct": false
+        }
+      ]
+    },
+    "question": "关于带 `__call__` 的参数化依赖项（如 `FixedContentQueryChecker`），按官方文档，下列哪些说法成立？",
+    "answer": "要让类的实例成为可调用对象，需要声明 `__call__` 方法；FastAPI 会用这个 `__call__` 来检查附加参数和子依赖项，并在稍后调用它；FastAPI 不会接触或关心 `__init__`，它由我们在自己的代码中使用。因为依赖项是实例 `checker` 而不是类本身，所以应写 `Depends(checker)` 而不是 `Depends(FixedContentQueryChecker)`；FastAPI 也不会调用 `__init__` 去传查询参数。 [原文§高级依赖项 · “可调用”的实例](https://fastapi.tiangolo.com/zh/advanced/advanced-dependencies/#a-callable-instance) [原文§高级依赖项 · 参数化实例](https://fastapi.tiangolo.com/zh/advanced/advanced-dependencies/#parameterize-the-instance) [原文§高级依赖项 · 把实例作为依赖项](https://fastapi.tiangolo.com/zh/advanced/advanced-dependencies/#use-the-instance-as-a-dependency)"
+  }
+]

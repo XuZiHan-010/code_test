@@ -1,0 +1,2270 @@
+[
+  {
+    "id": "Y1-1",
+    "chapterId": "Y1",
+    "type": "fill",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 11,
+    "answerLine": 11,
+    "typedLine": 8
+  },
+  {
+    "id": "Y1-2",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 12,
+    "answerLine": 12,
+    "typedLine": 15
+  },
+  {
+    "id": "Y1-3",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 13,
+    "answerLine": 13,
+    "typedLine": 42
+  },
+  {
+    "id": "Y1-4",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 14,
+    "answerLine": 14,
+    "typedLine": 69
+  },
+  {
+    "id": "Y1-5",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 15,
+    "answerLine": 15,
+    "typedLine": 106
+  },
+  {
+    "id": "Y1-6",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 16,
+    "answerLine": 16,
+    "typedLine": 133
+  },
+  {
+    "id": "Y1-7",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 17,
+    "answerLine": 17,
+    "typedLine": 160
+  },
+  {
+    "id": "Y1-8",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 18,
+    "answerLine": 18,
+    "typedLine": 192
+  },
+  {
+    "id": "Y1-9",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 19,
+    "answerLine": 19,
+    "typedLine": 224
+  },
+  {
+    "id": "Y1-10",
+    "chapterId": "Y1",
+    "type": "short",
+    "section": "docker底层依托于linux怎么实现资源隔离的？",
+    "questionLine": 20,
+    "answerLine": 20,
+    "typedLine": 251
+  },
+  {
+    "id": "Y1-11",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 24,
+    "answerLine": 24,
+    "typedLine": 255
+  },
+  {
+    "id": "Y1-12",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 25,
+    "answerLine": 25,
+    "typedLine": 282
+  },
+  {
+    "id": "Y1-13",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 26,
+    "answerLine": 26,
+    "typedLine": 309
+  },
+  {
+    "id": "Y1-14",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 27,
+    "answerLine": 27,
+    "typedLine": 336
+  },
+  {
+    "id": "Y1-15",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 28,
+    "answerLine": 28,
+    "typedLine": 363
+  },
+  {
+    "id": "Y1-16",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 29,
+    "answerLine": 29,
+    "typedLine": 390
+  },
+  {
+    "id": "Y1-17",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 30,
+    "answerLine": 30,
+    "typedLine": 417
+  },
+  {
+    "id": "Y1-18",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 31,
+    "answerLine": 31,
+    "typedLine": 449
+  },
+  {
+    "id": "Y1-19",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 32,
+    "answerLine": 32,
+    "typedLine": 481
+  },
+  {
+    "id": "Y1-20",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 33,
+    "answerLine": 33,
+    "typedLine": 508
+  },
+  {
+    "id": "Y1-21",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 34,
+    "answerLine": 34,
+    "typedLine": 535
+  },
+  {
+    "id": "Y1-22",
+    "chapterId": "Y1",
+    "type": "short",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 35,
+    "answerLine": 35,
+    "typedLine": 562
+  },
+  {
+    "id": "Y1-23",
+    "chapterId": "Y1",
+    "type": "short",
+    "section": "讲讲cgroup v2.0",
+    "questionLine": 36,
+    "answerLine": 36,
+    "typedLine": 566
+  },
+  {
+    "id": "Y1-24",
+    "chapterId": "Y1",
+    "type": "fill",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 40,
+    "answerLine": 40,
+    "typedLine": 570
+  },
+  {
+    "id": "Y1-25",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 41,
+    "answerLine": 41,
+    "typedLine": 577
+  },
+  {
+    "id": "Y1-26",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 42,
+    "answerLine": 42,
+    "typedLine": 604
+  },
+  {
+    "id": "Y1-27",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 43,
+    "answerLine": 43,
+    "typedLine": 631
+  },
+  {
+    "id": "Y1-28",
+    "chapterId": "Y1",
+    "type": "fill",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 44,
+    "answerLine": 44,
+    "typedLine": 658
+  },
+  {
+    "id": "Y1-29",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 45,
+    "answerLine": 45,
+    "typedLine": 665
+  },
+  {
+    "id": "Y1-30",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 46,
+    "answerLine": 46,
+    "typedLine": 692
+  },
+  {
+    "id": "Y1-31",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 47,
+    "answerLine": 47,
+    "typedLine": 724
+  },
+  {
+    "id": "Y1-32",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 48,
+    "answerLine": 48,
+    "typedLine": 761
+  },
+  {
+    "id": "Y1-33",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 49,
+    "answerLine": 49,
+    "typedLine": 788
+  },
+  {
+    "id": "Y1-34",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 50,
+    "answerLine": 50,
+    "typedLine": 815
+  },
+  {
+    "id": "Y1-35",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 51,
+    "answerLine": 51,
+    "typedLine": 842
+  },
+  {
+    "id": "Y1-36",
+    "chapterId": "Y1",
+    "type": "short",
+    "section": "Docker 和虚拟机有什么区别？",
+    "questionLine": 52,
+    "answerLine": 52,
+    "typedLine": 869
+  },
+  {
+    "id": "Y1-37",
+    "chapterId": "Y1",
+    "type": "fill",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 56,
+    "answerLine": 56,
+    "typedLine": 873
+  },
+  {
+    "id": "Y1-38",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 57,
+    "answerLine": 57,
+    "typedLine": 880
+  },
+  {
+    "id": "Y1-39",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 58,
+    "answerLine": 58,
+    "typedLine": 907
+  },
+  {
+    "id": "Y1-40",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 59,
+    "answerLine": 59,
+    "typedLine": 934
+  },
+  {
+    "id": "Y1-41",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 60,
+    "answerLine": 60,
+    "typedLine": 961
+  },
+  {
+    "id": "Y1-42",
+    "chapterId": "Y1",
+    "type": "fill",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 61,
+    "answerLine": 61,
+    "typedLine": 998
+  },
+  {
+    "id": "Y1-43",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 62,
+    "answerLine": 62,
+    "typedLine": 1005
+  },
+  {
+    "id": "Y1-44",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 63,
+    "answerLine": 63,
+    "typedLine": 1032
+  },
+  {
+    "id": "Y1-45",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 64,
+    "answerLine": 64,
+    "typedLine": 1059
+  },
+  {
+    "id": "Y1-46",
+    "chapterId": "Y1",
+    "type": "short",
+    "section": "Docker 有哪几个核心组件？",
+    "questionLine": 65,
+    "answerLine": 65,
+    "typedLine": 1086
+  },
+  {
+    "id": "Y1-47",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "镜像和容器有什么区别？",
+    "questionLine": 69,
+    "answerLine": 69,
+    "typedLine": 1090
+  },
+  {
+    "id": "Y1-48",
+    "chapterId": "Y1",
+    "type": "fill",
+    "section": "镜像和容器有什么区别？",
+    "questionLine": 70,
+    "answerLine": 70,
+    "typedLine": 1117
+  },
+  {
+    "id": "Y1-49",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "镜像和容器有什么区别？",
+    "questionLine": 71,
+    "answerLine": 71,
+    "typedLine": 1124
+  },
+  {
+    "id": "Y1-50",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "镜像和容器有什么区别？",
+    "questionLine": 72,
+    "answerLine": 72,
+    "typedLine": 1151
+  },
+  {
+    "id": "Y1-51",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "镜像和容器有什么区别？",
+    "questionLine": 73,
+    "answerLine": 73,
+    "typedLine": 1183
+  },
+  {
+    "id": "Y1-52",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "镜像和容器有什么区别？",
+    "questionLine": 74,
+    "answerLine": 74,
+    "typedLine": 1210
+  },
+  {
+    "id": "Y1-53",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "镜像和容器有什么区别？",
+    "questionLine": 75,
+    "answerLine": 75,
+    "typedLine": 1237
+  },
+  {
+    "id": "Y1-54",
+    "chapterId": "Y1",
+    "type": "short",
+    "section": "镜像和容器有什么区别？",
+    "questionLine": 76,
+    "answerLine": 76,
+    "typedLine": 1269
+  },
+  {
+    "id": "Y1-55",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 80,
+    "answerLine": 80,
+    "typedLine": 1273
+  },
+  {
+    "id": "Y1-56",
+    "chapterId": "Y1",
+    "type": "fill",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 81,
+    "answerLine": 81,
+    "typedLine": 1300
+  },
+  {
+    "id": "Y1-57",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 82,
+    "answerLine": 82,
+    "typedLine": 1307
+  },
+  {
+    "id": "Y1-58",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 83,
+    "answerLine": 83,
+    "typedLine": 1334
+  },
+  {
+    "id": "Y1-59",
+    "chapterId": "Y1",
+    "type": "fill",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 84,
+    "answerLine": 84,
+    "typedLine": 1361
+  },
+  {
+    "id": "Y1-60",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 85,
+    "answerLine": 85,
+    "typedLine": 1368
+  },
+  {
+    "id": "Y1-61",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 86,
+    "answerLine": 86,
+    "typedLine": 1395
+  },
+  {
+    "id": "Y1-62",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 87,
+    "answerLine": 87,
+    "typedLine": 1422
+  },
+  {
+    "id": "Y1-63",
+    "chapterId": "Y1",
+    "type": "single",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 88,
+    "answerLine": 88,
+    "typedLine": 1449
+  },
+  {
+    "id": "Y1-64",
+    "chapterId": "Y1",
+    "type": "multiple",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 89,
+    "answerLine": 89,
+    "typedLine": 1476
+  },
+  {
+    "id": "Y1-65",
+    "chapterId": "Y1",
+    "type": "short",
+    "section": "Docker 镜像的分层原理是什么？",
+    "questionLine": 90,
+    "answerLine": 90,
+    "typedLine": 1508
+  },
+  {
+    "id": "Y2-1",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 98,
+    "answerLine": 98,
+    "typedLine": 1517
+  },
+  {
+    "id": "Y2-2",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 99,
+    "answerLine": 99,
+    "typedLine": 1544
+  },
+  {
+    "id": "Y2-3",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 100,
+    "answerLine": 100,
+    "typedLine": 1571
+  },
+  {
+    "id": "Y2-4",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 101,
+    "answerLine": 101,
+    "typedLine": 1598
+  },
+  {
+    "id": "Y2-5",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 102,
+    "answerLine": 102,
+    "typedLine": 1625
+  },
+  {
+    "id": "Y2-6",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 103,
+    "answerLine": 103,
+    "typedLine": 1652
+  },
+  {
+    "id": "Y2-7",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 104,
+    "answerLine": 104,
+    "typedLine": 1679
+  },
+  {
+    "id": "Y2-8",
+    "chapterId": "Y2",
+    "type": "fill",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 105,
+    "answerLine": 105,
+    "typedLine": 1706
+  },
+  {
+    "id": "Y2-9",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 106,
+    "answerLine": 106,
+    "typedLine": 1713
+  },
+  {
+    "id": "Y2-10",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 107,
+    "answerLine": 107,
+    "typedLine": 1740
+  },
+  {
+    "id": "Y2-11",
+    "chapterId": "Y2",
+    "type": "multiple",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 108,
+    "answerLine": 108,
+    "typedLine": 1767
+  },
+  {
+    "id": "Y2-12",
+    "chapterId": "Y2",
+    "type": "short",
+    "section": "Dockerfile 常用指令有哪些？",
+    "questionLine": 109,
+    "answerLine": 109,
+    "typedLine": 1799
+  },
+  {
+    "id": "Y2-13",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 113,
+    "answerLine": 113,
+    "typedLine": 1803
+  },
+  {
+    "id": "Y2-14",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 114,
+    "answerLine": 114,
+    "typedLine": 1830
+  },
+  {
+    "id": "Y2-15",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 115,
+    "answerLine": 115,
+    "typedLine": 1857
+  },
+  {
+    "id": "Y2-16",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 116,
+    "answerLine": 116,
+    "typedLine": 1884
+  },
+  {
+    "id": "Y2-17",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 117,
+    "answerLine": 117,
+    "typedLine": 1911
+  },
+  {
+    "id": "Y2-18",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 118,
+    "answerLine": 118,
+    "typedLine": 1938
+  },
+  {
+    "id": "Y2-19",
+    "chapterId": "Y2",
+    "type": "fill",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 119,
+    "answerLine": 119,
+    "typedLine": 1965
+  },
+  {
+    "id": "Y2-20",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 120,
+    "answerLine": 120,
+    "typedLine": 1972
+  },
+  {
+    "id": "Y2-21",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 121,
+    "answerLine": 121,
+    "typedLine": 1999
+  },
+  {
+    "id": "Y2-22",
+    "chapterId": "Y2",
+    "type": "multiple",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 122,
+    "answerLine": 122,
+    "typedLine": 2026
+  },
+  {
+    "id": "Y2-23",
+    "chapterId": "Y2",
+    "type": "short",
+    "section": "Dockerfile 中 CMD 和 ENTRYPOINT 有什么区别？",
+    "questionLine": 123,
+    "answerLine": 123,
+    "typedLine": 2053
+  },
+  {
+    "id": "Y2-24",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 127,
+    "answerLine": 127,
+    "typedLine": 2057
+  },
+  {
+    "id": "Y2-25",
+    "chapterId": "Y2",
+    "type": "fill",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 128,
+    "answerLine": 128,
+    "typedLine": 2084
+  },
+  {
+    "id": "Y2-26",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 129,
+    "answerLine": 129,
+    "typedLine": 2091
+  },
+  {
+    "id": "Y2-27",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 130,
+    "answerLine": 130,
+    "typedLine": 2118
+  },
+  {
+    "id": "Y2-28",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 131,
+    "answerLine": 131,
+    "typedLine": 2145
+  },
+  {
+    "id": "Y2-29",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 132,
+    "answerLine": 132,
+    "typedLine": 2172
+  },
+  {
+    "id": "Y2-30",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 133,
+    "answerLine": 133,
+    "typedLine": 2199
+  },
+  {
+    "id": "Y2-31",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 134,
+    "answerLine": 134,
+    "typedLine": 2226
+  },
+  {
+    "id": "Y2-32",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 135,
+    "answerLine": 135,
+    "typedLine": 2253
+  },
+  {
+    "id": "Y2-33",
+    "chapterId": "Y2",
+    "type": "multiple",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 136,
+    "answerLine": 136,
+    "typedLine": 2280
+  },
+  {
+    "id": "Y2-34",
+    "chapterId": "Y2",
+    "type": "short",
+    "section": "Dockerfile 中 COPY 和 ADD 有什么区别？",
+    "questionLine": 137,
+    "answerLine": 137,
+    "typedLine": 2312
+  },
+  {
+    "id": "Y2-35",
+    "chapterId": "Y2",
+    "type": "short",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 141,
+    "answerLine": 141,
+    "typedLine": 2316
+  },
+  {
+    "id": "Y2-36",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 142,
+    "answerLine": 142,
+    "typedLine": 2320
+  },
+  {
+    "id": "Y2-37",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 143,
+    "answerLine": 143,
+    "typedLine": 2347
+  },
+  {
+    "id": "Y2-38",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 144,
+    "answerLine": 144,
+    "typedLine": 2374
+  },
+  {
+    "id": "Y2-39",
+    "chapterId": "Y2",
+    "type": "fill",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 145,
+    "answerLine": 145,
+    "typedLine": 2401
+  },
+  {
+    "id": "Y2-40",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 146,
+    "answerLine": 146,
+    "typedLine": 2408
+  },
+  {
+    "id": "Y2-41",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 147,
+    "answerLine": 147,
+    "typedLine": 2435
+  },
+  {
+    "id": "Y2-42",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 148,
+    "answerLine": 148,
+    "typedLine": 2462
+  },
+  {
+    "id": "Y2-43",
+    "chapterId": "Y2",
+    "type": "multiple",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 149,
+    "answerLine": 149,
+    "typedLine": 2489
+  },
+  {
+    "id": "Y2-44",
+    "chapterId": "Y2",
+    "type": "short",
+    "section": "什么是多阶段构建（multi-stage build）？有什么好处？",
+    "questionLine": 150,
+    "answerLine": 150,
+    "typedLine": 2521
+  },
+  {
+    "id": "Y2-45",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "如何减小 Docker 镜像体积？",
+    "questionLine": 154,
+    "answerLine": 154,
+    "typedLine": 2525
+  },
+  {
+    "id": "Y2-46",
+    "chapterId": "Y2",
+    "type": "multiple",
+    "section": "如何减小 Docker 镜像体积？",
+    "questionLine": 155,
+    "answerLine": 155,
+    "typedLine": 2552
+  },
+  {
+    "id": "Y2-47",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "如何减小 Docker 镜像体积？",
+    "questionLine": 156,
+    "answerLine": 156,
+    "typedLine": 2579
+  },
+  {
+    "id": "Y2-48",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "如何减小 Docker 镜像体积？",
+    "questionLine": 157,
+    "answerLine": 157,
+    "typedLine": 2606
+  },
+  {
+    "id": "Y2-49",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "如何减小 Docker 镜像体积？",
+    "questionLine": 158,
+    "answerLine": 158,
+    "typedLine": 2633
+  },
+  {
+    "id": "Y2-50",
+    "chapterId": "Y2",
+    "type": "multiple",
+    "section": "如何减小 Docker 镜像体积？",
+    "questionLine": 159,
+    "answerLine": 159,
+    "typedLine": 2660
+  },
+  {
+    "id": "Y2-51",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "如何减小 Docker 镜像体积？",
+    "questionLine": 160,
+    "answerLine": 160,
+    "typedLine": 2692
+  },
+  {
+    "id": "Y2-52",
+    "chapterId": "Y2",
+    "type": "multiple",
+    "section": "如何减小 Docker 镜像体积？",
+    "questionLine": 161,
+    "answerLine": 161,
+    "typedLine": 2719
+  },
+  {
+    "id": "Y2-53",
+    "chapterId": "Y2",
+    "type": "short",
+    "section": "如何减小 Docker 镜像体积？",
+    "questionLine": 162,
+    "answerLine": 162,
+    "typedLine": 2746
+  },
+  {
+    "id": "Y2-54",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "docker commit 和 docker build 有什么区别？",
+    "questionLine": 166,
+    "answerLine": 166,
+    "typedLine": 2750
+  },
+  {
+    "id": "Y2-55",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "docker commit 和 docker build 有什么区别？",
+    "questionLine": 167,
+    "answerLine": 167,
+    "typedLine": 2777
+  },
+  {
+    "id": "Y2-56",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "docker commit 和 docker build 有什么区别？",
+    "questionLine": 168,
+    "answerLine": 168,
+    "typedLine": 2804
+  },
+  {
+    "id": "Y2-57",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "docker commit 和 docker build 有什么区别？",
+    "questionLine": 169,
+    "answerLine": 169,
+    "typedLine": 2831
+  },
+  {
+    "id": "Y2-58",
+    "chapterId": "Y2",
+    "type": "multiple",
+    "section": "docker commit 和 docker build 有什么区别？",
+    "questionLine": 170,
+    "answerLine": 170,
+    "typedLine": 2858
+  },
+  {
+    "id": "Y2-59",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "docker commit 和 docker build 有什么区别？",
+    "questionLine": 171,
+    "answerLine": 171,
+    "typedLine": 2885
+  },
+  {
+    "id": "Y2-60",
+    "chapterId": "Y2",
+    "type": "single",
+    "section": "docker commit 和 docker build 有什么区别？",
+    "questionLine": 172,
+    "answerLine": 172,
+    "typedLine": 2912
+  },
+  {
+    "id": "Y2-61",
+    "chapterId": "Y2",
+    "type": "fill",
+    "section": "docker commit 和 docker build 有什么区别？",
+    "questionLine": 173,
+    "answerLine": 173,
+    "typedLine": 2939
+  },
+  {
+    "id": "Y2-62",
+    "chapterId": "Y2",
+    "type": "short",
+    "section": "docker commit 和 docker build 有什么区别？",
+    "questionLine": 174,
+    "answerLine": 174,
+    "typedLine": 2946
+  },
+  {
+    "id": "Y3-1",
+    "chapterId": "Y3",
+    "type": "fill",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 182,
+    "answerLine": 182,
+    "typedLine": 2955
+  },
+  {
+    "id": "Y3-2",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 183,
+    "answerLine": 183,
+    "typedLine": 2962
+  },
+  {
+    "id": "Y3-3",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 184,
+    "answerLine": 184,
+    "typedLine": 2989
+  },
+  {
+    "id": "Y3-4",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 185,
+    "answerLine": 185,
+    "typedLine": 3016
+  },
+  {
+    "id": "Y3-5",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 186,
+    "answerLine": 186,
+    "typedLine": 3043
+  },
+  {
+    "id": "Y3-6",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 187,
+    "answerLine": 187,
+    "typedLine": 3070
+  },
+  {
+    "id": "Y3-7",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 188,
+    "answerLine": 188,
+    "typedLine": 3097
+  },
+  {
+    "id": "Y3-8",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 189,
+    "answerLine": 189,
+    "typedLine": 3129
+  },
+  {
+    "id": "Y3-9",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 190,
+    "answerLine": 190,
+    "typedLine": 3156
+  },
+  {
+    "id": "Y3-10",
+    "chapterId": "Y3",
+    "type": "fill",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 191,
+    "answerLine": 191,
+    "typedLine": 3183
+  },
+  {
+    "id": "Y3-11",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 192,
+    "answerLine": 192,
+    "typedLine": 3190
+  },
+  {
+    "id": "Y3-12",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 193,
+    "answerLine": 193,
+    "typedLine": 3217
+  },
+  {
+    "id": "Y3-13",
+    "chapterId": "Y3",
+    "type": "short",
+    "section": "Docker 容器数据持久化有哪些方式？",
+    "questionLine": 194,
+    "answerLine": 194,
+    "typedLine": 3254
+  },
+  {
+    "id": "Y3-14",
+    "chapterId": "Y3",
+    "type": "fill",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 198,
+    "answerLine": 198,
+    "typedLine": 3258
+  },
+  {
+    "id": "Y3-15",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 199,
+    "answerLine": 199,
+    "typedLine": 3265
+  },
+  {
+    "id": "Y3-16",
+    "chapterId": "Y3",
+    "type": "fill",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 200,
+    "answerLine": 200,
+    "typedLine": 3292
+  },
+  {
+    "id": "Y3-17",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 201,
+    "answerLine": 201,
+    "typedLine": 3299
+  },
+  {
+    "id": "Y3-18",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 202,
+    "answerLine": 202,
+    "typedLine": 3326
+  },
+  {
+    "id": "Y3-19",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 203,
+    "answerLine": 203,
+    "typedLine": 3353
+  },
+  {
+    "id": "Y3-20",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 204,
+    "answerLine": 204,
+    "typedLine": 3380
+  },
+  {
+    "id": "Y3-21",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 205,
+    "answerLine": 205,
+    "typedLine": 3407
+  },
+  {
+    "id": "Y3-22",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 206,
+    "answerLine": 206,
+    "typedLine": 3434
+  },
+  {
+    "id": "Y3-23",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 207,
+    "answerLine": 207,
+    "typedLine": 3461
+  },
+  {
+    "id": "Y3-24",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 208,
+    "answerLine": 208,
+    "typedLine": 3488
+  },
+  {
+    "id": "Y3-25",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 209,
+    "answerLine": 209,
+    "typedLine": 3515
+  },
+  {
+    "id": "Y3-26",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 210,
+    "answerLine": 210,
+    "typedLine": 3547
+  },
+  {
+    "id": "Y3-27",
+    "chapterId": "Y3",
+    "type": "short",
+    "section": "Docker 的网络模式有哪些？",
+    "questionLine": 211,
+    "answerLine": 211,
+    "typedLine": 3584
+  },
+  {
+    "id": "Y3-28",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 215,
+    "answerLine": 215,
+    "typedLine": 3588
+  },
+  {
+    "id": "Y3-29",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 216,
+    "answerLine": 216,
+    "typedLine": 3625
+  },
+  {
+    "id": "Y3-30",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 217,
+    "answerLine": 217,
+    "typedLine": 3652
+  },
+  {
+    "id": "Y3-31",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 218,
+    "answerLine": 218,
+    "typedLine": 3679
+  },
+  {
+    "id": "Y3-32",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 219,
+    "answerLine": 219,
+    "typedLine": 3706
+  },
+  {
+    "id": "Y3-33",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 220,
+    "answerLine": 220,
+    "typedLine": 3733
+  },
+  {
+    "id": "Y3-34",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 221,
+    "answerLine": 221,
+    "typedLine": 3760
+  },
+  {
+    "id": "Y3-35",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 222,
+    "answerLine": 222,
+    "typedLine": 3787
+  },
+  {
+    "id": "Y3-36",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 223,
+    "answerLine": 223,
+    "typedLine": 3814
+  },
+  {
+    "id": "Y3-37",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 224,
+    "answerLine": 224,
+    "typedLine": 3841
+  },
+  {
+    "id": "Y3-38",
+    "chapterId": "Y3",
+    "type": "short",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 225,
+    "answerLine": 225,
+    "typedLine": 3873
+  },
+  {
+    "id": "Y3-39",
+    "chapterId": "Y3",
+    "type": "short",
+    "section": "同一个宿主机上的多个容器之间怎么通信？",
+    "questionLine": 226,
+    "answerLine": 226,
+    "typedLine": 3877
+  },
+  {
+    "id": "Y3-40",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 230,
+    "answerLine": 230,
+    "typedLine": 3881
+  },
+  {
+    "id": "Y3-41",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 231,
+    "answerLine": 231,
+    "typedLine": 3908
+  },
+  {
+    "id": "Y3-42",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 232,
+    "answerLine": 232,
+    "typedLine": 3935
+  },
+  {
+    "id": "Y3-43",
+    "chapterId": "Y3",
+    "type": "fill",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 233,
+    "answerLine": 233,
+    "typedLine": 3962
+  },
+  {
+    "id": "Y3-44",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 234,
+    "answerLine": 234,
+    "typedLine": 3969
+  },
+  {
+    "id": "Y3-45",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 235,
+    "answerLine": 235,
+    "typedLine": 3996
+  },
+  {
+    "id": "Y3-46",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 236,
+    "answerLine": 236,
+    "typedLine": 4023
+  },
+  {
+    "id": "Y3-47",
+    "chapterId": "Y3",
+    "type": "fill",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 237,
+    "answerLine": 237,
+    "typedLine": 4050
+  },
+  {
+    "id": "Y3-48",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 238,
+    "answerLine": 238,
+    "typedLine": 4057
+  },
+  {
+    "id": "Y3-49",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 239,
+    "answerLine": 239,
+    "typedLine": 4084
+  },
+  {
+    "id": "Y3-50",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 240,
+    "answerLine": 240,
+    "typedLine": 4111
+  },
+  {
+    "id": "Y3-51",
+    "chapterId": "Y3",
+    "type": "short",
+    "section": "Docker Compose 是什么？什么场景用？",
+    "questionLine": 241,
+    "answerLine": 241,
+    "typedLine": 4148
+  },
+  {
+    "id": "Y3-52",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 245,
+    "answerLine": 245,
+    "typedLine": 4152
+  },
+  {
+    "id": "Y3-53",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 246,
+    "answerLine": 246,
+    "typedLine": 4179
+  },
+  {
+    "id": "Y3-54",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 247,
+    "answerLine": 247,
+    "typedLine": 4206
+  },
+  {
+    "id": "Y3-55",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 248,
+    "answerLine": 248,
+    "typedLine": 4233
+  },
+  {
+    "id": "Y3-56",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 249,
+    "answerLine": 249,
+    "typedLine": 4270
+  },
+  {
+    "id": "Y3-57",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 250,
+    "answerLine": 250,
+    "typedLine": 4297
+  },
+  {
+    "id": "Y3-58",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 251,
+    "answerLine": 251,
+    "typedLine": 4324
+  },
+  {
+    "id": "Y3-59",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 252,
+    "answerLine": 252,
+    "typedLine": 4351
+  },
+  {
+    "id": "Y3-60",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 253,
+    "answerLine": 253,
+    "typedLine": 4383
+  },
+  {
+    "id": "Y3-61",
+    "chapterId": "Y3",
+    "type": "single",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 254,
+    "answerLine": 254,
+    "typedLine": 4410
+  },
+  {
+    "id": "Y3-62",
+    "chapterId": "Y3",
+    "type": "multiple",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 255,
+    "answerLine": 255,
+    "typedLine": 4437
+  },
+  {
+    "id": "Y3-63",
+    "chapterId": "Y3",
+    "type": "fill",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 256,
+    "answerLine": 256,
+    "typedLine": 4469
+  },
+  {
+    "id": "Y3-64",
+    "chapterId": "Y3",
+    "type": "short",
+    "section": "Docker 和 Kubernetes 是什么关系？",
+    "questionLine": 257,
+    "answerLine": 257,
+    "typedLine": 4476
+  },
+  {
+    "id": "Y4-1",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 265,
+    "answerLine": 265,
+    "typedLine": 4485
+  },
+  {
+    "id": "Y4-2",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 266,
+    "answerLine": 266,
+    "typedLine": 4512
+  },
+  {
+    "id": "Y4-3",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 267,
+    "answerLine": 267,
+    "typedLine": 4539
+  },
+  {
+    "id": "Y4-4",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 268,
+    "answerLine": 268,
+    "typedLine": 4566
+  },
+  {
+    "id": "Y4-5",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 269,
+    "answerLine": 269,
+    "typedLine": 4593
+  },
+  {
+    "id": "Y4-6",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 270,
+    "answerLine": 270,
+    "typedLine": 4620
+  },
+  {
+    "id": "Y4-7",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 271,
+    "answerLine": 271,
+    "typedLine": 4647
+  },
+  {
+    "id": "Y4-8",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 272,
+    "answerLine": 272,
+    "typedLine": 4674
+  },
+  {
+    "id": "Y4-9",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 273,
+    "answerLine": 273,
+    "typedLine": 4701
+  },
+  {
+    "id": "Y4-10",
+    "chapterId": "Y4",
+    "type": "fill",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 274,
+    "answerLine": 274,
+    "typedLine": 4728
+  },
+  {
+    "id": "Y4-11",
+    "chapterId": "Y4",
+    "type": "fill",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 275,
+    "answerLine": 275,
+    "typedLine": 4735
+  },
+  {
+    "id": "Y4-12",
+    "chapterId": "Y4",
+    "type": "fill",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 276,
+    "answerLine": 276,
+    "typedLine": 4742
+  },
+  {
+    "id": "Y4-13",
+    "chapterId": "Y4",
+    "type": "multiple",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 277,
+    "answerLine": 277,
+    "typedLine": 4749
+  },
+  {
+    "id": "Y4-14",
+    "chapterId": "Y4",
+    "type": "short",
+    "section": "Docker 常用命令有哪些？",
+    "questionLine": 278,
+    "answerLine": 278,
+    "typedLine": 4781
+  },
+  {
+    "id": "Y4-15",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何进入一个运行中的容器？",
+    "questionLine": 282,
+    "answerLine": 282,
+    "typedLine": 4785
+  },
+  {
+    "id": "Y4-16",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何进入一个运行中的容器？",
+    "questionLine": 283,
+    "answerLine": 283,
+    "typedLine": 4812
+  },
+  {
+    "id": "Y4-17",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何进入一个运行中的容器？",
+    "questionLine": 284,
+    "answerLine": 284,
+    "typedLine": 4839
+  },
+  {
+    "id": "Y4-18",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何进入一个运行中的容器？",
+    "questionLine": 285,
+    "answerLine": 285,
+    "typedLine": 4866
+  },
+  {
+    "id": "Y4-19",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何进入一个运行中的容器？",
+    "questionLine": 286,
+    "answerLine": 286,
+    "typedLine": 4893
+  },
+  {
+    "id": "Y4-20",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何进入一个运行中的容器？",
+    "questionLine": 287,
+    "answerLine": 287,
+    "typedLine": 4920
+  },
+  {
+    "id": "Y4-21",
+    "chapterId": "Y4",
+    "type": "fill",
+    "section": "如何进入一个运行中的容器？",
+    "questionLine": 288,
+    "answerLine": 288,
+    "typedLine": 4947
+  },
+  {
+    "id": "Y4-22",
+    "chapterId": "Y4",
+    "type": "multiple",
+    "section": "如何进入一个运行中的容器？",
+    "questionLine": 289,
+    "answerLine": 289,
+    "typedLine": 4954
+  },
+  {
+    "id": "Y4-23",
+    "chapterId": "Y4",
+    "type": "short",
+    "section": "如何进入一个运行中的容器？",
+    "questionLine": 290,
+    "answerLine": 290,
+    "typedLine": 4986
+  },
+  {
+    "id": "Y4-24",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 294,
+    "answerLine": 294,
+    "typedLine": 4990
+  },
+  {
+    "id": "Y4-25",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 295,
+    "answerLine": 295,
+    "typedLine": 5017
+  },
+  {
+    "id": "Y4-26",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 296,
+    "answerLine": 296,
+    "typedLine": 5044
+  },
+  {
+    "id": "Y4-27",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 297,
+    "answerLine": 297,
+    "typedLine": 5071
+  },
+  {
+    "id": "Y4-28",
+    "chapterId": "Y4",
+    "type": "fill",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 298,
+    "answerLine": 298,
+    "typedLine": 5098
+  },
+  {
+    "id": "Y4-29",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 299,
+    "answerLine": 299,
+    "typedLine": 5105
+  },
+  {
+    "id": "Y4-30",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 300,
+    "answerLine": 300,
+    "typedLine": 5132
+  },
+  {
+    "id": "Y4-31",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 301,
+    "answerLine": 301,
+    "typedLine": 5159
+  },
+  {
+    "id": "Y4-32",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 302,
+    "answerLine": 302,
+    "typedLine": 5186
+  },
+  {
+    "id": "Y4-33",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 303,
+    "answerLine": 303,
+    "typedLine": 5213
+  },
+  {
+    "id": "Y4-34",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 304,
+    "answerLine": 304,
+    "typedLine": 5240
+  },
+  {
+    "id": "Y4-35",
+    "chapterId": "Y4",
+    "type": "multiple",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 305,
+    "answerLine": 305,
+    "typedLine": 5267
+  },
+  {
+    "id": "Y4-36",
+    "chapterId": "Y4",
+    "type": "short",
+    "section": "容器启动后立刻退出，怎么排查？",
+    "questionLine": 306,
+    "answerLine": 306,
+    "typedLine": 5299
+  },
+  {
+    "id": "Y4-37",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 310,
+    "answerLine": 310,
+    "typedLine": 5303
+  },
+  {
+    "id": "Y4-38",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 311,
+    "answerLine": 311,
+    "typedLine": 5330
+  },
+  {
+    "id": "Y4-39",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 312,
+    "answerLine": 312,
+    "typedLine": 5357
+  },
+  {
+    "id": "Y4-40",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 313,
+    "answerLine": 313,
+    "typedLine": 5384
+  },
+  {
+    "id": "Y4-41",
+    "chapterId": "Y4",
+    "type": "fill",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 314,
+    "answerLine": 314,
+    "typedLine": 5411
+  },
+  {
+    "id": "Y4-42",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 315,
+    "answerLine": 315,
+    "typedLine": 5418
+  },
+  {
+    "id": "Y4-43",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 316,
+    "answerLine": 316,
+    "typedLine": 5445
+  },
+  {
+    "id": "Y4-44",
+    "chapterId": "Y4",
+    "type": "fill",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 317,
+    "answerLine": 317,
+    "typedLine": 5472
+  },
+  {
+    "id": "Y4-45",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 318,
+    "answerLine": 318,
+    "typedLine": 5479
+  },
+  {
+    "id": "Y4-46",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 319,
+    "answerLine": 319,
+    "typedLine": 5506
+  },
+  {
+    "id": "Y4-47",
+    "chapterId": "Y4",
+    "type": "multiple",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 320,
+    "answerLine": 320,
+    "typedLine": 5533
+  },
+  {
+    "id": "Y4-48",
+    "chapterId": "Y4",
+    "type": "multiple",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 321,
+    "answerLine": 321,
+    "typedLine": 5570
+  },
+  {
+    "id": "Y4-49",
+    "chapterId": "Y4",
+    "type": "short",
+    "section": "docker run 的常用参数有哪些？",
+    "questionLine": 322,
+    "answerLine": 322,
+    "typedLine": 5602
+  },
+  {
+    "id": "Y4-50",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 326,
+    "answerLine": 326,
+    "typedLine": 5606
+  },
+  {
+    "id": "Y4-51",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 327,
+    "answerLine": 327,
+    "typedLine": 5633
+  },
+  {
+    "id": "Y4-52",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 328,
+    "answerLine": 328,
+    "typedLine": 5660
+  },
+  {
+    "id": "Y4-53",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 329,
+    "answerLine": 329,
+    "typedLine": 5687
+  },
+  {
+    "id": "Y4-54",
+    "chapterId": "Y4",
+    "type": "fill",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 330,
+    "answerLine": 330,
+    "typedLine": 5714
+  },
+  {
+    "id": "Y4-55",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 331,
+    "answerLine": 331,
+    "typedLine": 5721
+  },
+  {
+    "id": "Y4-56",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 332,
+    "answerLine": 332,
+    "typedLine": 5748
+  },
+  {
+    "id": "Y4-57",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 333,
+    "answerLine": 333,
+    "typedLine": 5775
+  },
+  {
+    "id": "Y4-58",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 334,
+    "answerLine": 334,
+    "typedLine": 5802
+  },
+  {
+    "id": "Y4-59",
+    "chapterId": "Y4",
+    "type": "single",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 335,
+    "answerLine": 335,
+    "typedLine": 5829
+  },
+  {
+    "id": "Y4-60",
+    "chapterId": "Y4",
+    "type": "multiple",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 336,
+    "answerLine": 336,
+    "typedLine": 5856
+  },
+  {
+    "id": "Y4-61",
+    "chapterId": "Y4",
+    "type": "short",
+    "section": "如何清理 Docker 的无用镜像、容器和卷？",
+    "questionLine": 337,
+    "answerLine": 337,
+    "typedLine": 5888
+  }
+]

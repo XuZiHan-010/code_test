@@ -17,13 +17,12 @@
 - **A1-6** 一是知识被冻结，训练数据有截止日期，拿不到实时信息；二是不能行动，本质是文本生成器，只能告诉你怎么做，自己做不了发邮件、查数据库这类事；三是没有持续状态，每次调用之间是失忆的，除非手动把之前的对话塞进去。合起来只能做一问一答。[原文§普通大模型的局限性](https://xiaolinnote.com/ai/agent/1_whatisagent.html#%E6%99%AE%E9%80%9A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7)
 - **A1-7** 它一下子突破了普通模型的局限：接上搜索引擎就能获取实时信息，接上邮件 API、代码执行器就能真正做事；要注意不是模型自己执行，而是模型告诉你该调什么，由你的代码去执行，结果再反馈给模型，模型始终只是大脑。[原文§Agent 特别在哪？](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%89%B9%E5%88%AB%E5%9C%A8%E5%93%AA)
 - **A1-8** 工具定义里没有一行执行逻辑，只有名字、描述和需要哪些参数，本质上是一份说明书；模型读了它，自己决定调哪个工具、参数填什么，把决策以 JSON 格式输出，真正执行的还是你的代码。[原文§Agent 特别在哪？](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%89%B9%E5%88%AB%E5%9C%A8%E5%93%AA)
-- **A1-9** 短期记忆是当前任务执行过程中的中间状态，例如第一步搜到了什么、第二步算出了什么，存在上下文里，保证不会做到一半忘了前面；长期记忆是跨任务的，如用户偏好、历史操作记录，通常用向量数据库存储，需要时做语义检索取回。[原文§Agent 特别在哪？](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%89%B9%E5%88%AB%E5%9C%A8%E5%93%AA)
+- **A1-9** 第 1 空：短期记忆。第 2 空：长期记忆。第 3 空：短期记忆保留当前任务执行过程中的中间状态，例如已搜索到的资料、前面步骤的计算结果，放在上下文中供后续步骤使用，让任务执行保持连贯。第 4 空：长期记忆保存跨任务仍需使用的信息，例如用户偏好、历史操作记录，通常存入向量数据库，在后续任务需要时通过语义检索取回。后两空应分别解释概念，不能只重复名称；可用自己的话表述，例子不是必填项。[原文§Agent 特别在哪？](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%89%B9%E5%88%AB%E5%9C%A8%E5%93%AA)
 - **A1-10** 某一步失败时它不会直接崩掉，而是能感知失败、分析原因、换一种方式重试，例如换关键词再搜、看报错信息后调整参数重新调用；它还能在完成一步后回头审视结果是否符合预期、要不要调整后续计划，这是它区别于简单自动化脚本的关键。[原文§Agent 特别在哪？](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%89%B9%E5%88%AB%E5%9C%A8%E5%93%AA)
 - **A1-11** 三个条件同时成熟：大模型能力跨过了能用的门槛，推理和指令遵循能力足以做多步决策；工具调用标准化，OpenAI 在 2023 年推出 Function Calling，被各家跟进；配套生态完善，LangChain、LlamaIndex 等框架降低了门槛，向量数据库解决了长期记忆存储，可调用的工具越来越丰富。[原文§为什么 Agent 现在才爆发？](https://xiaolinnote.com/ai/agent/1_whatisagent.html#%E4%B8%BA%E4%BB%80%E4%B9%88-agent-%E7%8E%B0%E5%9C%A8%E6%89%8D%E7%88%86%E5%8F%91)
 - **A1-12** M 个 Agent 框架接 N 个工具需要 M×N 套适配逻辑；MCP 定义了一套标准的 JSON-RPC 协议，工具提供方按标准暴露能力成为 MCP Server，任何支持 MCP 的 Agent 通过内置的 MCP Client 都能直接发现和调用，不需要额外写适配代码，像工具世界的 USB-C 接口。[原文§Agent 生态的最新趋势](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%94%9F%E6%80%81%E7%9A%84%E6%9C%80%E6%96%B0%E8%B6%8B%E5%8A%BF)
-- **A1-13** 最外层是 Host，即用户直接交互的 AI 应用，如 Claude Desktop、Cursor；中间是 Client，负责和 MCP Server 建立连接、管理通信；最里层是 Server，是真正暴露工具能力的服务。[原文§Agent 生态的最新趋势](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%94%9F%E6%80%81%E7%9A%84%E6%9C%80%E6%96%B0%E8%B6%8B%E5%8A%BF)
+- **A1-13** 第 1 空：Host。第 2 空：Client。第 3 空：Server。第 4 空：Host 是最外层、用户直接交互的 AI 应用，例如 Claude Desktop、Cursor。第 5 空：Client 是中间层的客户端，负责与 MCP Server 建立连接并管理通信。第 6 空：Server 是提供工具能力的服务，将这些能力暴露出来供客户端发现和调用。前三空不区分大小写，host、client、server 同样正确；后三空应分别解释对应层的含义与职责，不能只重复名称，可用自己的话表述，例子不是必填项。[原文§Agent 生态的最新趋势](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%94%9F%E6%80%81%E7%9A%84%E6%9C%80%E6%96%B0%E8%B6%8B%E5%8A%BF)
 - **A1-14** 每个 Agent 都有一张名片，上面写着它能做什么、正在做什么、需要什么输入，其他 Agent 读了这张名片就知道怎么和它协作；它解决的是来自不同厂商、不同框架的 Agent 之间怎样互相发现能力、协调任务和传递中间结果。[原文§Agent 生态的最新趋势](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%94%9F%E6%80%81%E7%9A%84%E6%9C%80%E6%96%B0%E8%B6%8B%E5%8A%BF)
-- **A1-15** 2025 年 12 月 Anthropic 把 MCP 捐给了 Linux 基金会旗下新成立的 Agentic AI Foundation，已有数千个公开的 MCP Server 可用；A2A 在 2025 年 6 月被 Google 捐给 Linux 基金会维护，SAP、Salesforce、ServiceNow 等都在接入。两者互补，未来大概率各管一层。[原文§Agent 生态的最新趋势](https://xiaolinnote.com/ai/agent/1_whatisagent.html#agent-%E7%94%9F%E6%80%81%E7%9A%84%E6%9C%80%E6%96%B0%E8%B6%8B%E5%8A%BF)
 - **A1-16** 停在能调工具这一层，没有点出自主性：Agent 的关键不是有工具，而是自己决定用不用、什么时候用、用哪个；答题要点出自主规划、通过工具行动、结果反馈形成闭环三件事，并说明模型只是大脑，工具的真正执行是代码。[原文§🎯 面试总结](https://xiaolinnote.com/ai/agent/1_whatisagent.html#%F0%9F%8E%AF-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93)
 
 ## 2. Agent 的组成
@@ -43,7 +42,7 @@
 - **A2-8** o1/o3、DeepSeek-R1 这类推理模型在复杂任务拆解和多步决策上表现更好，适合做大脑，但延迟更高、token 消耗更大；常见做法是用推理能力强的大模型做任务规划、关键判断等核心决策，用更快更便宜的小模型做意图分类、格式提取等简单任务。[原文§LLM 核心](https://xiaolinnote.com/ai/agent/2_components.html#llm-%E6%A0%B8%E5%BF%83)
 - **A2-9** LLM 本身只是语言处理器，不能上网、不能读文件、不能执行代码，这些限制都靠工具突破；搜索引擎、数据库查询、代码执行器、发邮件的 API，任何能用函数封装的能力都可以变成工具。[原文§工具系统](https://xiaolinnote.com/ai/agent/2_components.html#%E5%B7%A5%E5%85%B7%E7%B3%BB%E7%BB%9F)
 - **A2-10** 模型根据 description 判断什么时候该用这个工具：描述含糊，例如只写查询数据，模型可能在用户问天气时也去查数据库；写成查询公司内部销售数据库、支持按日期和产品类别筛选，模型才能精确判断。工具描述需要反复调优，重要性不亚于 prompt 工程。[原文§工具系统](https://xiaolinnote.com/ai/agent/2_components.html#%E5%B7%A5%E5%85%B7%E7%B3%BB%E7%BB%9F)
-- **A2-11** Tools，会改变外部世界的操作，如发邮件；Resources，只读的数据源，如文件内容；Prompts，预定义的提示词模板，如代码审查模板。它底层是一套基于 JSON-RPC 的通信协议。[原文§工具系统](https://xiaolinnote.com/ai/agent/2_components.html#%E5%B7%A5%E5%85%B7%E7%B3%BB%E7%BB%9F)
+- **A2-11** Tools，由模型决定调用的函数，如发邮件；Resources，由应用决定怎样取用的数据，如文件内容；Prompts，预定义的提示词模板，如代码审查模板。它底层是一套基于 JSON-RPC 的通信协议。（原文按有没有副作用来区分 Tools 和 Resources；按 MCP 规范，区别在于由谁控制，Tools 也可以是只读的。）[原文§工具系统](https://xiaolinnote.com/ai/agent/2_components.html#%E5%B7%A5%E5%85%B7%E7%B3%BB%E7%BB%9F)[核对来源：MCP 规范·Tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)[核对来源：MCP 规范·Resources](https://modelcontextprotocol.io/specification/2025-06-18/server/resources)
 - **A2-12** 语义记忆存事实性知识，如用户所在的行业、某个 API 的频率限制；情景记忆存具体的经历，如上次处理某个退款问题的过程和结论；程序性记忆存怎么做事的经验，如处理退款的标准流程，让 Agent 下次遇到类似任务能直接套用。这只是便于理解的类比，实现上通常是向量检索加 metadata 过滤。[原文§记忆系统](https://xiaolinnote.com/ai/agent/2_components.html#%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F)
 - **A2-13** 上下文窗口有限：复杂任务执行十几步，每步工具返回大量文本，上下文很快就满；可以做摘要压缩，把前面的步骤浓缩成关键信息，或者用滑动窗口只保留最近几步的详细内容，但两种方式都会丢信息，如何在记住够多和不撑爆上下文之间取舍是核心设计问题。[原文§记忆系统](https://xiaolinnote.com/ai/agent/2_components.html#%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F)
 - **A2-14** 不应该。什么都往向量数据库里塞，检索出来的噪音很多，反而干扰模型决策；存得太少又失去意义。比较好的做法是存入之前做一轮重要性评估，只把真正有价值的信息持久化。[原文§记忆系统](https://xiaolinnote.com/ai/agent/2_components.html#%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F)
@@ -51,6 +50,7 @@
 - **A2-16** CoT 即思维链，让模型把思考过程写出来而不是直接输出答案；因为 LLM 是逐步生成 token 的，每一步推理的输出会成为下一步的输入，把中间步骤写出来等于给了模型更多的思考空间。[原文§规划模块](https://xiaolinnote.com/ai/agent/2_components.html#%E8%A7%84%E5%88%92%E6%A8%A1%E5%9D%97)
 - **A2-17** CoT 是一条线性推理链走到底；ToT 即思维树，在每个推理节点展开多个可能的分支，评估各分支的质量，选最优路径继续往下走。ToT 在需要创造性思考或复杂决策的场景效果更好，但要同时评估多条路径，计算成本更高。[原文§规划模块](https://xiaolinnote.com/ai/agent/2_components.html#%E8%A7%84%E5%88%92%E6%A8%A1%E5%9D%97)
 - **A2-18** 先规划后执行即 Plan-and-Execute：先输出完整步骤列表再逐步执行，结构清晰、便于人工审核，但中间结果与预期不符时计划要重新调整；边执行边规划即 ReAct：每走一步重新思考下一步，灵活性高，但每步都是局部最优，容易走偏。很多团队先定粗略计划，再在执行中动态微调。[原文§规划模块](https://xiaolinnote.com/ai/agent/2_components.html#%E8%A7%84%E5%88%92%E6%A8%A1%E5%9D%97)
+- **A2-19** 可以做摘要压缩，把前面的步骤浓缩成关键信息；也可以用滑动窗口，只保留最近几步的详细内容。两种方式都会丢信息，怎样在记住够多和不撑爆上下文之间取舍，是核心的设计问题。[原文§记忆系统](https://xiaolinnote.com/ai/agent/2_components.html#%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F)
 
 ## 3. Workflow、Agent、Tools
 
@@ -74,7 +74,7 @@
 - **A3-13** Prompt Chaining 提示链：把大任务拆成多步，前一步输出作为后一步输入；Routing 路由：先用 LLM 分类，再分发到不同分支；Parallelization 并行化：可同时进行的子任务并行执行后汇总；Orchestrator-Workers 编排者与工人：中央编排者分配任务，多个 Worker 各自完成相互独立的子任务。[原文§三者怎么组合？Agentic Workflow 才是生产主流](https://xiaolinnote.com/ai/agent/3_workflow_tools.html#%E4%B8%89%E8%80%85%E6%80%8E%E4%B9%88%E7%BB%84%E5%90%88-agentic-workflow-%E6%89%8D%E6%98%AF%E7%94%9F%E4%BA%A7%E4%B8%BB%E6%B5%81)
 - **A3-14** 一个 LLM 负责生成输出，另一个 LLM 或同一模型换角色负责评估质量，不通过就把反馈交回生成者改进，循环到通过或达到最大重试次数；适合营销文案、法律条款、代码等对质量要求高的场景。注意评估标准必须在代码里定义清楚，不能让评估者自由发挥。[原文§三者怎么组合？Agentic Workflow 才是生产主流](https://xiaolinnote.com/ai/agent/3_workflow_tools.html#%E4%B8%89%E8%80%85%E6%80%8E%E4%B9%88%E7%BB%84%E5%90%88-agentic-workflow-%E6%89%8D%E6%98%AF%E7%94%9F%E4%BA%A7%E4%B8%BB%E6%B5%81)
 - **A3-15** 纯 Agent 模式下复杂任务可能要跑十几轮甚至几十轮决策循环，每轮都发送完整上下文，token 线性增长、延迟累积；Workflow 流程固定，可以精确控制每个节点的 token 预算，不需要的上下文不传，该并行的并行。所以很多团队从原型过渡到生产时会重构成 Agentic Workflow。[原文§三者怎么组合？Agentic Workflow 才是生产主流](https://xiaolinnote.com/ai/agent/3_workflow_tools.html#%E4%B8%89%E8%80%85%E6%80%8E%E4%B9%88%E7%BB%84%E5%90%88-agentic-workflow-%E6%89%8D%E6%98%AF%E7%94%9F%E4%BA%A7%E4%B8%BB%E6%B5%81)
-- **A3-16** Tools 确定性高，输入固定则输出固定，调试容易；Agent 确定性低，同样的输入可能走不同路径，调试难；Workflow 确定性高，行为完全可预测，链路清晰、可逐步追踪。适用场景分别是封装单一具体能力、路径未知的复杂任务、流程相对固定的业务系统。[原文§三者怎么组合？Agentic Workflow 才是生产主流](https://xiaolinnote.com/ai/agent/3_workflow_tools.html#%E4%B8%89%E8%80%85%E6%80%8E%E4%B9%88%E7%BB%84%E5%90%88-agentic-workflow-%E6%89%8D%E6%98%AF%E7%94%9F%E4%BA%A7%E4%B8%BB%E6%B5%81)
+- **A3-16** 原文的对比表认为：Tools 确定性高（原文注释“输入固定则输出固定”），调试容易；Agent 确定性低，同样的输入可能走不同路径，调试难；Workflow 确定性高，行为完全可预测，链路清晰、可逐步追踪。适用场景分别是封装单一具体能力、路径未知的复杂任务、流程相对固定的业务系统。需注意边界：这里的“确定”指调用逻辑固定、不由模型自主选路径，因而更可控、更好调试；不等于结果必然固定。工具读取的是当前环境，同样的参数在不同时间可能因数据更新、缓存、权限或外部服务状态而返回不同结果，要让结果可复现还须另外固定环境和数据，不能只固定参数；Workflow 里也可以含模型节点，固定的是流程骨架而非每个节点的输出。[原文§三者怎么组合？Agentic Workflow 才是生产主流](https://xiaolinnote.com/ai/agent/3_workflow_tools.html#%E4%B8%89%E8%80%85%E6%80%8E%E4%B9%88%E7%BB%84%E5%90%88-agentic-workflow-%E6%89%8D%E6%98%AF%E7%94%9F%E4%BA%A7%E4%B8%BB%E6%B5%81)[原文§工具观察和并发调度，是模型之外的变化来源](https://xiaolinnote.com/ai/agent/30_execution_variance.html#%E5%B7%A5%E5%85%B7%E8%A7%82%E5%AF%9F%E5%92%8C%E5%B9%B6%E5%8F%91%E8%B0%83%E5%BA%A6-%E6%98%AF%E6%A8%A1%E5%9E%8B%E4%B9%8B%E5%A4%96%E7%9A%84%E5%8F%98%E5%8C%96%E6%9D%A5%E6%BA%90)
 
 ## 4. 设计范式
 
@@ -95,6 +95,7 @@
 - **A4-10** 能用 Workflow 解决的问题就不要用 Agent：生产环境里可控性比灵活性更重要，Workflow 行为确定、出错能精确定位，Agent 行为是概率性的、测试覆盖率天然低；建议先从最简单的 Workflow 开始，只有某个节点确实需要灵活决策、写死的逻辑覆盖不了时，才把它升级成 Agent。[原文§Agent 三种设计范式](https://xiaolinnote.com/ai/agent/4_patterns.html#agent-%E4%B8%89%E7%A7%8D%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F)
 - **A4-11** 意图识别、知识检索、回答生成这条主链路是固定的 Workflow；其中知识检索这个节点内部可以用 Agent 动态决定检索几轮、用哪些工具。这样整体可控，又有局部的灵活性，是目前生产环境最主流的做法。[原文§Agent 三种设计范式](https://xiaolinnote.com/ai/agent/4_patterns.html#agent-%E4%B8%89%E7%A7%8D%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F)
 - **A4-12** 它是正式的运行时机制，内嵌在 Agent 的执行流程里，而不是开发阶段的调试手段；代价是增加 token 消耗和延迟，这个取舍在面试里经常被追问。[原文§🎯 面试总结](https://xiaolinnote.com/ai/agent/4_patterns.html#%F0%9F%8E%AF-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93)
+- **A4-13** 在 HumanEval 代码生成基准上，GPT-4 直接做的准确率约 80%，加上 Reflexion 后提升到 91%。[原文§Agent 三种设计范式](https://xiaolinnote.com/ai/agent/4_patterns.html#agent-%E4%B8%89%E7%A7%8D%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F)
 
 ## 5. ReAct 与推理模式
 
@@ -134,7 +135,7 @@
 - **A6-6** 设计范式是搭 Agent 的顶层做事流程框架，决定整个系统从头到尾按什么大逻辑跑，像公司的管理制度；推理模式是 Agent 在每一步干活时脑子里具体怎么思考，是底层的思考逻辑，像员工的干活方法。[原文§📝 详细解析](https://xiaolinnote.com/ai/agent/6_three_patterns.html#%F0%9F%93%9D-%E8%AF%A6%E7%BB%86%E8%A7%A3%E6%9E%90)
 - **A6-7** 它没有提前做完整规划的环节，规划和执行混在一起、走一步看一步，而 Plan-and-Execute 是先做完整规划再统一执行；和 Reflection 相比，ReAct 的循环里没有专门的自我检查环节，只有行动后的结果观察，不会停下来复盘这一步做对没有。[原文§一、基础款：ReAct 单步迭代范式](https://xiaolinnote.com/ai/agent/6_three_patterns.html#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E6%AC%BE-react-%E5%8D%95%E6%AD%A5%E8%BF%AD%E4%BB%A3%E8%8C%83%E5%BC%8F)
 - **A6-8** 实现简单、灵活度高、逻辑透明，出了问题好排查，是新手入门的首选；它像外卖骑手，每一步都基于上一步的实际情况决策，中途路封了会立刻改路线，而不是死守原计划。[原文§一、基础款：ReAct 单步迭代范式](https://xiaolinnote.com/ai/agent/6_three_patterns.html#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E6%AC%BE-react-%E5%8D%95%E6%AD%A5%E8%BF%AD%E4%BB%A3%E8%8C%83%E5%BC%8F)
-- **A6-9** 规划和执行是两个独立的模块，可以用不同的模型：规划只调一次、对推理要求高，用强模型；执行要调很多次、每步任务已经很具体，用便宜的小模型，总成本可降 70% 到 90% 而质量几乎不受影响。ReAct 每一步都是同一个模型既推理又执行，无法做这种差异化分配。[原文§二、复杂任务款：Plan-and-Execute 规划执行范式](https://xiaolinnote.com/ai/agent/6_three_patterns.html#%E4%BA%8C%E3%80%81%E5%A4%8D%E6%9D%82%E4%BB%BB%E5%8A%A1%E6%AC%BE-plan-and-execute-%E8%A7%84%E5%88%92%E6%89%A7%E8%A1%8C%E8%8C%83%E5%BC%8F)
+- **A6-9** 规划和执行是两个独立的模块，可以用不同的模型：规划只调一次、对推理要求高，用强模型；执行要调很多次、每步任务已经很具体，用便宜的小模型，总成本可降 70% 到 90% 而质量几乎不受影响。原文对比的 ReAct 实现里，每一步都是同一个模型既推理又执行，做不了这种差异化分配；这是该实现的假设，不是 ReAct 范式本身不允许按步骤换模型。[原文§二、复杂任务款：Plan-and-Execute 规划执行范式](https://xiaolinnote.com/ai/agent/6_three_patterns.html#%E4%BA%8C%E3%80%81%E5%A4%8D%E6%9D%82%E4%BB%BB%E5%8A%A1%E6%AC%BE-plan-and-execute-%E8%A7%84%E5%88%92%E6%89%A7%E8%A1%8C%E8%8C%83%E5%BC%8F)
 - **A6-10** 它在原有范式上加了生成、评估、改进的闭环，设置独立的检查环节，不达标就重试或调整策略；优势是幻觉、逻辑错误和细节遗漏都会减少，代价是至少多一次 LLM 调用，token 和延迟线性增加，没有轮次限制还容易陷入为了改而改的死循环。适合生产代码、正式商业报告、法律文书等不能出错的场景。[原文§三、质量增强款：Reflection 反思迭代范式](https://xiaolinnote.com/ai/agent/6_three_patterns.html#%E4%B8%89%E3%80%81%E8%B4%A8%E9%87%8F%E5%A2%9E%E5%BC%BA%E6%AC%BE-reflection-%E5%8F%8D%E6%80%9D%E8%BF%AD%E4%BB%A3%E8%8C%83%E5%BC%8F)
 - **A6-11** 它解决计划定死后中途遇到意外的问题，例如执行到一半发现某个竞品已被收购，原分析框架需要调整；做法是每个步骤执行完后，把当前结果和剩余计划一起交给规划模块，判断原计划是否还合理，需要时生成新的剩余步骤计划替换原来的。代价是每步多一次重新评估计划的 LLM 调用。[原文§进阶：动态 Replan 和 Reflexion](https://xiaolinnote.com/ai/agent/6_three_patterns.html#%E8%BF%9B%E9%98%B6-%E5%8A%A8%E6%80%81-replan-%E5%92%8C-reflexion)
 - **A6-12** 代码可以运行、可以测试，执行结果就是最直接的反馈信号：测试没通过就分析问题，把参数顺序搞反、边界条件没处理这样的具体教训记下来，重试时带上；这种语言强化学习的思路让 Agent 不需要梯度更新就能从错误中学习，在 HumanEval 上把 GPT-4 的 pass@1 从 80% 提升到 91%。[原文§进阶：动态 Replan 和 Reflexion](https://xiaolinnote.com/ai/agent/6_three_patterns.html#%E8%BF%9B%E9%98%B6-%E5%8A%A8%E6%80%81-replan-%E5%92%8C-reflexion)
@@ -142,6 +143,7 @@
 - **A6-14** 每个需要反思的节点至少多一次 LLM 调用，token 消耗会在基础范式上再增加 30% 到 100%，取决于反思的轮次和严格程度，一个步骤反思两轮才通过就相当于消耗翻三倍；所以要有上限，一般最多反思 2 到 3 轮。[原文§token 消耗对比](https://xiaolinnote.com/ai/agent/6_three_patterns.html#token-%E6%B6%88%E8%80%97%E5%AF%B9%E6%AF%94)
 - **A6-15** 先用 ReAct 快速验证效果，确认任务能跑通之后，再根据 token 消耗和延迟的实际数据，决定要不要切换到 Plan-and-Execute 或叠加 Reflection；不要一上来就选最复杂的方案。[原文§token 消耗对比](https://xiaolinnote.com/ai/agent/6_three_patterns.html#token-%E6%B6%88%E8%80%97%E5%AF%B9%E6%AF%94)
 - **A6-16** 规划阶段用 Plan-and-Execute 定全局计划，每一步的执行用 ReAct 循环处理，最后对整体输出做一次 Reflection 检查，在 LangGraph 这类框架里实现起来很自然；最容易踩的坑是把学到的范式全堆在一起，又规划、又反思、又 Replan、又积累经验，系统又复杂又慢，工程上应够用就好。[原文§选型指南](https://xiaolinnote.com/ai/agent/6_three_patterns.html#%E9%80%89%E5%9E%8B%E6%8C%87%E5%8D%97)
+- **A6-17** 每个需要反思的节点至少多一次 LLM 调用，token 消耗会在基础范式上再增加 30% 到 100%，取决于反思的轮次和严格程度；一个步骤反思两轮才通过，就相当于消耗翻三倍。所以反思要有上限，一般最多 2 到 3 轮。[原文§token 消耗对比](https://xiaolinnote.com/ai/agent/6_three_patterns.html#token-%E6%B6%88%E8%80%97%E5%AF%B9%E6%AF%94)
 
 ## 7. 任务拆分
 
@@ -191,6 +193,9 @@
 - **A8-16** 它是把情节记忆转化为语义记忆的过程：把一批相关的具体经历交给 LLM，让它总结出通用的规律，例如从三次抓取动态页面的经历里提炼出遇到动态渲染应使用浏览器自动化工具；这条规律比任何一条经历都更通用、更浓缩、更容易被检索命中。[原文§记忆整合：从碎片到知识](https://xiaolinnote.com/ai/agent/8_memory.html#%E8%AE%B0%E5%BF%86%E6%95%B4%E5%90%88-%E4%BB%8E%E7%A2%8E%E7%89%87%E5%88%B0%E7%9F%A5%E8%AF%86)
 - **A8-17** 每次任务结束后做一次轻量级的去重和更新；每隔一段时间，例如每天或每周，再做一次深度整理和提炼，把累积的情节记忆批量转化为语义记忆。有些框架如 Mem0 已内置这种整合逻辑，在后台异步完成。[原文§记忆整合：从碎片到知识](https://xiaolinnote.com/ai/agent/8_memory.html#%E8%AE%B0%E5%BF%86%E6%95%B4%E5%90%88-%E4%BB%8E%E7%A2%8E%E7%89%87%E5%88%B0%E7%9F%A5%E8%AF%86)
 - **A8-18** 读：任务开始前从实体记忆取出用户的结构化偏好，并用任务描述检索长期记忆，一起拼进 system prompt；用：执行中短期记忆全程记录消息、输出和工具结果，需要专业知识时临时检索长期记忆；写：任务完成后把新偏好更新到实体记忆，把有价值的结论写入长期记忆，然后清空短期记忆。[原文§完整记忆模块的配合方式](https://xiaolinnote.com/ai/agent/8_memory.html#%E5%AE%8C%E6%95%B4%E8%AE%B0%E5%BF%86%E6%A8%A1%E5%9D%97%E7%9A%84%E9%85%8D%E5%90%88%E6%96%B9%E5%BC%8F)
+- **A8-19** 不是。原文提醒这是工程上为了方便把记忆管理拆成四档的一种划分，借用了认知科学的一些词，如情节、语义、程序，但和心理学严格意义上的分类不完全一致，目的是帮助建立直觉，不是学术标准。[原文§四种记忆类型（从最短暂到最持久）](https://xiaolinnote.com/ai/agent/8_memory.html#%E5%9B%9B%E7%A7%8D%E8%AE%B0%E5%BF%86%E7%B1%BB%E5%9E%8B-%E4%BB%8E%E6%9C%80%E7%9F%AD%E6%9A%82%E5%88%B0%E6%9C%80%E6%8C%81%E4%B9%85)
+- **A8-20** Core Memory 始终留在 context window 里，存用户画像、当前任务目标等核心信息；Recall Memory 是最近的对话历史，按时间存储；Archival Memory 是长期归档的知识，容量无限但要主动检索。[原文§Context Window 管理：短期记忆的「工作台」不够大怎么办](https://xiaolinnote.com/ai/agent/8_memory.html#context-window-%E7%AE%A1%E7%90%86-%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86%E7%9A%84%E3%80%8C%E5%B7%A5%E4%BD%9C%E5%8F%B0%E3%80%8D%E4%B8%8D%E5%A4%9F%E5%A4%A7%E6%80%8E%E4%B9%88%E5%8A%9E)
+- **A8-21** 向量数据库负责模糊的语义检索，知识图谱负责精确的关系推理。做法是在对话中用 LLM 自动提取实体和关系存入图谱，检索时先用向量检索拿候选，再用图谱补充关联信息，合并后注入 context。[原文§知识图谱：让记忆之间产生关联](https://xiaolinnote.com/ai/agent/8_memory.html#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1-%E8%AE%A9%E8%AE%B0%E5%BF%86%E4%B9%8B%E9%97%B4%E4%BA%A7%E7%94%9F%E5%85%B3%E8%81%94)
 
 ## 9. 长短期记忆落地
 
@@ -241,7 +246,7 @@
 ### 补充考点
 
 - **A11-4** 本质是一个 LLM 加一套工具，跑一个决策循环，直到任务完成；最大的优势不只是架构简单，而是整条任务链路完全在掌控之内，任务怎么走、用什么工具、何时结束都在一个地方写清楚，链路短、好排查，沟通成本为零。[原文§Single-Agent](https://xiaolinnote.com/ai/agent/11_single_multi.html#single-agent)
-- **A11-5** 任务太长、信息量太大，context 撑爆，开始遗忘；不同步骤需要完全不同的专业能力，全塞进一个 Agent 每件事都不专注；任务中有多个独立子任务，理论上可以并行，但单 Agent 只能一个个来。不属于这三类就用 Single-Agent，不要为了用新技术强行引入 Multi-Agent。[原文§Single-Agent](https://xiaolinnote.com/ai/agent/11_single_multi.html#single-agent)
+- **A11-5** 任务太长、信息量太大，context 撑爆，开始遗忘；不同步骤需要完全不同的专业能力，全塞进一个 Agent 每件事都不专注；任务中有多个独立子任务，理论上可以并行，但原文所对比的单 Agent（一个上下文里逐步循环）只能一个个来。边界：这不等于单 Agent 宿主完全不能并行——模型可以在一次响应里发出多个互不依赖的 tool_calls，由宿主同时执行；多 Agent 的额外价值在于专业分工、各自独立的上下文，以及多个模型推理同时进行。不属于这三类就用 Single-Agent，不要为了用新技术强行引入 Multi-Agent。[原文§Single-Agent](https://xiaolinnote.com/ai/agent/11_single_multi.html#single-agent)[原文§并行工具调用](https://xiaolinnote.com/ai/tools/1_function_calling.html#%E5%B9%B6%E8%A1%8C%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8)
 - **A11-6** 静态路由：拆分和分配规则预先定义好，简单可预测；动态规划：Orchestrator 本身是 LLM，根据输入动态生成任务计划，计划也可在执行中调整；自适应编排：还会根据 Worker 的执行结果实时调整后续计划，例如信息不够就追加一轮搜索。多数场景用动态规划就够，自适应编排更强但调试复杂度高得多。[原文§Multi-Agent 的中心化方案](https://xiaolinnote.com/ai/agent/11_single_multi.html#multi-agent-%E7%9A%84%E4%B8%AD%E5%BF%83%E5%8C%96%E6%96%B9%E6%A1%88)
 - **A11-7** 每个环节出了问题都能精准定位：报告内容不准可能是 Researcher 搜的信息不够好，分析逻辑有问题可能是 Analyst 的对比维度不对，格式不符是 Writer 的输出问题；各 Agent 职责清晰，顺着 Orchestrator 的调度记录一步步追就能找到根源。[原文§Multi-Agent 的中心化方案](https://xiaolinnote.com/ai/agent/11_single_multi.html#multi-agent-%E7%9A%84%E4%B8%AD%E5%BF%83%E5%8C%96%E6%96%B9%E6%A1%88)
 - **A11-8** 它研究的是 AI 系统能否实现自主协调这个更宏观的问题；而没有总调度时，任务分配没有协调、执行顺序没有保证、失败没有感知、没有人确认整体完成，像没有项目经理的团队。生产环境需要可控、可追踪、可排查，所以几乎所有正经项目都选 Orchestrator 模式。[原文§去中心化方案：为什么「听起来更灵活」却很少在工程上用](https://xiaolinnote.com/ai/agent/11_single_multi.html#%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E6%96%B9%E6%A1%88-%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8C%E5%90%AC%E8%B5%B7%E6%9D%A5%E6%9B%B4%E7%81%B5%E6%B4%BB%E3%80%8D%E5%8D%B4%E5%BE%88%E5%B0%91%E5%9C%A8%E5%B7%A5%E7%A8%8B%E4%B8%8A%E7%94%A8)
@@ -267,6 +272,7 @@
 - **A12-10** 前三种都假设信息以对话文本保留，结构化抽取则认为真正有价值的是对话里传递的事实和状态，把它们提取成结构化字段，像医生的病历档案；信息损失最小、密度最高，代价是开发成本最高，要预先定义什么是重要字段，不同任务所需字段不同，通用性较低。[原文§第四种方法：结构化抽取，换一种载体存信息](https://xiaolinnote.com/ai/agent/12_memcompress.html#%E7%AC%AC%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95-%E7%BB%93%E6%9E%84%E5%8C%96%E6%8A%BD%E5%8F%96-%E6%8D%A2%E4%B8%80%E7%A7%8D%E8%BD%BD%E4%BD%93%E5%AD%98%E4%BF%A1%E6%81%AF)
 - **A12-11** 以 Claude 为例，命中缓存的 token 费用约为正常输入的十分之一，写入缓存有一次性的额外费用，5 分钟有效期约 1.25 倍、1 小时约 2 倍，复用两次以上就回本；Agent 的 system prompt 和长期记忆注入部分在多轮对话中基本不变，天然适合缓存。[原文§四种方法的关系梳理](https://xiaolinnote.com/ai/agent/12_memcompress.html#%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86)
 - **A12-12** 对话不长、业务简单，用滑动窗口，成本最低；对话很长又不想硬截断，用摘要加滑动窗口，最稳健；业务里有明确定义的关键信息，如用户偏好、确认事项、状态字段，用结构化抽取，信息密度最高；高频调用、长 prompt、成本敏感的系统，优先考虑 Prompt Caching。[原文§四种方法的关系梳理](https://xiaolinnote.com/ai/agent/12_memcompress.html#%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86)
+- **A12-13** 规则打分：含“决定”“确认”“需求”等关键词、或被后续引用多的记录加分，纯闲聊降分，快但粗糙；LLM 打分：让模型逐条判断，更准，但每条都要一次调用，通常在批量清理历史时做。[原文§第三种方法：重要性过滤，按价值筛选，不按时间筛选](https://xiaolinnote.com/ai/agent/12_memcompress.html#%E7%AC%AC%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95-%E9%87%8D%E8%A6%81%E6%80%A7%E8%BF%87%E6%BB%A4-%E6%8C%89%E4%BB%B7%E5%80%BC%E7%AD%9B%E9%80%89-%E4%B8%8D%E6%8C%89%E6%97%B6%E9%97%B4%E7%AD%9B%E9%80%89)
 
 ## 13. 框架与自建
 
@@ -347,6 +353,7 @@
 - **A16-7** Handoff 即交接，不需要中央的 Orchestrator 决定下一步找谁，而是由当前正在执行的 Agent 自己决定把任务交给谁，像接力赛递接力棒；优点是每个 Agent 最清楚自己的任务边界，判断往往更准确，而且没有中央节点的瓶颈，扩展性更好。它由 OpenAI 的 Swarm 框架演示和推广，但 Swarm 是教育性、实验性框架，不是生产级工具。[原文§Handoff 模式：Agent 之间的「接力棒」](https://xiaolinnote.com/ai/agent/16_collab.html#handoff-%E6%A8%A1%E5%BC%8F-agent-%E4%B9%8B%E9%97%B4%E7%9A%84%E3%80%8C%E6%8E%A5%E5%8A%9B%E6%A3%92%E3%80%8D)
 - **A16-8** 缺点是没有全局视角：A 交给 B，B 觉得不是自己的活儿又交给 C，C 再交回 A，就形成死循环；所以必须设计好每个 Agent 的职责边界，并加上防循环机制，例如记录任务已经经过了哪些 Agent，发现重复经过同一个 Agent 就强制终止。[原文§Handoff 模式：Agent 之间的「接力棒」](https://xiaolinnote.com/ai/agent/16_collab.html#handoff-%E6%A8%A1%E5%BC%8F-agent-%E4%B9%8B%E9%97%B4%E7%9A%84%E3%80%8C%E6%8E%A5%E5%8A%9B%E6%A3%92%E3%80%8D)
 - **A16-9** 最稳健的是两种路由组合：主流程用静态路由，把确定的节点切换写成规则保底，只在没有匹配规则的边缘情况才交给 LLM 动态决策；Handoff 适合 Agent 数量不多、职责边界清晰、输入输出接口明确的场景，Agent 多、任务流向复杂时还是用 Orchestrator 统一调度。[原文§工程上怎么用](https://xiaolinnote.com/ai/agent/16_collab.html#%E5%B7%A5%E7%A8%8B%E4%B8%8A%E6%80%8E%E4%B9%88%E7%94%A8)
+- **A16-10** Handoff 适合 Agent 数量不多、职责边界清晰、输入输出接口明确的场景；Agent 多、任务流向复杂时，还是用 Orchestrator 统一调度。[原文§工程上怎么用](https://xiaolinnote.com/ai/agent/16_collab.html#%E5%B7%A5%E7%A8%8B%E4%B8%8A%E6%80%8E%E4%B9%88%E7%94%A8)
 
 ## 17. 上下文工程
 
@@ -369,6 +376,8 @@
 - **A17-12** 它把散落在历史对话里的进度变成模型每轮都能读取和更新的显式状态：执行前看进行中的那一项就知道注意力放在哪，执行后把结果、证据引用和状态变化写回，即使重试、换模型或恢复会话也能接着做；但它不是生成一次就不动，用户新增需求或原计划走不通时要重新评估并更新，否则过期的 To-Do 会把模型锚定在错误路径上。[原文§To-Do 为什么能让模型更聚焦](https://xiaolinnote.com/ai/agent/17_context_engineering.html#to-do-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%AE%A9%E6%A8%A1%E5%9E%8B%E6%9B%B4%E8%81%9A%E7%84%A6)
 - **A17-13** 当前步骤只暴露必要的工具，高风险工具在外部增加参数校验、权限检查和人工确认；子 Agent 只拿自己的子任务、局部状态和必要证据，不默认继承主 Agent 的全部历史。这样既减少 Token，也降低无关信息和恶意内容跨步骤扩散的概率。[原文§做好隔离，防止外部数据变成指令](https://xiaolinnote.com/ai/agent/17_context_engineering.html#%E5%81%9A%E5%A5%BD%E9%9A%94%E7%A6%BB-%E9%98%B2%E6%AD%A2%E5%A4%96%E9%83%A8%E6%95%B0%E6%8D%AE%E5%8F%98%E6%88%90%E6%8C%87%E4%BB%A4)
 - **A17-14** 不能只看平均 Token 降了多少，还要结合约束遵循率、关键事实召回率、工具选择正确率、任务完成率、引用忠实度和多轮续做成功率；再配合 Trace 记录每一轮到底注入了哪些内容，出现 Badcase 时才能判断是没召回、顺序排错、状态过期，还是模型本身执行错了。[原文§把上下文装配做成每一步都运行的闭环](https://xiaolinnote.com/ai/agent/17_context_engineering.html#%E6%8A%8A%E4%B8%8A%E4%B8%8B%E6%96%87%E8%A3%85%E9%85%8D%E5%81%9A%E6%88%90%E6%AF%8F%E4%B8%80%E6%AD%A5%E9%83%BD%E8%BF%90%E8%A1%8C%E7%9A%84%E9%97%AD%E7%8E%AF)
+- **A17-15** Context Engineering 关注这一轮让模型看到什么，其中包括召回哪段 Memory；Memory 像仓库，负责跨时间保存和召回；记忆压缩是在仓库或工作台太拥挤时降低内容体积的方法。[原文§Context Engineering 和 Prompt Engineering 有什么区别](https://xiaolinnote.com/ai/agent/17_context_engineering.html#context-engineering-%E5%92%8C-prompt-engineering-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+- **A17-16** 按“去掉重复内容、移除低相关工具和证据、用结构化状态替代冗长过程、压缩较旧历史”的顺序降载；用户硬约束、当前目标、安全规则和未完成状态不可随意丢失，实在装不下就分步检索或向用户确认。[原文§Token 预算要在装配前分，不是超长后才截断](https://xiaolinnote.com/ai/agent/17_context_engineering.html#token-%E9%A2%84%E7%AE%97%E8%A6%81%E5%9C%A8%E8%A3%85%E9%85%8D%E5%89%8D%E5%88%86-%E4%B8%8D%E6%98%AF%E8%B6%85%E9%95%BF%E5%90%8E%E6%89%8D%E6%88%AA%E6%96%AD)
 
 ## 18. 多轮状态与恢复
 
@@ -425,6 +434,8 @@
 - **A19-20** 没有，客服、代码修改和资金操作的容错空间完全不同；应先用当前线上版本建立基线，再根据业务风险确定门槛，并同时看整体结果和关键切片，新版本即使总完成率上升，只要高风险场景退化就不能发布。由于有随机性，比较版本时要固定环境和配置，让同一批关键样本重复执行。[原文§指标怎么组合，才能成为发布门禁？](https://xiaolinnote.com/ai/agent/19_evaluation.html#%E6%8C%87%E6%A0%87%E6%80%8E%E4%B9%88%E7%BB%84%E5%90%88-%E6%89%8D%E8%83%BD%E6%88%90%E4%B8%BA%E5%8F%91%E5%B8%83%E9%97%A8%E7%A6%81)
 - **A19-21** 定义成功标准、构建评测集、运行分层评测、通过门禁后灰度上线、观察 Trace 和业务结果、发现并归因 Badcase、加入回归集、修复后同时跑定向集与全量集；用户点踩、追问、撤销和人工接管只是代理指标，重要改动最好结合灰度或 A/B 实验看真实业务结果。[原文§从离线回归到线上 Badcase 的闭环](https://xiaolinnote.com/ai/agent/19_evaluation.html#%E4%BB%8E%E7%A6%BB%E7%BA%BF%E5%9B%9E%E5%BD%92%E5%88%B0%E7%BA%BF%E4%B8%8A-badcase-%E7%9A%84%E9%97%AD%E7%8E%AF)
 - **A19-22** 通用 Benchmark 回答底座模型在知识、推理、代码等任务上的能力区间，RAG 评测看检索是否找对、生成是否忠于检索内容；Agent 评测多了行动和环境状态，还要关心何时调用哪个工具、参数是否正确、路径是否合规、任务能否稳定完成以及付出的时间和成本，不能把 RAGAs 指标搬过来就算完整。[原文§它和通用 LLM、RAG 评测有什么区别？](https://xiaolinnote.com/ai/agent/19_evaluation.html#%E5%AE%83%E5%92%8C%E9%80%9A%E7%94%A8-llm%E3%80%81rag-%E8%AF%84%E6%B5%8B%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+- **A19-23** 任务没全部完成但前几个子目标做对了，只记 0 会丢掉诊断信息，AgentBoard 的思路是在成功率之外记录细粒度进度；τ-bench 的 pass^k 看的是连续多次运行都成功，与只要一次通过的 pass@k 不是一回事。[原文§第三层：端到端任务是否真的完成](https://xiaolinnote.com/ai/agent/19_evaluation.html#%E7%AC%AC%E4%B8%89%E5%B1%82-%E7%AB%AF%E5%88%B0%E7%AB%AF%E4%BB%BB%E5%8A%A1%E6%98%AF%E5%90%A6%E7%9C%9F%E7%9A%84%E5%AE%8C%E6%88%90)
+- **A19-24** 在可重置的测试环境或 Mock 服务里运行，固定初始状态，并记录模型、Prompt、工具和数据的版本。[原文§评测集怎么建，题目和真值怎么设计？](https://xiaolinnote.com/ai/agent/19_evaluation.html#%E8%AF%84%E6%B5%8B%E9%9B%86%E6%80%8E%E4%B9%88%E5%BB%BA-%E9%A2%98%E7%9B%AE%E5%92%8C%E7%9C%9F%E5%80%BC%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1)
 
 ## 20. 循环与路径震荡
 
@@ -473,6 +484,7 @@
 - **A21-16** 编排：没有依赖的子任务用 DAG 并行调度，Planner、Executor、Reviewer 之间有清楚的完成标准和停止条件，并设置步数、时间、Token 和重试预算；重试优化不是简单少重试几次，而是先按错误类型判断是否值得重试，临时错误在总截止时间内有界退避并加随机抖动，有副作用的工具用幂等键。[原文§找到瓶颈之后，怎么优化才不会治错病？](https://xiaolinnote.com/ai/agent/21_agent_latency_trace.html#%E6%89%BE%E5%88%B0%E7%93%B6%E9%A2%88%E4%B9%8B%E5%90%8E-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96%E6%89%8D%E4%B8%8D%E4%BC%9A%E6%B2%BB%E9%94%99%E7%97%85)
 - **A21-17** 不算。要用同一口径看 TTFT、总时延和 P50、P95、P99：平均值下降但 P99 上升，说明尾部用户反而更差；TTFT 下降但总时延和超时率上涨，也不算完整成功。上线前先用历史慢 Trace 和典型任务做回放，确认下降来自预期环节，而不是某个步骤被意外跳过。[原文§优化完成后，怎么证明真的有效？](https://xiaolinnote.com/ai/agent/21_agent_latency_trace.html#%E4%BC%98%E5%8C%96%E5%AE%8C%E6%88%90%E5%90%8E-%E6%80%8E%E4%B9%88%E8%AF%81%E6%98%8E%E7%9C%9F%E7%9A%84%E6%9C%89%E6%95%88)
 - **A21-18** 只有没有依赖关系、共享副作用可控的步骤才适合并行；盲目并行可能压垮下游，还可能产生状态竞争和重复操作。[原文§面试时容易踩哪些坑？](https://xiaolinnote.com/ai/agent/21_agent_latency_trace.html#%E9%9D%A2%E8%AF%95%E6%97%B6%E5%AE%B9%E6%98%93%E8%B8%A9%E5%93%AA%E4%BA%9B%E5%9D%91)
+- **A21-19** 只在请求入口随机抽，罕见的超慢和错误请求会被漏掉；可以结合错误状态、业务重要性和完成后的总耗时，保留更有诊断价值的 Trace。[原文§一条 Agent Trace 应该长什么样？](https://xiaolinnote.com/ai/agent/21_agent_latency_trace.html#%E4%B8%80%E6%9D%A1-agent-trace-%E5%BA%94%E8%AF%A5%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7)
 
 ## 22. 多 Agent 故障与并发
 
@@ -502,6 +514,7 @@
 - **A22-19** 多个 Agent 都能直接往主分支写，系统就很难回答当前仓库状态由谁负责，所以其他 Agent 只产出候选分支、补丁和验证证据；Integrator 按任务 DAG 和接口依赖确定合并顺序，例如先合公共类型和服务端接口，再合调用方，最后合测试。[原文§为什么必须有一个最终提交者？](https://xiaolinnote.com/ai/agent/22_multi_agent_resilience.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%9C%89%E4%B8%80%E4%B8%AA%E6%9C%80%E7%BB%88%E6%8F%90%E4%BA%A4%E8%80%85)
 - **A22-20** 文本冲突时不让模型随意选一边，而是保留两边意图、最新基线和冲突文件，让负责该模块的 Agent 重新生成补丁；自动合并成功但测试失败，则把失败用例、相关 Trace 和接口变更一并交回，直到验收条件通过才生成唯一的最终提交。[原文§为什么必须有一个最终提交者？](https://xiaolinnote.com/ai/agent/22_multi_agent_resilience.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%9C%89%E4%B8%80%E4%B8%AA%E6%9C%80%E7%BB%88%E6%8F%90%E4%BA%A4%E8%80%85)
 - **A22-21** 除了完成率和耗时，还可以观察租约过期率、误判失联率、平均接管次数、重复副作用次数、旧代次写入被拒绝次数、分支冲突率、自动合并后的测试失败率，以及从故障发生到恢复完成的时间。[原文§线上怎么判断这套机制有没有生效？](https://xiaolinnote.com/ai/agent/22_multi_agent_resilience.html#%E7%BA%BF%E4%B8%8A%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E8%BF%99%E5%A5%97%E6%9C%BA%E5%88%B6%E6%9C%89%E6%B2%A1%E6%9C%89%E7%94%9F%E6%95%88)
+- **A22-22** 按任务 DAG 和接口依赖确定合并顺序，例如先合公共类型和服务端接口，再合调用方，最后合测试。[原文§为什么必须有一个最终提交者？](https://xiaolinnote.com/ai/agent/22_multi_agent_resilience.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%9C%89%E4%B8%80%E4%B8%AA%E6%9C%80%E7%BB%88%E6%8F%90%E4%BA%A4%E8%80%85)
 
 ## 23. 任务幻觉
 
@@ -520,7 +533,7 @@
 - **A23-8** 应在任务开始前由业务定义，而不是执行结束后让模型临时解释：退款任务是目标订单退款状态进入终态且退款流水号存在，代码修改任务是目标文件发生预期变化且指定测试通过；没有清楚的完成条件，系统只能凭一段自然语言猜测，容易出现任务幻觉。[原文§模型只能表达意图，外部状态才是事实](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E6%A8%A1%E5%9E%8B%E5%8F%AA%E8%83%BD%E8%A1%A8%E8%BE%BE%E6%84%8F%E5%9B%BE-%E5%A4%96%E9%83%A8%E7%8A%B6%E6%80%81%E6%89%8D%E6%98%AF%E4%BA%8B%E5%AE%9E)
 - **A23-9** 只有已验证可以说已经完成；处理中应告诉用户正在处理并给出查询标识；状态未知要明确说明暂时无法确认；执行失败则提供失败原因和安全的下一步。这样即使模型想说得更乐观，输出层也会把不符合状态的完成声明拦下来。[原文§用状态机堵住「从计划直接跳到完成」](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E7%94%A8%E7%8A%B6%E6%80%81%E6%9C%BA%E5%A0%B5%E4%BD%8F%E3%80%8C%E4%BB%8E%E8%AE%A1%E5%88%92%E7%9B%B4%E6%8E%A5%E8%B7%B3%E5%88%B0%E5%AE%8C%E6%88%90%E3%80%8D)
 - **A23-10** 状态机要和任务版本绑定：调度层记录目标版本和计划版本，验证时确认回执对应的是当前目标，而不是已经失效的上一轮任务；例如用户把取消周五会议改成只取消会议室，旧计划即使执行成功，也不能被当成新目标完成。[原文§用状态机堵住「从计划直接跳到完成」](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E7%94%A8%E7%8A%B6%E6%80%81%E6%9C%BA%E5%A0%B5%E4%BD%8F%E3%80%8C%E4%BB%8E%E8%AE%A1%E5%88%92%E7%9B%B4%E6%8E%A5%E8%B7%B3%E5%88%B0%E5%AE%8C%E6%88%90%E3%80%8D)
-- **A23-11** 任务 ID、目标版本和动作 ID，说明是哪个任务的哪一步；工具名称、标准化参数摘要和调用时间，说明系统实际请求了什么；当前用户、租户和授权范围，说明代表谁执行、是否有权限；工具、模型、Prompt 和验证器版本，用来支持问题复现与回归。[原文§一条可信的证据链应该记录什么？](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E4%B8%80%E6%9D%A1%E5%8F%AF%E4%BF%A1%E7%9A%84%E8%AF%81%E6%8D%AE%E9%93%BE%E5%BA%94%E8%AF%A5%E8%AE%B0%E5%BD%95%E4%BB%80%E4%B9%88)
+- **A23-11** 任务 ID、目标版本和动作 ID，说明是哪个任务的哪一步；工具名称、标准化参数摘要和调用时间，说明系统实际请求了什么；当前用户、租户和授权范围，说明代表谁执行、是否有权限；工具调用 ID、幂等键和服务端资源 ID，用来把请求与外部结果对应起来；原始状态、预期后置条件和验证结果，用来证明外部世界发生了目标变化；工具、模型、Prompt 和验证器版本，用来支持问题复现与回归。[原文§一条可信的证据链应该记录什么？](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E4%B8%80%E6%9D%A1%E5%8F%AF%E4%BF%A1%E7%9A%84%E8%AF%81%E6%8D%AE%E9%93%BE%E5%BA%94%E8%AF%A5%E8%AE%B0%E5%BD%95%E4%BB%80%E4%B9%88)
 - **A23-12** 身份证号、访问令牌和邮件正文等应脱敏、哈希或只保留必要字段，同时保证审计人员仍能把请求、回执和外部状态关联起来；工具返回的一段自然语言不能天然算证据，更合适的是包含 request_id、resource_id、status、occurred_at 等字段的结构化对象，调度层先检查 Schema、任务关联和状态枚举再写入任务记录。[原文§一条可信的证据链应该记录什么？](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E4%B8%80%E6%9D%A1%E5%8F%AF%E4%BF%A1%E7%9A%84%E8%AF%81%E6%8D%AE%E9%93%BE%E5%BA%94%E8%AF%A5%E8%AE%B0%E5%BD%95%E4%BB%80%E4%B9%88)
 - **A23-13** 创建日程后，根据返回的事件 ID 重新读取日程，核对参与人、时间和标题；修改代码后，检查差异并运行测试；更新订单后，查询主业务库或权威状态服务，而不是只读 Agent 自己的缓存。能由程序判断的结果优先做确定性验证。[原文§执行成功以后，为什么还要再验证一次？](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E6%89%A7%E8%A1%8C%E6%88%90%E5%8A%9F%E4%BB%A5%E5%90%8E-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E5%86%8D%E9%AA%8C%E8%AF%81%E4%B8%80%E6%AC%A1)
 - **A23-14** 异步任务应有明确的处理中状态、轮询间隔、最大等待时间和后续查询入口；达到等待上限时，告诉用户请求已受理、最终结果尚未确认，比编一句完成更可靠。[原文§执行成功以后，为什么还要再验证一次？](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E6%89%A7%E8%A1%8C%E6%88%90%E5%8A%9F%E4%BB%A5%E5%90%8E-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E5%86%8D%E9%AA%8C%E8%AF%81%E4%B8%80%E6%AC%A1)
@@ -529,6 +542,7 @@
 - **A23-17** 系统要保留每一项的状态并如实说明：例如批量发送十封邮件，九封投递成功、一封失败，就明确告诉用户 9 封成功、1 封失败，不能为了语言简洁把它概括成全部完成。[原文§最终回复也要经过证据约束](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E6%9C%80%E7%BB%88%E5%9B%9E%E5%A4%8D%E4%B9%9F%E8%A6%81%E7%BB%8F%E8%BF%87%E8%AF%81%E6%8D%AE%E7%BA%A6%E6%9D%9F)
 - **A23-18** 最关键的是错误完成声明率，即外部目标没有达到时 Agent 却声称完成的比例；此外还有完成声明的证据覆盖率、外部验证成功率、状态未知处理正确率、重复副作用率和从执行到验证完成的时间。错误完成声明和严重重复副作用应作为硬门禁，不能和回答语气、Token 成本做加权平均。[原文§怎么评测系统真的压住了任务幻觉？](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E6%80%8E%E4%B9%88%E8%AF%84%E6%B5%8B%E7%B3%BB%E7%BB%9F%E7%9C%9F%E7%9A%84%E5%8E%8B%E4%BD%8F%E4%BA%86%E4%BB%BB%E5%8A%A1%E5%B9%BB%E8%A7%89)
 - **A23-19** 沿证据链逐段定位：是模型没调用工具、调度层没执行、回执关联错了、验证条件太松，还是输出层误写了状态；修复后把对应的故障注入评测集，持续做回归。[原文§怎么评测系统真的压住了任务幻觉？](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E6%80%8E%E4%B9%88%E8%AF%84%E6%B5%8B%E7%B3%BB%E7%BB%9F%E7%9C%9F%E7%9A%84%E5%8E%8B%E4%BD%8F%E4%BA%86%E4%BB%BB%E5%8A%A1%E5%B9%BB%E8%A7%89)
+- **A23-20** 证据链不代表把所有敏感参数原样写进日志：身份证号、访问令牌和邮件正文等应脱敏、哈希或只保留必要字段，同时保证审计人员仍能把请求、回执和外部状态关联起来。[原文§一条可信的证据链应该记录什么？](https://xiaolinnote.com/ai/agent/23_task_hallucination.html#%E4%B8%80%E6%9D%A1%E5%8F%AF%E4%BF%A1%E7%9A%84%E8%AF%81%E6%8D%AE%E9%93%BE%E5%BA%94%E8%AF%A5%E8%AE%B0%E5%BD%95%E4%BB%80%E4%B9%88)
 
 ## 24. 数据库安全
 
@@ -559,6 +573,8 @@
 - **A24-20** 通过事务保证一组修改要么一起成功、要么一起失败；通过幂等键避免超时重试造成重复写入；通过版本号或乐观锁防止覆盖别人刚提交的修改；通过最大影响行数阻止条件漏写后的批量更新；执行结果还要重新读取关键状态，确认目标变更真的生效。[原文§写操作为什么必须走另一条更窄的通道？](https://xiaolinnote.com/ai/agent/24_database_security.html#%E5%86%99%E6%93%8D%E4%BD%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E8%B5%B0%E5%8F%A6%E4%B8%80%E6%9D%A1%E6%9B%B4%E7%AA%84%E7%9A%84%E9%80%9A%E9%81%93)
 - **A24-21** 采用准备、审批、提交的流程：模型只能提出候选动作，审批令牌由可信系统生成，并且绑定具体资源、具体变更和有效期，防止模型拿一次批准去执行另一项操作。[原文§写操作为什么必须走另一条更窄的通道？](https://xiaolinnote.com/ai/agent/24_database_security.html#%E5%86%99%E6%93%8D%E4%BD%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E8%B5%B0%E5%8F%A6%E4%B8%80%E6%9D%A1%E6%9B%B4%E7%AA%84%E7%9A%84%E9%80%9A%E9%81%93)
 - **A24-22** 让普通租户请求其他租户订单，在用户问题和数据库单元格里放提示词注入，诱导模型读取禁用表和敏感列，生成多语句、危险函数、超大查询和伪装成只读的复杂语句；写操作要测试跳过审批、重放请求、扩大影响行数和并发覆盖。[原文§审计和测试要覆盖哪些真实攻击？](https://xiaolinnote.com/ai/agent/24_database_security.html#%E5%AE%A1%E8%AE%A1%E5%92%8C%E6%B5%8B%E8%AF%95%E8%A6%81%E8%A6%86%E7%9B%96%E5%93%AA%E4%BA%9B%E7%9C%9F%E5%AE%9E%E6%94%BB%E5%87%BB)
+- **A24-23** 只读事务防止写入；最大返回行数、执行超时和资源配额限制查询规模，防止资源耗尽。数据库账号的最小权限是最后一道边界。[原文§SQL 校验要看语法树，不能只看字符串开头](https://xiaolinnote.com/ai/agent/24_database_security.html#sql-%E6%A0%A1%E9%AA%8C%E8%A6%81%E7%9C%8B%E8%AF%AD%E6%B3%95%E6%A0%91-%E4%B8%8D%E8%83%BD%E5%8F%AA%E7%9C%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%80%E5%A4%B4)
+- **A24-24** 要核对指标口径、时间字段、过滤条件和可用维度；执行前检查表列、连接关系和租户条件；执行后做合理性校验，如总数不能小于任何分组数、金额汇总与权威报表对账、关键决策抽样看原始记录。[原文§查询没有越权，也可能回答得完全不对](https://xiaolinnote.com/ai/agent/24_database_security.html#%E6%9F%A5%E8%AF%A2%E6%B2%A1%E6%9C%89%E8%B6%8A%E6%9D%83-%E4%B9%9F%E5%8F%AF%E8%83%BD%E5%9B%9E%E7%AD%94%E5%BE%97%E5%AE%8C%E5%85%A8%E4%B8%8D%E5%AF%B9)
 
 ## 25. Agent Harness 的定义
 
@@ -607,6 +623,11 @@
 - **A26-20** 运行协调器接收任务和模型输出，安排下一步调用或状态转换；上下文装配器读取当前状态和相关材料，生成本轮模型输入；模型适配器调用模型，把返回解析成回复、工具请求等事件；工具执行器校验并执行请求，返回实际状态与结果引用；状态存储保存进度、操作记录和产物位置；验证器核对验收条件与实际证据。[原文§记录每轮过程，让架构能够被检查和改进](https://xiaolinnote.com/ai/agent/26_harness_design.html#%E8%AE%B0%E5%BD%95%E6%AF%8F%E8%BD%AE%E8%BF%87%E7%A8%8B-%E8%AE%A9%E6%9E%B6%E6%9E%84%E8%83%BD%E5%A4%9F%E8%A2%AB%E6%A3%80%E6%9F%A5%E5%92%8C%E6%94%B9%E8%BF%9B)
 - **A26-21** 任务状态方便程序继续执行，Trace 方便追查这个状态是怎样产生的；优化时按现象找对应环节：工具返回太长就调整返回内容和按需读取方式，经常中断后从头探索就检查恢复记录，模型提前宣布完成就检查验收是否落实，改完再用同一批任务比较完成情况、耗时和成本。[原文§记录每轮过程，让架构能够被检查和改进](https://xiaolinnote.com/ai/agent/26_harness_design.html#%E8%AE%B0%E5%BD%95%E6%AF%8F%E8%BD%AE%E8%BF%87%E7%A8%8B-%E8%AE%A9%E6%9E%B6%E6%9E%84%E8%83%BD%E5%A4%9F%E8%A2%AB%E6%A3%80%E6%9F%A5%E5%92%8C%E6%94%B9%E8%BF%9B)
 
+### 补充考点
+
+- **A26-22** 调用前检查输入占用并为输出留出空间；接近容量时减少无关材料，或把已结束的过程整理成摘要。摘要必须保留任务约束和未解决状态，原始资料也要能找回。[原文§每轮装配上下文，让模型看见当前有效的信息](https://xiaolinnote.com/ai/agent/26_harness_design.html#%E6%AF%8F%E8%BD%AE%E8%A3%85%E9%85%8D%E4%B8%8A%E4%B8%8B%E6%96%87-%E8%AE%A9%E6%A8%A1%E5%9E%8B%E7%9C%8B%E8%A7%81%E5%BD%93%E5%89%8D%E6%9C%89%E6%95%88%E7%9A%84%E4%BF%A1%E6%81%AF)
+- **A26-23** 模型调用记录所用模型、输入材料或可复原的引用、输出和用量；工具执行记录参数、起止时间、结果位置和错误；验收阶段记录检查项、对应版本和判断依据。敏感信息要脱敏或受控存储。[原文§记录每轮过程，让架构能够被检查和改进](https://xiaolinnote.com/ai/agent/26_harness_design.html#%E8%AE%B0%E5%BD%95%E6%AF%8F%E8%BD%AE%E8%BF%87%E7%A8%8B-%E8%AE%A9%E6%9E%B6%E6%9E%84%E8%83%BD%E5%A4%9F%E8%A2%AB%E6%A3%80%E6%9F%A5%E5%92%8C%E6%94%B9%E8%BF%9B)
+
 ## 27. 自进化机制
 
 原文：[27. Agent 的自进化机制如何实现？](https://xiaolinnote.com/ai/agent/27_self_evolution.html)。
@@ -635,6 +656,11 @@
 - **A27-22** 要控制传播范围，某个用户偏好的输出格式只作用于他的任务，一个租户的业务规则不应流入另一个租户的上下文；外部材料里的指令不能直接升级成长期策略，例如数据文件里写着跳过权限检查，它仍只是待处理内容，不能据此修改系统的执行权限。[原文§让更新可发布、可追踪，也可撤回](https://xiaolinnote.com/ai/agent/27_self_evolution.html#%E8%AE%A9%E6%9B%B4%E6%96%B0%E5%8F%AF%E5%8F%91%E5%B8%83%E3%80%81%E5%8F%AF%E8%BF%BD%E8%B8%AA-%E4%B9%9F%E5%8F%AF%E6%92%A4%E5%9B%9E)
 - **A27-23** 自动化可以承担收集记录、分析原因、生成候选和运行验证；有明确检查标准、影响可控的经验，可以在通过检查后自动启用；影响核心业务规则或执行边界的更新，则按相应的权限与审核流程处理。[原文§让更新可发布、可追踪，也可撤回](https://xiaolinnote.com/ai/agent/27_self_evolution.html#%E8%AE%A9%E6%9B%B4%E6%96%B0%E5%8F%AF%E5%8F%91%E5%B8%83%E3%80%81%E5%8F%AF%E8%BF%BD%E8%B8%AA-%E4%B9%9F%E5%8F%AF%E6%92%A4%E5%9B%9E)
 
+### 补充考点
+
+- **A27-24** 新反馈只是再次确认已有规则时补充证据，发现新条件时扩展适用说明，不必无限追加；相互矛盾时去查当前权威定义，而不是让模型同时背两条冲突的口诀。[原文§把失败过程，整理成有适用范围的经验](https://xiaolinnote.com/ai/agent/27_self_evolution.html#%E6%8A%8A%E5%A4%B1%E8%B4%A5%E8%BF%87%E7%A8%8B-%E6%95%B4%E7%90%86%E6%88%90%E6%9C%89%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4%E7%9A%84%E7%BB%8F%E9%AA%8C)
+- **A27-25** 用运行记录判断是检索没找到、范围筛选出了问题，还是模型读到了却没执行，分别去改检索、改经验条件或改使用方式。经验库越大不代表 Agent 越强。[原文§在下一次决策之前，把经验用起来](https://xiaolinnote.com/ai/agent/27_self_evolution.html#%E5%9C%A8%E4%B8%8B%E4%B8%80%E6%AC%A1%E5%86%B3%E7%AD%96%E4%B9%8B%E5%89%8D-%E6%8A%8A%E7%BB%8F%E9%AA%8C%E7%94%A8%E8%B5%B7%E6%9D%A5)
+
 ## 28. 人工确认
 
 原文：[28. Agent 应该在什么情况下请求人工确认？](https://xiaolinnote.com/ai/agent/28_human_confirmation.html)。
@@ -661,6 +687,10 @@
 - **A28-20** 保存已经明确的授权，动作仍在同一范围、方案和适用条件没变时继续使用；一组明确的操作可以合并确认，展示完整清单与共同规则后一次批准、逐项执行；适合范围授权的任务写清对象和限制，如只处理某个目录、只生成草稿、最多修改多少项；需要新增批准时，先在授权范围内完成查询和准备，把真正需要决定的部分交给用户。[原文§减少重复确认，要保存有效的委托范围](https://xiaolinnote.com/ai/agent/28_human_confirmation.html#%E5%87%8F%E5%B0%91%E9%87%8D%E5%A4%8D%E7%A1%AE%E8%AE%A4-%E8%A6%81%E4%BF%9D%E5%AD%98%E6%9C%89%E6%95%88%E7%9A%84%E5%A7%94%E6%89%98%E8%8C%83%E5%9B%B4)
 - **A28-21** 不能只追求确认次数下降，要同时看有没有未经授权的操作、用户是否经常修改关键参数，以及等待确认是否阻断了本来能完成的任务；频繁修改收件人可能说明对象消歧做得不好，反复批准完全相同的方案可能说明授权没有被正确保存。确认次数多也不代表控制更好，没有新信息的弹窗会让用户不再认真阅读。[原文§减少重复确认，要保存有效的委托范围](https://xiaolinnote.com/ai/agent/28_human_confirmation.html#%E5%87%8F%E5%B0%91%E9%87%8D%E5%A4%8D%E7%A1%AE%E8%AE%A4-%E8%A6%81%E4%BF%9D%E5%AD%98%E6%9C%89%E6%95%88%E7%9A%84%E5%A7%94%E6%89%98%E8%8C%83%E5%9B%B4)
 
+### 补充考点
+
+- **A28-22** 批准的是文件某个版本时，执行时应读取对应版本，或由资源系统在写入时检查版本条件；只在执行前检查一次、再去读取后来变化的内容，仍可能执行到用户没看过的版本。[原文§一次有效确认，要让批准范围足够明确](https://xiaolinnote.com/ai/agent/28_human_confirmation.html#%E4%B8%80%E6%AC%A1%E6%9C%89%E6%95%88%E7%A1%AE%E8%AE%A4-%E8%A6%81%E8%AE%A9%E6%89%B9%E5%87%86%E8%8C%83%E5%9B%B4%E8%B6%B3%E5%A4%9F%E6%98%8E%E7%A1%AE)
+
 ## 29. 上下文压缩阈值
 
 原文：[29. Agent 的上下文压缩阈值应该如何确定？](https://xiaolinnote.com/ai/agent/29_context_compression_threshold.html)。
@@ -681,6 +711,13 @@
 - **A29-14** 要检查两件事：大小是否回到合适预算，继续任务所需的信息与消息结构是否还完整，Token 降了很多只能证明内容变短，不能证明摘要可用；压缩过程本身也需要空间，用同一个受限模型生成摘要时，等窗口彻底满了再提交整段历史，压缩调用同样可能失败，所以要提前触发、分段处理并保留外部原始记录。[原文§触发以后压到哪里，决定下一轮会不会又压缩](https://xiaolinnote.com/ai/agent/29_context_compression_threshold.html#%E8%A7%A6%E5%8F%91%E4%BB%A5%E5%90%8E%E5%8E%8B%E5%88%B0%E5%93%AA%E9%87%8C-%E5%86%B3%E5%AE%9A%E4%B8%8B%E4%B8%80%E8%BD%AE%E4%BC%9A%E4%B8%8D%E4%BC%9A%E5%8F%88%E5%8E%8B%E7%BC%A9)
 - **A29-15** 把候选策略放到实际任务上比较：准备短查询、长代码修改和大日志分析等不同任务，固定模型、资料版本与初始状态，分别运行较早压缩、较晚压缩和按增长动态触发的策略，每类任务重复运行看是否稳定；先看任务有没有完成、约束有没有违反、关键信息能否继续使用，再看输入大小、压缩次数、重复读取、总延迟和费用。[原文§怎样知道这个阈值真的适合当前任务？](https://xiaolinnote.com/ai/agent/29_context_compression_threshold.html#%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%BF%99%E4%B8%AA%E9%98%88%E5%80%BC%E7%9C%9F%E7%9A%84%E9%80%82%E5%90%88%E5%BD%93%E5%89%8D%E4%BB%BB%E5%8A%A1)
 - **A29-16** 工具结果到达后经常超限，检查增长估计是否不足、返回内容是否缺少上限；压缩后反复重读同一份资料，检查关键细节是否丢失、触发是否过早；每一两步就再次压缩，检查压缩目标是否离触发边界太近；Token 明显下降但任务失败增加，检查摘要是否破坏了约束、进度或消息关系。现象要结合记录核实，最后得到的往往是按任务类型配置的一套策略。[原文§怎样知道这个阈值真的适合当前任务？](https://xiaolinnote.com/ai/agent/29_context_compression_threshold.html#%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E8%BF%99%E4%B8%AA%E9%98%88%E5%80%BC%E7%9C%9F%E7%9A%84%E9%80%82%E5%90%88%E5%BD%93%E5%89%8D%E4%BB%BB%E5%8A%A1)
+
+### 补充考点
+
+- **A29-17** 服务提供计数接口就用它估算；否则用匹配模型的分词器，并结合实际返回的用量校准，还要留出余量。[原文§在算阈值之前，先看窗口里到底装了什么](https://xiaolinnote.com/ai/agent/29_context_compression_threshold.html#%E5%9C%A8%E7%AE%97%E9%98%88%E5%80%BC%E4%B9%8B%E5%89%8D-%E5%85%88%E7%9C%8B%E7%AA%97%E5%8F%A3%E9%87%8C%E5%88%B0%E5%BA%95%E8%A3%85%E4%BA%86%E4%BB%80%E4%B9%88)
+- **A29-18** 先给输出留预算，再决定输入最多放多少：例如总窗口 32,000，预留 4,000 输出和 2,000 用于处理计数误差与意外增长的安全余量，输入预算就是 26,000。数字只是示意，输出预留要跟任务走，提取一个字段和生成完整代码文件所需的空间不同。[原文§窗口剩下的空间，还要留给模型输出](https://xiaolinnote.com/ai/agent/29_context_compression_threshold.html#%E7%AA%97%E5%8F%A3%E5%89%A9%E4%B8%8B%E7%9A%84%E7%A9%BA%E9%97%B4-%E8%BF%98%E8%A6%81%E7%95%99%E7%BB%99%E6%A8%A1%E5%9E%8B%E8%BE%93%E5%87%BA)
+- **A29-19** 工具请求和返回通过调用编号关联，不能删掉请求却留下孤立的结果；已结束的旧工具链只有在接口允许时才能整体收敛成摘要。[原文§触发以后压到哪里，决定下一轮会不会又压缩](https://xiaolinnote.com/ai/agent/29_context_compression_threshold.html#%E8%A7%A6%E5%8F%91%E4%BB%A5%E5%90%8E%E5%8E%8B%E5%88%B0%E5%93%AA%E9%87%8C-%E5%86%B3%E5%AE%9A%E4%B8%8B%E4%B8%80%E8%BD%AE%E4%BC%9A%E4%B8%8D%E4%BC%9A%E5%8F%88%E5%8E%8B%E7%BC%A9)
+- **A29-20** 要检查两件事：大小是否回到合适的预算，继续任务所需的信息与消息结构是否还完整。Token 降了很多只能证明内容变短，不能证明摘要可用。[原文§触发以后压到哪里，决定下一轮会不会又压缩](https://xiaolinnote.com/ai/agent/29_context_compression_threshold.html#%E8%A7%A6%E5%8F%91%E4%BB%A5%E5%90%8E%E5%8E%8B%E5%88%B0%E5%93%AA%E9%87%8C-%E5%86%B3%E5%AE%9A%E4%B8%8B%E4%B8%80%E8%BD%AE%E4%BC%9A%E4%B8%8D%E4%BC%9A%E5%8F%88%E5%8E%8B%E7%BC%A9)
 
 ## 30. 执行结果差异
 

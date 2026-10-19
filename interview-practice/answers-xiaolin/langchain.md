@@ -19,6 +19,8 @@
 - **E1-8** 三者分别解决数据、Agent 组装和流程控制问题：外围如果还有查询改写、答案校验、人工审核和失败恢复，就让 LangGraph 负责这些步骤如何衔接，而不是在同一层重复造轮子。[原文§三个框架怎么配合？](https://xiaolinnote.com/ai/langchain/agent_frameworks.html#%E4%B8%89%E4%B8%AA%E6%A1%86%E6%9E%B6%E6%80%8E%E4%B9%88%E9%85%8D%E5%90%88)
 - **E1-9** 先判断任务是否真的需要 Agent：步骤固定、规则明确的任务，用普通函数或工作流通常更便宜、更稳定；把本来能写成 if/else 的流程交给模型自由决定，只会平白增加不确定性。[原文§到底该怎么选？](https://xiaolinnote.com/ai/langchain/agent_frameworks.html#%E5%88%B0%E5%BA%95%E8%AF%A5%E6%80%8E%E4%B9%88%E9%80%89)
 - **E1-10** 流程越长越要追问：中断后能否恢复，敏感动作是否需要审批，重复执行会不会产生副作用，不同用户的数据能否隔离，出错后是否留有完整轨迹；框架能不能用于生产，往往取决于这些原型阶段看不见的约束。[原文§到底该怎么选？](https://xiaolinnote.com/ai/langchain/agent_frameworks.html#%E5%88%B0%E5%BA%95%E8%AF%A5%E6%80%8E%E4%B9%88%E9%80%89)
+- **E1-11** 它已经不只是早期的“把多个 Prompt 串成 Chain”，而是提供模型、消息、Prompt、工具、结构化输出、中间件和 Agent 等通用抽象，并集成了大量模型供应商、向量数据库和外部工具；最大的价值是集成范围广、开发速度快，切换模型、接入搜索、数据库或 MCP 工具、快速实现 RAG Agent、SQL Agent 或客服助手时，能减少大量协议适配和样板代码。高层抽象更适合常见的 Agent 模式，业务出现复杂循环、精细分支、长时间暂停和断点恢复时，就要进一步用 LangGraph 控制执行流程。[原文§为什么重点看 LangChain？](https://xiaolinnote.com/ai/langchain/agent_frameworks.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E7%82%B9%E7%9C%8B-langchain)
+- **E1-12** OpenAI Agents SDK 适合以 OpenAI 模型和接口为主的轻量 Agent；AutoGen、Semantic Kernel 等更偏微软生态或存量项目。原文建议了解它们的定位，按需深入。[原文§其他框架要了解吗？](https://xiaolinnote.com/ai/langchain/agent_frameworks.html#%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6%E8%A6%81%E4%BA%86%E8%A7%A3%E5%90%97)
 
 ## 2. Chain、Runnable、LCEL
 
@@ -83,6 +85,8 @@
 - **E4-9** 它可以查询订单和解释物流状态，但不能自行退款；订单不存在、身份验证失败或用户要求高风险操作时必须转人工；最终输出要包含答复、订单状态和是否转人工。[原文§第一步：明确任务边界](https://xiaolinnote.com/ai/langchain/build_agent.html#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E6%98%8E%E7%A1%AE%E4%BB%BB%E5%8A%A1%E8%BE%B9%E7%95%8C)
 - **E4-10** 它们仍可能出现在存量项目中，但 LangChain v1 的新项目应优先使用 create_agent。[原文§第四步：组装 Agent](https://xiaolinnote.com/ai/langchain/build_agent.html#%E7%AC%AC%E5%9B%9B%E6%AD%A5-%E7%BB%84%E8%A3%85-agent)
 - **E4-11** 必须具备幂等、最小权限和审计能力；自动重试不能导致重复扣款或重复发信。[原文§第五步：补齐状态与安全](https://xiaolinnote.com/ai/langchain/build_agent.html#%E7%AC%AC%E4%BA%94%E6%AD%A5-%E8%A1%A5%E9%BD%90%E7%8A%B6%E6%80%81%E4%B8%8E%E5%AE%89%E5%85%A8)
+- **E4-12** 进入业务后先要知道它能做什么、不能做什么；模型选中工具后还要检查参数是否正确，失败或重复调用会不会带来副作用；流程跑得更久时又有新问题：会话中断后能否恢复，最终结果能否稳定进入业务系统，线上出错后能不能复现。所以完整的 Agent 还要覆盖任务设计、能力接入、运行控制和测试监控。[原文§什么才算完整 Agent？](https://xiaolinnote.com/ai/langchain/build_agent.html#%E4%BB%80%E4%B9%88%E6%89%8D%E7%AE%97%E5%AE%8C%E6%95%B4-agent)
+- **E4-13** 任务和停止条件是否明确；Tool 是否职责单一，并在服务端校验权限；有副作用的操作是否具备幂等和审批；Checkpointer 与 Store 是否使用持久化实现并做好用户隔离；是否设置了超时、重试上限、并发和成本预算；是否覆盖工具、轨迹和端到端评测；是否能够追踪一次失败运行的完整调用链。[原文§上线前检查什么？](https://xiaolinnote.com/ai/langchain/build_agent.html#%E4%B8%8A%E7%BA%BF%E5%89%8D%E6%A3%80%E6%9F%A5%E4%BB%80%E4%B9%88)
 
 ## 5. 注册 Tool
 
@@ -121,6 +125,8 @@
 - **E6-9** 不是。把每句闲聊都存进去会产生噪声、冲突和隐私风险；写入前要做去重、脱敏、冲突处理和质量判断，而不是把每段原始对话都永久保存。[原文§什么时候写入长期记忆？](https://xiaolinnote.com/ai/langchain/memory.html#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%86%99%E5%85%A5%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86) [原文§长期记忆如何实现](https://xiaolinnote.com/ai/langchain/memory.html#%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0)
 - **E6-10** thread_id、tenant_id 和 user_id 必须来自可信的身份体系，不能相信模型生成的身份，也不能让客户端随意指定另一个用户的 namespace；否则记得越多，越容易造成跨用户数据泄露。线上还需要数据库型的 Checkpointer 和 Store。[原文§生产环境要注意什么？](https://xiaolinnote.com/ai/langchain/memory.html#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
 - **E6-11** 不能只看成功写入多少条，要沿整条链路检查：这条信息是否值得写入，相关问题能否召回，无关问题会不会误召回，注入模型后是否真正改善答案；写入、召回和使用三步都有效才算有用。[原文§生产环境要注意什么？](https://xiaolinnote.com/ai/langchain/memory.html#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+- **E6-12** 当前对话里提到的日期、预算和下一步计划只服务于这次任务，属于短期状态；一周后用户新建会话，Agent 仍然知道他不吃辣、喜欢住地铁附近，这类跨会话仍然有效的信息才属于长期记忆。记忆设计要先确定作用域，再选数据库：当前线程运行到了哪里由 State 和 Checkpointer 管理，未来其他线程仍可能使用的用户偏好与事实才由 Store 管理。[原文§应该记住什么？](https://xiaolinnote.com/ai/langchain/memory.html#%E5%BA%94%E8%AF%A5%E8%AE%B0%E4%BD%8F%E4%BB%80%E4%B9%88)
+- **E6-13** 记忆要保存来源、时间与置信度，支持更新、纠错、删除和过期淘汰；敏感信息默认不记，确需保存时加密并限制访问，日志也避免泄露；订单金额等实时事实仍查权威业务系统。[原文§什么时候写入长期记忆？](https://xiaolinnote.com/ai/langchain/memory.html#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%86%99%E5%85%A5%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86)[原文§生产环境要注意什么](https://xiaolinnote.com/ai/langchain/memory.html#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
 
 ## 7. LangChain 与 LlamaIndex
 
@@ -150,7 +156,7 @@
 - **E8-5** Chat Memory 保存的是下一次要喂给模型的上下文，可以被淘汰、压缩或注入；完整聊天记录是产品展示和审计所需的事实记录。原文称 LangChain4j 提供的是 memory，不替应用保存完整的 history。[原文§Chat Memory 等于聊天档案吗？](https://xiaolinnote.com/ai/langchain/langchain4j.html#chat-memory-%E7%AD%89%E4%BA%8E%E8%81%8A%E5%A4%A9%E6%A1%A3%E6%A1%88%E5%90%97)
 - **E8-6** 因为抽象只能覆盖各家的交集：某个模型是否支持工具调用、原生 JSON Schema、图片输入或特殊采样参数，仍要查能力矩阵；切换供应商后 Prompt 效果、Token 计算、限流、异常处理和评测基线也要重新验证。[原文§统一接口能抹平所有差异吗？](https://xiaolinnote.com/ai/langchain/langchain4j.html#%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E8%83%BD%E6%8A%B9%E5%B9%B3%E6%89%80%E6%9C%89%E5%B7%AE%E5%BC%82%E5%90%97)
 - **E8-7** 适合已有大量 Java 服务、想把 AI 能力嵌入现有系统的团队，例如企业知识库问答、带会话上下文的智能客服、从合同和简历中抽取结构化字段、让模型查询订单或创建工单；领域服务、权限和审计已经写在 Java 中时尤其合适。[原文§什么时候适合 LangChain4j？](https://xiaolinnote.com/ai/langchain/langchain4j.html#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%82%E5%90%88-langchain4j)
-- **E8-8** 可观测性通过监听入口采集各阶段的请求、响应、耗时和错误，便于沿调用链排查；Guardrails 在模型调用前后校验输入和输出。两者仍被标为实验性且只适用于 AI Services，不能替代认证、授权、数据隔离、资金风控和审计。[原文§可观测性与 Guardrails 的边界](https://xiaolinnote.com/ai/langchain/langchain4j.html#%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E4%B8%8E-guardrails-%E7%9A%84%E8%BE%B9%E7%95%8C)
+- **E8-8** ChatModelListener 等监听入口采集各阶段的请求、响应、耗时和错误，便于沿调用链排查；Guardrails 在模型调用前后校验输入和输出。截至原文调研时，官方仍把 Guardrails 和 AI Service Observability 标为实验性，而且它们只适用于 AI Services，不能直接套在低层 ChatModel 上；Guardrail 也不能替代认证、授权、数据隔离、资金风控和审计。[原文§可观测性与 Guardrails 的边界](https://xiaolinnote.com/ai/langchain/langchain4j.html#%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E4%B8%8E-guardrails-%E7%9A%84%E8%BE%B9%E7%95%8C)
 
 ### 补充考点
 
@@ -166,6 +172,8 @@
 - **E8-18** 最自然的做法是沿用它的配置、依赖注入和监控体系：Starter 可以自动创建常用 Bean，也能用 @AiService 声明 AI Service；接入或升级时，再根据项目的 Spring Boot 大版本选择对应依赖。[原文§Java 生态如何集成？](https://xiaolinnote.com/ai/langchain/langchain4j.html#java-%E7%94%9F%E6%80%81%E5%A6%82%E4%BD%95%E9%9B%86%E6%88%90)
 - **E8-19** 项目深度依赖某家模型刚发布的专属能力时，直接用 SDK 往往更早暴露完整参数；要做跨小时运行、可暂停恢复、强事务补偿的复杂流程时，不能只依赖模型工具循环，还要结合工作流引擎、消息系统或图编排方案。[原文§什么时候适合 LangChain4j？](https://xiaolinnote.com/ai/langchain/langchain4j.html#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%82%E5%90%88-langchain4j)
 - **E8-20** 关键看团队原有技术栈：以 Spring 为中心可重点比较 Spring AI，已采用 Microsoft AI 技术栈可评估 Semantic Kernel，Quarkus 项目优先看 Quarkus LangChain4j。选型时做一个小型真实 PoC，用同一批问题验证回答质量、工具参数准确率、结构化输出成功率、延迟、Token 成本、监控完整度和故障恢复。[原文§什么时候适合 LangChain4j？](https://xiaolinnote.com/ai/langchain/langchain4j.html#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%82%E5%90%88-langchain4j)
+- **E8-21** 要确认对应的 ChatModel 支持并显式启用相关能力；模型不支持时，框架可能退回到 Prompt 格式指令，这种方式的可靠性更弱。[原文§AI Services 解决什么问题？](https://xiaolinnote.com/ai/langchain/langchain4j.html#ai-services-%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98)
+- **E8-22** 默认把消息放在内存里，需要持久化时实现 ChatMemoryStore 接到数据库；多用户用 @MemoryId 和 ChatMemoryProvider 隔离会话；同一个 MemoryId 不应被并发调用，分布式并发控制是应用的责任。[原文§Chat Memory 等于聊天档案吗？](https://xiaolinnote.com/ai/langchain/langchain4j.html#chat-memory-%E7%AD%89%E4%BA%8E%E8%81%8A%E5%A4%A9%E6%A1%A3%E6%A1%88%E5%90%97)
 
 ## 9. LangChain 与 LangGraph
 
@@ -218,6 +226,7 @@
 - **E10-19** 不是。开源 LangGraph 是编排框架和运行时，不等于购买了某个托管服务；自托管时数据库、任务队列、Worker 扩缩容、重试策略、监控和数据保留仍是团队的责任，即使用托管平台也要做容量评估、幂等设计和故障演练。[原文§状态如何走向生产部署？](https://xiaolinnote.com/ai/langchain/langgraph_advantages.html#%E7%8A%B6%E6%80%81%E5%A6%82%E4%BD%95%E8%B5%B0%E5%90%91%E7%94%9F%E4%BA%A7%E9%83%A8%E7%BD%B2)
 - **E10-20** 申请提交后要并行做预算和合规检查，两个结果齐了才进入人工审批，通过才调用采购系统，顺序与权限不能交给模型自由发挥；更自然的组合是用 create_agent 做材料理解或异常解释节点，外层采购流程仍由 StateGraph 控制。[原文§完整流程示例](https://xiaolinnote.com/ai/langchain/langgraph_advantages.html#%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%A4%BA%E4%BE%8B)
 - **E10-21** 适合业务阶段、权限和审批顺序必须由确定性规则控制的任务；也适合跨小时或跨天运行、需要暂停与恢复的长任务。任务有动态并行分支或多 Agent 子图时，可用 Send、并行汇合和 Reducer 组织协作。还适合需要查看与修改中间状态、从 checkpoint 重放来排查路线错误的流程。 [原文§哪些场景适合 LangGraph？](https://xiaolinnote.com/ai/langchain/langgraph_advantages.html#%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%E9%80%82%E5%90%88-langgraph)
+- **E10-22** 子图的记忆范围需要显式选择：一次性子任务可以让每次调用都从新状态开始；确实需要连续记忆的子 Agent，才让子图在同一线程的多次调用间积累状态；完全无状态的调用虽然更简单，但也不能依赖中断与可靠恢复能力。[原文§复杂任务如何并行又汇合？](https://xiaolinnote.com/ai/langchain/langgraph_advantages.html#%E5%A4%8D%E6%9D%82%E4%BB%BB%E5%8A%A1%E5%A6%82%E4%BD%95%E5%B9%B6%E8%A1%8C%E5%8F%88%E6%B1%87%E5%90%88)
 
 ## 11. LangChain 的演进
 
@@ -235,6 +244,8 @@
 - **E11-7** 它代表 LangChain 从大量预制类转向少量标准协议加组合；对步骤固定的确定性流程，Runnable 和 LCEL 往往比 Agent 更容易测试和控制。[原文§Runnable 改变了什么？](https://xiaolinnote.com/ai/langchain/version_evolution.html#runnable-%E6%94%B9%E5%8F%98%E4%BA%86%E4%BB%80%E4%B9%88)
 - **E11-8** 旧的 Chain、Retriever、Indexing 和 Hub 等能力主要迁到 langchain-classic，存量项目仍可渐进迁移；新的 langchain 包把注意力留给 Agent 主线。[原文§LangChain v1 聚焦了什么？](https://xiaolinnote.com/ai/langchain/version_evolution.html#langchain-v1-%E8%81%9A%E7%84%A6%E4%BA%86%E4%BB%80%E4%B9%88)
 - **E11-9** 不能只执行一次依赖更新：动手前先锁定当前依赖和可复现环境，再阅读目标版本的迁移指南；不同包的更新节奏不一致，主包的稳定承诺不能覆盖社区集成、合作伙伴包和实验性 API，所以生产项目应固定依赖版本，并尽量建立在公开稳定的接口上。[原文§升级时要注意什么？](https://xiaolinnote.com/ai/langchain/version_evolution.html#%E5%8D%87%E7%BA%A7%E6%97%B6%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88)
+- **E11-10** 先用 langchain-core 稳定基础协议，再把模型和数据库集成拆出去独立更新，解决核心与外部 SDK 节奏不一致的问题；核心边界稳定后，Runnable 与 LCEL 统一了确定性流程的组合方式；最后把复杂状态和执行流程下沉到 LangGraph，高层再通过 create_agent 和 middleware 提供更容易使用的 Agent 入口。这让 LangChain 从“封装大量 LLM 功能”转向“提供清晰分层的 Agent 工程体系”；代价是旧项目升级要处理依赖和导入路径，收益是核心接口更稳定、复杂流程更可控，也更适合生产环境。[原文§演进方向是什么？](https://xiaolinnote.com/ai/langchain/version_evolution.html#%E6%BC%94%E8%BF%9B%E6%96%B9%E5%90%91%E6%98%AF%E4%BB%80%E4%B9%88)
+- **E11-11** Python v0.3 把内部数据模型迁移到 Pydantic 2，并停止使用 Pydantic 1 兼容层；这属于重要的迁移背景，因为工具 Schema、结构化输出和配置对象都依赖 Pydantic。面试时不需要展开 Pydantic 的全部版本差异，说明它统一了数据模型与校验基线、旧项目升级时要检查导入路径和模型定义即可；拆包、Runnable、LangGraph 和 v1 Agent 架构更能体现 LangChain 的长期演进方向。[原文§Pydantic 2 值得重点背吗？](https://xiaolinnote.com/ai/langchain/version_evolution.html#pydantic-2-%E5%80%BC%E5%BE%97%E9%87%8D%E7%82%B9%E8%83%8C%E5%90%97)
 
 ## 12. Deep Research
 
@@ -255,3 +266,4 @@
 - **E12-10** 官方文档、论文、监管文件和一手资料通常更接近原始事实；多篇转载可能都来自同一篇文章，不能因为链接数量多就当成交叉验证。[原文§如何保证研究质量？](https://xiaolinnote.com/ai/langchain/deep_research.html#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%A0%94%E7%A9%B6%E8%B4%A8%E9%87%8F)
 - **E12-11** 既要看最终答案，也要看研究轨迹、来源覆盖率、引用正确性、耗时和成本；通用 Benchmark 可以用于版本比较，但不能代替企业自己的业务数据集。[原文§如何保证研究质量？](https://xiaolinnote.com/ai/langchain/deep_research.html#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%A0%94%E7%A9%B6%E8%B4%A8%E9%87%8F)
 - **E12-12** 除了单个分支的上限，整项任务还要设置总 Token、搜索费用和超时预算，并配好失败重试、缓存、限流和取消策略；对金融、医疗、法律和安全决策，它只能辅助资料整理，不能因为报告带有引用就取消专家复核。[原文§如何控制成本和安全？](https://xiaolinnote.com/ai/langchain/deep_research.html#%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E6%88%90%E6%9C%AC%E5%92%8C%E5%AE%89%E5%85%A8)
+- **E12-13** 普通问答通常一次检索就能得到答案，研究任务往往一开始就没有固定路径，例如比较三家云厂商的 Agent 托管能力，要分别查产品定位、价格、限制和区域差异，还要处理产品改名、资料过期和来源矛盾；Deep Research 围绕研究目标动态决定下一步搜索什么、哪些问题可以并行、证据是否充分以及何时停止，搜索次数只是这个过程的结果。[原文§Deep Research 是什么？](https://xiaolinnote.com/ai/langchain/deep_research.html#deep-research-%E6%98%AF%E4%BB%80%E4%B9%88)

@@ -1,0 +1,204 @@
+{
+  "versions": {
+    "fastapi": "0.135.3",
+    "pydantic": "2.12.5",
+    "httpx": "0.28.1"
+  },
+  "bool_requests": {
+    "on": {
+      "status": 200,
+      "body": {
+        "short": true
+      }
+    },
+    "off": {
+      "status": 200,
+      "body": {
+        "short": false
+      }
+    },
+    "foo": {
+      "status": 422,
+      "body": {
+        "detail": [
+          {
+            "type": "bool_parsing",
+            "loc": [
+              "query",
+              "short"
+            ],
+            "msg": "Input should be a valid boolean, unable to interpret input",
+            "input": "foo"
+          }
+        ]
+      }
+    }
+  },
+  "nullable_requests": {
+    "/nullable": {
+      "status": 422,
+      "body": {
+        "detail": [
+          {
+            "type": "missing",
+            "loc": [
+              "query",
+              "q"
+            ],
+            "msg": "Field required",
+            "input": null
+          }
+        ]
+      }
+    },
+    "/nullable?q=None": {
+      "status": 200,
+      "body": {
+        "q": "None"
+      }
+    },
+    "/nullable?q=null": {
+      "status": 200,
+      "body": {
+        "q": "null"
+      }
+    },
+    "/nullable?q=": {
+      "status": 422,
+      "body": {
+        "detail": [
+          {
+            "type": "string_too_short",
+            "loc": [
+              "query",
+              "q"
+            ],
+            "msg": "String should have at least 3 characters",
+            "input": "",
+            "ctx": {
+              "min_length": 3
+            }
+          }
+        ]
+      }
+    }
+  },
+  "direct_response_with_declared_model": {
+    "response": {
+      "extra": "not filtered"
+    },
+    "openapi_response": {
+      "description": "Successful Response",
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Response Response With Schema Response Get"
+          }
+        }
+      }
+    }
+  },
+  "depends_parameter_names": [
+    "dependency",
+    "use_cache",
+    "scope"
+  ],
+  "path_defaults": {
+    "implicit_default": {
+      "status": 200,
+      "value": 3
+    },
+    "explicit_path_default": {
+      "error": "AssertionError",
+      "message": "Path parameters cannot have a default value"
+    },
+    "annotated_path_default": {
+      "error": "AssertionError",
+      "message": "Path parameters cannot have default values"
+    }
+  },
+  "yield_scope_order": {
+    "request": [
+      "dependency_enter",
+      "endpoint",
+      "response_start",
+      "response_sent",
+      "dependency_exit"
+    ],
+    "function": [
+      "dependency_enter",
+      "endpoint",
+      "dependency_exit",
+      "response_start",
+      "response_sent"
+    ]
+  },
+  "yield_middleware_order": {
+    "request": [
+      "middleware_before",
+      "dependency_enter",
+      "endpoint",
+      "response_start",
+      "middleware_after",
+      "response_sent",
+      "dependency_exit"
+    ],
+    "function": [
+      "middleware_before",
+      "dependency_enter",
+      "endpoint",
+      "dependency_exit",
+      "response_start",
+      "middleware_after",
+      "response_sent"
+    ]
+  },
+  "cors_wildcard_configuration": {
+    "status": 200,
+    "headers": {
+      "access-control-allow-methods": "DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT",
+      "access-control-max-age": "600",
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "https://frontend.example",
+      "access-control-allow-headers": "X-Custom,Authorization"
+    }
+  },
+  "trailing_slash": {
+    "/items": {
+      "/items": {
+        "status": 200,
+        "location": null
+      },
+      "/items/": {
+        "status": 307,
+        "location": "http://testserver/items"
+      }
+    },
+    "/items/": {
+      "/items": {
+        "status": 307,
+        "location": "http://testserver/items/"
+      },
+      "/items/": {
+        "status": 200,
+        "location": null
+      }
+    }
+  },
+  "root_path_openapi_servers": {
+    "": null,
+    "/api/v1": [
+      {
+        "url": "/api/v1"
+      }
+    ]
+  },
+  "coroutine_created_in_sync_code": {
+    "is_coroutine": true,
+    "result_with_asyncio_run": 42
+  }
+}

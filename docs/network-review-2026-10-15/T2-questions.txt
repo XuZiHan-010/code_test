@@ -1,0 +1,2454 @@
+T2-1 [single]
+Original: 关于 HTTPS 与 HTTP 的关系，下列说法符合原文的是哪一项？
+Stem: 关于 HTTPS 与 HTTP 的关系，下列说法符合原文的是哪一项？
+A [incorrect] HTTPS 是与 HTTP 无关、专门用于加密的独立协议
+B [incorrect] HTTPS 是在 DNS 解析过程中加入 TLS 安全保护
+C [correct] HTTPS 是在 HTTP 通信中加入 TLS 安全保护
+D [incorrect] HTTPS 是在 FTP 通信中加入 TLS 安全保护
+Answer: 常见的应用层协议有 HTTP、DNS、FTP、SMTP、SSH、WebSocket 等，HTTPS 则是在 HTTP 通信中加入 TLS 安全保护，所以它不是与 HTTP 无关的独立协议，也不是在 DNS 或 FTP 上加 TLS。[原文§应用层有哪些协议？](https://xiaolincoding.com/interview/network.html#%E5%BA%94%E7%94%A8%E5%B1%82%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8D%8F%E8%AE%AE)
+
+T2-2 [single]
+Original: 关于 CDN，下列说法符合原文的是哪一项？
+Stem: 关于 CDN，下列说法符合原文的是哪一项？
+A [incorrect] CDN 是与 HTTP、DNS 并列的一种应用层协议
+B [incorrect] CDN 是在 FTP 通信中加入缓存功能的应用层协议
+C [incorrect] CDN 只依赖 DNS 调度，不使用 HTTP 缓存和边缘节点
+D [correct] CDN 是内容分发网络，是一种加速服务的架构，不是一种协议
+Answer: CDN 容易被误当成应用层协议，其实它是内容分发网络，是一种加速服务的架构，不是一种协议；它通常结合 DNS 调度、HTTP 缓存和边缘节点来提供服务。[原文§应用层有哪些协议？](https://xiaolincoding.com/interview/network.html#%E5%BA%94%E7%94%A8%E5%B1%82%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8D%8F%E8%AE%AE)
+
+T2-3 [fill]
+Original: [填空题·有序] 以 HTTP/1.1 为例，请求报文自上而下依次由四部分组成：____、____、____、____。
+Stem: 以 HTTP/1.1 为例，请求报文自上而下依次由四部分组成：____、____、____、____。
+Blanks/order: 4/ordered
+Answer: 依次是：请求行（请求方法、请求目标和 HTTP 协议版本）、请求头部（如 Host、User-Agent、Content-Type 等）、空行（分隔请求头部和请求体）、请求体（可选，通常用于 POST 请求等需要传输数据的情况）。[原文§HTTP报文有哪些部分？](https://xiaolincoding.com/interview/network.html#http%E6%8A%A5%E6%96%87%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86)
+
+T2-4 [fill]
+Original: [填空题·有序] 以 HTTP/1.1 为例，响应报文自上而下依次由四部分组成：____、____、____、____。
+Stem: 以 HTTP/1.1 为例，响应报文自上而下依次由四部分组成：____、____、____、____。
+Blanks/order: 4/ordered
+Answer: 依次是：状态行（HTTP 协议版本、状态码和状态信息）、响应头部（如 Content-Type、Content-Length 等）、空行（分隔响应头部和响应体）、响应体（服务器返回的 HTML、JSON 等内容）。[原文§HTTP报文有哪些部分？](https://xiaolincoding.com/interview/network.html#http%E6%8A%A5%E6%96%87%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86)
+
+T2-5 [single]
+Original: 以 HTTP/1.1 为例，请求报文的请求行包含下列哪一组内容？
+Stem: 以 HTTP/1.1 为例，请求报文的请求行包含下列哪一组内容？
+A [correct] 请求方法、请求目标（URL 或 URI）和 HTTP 协议版本
+B [incorrect] HTTP 协议版本、状态码和状态信息
+C [incorrect] Host、User-Agent、Content-Type 等附加信息
+D [incorrect] 需要传输的数据，通常用于 POST 请求
+Answer: 请求行包含请求方法、请求目标（URL 或 URI）和 HTTP 协议版本；Host、User-Agent、Content-Type 等附加信息在请求头部，POST 等请求传输的数据在请求体，HTTP 协议版本、状态码和状态信息则是响应报文状态行的内容。[原文§HTTP报文有哪些部分？](https://xiaolincoding.com/interview/network.html#http%E6%8A%A5%E6%96%87%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86)
+
+T2-6 [single]
+Original: 以 HTTP/1.1 为例，响应报文的状态行包含下列哪一组内容？
+Stem: 以 HTTP/1.1 为例，响应报文的状态行包含下列哪一组内容？
+A [incorrect] 请求方法、请求目标（URL 或 URI）和 HTTP 协议版本
+B [correct] HTTP 协议版本、状态码和状态信息
+C [incorrect] Content-Type、Content-Length 等附加信息
+D [incorrect] 服务器返回的 HTML、JSON 等数据内容
+Answer: 状态行包含 HTTP 协议版本、状态码和状态信息；Content-Type、Content-Length 等附加信息在响应头部，HTML、JSON 等内容在响应体，请求方法和请求目标属于请求行。[原文§HTTP报文有哪些部分？](https://xiaolincoding.com/interview/network.html#http%E6%8A%A5%E6%96%87%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86)
+
+T2-7 [single]
+Original: HTTP/1.1 报文中的空行起什么作用？
+Stem: HTTP/1.1 报文中的空行起什么作用？
+A [incorrect] 分隔请求行和请求头部
+B [incorrect] 表示报文体的字节长度
+C [correct] 分隔头部和报文体
+D [incorrect] 表示本次 TCP 连接已经结束
+Answer: 请求头部和请求体之间、响应头部和响应体之间都用空行分隔，空行的作用就是分隔头部和报文体，它不表示报文体长度，也不表示连接结束。[原文§HTTP报文有哪些部分？](https://xiaolincoding.com/interview/network.html#http%E6%8A%A5%E6%96%87%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86)
+
+T2-8 [single]
+Original: 关于 HTTP/1.1 请求报文中的请求体，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP/1.1 请求报文中的请求体，下列说法符合原文的是哪一项？
+A [incorrect] 请求体是必须的，每个请求都必须携带
+B [incorrect] 请求体位于请求头部之前，用于存放 Host 等信息
+C [correct] 请求体是可选的，通常用于 POST 请求等需要传输数据的情况
+D [incorrect] 请求体只出现在响应报文中，请求报文没有这一部分
+Answer: 请求体是可选的，包含请求的数据，通常用于 POST 请求等需要传输数据的情况；它位于空行之后，Host 等信息放在请求头部。[原文§HTTP报文有哪些部分？](https://xiaolincoding.com/interview/network.html#http%E6%8A%A5%E6%96%87%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86)
+
+T2-9 [single]
+Original: 关于 HTTP/2 和 HTTP/3 的报文，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP/2 和 HTTP/3 的报文，下列说法符合原文的是哪一项？
+A [correct] 使用帧来传递报文，不能直接套用 HTTP/1.1 的文本格式
+B [incorrect] 与 HTTP/1.1 相同，仍由请求行、请求头部、空行和请求体组成
+C [incorrect] 与 HTTP/1.1 的文本格式相同，只是去掉了头部和报文体之间的空行
+D [incorrect] 使用帧来传递报文，但可以直接套用 HTTP/1.1 的文本格式
+Answer: 原文以 HTTP/1.1 为例讲解报文结构，并说明 HTTP/2 和 HTTP/3 使用帧来传递报文，不能直接套用 HTTP/1.1 的文本格式。[原文§HTTP报文有哪些部分？](https://xiaolincoding.com/interview/network.html#http%E6%8A%A5%E6%96%87%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86)
+
+T2-10 [fill]
+Original: [填空题·有序] 原文把 HTTP 状态码分为 5 大类，1xx、2xx、3xx、4xx、5xx 的含义依次是：____、____、____、____、____。
+Stem: 原文把 HTTP 状态码分为 5 大类，1xx、2xx、3xx、4xx、5xx 的含义依次是：____、____、____、____、____。
+Blanks/order: 5/ordered
+Answer: 依次是：1xx 提示信息（请求还在处理中，如 100 Continue）；2xx 成功处理请求（如 200 OK）；3xx 需要进一步操作（如重定向，或使用已经缓存的资源）；4xx 请求存在问题（如参数错误、身份认证失败或资源不存在）；5xx 服务器处理请求时发生错误（也包括网关访问上游服务失败）。[原文§HTTP常用的状态码？](https://xiaolincoding.com/interview/network.html#http%E5%B8%B8%E7%94%A8%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81)
+
+T2-11 [single]
+Original: 关于状态码 304 Not Modified，下列说法符合原文的是哪一项？
+Stem: 关于状态码 304 Not Modified，下列说法符合原文的是哪一项？
+A [incorrect] 资源已永久迁移，客户端应跳转到另一个 URL
+B [correct] 协商缓存命中，客户端使用本地缓存的响应体
+C [incorrect] 请求成功，但是没有响应体
+D [incorrect] 请求被服务器拒绝，常见于权限不足
+Answer: 304 Not Modified 表示协商缓存命中，客户端使用本地缓存的响应体。它属于 3xx，但原文特别提醒：304 并不是跳转到另一个 URL。[原文§HTTP常用的状态码？](https://xiaolincoding.com/interview/network.html#http%E5%B8%B8%E7%94%A8%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81)
+
+T2-12 [single]
+Original: 关于状态码 201 Created 和 204 No Content，下列说法符合原文的是哪一项？
+Stem: 关于状态码 201 Created 和 204 No Content，下列说法符合原文的是哪一项？
+A [incorrect] 201 表示请求成功但是没有响应体，204 表示成功创建资源
+B [incorrect] 201 表示成功返回部分资源，204 表示请求成功但是没有响应体
+C [incorrect] 201 表示成功创建资源，204 表示协商缓存命中
+D [correct] 201 表示成功创建资源，204 表示请求成功但是没有响应体
+Answer: 201 Created 表示成功创建资源，204 No Content 表示请求成功但是没有响应体；成功返回部分资源是 206，协商缓存命中是 304。[原文§HTTP常用的状态码？](https://xiaolincoding.com/interview/network.html#http%E5%B8%B8%E7%94%A8%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81)
+
+T2-13 [single]
+Original: 状态码 206 Partial Content 常用于下列哪个场景？
+Stem: 状态码 206 Partial Content 常用于下列哪个场景？
+A [incorrect] 网站更换域名后的永久跳转
+B [correct] 断点续传（成功返回部分资源）
+C [incorrect] 对请求频率过高的客户端限流
+D [incorrect] 网关等待上游响应超时的提示
+Answer: 206 Partial Content 表示成功返回部分资源，常用于断点续传。[原文§HTTP常用的状态码？](https://xiaolincoding.com/interview/network.html#http%E5%B8%B8%E7%94%A8%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81)
+
+T2-14 [single]
+Original: 401 Unauthorized 与 403 Forbidden 的区别，下列说法符合原文的是哪一项？
+Stem: 401 Unauthorized 与 403 Forbidden 的区别，下列说法符合原文的是哪一项？
+A [incorrect] 401 表示服务器拒绝访问，403 表示缺少有效的身份凭证
+B [incorrect] 401 表示请求格式等有问题，403 表示资源不存在
+C [incorrect] 401 表示请求过于频繁被限流，403 表示服务暂时不可用
+D [correct] 401 表示缺少有效的身份凭证，403 表示服务器拒绝访问，常见于权限不足
+Answer: 401 Unauthorized 表示缺少有效的身份凭证；403 Forbidden 表示服务器拒绝访问，常见于权限不足。400 是请求格式等有问题，404 是资源不存在，429 是请求过于频繁被限流，503 是服务暂时不可用。[原文§HTTP常用的状态码？](https://xiaolincoding.com/interview/network.html#http%E5%B8%B8%E7%94%A8%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81)
+
+T2-15 [multiple]
+Original: 下列哪些状态码与含义的对应符合原文？
+Stem: 下列哪些状态码与含义的对应符合原文？
+A [incorrect] 400 Bad Request：服务器内部错误
+B [correct] 429 Too Many Requests：请求过于频繁，被限流了
+C [correct] 405 Method Not Allowed：资源不支持该请求方法
+D [correct] 404 Not Found：资源不存在
+Answer: 404 Not Found 表示资源不存在，405 Method Not Allowed 表示资源不支持该请求方法，429 Too Many Requests 表示请求过于频繁、被限流了；400 Bad Request 表示请求格式等有问题，服务器内部错误是 500。[原文§HTTP常用的状态码？](https://xiaolincoding.com/interview/network.html#http%E5%B8%B8%E7%94%A8%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81)
+
+T2-16 [single]
+Original: 状态码 503 Service Unavailable 表示什么？
+Stem: 状态码 503 Service Unavailable 表示什么？
+A [correct] 服务暂时不可用
+B [incorrect] 服务器内部错误
+C [incorrect] 网关访问上游失败或收到无效响应
+D [incorrect] 网关等待上游响应超时
+Answer: 503 Service Unavailable 表示服务暂时不可用；服务器内部错误是 500，网关访问上游失败或收到无效响应是 502，网关等待上游响应超时是 504。[原文§HTTP常用的状态码？](https://xiaolincoding.com/interview/network.html#http%E5%B8%B8%E7%94%A8%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81)
+
+T2-17 [single]
+Original: 关于状态码 301 与 302，下列说法符合原文的是哪一项？
+Stem: 关于状态码 301 与 302，下列说法符合原文的是哪一项？
+A [correct] 301 是永久重定向，资源以后应使用新的 URL 访问；302 是临时重定向，以后仍可使用原来的地址
+B [incorrect] 301 是临时重定向，以后仍可使用原来的地址；302 是永久重定向，资源以后应使用新的 URL 访问
+C [incorrect] 301 和 302 都是永久重定向，资源以后都应使用新的 URL 访问
+D [incorrect] 301 和 302 都是临时重定向，以后仍然可以使用原来的地址访问
+Answer: 301 Moved Permanently 是永久重定向，表示资源以后应该使用新的 URL 访问，比如网站更换了域名；302 Found 是临时重定向，表示这次先去另一个 URL，但以后仍然可以使用原来的地址，比如用户未登录时跳转到登录页。[原文§HTTP返回状态301 302分别是什么？](https://xiaolincoding.com/interview/network.html#http%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81301-302%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-18 [single]
+Original: HTTP 重定向通常通过哪个响应头告诉客户端新的地址？
+Stem: HTTP 重定向通常通过哪个响应头告诉客户端新的地址？
+A [incorrect] Content-Range
+B [correct] Location
+C [incorrect] Host
+D [incorrect] Content-Type
+Answer: 301 和 302 都是重定向状态码，通常通过响应头里的 Location 告诉客户端新的地址。[原文§HTTP返回状态301 302分别是什么？](https://xiaolincoding.com/interview/network.html#http%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81301-302%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-19 [single]
+Original: 用户未登录时被跳转到登录页，这种场景原文认为适合使用哪个状态码？
+Stem: 用户未登录时被跳转到登录页，这种场景原文认为适合使用哪个状态码？
+A [incorrect] 301 Moved Permanently（永久重定向）
+B [incorrect] 304 Not Modified（协商缓存命中）
+C [incorrect] 403 Forbidden（服务器拒绝访问）
+D [correct] 302 Found（临时重定向）
+Answer: 302 Found 是临时重定向，表示这次先去另一个 URL，但以后仍然可以使用原来的地址，用户未登录时跳转到登录页就是原文的例子；网站更换了域名这类永久迁移才用 301。[原文§HTTP返回状态301 302分别是什么？](https://xiaolincoding.com/interview/network.html#http%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81301-302%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-20 [single]
+Original: 原来是 POST 请求，遇到 301 或 302 重定向后，下列说法符合原文的是哪一项？
+Stem: 原来是 POST 请求，遇到 301 或 302 重定向后，下列说法符合原文的是哪一项？
+A [incorrect] 一定保留 POST 方法和请求体
+B [incorrect] 一定改成 GET，并且请求体不会再被携带
+C [correct] 浏览器可能把 POST 改成 GET
+D [incorrect] 服务器会拒绝该请求并返回 405
+Answer: 原文指出，对于 301 和 302，浏览器可能把 POST 改成 GET。[原文§HTTP返回状态301 302分别是什么？](https://xiaolincoding.com/interview/network.html#http%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81301-302%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-21 [fill]
+Original: [填空题·有序] 若希望重定向后保留原来的请求方法和请求体，可以使用状态码 ____（临时重定向）或 ____（永久重定向）。
+Stem: 若希望重定向后保留原来的请求方法和请求体，可以使用状态码 ____（临时重定向）或 ____（永久重定向）。
+Blanks/order: 2/ordered
+Answer: 可以使用 307 临时重定向或者 308 永久重定向，这样重定向后会保留原来的请求方法和请求体。[原文§HTTP返回状态301 302分别是什么？](https://xiaolincoding.com/interview/network.html#http%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81301-302%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-22 [short]
+Original: 502 Bad Gateway 和 504 Gateway Time-out 有什么区别？请以 nginx 作为代理、把请求转发给后端 tomcat 为例说明。
+Stem: 502 Bad Gateway 和 504 Gateway Time-out 有什么区别？请以 nginx 作为代理、把请求转发给后端 tomcat 为例说明。
+Answer: 502 Bad Gateway：作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应；504 Gateway Time-out：作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器收到响应。以 nginx 为代理、后端为 tomcat 等为例：当 nginx 收到了无效的响应时返回 502；当 nginx 超过自己配置的等待时间还没有收到上游的响应时返回 504。[原文§http 502和 504 的区别？](https://xiaolincoding.com/interview/network.html#http-502%E5%92%8C-504-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-23 [single]
+Original: nginx 作为代理服务器，把客户端请求转发到后端 tomcat，nginx 收到了上游返回的无效响应，这时 nginx 会返回哪个状态码？
+Stem: nginx 作为代理服务器，把客户端请求转发到后端 tomcat，nginx 收到了上游返回的无效响应，这时 nginx 会返回哪个状态码？
+A [correct] 502 Bad Gateway
+B [incorrect] 500 Internal Server Error
+C [incorrect] 503 Service Unavailable
+D [incorrect] 504 Gateway Timeout
+Answer: 代理服务器从上游服务器接收到无效响应时，返回 502 Bad Gateway。[原文§http 502和 504 的区别？](https://xiaolincoding.com/interview/network.html#http-502%E5%92%8C-504-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-24 [single]
+Original: nginx 作为代理服务器，把客户端请求转发到后端 tomcat，超过 nginx 自己配置的等待时间仍没有收到上游的响应，这时 nginx 会返回哪个状态码？
+Stem: nginx 作为代理服务器，把客户端请求转发到后端 tomcat，超过 nginx 自己配置的等待时间仍没有收到上游的响应，这时 nginx 会返回哪个状态码？
+A [incorrect] 500 Internal Server Error
+B [incorrect] 502 Bad Gateway
+C [correct] 504 Gateway Timeout
+D [incorrect] 503 Service Unavailable
+Answer: 代理服务器超过自己配置的等待时间还没有收到上游的响应时，返回 504 Gateway Time-out。[原文§http 502和 504 的区别？](https://xiaolincoding.com/interview/network.html#http-502%E5%92%8C-504-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-25 [fill]
+Original: [填空题·有序] 原文所述，HTTP 请求方法中，用于请求获取指定资源、向服务器提交数据、更新指定资源、请求服务器删除指定资源的方法依次是：____、____、____、____。
+Stem: 原文所述，HTTP 请求方法中，用于请求获取指定资源、向服务器提交数据、更新指定资源、请求服务器删除指定资源的方法依次是：____、____、____、____。
+Blanks/order: 4/ordered
+Answer: 依次是 GET（请求获取指定资源，通常用于获取数据）、POST（向服务器提交数据，通常用于提交表单数据或进行资源的创建）、PUT（向服务器更新指定资源，通常用于更新已存在的资源）、DELETE（请求服务器删除指定资源）。[原文§HTTP层请求的类型有哪些？](https://xiaolincoding.com/interview/network.html#http%E5%B1%82%E8%AF%B7%E6%B1%82%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+T2-26 [single]
+Original: 关于 HTTP 的 HEAD 方法，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP 的 HEAD 方法，下列说法符合原文的是哪一项？
+A [incorrect] 用于请求服务器删除指定资源，响应没有响应体
+B [incorrect] 用于对资源进行局部修改，响应带有完整的响应体
+C [correct] 语义与 GET 类似，但响应没有响应体，用于获取资源的元数据
+D [incorrect] 用于查询资源支持的通信选项，响应带有完整的响应体
+Answer: HEAD 的语义与 GET 类似，但响应没有响应体，用于获取资源的元数据。删除指定资源是 DELETE，局部修改是 PATCH，查询通信选项是 OPTIONS。[原文§HTTP层请求的类型有哪些？](https://xiaolincoding.com/interview/network.html#http%E5%B1%82%E8%AF%B7%E6%B1%82%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+T2-27 [single]
+Original: HTTP 请求方法中，哪一个用于对资源进行局部修改？
+Stem: HTTP 请求方法中，哪一个用于对资源进行局部修改？
+A [incorrect] PUT
+B [incorrect] POST
+C [correct] PATCH
+D [incorrect] HEAD
+Answer: PATCH 用于对资源进行局部修改；PUT 用于向服务器更新指定资源，通常用于更新已存在的资源。[原文§HTTP层请求的类型有哪些？](https://xiaolincoding.com/interview/network.html#http%E5%B1%82%E8%AF%B7%E6%B1%82%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+T2-28 [single]
+Original: 浏览器的 CORS 预检请求会用到哪个 HTTP 请求方法？
+Stem: 浏览器的 CORS 预检请求会用到哪个 HTTP 请求方法？
+A [incorrect] HEAD
+B [incorrect] PATCH
+C [correct] OPTIONS
+D [incorrect] DELETE
+Answer: OPTIONS 用于查询资源支持的通信选项，浏览器的 CORS 预检请求也会用到它。[原文§HTTP层请求的类型有哪些？](https://xiaolincoding.com/interview/network.html#http%E5%B1%82%E8%AF%B7%E6%B1%82%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+T2-29 [multiple]
+Original: 下列哪些 HTTP 请求方法与用途的对应符合原文？
+Stem: 下列哪些 HTTP 请求方法与用途的对应符合原文？
+A [correct] GET：用于请求获取指定资源，通常用于获取数据
+B [correct] DELETE：用于请求服务器删除指定资源
+C [incorrect] PUT：用于对资源进行局部修改
+D [correct] POST：用于向服务器提交数据，通常用于提交表单数据或进行资源的创建
+Answer: GET 用于请求获取指定资源，POST 用于向服务器提交数据（如提交表单、创建资源），DELETE 用于请求服务器删除指定资源；PUT 用于向服务器更新指定资源，对资源进行局部修改的是 PATCH。[原文§HTTP层请求的类型有哪些？](https://xiaolincoding.com/interview/network.html#http%E5%B1%82%E8%AF%B7%E6%B1%82%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B)
+
+T2-30 [single]
+Original: 按 RFC 规范，GET 和 POST 方法的语义分别是什么？
+Stem: 按 RFC 规范，GET 和 POST 方法的语义分别是什么？
+A [incorrect] GET 是根据请求负荷（报文 body）对指定的资源做出处理；POST 是从服务器获取指定的资源
+B [incorrect] GET 是更新服务器上的指定资源；POST 是删除服务器上指定的资源，二者都不涉及获取资源
+C [correct] GET 是从服务器获取指定的资源；POST 是根据请求负荷（报文 body）对指定的资源做出处理
+D [incorrect] GET 和 POST 都是从服务器获取指定的资源，二者的区别只在于参数写在哪个位置
+Answer: 根据 RFC 规范，GET 的语义是从服务器获取指定的资源，这个资源可以是静态的文本、页面、图片视频等；POST 的语义是根据请求负荷（报文 body）对指定的资源做出处理，具体的处理方式视资源类型而不同。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-31 [single]
+Original: 关于 GET 请求的参数，下列说法符合原文的是哪一项？
+Stem: 关于 GET 请求的参数，下列说法符合原文的是哪一项？
+A [incorrect] 参数一般写在报文 body 中，数据格式由客户端与服务端协商
+B [incorrect] 参数一般写在 URL 的查询字符串中，但只能传输 ASCII 内容
+C [correct] 参数一般写在 URL 的查询字符串中，中文等字符经过百分号编码后也可以传输
+D [incorrect] 参数一般写在请求头部的 Content-Type 字段中，不能出现中文
+Answer: GET 请求的参数一般写在 URL 的查询字符串中，中文等字符可以经过百分号编码后传输，并不是只能传 ASCII 内容；写在报文 body 中是 POST 的常见做法。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-32 [single]
+Original: 关于 HTTP 对 URL 最大长度的规定，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP 对 URL 最大长度的规定，下列说法符合原文的是哪一项？
+A [incorrect] HTTP 没有统一规定，实际使用中也不会受到任何限制
+B [incorrect] HTTP 统一规定了最大长度，所有浏览器、代理和服务器都必须遵守
+C [incorrect] HTTP 只统一规定了 POST 请求体的最大大小，没有规定 URL 的长度
+D [correct] HTTP 没有统一规定，但浏览器、代理和服务器通常都有各自的限制
+Answer: HTTP 没有统一规定 URL 的最大长度，但浏览器、代理和服务器通常都有各自的限制。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-33 [single]
+Original: 关于 POST 请求报文 body 的数据格式和大小，下列说法符合原文的是哪一项？
+Stem: 关于 POST 请求报文 body 的数据格式和大小，下列说法符合原文的是哪一项？
+A [incorrect] body 中的数据必须是表单格式，大小由 HTTP 统一规定，客户端、网关和服务端都不能再配置限制
+B [incorrect] body 中的数据可以是任意格式，大小由 HTTP 统一规定，超过规定的大小后一定会被服务端拒绝
+C [incorrect] body 中的数据一般写在 URL 的查询字符串中，大小没有统一规定，客户端、网关和服务端也都不会限制
+D [correct] body 中的数据可以是任意格式，只要客户端与服务端协商好；大小没有统一规定，但客户端、网关和服务端可以配置限制
+Answer: POST 请求携带数据的位置一般是报文 body，body 中的数据可以是任意格式的数据，只要客户端与服务端协商好即可；HTTP 同样没有统一规定 body 的最大大小，但客户端、网关和服务端可以配置大小限制，比如上传文件过大时可能收到 413。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-34 [single]
+Original: 按 RFC 规范，说一个请求方法是「幂等」的，指的是什么？
+Stem: 按 RFC 规范，说一个请求方法是「幂等」的，指的是什么？
+A [incorrect] 每次请求返回的内容都必须完全相同，不能因为服务器上的数据变化而变化
+B [correct] 执行一次和执行多次，对服务器产生的预期效果相同，并不要求每次返回的内容相同
+C [incorrect] 请求的语义不要求修改服务器上的资源，对服务器的数据没有任何副作用
+D [incorrect] 请求的内容经过加密处理，不会在传输中被窃听，也不会被中途篡改
+Answer: 「幂等」表示执行一次和执行多次，对服务器产生的预期效果相同，并不是每次返回的内容都必须相同。「请求的语义不要求修改服务器资源」说的是「安全」，传输保密则要靠 HTTPS。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-35 [single]
+Original: 按 RFC 规范，说一个请求方法是「安全」的，指的是什么？
+Stem: 按 RFC 规范，说一个请求方法是「安全」的，指的是什么？
+A [incorrect] 执行一次和执行多次，对服务器产生的预期效果相同
+B [incorrect] 请求的内容在传输过程中不会被窃听
+C [incorrect] 请求的参数不会出现在浏览历史和日志中
+D [correct] 请求的语义不要求修改服务器上的资源
+Answer: 「安全」表示请求的语义不要求修改服务器资源；执行一次和执行多次效果相同说的是「幂等」；传输保密要靠 HTTPS，URL 参数还容易出现在浏览历史、日志等位置。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-36 [single]
+Original: 查询商品价格的 GET 请求，价格变了之后返回的结果也会变。这与「GET 是幂等的」是否矛盾？
+Stem: 查询商品价格的 GET 请求，价格变了之后返回的结果也会变。这与「GET 是幂等的」是否矛盾？
+A [correct] 不矛盾，幂等看的是对服务器产生的预期效果，不要求每次返回的内容相同
+B [incorrect] 矛盾，返回内容会变化的 GET 请求不再是幂等的
+C [incorrect] 矛盾，这类请求应该改用 POST 方法才能保证幂等
+D [incorrect] 不矛盾，因为价格变化后该 GET 请求会被重新判定为不安全
+Answer: 幂等表示执行一次和执行多次，对服务器产生的预期效果相同，并不是每次返回的内容都必须相同。查询商品价格时价格变了，GET 返回的结果也会变，但它仍然可以是幂等的。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-37 [multiple]
+Original: 按 RFC 规范，GET 方法是安全且幂等的，原文据此指出下列哪些做法或特点成立？
+Stem: 按 RFC 规范，GET 方法是安全且幂等的，原文据此指出下列哪些做法或特点成立？
+A [correct] GET 请求的数据也可以缓存在 nginx 这类代理上
+B [correct] 可以对 GET 请求的数据做缓存，缓存可以做在浏览器本身上，彻底避免浏览器发请求
+C [correct] 在浏览器中，GET 请求可以保存为书签
+D [incorrect] GET 请求重复提交可能创建多笔订单，所以不能默认随便重试
+Answer: 因为 GET 是安全且幂等的，可以对 GET 请求的数据做缓存，缓存既可以做在浏览器本身上（彻底避免浏览器发请求），也可以做在代理上（如 nginx），而且在浏览器中 GET 请求可以保存为书签；重复提交可能创建多笔订单、不能默认随便重试的是 POST。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-38 [single]
+Original: 原文以创建订单为例，说明 POST 请求为什么不能默认随便重试，原因是什么？
+Stem: 原文以创建订单为例，说明 POST 请求为什么不能默认随便重试，原因是什么？
+A [incorrect] POST 的请求体不能重复发送，第二次提交一定会被服务器拒绝
+B [correct] POST 的语义不保证幂等，重复提交可能创建多笔订单
+C [incorrect] POST 的语义是安全的，重试会让浏览器缓存的数据失效
+D [incorrect] POST 请求走明文 HTTP 时，每次重试都会泄露一次数据
+Answer: POST 方法的语义不保证安全和幂等。比如创建订单，重复提交可能创建多笔订单，所以不能默认随便重试。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-39 [single]
+Original: 关于 POST 响应能否被缓存，下列说法符合原文的是哪一项？
+Stem: 关于 POST 响应能否被缓存，下列说法符合原文的是哪一项？
+A [correct] 并不是绝对不能缓存，满足明确的缓存条件时也可以缓存，只是常见实现对它的支持比较有限
+B [incorrect] 绝对不能缓存，任何情况下浏览器和代理都不会缓存 POST 响应
+C [incorrect] 总是可以缓存，浏览器和代理对 POST 响应的缓存支持与 GET 完全相同
+D [incorrect] 只要请求的 body 中带有数据，浏览器就会自动缓存其响应
+Answer: POST 响应并不是绝对不能缓存，在满足明确的缓存条件时也可以缓存，只是常见实现对它的支持比较有限。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-40 [multiple]
+Original: 原文指出开发者不一定按 RFC 规范定义的语义实现 GET 和 POST，下列哪些说法符合原文？
+Stem: 原文指出开发者不一定按 RFC 规范定义的语义实现 GET 和 POST，下列哪些说法符合原文？
+A [correct] 可以用 POST 方法实现没有副作用的查询
+B [incorrect] 只要使用的是 GET 方法，服务器就会自动保证它是安全和幂等的
+C [correct] 可以用 GET 方法实现新增或删除数据的请求，这样的 GET 自然就不是安全和幂等的
+D [correct] 可以通过业务请求号把创建接口设计成幂等，但需要业务自己保证
+Answer: 实际开发中，开发者不一定按 RFC 语义实现：可以用 GET 实现新增或删除数据的请求，这样的 GET 自然就不是安全和幂等；可以用 POST 实现没有副作用的查询，也可以通过业务请求号把创建接口设计成幂等，但这些都需要业务自己保证，方法名本身不会自动带来保证。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-41 [single]
+Original: 有人认为 POST 把参数放在 body 里就比 GET 更安全，按原文应如何评价？
+Stem: 有人认为 POST 把参数放在 body 里就比 GET 更安全，按原文应如何评价？
+A [incorrect] 对，参数放在 body 里就不会被窃听，传输保密不需要再依赖 HTTPS
+B [incorrect] 对，POST 请求默认就会加密，GET 请求才需要使用 HTTPS
+C [correct] 不对，POST 不会因为参数在 body 里就自动变得安全，明文 HTTP 下 GET 和 POST 都可能被窃听
+D [incorrect] 不对，明文 HTTP 下 GET 可能被窃听，而 POST 因为有 body 一定不会被窃听
+Answer: POST 不会因为参数放在 body 里就自动变得安全。GET、POST 走明文 HTTP 时都可能被窃听，传输保密要靠 HTTPS；只是 URL 参数还容易出现在浏览历史、日志等位置，不适合随便放密码和令牌。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-42 [short]
+Original: GET 和 POST 的使用场景是什么，有哪些区别？请从 RFC 语义和实际使用两个角度说明。
+Stem: GET 和 POST 的使用场景是什么，有哪些区别？请从 RFC 语义和实际使用两个角度说明。
+Answer: 按 RFC，GET 的语义是从服务器获取指定的资源，参数一般写在 URL 的查询字符串中（中文可经百分号编码），HTTP 没有统一规定 URL 最大长度，但浏览器、代理和服务器通常有各自限制；POST 的语义是根据请求负荷（body）对指定资源做出处理，数据一般写在 body 中，格式由客户端与服务端协商，大小也没有统一规定但可被配置限制。GET 是安全且幂等的（安全指语义不要求修改服务器资源，幂等指执行一次和多次预期效果相同），所以可以缓存在浏览器或 nginx 等代理上，也可以保存为书签；POST 不保证安全和幂等，比如创建订单重复提交可能创建多笔订单，不能默认随便重试，其响应并非绝对不能缓存但常见实现支持有限。实际开发中开发者不一定遵守这些语义，可以用 GET 实现增删数据，也可以用 POST 实现无副作用的查询，需要业务自己保证。另外 POST 不会因为参数在 body 里就自动安全，明文 HTTP 下两者都可能被窃听，保密要靠 HTTPS，URL 参数还容易出现在浏览历史、日志中。[原文§GET和POST的使用场景，有哪些区别？](https://xiaolincoding.com/interview/network.html#get%E5%92%8Cpost%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+
+T2-43 [short]
+Original: 什么是 HTTP 长连接？它相比短连接解决了什么问题？
+Stem: 什么是 HTTP 长连接？它相比短连接解决了什么问题？
+Answer: HTTP 采用「请求-应答」模式，基于 TCP，通信前先建立 TCP 连接。如果每次请求都经历「建立 TCP -> 请求资源 -> 响应资源 -> 释放连接」，就是 HTTP 短连接，一次连接只能请求一次资源。HTTP 的 Keep-Alive 让第一个请求完成后先不断开 TCP 连接，后续请求继续使用同一个连接，可以用同一个 TCP 连接发送和接收多个 HTTP 请求/应答，避免了连接建立和释放的开销，这个方法称为 HTTP 长连接。[原文§HTTP的长连接是什么？](https://xiaolincoding.com/interview/network.html#http%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-44 [fill]
+Original: [填空题·有序] HTTP 短连接中，每次请求都要依次经历：____ → 请求资源 → 响应资源 → ____。
+Stem: HTTP 短连接中，每次请求都要依次经历：____ → 请求资源 → 响应资源 → ____。
+Blanks/order: 2/ordered
+Answer: 依次是：建立 TCP 连接 -> 请求资源 -> 响应资源 -> 释放连接，一次连接只能请求一次资源。[原文§HTTP的长连接是什么？](https://xiaolincoding.com/interview/network.html#http%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-45 [single]
+Original: HTTP 的 Keep-Alive 实现的是什么功能？
+Stem: HTTP 的 Keep-Alive 实现的是什么功能？
+A [incorrect] 每个 HTTP 请求结束后立即释放 TCP 连接，以降低服务端占用
+B [incorrect] 让 HTTP 不再基于 TCP 传输，从而省去建立连接的过程
+C [incorrect] 在连接长时间没有数据交互时，探测对端是否还能响应
+D [correct] 用同一个 TCP 连接发送和接收多个 HTTP 请求/应答，避免连接建立和释放的开销
+Answer: HTTP 的 Keep-Alive 可以使用同一个 TCP 连接来发送和接收多个 HTTP 请求/应答，避免了连接建立和释放的开销，这个方法称为 HTTP 长连接。探测空闲连接对端是否存活的是 TCP Keepalive。[原文§HTTP的长连接是什么？](https://xiaolincoding.com/interview/network.html#http%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-46 [single]
+Original: HTTP 长连接建立之后，会一直保持吗？下列说法符合原文的是哪一项？
+Stem: HTTP 长连接建立之后，会一直保持吗？下列说法符合原文的是哪一项？
+A [correct] 不一定，客户端、服务端或中间代理可能因为空闲超时、请求数量限制等原因关闭连接
+B [incorrect] 会一直保持，直到客户端主动关闭连接为止
+C [incorrect] 不一定，但只有服务端可以关闭连接，客户端和代理都不能关闭
+D [incorrect] 不一定，只有 TCP Keepalive 探测失败时连接才会被关闭
+Answer: HTTP 长连接允许在一次请求结束后继续复用连接，但客户端、服务端或者中间代理都可能因为空闲超时、请求数量限制等原因关闭连接。[原文§HTTP的长连接是什么？](https://xiaolincoding.com/interview/network.html#http%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-47 [single]
+Original: HTTP Keep-Alive 与 TCP Keepalive 各自解决的问题，下列说法符合原文的是哪一项？
+Stem: HTTP Keep-Alive 与 TCP Keepalive 各自解决的问题，下列说法符合原文的是哪一项？
+A [correct] 前者解决连接复用的问题，后者解决空闲连接的存活探测问题
+B [incorrect] 前者解决空闲连接的存活探测问题，后者解决连接复用的问题
+C [incorrect] 两者都是解决连接复用的问题，只是作用的协议层不同
+D [incorrect] 两者都是解决空闲连接的存活探测问题，只是作用的协议层不同
+Answer: 两者名字很像，但解决的问题不一样：HTTP Keep-Alive 解决连接复用的问题，让多个 HTTP 请求使用同一个连接，减少反复建立和关闭连接的开销，HTTP/1.1 默认使用持久连接；TCP Keepalive 解决空闲连接的存活探测问题。[原文§HTTP Keep-Alive 和 TCP Keepalive 有什么区别？](https://xiaolincoding.com/interview/network.html#http-keep-alive-%E5%92%8C-tcp-keepalive-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-48 [single]
+Original: 关于 TCP Keepalive 的工作方式，下列说法符合原文的是哪一项？
+Stem: 关于 TCP Keepalive 的工作方式，下列说法符合原文的是哪一项？
+A [incorrect] 对所有 TCP 连接默认开启，内核会定期发送探测报文，不需要通过任何选项设置
+B [incorrect] 由应用层定期发送心跳报文，判断对端的业务线程是否还能正常处理请求
+C [correct] 连接长时间没有数据交互时，内核可以发送探测报文判断对端是否还能响应，需要通过 SO_KEEPALIVE 等选项开启
+D [incorrect] 由 HTTP 响应头里的 Keep-Alive 字段开启，用来让多个 HTTP 请求复用同一个连接
+Answer: TCP Keepalive 解决空闲连接的存活探测问题：如果连接长时间没有数据交互，内核可以发送探测报文，判断对端是否还能响应，需要通过 SO_KEEPALIVE 等选项开启。[原文§HTTP Keep-Alive 和 TCP Keepalive 有什么区别？](https://xiaolincoding.com/interview/network.html#http-keep-alive-%E5%92%8C-tcp-keepalive-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-49 [single]
+Original: 一个 HTTP 长连接是否必须开启 TCP Keepalive？
+Stem: 一个 HTTP 长连接是否必须开启 TCP Keepalive？
+A [incorrect] 必须，HTTP 长连接只有开启 TCP Keepalive 才能复用
+B [incorrect] 必须，HTTP/1.1 默认使用持久连接，同时会默认开启 TCP Keepalive
+C [incorrect] 不必，因为开启了 TCP Keepalive 的连接就等同于 HTTP 长连接
+D [correct] 不必，HTTP 长连接完全可以没有开启 TCP Keepalive，两者没有必然关系
+Answer: 一个 HTTP 长连接完全可以没有开启 TCP Keepalive；反过来，一个数据库的 TCP 连接也可以开启 TCP Keepalive，它和 HTTP 没有关系。[原文§HTTP Keep-Alive 和 TCP Keepalive 有什么区别？](https://xiaolincoding.com/interview/network.html#http-keep-alive-%E5%92%8C-tcp-keepalive-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-50 [single]
+Original: TCP Keepalive 的探测报文能收到对端回复，说明了什么？
+Stem: TCP Keepalive 的探测报文能收到对端回复，说明了什么？
+A [incorrect] 说明对端的业务线程也能正常处理请求，不需要再做其他检测
+B [correct] 只说明对端的 TCP 协议栈还能响应，不代表业务线程还能正常处理请求
+C [incorrect] 说明这条连接可以继续被多个 HTTP 请求复用，不会再被关闭
+D [incorrect] 说明对端的 TCP 协议栈和业务线程都正常，只是响应可能较慢
+Answer: TCP 探测能收到回复，只能说明对端的 TCP 协议栈还能响应，不代表业务线程还能正常处理请求。[原文§HTTP Keep-Alive 和 TCP Keepalive 有什么区别？](https://xiaolincoding.com/interview/network.html#http-keep-alive-%E5%92%8C-tcp-keepalive-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-51 [fill]
+Original: [填空题·无序] 要检测对端业务是否正常，只靠 TCP Keepalive 不够，原文说通常还需要____和____。
+Stem: 要检测对端业务是否正常，只靠 TCP Keepalive 不够，原文说通常还需要____和____。
+Blanks/order: 2/unordered
+Answer: 通常还需要应用层心跳和请求超时。[原文§HTTP Keep-Alive 和 TCP Keepalive 有什么区别？](https://xiaolincoding.com/interview/network.html#http-keep-alive-%E5%92%8C-tcp-keepalive-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-52 [fill]
+Original: [填空题·有序] HTTP 默认使用的端口号是____，HTTPS 默认使用的端口号是____。
+Stem: HTTP 默认使用的端口号是____，HTTPS 默认使用的端口号是____。
+Blanks/order: 2/ordered
+Answer: http 默认端口是 80，https 默认端口是 443。[原文§HTTP默认的端口是什么？](https://xiaolincoding.com/interview/network.html#http%E9%BB%98%E8%AE%A4%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-53 [single]
+Original: HTTP/1.1 通常跑在 TCP 上，为什么一次 read 不一定能读到一个完整的请求？
+Stem: HTTP/1.1 通常跑在 TCP 上，为什么一次 read 不一定能读到一个完整的请求？
+A [incorrect] TCP 会按应用消息自动分包，每次 read 只能读到固定大小的一个包，通常小于一个请求
+B [correct] TCP 是字节流，不保留消息边界，可能只读到一个请求的一部分，也可能同时读到多个请求的一部分
+C [incorrect] HTTP/1.1 规定请求头和请求体必须分成两次 read 才能读完，所以一次读不完
+D [incorrect] HTTP 是请求-应答模式，服务端一次只能读取半个请求，剩下的要等响应发出后再读
+Answer: HTTP/1.1 通常跑在 TCP 上，而 TCP 是字节流，不会帮应用程序保留消息边界，所以一次 read 不一定能读到一个完整请求，也可能同时读到多个请求的一部分。[原文§HTTP1.1怎么对请求做拆包，具体来说怎么拆的？](https://xiaolincoding.com/interview/network.html#http1-1%E6%80%8E%E4%B9%88%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%81%9A%E6%8B%86%E5%8C%85-%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%E6%80%8E%E4%B9%88%E6%8B%86%E7%9A%84)
+
+T2-54 [single]
+Original: HTTP/1.1 拆包时，怎样找到请求头的结束位置？
+Stem: HTTP/1.1 拆包时，怎样找到请求头的结束位置？
+A [incorrect] 读到 Content-Length 字段就说明请求头结束
+B [correct] 用 \r\n\r\n 找到请求头的结束位置
+C [incorrect] 读到大小为 0 的块就说明请求头结束
+D [incorrect] 等到 TCP 连接关闭才说明请求头结束
+Answer: HTTP/1.1 先用 \r\n\r\n 找到请求头的结束位置，再根据头部字段判断请求体的边界。[原文§HTTP1.1怎么对请求做拆包，具体来说怎么拆的？](https://xiaolincoding.com/interview/network.html#http1-1%E6%80%8E%E4%B9%88%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%81%9A%E6%8B%86%E5%8C%85-%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%E6%80%8E%E4%B9%88%E6%8B%86%E7%9A%84)
+
+T2-55 [single]
+Original: HTTP/1.1 请求头里的 Content-Length 字段声明的是什么？
+Stem: HTTP/1.1 请求头里的 Content-Length 字段声明的是什么？
+A [incorrect] 请求头部的字节数，读取完这么多字节才算读完请求头
+B [incorrect] 请求体分块时每个块的十六进制长度
+C [incorrect] 报文在网络中可靠传输所需的字节数
+D [correct] 请求体的字节数，读取完这么多字节才算读完请求体
+Answer: Content-Length 声明请求体的字节数。比如值为 100，就继续读取 100 个字节，才算读完请求体。它解决的是报文边界问题，不负责保证网络可靠传输。[原文§HTTP1.1怎么对请求做拆包，具体来说怎么拆的？](https://xiaolincoding.com/interview/network.html#http1-1%E6%80%8E%E4%B9%88%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%81%9A%E6%8B%86%E5%8C%85-%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%E6%80%8E%E4%B9%88%E6%8B%86%E7%9A%84)
+
+T2-56 [fill]
+Original: [填空题·有序] HTTP/1.1 请求头里有 Transfer-Encoding: chunked 时，请求体被分成多个块，每块先写____进制的长度，再写数据；读到大小为____的最后一个块，并处理完可选的尾部字段，才算结束。
+Stem: HTTP/1.1 请求头里有 Transfer-Encoding: chunked 时，请求体被分成多个块，每块先写____进制的长度，再写数据；读到大小为____的最后一个块，并处理完可选的尾部字段，才算结束。
+Blanks/order: 2/ordered
+Answer: 每块先写十六进制的长度，再写数据；读到大小为 0 的最后一个块，并处理完可选的尾部字段，才算结束。[原文§HTTP1.1怎么对请求做拆包，具体来说怎么拆的？](https://xiaolincoding.com/interview/network.html#http1-1%E6%80%8E%E4%B9%88%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%81%9A%E6%8B%86%E5%8C%85-%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%E6%80%8E%E4%B9%88%E6%8B%86%E7%9A%84)
+
+T2-57 [single]
+Original: HTTP/1.1 的请求既没有 Transfer-Encoding，也没有 Content-Length，按 HTTP/1.1 的规则应如何处理？
+Stem: HTTP/1.1 的请求既没有 Transfer-Encoding，也没有 Content-Length，按 HTTP/1.1 的规则应如何处理？
+A [incorrect] 请求体一直读到连接关闭才算结束
+B [incorrect] 请求体长度未知，只能按 chunked 方式处理
+C [correct] 这个请求没有请求体
+D [incorrect] 这个请求不合法，服务端必须拒绝
+Answer: 如果请求既没有 Transfer-Encoding，也没有 Content-Length，那么按 HTTP/1.1 的规则，这个请求没有请求体。[原文§HTTP1.1怎么对请求做拆包，具体来说怎么拆的？](https://xiaolincoding.com/interview/network.html#http1-1%E6%80%8E%E4%B9%88%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%81%9A%E6%8B%86%E5%8C%85-%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%E6%80%8E%E4%B9%88%E6%8B%86%E7%9A%84)
+
+T2-58 [fill]
+Original: [填空题·无序] 原文举例说明，响应是否有响应体要结合状态码和请求方法判断，没有响应体的响应包括 HEAD 的响应，以及状态码为____和____的响应。
+Stem: 原文举例说明，响应是否有响应体要结合状态码和请求方法判断，没有响应体的响应包括 HEAD 的响应，以及状态码为____和____的响应。
+Blanks/order: 2/unordered
+Answer: HEAD 的响应、204 和 304 的响应都没有响应体。[原文§HTTP1.1怎么对请求做拆包，具体来说怎么拆的？](https://xiaolincoding.com/interview/network.html#http1-1%E6%80%8E%E4%B9%88%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%81%9A%E6%8B%86%E5%8C%85-%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%E6%80%8E%E4%B9%88%E6%8B%86%E7%9A%84)
+
+T2-59 [single]
+Original: 有些 HTTP 响应靠关闭连接来表示结束，这样做会带来什么影响？
+Stem: 有些 HTTP 响应靠关闭连接来表示结束，这样做会带来什么影响？
+A [correct] 这条连接就不能继续复用了
+B [incorrect] 客户端无法识别响应的结束位置
+C [incorrect] 服务端必须额外发送 Content-Length 字段
+D [incorrect] 请求头的结束标志会变成 \r\n
+Answer: 有些响应也可以靠关闭连接表示结束，但这样就不能继续复用这条连接了。[原文§HTTP1.1怎么对请求做拆包，具体来说怎么拆的？](https://xiaolincoding.com/interview/network.html#http1-1%E6%80%8E%E4%B9%88%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%81%9A%E6%8B%86%E5%8C%85-%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%E6%80%8E%E4%B9%88%E6%8B%86%E7%9A%84)
+
+T2-60 [single]
+Original: 连接中断后，实际收到的正文不足 Content-Length 声明的长度，应用应当怎样处理这个报文？
+Stem: 连接中断后，实际收到的正文不足 Content-Length 声明的长度，应用应当怎样处理这个报文？
+A [incorrect] 因为 Content-Length 已经保证可靠传输，仍视为完整报文
+B [correct] 仍要把报文当作不完整来处理
+C [incorrect] 用 0 补齐到声明的长度，再按完整报文处理
+D [incorrect] 自动改按 chunked 方式重新解析这段正文
+Answer: Content-Length 解决的是报文边界问题，不负责保证网络可靠传输。如果连接中断，实际收到的正文不足声明长度，应用仍然要把报文当作不完整来处理。[原文§HTTP1.1怎么对请求做拆包，具体来说怎么拆的？](https://xiaolincoding.com/interview/network.html#http1-1%E6%80%8E%E4%B9%88%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%81%9A%E6%8B%86%E5%8C%85-%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%E6%80%8E%E4%B9%88%E6%8B%86%E7%9A%84)
+
+T2-61 [short]
+Original: HTTP/1.1 怎么对请求做拆包，具体是怎么拆的？
+Stem: HTTP/1.1 怎么对请求做拆包，具体是怎么拆的？
+Answer: HTTP/1.1 通常跑在 TCP 上，TCP 是字节流，不保留消息边界，所以一次 read 不一定能读到一个完整请求，也可能同时读到多个请求的一部分。拆包时，首先用 \r\n\r\n 找到请求头的结束位置，再根据头部字段判断请求体的边界：Content-Length 声明请求体的字节数，读完这么多字节才算读完请求体；Transfer-Encoding: chunked 把请求体分成多个块，每块先写十六进制的长度再写数据，读到大小为 0 的最后一个块并处理完可选的尾部字段才算结束；如果既没有 Transfer-Encoding 也没有 Content-Length，按 HTTP/1.1 的规则这个请求没有请求体。响应还要结合状态码和请求方法判断，HEAD 的响应、204 和 304 都没有响应体，有些响应靠关闭连接表示结束，但这样就不能继续复用连接。Content-Length 只解决报文边界问题，不保证可靠传输，连接中断导致正文不足声明长度时，要把报文当作不完整。[原文§HTTP1.1怎么对请求做拆包，具体来说怎么拆的？](https://xiaolincoding.com/interview/network.html#http1-1%E6%80%8E%E4%B9%88%E5%AF%B9%E8%AF%B7%E6%B1%82%E5%81%9A%E6%8B%86%E5%8C%85-%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%E6%80%8E%E4%B9%88%E6%8B%86%E7%9A%84)
+
+T2-62 [single]
+Original: HTTP 的断点续传可以通过什么来实现？
+Stem: HTTP 的断点续传可以通过什么来实现？
+A [incorrect] Transfer-Encoding: chunked 分块传输
+B [incorrect] Keep-Alive 长连接
+C [correct] Range 请求
+D [incorrect] 304 协商缓存
+Answer: 断点续传就是下载中断之后，接着上次的位置下载，不用把整个文件重新下载一遍，HTTP 可以通过 Range 请求来实现。[原文§http 断点重传是什么？](https://xiaolincoding.com/interview/network.html#http-%E6%96%AD%E7%82%B9%E9%87%8D%E4%BC%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-63 [single]
+Original: 一个文件大小为 1048576 字节，客户端已经下载了前 524288 字节（字节位置从 0 开始），网络恢复后要请求剩余部分，Range 请求头应写成哪一项？
+Stem: 一个文件大小为 1048576 字节，客户端已经下载了前 524288 字节（字节位置从 0 开始），网络恢复后要请求剩余部分，Range 请求头应写成哪一项？
+A [correct] Range: bytes=524288-
+B [incorrect] Range: bytes=524289-
+C [incorrect] Range: bytes=0-524288
+D [incorrect] Range: bytes=524288-1048576
+Answer: 文件共 1048576 字节、已下载前 524288 字节，字节位置从 0 开始，所以剩余部分从位置 524288 开始，客户端发送 Range: bytes=524288-。结束位置是包含在范围里的，该文件最后一个字节的位置是 1048575。[原文§http 断点重传是什么？](https://xiaolincoding.com/interview/network.html#http-%E6%96%AD%E7%82%B9%E9%87%8D%E4%BC%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-64 [single]
+Original: 服务端支持范围请求时，对 Range 请求通常返回哪个状态码？
+Stem: 服务端支持范围请求时，对 Range 请求通常返回哪个状态码？
+A [incorrect] 200 OK
+B [incorrect] 304 Not Modified
+C [incorrect] 416 Range Not Satisfiable
+D [correct] 206 Partial Content
+Answer: 如果服务端支持范围请求，就返回 206 Partial Content。[原文§http 断点重传是什么？](https://xiaolincoding.com/interview/network.html#http-%E6%96%AD%E7%82%B9%E9%87%8D%E4%BC%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-65 [fill]
+Original: [填空题·有序] 一个文件大小为 1048576 字节，客户端已下载前 524288 字节，用 Range: bytes=524288- 请求剩余部分，服务端支持范围请求并返回 206，响应头为 Content-Range: bytes 524288-____/1048576 和 Content-Length: ____（字节位置从 0 开始，结束位置包含在范围里）。
+Stem: 一个文件大小为 1048576 字节，客户端已下载前 524288 字节，用 Range: bytes=524288- 请求剩余部分，服务端支持范围请求并返回 206，响应头为 Content-Range: bytes 524288-____/1048576 和 Content-Length: ____（字节位置从 0 开始，结束位置包含在范围里）。
+Blanks/order: 2/ordered
+Answer: Content-Range 的结束位置是 1048575，Content-Length 是 524288；字节位置从 0 开始，结束位置包含在范围里，所以剩余长度是 1048575 - 524288 + 1 = 524288。[原文§http 断点重传是什么？](https://xiaolincoding.com/interview/network.html#http-%E6%96%AD%E7%82%B9%E9%87%8D%E4%BC%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-66 [multiple]
+Original: 关于断点续传中相关 HTTP 字段的作用，下列哪些说法符合原文？
+Stem: 关于断点续传中相关 HTTP 字段的作用，下列哪些说法符合原文？
+A [correct] Content-Range：服务端说明这次返回的范围和资源总大小
+B [incorrect] Content-Length：说明整个文件的长度
+C [correct] Range：客户端指定要下载的字节范围
+D [correct] Accept-Ranges: bytes：服务端表示支持按字节请求，不过客户端也可以在没看到这个字段时尝试发送 Range
+Answer: Range 由客户端指定要下载的字节范围；Content-Range 由服务端说明这次返回的范围和资源总大小；Accept-Ranges: bytes 表示服务端支持按字节请求，客户端也可以在没看到这个字段时尝试发送 Range；Content-Length 说明的是本次响应体的长度，并不是整个文件的长度。[原文§http 断点重传是什么？](https://xiaolincoding.com/interview/network.html#http-%E6%96%AD%E7%82%B9%E9%87%8D%E4%BC%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-67 [single]
+Original: 断点续传时，请求的范围无法满足，服务端可以返回哪个状态码？
+Stem: 断点续传时，请求的范围无法满足，服务端可以返回哪个状态码？
+A [incorrect] 206 Partial Content（成功返回部分资源）
+B [incorrect] 304 Not Modified（协商缓存命中）
+C [incorrect] 404 Not Found（资源不存在）
+D [correct] 416 Range Not Satisfiable
+Answer: 如果请求范围无法满足，服务端可以返回 416。[原文§http 断点重传是什么？](https://xiaolincoding.com/interview/network.html#http-%E6%96%AD%E7%82%B9%E9%87%8D%E4%BC%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-68 [single]
+Original: 断点续传时，服务端忽略了 Range，返回了 200 和完整文件，客户端应如何处理？
+Stem: 断点续传时，服务端忽略了 Range，返回了 200 和完整文件，客户端应如何处理？
+A [correct] 不能直接把它追加到已下载内容后面
+B [incorrect] 直接追加到已下载内容后面，因为文件内容相同
+C [incorrect] 把它当作 416 错误处理，并重新发送 Range 请求
+D [incorrect] 只要 Content-Length 与文件大小一致，就可以直接追加
+Answer: 如果服务端忽略 Range，返回了 200 和完整文件，客户端就不能直接把它追加到已下载内容后面，否则前面已下载的部分会被重复拼接。[原文§http 断点重传是什么？](https://xiaolincoding.com/interview/network.html#http-%E6%96%AD%E7%82%B9%E9%87%8D%E4%BC%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-69 [single]
+Original: 下载期间文件可能发生变化，断点续传时可以用 If-Range 做什么？
+Stem: 下载期间文件可能发生变化，断点续传时可以用 If-Range 做什么？
+A [incorrect] 携带本次期望的字节范围，资源变了就返回 416，资源没变就返回 304 让客户端用缓存
+B [correct] 携带上次的强 ETag 或符合要求的 Last-Modified，资源没变就继续返回部分内容，变了就返回完整资源
+C [incorrect] 要求服务端忽略 Range，不管资源是否发生变化，都一律返回完整的资源内容
+D [incorrect] 携带已下载部分的 Content-Length，让服务端校验客户端是否已经把文件下载完毕
+Answer: 可以用 If-Range 携带上次的强 ETag，或者符合要求的 Last-Modified 时间：资源没变就继续返回部分内容，变了就返回完整资源，避免把两个版本的文件拼到一起。[原文§http 断点重传是什么？](https://xiaolincoding.com/interview/network.html#http-%E6%96%AD%E7%82%B9%E9%87%8D%E4%BC%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-70 [short]
+Original: HTTP 的断点续传是什么？以一个文件下载到一半断网为例，说明怎么实现，并说明实现时要注意哪些问题。
+Stem: HTTP 的断点续传是什么？以一个文件下载到一半断网为例，说明怎么实现，并说明实现时要注意哪些问题。
+Answer: 断点续传就是下载中断之后，接着上次的位置下载，不用把整个文件重新下载一遍，HTTP 通过 Range 请求实现。例如 1048576 字节（1 MiB）的文件下载了前 524288 字节后断网，恢复后客户端发送 Range: bytes=524288-；服务端支持范围请求就返回 206 Partial Content，并带上 Content-Range: bytes 524288-1048575/1048576 和 Content-Length: 524288（字节位置从 0 开始，结束位置包含在范围内，剩余长度为 1048575 - 524288 + 1）。相关字段：Range 由客户端指定字节范围；Content-Range 由服务端说明本次返回的范围和资源总大小；Accept-Ranges: bytes 表示服务端支持按字节请求，客户端也可在没看到时尝试发送 Range；Content-Length 是本次响应体的长度，不是整个文件的长度。请求范围无法满足时服务端可返回 416；如果服务端忽略 Range 返回 200 和完整文件，客户端不能直接追加到已下载内容后面。下载期间文件可能变化，可以用 If-Range 携带上次的强 ETag 或符合要求的 Last-Modified，资源没变就继续返回部分内容，变了就返回完整资源，避免拼出两个版本混合的文件。[原文§http 断点重传是什么？](https://xiaolincoding.com/interview/network.html#http-%E6%96%AD%E7%82%B9%E9%87%8D%E4%BC%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-71 [fill]
+Original: [填空题·无序] HTTP 由于是明文传输，原文列出的三个安全风险是：____风险、____风险、____风险。
+Stem: HTTP 由于是明文传输，原文列出的三个安全风险是：____风险、____风险、____风险。
+Blanks/order: 3/unordered
+Answer: 三个风险是窃听风险（通信链路上可以获取通信内容）、篡改风险（比如强制植入垃圾广告）、冒充风险（比如冒充淘宝网站）。[原文§HTTP为什么不安全？](https://xiaolincoding.com/interview/network.html#http%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8)
+
+T2-72 [fill]
+Original: [填空题·有序] HTTPS 在____与____层之间加入了 SSL/TLS 协议。
+Stem: HTTPS 在____与____层之间加入了 SSL/TLS 协议。
+Blanks/order: 2/ordered
+Answer: HTTPS 在 HTTP 与 TCP 层之间加入了 SSL/TLS 协议，可以很好地解决明文传输带来的风险。[原文§HTTP为什么不安全？](https://xiaolincoding.com/interview/network.html#http%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8)
+
+T2-73 [fill]
+Original: [填空题·有序] HTTPS 加入 SSL/TLS 后，分别针对窃听、篡改、冒充三个风险的解决手段依次是：____、____、____。
+Stem: HTTPS 加入 SSL/TLS 后，分别针对窃听、篡改、冒充三个风险的解决手段依次是：____、____、____。
+Blanks/order: 3/ordered
+Answer: 依次是信息加密（交互信息无法被窃取）、校验机制（无法篡改通信内容，篡改了就不能正常显示）、身份证书（证明淘宝是真的淘宝网）。[原文§HTTP为什么不安全？](https://xiaolincoding.com/interview/network.html#http%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8)
+
+T2-74 [single]
+Original: 在信息传输方面，HTTP 与 HTTPS 的区别，下列说法符合原文的是哪一项？
+Stem: 在信息传输方面，HTTP 与 HTTPS 的区别，下列说法符合原文的是哪一项？
+A [incorrect] HTTP 是加密传输，存在安全风险；HTTPS 通过 TLS 安全协议保护通信，使报文以明文传输
+B [incorrect] HTTP 和 HTTPS 的报文都是加密传输，区别只在于 HTTPS 的密钥更长
+C [incorrect] HTTP 是明文传输；HTTPS 只对 URL 中的域名加密，报文本身仍然是明文
+D [correct] HTTP 是明文传输，存在安全风险；HTTPS 通过 TLS 安全协议保护 HTTP 通信，使报文能够加密传输
+Answer: HTTP 是超文本传输协议，信息是明文传输，存在安全风险的问题；HTTPS 则解决 HTTP 不安全的缺陷，通过 TLS 安全协议保护 HTTP 通信，使得报文能够加密传输。[原文§HTTP和HTTPS 的区别？](https://xiaolincoding.com/interview/network.html#http%E5%92%8Chttps-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-75 [single]
+Original: 以基于 TCP 的 HTTP/1.1 为例，HTTPS 相比 HTTP 在建立连接上多了什么？
+Stem: 以基于 TCP 的 HTTP/1.1 为例，HTTPS 相比 HTTP 在建立连接上多了什么？
+A [incorrect] 在 TCP 建连前要先进行 TLS 握手，协商密钥并验证身份
+B [incorrect] 不再需要 TCP 建连，直接通过 TLS 握手传输数据
+C [incorrect] 不需要 TLS 握手，但 TCP 建连要多进行一次握手
+D [correct] 在 TCP 建连后还要进行 TLS 握手，协商密钥并验证身份
+Answer: 以基于 TCP 的 HTTP/1.1、HTTP/2 为例，HTTPS 在 TCP 建连后还要进行 TLS 握手，协商密钥并验证身份。[原文§HTTP和HTTPS 的区别？](https://xiaolincoding.com/interview/network.html#http%E5%92%8Chttps-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-76 [single]
+Original: HTTP/3 是怎样提供安全连接的？
+Stem: HTTP/3 是怎样提供安全连接的？
+A [incorrect] 在 TCP 连接上叠加 TLS 1.2 握手来提供安全连接
+B [correct] 通过基于 UDP 的 QUIC 集成 TLS 1.3 来提供安全连接
+C [incorrect] 通过基于 TCP 的 QUIC 集成 TLS 1.3 来提供安全连接
+D [incorrect] 不提供安全连接，由应用层自行加密所有数据
+Answer: HTTP/3 通过基于 UDP 的 QUIC 集成 TLS 1.3 来提供安全连接；基于 TCP 的 HTTP/1.1、HTTP/2 则是在 TCP 建连后再进行 TLS 握手。[原文§HTTP和HTTPS 的区别？](https://xiaolincoding.com/interview/network.html#http%E5%92%8Chttps-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-77 [single]
+Original: HTTP 与 HTTPS 的默认端口，下列说法符合原文的是哪一项？
+Stem: HTTP 与 HTTPS 的默认端口，下列说法符合原文的是哪一项？
+A [incorrect] HTTP 默认端口号是 443，HTTPS 默认端口号是 80
+B [incorrect] HTTP 和 HTTPS 的默认端口号都是 80
+C [correct] HTTP 默认端口号是 80，HTTPS 默认端口号是 443
+D [incorrect] HTTP 和 HTTPS 的默认端口号都是 443
+Answer: 两者的默认端口不一样，HTTP 默认端口号是 80，HTTPS 默认端口号是 443。[原文§HTTP和HTTPS 的区别？](https://xiaolincoding.com/interview/network.html#http%E5%92%8Chttps-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-78 [single]
+Original: 公开网站的 HTTPS 通常使用哪种证书来验证服务器身份？
+Stem: 公开网站的 HTTPS 通常使用哪种证书来验证服务器身份？
+A [correct] 由可信 CA 签发的数字证书，也可以免费申请
+B [incorrect] 服务端自己签发的自签名证书，客户端默认信任
+C [incorrect] 由客户端生成并签发的证书，服务端默认信任
+D [incorrect] 只能付费购买的证书，不存在免费申请的方式
+Answer: 公开网站的 HTTPS 通常使用由可信 CA 签发的数字证书来验证服务器身份，证书也可以免费申请。[原文§HTTP和HTTPS 的区别？](https://xiaolincoding.com/interview/network.html#http%E5%92%8Chttps-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-79 [single]
+Original: 关于自签名证书，下列说法符合原文的是哪一项？
+Stem: 关于自签名证书，下列说法符合原文的是哪一项？
+A [incorrect] 不能加密通信，只能用于验证身份
+B [incorrect] 客户端默认就会信任，不需要额外操作
+C [incorrect] 只能用于 HTTP，不能用于 HTTPS
+D [correct] 也能加密通信，但客户端需要另行建立信任
+Answer: 自签名证书也能加密通信，但客户端需要另行建立信任；公开网站通常使用由可信 CA 签发的数字证书。[原文§HTTP和HTTPS 的区别？](https://xiaolincoding.com/interview/network.html#http%E5%92%8Chttps-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-80 [short]
+Original: HTTP 和 HTTPS 有哪些区别？
+Stem: HTTP 和 HTTPS 有哪些区别？
+Answer: 区别主要有四点：第一，HTTP 是超文本传输协议，信息是明文传输，存在安全风险；HTTPS 通过 TLS 安全协议保护 HTTP 通信，使报文能够加密传输。第二，以基于 TCP 的 HTTP/1.1、HTTP/2 为例，HTTPS 在 TCP 建连后还要进行 TLS 握手，协商密钥并验证身份；HTTP/3 则通过基于 UDP 的 QUIC 集成 TLS 1.3 来提供安全连接。第三，默认端口不同，HTTP 是 80，HTTPS 是 443。第四，公开网站的 HTTPS 通常使用由可信 CA 签发的数字证书来验证服务器身份，证书也可以免费申请；自签名证书也能加密通信，但客户端需要另行建立信任。[原文§HTTP和HTTPS 的区别？](https://xiaolincoding.com/interview/network.html#http%E5%92%8Chttps-%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-81 [fill]
+Original: [填空题·无序] HTTPS 握手要完成三件事：____、____、____。
+Stem: HTTPS 握手要完成三件事：____、____、____。
+Blanks/order: 3/unordered
+Answer: 三件事是协商通信参数、验证服务器身份、生成双方使用的会话密钥。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-82 [single]
+Original: 能否把所有 HTTPS 的握手都说成「四次握手」？
+Stem: 能否把所有 HTTPS 的握手都说成「四次握手」？
+A [incorrect] 能，所有 HTTPS 的握手都固定是四次
+B [incorrect] 能，因为 TLS 1.3 也固定是四次握手
+C [incorrect] 不能，因为 HTTPS 没有握手过程
+D [correct] 不能，具体过程要看 TLS 版本和密钥交换方式
+Answer: HTTPS 握手具体过程要看 TLS 版本和密钥交换方式，不能把所有 HTTPS 都说成「四次握手」；原文用 Wireshark 抓到的 TLS 1.2 使用 RSA 密钥交换的握手经历了四次。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-83 [multiple]
+Original: TLS 握手时服务端发给客户端的数字证书包含下列哪些信息？
+Stem: TLS 握手时服务端发给客户端的数字证书包含下列哪些信息？
+A [correct] 公钥
+B [correct] 域名
+C [correct] 有效期
+D [incorrect] 对应的私钥
+E [correct] CA 的签名
+Answer: 服务端证书包含公钥、域名、有效期和 CA 的签名等信息，握手时会发给客户端。证书不是只有一把公钥，它还要帮助客户端确认这把公钥属于谁；对应的私钥留在服务端，不会通过网络发送。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-84 [single]
+Original: 与服务端证书对应的私钥，在握手中是如何处理的？
+Stem: 与服务端证书对应的私钥，在握手中是如何处理的？
+A [correct] 留在服务端，不会通过网络发送
+B [incorrect] 随证书一起发给客户端，用来解密后续数据
+C [incorrect] 加密后发给客户端，用来验证证书的有效期
+D [incorrect] 交给 CA 保管，由 CA 在客户端验证证书时转发
+Answer: 证书对应的私钥留在服务端，不会通过网络发送。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-85 [single]
+Original: 在 TLS 1.2 使用 RSA 密钥交换的握手中，预主密钥（Pre-Master Secret）是怎样传给服务端的？
+Stem: 在 TLS 1.2 使用 RSA 密钥交换的握手中，预主密钥（Pre-Master Secret）是怎样传给服务端的？
+A [incorrect] 服务端生成随机密钥，用客户端公钥加密后发送，客户端用私钥解密
+B [incorrect] 客户端生成随机密钥，不加密直接发送，服务端收到后再用私钥签名
+C [correct] 客户端生成随机密钥，用服务端公钥加密后发送，服务端用私钥解密
+D [incorrect] 双方各自生成临时公钥并交换，各自算出相同的预主密钥
+Answer: 在 RSA 密钥协商算法中，客户端会生成随机密钥，并使用服务端的公钥加密后再传给服务端；根据非对称加密算法，公钥加密的消息仅能通过私钥解密，所以服务端解密后，双方就得到了相同的预主密钥，再结合客户端和服务端的随机数派生出后续使用的会话密钥。双方各自生成临时公钥并交换是 ECDHE 的做法。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-86 [multiple]
+Original: 在 TLS 1.2 使用 RSA 密钥交换的握手中，第一次握手（ClientHello）里客户端主要发送哪些信息？
+Stem: 在 TLS 1.2 使用 RSA 密钥交换的握手中，第一次握手（ClientHello）里客户端主要发送哪些信息？
+A [incorrect] 服务器的数字证书
+B [correct] 客户端支持的 TLS 协议版本
+C [incorrect] 服务器选定的密码套件
+D [correct] 客户端生成的随机数（Client Random）
+E [correct] 客户端支持的密码套件列表
+Answer: 第一次握手 ClientHello 中，客户端主要发送：客户端支持的 TLS 协议版本（如 TLS 1.2）、客户端生成的随机数 Client Random（后面用于生成会话密钥的条件之一）、客户端支持的密码套件列表（如 RSA 加密算法）。服务器的数字证书和选定的密码套件是第二次握手服务器回应的内容。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-87 [multiple]
+Original: 在 TLS 1.2 使用 RSA 密钥交换的握手中，第二次握手服务器回应的内容包含下列哪些？
+Stem: 在 TLS 1.2 使用 RSA 密钥交换的握手中，第二次握手服务器回应的内容包含下列哪些？
+A [incorrect] 客户端生成的预主密钥（Pre-Master Secret）
+B [correct] 服务器生成的随机数（Server Random）
+C [correct] 选定的密码套件
+D [correct] 确认 TLS 协议版本
+E [correct] 服务器的数字证书
+Answer: 第二次握手服务器发送 ServerHello、Certificate 等一组握手消息，主要回应：确认 TLS 协议版本（如果浏览器不支持则关闭加密通信）、服务器生成的随机数 Server Random、选定的密码套件（规定密钥交换、认证和数据加密等使用的算法）、服务器的数字证书。预主密钥由客户端在第三次握手中发送。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-88 [multiple]
+Original: 在 TLS 1.2 使用 RSA 密钥交换的握手中，客户端收到服务器回应后验证证书，需要检查下列哪些内容？
+Stem: 在 TLS 1.2 使用 RSA 密钥交换的握手中，客户端收到服务器回应后验证证书，需要检查下列哪些内容？
+A [incorrect] 证书对应的私钥是否与客户端本地保存的私钥一致
+B [correct] 证书中的域名是否与访问的域名匹配
+C [correct] 证书的有效期
+D [correct] 证书链是否能追溯到受信任的 CA
+Answer: 客户端收到服务器的回应之后，先验证证书链是否能追溯到受信任的 CA，还要检查证书有效期和证书中的域名是否与访问的域名匹配。私钥留在服务端，客户端并不保存。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-89 [multiple]
+Original: 在 TLS 1.2 使用 RSA 密钥交换的握手中，第三次握手客户端向服务器发送哪些信息？
+Stem: 在 TLS 1.2 使用 RSA 密钥交换的握手中，第三次握手客户端向服务器发送哪些信息？
+A [correct] 加密通信算法改变通知
+B [correct] 客户端握手结束通知
+C [incorrect] 客户端支持的密码套件列表
+D [correct] 用服务器公钥加密的随机数（Pre-Master Secret）
+E [incorrect] 服务器握手结束通知
+Answer: 第三次握手客户端验证证书无误后，向服务器发送：一个用服务器公钥加密的随机数（Pre-Master Secret）、加密通信算法改变通知（表示随后的信息都将用会话密钥加密通信）、客户端握手结束通知。客户端支持的密码套件列表在第一次握手发送，服务器握手结束通知在第四次握手由服务器发送。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-90 [fill]
+Original: [填空题·无序] 在 TLS 1.2 使用 RSA 密钥交换的握手中，客户端和服务端用来各自计算会话密钥的三个随机数是：____、____、____。
+Stem: 在 TLS 1.2 使用 RSA 密钥交换的握手中，客户端和服务端用来各自计算会话密钥的三个随机数是：____、____、____。
+Blanks/order: 3/unordered
+Answer: 三个随机数是 Client Random、Server Random 和 Pre-Master Secret；其中 Pre-Master Secret 是整个握手阶段的第三个随机数，会发给服务端，所以客户端和服务端的这个随机数是一样的。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-91 [single]
+Original: TLS 握手结束时，客户端握手结束通知中的校验数据起什么作用？
+Stem: TLS 握手结束时，客户端握手结束通知中的校验数据起什么作用？
+A [correct] 用协商出的密钥和此前的握手记录计算，供服务端验证握手内容没有被修改
+B [incorrect] 用来证明客户端持有数字证书，供服务端验证客户端的身份
+C [incorrect] 用来协商本次通信使用的密码套件，供服务端选择加密算法
+D [incorrect] 用来加密预主密钥，供服务端用私钥解密得到随机数
+Answer: 第三次握手中的客户端握手结束通知，使用协商出的密钥和此前的握手记录计算校验数据，供服务端验证握手内容没有被修改；服务器的握手结束通知同样使用密钥和握手记录计算校验数据，供客户端验证。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-92 [single]
+Original: 在 TLS 1.2 使用 RSA 密钥交换的握手中，第四次握手服务端收到预主密钥后做什么？
+Stem: 在 TLS 1.2 使用 RSA 密钥交换的握手中，第四次握手服务端收到预主密钥后做什么？
+A [incorrect] 把算出的会话密钥用客户端公钥加密后发给客户端，由客户端使用
+B [correct] 计算出本次通信的会话密钥，再发送加密通信算法改变通知和服务器握手结束通知
+C [incorrect] 再次发送数字证书和证书签名，让客户端重新确认服务器的身份
+D [incorrect] 生成新的预主密钥并发给客户端，由客户端据此重新计算会话密钥
+Answer: 第四次握手，服务器收到客户端的第三个随机数（Pre-Master Secret）之后，通过协商的加密算法计算出本次通信的会话密钥，然后向客户端发送加密通信算法改变通知和服务器握手结束通知，至此握手结束，接下来的 HTTP 数据由会话密钥加密保护。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-93 [single]
+Original: 关于 ECDHE 密钥交换，下列说法符合原文的是哪一项？
+Stem: 关于 ECDHE 密钥交换，下列说法符合原文的是哪一项？
+A [correct] 不会把会话密钥用证书公钥加密后发过去，而是双方交换临时公钥，各自算出相同的共享秘密再派生会话密钥
+B [incorrect] 会把会话密钥用证书公钥加密后再发给服务端，做法和 RSA 密钥交换完全相同
+C [incorrect] 由服务端单方面生成会话密钥，用客户端的临时公钥加密后发给客户端
+D [incorrect] 双方不交换任何公钥，直接使用事先保存在两端的同一个会话密钥
+Answer: ECDHE 不会把会话密钥用证书公钥加密后发过去。双方交换临时公钥，各自结合自己的临时私钥算出相同的共享秘密，再派生出会话密钥。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-94 [single]
+Original: 在 ECDHE 握手中，证书对应的私钥主要用来做什么？
+Stem: 在 ECDHE 握手中，证书对应的私钥主要用来做什么？
+A [incorrect] 用于解密客户端发来的预主密钥
+B [incorrect] 用于加密会话密钥后发给客户端
+C [correct] 用于签名，证明握手的一方确实持有该私钥
+D [incorrect] 直接作为双方后续通信的会话密钥
+Answer: 在 ECDHE 中，证书对应的私钥主要用于签名，证明握手的一方确实持有该私钥；解密客户端用公钥加密的预主密钥是 RSA 密钥交换的做法。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-95 [single]
+Original: ECDHE 支持的「前向安全」指的是什么？
+Stem: ECDHE 支持的「前向安全」指的是什么？
+A [incorrect] 一旦将来证书私钥泄露，攻击者就能凭录下来的流量还原出过去所有的会话密钥
+B [correct] 即使将来证书私钥泄露，只要之前的临时私钥已销毁，也不能凭录下的流量还原过去的会话密钥
+C [incorrect] 握手只需要一次往返就能够完成，所以比典型的 TLS 1.2 握手要更快一些
+D [incorrect] 不需要服务器证书，客户端也能够直接确认服务器的真实身份是什么了
+Answer: ECDHE 支持前向安全：即使将来服务器的证书私钥泄露，只要之前的临时私钥已经销毁，攻击者也不能仅凭录下来的流量还原过去的会话密钥。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-96 [single]
+Original: TLS 1.3 对 RSA 密钥交换是怎么处理的？
+Stem: TLS 1.3 对 RSA 密钥交换是怎么处理的？
+A [incorrect] 仍然保留，并且是默认的密钥交换方式
+B [incorrect] 仅在会话恢复时才保留 RSA 密钥交换
+C [correct] 移除了 RSA 密钥交换
+D [incorrect] 保留 RSA 密钥交换，与 ECDHE 并存供双方自行选择
+Answer: TLS 1.3 移除了 RSA 密钥交换。以常见的、基于证书和 ECDHE 的完整握手为例，用临时公钥（key share）交换来计算密钥。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-97 [fill]
+Original: [填空题·无序] 以常见的、基于证书和 ECDHE 的 TLS 1.3 完整握手为例，客户端发送的 ClientHello 带上支持的版本、____和____（也就是 key share）。
+Stem: 以常见的、基于证书和 ECDHE 的 TLS 1.3 完整握手为例，客户端发送的 ClientHello 带上支持的版本、____和____（也就是 key share）。
+Blanks/order: 2/unordered
+Answer: ClientHello 带上支持的版本、密码套件和临时公钥，临时公钥也就是 key share。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-98 [single]
+Original: TLS 1.3 的完整握手中，服务端收到 ClientHello 后返回什么？
+Stem: TLS 1.3 的完整握手中，服务端收到 ClientHello 后返回什么？
+A [correct] 返回 ServerHello 和自己的 key share，双方由此计算握手密钥；随后发送加密保护的证书、证书签名和 Finished 消息
+B [incorrect] 返回 ServerHello 和预主密钥，双方由此计算握手密钥；随后发送明文的证书和 Finished 消息
+C [incorrect] 只返回证书，不返回 key share，会话密钥由客户端单方面计算
+D [incorrect] 返回 ServerHello 和自己的 key share，但不发送证书和 Finished 消息
+Answer: TLS 1.3 中，服务端返回 ServerHello 和自己的 key share，双方由此计算握手密钥。服务端随后发送加密保护的证书、证书签名和 Finished 消息；客户端验证证书、签名和 Finished，再发送自己的 Finished，完成握手。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-99 [single]
+Original: 在不需要额外协商往返的情况下，TLS 1.3 完整握手需要多少个往返（RTT）？
+Stem: 在不需要额外协商往返的情况下，TLS 1.3 完整握手需要多少个往返（RTT）？
+A [incorrect] 1-RTT，与典型的 TLS 1.2 完整握手的往返次数相同
+B [incorrect] 0-RTT，所有业务都可以安全地零延迟发送数据
+C [incorrect] 2-RTT，比典型的 TLS 1.2 完整握手多一次往返
+D [correct] 1-RTT，比典型的 TLS 1.2 完整握手少一次往返
+Answer: 在不需要额外协商往返的情况下，TLS 1.3 完整握手是 1-RTT，比典型的 TLS 1.2 完整握手少一次往返。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-100 [single]
+Original: 关于 TLS 1.3 的 0-RTT 早期数据，下列说法符合原文的是哪一项？
+Stem: 关于 TLS 1.3 的 0-RTT 早期数据，下列说法符合原文的是哪一项？
+A [incorrect] 所有完整握手都默认使用 0-RTT，并且 0-RTT 早期数据在任何情况下都没有安全风险
+B [correct] 会话恢复可使用 PSK，符合条件时支持 0-RTT，但数据有重放风险，不是所有业务都能安全零延迟发送
+C [incorrect] 0-RTT 只能在首次连接时使用，不依赖会话恢复，也不需要使用 PSK 来支持
+D [incorrect] 0-RTT 早期数据没有重放风险，所以所有业务都可以安全地零延迟发送
+Answer: 会话恢复还可以使用 PSK，符合条件时支持 0-RTT 早期数据，不过这些数据有重放风险，不能把它理解成所有业务都可以安全地零延迟发送。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-101 [short]
+Original: 请说一下 TLS 1.2 使用 RSA 密钥交换时的 HTTPS 握手过程。
+Stem: 请说一下 TLS 1.2 使用 RSA 密钥交换时的 HTTPS 握手过程。
+Answer: HTTPS 握手要完成协商通信参数、验证服务器身份、生成会话密钥三件事。服务端证书包含公钥、域名、有效期和 CA 的签名等信息，对应的私钥留在服务端。RSA 密钥交换的 TLS 1.2 握手经历四次：第一次，客户端发送 ClientHello，包含客户端支持的 TLS 版本、客户端随机数 Client Random 和支持的密码套件列表；第二次，服务器发送 ServerHello、Certificate 等，确认 TLS 版本、Server Random、选定的密码套件和数字证书；第三次，客户端验证证书链能追溯到受信任的 CA、证书有效期和域名匹配后，取出服务器公钥，发送用它加密的随机数 Pre-Master Secret、加密通信算法改变通知和客户端握手结束通知（校验数据由协商出的密钥和握手记录计算，供服务端验证握手内容没被修改），双方有了三个随机数后各自计算出会话密钥；第四次，服务器用私钥解出 Pre-Master Secret，计算会话密钥，发送加密通信算法改变通知和服务器握手结束通知。握手结束后，HTTP 数据由会话密钥加密保护。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-102 [short]
+Original: ECDHE 和 TLS 1.3 的握手与 RSA 密钥交换有什么不同？
+Stem: ECDHE 和 TLS 1.3 的握手与 RSA 密钥交换有什么不同？
+Answer: ECDHE 不会把会话密钥用证书公钥加密后发过去，而是双方交换临时公钥，各自结合自己的临时私钥算出相同的共享秘密，再派生会话密钥；证书对应的私钥主要用于签名，证明握手的一方确实持有该私钥。它支持前向安全：即使将来证书私钥泄露，只要之前的临时私钥已销毁，攻击者也不能仅凭录下的流量还原过去的会话密钥。TLS 1.3 移除了 RSA 密钥交换，以基于证书和 ECDHE 的完整握手为例：客户端发送 ClientHello，带上支持的版本、密码套件和临时公钥（key share）；服务端返回 ServerHello 和自己的 key share，双方由此计算握手密钥，随后服务端发送加密保护的证书、证书签名和 Finished；客户端验证证书、签名和 Finished 后发送自己的 Finished，完成握手。不需要额外协商往返时，TLS 1.3 完整握手是 1-RTT，比典型的 TLS 1.2 完整握手少一次往返；会话恢复可使用 PSK，符合条件时支持 0-RTT 早期数据，但有重放风险，不能认为所有业务都能安全零延迟发送。[原文§HTTPS握手过程说一下](https://xiaolincoding.com/interview/network.html#https%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E8%AF%B4%E4%B8%80%E4%B8%8B)
+
+T2-103 [single]
+Original: 原文认为，HTTPS 防范中间人攻击的关键是什么？
+Stem: 原文认为，HTTPS 防范中间人攻击的关键是什么？
+A [incorrect] 只要使用了非对称加密，就足以防范中间人攻击
+B [correct] 不只是加密，而是先确认正在和谁通信，再保护通信内容
+C [incorrect] 只要使用了对称加密保护数据，就不需要确认对方身份
+D [incorrect] 只要对通信内容做校验，就不需要确认对方身份
+Answer: 防范中间人的关键不只是加密，而是确认正在和谁通信，再保护通信内容；所以只说「用了非对称加密」还不够。[原文§HTTPS是如何防范中间人的攻击？](https://xiaolincoding.com/interview/network.html#https%E6%98%AF%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E4%B8%AD%E9%97%B4%E4%BA%BA%E7%9A%84%E6%94%BB%E5%87%BB)
+
+T2-104 [single]
+Original: 攻击者在中间拦截流量并冒充服务器，自己生成了一对公私钥。如果客户端不验证这把公钥属于谁，可能发生什么？
+Stem: 攻击者在中间拦截流量并冒充服务器，自己生成了一对公私钥。如果客户端不验证这把公钥属于谁，可能发生什么？
+A [incorrect] 攻击者无法读取加密后的数据，通信仍然安全
+B [correct] 客户端可能把数据加密给攻击者
+C [incorrect] 握手一定会失败，客户端不会发送任何数据
+D [incorrect] 攻击者只能读取数据，不能冒充服务器
+Answer: 攻击者也可以自己生成一对公私钥，如果客户端不验证这把公钥属于谁，就可能把数据加密给攻击者，所以只说「用了非对称加密」还不够。[原文§HTTPS是如何防范中间人的攻击？](https://xiaolincoding.com/interview/network.html#https%E6%98%AF%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E4%B8%AD%E9%97%B4%E4%BA%BA%E7%9A%84%E6%94%BB%E5%87%BB)
+
+T2-105 [multiple]
+Original: 下列哪些机制属于原文所说的 HTTPS 防范中间人攻击的主要机制？
+Stem: 下列哪些机制属于原文所说的 HTTPS 防范中间人攻击的主要机制？
+A [incorrect] 只依靠非对称加密传输全部 HTTP 数据，不需要验证对方身份
+B [correct] 证书校验：客户端验证证书链、有效期和域名，确认公钥绑定的是要访问的服务器
+C [correct] 证明私钥的持有：服务端用证书对应的私钥对握手内容签名，客户端用公钥验证
+D [correct] 握手完整性校验：通过 Finished 消息验证握手记录，防止协商参数等内容被中途修改
+E [correct] 数据加密和完整性保护：后续用协商出的对称密钥保护 HTTP 数据
+Answer: HTTPS 主要通过四个机制防范中间人：证书校验（验证证书链、有效期和域名）、证明私钥的持有（服务端用证书对应的私钥对握手内容签名，客户端用公钥验证）、握手完整性校验（Finished 消息验证握手记录）、数据加密和完整性保护（后续用协商出的对称密钥保护 HTTP 数据，篡改的数据无法通过校验）。[原文§HTTPS是如何防范中间人的攻击？](https://xiaolincoding.com/interview/network.html#https%E6%98%AF%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E4%B8%AD%E9%97%B4%E4%BA%BA%E7%9A%84%E6%94%BB%E5%87%BB)
+
+T2-106 [fill]
+Original: [填空题·无序] 原文所述，防范中间人时，客户端通过证书校验来验证证书链、____和____，确认公钥绑定的是要访问的服务器，而不是攻击者的服务器。
+Stem: 原文所述，防范中间人时，客户端通过证书校验来验证证书链、____和____，确认公钥绑定的是要访问的服务器，而不是攻击者的服务器。
+Blanks/order: 2/unordered
+Answer: 客户端验证证书链、有效期和域名，确认公钥绑定的是要访问的服务器，而不是攻击者的服务器。[原文§HTTPS是如何防范中间人的攻击？](https://xiaolincoding.com/interview/network.html#https%E6%98%AF%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E4%B8%AD%E9%97%B4%E4%BA%BA%E7%9A%84%E6%94%BB%E5%87%BB)
+
+T2-107 [single]
+Original: 在 ECDHE 等握手中，攻击者即使拿到了公开的证书，为什么仍然不能完成身份认证？
+Stem: 在 ECDHE 等握手中，攻击者即使拿到了公开的证书，为什么仍然不能完成身份认证？
+A [correct] 服务端要用证书对应的私钥对握手内容签名，攻击者没有私钥
+B [incorrect] 公开的证书不包含公钥，攻击者无法使用
+C [incorrect] 证书只有 CA 才能使用，攻击者无法拿到证书
+D [incorrect] ECDHE 握手中不使用证书，攻击者无法冒充
+Answer: 在 ECDHE 等握手中，服务端使用证书对应的私钥对握手内容签名，客户端用公钥验证。攻击者即使拿到了公开的证书，没有私钥也不能完成相应的身份认证。[原文§HTTPS是如何防范中间人的攻击？](https://xiaolincoding.com/interview/network.html#https%E6%98%AF%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E4%B8%AD%E9%97%B4%E4%BA%BA%E7%9A%84%E6%94%BB%E5%87%BB)
+
+T2-108 [single]
+Original: 握手完整性校验（Finished 消息）在防范中间人攻击中起什么作用？
+Stem: 握手完整性校验（Finished 消息）在防范中间人攻击中起什么作用？
+A [incorrect] 检查证书是否已经过期，防止使用失效的证书
+B [correct] 通过验证握手记录，防止协商参数等内容被中途修改
+C [incorrect] 检查证书中的域名是否与访问的域名一致
+D [incorrect] 用对称密钥加密后续的 HTTP 数据，防止被窃听
+Answer: 握手完整性校验通过 Finished 消息验证握手记录，防止协商参数等内容被中途修改。检查证书有效期和域名属于证书校验，加密后续数据属于数据加密和完整性保护。[原文§HTTPS是如何防范中间人的攻击？](https://xiaolincoding.com/interview/network.html#https%E6%98%AF%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E4%B8%AD%E9%97%B4%E4%BA%BA%E7%9A%84%E6%94%BB%E5%87%BB)
+
+T2-109 [single]
+Original: HTTPS 防范中间人攻击的身份保证，有什么前提？
+Stem: HTTPS 防范中间人攻击的身份保证，有什么前提？
+A [incorrect] 服务端必须使用 RSA 密钥交换，使用 ECDHE 时这些保证无效
+B [incorrect] 服务端必须使用自签名证书，使用 CA 签发的证书时保证无效
+C [incorrect] 只要使用 TLS 1.3，即使客户端不验证证书，这些保证也始终有效
+D [correct] 客户端要正确验证证书；如果用户忽略证书错误或客户端关闭了证书校验，这些保证就可能失效
+Answer: 这里有个前提：客户端要正确验证证书。如果用户忽略证书错误，或者客户端关闭了证书校验，那么这些身份保证就可能失效。[原文§HTTPS是如何防范中间人的攻击？](https://xiaolincoding.com/interview/network.html#https%E6%98%AF%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E4%B8%AD%E9%97%B4%E4%BA%BA%E7%9A%84%E6%94%BB%E5%87%BB)
+
+T2-110 [short]
+Original: HTTPS 是如何防范中间人攻击的？
+Stem: HTTPS 是如何防范中间人攻击的？
+Answer: 关键不只是加密，而是确认正在和谁通信，再保护通信内容。攻击者可以自己生成一对公私钥冒充服务器，如果客户端不验证这把公钥属于谁，就可能把数据加密给攻击者，所以只说「用了非对称加密」还不够。HTTPS 主要通过四个机制防范：一是证书校验，客户端验证证书链、有效期和域名，确认公钥绑定的是要访问的服务器；二是证明私钥的持有，在 ECDHE 等握手中服务端用证书对应的私钥对握手内容签名，客户端用公钥验证，攻击者没有私钥就不能完成身份认证；三是握手完整性校验，通过 Finished 消息验证握手记录，防止协商参数等被中途修改；四是数据加密和完整性保护，后续用协商出的对称密钥保护 HTTP 数据，攻击者难以读出内容，篡改的数据也无法通过校验。前提是客户端要正确验证证书，如果用户忽略证书错误或客户端关闭了证书校验，这些身份保证就可能失效。[原文§HTTPS是如何防范中间人的攻击？](https://xiaolincoding.com/interview/network.html#https%E6%98%AF%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E4%B8%AD%E9%97%B4%E4%BA%BA%E7%9A%84%E6%94%BB%E5%87%BB)
+
+T2-111 [single]
+Original: 关于 HTTP/2 与 HTTP/1.1 的关系，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP/2 与 HTTP/1.1 的关系，下列说法符合原文的是哪一项？
+A [incorrect] HTTP/2 重新设计了 HTTP 的方法和状态码，主要改进的是语义
+B [incorrect] HTTP/2 只改进了状态码，报文传输方式与 HTTP/1.1 完全相同
+C [correct] HTTP/2 保留了 HTTP 的方法、状态码等语义，主要改进的是报文传输方式
+D [incorrect] HTTP/2 放弃了 HTTP 的方法，改用全新的请求语义来传输报文
+Answer: HTTP/2 保留了 HTTP 的方法、状态码等语义，主要改进的是报文传输方式，也就是头部压缩、二进制分帧、多路复用和流量控制这些方面。[原文§Http1.1和2.0的区别是什么？](https://xiaolincoding.com/interview/network.html#http1-1%E5%92%8C2-0%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-112 [fill]
+Original: [填空题·无序] 原文所述 HTTP/2 相对 HTTP/1.1 在报文传输方式上的四项主要改进是：____、____、____、____。
+Stem: 原文所述 HTTP/2 相对 HTTP/1.1 在报文传输方式上的四项主要改进是：____、____、____、____。
+Blanks/order: 4/unordered
+Answer: 头部压缩、二进制分帧、多路复用、流量控制。[原文§Http1.1和2.0的区别是什么？](https://xiaolincoding.com/interview/network.html#http1-1%E5%92%8C2-0%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-113 [single]
+Original: HTTP/2 的头部压缩使用 HPACK，它是怎样减少重复头字段传输的？
+Stem: HTTP/2 的头部压缩使用 HPACK，它是怎样减少重复头字段传输的？
+A [correct] 结合静态表、动态表和编码，多个请求带着相同的头部时不必每次都完整传一遍
+B [incorrect] 把多个请求的头部合并成一个头部，只在第一个请求里发送一次
+C [incorrect] 只使用静态表，把所有头字段都固定替换成表中的编号后传输
+D [incorrect] 让服务端缓存每个请求的头部，客户端后续请求不再携带任何头字段
+Answer: HTTP/2 使用 HPACK 做头部压缩，结合静态表、动态表和编码来减少重复头字段的传输。比如多个请求都带着相同的头部，就不必每次都完整传一遍。[原文§Http1.1和2.0的区别是什么？](https://xiaolincoding.com/interview/network.html#http1-1%E5%92%8C2-0%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-114 [single]
+Original: 关于 HTTP/2 的二进制分帧，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP/2 的二进制分帧，下列说法符合原文的是哪一项？
+A [incorrect] 它把头部和数据合并成一个帧传输，帧没有类型之分，方便整体解析
+B [incorrect] 它让数据在网络上从文本变成字节，因为 HTTP/1.1 在网络上传输的是文本
+C [incorrect] 它把每个请求拆成固定长度的帧，不同请求的帧不能在同一条连接上交错
+D [correct] 它把头部和数据拆成不同类型的帧，每个帧有明确的长度和类型，方便解析和复用
+Answer: 二进制分帧把头部和数据拆成不同类型的帧，每个帧都有明确的长度和类型，方便解析和复用。HTTP/1.1 本身在网络上也是字节，区别不在于“计算机是否认识文本”，而在于报文的组织方式不同。[原文§Http1.1和2.0的区别是什么？](https://xiaolincoding.com/interview/network.html#http1-1%E5%92%8C2-0%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-115 [single]
+Original: HTTP/2 的多路复用是怎样实现多个请求共用一条 TCP 连接的？
+Stem: HTTP/2 的多路复用是怎样实现多个请求共用一条 TCP 连接的？
+A [incorrect] 每个请求使用一条独立的 TCP 连接，由 Stream ID 区分不同连接上的帧
+B [correct] 每个请求和响应属于一个 Stream，帧携带 Stream ID，多个请求的帧可以在同一条连接上交错传输
+C [incorrect] 多个请求在同一条连接上排队传输，必须等前一个响应完整发完才能发下一个
+D [incorrect] 每个请求的帧不携带标识，由服务端按到达顺序猜测它们属于哪个响应
+Answer: 在 HTTP/2 中每个请求和响应属于一个 Stream，帧携带 Stream ID，因此多个请求可以在同一条 TCP 连接上交错传输，不必等待前一个响应完整发完。[原文§Http1.1和2.0的区别是什么？](https://xiaolincoding.com/interview/network.html#http1-1%E5%92%8C2-0%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-116 [single]
+Original: HTTP/2 的流量控制可以在哪些层面限制数据发送？
+Stem: HTTP/2 的流量控制可以在哪些层面限制数据发送？
+A [incorrect] 只能在整个连接这一个层面，所有 Stream 共用同一个发送限额
+B [incorrect] 只能在服务端发送响应时限制，客户端发送请求不受任何限制
+C [correct] 连接和 Stream 两个层面，避免接收方来不及处理
+D [incorrect] 在帧和头部两个层面，由 HPACK 的动态表来限制发送速度
+Answer: HTTP/2 的流量控制可以在连接和 Stream 两个层面限制数据发送，避免接收方来不及处理。[原文§Http1.1和2.0的区别是什么？](https://xiaolincoding.com/interview/network.html#http1-1%E5%92%8C2-0%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-117 [single]
+Original: 关于 HTTP/2 的服务器推送，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP/2 的服务器推送，下列说法符合原文的是哪一项？
+A [correct] HTTP/2 设计了该功能，但主流浏览器对它的支持有限，面试更应讲清多路复用和队头阻塞
+B [incorrect] HTTP/2 没有设计该功能，它是 HTTP/3 才新增的特性
+C [incorrect] 主流浏览器对它的支持很完善，面试时应作为最核心的考点来讲
+D [incorrect] 它的作用是在连接和 Stream 两个层面限制数据发送，避免接收方来不及处理
+Answer: HTTP/2 还设计了服务器推送功能，但主流浏览器对它的支持有限，实际面试更应该把多路复用和队头阻塞讲清楚。[原文§Http1.1和2.0的区别是什么？](https://xiaolincoding.com/interview/network.html#http1-1%E5%92%8C2-0%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-118 [short]
+Original: HTTP/2 解决了哪一层的队头阻塞，又没有解决哪一层的队头阻塞？为什么 TCP 层的队头阻塞仍然会拖住多个 Stream？
+Stem: HTTP/2 解决了哪一层的队头阻塞，又没有解决哪一层的队头阻塞？为什么 TCP 层的队头阻塞仍然会拖住多个 Stream？
+Answer: HTTP/2 解决了 HTTP/1.1 在一条连接上按序返回响应的队头阻塞，但没有解决 TCP 层的队头阻塞。底层 TCP 丢了一个数据段，即使后面的字节已经到达，也要先补齐缺口，连接上的多个 Stream 都可能被拖住。[原文§Http1.1和2.0的区别是什么？](https://xiaolincoding.com/interview/network.html#http1-1%E5%92%8C2-0%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-119 [fill]
+Original: [填空题·有序] HTTP/2 使用 ____，HTTP/3 使用基于 UDP 的 ____。
+Stem: HTTP/2 使用 ____，HTTP/3 使用基于 UDP 的 ____。
+Blanks/order: 2/ordered
+Answer: 第一空是 TCP，第二空是 QUIC。[原文§HTTP/3 相比 HTTP/2 有什么改进？](https://xiaolincoding.com/interview/network.html#http-3-%E7%9B%B8%E6%AF%94-http-2-%E6%9C%89%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B)
+
+T2-120 [single]
+Original: HTTP/3 改用 QUIC 之后，HTTP 的请求方法和状态码这些语义有没有改变？
+Stem: HTTP/3 改用 QUIC 之后，HTTP 的请求方法和状态码这些语义有没有改变？
+A [incorrect] 有改变，QUIC 要求重新定义请求方法，但状态码保持不变
+B [incorrect] 有改变，QUIC 要求重新定义状态码，但请求方法保持不变
+C [incorrect] 有改变，QUIC 基于 UDP，所以方法和状态码都改成了无连接的形式
+D [correct] 没有改变，HTTP 的请求方法和状态码这些语义仍然保留
+Answer: HTTP/2 使用 TCP，HTTP/3 使用基于 UDP 的 QUIC，但 HTTP 的请求方法和状态码这些语义并没有因此改变。[原文§HTTP/3 相比 HTTP/2 有什么改进？](https://xiaolincoding.com/interview/network.html#http-3-%E7%9B%B8%E6%AF%94-http-2-%E6%9C%89%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B)
+
+T2-121 [short]
+Original: HTTP/3 是怎样减少跨流的队头阻塞的？这种改进有什么局限？
+Stem: HTTP/3 是怎样减少跨流的队头阻塞的？这种改进有什么局限？
+Answer: QUIC 为不同 Stream 分别维护数据顺序。某个流丢包时，其他不依赖它的流可以继续交付数据。不过丢包的那个流本身仍然要等待重传，共享的拥塞控制也可能影响整个连接。[原文§HTTP/3 相比 HTTP/2 有什么改进？](https://xiaolincoding.com/interview/network.html#http-3-%E7%9B%B8%E6%AF%94-http-2-%E6%9C%89%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B)
+
+T2-122 [single]
+Original: 关于 QUIC 的连接建立，下列说法符合原文的是哪一项？
+Stem: 关于 QUIC 的连接建立，下列说法符合原文的是哪一项？
+A [incorrect] QUIC 先完成 TCP 三次握手，再做 TLS 握手，所以完整握手通常需要 3-RTT 才能完成
+B [correct] QUIC 集成 TLS 1.3，完整握手通常需要 1-RTT，满足条件的恢复连接可发送 0-RTT 早期数据
+C [incorrect] QUIC 集成 TLS 1.3，任何连接都可以无条件发送 0-RTT 早期数据，不需要满足任何条件
+D [incorrect] QUIC 本身不集成加密，加密由 HTTP/3 之上的应用层单独完成，所以握手通常更慢
+Answer: QUIC 集成 TLS 1.3，完整握手通常需要 1-RTT；满足条件的恢复连接可以发送 0-RTT 早期数据，所以连接建立更快。[原文§HTTP/3 相比 HTTP/2 有什么改进？](https://xiaolincoding.com/interview/network.html#http-3-%E7%9B%B8%E6%AF%94-http-2-%E6%9C%89%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B)
+
+T2-123 [single]
+Original: QUIC 支持连接迁移，它依靠什么标识连接，使客户端从 Wi-Fi 切到移动网络后仍能继续使用原来的连接？
+Stem: QUIC 支持连接迁移，它依靠什么标识连接，使客户端从 Wi-Fi 切到移动网络后仍能继续使用原来的连接？
+A [incorrect] 源 IP 和源端口，网络切换后由服务端重新分配新的连接
+B [incorrect] TCP 四元组，网络切换后需要重新进行三次握手建立连接
+C [correct] Connection ID，在满足路径验证等条件时，即使 IP 和端口变化也可以继续使用
+D [incorrect] Stream ID，网络切换后由 Stream ID 的变化触发连接迁移
+Answer: QUIC 使用 Connection ID 标识连接。在满足路径验证等条件时，客户端从 Wi-Fi 切到移动网络，即使 IP 和端口变化，也可以继续使用原来的连接。[原文§HTTP/3 相比 HTTP/2 有什么改进？](https://xiaolincoding.com/interview/network.html#http-3-%E7%9B%B8%E6%AF%94-http-2-%E6%9C%89%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B)
+
+T2-124 [single]
+Original: HTTP/3 使用 QPACK 压缩头部，它相比 HTTP/2 的头部压缩考虑了什么特点？
+Stem: HTTP/3 使用 QPACK 压缩头部，它相比 HTTP/2 的头部压缩考虑了什么特点？
+A [correct] 考虑了多个流之间独立传输的特点，减少头部压缩带来的阻塞
+B [incorrect] 考虑了所有流必须按序到达的特点，因此需要更大的动态表
+C [incorrect] 考虑了连接建立需要 1-RTT 的特点，因此在握手阶段压缩头部
+D [incorrect] 考虑了连接迁移时 IP 会变化的特点，因此头部里不再携带地址
+Answer: HTTP/3 使用 QPACK 压缩头部，它考虑了多个流之间独立传输的特点，从而减少头部压缩带来的阻塞。[原文§HTTP/3 相比 HTTP/2 有什么改进？](https://xiaolincoding.com/interview/network.html#http-3-%E7%9B%B8%E6%AF%94-http-2-%E6%9C%89%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B)
+
+T2-125 [single]
+Original: 关于 HTTP/3 是否放弃了可靠性，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP/3 是否放弃了可靠性，下列说法符合原文的是哪一项？
+A [incorrect] 放弃了，HTTP 数据直接交给 UDP，可靠性交由应用自行保证
+B [incorrect] 放弃了，QUIC 只负责加密，可靠传输和拥塞控制不再提供
+C [incorrect] 没有放弃，但可靠传输仍然要依赖 TCP 在底层完成重传
+D [correct] 没有放弃，可靠传输、拥塞控制和加密等工作由 QUIC 完成
+Answer: HTTP/3 并不是放弃可靠性、把 HTTP 数据直接丢给 UDP。可靠传输、拥塞控制和加密等工作由 QUIC 完成。[原文§HTTP/3 相比 HTTP/2 有什么改进？](https://xiaolincoding.com/interview/network.html#http-3-%E7%9B%B8%E6%AF%94-http-2-%E6%9C%89%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B)
+
+T2-126 [single]
+Original: 强制缓存和协商缓存分别决定什么？
+Stem: 强制缓存和协商缓存分别决定什么？
+A [incorrect] 强制缓存决定“缓存还能不能继续用”，协商缓存决定“能不能直接用缓存”
+B [correct] 强制缓存决定“能不能直接用缓存”，协商缓存决定“缓存还能不能继续用”
+C [incorrect] 强制缓存决定“资源要不要压缩”，协商缓存决定“缓存还能不能继续用”
+D [incorrect] 强制缓存和协商缓存都决定“能不能直接用缓存”，区别只是使用的字段不同
+Answer: 强制缓存决定“能不能直接用缓存”，协商缓存决定“缓存还能不能继续用”。[原文§HTTP 强制缓存和协商缓存有什么区别？](https://xiaolincoding.com/interview/network.html#http-%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-127 [single]
+Original: 浏览器收到响应后，缓存仍然新鲜时，强制缓存会让浏览器怎么做？
+Stem: 浏览器收到响应后，缓存仍然新鲜时，强制缓存会让浏览器怎么做？
+A [incorrect] 向服务器发送条件请求，由服务器决定能否使用缓存
+B [incorrect] 先向服务器发送请求，再把服务器返回的内容和缓存对比
+C [correct] 直接使用缓存，不用向服务器发送这次资源请求
+D [incorrect] 丢弃缓存并重新下载，只有缓存过期时才会使用缓存
+Answer: 浏览器收到响应后，根据 Cache-Control: max-age=... 等字段判断缓存的新鲜度。缓存还新鲜时，可以直接使用，不用向服务器发送这次资源请求。[原文§HTTP 强制缓存和协商缓存有什么区别？](https://xiaolincoding.com/interview/network.html#http-%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-128 [single]
+Original: 强制缓存里，Expires 和 Cache-Control 都能指定缓存时间时，通常优先使用哪个？
+Stem: 强制缓存里，Expires 和 Cache-Control 都能指定缓存时间时，通常优先使用哪个？
+A [correct] 通常优先使用 Cache-Control
+B [incorrect] 通常优先使用 Expires
+C [incorrect] 两者必须同时过期，缓存才算失效
+D [incorrect] 通常由 ETag 决定优先使用哪一个
+Answer: Expires 也可以指定过期时间，不过通常优先使用 Cache-Control，浏览器根据 Cache-Control: max-age=... 等字段判断缓存的新鲜度。[原文§HTTP 强制缓存和协商缓存有什么区别？](https://xiaolincoding.com/interview/network.html#http-%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-129 [fill]
+Original: [填空题·有序] 协商缓存的两组条件请求字段：服务端返回 ETag，浏览器下次发送 ____；服务端返回 Last-Modified，浏览器下次发送 ____。
+Stem: 协商缓存的两组条件请求字段：服务端返回 ETag，浏览器下次发送 ____；服务端返回 Last-Modified，浏览器下次发送 ____。
+Blanks/order: 2/ordered
+Answer: 第一空是 If-None-Match，第二空是 If-Modified-Since。[原文§HTTP 强制缓存和协商缓存有什么区别？](https://xiaolincoding.com/interview/network.html#http-%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-130 [single]
+Original: 协商缓存中，浏览器带着条件请求去验证，服务端发现资源没变时怎么响应？
+Stem: 协商缓存中，浏览器带着条件请求去验证，服务端发现资源没变时怎么响应？
+A [incorrect] 返回 200 和完整的新内容，浏览器用它替换本地缓存
+B [incorrect] 返回 304 和完整的响应体，浏览器用响应体更新本地缓存
+C [incorrect] 不返回任何响应，浏览器在超时之后继续使用本地缓存
+D [correct] 返回 304，不再发送响应体，浏览器继续使用本地缓存
+Answer: 资源没变，服务端返回 304，不再发送响应体，浏览器继续使用本地缓存；资源变了，就返回 200 和新的内容。[原文§HTTP 强制缓存和协商缓存有什么区别？](https://xiaolincoding.com/interview/network.html#http-%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-131 [single]
+Original: 如果 If-None-Match 和 If-Modified-Since 两组条件同时出现，以哪一个为准？
+Stem: 如果 If-None-Match 和 If-Modified-Since 两组条件同时出现，以哪一个为准？
+A [incorrect] If-Modified-Since 优先
+B [correct] If-None-Match 优先
+C [incorrect] 两者都必须匹配才算资源没变
+D [incorrect] 由 Cache-Control 的 max-age 决定以哪一个为准
+Answer: 协商缓存的两组条件如果同时出现，If-None-Match 优先。[原文§HTTP 强制缓存和协商缓存有什么区别？](https://xiaolincoding.com/interview/network.html#http-%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-132 [single]
+Original: Cache-Control 里的 no-cache 是什么含义？
+Stem: Cache-Control 里的 no-cache 是什么含义？
+A [incorrect] 不允许保存这次请求或响应，每次都要重新下载
+B [incorrect] 只允许 CDN、代理这类共享缓存保存，浏览器不能保存
+C [correct] 不是不允许缓存，而是使用缓存前必须向服务器重新验证
+D [incorrect] 缓存永远新鲜，使用缓存前不需要向服务器验证
+Answer: no-cache 不是不允许缓存，而是使用缓存前必须向服务器重新验证；no-store 才是不允许存储这次请求或响应。[原文§Cache-Control 里的 no-cache 和 no-store 有什么区别？](https://xiaolincoding.com/interview/network.html#cache-control-%E9%87%8C%E7%9A%84-no-cache-%E5%92%8C-no-store-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-133 [single]
+Original: Cache-Control 里的 no-store 是什么含义？
+Stem: Cache-Control 里的 no-store 是什么含义？
+A [correct] 不允许存储这次请求或响应，适合用在不希望被缓存保存的敏感响应上
+B [incorrect] 可以存储，但使用缓存前必须先向服务器重新验证，适合需要保持新鲜的资源
+C [incorrect] 只允许浏览器等私有缓存保存，不允许 CDN 等共享缓存保存，适合个人页面
+D [incorrect] 允许存储，资源没变时直接使用缓存，资源变了才重新下载，适合静态资源
+Answer: no-store 才是不允许存储这次请求或响应，对于不希望被缓存保存的敏感响应，可以设置 no-store。[原文§Cache-Control 里的 no-cache 和 no-store 有什么区别？](https://xiaolincoding.com/interview/network.html#cache-control-%E9%87%8C%E7%9A%84-no-cache-%E5%92%8C-no-store-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-134 [single]
+Original: 一个页面设置了 no-cache，浏览器下次访问时会怎么做？
+Stem: 一个页面设置了 no-cache，浏览器下次访问时会怎么做？
+A [incorrect] 浏览器不会保存内容，下次必须重新下载完整的页面
+B [incorrect] 浏览器直接使用保存的内容，不用向服务器发送任何请求
+C [incorrect] 浏览器只保存内容的摘要，下次需要向服务器重新下载内容
+D [correct] 浏览器仍然可以保存内容，下次发起协商请求，资源没变就使用缓存
+Answer: 一个页面设置了 no-cache，浏览器仍然可以保存内容，下次发起协商请求，资源没变就使用缓存。[原文§Cache-Control 里的 no-cache 和 no-store 有什么区别？](https://xiaolincoding.com/interview/network.html#cache-control-%E9%87%8C%E7%9A%84-no-cache-%E5%92%8C-no-store-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-135 [single]
+Original: Cache-Control 里的 private 是什么含义？为什么要用它？
+Stem: Cache-Control 里的 private 是什么含义？为什么要用它？
+A [incorrect] 只允许 CDN、代理这类共享缓存保存，不允许浏览器保存，以便把同一页面发给所有用户
+B [correct] 只允许浏览器等私有缓存保存，不允许 CDN、代理这类共享缓存保存，避免个人页面被发给别的用户
+C [incorrect] 使用缓存前必须向服务器重新验证，避免浏览器把已经过期的个人页面展示给用户
+D [incorrect] 不允许任何缓存存储这次响应，避免敏感的个人页面被浏览器或代理缓存保存下来
+Answer: private 表示响应只允许浏览器等私有缓存保存，不允许 CDN、代理这类共享缓存保存。不能把某个用户的个人页面当作公共内容缓存起来，再发给另一个用户。[原文§Cache-Control 里的 no-cache 和 no-store 有什么区别？](https://xiaolincoding.com/interview/network.html#cache-control-%E9%87%8C%E7%9A%84-no-cache-%E5%92%8C-no-store-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-136 [fill]
+Original: [填空题·无序] 原文所述 HTTP 进行 TCP 连接之后，连接可能中断的四类常见情况是：____、____、____、____。
+Stem: 原文所述 HTTP 进行 TCP 连接之后，连接可能中断的四类常见情况是：____、____、____、____。
+Blanks/order: 4/unordered
+Answer: 正常关闭、连接被重置、重传超时、HTTP 连接管理。[原文§HTTP进行TCP连接之后，在什么情况下会中断](https://xiaolincoding.com/interview/network.html#http%E8%BF%9B%E8%A1%8Ctcp%E8%BF%9E%E6%8E%A5%E4%B9%8B%E5%90%8E-%E5%9C%A8%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E4%B8%AD%E6%96%AD)
+
+T2-137 [single]
+Original: 原文所述的“正常关闭”，通常通过什么报文进行？
+Stem: 原文所述的“正常关闭”，通常通过什么报文进行？
+A [incorrect] RST，客户端或服务端收到后会立即终止连接，不再经过正常的关闭流程
+B [incorrect] ACK，客户端或服务端发送一个确认报文之后，连接就会自动被释放掉
+C [correct] FIN，关闭最后一个 socket 引用，或调用 shutdown 关闭发送方向
+D [incorrect] SYN，客户端或服务端不再使用连接时，重新发起一次握手来结束连接
+Answer: 正常关闭是指客户端或服务端不再使用连接，关闭最后一个 socket 引用，或者调用 shutdown 关闭发送方向，通常通过 FIN 进行关闭。[原文§HTTP进行TCP连接之后，在什么情况下会中断](https://xiaolincoding.com/interview/network.html#http%E8%BF%9B%E8%A1%8Ctcp%E8%BF%9E%E6%8E%A5%E4%B9%8B%E5%90%8E-%E5%9C%A8%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E4%B8%AD%E6%96%AD)
+
+T2-138 [single]
+Original: 收到有效的 RST 报文时，TCP 连接会怎样？
+Stem: 收到有效的 RST 报文时，TCP 连接会怎样？
+A [correct] 连接被立即终止，应用可能看到 Connection reset
+B [incorrect] 连接进入等待，直到双方都发送 FIN 之后才关闭
+C [incorrect] 连接继续保持，只丢弃这一个报文里的数据
+D [incorrect] 连接被重新建立，应用会看到 Connection established
+Answer: 连接被重置：收到有效的 RST 报文，连接被立即终止，应用可能看到 Connection reset。[原文§HTTP进行TCP连接之后，在什么情况下会中断](https://xiaolincoding.com/interview/network.html#http%E8%BF%9B%E8%A1%8Ctcp%E8%BF%9E%E6%8E%A5%E4%B9%8B%E5%90%8E-%E5%9C%A8%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E4%B8%AD%E6%96%AD)
+
+T2-139 [single]
+Original: 重传超时导致连接中断，指的是什么情况？
+Stem: 重传超时导致连接中断，指的是什么情况？
+A [incorrect] 发送数据之后收到对端的 FIN，内核按照正常关闭流程结束连接
+B [incorrect] 发送数据之后收到有效的 RST，连接立即被终止并报告重置
+C [incorrect] 连接空闲达到服务端设置的上限，由应用决定关闭连接
+D [correct] 发送数据之后长期收不到确认，达到系统或应用设置的超时条件，内核会报告连接失败
+Answer: 重传超时是指发送数据之后长期收不到确认，达到系统或应用设置的超时条件，内核会报告连接失败。[原文§HTTP进行TCP连接之后，在什么情况下会中断](https://xiaolincoding.com/interview/network.html#http%E8%BF%9B%E8%A1%8Ctcp%E8%BF%9E%E6%8E%A5%E4%B9%8B%E5%90%8E-%E5%9C%A8%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E4%B8%AD%E6%96%AD)
+
+T2-140 [single]
+Original: HTTP 连接管理导致的连接关闭，是由谁决定的？常见的触发条件有哪些？
+Stem: HTTP 连接管理导致的连接关闭，是由谁决定的？常见的触发条件有哪些？
+A [incorrect] 由内核决定关闭，例如发送数据之后长期收不到确认，达到系统或应用设置的超时条件
+B [correct] 由应用决定关闭，例如使用 Connection: close 或达到服务端的空闲超时
+C [incorrect] 由对端决定关闭，例如对端发送了有效的 RST 报文，连接被立即终止并被重置
+D [incorrect] 由网络决定关闭，例如网线被拔掉之后，本地的连接一定会立刻从系统里消失掉
+Answer: HTTP 连接管理：使用 Connection: close，或者达到服务端的空闲超时、最大请求次数等限制，由应用决定关闭连接。[原文§HTTP进行TCP连接之后，在什么情况下会中断](https://xiaolincoding.com/interview/network.html#http%E8%BF%9B%E8%A1%8Ctcp%E8%BF%9E%E6%8E%A5%E4%B9%8B%E5%90%8E-%E5%9C%A8%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E4%B8%AD%E6%96%AD)
+
+T2-141 [single]
+Original: 网线被拔掉或者对端突然断电后，在什么情况下本地可能仍然显示 ESTABLISHED？
+Stem: 网线被拔掉或者对端突然断电后，在什么情况下本地可能仍然显示 ESTABLISHED？
+A [incorrect] 连接正在发送数据，但长期收不到确认的时候
+B [incorrect] 本地已经收到对端发来的有效 RST 报文的时候
+C [correct] 连接没有数据交互，也没有开启保活或应用层超时的时候
+D [incorrect] 连接已经开启保活，并且应用层设置了超时的时候
+Answer: 网线被拔掉或者对端突然断电，不一定会立刻让本地连接消失。如果连接没有数据交互，也没有开启保活或应用层超时，本地可能仍然显示 ESTABLISHED。[原文§HTTP进行TCP连接之后，在什么情况下会中断](https://xiaolincoding.com/interview/network.html#http%E8%BF%9B%E8%A1%8Ctcp%E8%BF%9E%E6%8E%A5%E4%B9%8B%E5%90%8E-%E5%9C%A8%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E4%B8%AD%E6%96%AD)
+
+T2-142 [fill]
+Original: [填空题·有序] HTTP 是 ____ 层协议，TCP 是 ____ 层协议。
+Stem: HTTP 是 ____ 层协议，TCP 是 ____ 层协议。
+Blanks/order: 2/ordered
+Answer: 第一空是应用，第二空是传输。[原文§HTTP、SOCKET和TCP的区别](https://xiaolincoding.com/interview/network.html#http%E3%80%81socket%E5%92%8Ctcp%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-143 [single]
+Original: 关于 HTTP 的定位，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP 的定位，下列说法符合原文的是哪一项？
+A [correct] 它是应用层协议，定义了客户端和服务器之间交换的数据格式和规则
+B [incorrect] 它是传输层协议，负责在网络中建立可靠的数据传输连接
+C [incorrect] 它是通信的一端，提供了不同计算机之间交换数据的底层接口
+D [incorrect] 它是应用层协议，负责建立面向连接的可靠数据传输
+Answer: HTTP 是应用层协议，定义了客户端和服务器之间交换的数据格式和规则，用于传输超文本数据，在客户端和服务器之间传输和显示 Web 页面。[原文§HTTP、SOCKET和TCP的区别](https://xiaolincoding.com/interview/network.html#http%E3%80%81socket%E5%92%8Ctcp%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-144 [single]
+Original: 关于 Socket 的定位，下列说法符合原文的是哪一项？
+Stem: 关于 Socket 的定位，下列说法符合原文的是哪一项？
+A [incorrect] 它是应用层协议，定义了客户端和服务器之间交换的数据格式和规则
+B [incorrect] 它是传输层协议，负责在通信两端之间建立可靠的数据传输连接
+C [incorrect] 它是传输超文本数据的协议，用于传输和显示 Web 页面
+D [correct] 它是通信链路的一端的抽象，提供底层的通信接口，可实现不同计算机之间的数据交换
+Answer: Socket 是计算机网络中的一种抽象，用于描述通信链路的一端，提供了底层的通信接口，可实现不同计算机之间的数据交换。[原文§HTTP、SOCKET和TCP的区别](https://xiaolincoding.com/interview/network.html#http%E3%80%81socket%E5%92%8Ctcp%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-145 [single]
+Original: 关于 TCP 的定位，下列说法符合原文的是哪一项？
+Stem: 关于 TCP 的定位，下列说法符合原文的是哪一项？
+A [incorrect] 它是描述通信链路一端的抽象，对外提供底层的通信接口，用于交换数据
+B [correct] 它是面向连接的、可靠的传输层协议，负责建立两端之间可靠的数据传输连接
+C [incorrect] 它是应用层协议，用于传输超文本数据，并在客户端中传输和显示 Web 页面
+D [incorrect] 它是应用层协议，定义了客户端和服务器之间交换的数据格式与相关的规则
+Answer: TCP 是一种面向连接的、可靠的传输层协议，负责在通信的两端之间建立可靠的数据传输连接。[原文§HTTP、SOCKET和TCP的区别](https://xiaolincoding.com/interview/network.html#http%E3%80%81socket%E5%92%8Ctcp%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-146 [single]
+Original: DNS 的全称是 Domain Name System，它的作用是什么？
+Stem: DNS 的全称是 Domain Name System，它的作用是什么？
+A [incorrect] 它是用于将 IP 地址转换为对应域名的集中式数据库系统
+B [incorrect] 它是用于在客户端和服务器之间传输超文本数据的应用层协议
+C [correct] 它是互联网中用于将域名转换为对应 IP 地址的分布式数据库系统
+D [incorrect] 它是用于在通信两端之间建立可靠连接的传输层协议
+Answer: DNS 的全称是 Domain Name System（域名系统），它是互联网中用于将域名转换为对应 IP 地址的分布式数据库系统，使得人们可以通过易记的域名访问互联网资源，而无需记住复杂的 IP 地址。[原文§DNS的全称了解么？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%85%A8%E7%A7%B0%E4%BA%86%E8%A7%A3%E4%B9%88)
+
+T2-147 [single]
+Original: DNS 域名 www.server.com 中，句点和各部分的层级关系是怎样的？
+Stem: DNS 域名 www.server.com 中，句点和各部分的层级关系是怎样的？
+A [correct] 域名用句点分隔，句点是不同层次的界限，越靠右的位置层级越高
+B [incorrect] 域名用句点分隔，句点是不同层次的界限，越靠左的位置层级越高
+C [incorrect] 域名用斜杠分隔，斜杠是不同层次的界限，越靠右的位置层级越高
+D [incorrect] 域名用句点分隔，句点是不同服务器的界限，所有位置的层级相同
+Answer: DNS 中的域名都是用句点来分隔的，句点代表了不同层次之间的界限。在域名中，越靠右的位置表示其层级越高。[原文§DNS的全称了解么？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%85%A8%E7%A7%B0%E4%BA%86%E8%A7%A3%E4%B9%88)
+
+T2-148 [single]
+Original: 域名 www.server.com. 末尾多出来的一个点代表什么？
+Stem: 域名 www.server.com. 末尾多出来的一个点代表什么？
+A [incorrect] 顶级域名，也就是 .com
+B [incorrect] 权威域名，也就是 server.com
+C [incorrect] 本地域名，也就是客户端所在的域
+D [correct] 根域名，也就是最顶层的根域
+Answer: 实际上域名最后还有一个点，比如 www.server.com.，这个最后的一个点代表根域名。[原文§DNS的全称了解么？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%85%A8%E7%A7%B0%E4%BA%86%E8%A7%A3%E4%B9%88)
+
+T2-149 [fill]
+Original: [填空题·有序] 域名的层级关系类似树状结构，以 www.server.com 为例，从最顶层往下依次是：____ DNS 服务器（.）、____ DNS 服务器（.com）、____ DNS 服务器（server.com）。
+Stem: 域名的层级关系类似树状结构，以 www.server.com 为例，从最顶层往下依次是：____ DNS 服务器（.）、____ DNS 服务器（.com）、____ DNS 服务器（server.com）。
+Blanks/order: 3/ordered
+Answer: 依次是根、顶级域、权威。[原文§DNS的全称了解么？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%85%A8%E7%A7%B0%E4%BA%86%E8%A7%A3%E4%B9%88)
+
+T2-150 [single]
+Original: 根域的 DNS 服务器信息保存在哪里？这带来什么好处？
+Stem: 根域的 DNS 服务器信息保存在哪里？这带来什么好处？
+A [incorrect] 只保存在权威 DNS 服务器中，因此客户端必须先找到权威 DNS 服务器，才能找到根域 DNS 服务器
+B [correct] 保存在互联网中所有 DNS 服务器中，因此客户端找到任意一台 DNS 服务器，就能找到根域 DNS 服务器
+C [incorrect] 只保存在顶级域 DNS 服务器中，因此客户端必须先找到顶级域 DNS 服务器，才能找到根域 DNS 服务器
+D [incorrect] 保存在互联网中所有 DNS 服务器中，因此客户端查询时不再需要经过根域 DNS 服务器这一层
+Answer: 根域的 DNS 服务器信息保存在互联网中所有的 DNS 服务器中，任何 DNS 服务器都可以找到并访问根域 DNS 服务器。因此客户端只要能够找到任意一台 DNS 服务器，就可以通过它找到根域 DNS 服务器，然后再一路顺藤摸瓜找到位于下层的某台目标 DNS 服务器。[原文§DNS的全称了解么？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%85%A8%E7%A7%B0%E4%BA%86%E8%A7%A3%E4%B9%88)
+
+T2-151 [single]
+Original: 在真正发出 DNS 请求前，客户端通常会先检查哪些地方？
+Stem: 在真正发出 DNS 请求前，客户端通常会先检查哪些地方？
+A [incorrect] 本地 DNS 服务器和根 DNS 服务器的缓存，找到可用结果就不必再请求权威 DNS 服务器
+B [incorrect] 顶级域 DNS 服务器和权威 DNS 服务器的缓存，找到可用结果就不必再请求本地 DNS 服务器
+C [correct] 浏览器、操作系统的解析缓存，以及 hosts 等本地配置，找到可用结果就不必走完后面的查询
+D [incorrect] 只检查浏览器的解析缓存，操作系统和 hosts 配置不参与解析
+Answer: 在真正发出 DNS 请求前，客户端通常会先检查浏览器、操作系统的解析缓存，以及 hosts 等本地配置。如果已经找到了可用结果，就不必走完后面的查询。[原文§DNS 域名解析的工作流程？](https://xiaolincoding.com/interview/network.html#dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B)
+
+T2-152 [single]
+Original: 没有命中缓存时，客户端发出的 DNS 请求首先发给谁？
+Stem: 没有命中缓存时，客户端发出的 DNS 请求首先发给谁？
+A [correct] 本地 DNS 服务器，即客户端 TCP/IP 设置中填写的 DNS 服务器地址
+B [incorrect] 根 DNS 服务器，客户端直接向它询问，由它直接返回目标域名的 IP 地址
+C [incorrect] 顶级域 DNS 服务器，客户端直接向它询问，由它直接返回目标域名的 IP 地址
+D [incorrect] 权威 DNS 服务器，客户端直接向它询问，由它直接返回目标域名的 IP 地址
+Answer: 客户端首先会发出一个 DNS 请求，问 www.server.com 的 IP 是啥，并发给本地 DNS 服务器（也就是客户端的 TCP/IP 设置中填写的 DNS 服务器地址）。[原文§DNS 域名解析的工作流程？](https://xiaolincoding.com/interview/network.html#dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B)
+
+T2-153 [single]
+Original: 本地 DNS 服务器收到请求后，如果它的缓存里能找到该域名，会怎么做？
+Stem: 本地 DNS 服务器收到请求后，如果它的缓存里能找到该域名，会怎么做？
+A [incorrect] 先去问根域名服务器，确认之后再返回 IP 地址
+B [incorrect] 把请求转发给权威 DNS 服务器，由它直接答复客户端
+C [incorrect] 丢弃缓存里的结果，并重新从根域名服务器开始查询
+D [correct] 直接返回 IP 地址
+Answer: 本地域名服务器收到客户端的请求后，如果缓存里的表格能找到 www.server.com，则它直接返回 IP 地址。如果没有，本地 DNS 才会去问它的根域名服务器。[原文§DNS 域名解析的工作流程？](https://xiaolincoding.com/interview/network.html#dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B)
+
+T2-154 [fill]
+Original: [填空题·有序] 没有命中缓存时，本地 DNS 服务器为解析 www.server.com，依次向这几类服务器询问：____ → ____ → ____。
+Stem: 没有命中缓存时，本地 DNS 服务器为解析 www.server.com，依次向这几类服务器询问：____ → ____ → ____。
+Blanks/order: 3/ordered
+Answer: 依次是根域名服务器、顶级域名服务器、权威 DNS 服务器。[原文§DNS 域名解析的工作流程？](https://xiaolincoding.com/interview/network.html#dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B)
+
+T2-155 [single]
+Original: 本地 DNS 向根域名服务器询问 www.server.com 的 IP 时，根域名服务器会怎么答复？
+Stem: 本地 DNS 向根域名服务器询问 www.server.com 的 IP 时，根域名服务器会怎么答复？
+A [incorrect] 它直接返回 www.server.com 的 IP 地址，本地 DNS 不用再询问其他服务器
+B [correct] 它不直接用于域名解析，但能指明一条道路：告诉本地 DNS 该域名归 .com 区域管理，并给出 .com 顶级域名服务器的地址
+C [incorrect] 它给出负责 www.server.com 区域的权威 DNS 服务器的地址，让本地 DNS 直接去问
+D [incorrect] 它让本地 DNS 回去问客户端，由客户端自己查询 .com 顶级域名服务器
+Answer: 根域名服务器是最高层次的，它不直接用于域名解析，但能指明一条道路。它发现后缀是 .com，就告诉本地 DNS：这个域名归 .com 区域管理，并给出 .com 顶级域名服务器的地址，让它去问。[原文§DNS 域名解析的工作流程？](https://xiaolincoding.com/interview/network.html#dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B)
+
+T2-156 [single]
+Original: 顶级域名服务器收到本地 DNS 对 www.server.com 的询问后，会怎么答复？
+Stem: 顶级域名服务器收到本地 DNS 对 www.server.com 的询问后，会怎么答复？
+A [incorrect] 直接返回 www.server.com 的 IP 地址，由顶级域名服务器完成最终的解析
+B [incorrect] 给出根域名服务器的地址，让本地 DNS 回头重新从根域名服务器开始查询
+C [correct] 给出负责 www.server.com 区域的权威 DNS 服务器的地址，让本地 DNS 去问它
+D [incorrect] 给出本地 DNS 服务器自己的地址，让客户端不再经过本地 DNS 而自己去问
+Answer: 顶级域名服务器会给出负责 www.server.com 区域的权威 DNS 服务器的地址，让本地 DNS 去问它，应该能问到。[原文§DNS 域名解析的工作流程？](https://xiaolincoding.com/interview/network.html#dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B)
+
+T2-157 [single]
+Original: 权威 DNS 服务器为什么叫“权威”？
+Stem: 权威 DNS 服务器为什么叫“权威”？
+A [correct] 它是域名解析结果的原出处，也就是“我的域名我做主”
+B [incorrect] 它是最高层次的服务器，只负责指明下一级服务器的地址
+C [incorrect] 它保存了所有域名的解析结果，其他服务器都从它同步
+D [incorrect] 它是客户端设置中填写的 DNS 服务器，负责代替客户端查询
+Answer: server.com 的权威 DNS 服务器是域名解析结果的原出处。为啥叫权威呢？就是我的域名我做主。[原文§DNS 域名解析的工作流程？](https://xiaolincoding.com/interview/network.html#dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B)
+
+T2-158 [fill]
+Original: [填空题·有序] 客户端请本地 DNS 帮忙查出最终结果，通常属于 ____ 查询；本地 DNS 再向根、顶级域和权威 DNS 一层一层询问，通常属于 ____ 查询。
+Stem: 客户端请本地 DNS 帮忙查出最终结果，通常属于 ____ 查询；本地 DNS 再向根、顶级域和权威 DNS 一层一层询问，通常属于 ____ 查询。
+Blanks/order: 2/ordered
+Answer: 第一空是递归，第二空是迭代。[原文§DNS 域名解析的工作流程？](https://xiaolincoding.com/interview/network.html#dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B)
+
+T2-159 [single]
+Original: DNS 查询结果会按 TTL 缓存，这带来什么效果？
+Stem: DNS 查询结果会按 TTL 缓存，这带来什么效果？
+A [incorrect] 每次访问都必须从根服务器查起，缓存只用于保存记录
+B [incorrect] 缓存到期之前，权威 DNS 服务器上的记录不允许被修改
+C [incorrect] 缓存只能保存在客户端，本地 DNS 服务器不能缓存结果
+D [correct] 不是每次访问都要从根服务器查起
+Answer: 查询结果会按 TTL 缓存，因此不是每次访问都要从根服务器查起。[原文§DNS 域名解析的工作流程？](https://xiaolincoding.com/interview/network.html#dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B)
+
+T2-160 [fill]
+Original: [填空题·有序] DNS 的默认端口号是 ____。
+Stem: DNS 的默认端口号是 ____。
+Blanks/order: 1/ordered
+Answer: 默认端口号是 53。[原文§DNS的端口是多少？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%A4%9A%E5%B0%91)
+
+T2-161 [single]
+Original: host 文件的核心作用是什么？
+Stem: host 文件的核心作用是什么？
+A [incorrect] 把 IP 地址转换成域名，访问某个 IP 时在浏览器里显示对应的域名
+B [correct] 把域名和 IP 地址绑在一起，访问该域名时直接指向特定 IP，不走公共 DNS 解析
+C [incorrect] 把域名交给根 DNS 服务器，由它指明负责该域名的顶级域名服务器地址
+D [incorrect] 把 DNS 的查询结果按 TTL 缓存下来，减少之后对同一个域名的重复查询
+Answer: host 文件的核心作用是把域名和 IP 地址绑在一起。想让电脑访问某个域名时直接指向特定 IP，不用走公共 DNS 解析，改 host 文件就行。[原文§改过host文件吗？](https://xiaolincoding.com/interview/network.html#%E6%94%B9%E8%BF%87host%E6%96%87%E4%BB%B6%E5%90%97)
+
+T2-162 [single]
+Original: 程序员测试一个还没上线、只有服务器 IP 的项目时，可以怎样用 host 文件？
+Stem: 程序员测试一个还没上线、只有服务器 IP 的项目时，可以怎样用 host 文件？
+A [incorrect] 把测试服的 IP 提交给权威 DNS 服务器，等解析生效之后再通过域名访问测试服
+B [incorrect] 在 host 里只写域名，不写 IP，由本地 DNS 服务器自动找到测试服对应的 IP
+C [correct] 在 host 里写“192.168.1.100 www.test.com”这样的映射，输入域名就能直接访问测试服
+D [incorrect] 在 host 里写一行域名到 IP 的映射，之后仍必须经公共 DNS 解析才能访问测试服
+Answer: 还没上线的项目只有服务器 IP，就在 host 里写“192.168.1.100 www.test.com”，这样输入域名就能直接访问测试服，不用记一串难背的 IP。[原文§改过host文件吗？](https://xiaolincoding.com/interview/network.html#%E6%94%B9%E8%BF%87host%E6%96%87%E4%BB%B6%E5%90%97)
+
+T2-163 [single]
+Original: DNS 使用 TCP 还是 UDP？传统 DNS 服务的端口号是多少？
+Stem: DNS 使用 TCP 还是 UDP？传统 DNS 服务的端口号是多少？
+A [correct] 同时支持 UDP 和 TCP，传统 DNS 服务的端口号都是 53
+B [incorrect] 只支持 UDP，传统 DNS 服务使用的端口号是 53
+C [incorrect] 只支持 TCP，传统 DNS 服务使用的端口号是 53
+D [incorrect] 同时支持 UDP 和 TCP，UDP 和 TCP 的端口号各不相同
+Answer: DNS 同时支持 UDP 和 TCP，传统 DNS 服务的端口号都是 53。[原文§DNS的底层使用TCP还是UDP？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8tcp%E8%BF%98%E6%98%AFudp)
+
+T2-164 [single]
+Original: 普通 DNS 查询通常先使用哪种协议？原因是什么？
+Stem: 普通 DNS 查询通常先使用哪种协议？原因是什么？
+A [incorrect] 先使用 TCP，因为请求和响应一般比较大，需要先建立连接
+B [incorrect] 先使用 TCP，因为查询必须先建立连接才能携带 TC 标志位
+C [incorrect] 先使用 UDP，因为 UDP 的消息大小没有限制，不会被截断
+D [correct] 先使用 UDP，因为请求和响应一般比较小，不需要先建立连接
+Answer: 普通查询通常先使用 UDP，因为请求和响应一般比较小，不需要先建立连接。[原文§DNS的底层使用TCP还是UDP？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8tcp%E8%BF%98%E6%98%AFudp)
+
+T2-165 [fill]
+Original: [填空题·有序] UDP 响应被截断时，响应中的 ____ 标志位会置为 1，客户端通常会改用 ____ 重新查询。
+Stem: UDP 响应被截断时，响应中的 ____ 标志位会置为 1，客户端通常会改用 ____ 重新查询。
+Blanks/order: 2/ordered
+Answer: 第一空是 TC，第二空是 TCP。[原文§DNS的底层使用TCP还是UDP？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8tcp%E8%BF%98%E6%98%AFudp)
+
+T2-166 [single]
+Original: 关于传统 DNS 的 UDP 消息大小限制和 EDNS(0)，下列说法符合原文的是哪一项？
+Stem: 关于传统 DNS 的 UDP 消息大小限制和 EDNS(0)，下列说法符合原文的是哪一项？
+A [incorrect] 传统限制为 4096 字节，EDNS(0) 把所有查询的 UDP 消息大小都固定缩小为 512 字节
+B [correct] 传统限制为 512 字节，EDNS(0) 让客户端通告能接收的 UDP 消息大小，并非固定 4096 字节
+C [incorrect] 传统限制为 512 字节，EDNS(0) 让所有查询的 UDP 消息大小都固定为 4096 字节
+D [incorrect] 传统限制为 512 字节，EDNS(0) 完全取消了大小限制，所以 DNS 不再需要使用 TCP
+Answer: 传统 DNS 的 UDP 消息大小限制为 512 字节，EDNS(0) 可以让客户端通告能够接收的 UDP 消息大小，但不是所有查询都固定使用 4096 字节。[原文§DNS的底层使用TCP还是UDP？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8tcp%E8%BF%98%E6%98%AFudp)
+
+T2-167 [single]
+Original: UDP 消息变大之后，为什么 DNS 仍然需要 TCP？
+Stem: UDP 消息变大之后，为什么 DNS 仍然需要 TCP？
+A [incorrect] 消息越大，UDP 就越容易被截断成 512 字节，所以只能用 TCP
+B [incorrect] 消息越大，越需要使用 AXFR，而 AXFR 只能由 UDP 完成
+C [correct] 消息越大，越容易遇到 IP 分片和丢包，所以 TCP 仍然有必要
+D [incorrect] 消息越大，TC 标志位越容易置为 0，所以只能改用 TCP
+Answer: 即使 EDNS(0) 可以通告更大的 UDP 消息，消息越大，也越容易遇到 IP 分片和丢包，所以 TCP 仍然有必要。[原文§DNS的底层使用TCP还是UDP？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8tcp%E8%BF%98%E6%98%AFudp)
+
+T2-168 [single]
+Original: 关于 DNS 的区域传送，下列说法符合原文的是哪一项？
+Stem: 关于 DNS 的区域传送，下列说法符合原文的是哪一项？
+A [correct] 完整区域传送 AXFR 使用 TCP，增量区域传送 IXFR 可以使用 UDP 或 TCP
+B [incorrect] 完整区域传送 AXFR 可以使用 UDP 或 TCP，增量区域传送 IXFR 只能使用 TCP
+C [incorrect] 完整区域传送 AXFR 和增量区域传送 IXFR 都只能使用 TCP
+D [incorrect] 完整区域传送 AXFR 使用 UDP，增量区域传送 IXFR 使用 TCP
+Answer: 完整区域传送 AXFR 使用 TCP；增量区域传送 IXFR 可以使用 UDP 或 TCP，不能把所有区域传送都说成只能用 TCP。[原文§DNS的底层使用TCP还是UDP？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8tcp%E8%BF%98%E6%98%AFudp)
+
+T2-169 [fill]
+Original: [填空题·有序] 面试官追问加密 DNS 时，____ 通常使用 TLS over TCP，____ 通过 HTTPS 传输，____ 使用基于 UDP 的 QUIC。
+Stem: 面试官追问加密 DNS 时，____ 通常使用 TLS over TCP，____ 通过 HTTPS 传输，____ 使用基于 UDP 的 QUIC。
+Blanks/order: 3/ordered
+Answer: 依次是 DoT、DoH、DoQ。[原文§DNS的底层使用TCP还是UDP？](https://xiaolincoding.com/interview/network.html#dns%E7%9A%84%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8tcp%E8%BF%98%E6%98%AFudp)
+
+T2-170 [single]
+Original: 说“HTTP 是无状态的”，指的是什么意思？
+Stem: 说“HTTP 是无状态的”，指的是什么意思？
+A [incorrect] 服务器不能保存任何用户数据，购物车这类数据在服务端也不能被保存下来
+B [incorrect] TCP 连接本身没有任何状态，既不会维护序列号，也不会维护连接状态信息
+C [incorrect] 服务器必须记住前一次请求的内容，才能理解后一次请求，因此要保存会话
+D [correct] 协议不要求服务器记住前一次请求才能理解后一次请求，每个请求应提供理解它所需的信息
+Answer: HTTP 是无状态的，指协议不要求服务器记住前一次请求才能理解后一次请求。每个请求应该提供理解它所需的信息。[原文§HTTP到底是不是无状态的？](https://xiaolincoding.com/interview/network.html#http%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%8D%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84)
+
+T2-171 [single]
+Original: “HTTP 是无状态的”能不能推出服务器不能保存用户数据，或者 TCP 连接没有状态？
+Stem: “HTTP 是无状态的”能不能推出服务器不能保存用户数据，或者 TCP 连接没有状态？
+A [incorrect] 能。服务端不能保存购物车这类用户数据，TCP 也不会维护序列号和连接状态这类信息
+B [correct] 不能。服务端可以保存购物车，TCP 也会维护序列号和连接状态，只是它们不等于 HTTP 协议本身的会话状态
+C [incorrect] 不能。服务端可以保存购物车这类用户数据，但 TCP 不会维护序列号和连接状态这类信息
+D [incorrect] 能。服务端保存的购物车属于 HTTP 协议本身的会话状态，TCP 维护的连接状态也是如此
+Answer: 无状态并不是说服务器不能保存用户数据，也不是说 TCP 连接没有状态。比如服务端当然可以保存购物车，TCP 也会维护序列号和连接状态，只是它们不等于 HTTP 协议本身的会话状态。[原文§HTTP到底是不是无状态的？](https://xiaolincoding.com/interview/network.html#http%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%8D%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84)
+
+T2-172 [fill]
+Original: [填空题·无序] 实际业务需要记住用户的登录状态时，可以在 HTTP 之上使用 ____、____ 或 ____ 来实现。
+Stem: 实际业务需要记住用户的登录状态时，可以在 HTTP 之上使用 ____、____ 或 ____ 来实现。
+Blanks/order: 3/unordered
+Answer: Cookie、Session、Token。[原文§HTTP到底是不是无状态的？](https://xiaolincoding.com/interview/network.html#http%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%8D%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84)
+
+T2-173 [single]
+Original: 携带 Cookie 的 HTTP 请求，HTTP 本身是有状态还是无状态的？
+Stem: 携带 Cookie 的 HTTP 请求，HTTP 本身是有状态还是无状态的？
+A [incorrect] HTTP 变成了有状态协议，因为 Cookie 属于 HTTP 协议簇的一部分
+B [incorrect] HTTP 仍然是无状态协议，但应用无法借助 Cookie 实现有状态的会话
+C [correct] HTTP 仍然是无状态协议，应用可以借助 Cookie 实现有状态的会话
+D [incorrect] HTTP 变成了有状态协议，因为服务端会自动记住上一个请求
+Answer: HTTP 仍然是无状态协议，不过应用可以借助 Cookie 实现有状态的会话。[原文§携带Cookie的HTTP请求是有状态还是无状态的？Cookie是HTTP协议簇的一部分，那为什么还说HTTP是无状态的？](https://xiaolincoding.com/interview/network.html#%E6%90%BA%E5%B8%A6cookie%E7%9A%84http%E8%AF%B7%E6%B1%82%E6%98%AF%E6%9C%89%E7%8A%B6%E6%80%81%E8%BF%98%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84-cookie%E6%98%AFhttp%E5%8D%8F%E8%AE%AE%E7%B0%87%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86-%E9%82%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%AF%B4http%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84)
+
+T2-174 [short]
+Original: 以登录为例，说明应用是怎样借助 Cookie 让服务端知道“还是刚才那个用户”的。
+Stem: 以登录为例，说明应用是怎样借助 Cookie 让服务端知道“还是刚才那个用户”的。
+Answer: 第一次登录成功后，服务端把 Session ID 写进 Cookie。后续每次请求，浏览器都按 Cookie 的规则带上这个 ID，服务端拿它去找对应的登录信息，就知道“还是刚才那个用户”。[原文§携带Cookie的HTTP请求是有状态还是无状态的？Cookie是HTTP协议簇的一部分，那为什么还说HTTP是无状态的？](https://xiaolincoding.com/interview/network.html#%E6%90%BA%E5%B8%A6cookie%E7%9A%84http%E8%AF%B7%E6%B1%82%E6%98%AF%E6%9C%89%E7%8A%B6%E6%80%81%E8%BF%98%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84-cookie%E6%98%AFhttp%E5%8D%8F%E8%AE%AE%E7%B0%87%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86-%E9%82%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%AF%B4http%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84)
+
+T2-175 [single]
+Original: 既然 Cookie 能让应用保持登录状态，为什么还说“协议无状态和业务有登录状态并不矛盾”？
+Stem: 既然 Cookie 能让应用保持登录状态，为什么还说“协议无状态和业务有登录状态并不矛盾”？
+A [correct] 不是 HTTP 自动记住了上一个请求，而是当前请求又带来了识别用户的信息，应用再用它查找会话
+B [incorrect] 因为 HTTP 自动记住了上一个请求，应用只是把它记住的状态展示出来
+C [incorrect] 因为服务端把登录状态存放在 TCP 连接里，HTTP 本身并不参与
+D [incorrect] 因为 Cookie 不属于 HTTP，所以它带来的状态与 HTTP 完全无关
+Answer: 这里并不是 HTTP 自动记住了上一个请求，而是当前请求又带来了用于识别用户的信息，应用再用这个信息查找会话。所以，协议无状态和业务有登录状态并不矛盾。[原文§携带Cookie的HTTP请求是有状态还是无状态的？Cookie是HTTP协议簇的一部分，那为什么还说HTTP是无状态的？](https://xiaolincoding.com/interview/network.html#%E6%90%BA%E5%B8%A6cookie%E7%9A%84http%E8%AF%B7%E6%B1%82%E6%98%AF%E6%9C%89%E7%8A%B6%E6%80%81%E8%BF%98%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84-cookie%E6%98%AFhttp%E5%8D%8F%E8%AE%AE%E7%B0%87%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86-%E9%82%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%AF%B4http%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84)
+
+T2-176 [fill]
+Original: [填空题·无序] 原文从五个方面比较 Cookie 和 Session：____、____、____、____、____。
+Stem: 原文从五个方面比较 Cookie 和 Session：____、____、____、____、____。
+Blanks/order: 5/unordered
+Answer: 存储位置、数据容量、安全性、生命周期、性能。[原文§cookie和session有什么区别？](https://xiaolincoding.com/interview/network.html#cookie%E5%92%8Csession%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-177 [single]
+Original: Cookie 和 Session 的数据分别存储在哪里？Session 怎样让客户端后续请求找到对应的数据？
+Stem: Cookie 和 Session 的数据分别存储在哪里？Session 怎样让客户端后续请求找到对应的数据？
+A [incorrect] Cookie 存储在服务器端，Session 存储在客户端，浏览器发请求时自动附带 Session 里的数据
+B [incorrect] Cookie 和 Session 都存储在客户端，服务器只通过 Session ID 校验客户端数据是否被篡改
+C [incorrect] Cookie 存储在客户端，Session 存储在服务器端，Session ID 只能通过 URL 重写发给客户端
+D [correct] Cookie 存储在客户端，Session 存储在服务器端，服务器给每个用户分配唯一的 Session ID，客户端后续请求带上它
+Answer: Cookie 的数据存储在客户端（通常是浏览器），浏览器向服务器发送请求时会自动附带 Cookie 中的数据。Session 的数据存储在服务器端，服务器为每个用户分配一个唯一的 Session ID，这个 ID 通常通过 Cookie 或 URL 重写的方式发送给客户端，客户端后续的请求会带上这个 Session ID，服务器根据 ID 查找对应的 Session 数据。[原文§cookie和session有什么区别？](https://xiaolincoding.com/interview/network.html#cookie%E5%92%8Csession%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-178 [single]
+Original: 在数据容量上，Cookie 和 Session 的限制有什么不同？
+Stem: 在数据容量上，Cookie 和 Session 的限制有什么不同？
+A [incorrect] 单个 Cookie 没有大小限制，浏览器对每个域名的 Cookie 数量也没有限制；Session 受限于单个 4KB 的上限
+B [correct] 单个 Cookie 通常约 4KB，浏览器对每个域名的 Cookie 数量也有限制；Session 理论上不受大小限制，主要受限于服务器内存
+C [incorrect] 单个 Cookie 通常约 4KB，浏览器对每个域名的 Cookie 数量也有限制；Session 同样被限制在 4KB 左右
+D [incorrect] 单个 Cookie 受限于服务器内存，Session 受限于浏览器对每个域名允许保存的数量上限
+Answer: 单个 Cookie 的大小限制通常在 4KB 左右，而且大多数浏览器对每个域名的总 Cookie 数量也有限制。由于 Session 存储在服务器上，理论上不受数据大小的限制，主要受限于服务器的内存大小。[原文§cookie和session有什么区别？](https://xiaolincoding.com/interview/network.html#cookie%E5%92%8Csession%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-179 [single]
+Original: 为什么说 Cookie 相对不安全？可能面临哪种威胁？
+Stem: 为什么说 Cookie 相对不安全？可能面临哪种威胁？
+A [incorrect] 数据存储在服务器端，容易受到 Session 劫持的威胁
+B [incorrect] 数据随表单提交，容易因 URL 分享而造成意外泄露
+C [correct] 数据存储在客户端，容易受到 XSS（跨站脚本攻击）的威胁
+D [incorrect] 数据存储在客户端，容易受到会话固定攻击的威胁
+Answer: Cookie 相对不安全，因为数据存储在客户端，容易受到 XSS（跨站脚本攻击）的威胁。[原文§cookie和session有什么区别？](https://xiaolincoding.com/interview/network.html#cookie%E5%92%8Csession%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-180 [single]
+Original: 给 Cookie 设置 HttpOnly 属性有什么作用？它能不能完全消除风险？
+Stem: 给 Cookie 设置 HttpOnly 属性有什么作用？它能不能完全消除风险？
+A [correct] 防止 JavaScript 访问 Cookie，减少 XSS 攻击的风险，但仍然可能受到 CSRF 攻击
+B [incorrect] 防止浏览器自动附带 Cookie，因此可以完全消除 CSRF 攻击的风险
+C [incorrect] 防止 JavaScript 访问 Cookie，因此可以完全消除 XSS 和 CSRF 的风险
+D [incorrect] 防止服务端读取 Cookie，减少 Session 劫持的风险，但仍可能受 XSS 攻击
+Answer: 可以通过设置 HttpOnly 属性来防止 JavaScript 访问 Cookie，减少 XSS 攻击的风险，但仍然可能受到 CSRF（跨站请求伪造）的攻击。[原文§cookie和session有什么区别？](https://xiaolincoding.com/interview/network.html#cookie%E5%92%8Csession%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-181 [single]
+Original: Session 通常被认为比 Cookie 更安全，但仍然需要防范什么？
+Stem: Session 通常被认为比 Cookie 更安全，但仍然需要防范什么？
+A [incorrect] XSS 攻击，因为 Session 的数据存储在客户端
+B [incorrect] Cookie 数量超过浏览器对每个域名的限制，导致 Session 丢失
+C [incorrect] URL 重写攻击，因为 Session 的数据放在 URL 中传输
+D [correct] Session 劫持（通过获取他人的 Session ID）和会话固定攻击
+Answer: Session 通常认为比 Cookie 更安全，因为敏感数据存储在服务器端。但仍然需要防范 Session 劫持（通过获取他人的 Session ID）和会话固定攻击。[原文§cookie和session有什么区别？](https://xiaolincoding.com/interview/network.html#cookie%E5%92%8Csession%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-182 [multiple]
+Original: 关于 Cookie 和 Session 的生命周期，下列说法符合原文的有哪些？
+Stem: 关于 Cookie 和 Session 的生命周期，下列说法符合原文的有哪些？
+A [correct] Cookie 可以设置过期时间，过期后自动删除
+B [incorrect] 关闭浏览器会直接通知服务端删除对应的 Session
+C [correct] 服务端 Session 的有效期由服务器控制
+D [incorrect] 会话 Cookie 一定在浏览器关闭时被清除，不可能被恢复
+E [correct] 会话 Cookie 通常在浏览器会话结束后被清除，但浏览器的会话恢复功能也可能把它恢复
+Answer: Cookie 可以设置过期时间，过期后自动删除；也可以设置为会话 Cookie，通常在浏览器会话结束后被清除，但浏览器的会话恢复功能也可能把它恢复。服务端 Session 的有效期由服务器控制，关闭浏览器并不会直接通知服务端删除 Session，所以两者的生命周期不能简单画等号。[原文§cookie和session有什么区别？](https://xiaolincoding.com/interview/network.html#cookie%E5%92%8Csession%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-183 [single]
+Original: 在性能上，使用 Cookie 的代价是什么？
+Stem: 在性能上，使用 Cookie 的代价是什么？
+A [incorrect] 每次请求都需要查询服务器上的数据，高并发场景下会增加服务器的负载
+B [correct] 数据随每个请求发送到服务器，可能影响网络传输效率，尤其是 Cookie 数据较大时
+C [incorrect] 数据存储在服务器内存中，Cookie 数据较大时会占满服务器内存
+D [incorrect] 数据只在第一次请求时发送，后续请求没有额外的网络传输开销
+Answer: 使用 Cookie 时，因为数据随每个请求发送到服务器，可能会影响网络传输效率，尤其是在 Cookie 数据较大时。[原文§cookie和session有什么区别？](https://xiaolincoding.com/interview/network.html#cookie%E5%92%8Csession%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-184 [single]
+Original: 在性能上，使用 Session 的代价是什么？
+Stem: 在性能上，使用 Session 的代价是什么？
+A [incorrect] 数据随每个请求发送到服务器，Session 数据较大时会影响网络传输效率
+B [incorrect] 每次请求都需要由客户端重新生成 Session ID，高并发场景下会增加客户端的负载
+C [correct] 每次请求都需要查询服务器上的 Session 数据，高并发场景下可能增加服务器的负载
+D [incorrect] Session 数据存储在客户端，所以每次请求只增加浏览器的内存占用
+Answer: 使用 Session 时，因为数据存储在服务器端，每次请求都需要查询服务器上的 Session 数据，这可能会增加服务器的负载，特别是在高并发场景下。[原文§cookie和session有什么区别？](https://xiaolincoding.com/interview/network.html#cookie%E5%92%8Csession%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-185 [single]
+Original: 关于 Cookie 的定位，下列说法符合原文的是哪一项？
+Stem: 关于 Cookie 的定位，下列说法符合原文的是哪一项？
+A [correct] 它是浏览器存储和发送小段数据的机制，满足域名、路径、Secure、SameSite 等规则时会被自动携带
+B [incorrect] 它是服务端保存会话状态的方式，客户端通常只持有它的 ID，由服务端根据 ID 查找登录信息
+C [incorrect] 它是客户端用来证明身份或权限的凭证，只能放在 Authorization 请求头中随请求发送
+D [incorrect] 它是浏览器存储和发送小段数据的机制，无论是否满足域名、路径等规则都会被自动携带
+Answer: Cookie 是浏览器存储和发送小段数据的机制。满足域名、路径、Secure、SameSite 等规则时，浏览器会自动携带 Cookie。[原文§token，session，cookie的区别？](https://xiaolincoding.com/interview/network.html#token-session-cookie%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-186 [single]
+Original: 关于 Session 的定位，下列说法符合原文的是哪一项？
+Stem: 关于 Session 的定位，下列说法符合原文的是哪一项？
+A [incorrect] 它是浏览器存储和发送小段数据的机制，登录信息保存在浏览器中
+B [incorrect] 它是客户端证明身份的凭证，登录信息直接保存在凭证里
+C [incorrect] 它是服务端保存会话状态的方式，Session ID 必须放在 Cookie 中传递
+D [correct] 它是服务端保存会话状态的方式，客户端通常只持有 Session ID，服务端根据这个 ID 查找登录信息
+Answer: Session 是服务端保存会话状态的方式。客户端通常只持有 Session ID，服务端根据这个 ID 查找登录信息。Session ID 经常放在 Cookie 中，但也可以通过其他方式传递。[原文§token，session，cookie的区别？](https://xiaolincoding.com/interview/network.html#token-session-cookie%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-187 [single]
+Original: 关于 Token 的定位，下列说法符合原文的是哪一项？
+Stem: 关于 Token 的定位，下列说法符合原文的是哪一项？
+A [incorrect] 它是服务端保存会话状态的方式，客户端通常只持有 Session ID，由服务端根据它查找登录信息
+B [correct] 它是客户端证明身份或权限的凭证，可以是服务端查表验证的随机字符串，也可以是 JWT 这样的自包含令牌
+C [incorrect] 它是客户端证明身份或权限的凭证，只能是 JWT 这样的自包含令牌，不能是服务端查表验证的随机字符串
+D [incorrect] 它是浏览器存储和发送小段数据的机制，只能放在 Authorization 请求头中随请求一起发送
+Answer: Token 是客户端用来证明身份或权限的凭证。它可以是一个随机字符串，由服务端查表验证，也可以是 JWT 这样的自包含令牌；可以放在 Authorization 请求头中，也可以放进 Cookie。[原文§token，session，cookie的区别？](https://xiaolincoding.com/interview/network.html#token-session-cookie%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-188 [multiple]
+Original: 关于 Token、Session、Cookie，下列说法符合原文的有哪些？
+Stem: 关于 Token、Session、Cookie，下列说法符合原文的有哪些？
+A [incorrect] Token 一定是无状态的
+B [correct] Token 不一定无状态
+C [correct] JWT 不一定加密
+D [incorrect] 把 JWT 放进 Cookie 后，Cookie 和 JWT 就变成了同一个概念
+E [correct] Session 不是必须依赖 Cookie
+Answer: Token 不一定无状态（随机字符串形式的 Token 由服务端查表验证），JWT 也不一定加密，Session 也不是必须依赖 Cookie。把 JWT 放进 Cookie，并不会让 Cookie 和 JWT 变成同一个概念。[原文§token，session，cookie的区别？](https://xiaolincoding.com/interview/network.html#token-session-cookie%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+T2-189 [single]
+Original: 默认情况下，客户端禁用 Cookie 后，Session 还能正常使用吗？为什么？
+Stem: 默认情况下，客户端禁用 Cookie 后，Session 还能正常使用吗？为什么？
+A [incorrect] 仍然可以正常使用，因为 Session 的数据存储在服务器端，不依赖客户端
+B [incorrect] 仍然可以正常使用，因为会话 ID 默认通过 URL 重写的方式传递
+C [correct] 不能正常使用，因为大多数 Web 服务器依赖 Cookie 来传递 Session 的会话 ID
+D [incorrect] 不能正常使用，因为 Session 的数据存储在 Cookie 里，被禁用后无法读取
+Answer: 默认情况下禁用 Cookie 后，Session 是无法正常使用的，因为大多数 Web 服务器都是依赖于 Cookie 来传递 Session 的会话 ID 的。客户端浏览器禁用 Cookie 时，服务器将无法把会话 ID 发送给客户端，客户端也无法在后续请求中携带会话 ID 返回给服务器，从而导致服务器无法识别用户会话。[原文§如果客户端禁用了cookie，session还能用吗？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%A6%81%E7%94%A8%E4%BA%86cookie-session%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97)
+
+T2-190 [fill]
+Original: [填空题·无序] 客户端禁用 Cookie 时，原文给出的让 Session 继续可用的两种方法是：____、____。
+Stem: 客户端禁用 Cookie 时，原文给出的让 Session 继续可用的两种方法是：____、____。
+Blanks/order: 2/unordered
+Answer: URL 重写、隐藏表单字段。[原文§如果客户端禁用了cookie，session还能用吗？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%A6%81%E7%94%A8%E4%BA%86cookie-session%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97)
+
+T2-191 [single]
+Original: URL 重写是怎样让服务器在禁用 Cookie 时仍能识别会话的？
+Stem: URL 重写是怎样让服务器在禁用 Cookie 时仍能识别会话的？
+A [correct] 服务器响应需要保持状态的请求时，把 Session ID 作为参数附加到 URL 中，并在服务端解析 URL 获取它
+B [incorrect] 服务器把 Session ID 写进 HTML 表单的隐藏字段，由表单提交时带回
+C [incorrect] 服务器把 Session ID 保存到客户端的 Cookie 中，由浏览器自动携带
+D [incorrect] 服务器把 Session ID 附加到 URL 中，客户端无须再带回，服务端按 IP 识别会话
+Answer: URL 重写：每当服务器响应需要保持状态的请求时，将 Session ID 附加到 URL 中作为参数，例如 http://example.com/page 变为 http://example.com/page;jsessionid=XXXXXX，服务器端需要相应地解析 URL 来获取 Session ID，并维护用户的会话状态。[原文§如果客户端禁用了cookie，session还能用吗？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%A6%81%E7%94%A8%E4%BA%86cookie-session%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97)
+
+T2-192 [single]
+Original: URL 重写方式有什么缺点？
+Stem: URL 重写方式有什么缺点？
+A [incorrect] 只适用于通过表单提交的交互，不适合链接点击或者 Ajax 请求这类场景，所以很少用
+B [incorrect] 服务端无法解析 URL 里附加的参数，所以根本无法据此维护用户的会话状态
+C [incorrect] Session ID 不会随着请求一起发送到服务器，所以服务器无法识别这个用户
+D [correct] URL 变得不整洁，且分享这样的链接时可能导致 Session ID 意外泄露
+Answer: URL 重写的缺点是 URL 变得不那么整洁，且如果用户通过电子邮件或其他方式分享了这样的链接，可能导致 Session ID 的意外泄露。[原文§如果客户端禁用了cookie，session还能用吗？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%A6%81%E7%94%A8%E4%BA%86cookie-session%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97)
+
+T2-193 [single]
+Original: 隐藏表单字段方式是怎样传递 Session ID 的？它适用于哪些交互？
+Stem: 隐藏表单字段方式是怎样传递 Session ID 的？它适用于哪些交互？
+A [incorrect] 在每个 URL 后面附加 Session ID 参数，随链接点击发回服务器，适用于链接点击和 Ajax 请求
+B [correct] 在表单里放隐藏字段存储 Session ID，随表单提交发回服务器，仅适用于通过表单提交的交互
+C [incorrect] 在表单里放隐藏字段存储 Session ID，随表单提交发回服务器，同时适用于链接点击和 Ajax 请求
+D [incorrect] 在每个请求的 Cookie 中放隐藏字段存储 Session ID，随请求发回服务器，仅适用于表单提交
+Answer: 隐藏表单字段：在每个需要 Session 信息的 HTML 表单中包含一个隐藏字段用来存储 Session ID，表单提交时 Session ID 随表单数据一起发送回服务器，服务器通过解析表单数据中的 Session ID 来获取用户的会话状态。这种方法仅适用于通过表单提交的交互模式，不适合链接点击或 Ajax 请求。[原文§如果客户端禁用了cookie，session还能用吗？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%A6%81%E7%94%A8%E4%BA%86cookie-session%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97)
+
+T2-194 [single]
+Original: 关于 Cookie 与 localStorage 的容量，下列说法符合原文的是哪一项？
+Stem: 关于 Cookie 与 localStorage 的容量，下列说法符合原文的是哪一项？
+A [incorrect] 单个 Cookie 通常能存几 MB，localStorage 通常限制在 4 KB 左右，具体限制取决于浏览器
+B [correct] 单个 Cookie 通常限制在 4 KB 左右，localStorage 通常能存几 MB，具体限制取决于浏览器
+C [incorrect] Cookie 和 localStorage 通常都限制在 4 KB 左右，具体限制与浏览器无关
+D [incorrect] Cookie 和 localStorage 通常都能存几 MB，具体限制取决于浏览器
+Answer: 容量上，单个 Cookie 通常限制在 4 KB 左右，localStorage 通常能存几 MB，具体限制取决于浏览器。[原文§如果我把数据存储到 localStorage，和Cookie有什么区别？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E6%88%91%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0-localstorage-%E5%92%8Ccookie%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-195 [single]
+Original: 关于 Cookie 与 localStorage 向服务器发送数据的方式，下列说法符合原文的是哪一项？
+Stem: 关于 Cookie 与 localStorage 向服务器发送数据的方式，下列说法符合原文的是哪一项？
+A [incorrect] localStorage 会自动随请求发送，Cookie 不会，需要 JavaScript 读取后主动放进请求
+B [incorrect] Cookie 和 localStorage 都会自动随请求发送，不需要 JavaScript 读取后再放进请求
+C [incorrect] Cookie 和 localStorage 都不会自动随请求发送，都需要 JavaScript 读取后主动放进请求
+D [correct] 符合匹配规则的 Cookie 会自动随请求发送，localStorage 不会，需要 JavaScript 读取后主动放进请求
+Answer: 符合匹配规则的 Cookie 会自动随请求发送；localStorage 不会，需要 JavaScript 读取后主动放进请求。[原文§如果我把数据存储到 localStorage，和Cookie有什么区别？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E6%88%91%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0-localstorage-%E5%92%8Ccookie%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-196 [multiple]
+Original: 关于 Cookie 与 localStorage 的作用范围，下列哪些说法符合原文？
+Stem: 关于 Cookie 与 localStorage 的作用范围，下列哪些说法符合原文？
+A [correct] localStorage 按同源隔离，协议、主机和端口都要相同
+B [correct] Cookie 主要按域名、路径等规则匹配，不按端口隔离
+C [incorrect] Cookie 可以不受限制地在任意跨域的站点之间使用
+D [incorrect] localStorage 只要主机相同，协议或端口不同的页面也能共享
+Answer: localStorage 按同源隔离，也就是协议、主机和端口都要相同；Cookie 主要按域名、路径等规则匹配，不按端口隔离，也不能任意跨域使用。[原文§如果我把数据存储到 localStorage，和Cookie有什么区别？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E6%88%91%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0-localstorage-%E5%92%8Ccookie%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-197 [single]
+Original: 关于 Cookie 与 localStorage 的生命周期，下列说法符合原文的是哪一项？
+Stem: 关于 Cookie 与 localStorage 的生命周期，下列说法符合原文的是哪一项？
+A [correct] Cookie 可以设置 Max-Age 或 Expires；localStorage 没有内置过期时间，但用户清理数据等仍可能让它被删除
+B [incorrect] localStorage 可以设置 Max-Age 或 Expires；Cookie 没有内置过期时间，但用户清理数据等仍可能让它被删除
+C [incorrect] Cookie 和 localStorage 都有内置的过期时间设置，到期后都由浏览器统一自动删除
+D [incorrect] Cookie 可以设置过期时间；localStorage 没有内置过期时间，因此一旦写入就不会再被删除
+Answer: Cookie 可以设置 Max-Age 或 Expires。localStorage 没有内置的过期时间，但用户清理数据、浏览器存储策略等仍然可能让它被删除，所以不能认为写进去就永远存在。[原文§如果我把数据存储到 localStorage，和Cookie有什么区别？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E6%88%91%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0-localstorage-%E5%92%8Ccookie%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-198 [multiple]
+Original: 关于 Cookie 与 localStorage 的安全性，下列哪些说法符合原文？
+Stem: 关于 Cookie 与 localStorage 的安全性，下列哪些说法符合原文？
+A [correct] localStorage 可以被同源 JavaScript 读取，发生 XSS 时里面的令牌可能被窃取
+B [correct] Cookie 可以设置 HttpOnly 来阻止 JavaScript 读取
+C [correct] 自动携带身份 Cookie 的方式，还需要考虑 CSRF
+D [incorrect] localStorage 不会自动随请求发送，所以一定比 Cookie 安全
+Answer: localStorage 可以被同源 JavaScript 读取，发生 XSS 时里面的令牌可能被窃取；Cookie 可以设置 HttpOnly 来阻止 JavaScript 读取，但自动携带身份 Cookie 又需要考虑 CSRF。因此不能断言 localStorage 一定比 Cookie 安全。[原文§如果我把数据存储到 localStorage，和Cookie有什么区别？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E6%88%91%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0-localstorage-%E5%92%8Ccookie%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-199 [short]
+Original: 为什么不能因为 localStorage 不会自动随请求发送，就说它一定比 Cookie 安全？实际应该看什么？
+Stem: 为什么不能因为 localStorage 不会自动随请求发送，就说它一定比 Cookie 安全？实际应该看什么？
+Answer: 因为 localStorage 可以被同源 JavaScript 读取，发生 XSS 时里面的令牌可能被窃取；Cookie 虽然会自动携带，但可以设置 HttpOnly 阻止 JavaScript 读取，只是自动携带身份 Cookie 要考虑 CSRF。所以要看保存什么数据，以及如何防范 XSS、CSRF 和凭证泄露，不能只凭是否自动发送就断言谁更安全。[原文§如果我把数据存储到 localStorage，和Cookie有什么区别？](https://xiaolincoding.com/interview/network.html#%E5%A6%82%E6%9E%9C%E6%88%91%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0-localstorage-%E5%92%8Ccookie%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-200 [single]
+Original: 按原文，适合保存在 Cookie 里的是哪一类数据？
+Stem: 按原文，适合保存在 Cookie 里的是哪一类数据？
+A [incorrect] 只在浏览器端使用的偏好和非敏感缓存，比如主题、列表展示方式
+B [incorrect] 可以由客户端直接当作权限依据的数据，比如用户角色标记
+C [correct] 需要随请求发送的小型数据，比如 Session ID
+D [incorrect] 不需要随请求发送的较大数据，比如较大的页面缓存
+Answer: Cookie 适合保存需要随请求发送的小型数据，比如 Session ID；身份 Cookie 还要配合 HttpOnly、Secure 和合适的 SameSite 属性，并在服务端做好会话验证。[原文§什么数据应该存在到cookie，什么数据存放到 Localstorage](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%BA%94%E8%AF%A5%E5%AD%98%E5%9C%A8%E5%88%B0cookie-%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%AD%98%E6%94%BE%E5%88%B0-localstorage)
+
+T2-201 [single]
+Original: 按原文，适合保存在 localStorage 里的是哪一类数据？
+Stem: 按原文，适合保存在 localStorage 里的是哪一类数据？
+A [incorrect] 需要随请求发送的小型数据，比如 Session ID
+B [incorrect] 需要由服务端用来判定用户权限的数据，比如管理员标识
+C [correct] 只在浏览器端使用的偏好和非敏感缓存，比如主题、列表展示方式
+D [incorrect] 需要自动随请求发送并受 HttpOnly 保护的身份凭证
+Answer: localStorage 适合保存只在浏览器端使用的偏好和非敏感缓存，比如主题、列表展示方式。[原文§什么数据应该存在到cookie，什么数据存放到 Localstorage](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%BA%94%E8%AF%A5%E5%AD%98%E5%9C%A8%E5%88%B0cookie-%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%AD%98%E6%94%BE%E5%88%B0-localstorage)
+
+T2-202 [multiple]
+Original: 按原文，要比较安全地使用身份 Cookie，下列哪些做法是需要的？
+Stem: 按原文，要比较安全地使用身份 Cookie，下列哪些做法是需要的？
+A [correct] 配合 HttpOnly 属性
+B [correct] 配合 Secure 属性
+C [correct] 配合合适的 SameSite 属性
+D [correct] 在服务端做好会话验证
+E [incorrect] 设置了这些属性后，服务端就不必再验证会话了
+Answer: 身份 Cookie 通常要配合 HttpOnly、Secure 和合适的 SameSite 属性，并在服务端做好会话验证；设置属性不能代替服务端验证。[原文§什么数据应该存在到cookie，什么数据存放到 Localstorage](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%BA%94%E8%AF%A5%E5%AD%98%E5%9C%A8%E5%88%B0cookie-%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%AD%98%E6%94%BE%E5%88%B0-localstorage)
+
+T2-203 [single]
+Original: localStorage 没有内置的过期机制。按原文，需要让它保存的数据过期时可以怎么做？
+Stem: localStorage 没有内置的过期机制。按原文，需要让它保存的数据过期时可以怎么做？
+A [correct] 由业务代码保存时间戳，并在需要时主动清理过期数据
+B [incorrect] 设置 Max-Age 属性，由浏览器到期后自动清理这些数据
+C [incorrect] 设置 Expires 属性，由服务端在响应头里控制数据过期
+D [incorrect] 依赖浏览器在标签页关闭时必定清除全部存储的数据
+Answer: localStorage 没有内置过期机制，需要过期时可以由业务代码保存时间戳并主动清理。[原文§什么数据应该存在到cookie，什么数据存放到 Localstorage](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%BA%94%E8%AF%A5%E5%AD%98%E5%9C%A8%E5%88%B0cookie-%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%AD%98%E6%94%BE%E5%88%B0-localstorage)
+
+T2-204 [single]
+Original: 某页面在 localStorage 里保存了「管理员」身份标记。按原文，服务端应该怎样看待这个标记？
+Stem: 某页面在 localStorage 里保存了「管理员」身份标记。按原文，服务端应该怎样看待这个标记？
+A [incorrect] 因为 localStorage 按同源隔离，别的网站读不到，所以服务端可以直接据此授予管理员权限
+B [correct] 客户端的数据不能直接当成权限依据，不代表服务端就应该给这个用户管理员权限
+C [incorrect] 只要这个标记同时也写进了 Cookie，服务端就可以直接据此授予管理员权限
+D [incorrect] 只要请求是通过 HTTPS 发送的，服务端就可以直接据此授予管理员权限
+Answer: 无论放在 Cookie 还是 localStorage，客户端的数据都不能直接当成权限依据。localStorage 里写着「管理员」，不代表服务端就应该给这个用户管理员权限。[原文§什么数据应该存在到cookie，什么数据存放到 Localstorage](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%BA%94%E8%AF%A5%E5%AD%98%E5%9C%A8%E5%88%B0cookie-%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%AD%98%E6%94%BE%E5%88%B0-localstorage)
+
+T2-205 [fill]
+Original: [填空题·有序] Cookie 的三个属性分别负责：禁止 JavaScript 通过 document.cookie 读取的是 ____，要求通过安全连接（通常是 HTTPS）发送的是 ____，控制跨站请求是否携带 Cookie 的是 ____。
+Stem: Cookie 的三个属性分别负责：禁止 JavaScript 通过 document.cookie 读取的是 ____，要求通过安全连接（通常是 HTTPS）发送的是 ____，控制跨站请求是否携带 Cookie 的是 ____。
+Blanks/order: 3/ordered
+Answer: 依次是 HttpOnly、Secure、SameSite。HttpOnly 不允许 JavaScript 通过 document.cookie 读取 Cookie；Secure 要求 Cookie 通过安全连接（通常是 HTTPS）发送；SameSite 控制跨站请求是否携带 Cookie，用来减少 CSRF 风险。[原文§Cookie 的 HttpOnly、Secure 和 SameSite 分别有什么作用？](https://xiaolincoding.com/interview/network.html#cookie-%E7%9A%84-httponly%E3%80%81secure-%E5%92%8C-samesite-%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+T2-206 [single]
+Original: 给 Cookie 设置 HttpOnly 之后，下列说法符合原文的是哪一项？
+Stem: 给 Cookie 设置 HttpOnly 之后，下列说法符合原文的是哪一项？
+A [incorrect] JavaScript 不能读取它，浏览器也不再发送它，因此恶意脚本无法借用户的身份发请求
+B [incorrect] JavaScript 仍可通过 document.cookie 读取它，但它只会通过安全连接发送出去
+C [incorrect] JavaScript 不能读取它，跨站请求也因此不会再携带它，CSRF 风险随之消除
+D [correct] JavaScript 不能通过 document.cookie 读取它，但浏览器仍会发送它，恶意脚本也可能借用户的身份发请求
+Answer: HttpOnly 不允许 JavaScript 通过 document.cookie 读取 Cookie，减少身份凭证被 XSS 脚本直接窃取的风险。但浏览器仍然会发送它，恶意脚本也可能借用户的身份发请求。[原文§Cookie 的 HttpOnly、Secure 和 SameSite 分别有什么作用？](https://xiaolincoding.com/interview/network.html#cookie-%E7%9A%84-httponly%E3%80%81secure-%E5%92%8C-samesite-%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+T2-207 [single]
+Original: 关于 Cookie 的 Secure 属性，下列说法符合原文的是哪一项？
+Stem: 关于 Cookie 的 Secure 属性，下列说法符合原文的是哪一项？
+A [incorrect] 它禁止 JavaScript 通过 document.cookie 读取 Cookie，同时要求使用 HTTPS
+B [incorrect] 它控制跨站请求是否携带 Cookie，用来减少 CSRF 风险，也不限制 HTTPS
+C [incorrect] 它要求 Cookie 只在同站请求中发送，同时不负责限制是否使用 HTTPS
+D [correct] 它要求 Cookie 通过安全连接（通常是 HTTPS）发送，不负责限制 JavaScript 读取
+Answer: Secure 要求 Cookie 通过安全连接发送，通常就是 HTTPS。它不负责限制 JavaScript 读取，限制 JavaScript 读取的是 HttpOnly。[原文§Cookie 的 HttpOnly、Secure 和 SameSite 分别有什么作用？](https://xiaolincoding.com/interview/network.html#cookie-%E7%9A%84-httponly%E3%80%81secure-%E5%92%8C-samesite-%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+T2-208 [multiple]
+Original: 关于 SameSite 的取值，下列哪些说法符合原文？
+Stem: 关于 SameSite 的取值，下列哪些说法符合原文？
+A [correct] Lax 允许部分场景携带 Cookie，比如从其他网站点击普通 GET 链接
+B [correct] None 允许跨站发送 Cookie，通常必须同时设置 Secure
+C [incorrect] Strict 比 Lax 宽松，允许所有跨站请求携带 Cookie
+D [incorrect] None 不允许跨站发送 Cookie，因此不需要和 Secure 配合
+Answer: SameSite 控制跨站请求是否携带 Cookie：Strict 比较严格；Lax 允许部分场景，比如从其他网站点击普通 GET 链接；None 允许跨站发送，通常必须同时设置 Secure。[原文§Cookie 的 HttpOnly、Secure 和 SameSite 分别有什么作用？](https://xiaolincoding.com/interview/network.html#cookie-%E7%9A%84-httponly%E3%80%81secure-%E5%92%8C-samesite-%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+T2-209 [single]
+Original: 两个同协议、同主域下的子域名，按原文属于下列哪种情况？
+Stem: 两个同协议、同主域下的子域名，按原文属于下列哪种情况？
+A [incorrect] 一定既属于同站又属于同源
+B [incorrect] 一定既不属于同站也不属于同源
+C [correct] 可能属于同站，但仍然不同源
+D [incorrect] 一定不属于同站，但属于同源
+Answer: 跨站和跨域不是完全相同的概念。两个同协议、同主域下的子域名可能属于同站，但仍然不同源。[原文§Cookie 的 HttpOnly、Secure 和 SameSite 分别有什么作用？](https://xiaolincoding.com/interview/network.html#cookie-%E7%9A%84-httponly%E3%80%81secure-%E5%92%8C-samesite-%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+T2-210 [single]
+Original: SameSite 属性能否替代所有 CSRF 防护？按原文应如何理解？
+Stem: SameSite 属性能否替代所有 CSRF 防护？按原文应如何理解？
+A [incorrect] 能，只要设置为 Strict，就不需要其他任何 CSRF 防护措施
+B [correct] 不能，服务端还要根据业务使用 CSRF Token、来源校验等措施
+C [incorrect] 能，只要同时设置了 HttpOnly 和 Secure，就已经足够防护
+D [incorrect] 不能，但只要把 SameSite 设置为 None 就可以补足防护
+Answer: SameSite 也不能替代所有 CSRF 防护，服务端还要根据业务使用 CSRF Token、来源校验等措施。[原文§Cookie 的 HttpOnly、Secure 和 SameSite 分别有什么作用？](https://xiaolincoding.com/interview/network.html#cookie-%E7%9A%84-httponly%E3%80%81secure-%E5%92%8C-samesite-%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+
+T2-211 [multiple]
+Original: 关于「服务端保存 Session、客户端保存 Session ID」的登录方式，下列哪些说法符合原文？
+Stem: 关于「服务端保存 Session、客户端保存 Session ID」的登录方式，下列哪些说法符合原文？
+A [correct] 客户端持有一个标识，服务端通过它查询会话数据
+B [correct] 集群通常需要共享 Session，或者做会话保持
+C [correct] 服务端删除会话后，可以立即让对应登录失效
+D [incorrect] 服务端验证签名后就能直接得到身份信息，不必为每个请求查询 Session
+Answer: 这里通常是把 JWT 和「服务端保存 Session、客户端保存 Session ID」的方式比较。Session 方式下，客户端持有一个标识，服务端通过它查询会话数据；集群通常需要共享 Session 或做会话保持；服务端删除会话后可以立即让对应登录失效。验证签名后直接得到身份信息、不必查询 Session 的是 JWT 方式。[原文§JWT 令牌和传统方式有什么区别？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%92%8C%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-212 [single]
+Original: JWT 方式的基本做法是什么？
+Stem: JWT 方式的基本做法是什么？
+A [correct] 把必要的身份声明放进令牌并对它签名，服务端验证签名和声明后可直接得到身份信息
+B [incorrect] 服务端保存会话数据，令牌里只放一个标识，服务端通过标识查询身份信息
+C [incorrect] 把身份声明加密后放进令牌，服务端无需验证签名就可以直接得到身份信息
+D [incorrect] 由客户端保存全部会话数据，服务端不验证令牌，直接信任其中的身份信息
+Answer: JWT 方式是把必要的身份声明放进令牌，并对它签名。服务端验证签名和声明后，可以直接得到身份信息，不必为每个请求查询 Session。[原文§JWT 令牌和传统方式有什么区别？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%92%8C%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-213 [single]
+Original: 按原文，JWT 相比 Session 方式的好处和代价分别是什么？
+Stem: 按原文，JWT 相比 Session 方式的好处和代价分别是什么？
+A [correct] 方便多个服务独立验证，但撤销和更新权限比较麻烦
+B [incorrect] 撤销和更新权限很方便，但多个服务无法独立验证
+C [incorrect] 既方便多个服务独立验证，也能立即撤销和更新权限
+D [incorrect] 既不需要对令牌做签名验证，也不需要处理撤销和权限更新
+Answer: JWT 的好处是方便多个服务独立验证，但代价是撤销和更新权限比较麻烦。[原文§JWT 令牌和传统方式有什么区别？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%92%8C%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-214 [single]
+Original: JWT 为了支持撤销而引入黑名单或令牌版本校验之后，服务端的状态情况是怎样的？
+Stem: JWT 为了支持撤销而引入黑名单或令牌版本校验之后，服务端的状态情况是怎样的？
+A [incorrect] 服务端依旧完全不需要维护任何状态
+B [incorrect] 服务端只需保存签名密钥，不需要保存其他状态
+C [correct] 服务端仍然需要维护状态
+D [incorrect] 服务端的状态全部由令牌自己携带，无需另外存储
+Answer: 如果引入黑名单或令牌版本校验，服务端仍然需要维护状态，JWT 就不再是完全不依赖服务端状态。[原文§JWT 令牌和传统方式有什么区别？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%92%8C%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-215 [single]
+Original: 关于常见的签名 JWT 是否加密，下列说法符合原文的是哪一项？
+Stem: 关于常见的签名 JWT 是否加密，下列说法符合原文的是哪一项？
+A [incorrect] 签名同时起到加密作用，没有密钥的人无法解码 Payload，所以可以放入密码等敏感信息
+B [incorrect] 签名只防篡改，但 Payload 经过加密，拿到令牌的人无法解码，所以可以放入密码等信息
+C [incorrect] Header 经过加密而 Payload 是明文，因此 Payload 里不要放入密码等敏感信息
+D [correct] 签名只是防篡改，不是加密，拿到令牌的人通常能解码 Header 和 Payload，所以不要放密码等敏感信息
+Answer: 常见的签名 JWT 只是防篡改，不是加密，任何拿到令牌的人通常都能解码 Header 和 Payload，里面不要放密码等敏感信息。[原文§JWT 令牌和传统方式有什么区别？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%92%8C%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-216 [single]
+Original: 使用了 JWT，是否就自动允许跨域访问？按原文应如何理解？
+Stem: 使用了 JWT，是否就自动允许跨域访问？按原文应如何理解？
+A [incorrect] 会，JWT 自带的签名会让浏览器自动放行跨域请求
+B [correct] 不会，跨域能否访问由浏览器的 CORS 等规则决定
+C [incorrect] 会，只要令牌的 Payload 里声明了接收方，浏览器就会允许跨域
+D [incorrect] 不会，跨域能否访问完全由令牌的有效期长短来决定
+Answer: 跨域能否访问由浏览器的 CORS 等规则决定，并不是用了 JWT 就自动允许跨域。[原文§JWT 令牌和传统方式有什么区别？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%92%8C%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-217 [fill]
+Original: [填空题·有序] 常见的签名 JWT 由三部分组成，依次是：____、____、____，中间用点号分隔。
+Stem: 常见的签名 JWT 由三部分组成，依次是：____、____、____，中间用点号分隔。
+Blanks/order: 3/ordered
+Answer: 依次是 Header、Payload、Signature，三部分中间用点号分隔。[原文§JWT 令牌都有哪些字段？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%97%E6%AE%B5)
+
+T2-218 [single]
+Original: JWT 的 Header 部分保存什么内容？
+Stem: JWT 的 Header 部分保存什么内容？
+A [incorrect] 保存身份声明，比如 iss、sub、aud、exp，具体字段看业务约定
+B [correct] 描述令牌类型和签名算法，比如 typ、alg，也可以用 kid 标识密钥
+C [incorrect] 对编码后的内容进行签名，用来防止令牌内容被篡改
+D [incorrect] 保存用户的密码，供服务端在每次请求时核对身份
+Answer: Header 描述令牌类型和签名算法，比如 typ、alg，也可以用 kid 标识密钥；身份声明在 Payload 里，防篡改的签名在 Signature 里。[原文§JWT 令牌都有哪些字段？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%97%E6%AE%B5)
+
+T2-219 [fill]
+Original: [填空题·有序] JWT 的 Payload 里常见的声明字段含义：iss 是 ____，aud 是 ____，exp 是 ____，jti 是 ____。
+Stem: JWT 的 Payload 里常见的声明字段含义：iss 是 ____，aud 是 ____，exp 是 ____，jti 是 ____。
+Blanks/order: 4/ordered
+Answer: iss 是签发者，aud 是接收方，exp 是过期时间，jti 是令牌标识。哪些字段需要携带，要看业务约定。[原文§JWT 令牌都有哪些字段？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%97%E6%AE%B5)
+
+T2-220 [fill]
+Original: [填空题·有序] JWT 的 Payload 里常见的声明字段含义：sub 是 ____（常用于用户标识），nbf 是 ____，iat 是 ____。
+Stem: JWT 的 Payload 里常见的声明字段含义：sub 是 ____（常用于用户标识），nbf 是 ____，iat 是 ____。
+Blanks/order: 3/ordered
+Answer: sub 是主题（常用于用户标识），nbf 是生效时间，iat 是签发时间。哪些字段需要携带，要看业务约定。[原文§JWT 令牌都有哪些字段？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%97%E6%AE%B5)
+
+T2-221 [single]
+Original: JWT 的 Signature 部分起什么作用？
+Stem: JWT 的 Signature 部分起什么作用？
+A [correct] 对编码后的 Header 和 Payload 进行签名或计算消息认证码，防止内容被篡改
+B [incorrect] 对 Header 和 Payload 进行加密，防止令牌内容被别人读取，只有持有密钥的一方能解开
+C [incorrect] 描述令牌类型和签名算法，比如 typ、alg，让验证方知道该用哪种算法验证令牌
+D [incorrect] 保存令牌的过期时间和签发者等声明，供服务端检查令牌是否仍然有效、是否可信
+Answer: Signature 是对编码后的 Header 和 Payload 进行签名或计算消息认证码，防止内容被篡改；它不负责加密。[原文§JWT 令牌都有哪些字段？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%97%E6%AE%B5)
+
+T2-222 [single]
+Original: JWT 的 Header 和 Payload 采用的是哪种处理方式？
+Stem: JWT 的 Header 和 Payload 采用的是哪种处理方式？
+A [incorrect] 采用共享密钥或私钥加密，只有验证方才能解开内容
+B [incorrect] 先采用 Base64URL 编码，再用签名算法加密，最后才拼接
+C [incorrect] 只有 Payload 被加密保护，Header 保持明文不做处理
+D [correct] 采用 Base64URL 编码，它不是加密，任何人都能解码
+Answer: 这里使用的是 Base64URL 编码，不是加密，所以不能把敏感信息放进去指望被保护。[原文§JWT 令牌都有哪些字段？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%97%E6%AE%B5)
+
+T2-223 [multiple]
+Original: 关于 JWT 的签名算法与密钥，下列哪些说法符合原文？
+Stem: 关于 JWT 的签名算法与密钥，下列哪些说法符合原文？
+A [correct] 使用 HMAC 时，签发和验证使用共享密钥
+B [correct] 使用 RSA、ECDSA 等签名算法时，用私钥签名、公钥验证
+C [incorrect] 使用 RSA、ECDSA 等签名算法时，用公钥签名、私钥验证
+D [incorrect] 使用 HMAC 时，签发用私钥、验证用公钥
+Answer: 如果使用 HMAC，签发和验证使用共享密钥；如果使用 RSA、ECDSA 等签名算法，则用私钥签名、公钥验证。[原文§JWT 令牌都有哪些字段？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%97%E6%AE%B5)
+
+T2-224 [multiple]
+Original: 服务端收到 JWT 后，下列哪些做法符合原文的要求？
+Stem: 服务端收到 JWT 后，下列哪些做法符合原文的要求？
+A [correct] 限制允许使用的签名算法
+B [correct] 验证签名
+C [correct] 按业务需要检查过期时间、签发者和接收方等声明
+D [incorrect] 只要能解码出 Payload，就可以直接信任其中的数据
+Answer: 服务端不能只解码 Payload 就信任里面的数据，还要限制允许的算法，验证签名，并检查过期时间、签发者和接收方等业务需要的声明。[原文§JWT 令牌都有哪些字段？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%97%E6%AE%B5)
+
+T2-225 [single]
+Original: 什么是集群部署？
+Stem: 什么是集群部署？
+A [incorrect] 把同一个服务只部署在一台服务器上，通过加大内存来提高处理能力和可用性
+B [incorrect] 把不同功能的服务分别部署在不同服务器上，由其中一台服务器统一调度请求
+C [correct] 把同一个服务部署到多台服务器，通过负载均衡把请求分发到不同实例，一台故障时其他实例仍可提供服务
+D [incorrect] 把同一个服务部署到多台服务器，但每个用户固定访问其中一台，该台故障时服务中断
+Answer: 集群部署就是把同一个服务部署到多台服务器，通过负载均衡把请求分发到不同实例。一台机器故障时，其他实例还可以继续提供服务。[原文§JWT 令牌为什么能解决集群部署，什么是集群部署？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A7%A3%E5%86%B3%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2)
+
+T2-226 [short]
+Original: 传统的基于会话和 Cookie 的身份验证方式，在集群部署中会遇到什么问题？
+Stem: 传统的基于会话和 Cookie 的身份验证方式，在集群部署中会遇到什么问题？
+Answer: 传统方式下会话信息通常存储在服务器的内存或数据库中，但集群部署中不同服务器之间没有共享的会话信息，会导致用户在不同服务器之间切换时需要重新登录，或者需要引入额外的共享机制（如 Redis），增加了复杂性和性能开销。[原文§JWT 令牌为什么能解决集群部署，什么是集群部署？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A7%A3%E5%86%B3%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2)
+
+T2-227 [short]
+Original: JWT 令牌为什么能解决集群部署中的身份验证和会话管理问题？
+Stem: JWT 令牌为什么能解决集群部署中的身份验证和会话管理问题？
+Answer: JWT 令牌在令牌中包含必要的身份验证和会话信息，服务器无需存储会话信息。用户登录认证后，服务器生成 JWT 返回给客户端，客户端后续请求携带该令牌，服务器通过验证和解析令牌就能获取用户身份和权限信息，无需访问共享的会话存储。[原文§JWT 令牌为什么能解决集群部署，什么是集群部署？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A7%A3%E5%86%B3%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2)
+
+T2-228 [multiple]
+Original: 按原文，集群中的多个实例要独立验证同一个 JWT，需要满足哪些条件？
+Stem: 按原文，集群中的多个实例要独立验证同一个 JWT，需要满足哪些条件？
+A [correct] 实例之间有一致的验证规则
+B [correct] 实例持有对应的共享密钥或验证公钥
+C [incorrect] 每次验证都必须访问共享的会话存储
+D [incorrect] 所有实例都必须部署在同一台服务器上
+Answer: 集群中的实例需要有一致的验证规则，并持有对应的共享密钥或验证公钥，才能独立验证同一个 JWT；验证时不需要访问共享的会话存储。[原文§JWT 令牌为什么能解决集群部署，什么是集群部署？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A7%A3%E5%86%B3%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2)
+
+T2-229 [fill]
+Original: [填空题·无序] 原文指出，JWT 并不会自动解决所有集群问题，下列三件事仍然需要设计：____、____、____。
+Stem: 原文指出，JWT 并不会自动解决所有集群问题，下列三件事仍然需要设计：____、____、____。
+Blanks/order: 3/unordered
+Answer: 权限更新、令牌撤销和密钥轮换仍然需要设计。[原文§JWT 令牌为什么能解决集群部署，什么是集群部署？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A7%A3%E5%86%B3%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2)
+
+T2-230 [single]
+Original: Session 配合 Redis 共享是否也能用于集群？按原文应如何理解？
+Stem: Session 配合 Redis 共享是否也能用于集群？按原文应如何理解？
+A [incorrect] 不可以，集群部署中只有 JWT 才能解决会话验证问题
+B [incorrect] 不可以，Redis 共享会让不同实例无法识别同一个用户
+C [correct] 可以，Session 配合 Redis 共享同样可以用于集群部署
+D [incorrect] 可以，但必须先改用 JWT 才能让多个实例共享会话
+Answer: JWT 解决的是会话验证的一部分问题，并不会自动解决所有集群问题；Session 配合 Redis 共享也同样可以用于集群。[原文§JWT 令牌为什么能解决集群部署，什么是集群部署？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A7%A3%E5%86%B3%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2)
+
+T2-231 [single]
+Original: 按原文，JWT 最常见的问题是什么？
+Stem: 按原文，JWT 最常见的问题是什么？
+A [incorrect] JWT 的签名无法防止令牌内容被篡改
+B [incorrect] JWT 必须配合 Session 才能完成身份验证
+C [incorrect] JWT 只能由签发它的那台服务器验证
+D [correct] 只靠签名和过期时间验证的 JWT，签发后很难立即撤销
+Answer: 最常见的问题是：只靠签名和过期时间验证的 JWT，签发后很难立即撤销。[原文§jwt的缺点是什么？](https://xiaolincoding.com/interview/network.html#jwt%E7%9A%84%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-232 [single]
+Original: 对于只靠签名和过期时间验证的 JWT，用户退出登录时前端删除了本地保存的令牌。这能让别人已经复制走的同一个令牌失效吗？
+Stem: 对于只靠签名和过期时间验证的 JWT，用户退出登录时前端删除了本地保存的令牌。这能让别人已经复制走的同一个令牌失效吗？
+A [correct] 不能，复制走的令牌仍可通过签名和过期时间验证
+B [incorrect] 能，前端删除令牌后服务端会同步让该令牌失效
+C [incorrect] 能，退出登录会让令牌的过期时间立即变为当前时刻
+D [incorrect] 不能，但刷新一次页面后复制走的令牌就会自动作废
+Answer: 前端删除令牌并不能让别人已经复制走的令牌失效，因为只靠签名和过期时间验证的 JWT 签发后很难立即撤销。[原文§jwt的缺点是什么？](https://xiaolincoding.com/interview/network.html#jwt%E7%9A%84%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-233 [fill]
+Original: [填空题·无序] 原文列出的 JWT 缺点，除了「签发后很难立即撤销」之外还有四个：____、____、____、____。
+Stem: 原文列出的 JWT 缺点，除了「签发后很难立即撤销」之外还有四个：____、____、____、____。
+Blanks/order: 4/unordered
+Answer: 权限更新不及时、体积较大、内容可能泄露、实现容易出错。[原文§jwt的缺点是什么？](https://xiaolincoding.com/interview/network.html#jwt%E7%9A%84%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-234 [single]
+Original: JWT 为什么会出现权限更新不及时的问题？
+Stem: JWT 为什么会出现权限更新不及时的问题？
+A [incorrect] 令牌里保存的权限可以由客户端随时自行修改，服务端无法感知客户端做出的这些修改
+B [correct] 令牌里保存的角色和权限可能已经过时，不额外查询的话，服务端要等旧令牌过期才能看到变化
+C [incorrect] 权限变化后服务端会立即重新签发所有旧令牌，但客户端来不及更新，需要等待一段时间
+D [incorrect] 令牌里不保存任何权限信息，每次请求都要去查询数据库，所以权限的更新显得比较慢
+Answer: 权限更新不及时：令牌里保存的角色和权限可能已经过时，如果不额外查询，服务端要等旧令牌过期才看到变化。[原文§jwt的缺点是什么？](https://xiaolincoding.com/interview/network.html#jwt%E7%9A%84%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-235 [multiple]
+Original: 下列哪些做法容易让 JWT 的实现出现安全问题？
+Stem: 下列哪些做法容易让 JWT 的实现出现安全问题？
+A [correct] 只解码 Payload，不验证签名
+B [correct] 不检查 exp 过期时间
+C [correct] 接受不允许的签名算法
+D [incorrect] 用 Base64URL 对 Header 和 Payload 编码
+Answer: 实现容易出错：只解码不验签、不检查 exp 或接受不允许的算法，都可能造成安全问题。用 Base64URL 编码本身是常见签名 JWT 的正常做法。[原文§jwt的缺点是什么？](https://xiaolincoding.com/interview/network.html#jwt%E7%9A%84%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-236 [single]
+Original: 为了缓解 JWT 难以撤销的问题，原文提到的常见做法是哪一项？
+Stem: 为了缓解 JWT 难以撤销的问题，原文提到的常见做法是哪一项？
+A [incorrect] 设置很长的访问令牌有效期，减少重新签发令牌的次数
+B [incorrect] 只让前端删除令牌，服务端不再做任何其他处理
+C [incorrect] 在令牌的 Payload 里直接保存用户密码，便于服务端随时核对
+D [correct] 设置较短的访问令牌有效期，并配合刷新令牌
+Answer: 常见做法是设置较短的访问令牌有效期，配合刷新令牌。[原文§jwt的缺点是什么？](https://xiaolincoding.com/interview/network.html#jwt%E7%9A%84%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-237 [short]
+Original: 如果需要立即撤销 JWT，原文提到的做法是什么？这样做要付出什么代价？
+Stem: 如果需要立即撤销 JWT，原文提到的做法是什么？这样做要付出什么代价？
+Answer: 可以用 Redis 保存 jti 黑名单，或者保存用户的令牌版本，验证时检查，从而立即撤销令牌；代价是要承担状态存储和查询的成本。[原文§jwt的缺点是什么？](https://xiaolincoding.com/interview/network.html#jwt%E7%9A%84%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88)
+
+T2-238 [single]
+Original: 服务端重新签发一个新的 JWT，会让已经泄露的旧 JWT 自动失效吗？
+Stem: 服务端重新签发一个新的 JWT，会让已经泄露的旧 JWT 自动失效吗？
+A [incorrect] 会，签发新令牌的同时，服务端会自动把同一个用户以前签发的旧令牌全部作废
+B [correct] 不会，旧令牌只要仍能通过签名、有效期和业务校验，攻击者就还可以继续使用
+C [incorrect] 会，新令牌的签名会覆盖旧令牌的签名，使旧令牌从此不能再通过任何验证
+D [incorrect] 不会，但旧令牌一旦被攻击者拿去使用过一次之后，就会立即自动失效不能再用
+Answer: 重新签发一个 JWT，不会自动让旧 JWT 失效。攻击者持有的旧令牌，如果仍能通过签名、有效期和业务校验，就还可以继续使用。[原文§JWT 令牌如果泄露了，怎么解决，JWT是怎么做的？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%A6%82%E6%9E%9C%E6%B3%84%E9%9C%B2%E4%BA%86-%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3-jwt%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84)
+
+T2-239 [multiple]
+Original: JWT 令牌泄露后，下列哪些处理方式符合原文？
+Stem: JWT 令牌泄露后，下列哪些处理方式符合原文？
+A [correct] 把令牌的 jti 或令牌摘要加入服务端黑名单，并让各个实例在验证时检查
+B [correct] 如果业务维护了令牌版本或会话状态，更新版本或撤销该会话，要求相关用户重新登录
+C [correct] 刷新令牌也泄露时，要一起撤销
+D [incorrect] 让用户重新登录一次获得新令牌，泄露的旧令牌就会自动作废
+Answer: 可以把令牌的 jti 或摘要加入服务端黑名单并让各实例验证时检查（黑名单可在原令牌过期后清理）；如果业务维护了令牌版本或会话状态，可以更新版本、撤销该会话，要求相关用户重新登录；刷新令牌也泄露的话要一起撤销。重新登录获得新令牌不会让旧令牌自动失效。[原文§JWT 令牌如果泄露了，怎么解决，JWT是怎么做的？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%A6%82%E6%9E%9C%E6%B3%84%E9%9C%B2%E4%BA%86-%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3-jwt%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84)
+
+T2-240 [single]
+Original: 访问令牌泄露后，如果只撤销访问令牌，而同样泄露的刷新令牌没有处理，会有什么后果？
+Stem: 访问令牌泄露后，如果只撤销访问令牌，而同样泄露的刷新令牌没有处理，会有什么后果？
+A [incorrect] 攻击者只能使用该刷新令牌一次，之后它会自动失效
+B [incorrect] 攻击者无法使用刷新令牌，因为刷新令牌只能由服务端调用
+C [correct] 攻击者仍然可以用刷新令牌继续换取新的访问令牌
+D [incorrect] 刷新令牌会随访问令牌一起失效，所以不会有任何后果
+Answer: 如果刷新令牌也泄露了，要一起撤销，否则攻击者仍然可以继续换取新的访问令牌。[原文§JWT 令牌如果泄露了，怎么解决，JWT是怎么做的？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%A6%82%E6%9E%9C%E6%B3%84%E9%9C%B2%E4%BA%86-%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3-jwt%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84)
+
+T2-241 [multiple]
+Original: 下列哪些做法属于原文所说的「限制损失窗口」？
+Stem: 下列哪些做法属于原文所说的「限制损失窗口」？
+A [correct] 访问令牌使用较短的有效期
+B [correct] 使用 HTTPS
+C [correct] 避免把令牌放进 URL、日志等容易泄露的位置
+D [incorrect] 把访问令牌的有效期设得尽量长，减少用户重新登录的次数
+Answer: 限制损失窗口的做法是：访问令牌使用较短的有效期，使用 HTTPS，并避免把令牌放进 URL、日志等容易泄露的位置。[原文§JWT 令牌如果泄露了，怎么解决，JWT是怎么做的？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%A6%82%E6%9E%9C%E6%B3%84%E9%9C%B2%E4%BA%86-%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3-jwt%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84)
+
+T2-242 [single]
+Original: 如果是签名密钥泄露，而不是某一个令牌泄露，原文认为应该怎么处理？
+Stem: 如果是签名密钥泄露，而不是某一个令牌泄露，原文认为应该怎么处理？
+A [correct] 轮换密钥，并在验证端停止接受受影响的旧密钥，不能只拉黑某一个 JWT
+B [incorrect] 把泄露的那一个 JWT 加入黑名单，其余令牌不受影响，不必更换密钥
+C [incorrect] 重新签发一个新的 JWT，旧令牌会随之失效，不必更换密钥
+D [incorrect] 只需缩短访问令牌的有效期，等旧令牌自然过期，不必更换密钥
+Answer: 签名密钥泄露时，攻击者可能自行伪造令牌，需要轮换密钥，并在验证端停止接受受影响的旧密钥，不能只拉黑某一个 JWT。[原文§JWT 令牌如果泄露了，怎么解决，JWT是怎么做的？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%A6%82%E6%9E%9C%E6%B3%84%E9%9C%B2%E4%BA%86-%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3-jwt%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84)
+
+T2-243 [short]
+Original: JWT 令牌泄露和签名密钥泄露有什么区别？分别怎么处理？
+Stem: JWT 令牌泄露和签名密钥泄露有什么区别？分别怎么处理？
+Answer: 令牌泄露是某个具体令牌被他人拿到，可以把其 jti 或摘要加入黑名单、更新令牌版本或撤销会话，刷新令牌泄露要一并撤销，并用短有效期、HTTPS 等限制损失窗口。签名密钥泄露时，攻击者可能自行伪造令牌，需要轮换密钥并让验证端停止接受受影响的旧密钥，不能只拉黑某一个 JWT。[原文§JWT 令牌如果泄露了，怎么解决，JWT是怎么做的？](https://xiaolincoding.com/interview/network.html#jwt-%E4%BB%A4%E7%89%8C%E5%A6%82%E6%9E%9C%E6%B3%84%E9%9C%B2%E4%BA%86-%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3-jwt%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84)
+
+T2-244 [fill]
+Original: [填空题·无序] 前端收到 JWT 后，原文列出的四种常见保存位置是：____、____、____、____。
+Stem: 前端收到 JWT 后，原文列出的四种常见保存位置是：____、____、____、____。
+Blanks/order: 4/unordered
+Answer: Cookie、localStorage、sessionStorage 和内存，要根据登录体验和安全需求选择。[原文§前端是如何存储JWT的？](https://xiaolincoding.com/interview/network.html#%E5%89%8D%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8jwt%E7%9A%84)
+
+T2-245 [single]
+Original: 把 JWT 保存在 Cookie 里，下列说法符合原文的是哪一项？
+Stem: 把 JWT 保存在 Cookie 里，下列说法符合原文的是哪一项？
+A [correct] 服务端可以通过 Set-Cookie 写入，配合 HttpOnly 可避免 JavaScript 直接读取，但自动携带的认证方式要防范 CSRF
+B [incorrect] 服务端通过 Set-Cookie 写入后，配合 HttpOnly 就既能防 XSS 又能防 CSRF，不需要其他措施
+C [incorrect] Cookie 不会自动随请求发送，需要 JavaScript 读取后主动放进 Authorization 请求头
+D [incorrect] 设置 HttpOnly 会让浏览器不再发送该 Cookie，因此需要 JavaScript 手动携带
+Answer: 服务端可以通过 Set-Cookie 写入令牌，配合 HttpOnly、Secure、SameSite。HttpOnly 可以避免 JavaScript 直接读取令牌，但自动携带 Cookie 的认证方式要防范 CSRF。[原文§前端是如何存储JWT的？](https://xiaolincoding.com/interview/network.html#%E5%89%8D%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8jwt%E7%9A%84)
+
+T2-246 [single]
+Original: 把 JWT 保存在 localStorage 里，下列说法符合原文的是哪一项？
+Stem: 把 JWT 保存在 localStorage 里，下列说法符合原文的是哪一项？
+A [incorrect] 关闭标签页后通常就会被清除，同时可被 JavaScript 读取，XSS 时可能被窃取，但可以保存任何凭证
+B [correct] 刷新页面、重新打开浏览器后通常还能保留，但可被 JavaScript 读取，XSS 时可能被窃取，不适合无条件保存长期有效的敏感凭证
+C [incorrect] 可以设置 HttpOnly 阻止 JavaScript 读取，因此适合无条件保存长期有效的敏感凭证
+D [incorrect] 刷新页面后通常会丢失，需要通过刷新令牌等机制恢复，因此不存在 XSS 风险
+Answer: localStorage 刷新页面、重新打开浏览器后通常还能保留，方便保持登录。但它可以被 JavaScript 读取，发生 XSS 时可能被窃取，因此不适合无条件地保存长期有效的敏感凭证。[原文§前端是如何存储JWT的？](https://xiaolincoding.com/interview/network.html#%E5%89%8D%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8jwt%E7%9A%84)
+
+T2-247 [single]
+Original: 把 JWT 保存在 sessionStorage 里，下列说法符合原文的是哪一项？
+Stem: 把 JWT 保存在 sessionStorage 里，下列说法符合原文的是哪一项？
+A [incorrect] 重新打开浏览器后通常还能保留，并且不能被 JavaScript 读取，所以没有 XSS 风险
+B [incorrect] 不按标签页隔离，所有标签页共享同一份数据，刷新页面后会被清空，同样有 XSS 风险
+C [incorrect] 通常按来源和标签页隔离，并且自带 HttpOnly 保护，不会受到 XSS 影响
+D [correct] 通常按来源和标签页隔离，刷新页面不会清空，标签页会话结束后通常被清除，同样有 XSS 风险
+Answer: sessionStorage 通常按来源和标签页隔离，刷新当前页面不会清空，标签页会话结束后通常被清除。它同样可以被 JavaScript 读取，所以也有 XSS 风险。[原文§前端是如何存储JWT的？](https://xiaolincoding.com/interview/network.html#%E5%89%8D%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8jwt%E7%9A%84)
+
+T2-248 [single]
+Original: 把短期访问令牌保存在 JavaScript 内存中，下列说法符合原文的是哪一项？
+Stem: 把短期访问令牌保存在 JavaScript 内存中，下列说法符合原文的是哪一项？
+A [incorrect] 会自动随请求发送，刷新页面后通常仍然保留，不需要额外恢复手段
+B [incorrect] 刷新页面后通常仍然保留，并且恶意脚本无法读取，所以没有 XSS 风险
+C [correct] 可以主动放入 Authorization 请求头，刷新页面后通常会丢失，需要通过刷新令牌等机制恢复
+D [incorrect] 由服务端通过 Set-Cookie 写入，刷新页面后通常会丢失，需要用户重新登录
+Answer: 可以把短期访问令牌保存在 JavaScript 内存中，主动放入 Authorization 请求头。刷新页面后通常会丢失，需要通过刷新令牌等机制恢复。[原文§前端是如何存储JWT的？](https://xiaolincoding.com/interview/network.html#%E5%89%8D%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8jwt%E7%9A%84)
+
+T2-249 [single]
+Original: 把令牌保存在 JavaScript 内存里，能让应用免受 XSS 的影响吗？
+Stem: 把令牌保存在 JavaScript 内存里，能让应用免受 XSS 的影响吗？
+A [incorrect] 能，内存里的令牌无法被脚本读取，所以应用不受 XSS 影响
+B [incorrect] 能，只要令牌是短期有效的，XSS 就无法造成任何损失
+C [correct] 不能，恶意脚本仍然可能调用业务接口
+D [incorrect] 不能，但只要再配合 HttpOnly 就可以完全避免 XSS
+Answer: 内存保存也不能让应用免受 XSS，恶意脚本仍然可能调用业务接口。[原文§前端是如何存储JWT的？](https://xiaolincoding.com/interview/network.html#%E5%89%8D%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8jwt%E7%9A%84)
+
+T2-250 [single]
+Original: 原文提到的一种常见设计，是怎样安排两种令牌的保存位置的？
+Stem: 原文提到的一种常见设计，是怎样安排两种令牌的保存位置的？
+A [incorrect] 短期访问令牌放 HttpOnly Cookie，刷新令牌放内存
+B [correct] 短期访问令牌放内存，刷新令牌放 HttpOnly Cookie
+C [incorrect] 短期访问令牌放 localStorage，刷新令牌放内存
+D [incorrect] 短期访问令牌和刷新令牌都放在 localStorage
+Answer: 一种常见设计是短期访问令牌放内存，刷新令牌放 HttpOnly Cookie。但刷新接口仍要考虑 CSRF，并不是换个存储位置就能解决所有安全问题。[原文§前端是如何存储JWT的？](https://xiaolincoding.com/interview/network.html#%E5%89%8D%E7%AB%AF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8jwt%E7%9A%84)
+
+T2-251 [single]
+Original: HTTP 协议和 RPC 是什么关系？
+Stem: HTTP 协议和 RPC 是什么关系？
+A [correct] HTTP 是协议，RPC 是调用方式，二者并不互斥，RPC 底层可以使用 HTTP
+B [incorrect] 二者互斥，一旦用了 RPC 就不能再使用 HTTP 作为它的底层协议
+C [incorrect] RPC 是比 HTTP 更底层的一种传输协议，专门用来取代 HTTP 协议
+D [incorrect] RPC 是 HTTP 协议的一个版本，只能用在浏览器和服务器之间通信
+Answer: HTTP 是协议，RPC 是远程调用的方式，它们并不互斥。RPC 底层完全可以使用 HTTP，比如 gRPC 通常基于 HTTP/2。[原文§为什么有HTTP协议了?还要用RPC?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89http%E5%8D%8F%E8%AE%AE%E4%BA%86-%E8%BF%98%E8%A6%81%E7%94%A8rpc)
+
+T2-252 [single]
+Original: RPC 希望达到什么效果？
+Stem: RPC 希望达到什么效果？
+A [incorrect] 让程序员手工拼装每一个请求，并自己解析每一个响应
+B [incorrect] 让浏览器像访问网页一样访问远端服务，不需要写代码
+C [incorrect] 让远端服务只能通过 HTTP/2 访问，并且不需要任何接口定义
+D [correct] 让程序员像调用本地方法一样调用远端服务
+Answer: RPC 希望让程序员像调用本地方法一样调用远端服务。[原文§为什么有HTTP协议了?还要用RPC?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89http%E5%8D%8F%E8%AE%AE%E4%BA%86-%E8%BF%98%E8%A6%81%E7%94%A8rpc)
+
+T2-253 [fill]
+Original: [填空题·无序] 原文列出，服务之间调用时除了把数据发过去，RPC 相关框架还要处理的四类事情是：____、____、____、____。
+Stem: 原文列出，服务之间调用时除了把数据发过去，RPC 相关框架还要处理的四类事情是：____、____、____、____。
+Blanks/order: 4/unordered
+Answer: 接口契约、序列化、服务治理、流式调用。[原文§为什么有HTTP协议了?还要用RPC?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89http%E5%8D%8F%E8%AE%AE%E4%BA%86-%E8%BF%98%E8%A6%81%E7%94%A8rpc)
+
+T2-254 [single]
+Original: RPC 里的「接口契约」指的是什么？
+Stem: RPC 里的「接口契约」指的是什么？
+A [incorrect] 用 Protobuf 等格式编码数据，具体开销要结合数据结构来判断
+B [incorrect] 结合相关框架处理服务发现、负载均衡、超时、重试和调用链追踪
+C [incorrect] 支持客户端流、服务端流和双向流，适合持续传输数据的场景
+D [correct] 用 IDL 定义接口和数据类型，生成客户端、服务端代码，减少手工拼请求和解析结果
+Answer: 接口契约：用 IDL 定义接口和数据类型，生成客户端、服务端代码，减少手工拼请求和解析结果。[原文§为什么有HTTP协议了?还要用RPC?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89http%E5%8D%8F%E8%AE%AE%E4%BA%86-%E8%BF%98%E8%A6%81%E7%94%A8rpc)
+
+T2-255 [multiple]
+Original: 下列哪些属于原文所说的服务治理要处理的事情？
+Stem: 下列哪些属于原文所说的服务治理要处理的事情？
+A [correct] 服务发现
+B [correct] 负载均衡
+C [correct] 超时、重试和调用链追踪
+D [incorrect] 客户端流、服务端流和双向流
+Answer: 服务治理：结合相关框架处理服务发现、负载均衡、超时、重试、调用链追踪等。客户端流、服务端流和双向流属于流式调用，是另一类能力。[原文§为什么有HTTP协议了?还要用RPC?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89http%E5%8D%8F%E8%AE%AE%E4%BA%86-%E8%BF%98%E8%A6%81%E7%94%A8rpc)
+
+T2-256 [single]
+Original: 能否笼统地说「RPC 一定比 HTTP 快」？按原文应如何理解？
+Stem: 能否笼统地说「RPC 一定比 HTTP 快」？按原文应如何理解？
+A [correct] 不能，性能要看底层协议、序列化方式、连接复用和实际业务
+B [incorrect] 能，因为 RPC 使用 Protobuf，序列化一定比 HTTP 的文本格式更快
+C [incorrect] 能，因为 RPC 不依赖 HTTP，省掉了所有协议层面的开销
+D [incorrect] 不能，因为 RPC 只是接口约束，与连接复用和序列化方式无关
+Answer: 选择 RPC 框架更多是为了接口约束和配套能力，不能笼统地说「RPC 一定比 HTTP 快」。性能要看底层协议、序列化方式、连接复用和实际业务。[原文§为什么有HTTP协议了?还要用RPC?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89http%E5%8D%8F%E8%AE%AE%E4%BA%86-%E8%BF%98%E8%A6%81%E7%94%A8rpc)
+
+T2-257 [short]
+Original: 为什么有了 HTTP 协议，服务之间调用还要用 RPC？
+Stem: 为什么有了 HTTP 协议，服务之间调用还要用 RPC？
+Answer: HTTP 是协议，RPC 是远程调用的方式，二者并不互斥：RPC 希望让程序员像调用本地方法一样调用远端服务，底层完全可以使用 HTTP（如 gRPC 通常基于 HTTP/2）。服务调用除了发送数据，还要处理接口契约（用 IDL 生成客户端和服务端代码）、序列化（如 Protobuf）、服务治理（服务发现、负载均衡、超时、重试、调用链追踪）和流式调用等，所以选择 RPC 更多是为了接口约束和配套能力，而不是它一定比 HTTP 快。[原文§为什么有HTTP协议了?还要用RPC?](https://xiaolincoding.com/interview/network.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89http%E5%8D%8F%E8%AE%AE%E4%BA%86-%E8%BF%98%E8%A6%81%E7%94%A8rpc)
+
+T2-258 [single]
+Original: HTTP 长连接和 WebSocket 分别主要解决什么问题？
+Stem: HTTP 长连接和 WebSocket 分别主要解决什么问题？
+A [incorrect] HTTP 长连接解决持续的双向消息通信，WebSocket 解决连接复用
+B [incorrect] 两者都主要解决连接复用，区别只在于使用的传输层协议不同
+C [correct] HTTP 长连接解决连接复用，WebSocket 解决持续的双向消息通信
+D [incorrect] 两者都主要解决持续的双向消息通信，区别只在于使用的端口号不同
+Answer: HTTP 长连接解决连接复用，WebSocket 解决持续的双向消息通信。[原文§HTTP长连接与WebSocket有什么区别？](https://xiaolincoding.com/interview/network.html#http%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8Ewebsocket%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-259 [single]
+Original: 关于 HTTP/1.1 长连接，下列说法符合原文的是哪一项？
+Stem: 关于 HTTP/1.1 长连接，下列说法符合原文的是哪一项？
+A [incorrect] 让服务端可以随时向客户端主动发送新的独立业务消息，通信不再围绕请求和响应来展开
+B [correct] 让多个请求和响应复用同一个 TCP 连接，但通信仍围绕请求和响应展开，服务端不能借此随时主动推送新消息
+C [incorrect] 每个请求和响应各自使用一个新的 TCP 连接，因此同一个连接不能被多个请求重复使用
+D [incorrect] 让客户端和服务端在同一个连接上传输 WebSocket 帧，双方都可以主动发送消息给对方
+Answer: HTTP/1.1 长连接让多个请求和响应复用同一个 TCP 连接，但通信仍然围绕请求和响应展开。长连接本身不会让服务端可以随时向客户端发送一条新的独立业务消息。[原文§HTTP长连接与WebSocket有什么区别？](https://xiaolincoding.com/interview/network.html#http%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8Ewebsocket%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-260 [fill]
+Original: [填空题·有序] WebSocket 常见的建连方式是：先通过 HTTP/1.1 发起 ____ 握手，服务端返回状态码 ____，之后双方在连接上传输 WebSocket ____。
+Stem: WebSocket 常见的建连方式是：先通过 HTTP/1.1 发起 ____ 握手，服务端返回状态码 ____，之后双方在连接上传输 WebSocket ____。
+Blanks/order: 3/ordered
+Answer: 依次是 Upgrade、101 Switching Protocols、帧：先通过 HTTP/1.1 发起 Upgrade 握手，服务端返回 101 Switching Protocols 后，双方在连接上传输 WebSocket 帧。[原文§HTTP长连接与WebSocket有什么区别？](https://xiaolincoding.com/interview/network.html#http%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8Ewebsocket%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-261 [single]
+Original: WebSocket 连接建立之后，通信有什么特点？
+Stem: WebSocket 连接建立之后，通信有什么特点？
+A [incorrect] 只有客户端可以主动发送消息，服务端只能对请求作出响应
+B [correct] 客户端和服务端都可以主动发送消息，适合聊天室、实时协作等场景
+C [incorrect] 只有服务端可以主动推送消息，客户端只能被动接收和展示
+D [incorrect] 双方的每条消息仍然必须是一个请求配一个响应，才能被传输
+Answer: 连接建立后，客户端和服务端都可以主动发送消息，适合聊天室、实时协作等场景。[原文§HTTP长连接与WebSocket有什么区别？](https://xiaolincoding.com/interview/network.html#http%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8Ewebsocket%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-262 [single]
+Original: 能否简单地说 HTTP「只能半双工」？按原文应如何理解？
+Stem: 能否简单地说 HTTP「只能半双工」？按原文应如何理解？
+A [incorrect] 可以，因为 HTTP 底层的 TCP 本来就是半双工的，同一时刻只能单向地传输数据
+B [incorrect] 可以，因为 HTTP 无法通过任何方式让服务端向客户端持续地发送数据
+C [correct] 不能简单这样说，TCP 本来就是全双工，HTTP 也能用流式响应持续发送数据，区别主要在应用层通信方式
+D [incorrect] 不可以，因为 HTTP 可以让服务端随时向客户端发起一个新的独立请求
+Answer: 这里不要简单地说 HTTP「只能半双工」。底层 TCP 本来就是全双工的，HTTP 也能通过流式响应等方式持续发送数据，区别主要在应用层的通信方式。[原文§HTTP长连接与WebSocket有什么区别？](https://xiaolincoding.com/interview/network.html#http%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8Ewebsocket%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-263 [multiple]
+Original: 关于 SSE，下列哪些说法符合原文？
+Stem: 关于 SSE，下列哪些说法符合原文？
+A [correct] 通过 HTTP 的 text/event-stream 响应发送事件
+B [correct] 浏览器原生 EventSource 支持重连
+C [correct] 适合只需要服务端持续推送的场景，比如消息通知或 AI 输出
+D [incorrect] 它通过 Upgrade 握手建立连接，客户端和服务端都可以主动发送消息
+Answer: 如果只是服务端持续推送，比如消息通知或 AI 输出，也可以使用 SSE：通过 HTTP 的 text/event-stream 响应发送事件，浏览器原生 EventSource 支持重连。需要双向交互、客户端和服务端都主动发送消息的是 WebSocket。[原文§HTTP长连接与WebSocket有什么区别？](https://xiaolincoding.com/interview/network.html#http%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8Ewebsocket%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-264 [single]
+Original: 需要频繁的双向交互时，原文认为通常更合适的是哪一种方式？
+Stem: 需要频繁的双向交互时，原文认为通常更合适的是哪一种方式？
+A [incorrect] SSE
+B [incorrect] HTTP/1.1 长连接
+C [incorrect] 普通的一问一答式请求和响应
+D [correct] WebSocket
+Answer: 需要频繁的双向交互时，WebSocket 通常更合适；如果只是服务端持续推送，也可以使用 SSE。[原文§HTTP长连接与WebSocket有什么区别？](https://xiaolincoding.com/interview/network.html#http%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8Ewebsocket%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-265 [single]
+Original: 按同源策略，两个地址在什么情况下属于不同源？
+Stem: 按同源策略，两个地址在什么情况下属于不同源？
+A [correct] 协议、主机或端口三者中任意一个不同
+B [incorrect] 协议、主机和端口三者都不同
+C [incorrect] 只有主机不同，协议或端口不同并不算不同源
+D [incorrect] 只有端口不同，协议或主机不同并不算不同源
+Answer: 浏览器用同源策略限制不同来源之间访问数据，协议、主机或端口任意一个不同，就属于不同源。比如 https://api.example.com 和 https://www.example.com 不同源。[原文§什么是跨域？CORS 是怎么解决跨域问题的？](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F-cors-%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84)
+
+T2-266 [single]
+Original: CORS 解决跨域问题的基本思路是什么？
+Stem: CORS 解决跨域问题的基本思路是什么？
+A [correct] 服务端通过响应头告诉浏览器，哪些来源可以读取这个响应
+B [incorrect] 浏览器通过请求头告诉服务端自己的来源，由服务端决定是否发送响应
+C [incorrect] 浏览器关闭同源策略，允许页面读取任意来源返回的响应
+D [incorrect] 服务端通过响应头要求浏览器不再向其他来源发送请求
+Answer: CORS 的思路是：服务端通过响应头告诉浏览器，哪些来源可以读取这个响应。[原文§什么是跨域？CORS 是怎么解决跨域问题的？](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F-cors-%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84)
+
+T2-267 [single]
+Original: 对于满足条件的简单请求，浏览器是怎样处理的？
+Stem: 对于满足条件的简单请求，浏览器是怎样处理的？
+A [incorrect] 先发 OPTIONS 预检请求，询问服务端是否允许，得到允许后再发送实际请求
+B [incorrect] 不发送任何请求，直接在浏览器端拒绝这次跨域访问，页面拿不到任何结果
+C [incorrect] 先发送实际请求，但不检查响应里的任何跨域相关字段，直接把响应交给页面读取
+D [correct] 直接发送请求，再检查响应中的 Access-Control-Allow-Origin 等字段
+Answer: 满足条件的简单请求可以直接发送，浏览器再检查响应中的 Access-Control-Allow-Origin 等字段。[原文§什么是跨域？CORS 是怎么解决跨域问题的？](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F-cors-%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84)
+
+T2-268 [single]
+Original: 使用 PUT、Authorization 或 application/json 等不满足简单请求条件的请求时，浏览器通常怎么做？
+Stem: 使用 PUT、Authorization 或 application/json 等不满足简单请求条件的请求时，浏览器通常怎么做？
+A [incorrect] 直接发送实际请求，再检查响应中的 Access-Control-Allow-Origin
+B [correct] 先发 OPTIONS 预检，询问服务端是否允许对应来源、方法和请求头，允许后再发实际请求
+C [incorrect] 先发 GET 请求获取服务端的跨域配置，再发送实际请求
+D [incorrect] 不发送任何请求，直接按同源策略拒绝这次跨域访问
+Answer: 使用 PUT、Authorization 或 application/json 等不满足简单请求条件的请求，浏览器通常先发 OPTIONS 预检，询问服务端是否允许对应来源、方法和请求头，允许后再发实际请求。[原文§什么是跨域？CORS 是怎么解决跨域问题的？](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F-cors-%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84)
+
+T2-269 [single]
+Original: 跨域请求需要携带 Cookie 等凭证时，服务端允许的来源应该怎么配置？
+Stem: 跨域请求需要携带 Cookie 等凭证时，服务端允许的来源应该怎么配置？
+A [incorrect] 必须写成通配符 *，并设置 Access-Control-Allow-Credentials
+B [incorrect] 写成通配符 * 或具体来源都可以，不需要设置 Access-Control-Allow-Credentials
+C [correct] 不能写成通配符 *，需要返回允许的具体来源，并设置 Access-Control-Allow-Credentials
+D [incorrect] 只需要客户端做配置，服务端不需要做任何响应头配置
+Answer: 要携带 Cookie 等凭证时，客户端和服务端都要做相应配置，服务端允许的来源不能写成通配符 *，需要返回允许的具体来源，并设置 Access-Control-Allow-Credentials。[原文§什么是跨域？CORS 是怎么解决跨域问题的？](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F-cors-%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84)
+
+T2-270 [single]
+Original: 浏览器页面出现了跨域错误，能说明请求一定没有发到服务器吗？
+Stem: 浏览器页面出现了跨域错误，能说明请求一定没有发到服务器吗？
+A [incorrect] 能，跨域错误说明浏览器根本没有发出过这个请求
+B [incorrect] 能，服务端收到请求后会因为来源不同而拒绝执行
+C [correct] 不能，简单请求可能已经执行了，只是浏览器不让页面读取响应
+D [incorrect] 不能，因为浏览器只是在请求发出之前给出一个警告
+Answer: 出现跨域错误，不代表请求一定没发到服务器。简单请求可能已经执行了，只是浏览器不让页面读取响应。[原文§什么是跨域？CORS 是怎么解决跨域问题的？](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F-cors-%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84)
+
+T2-271 [single]
+Original: CORS 能否当作通用的 CSRF 防护，或者代替服务端鉴权？
+Stem: CORS 能否当作通用的 CSRF 防护，或者代替服务端鉴权？
+A [incorrect] 能，CORS 会阻止所有来自其他来源的请求到达服务端
+B [incorrect] 能，只要配置了 Access-Control-Allow-Origin 就不需要服务端鉴权
+C [incorrect] 不能代替鉴权，但可以完全防住 CSRF 攻击
+D [correct] 不能，跨域错误只是浏览器不让页面读取响应，请求本身可能已经执行
+Answer: 简单请求可能已经执行了，只是浏览器不让页面读取响应，所以 CORS 不能当作通用的 CSRF 防护，也不能代替服务端鉴权。[原文§什么是跨域？CORS 是怎么解决跨域问题的？](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F-cors-%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84)
+
+T2-272 [short]
+Original: 什么是跨域？CORS 是怎么解决跨域问题的？
+Stem: 什么是跨域？CORS 是怎么解决跨域问题的？
+Answer: 浏览器用同源策略限制不同来源之间访问数据，协议、主机或端口任意一个不同就属于不同源。CORS 的思路是服务端通过响应头告诉浏览器哪些来源可以读取响应：简单请求直接发送，浏览器再检查 Access-Control-Allow-Origin 等字段；使用 PUT、Authorization 或 application/json 等的请求，浏览器通常先发 OPTIONS 预检，允许后再发实际请求；要携带 Cookie 等凭证时，服务端允许的来源不能写成 *，需要返回具体来源并设置 Access-Control-Allow-Credentials。[原文§什么是跨域？CORS 是怎么解决跨域问题的？](https://xiaolincoding.com/interview/network.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F-cors-%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84)
+
+T2-273 [single]
+Original: 正向代理和反向代理的主要区别是什么？
+Stem: 正向代理和反向代理的主要区别是什么？
+A [incorrect] 正向代理主要替服务器接收客户端请求，反向代理主要替客户端访问服务器
+B [correct] 正向代理主要替客户端访问服务器，反向代理主要替服务器接收客户端请求
+C [incorrect] 两者都主要替客户端访问服务器，区别只在于代理服务器所在的机房不同
+D [incorrect] 两者都主要替服务器接收客户端请求，区别只在于是否会缓存响应内容
+Answer: 正向代理主要替客户端访问服务器，反向代理主要替服务器接收客户端请求。[原文§正向代理和反向代理有什么区别？](https://xiaolincoding.com/interview/network.html#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-274 [single]
+Original: 公司员工统一通过一台代理服务器访问外部网站，这属于哪种代理？
+Stem: 公司员工统一通过一台代理服务器访问外部网站，这属于哪种代理？
+A [correct] 正向代理，客户端把请求交给代理，再由代理访问目标服务器
+B [incorrect] 反向代理，代理把请求分配给后端的多个服务实例来处理
+C [incorrect] 反向代理，员工访问的是网站的统一入口，不知道后面是哪台机器
+D [incorrect] 正向代理，代理替目标服务器接收来自员工的请求并处理
+Answer: 公司员工通过统一代理访问外部网站，这是正向代理：客户端把请求交给代理，再由代理访问目标服务器。[原文§正向代理和反向代理有什么区别？](https://xiaolincoding.com/interview/network.html#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-275 [single]
+Original: 在网站前面放一层 Nginx，把请求分配给后端多个服务实例，这属于哪种代理？
+Stem: 在网站前面放一层 Nginx，把请求分配给后端多个服务实例，这属于哪种代理？
+A [incorrect] 正向代理，客户端把请求交给代理，再由代理去访问目标服务器
+B [correct] 反向代理，用户访问的是网站的统一入口，不需要知道后面具体是哪台机器处理
+C [incorrect] 正向代理，用户需要知道后面具体是哪台机器处理自己的请求
+D [incorrect] 反向代理，用户需要自己配置代理，并指定由哪台机器处理请求
+Answer: 网站前面放一层 Nginx，把请求分配给后端多个服务实例，这是反向代理。用户访问的是网站的统一入口，不需要知道后面具体是哪台机器处理。[原文§正向代理和反向代理有什么区别？](https://xiaolincoding.com/interview/network.html#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-276 [multiple]
+Original: 下列哪些属于原文所说反向代理通常还能做的事情？
+Stem: 下列哪些属于原文所说反向代理通常还能做的事情？
+A [correct] TLS 终止
+B [correct] 负载均衡
+C [correct] 缓存和限流
+D [incorrect] 替员工通过统一出口访问外部网站
+Answer: 反向代理通常还能做 TLS 终止、负载均衡、缓存和限流。替员工通过统一出口访问外部网站是正向代理的例子。[原文§正向代理和反向代理有什么区别？](https://xiaolincoding.com/interview/network.html#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-277 [single]
+Original: 排查反向代理相关问题时，原文建议怎么看待代理和后端之间的连接？
+Stem: 排查反向代理相关问题时，原文建议怎么看待代理和后端之间的连接？
+A [correct] 把「客户端到代理」和「代理到后端」当作两段连接看，前一段正常不代表后一段正常
+B [incorrect] 只需检查「客户端到代理」这一段，因为它正常就说明后端也一定是正常的
+C [incorrect] 把两段连接合并成一段来看，只需要检查代理服务器是否已经收到了请求
+D [incorrect] 只需检查「代理到后端」这一段，因为「客户端到代理」不会出现任何问题
+Answer: 实际排查时，要把「客户端到代理」和「代理到后端」当作两段连接来看，前一段正常不代表后一段也正常。[原文§正向代理和反向代理有什么区别？](https://xiaolincoding.com/interview/network.html#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+
+T2-278 [single]
+Original: CDN 加速访问的核心是什么？
+Stem: CDN 加速访问的核心是什么？
+A [incorrect] 把所有请求都转发到源站，由源站统一压缩后再返回给用户
+B [incorrect] 把源站整体搬到离用户最近的机房，并且不再使用任何缓存
+C [correct] 把内容缓存到靠近用户的边缘节点，减少到源站的传输距离和重复请求
+D [incorrect] 把多个用户的请求合并后发给源站，让源站一次返回给所有用户
+Answer: CDN 的核心是把内容缓存到靠近用户的边缘节点，减少到源站的传输距离和重复请求。比如一张图片被各地用户反复访问，没有 CDN 时都要到源站下载，有了 CDN 就可以在多个地区的边缘节点复用缓存。[原文§CDN 是怎么加速访问的？](https://xiaolincoding.com/interview/network.html#cdn-%E6%98%AF%E6%80%8E%E4%B9%88%E5%8A%A0%E9%80%9F%E8%AE%BF%E9%97%AE%E7%9A%84)
+
+T2-279 [single]
+Original: 按原文所述的典型过程，用户的请求是怎样到达合适的 CDN 节点的？
+Stem: 按原文所述的典型过程，用户的请求是怎样到达合适的 CDN 节点的？
+A [incorrect] 由用户手动选择离自己最近的一个 CDN 节点来访问
+B [incorrect] 先到达源站，再由源站把请求转发给合适的 CDN 节点
+C [incorrect] 由所有 CDN 节点同时处理，最先响应的节点返回资源
+D [correct] 由 DNS 或其他调度机制把请求引导到合适的 CDN 节点
+Answer: 典型过程中，用户访问网站，DNS 或其他调度机制把请求引导到合适的 CDN 节点。[原文§CDN 是怎么加速访问的？](https://xiaolincoding.com/interview/network.html#cdn-%E6%98%AF%E6%80%8E%E4%B9%88%E5%8A%A0%E9%80%9F%E8%AE%BF%E9%97%AE%E7%9A%84)
+
+T2-280 [single]
+Original: CDN 节点命中有效缓存时会怎么做？
+Stem: CDN 节点命中有效缓存时会怎么做？
+A [incorrect] 先向源站回源确认一次，确认之后再把资源返回给用户
+B [incorrect] 丢弃已有的缓存并向源站重新请求，再把新资源返回给用户
+C [incorrect] 拒绝这次请求并要求用户改为直接访问源站获取资源
+D [correct] 直接把缓存的资源返回给用户，不必再请求源站
+Answer: 节点命中有效缓存，就直接返回资源。[原文§CDN 是怎么加速访问的？](https://xiaolincoding.com/interview/network.html#cdn-%E6%98%AF%E6%80%8E%E4%B9%88%E5%8A%A0%E9%80%9F%E8%AE%BF%E9%97%AE%E7%9A%84)
+
+T2-281 [fill]
+Original: [填空题·有序] CDN 节点没有命中缓存，或者缓存需要更新时，会向源站请求内容，这个过程叫 ____。
+Stem: CDN 节点没有命中缓存，或者缓存需要更新时，会向源站请求内容，这个过程叫 ____。
+Blanks/order: 1/ordered
+Answer: 回源：没有命中或缓存需要更新时向源站请求内容，然后按缓存规则保存和返回。[原文§CDN 是怎么加速访问的？](https://xiaolincoding.com/interview/network.html#cdn-%E6%98%AF%E6%80%8E%E4%B9%88%E5%8A%A0%E9%80%9F%E8%AE%BF%E9%97%AE%E7%9A%84)
+
+T2-282 [multiple]
+Original: 按原文，判断 CDN 是否有效要看哪些因素？
+Stem: 按原文，判断 CDN 是否有效要看哪些因素？
+A [correct] 缓存命中率
+B [correct] 回源耗时
+C [correct] 资源类型
+D [incorrect] 是否把用户登录信息、个人订单等内容也放进共享缓存
+Answer: CDN 是否有效还要看缓存命中率、回源耗时和资源类型。用户登录信息、个人订单等内容不能随便放进共享缓存，因此不是提升有效性的做法。[原文§CDN 是怎么加速访问的？](https://xiaolincoding.com/interview/network.html#cdn-%E6%98%AF%E6%80%8E%E4%B9%88%E5%8A%A0%E9%80%9F%E8%AE%BF%E9%97%AE%E7%9A%84)
+
+T2-283 [single]
+Original: 用户登录信息、个人订单等内容放进 CDN 这样的共享缓存，按原文应怎么处理？
+Stem: 用户登录信息、个人订单等内容放进 CDN 这样的共享缓存，按原文应怎么处理？
+A [correct] 不能随便放进共享缓存，缓存 key 和规则配错了，可能把一个用户的数据返回给另一个用户
+B [incorrect] 应该优先放进共享缓存，因为这类内容访问频率最高，缓存命中率也会是最高的
+C [incorrect] 可以放进共享缓存，因为就算缓存 key 配错了，也只会影响缓存的命中率而已
+D [incorrect] 可以放进共享缓存，只要先把内容压缩后再保存，就不会被其他用户读取到
+Answer: 用户登录信息、个人订单等内容不能随便放进共享缓存，缓存 key 和缓存规则配错了，可能把一个用户的数据返回给另一个用户。[原文§CDN 是怎么加速访问的？](https://xiaolincoding.com/interview/network.html#cdn-%E6%98%AF%E6%80%8E%E4%B9%88%E5%8A%A0%E9%80%9F%E8%AE%BF%E9%97%AE%E7%9A%84)
+
+T2-284 [fill]
+Original: [填空题·无序] 原文列出的 Nginx 五种常见负载均衡算法是：____、____、____、____、____。
+Stem: 原文列出的 Nginx 五种常见负载均衡算法是：____、____、____、____、____。
+Blanks/order: 5/unordered
+Answer: 轮询、最少连接（least_conn）、IP 哈希（ip_hash）、通用哈希（hash）、最短时间（least_time）。[原文§Nginx有哪些负载均衡算法？](https://xiaolincoding.com/interview/network.html#nginx%E6%9C%89%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95)
+
+T2-285 [single]
+Original: Nginx 的轮询算法有什么特点？
+Stem: Nginx 的轮询算法有什么特点？
+A [incorrect] 需要手动指定，会优先选择活跃连接最少的后端服务器
+B [correct] 是默认方式，依次把请求分配给后端服务器，也可以通过 weight 配置权重
+C [incorrect] 根据客户端 IP 选择后端服务器，可以做一定程度的会话保持
+D [incorrect] 结合响应时间和连接情况选择后端服务器，需要使用 NGINX Plus
+Answer: 轮询是默认方式，依次把请求分配给后端服务器，也可以通过 weight 配置权重，让处理能力强的节点承担更多请求。[原文§Nginx有哪些负载均衡算法？](https://xiaolincoding.com/interview/network.html#nginx%E6%9C%89%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95)
+
+T2-286 [single]
+Original: 最少连接 least_conn 算法适合什么场景，有什么需要注意？
+Stem: 最少连接 least_conn 算法适合什么场景，有什么需要注意？
+A [incorrect] 适合需要会话保持的场景，但多个用户经过同一个 NAT 出口时会集中到同一节点
+B [incorrect] 适合静态资源缓存的场景，但后端节点变化时映射会发生较多调整
+C [correct] 适合不同请求耗时差异较大的场景，但连接少不一定代表 CPU 负载低
+D [incorrect] 适合处理能力不同的节点，但必须通过 weight 才能生效
+Answer: 最少连接 least_conn 优先选择活跃连接较少的后端，适合不同请求耗时差异较大的场景。不过连接少不一定代表 CPU 负载低。[原文§Nginx有哪些负载均衡算法？](https://xiaolincoding.com/interview/network.html#nginx%E6%9C%89%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95)
+
+T2-287 [single]
+Original: IP 哈希 ip_hash 算法有什么特点和问题？
+Stem: IP 哈希 ip_hash 算法有什么特点和问题？
+A [incorrect] 根据请求 URI 选择后端，适合静态资源缓存，但节点变化时映射会发生较多调整
+B [incorrect] 优先选择活跃连接较少的后端，但连接少不一定代表 CPU 负载低
+C [correct] 根据客户端 IP 选择后端，可以做一定程度的会话保持，但多个用户经过同一个 NAT 出口时可能集中到同一节点
+D [incorrect] 根据客户端 IP 选择后端，可以完全替代 Session 共享，节点故障也不影响会话
+Answer: IP 哈希 ip_hash 根据客户端 IP 选择后端，可以做一定程度的会话保持。但多个用户经过同一个 NAT 出口时，可能集中到同一个节点。[原文§Nginx有哪些负载均衡算法？](https://xiaolincoding.com/interview/network.html#nginx%E6%9C%89%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95)
+
+T2-288 [single]
+Original: Nginx 的通用哈希 hash 算法是如何选择后端的？加上 consistent 有什么好处？
+Stem: Nginx 的通用哈希 hash 算法是如何选择后端的？加上 consistent 有什么好处？
+A [correct] 根据指定的 key（比如请求 URI）选择后端，加上 consistent 可使用一致性哈希，减少节点变化时的映射调整
+B [incorrect] 根据客户端 IP 选择后端，加上 consistent 可以让多个用户共享同一个 NAT 出口
+C [incorrect] 根据响应时间选择后端，加上 consistent 之后就不再需要使用 NGINX Plus
+D [incorrect] 依次轮流选择后端，加上 consistent 之后可以按 weight 分配请求
+Answer: 通用哈希 hash 根据指定的 key 选择后端，比如使用请求 URI。加上 consistent 可以使用一致性哈希，减少节点变化时的映射调整。[原文§Nginx有哪些负载均衡算法？](https://xiaolincoding.com/interview/network.html#nginx%E6%9C%89%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95)
+
+T2-289 [single]
+Original: 关于最短时间 least_time 算法，下列说法符合原文的是哪一项？
+Stem: 关于最短时间 least_time 算法，下列说法符合原文的是哪一项？
+A [incorrect] 结合响应时间和连接情况选择后端，所有开源 Nginx 都默认具备这项能力
+B [incorrect] 只根据客户端 IP 选择后端，是 NGINX Plus 的能力，开源 Nginx 不具备
+C [incorrect] 只根据活跃连接数选择后端，所有开源 Nginx 都默认具备这项能力
+D [correct] 结合响应时间和连接情况选择后端，是 NGINX Plus 的能力，不能当作所有开源 Nginx 都默认具备
+Answer: 最短时间 least_time 结合响应时间和连接情况选择后端，这是 NGINX Plus 的能力，不能当作所有开源 Nginx 都默认具备的功能。[原文§Nginx有哪些负载均衡算法？](https://xiaolincoding.com/interview/network.html#nginx%E6%9C%89%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95)
+
+T2-290 [single]
+Original: 静态资源缓存的场景，原文建议考虑哪种负载均衡方式？
+Stem: 静态资源缓存的场景，原文建议考虑哪种负载均衡方式？
+A [incorrect] 按客户端 IP 做哈希
+B [correct] 按请求 URI 做哈希
+C [incorrect] 使用最少连接 least_conn
+D [incorrect] 使用最短时间 least_time
+Answer: 面试里最好把算法和场景对应起来：静态资源缓存可以考虑按 URI 做哈希，耗时不均的请求可以考虑 least_conn。[原文§Nginx有哪些负载均衡算法？](https://xiaolincoding.com/interview/network.html#nginx%E6%9C%89%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95)
+
+T2-291 [single]
+Original: 会话保持（比如 ip_hash）能否替代 Session 共享？按原文应如何理解？
+Stem: 会话保持（比如 ip_hash）能否替代 Session 共享？按原文应如何理解？
+A [correct] 不能，节点故障时仍然要考虑会话能不能在其他节点继续使用
+B [incorrect] 能，会话保持后同一用户总落在同一节点，不需要考虑节点故障
+C [incorrect] 能，只要用了 ip_hash，就不再需要任何会话共享机制
+D [incorrect] 不能，因为会话保持会让所有用户的请求都落到同一个节点上
+Answer: 会话保持不是 Session 共享的替代品，节点故障时仍然要考虑会话能不能在其他节点继续使用。[原文§Nginx有哪些负载均衡算法？](https://xiaolincoding.com/interview/network.html#nginx%E6%9C%89%E5%93%AA%E4%BA%9B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95)
+
+T2-292 [single]
+Original: Nginx 位于七层网络结构中的哪一层？按原文应如何回答？
+Stem: Nginx 位于七层网络结构中的哪一层？按原文应如何回答？
+A [incorrect] 固定位于应用层，因为 Nginx 只能解析 HTTP 请求
+B [correct] 要看使用哪个模块，不同模块对应不同层面的代理能力
+C [incorrect] 固定位于传输层，因为 Nginx 只能按连接转发数据
+D [incorrect] 固定位于网络层，因为 Nginx 只能按 IP 地址转发数据
+Answer: 要看使用哪个模块。同一个 Nginx 可以按配置提供不同层面的代理能力，所以不能直接说「Nginx 只能工作在应用层」。[原文§Nginx位于七层网络结构中的哪一层？](https://xiaolincoding.com/interview/network.html#nginx%E4%BD%8D%E4%BA%8E%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E5%93%AA%E4%B8%80%E5%B1%82)
+
+T2-293 [single]
+Original: 使用 HTTP 模块做反向代理时，Nginx 会解析请求中的哪些信息？
+Stem: 使用 HTTP 模块做反向代理时，Nginx 会解析请求中的哪些信息？
+A [incorrect] 只按连接或数据流转发，不解析请求内容
+B [incorrect] 只解析客户端的 IP，不看域名和路径
+C [correct] 域名、路径、头部等信息
+D [incorrect] 只解析 TCP 的端口号，不看头部信息
+Answer: 使用 HTTP 模块做反向代理时，会解析请求的域名、路径、头部等信息，通常说它是七层负载均衡。[原文§Nginx位于七层网络结构中的哪一层？](https://xiaolincoding.com/interview/network.html#nginx%E4%BD%8D%E4%BA%8E%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E5%93%AA%E4%B8%80%E5%B1%82)
+
+T2-294 [fill]
+Original: [填空题·有序] 使用 HTTP 模块做反向代理时，通常说 Nginx 是 ____ 层负载均衡；使用 stream 模块代理 TCP、UDP 时，通常说它是 ____ 层负载均衡。
+Stem: 使用 HTTP 模块做反向代理时，通常说 Nginx 是 ____ 层负载均衡；使用 stream 模块代理 TCP、UDP 时，通常说它是 ____ 层负载均衡。
+Blanks/order: 2/ordered
+Answer: 依次是七、四：HTTP 模块解析域名、路径、头部，通常说是七层负载均衡；stream 模块主要按连接或数据流转发，通常说是四层负载均衡。[原文§Nginx位于七层网络结构中的哪一层？](https://xiaolincoding.com/interview/network.html#nginx%E4%BD%8D%E4%BA%8E%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E5%93%AA%E4%B8%80%E5%B1%82)
+
+T2-295 [single]
+Original: 能否直接说「Nginx 只能工作在应用层」？按原文应如何理解？
+Stem: 能否直接说「Nginx 只能工作在应用层」？按原文应如何理解？
+A [incorrect] 能，因为 Nginx 的所有模块都只解析 HTTP 请求
+B [incorrect] 能，因为 stream 模块也会解析请求的域名和路径
+C [incorrect] 不能，因为 Nginx 只工作在传输层
+D [correct] 不能，同一个 Nginx 可以按配置提供不同层面的代理能力
+Answer: 所以不能直接说「Nginx 只能工作在应用层」。同一个 Nginx 可以按配置提供不同层面的代理能力。[原文§Nginx位于七层网络结构中的哪一层？](https://xiaolincoding.com/interview/network.html#nginx%E4%BD%8D%E4%BA%8E%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E5%93%AA%E4%B8%80%E5%B1%82)

@@ -1,0 +1,1370 @@
+{
+  "command": "npx tsx docs/git-review-2026-10-15/fixes/verify.ts",
+  "completedAt": "2026-10-15T15:42:47.430Z",
+  "hashes": {
+    "interview-practice/git.md": "70c6414fc0d0b95164338f533df1cd35ceef128ae56bda290241b7c011f4cc98",
+    "interview-practice/answers-xiaolin/git.md": "eac503112dea8c96a03bcb50b74ace1eea906183f3cd42a4f16d6bc27ce8e6f0",
+    "content/typed/git.json": "63c8d8a466f53db715afcd7c0678d95a30e69b03dd0a4af14fe820d0a4426496"
+  },
+  "originalEvidenceHashes": {
+    "docs\\git-review-2026-10-15\\checks.json": "d556ce2934463b029788cf67fe8a243a4b7c8e570fe3863d62a6033aabb38717",
+    "docs\\git-review-2026-10-15\\questions.json": "ef25749a8d09c35db1ecff81d5094932011c348f678ba517c1b0a891329fd41f",
+    "docs\\git-review-2026-10-15\\source.html": "bd5c08b2ee885dc127e6dc6c2a35237e9e109d951aa81b63e472a2fc4bb589fe",
+    "docs\\git-review-2026-10-15\\audit.ts": "2a37cf56a03da3b3d7bd860d5a83f838121c5cbd356696712af67b0acec786f2"
+  },
+  "questionCount": 252,
+  "counts": {
+    "single": 170,
+    "multiple": 30,
+    "fill": 28,
+    "short": 24,
+    "code": 0
+  },
+  "chapters": [
+    {
+      "id": "X1",
+      "title": "基础与工作区域",
+      "status": "draft",
+      "count": 55
+    },
+    {
+      "id": "X2",
+      "title": "撤销与回退",
+      "status": "draft",
+      "count": 61
+    },
+    {
+      "id": "X3",
+      "title": "分支与合并",
+      "status": "draft",
+      "count": 63
+    },
+    {
+      "id": "X4",
+      "title": "协作与排查",
+      "status": "draft",
+      "count": 73
+    }
+  ],
+  "modifiedQuestionCount": 73,
+  "modifiedQuestionIds": [
+    "X1-15",
+    "X1-19",
+    "X1-20",
+    "X1-21",
+    "X1-22",
+    "X1-23",
+    "X1-25",
+    "X1-26",
+    "X1-28",
+    "X1-29",
+    "X1-31",
+    "X1-32",
+    "X1-33",
+    "X1-34",
+    "X1-35",
+    "X1-36",
+    "X1-45",
+    "X1-50",
+    "X2-4",
+    "X2-5",
+    "X2-6",
+    "X2-7",
+    "X2-8",
+    "X2-9",
+    "X2-11",
+    "X2-18",
+    "X2-22",
+    "X2-27",
+    "X2-28",
+    "X2-30",
+    "X2-34",
+    "X2-35",
+    "X2-38",
+    "X2-39",
+    "X2-41",
+    "X2-45",
+    "X2-46",
+    "X2-49",
+    "X2-50",
+    "X2-52",
+    "X2-56",
+    "X2-59",
+    "X2-61",
+    "X3-1",
+    "X3-2",
+    "X3-3",
+    "X3-4",
+    "X3-5",
+    "X3-6",
+    "X3-7",
+    "X3-8",
+    "X3-9",
+    "X3-18",
+    "X3-19",
+    "X3-20",
+    "X3-21",
+    "X3-22",
+    "X3-23",
+    "X3-28",
+    "X3-29",
+    "X3-30",
+    "X3-31",
+    "X3-32",
+    "X3-38",
+    "X3-39",
+    "X3-41",
+    "X3-48",
+    "X3-49",
+    "X3-59",
+    "X3-60",
+    "X4-19",
+    "X4-25",
+    "X4-41"
+  ],
+  "changeClasses": {
+    "选项重排并同步解析（人工复核语义）": 3,
+    "含内容改写": 59,
+    "仅选项顺序变化": 11
+  },
+  "exactChangeSplit": {
+    "optionOrderOnlyCount": 11,
+    "optionOrderOnlyIds": [
+      "X1-50",
+      "X2-18",
+      "X2-28",
+      "X2-38",
+      "X2-49",
+      "X3-18",
+      "X3-38",
+      "X3-39",
+      "X3-48",
+      "X3-49",
+      "X3-59"
+    ],
+    "technicalOrExplanationChangedCount": 62,
+    "technicalOrExplanationChangedIds": [
+      "X1-15",
+      "X1-19",
+      "X1-20",
+      "X1-21",
+      "X1-22",
+      "X1-23",
+      "X1-25",
+      "X1-26",
+      "X1-28",
+      "X1-29",
+      "X1-31",
+      "X1-32",
+      "X1-33",
+      "X1-34",
+      "X1-35",
+      "X1-36",
+      "X1-45",
+      "X2-4",
+      "X2-5",
+      "X2-6",
+      "X2-7",
+      "X2-8",
+      "X2-9",
+      "X2-11",
+      "X2-22",
+      "X2-27",
+      "X2-30",
+      "X2-34",
+      "X2-35",
+      "X2-39",
+      "X2-41",
+      "X2-45",
+      "X2-46",
+      "X2-50",
+      "X2-52",
+      "X2-56",
+      "X2-59",
+      "X2-61",
+      "X3-1",
+      "X3-2",
+      "X3-3",
+      "X3-4",
+      "X3-5",
+      "X3-6",
+      "X3-7",
+      "X3-8",
+      "X3-9",
+      "X3-19",
+      "X3-20",
+      "X3-21",
+      "X3-22",
+      "X3-23",
+      "X3-28",
+      "X3-29",
+      "X3-30",
+      "X3-31",
+      "X3-32",
+      "X3-41",
+      "X3-60",
+      "X4-19",
+      "X4-25",
+      "X4-41"
+    ],
+    "note": "两组互斥并覆盖全部变更题；解析改字（包括位置指代同步）计入技术内容/解析变动组，不借此断言技术语义改变。"
+  },
+  "singlePositions": {
+    "B": 42,
+    "D": 42,
+    "A": 44,
+    "C": 42
+  },
+  "multipleKeys": [
+    {
+      "id": "X1-15",
+      "keys": "ACE"
+    },
+    {
+      "id": "X1-28",
+      "keys": "BCD"
+    },
+    {
+      "id": "X1-35",
+      "keys": "BDE"
+    },
+    {
+      "id": "X1-45",
+      "keys": "ABD"
+    },
+    {
+      "id": "X1-50",
+      "keys": "BD"
+    },
+    {
+      "id": "X2-9",
+      "keys": "BCE"
+    },
+    {
+      "id": "X2-18",
+      "keys": "ADE"
+    },
+    {
+      "id": "X2-28",
+      "keys": "ABE"
+    },
+    {
+      "id": "X2-38",
+      "keys": "BE"
+    },
+    {
+      "id": "X2-39",
+      "keys": "BDE"
+    },
+    {
+      "id": "X2-49",
+      "keys": "AD"
+    },
+    {
+      "id": "X2-50",
+      "keys": "BCE"
+    },
+    {
+      "id": "X2-59",
+      "keys": "ACEF"
+    },
+    {
+      "id": "X3-7",
+      "keys": "ADE"
+    },
+    {
+      "id": "X3-8",
+      "keys": "BCD"
+    },
+    {
+      "id": "X3-18",
+      "keys": "ABE"
+    },
+    {
+      "id": "X3-28",
+      "keys": "CDE"
+    },
+    {
+      "id": "X3-29",
+      "keys": "ABDE"
+    },
+    {
+      "id": "X3-38",
+      "keys": "ACE"
+    },
+    {
+      "id": "X3-39",
+      "keys": "BCDE"
+    },
+    {
+      "id": "X3-48",
+      "keys": "AC"
+    },
+    {
+      "id": "X3-49",
+      "keys": "BCD"
+    },
+    {
+      "id": "X3-59",
+      "keys": "CE"
+    },
+    {
+      "id": "X3-60",
+      "keys": "AD"
+    },
+    {
+      "id": "X4-10",
+      "keys": "BCDE"
+    },
+    {
+      "id": "X4-21",
+      "keys": "ACEF"
+    },
+    {
+      "id": "X4-35",
+      "keys": "BCF"
+    },
+    {
+      "id": "X4-50",
+      "keys": "ABEF"
+    },
+    {
+      "id": "X4-53",
+      "keys": "CDE"
+    },
+    {
+      "id": "X4-72",
+      "keys": "ACDF"
+    }
+  ],
+  "multipleAfterDistribution": {
+    "ACE": 2,
+    "BCD": 3,
+    "BDE": 2,
+    "ABD": 1,
+    "BD": 1,
+    "BCE": 2,
+    "ADE": 2,
+    "ABE": 2,
+    "BE": 1,
+    "AD": 2,
+    "ACEF": 2,
+    "CDE": 2,
+    "ABDE": 1,
+    "BCDE": 2,
+    "AC": 1,
+    "CE": 1,
+    "BCF": 1,
+    "ABEF": 1,
+    "ACDF": 1
+  },
+  "positionCandidates": [],
+  "checks": [
+    {
+      "name": "真实parser/schema/buildBank（includeDrafts内存合并）",
+      "passed": true,
+      "details": {
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "题目总数252与题型170/30/28/24/0",
+      "passed": true,
+      "details": {
+        "single": 170,
+        "multiple": 30,
+        "fill": 28,
+        "short": 24,
+        "code": 0
+      }
+    },
+    {
+      "name": "252个题号、题序及唯一性不变",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "4章标题/题数/次序/draft状态不变",
+      "passed": true,
+      "details": [
+        {
+          "id": "X1",
+          "title": "基础与工作区域",
+          "status": "draft",
+          "count": 55
+        },
+        {
+          "id": "X2",
+          "title": "撤销与回退",
+          "status": "draft",
+          "count": 61
+        },
+        {
+          "id": "X3",
+          "title": "分支与合并",
+          "status": "draft",
+          "count": 63
+        },
+        {
+          "id": "X4",
+          "title": "协作与排查",
+          "status": "draft",
+          "count": 73
+        }
+      ]
+    },
+    {
+      "name": "Markdown与typed题序一致且章节内连续",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "逐题结构、正确项数量/单选字母、填空配置、同文选项真假、原文引用保持",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "全部28道填空的题卷标记/stem/空数与运行时一致",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Catalog每题实际返回一题且不泄漏correct/referenceAnswer/citations",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "原24道前缀多选均完成重排且不再为连续前缀",
+      "passed": true,
+      "details": {
+        "beforeDistribution": {
+          "ABC": 15,
+          "AB": 6,
+          "ABCD": 3
+        },
+        "afterDistribution": {
+          "ACE": 2,
+          "BCD": 3,
+          "BDE": 2,
+          "ABD": 1,
+          "BD": 1,
+          "BCE": 2,
+          "ADE": 2,
+          "ABE": 2,
+          "BE": 1,
+          "AD": 2,
+          "ACEF": 1,
+          "CDE": 1,
+          "ABDE": 1,
+          "BCDE": 1,
+          "AC": 1,
+          "CE": 1
+        },
+        "questions": [
+          {
+            "id": "X1-15",
+            "before": "ABC",
+            "after": "ACE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X1-28",
+            "before": "ABC",
+            "after": "BCD",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": true
+          },
+          {
+            "id": "X1-35",
+            "before": "ABC",
+            "after": "BDE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": true
+          },
+          {
+            "id": "X1-45",
+            "before": "ABC",
+            "after": "ABD",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X1-50",
+            "before": "AB",
+            "after": "BD",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X2-9",
+            "before": "ABC",
+            "after": "BCE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": true
+          },
+          {
+            "id": "X2-18",
+            "before": "ABC",
+            "after": "ADE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X2-28",
+            "before": "ABC",
+            "after": "ABE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X2-38",
+            "before": "AB",
+            "after": "BE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X2-39",
+            "before": "ABC",
+            "after": "BDE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": true
+          },
+          {
+            "id": "X2-49",
+            "before": "AB",
+            "after": "AD",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X2-50",
+            "before": "ABC",
+            "after": "BCE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": true
+          },
+          {
+            "id": "X2-59",
+            "before": "ABCD",
+            "after": "ACEF",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": true
+          },
+          {
+            "id": "X3-7",
+            "before": "ABC",
+            "after": "ADE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X3-8",
+            "before": "ABC",
+            "after": "BCD",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X3-18",
+            "before": "ABC",
+            "after": "ABE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X3-28",
+            "before": "ABC",
+            "after": "CDE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": true
+          },
+          {
+            "id": "X3-29",
+            "before": "ABCD",
+            "after": "ABDE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X3-38",
+            "before": "ABC",
+            "after": "ACE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X3-39",
+            "before": "ABCD",
+            "after": "BCDE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X3-48",
+            "before": "AB",
+            "after": "AC",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X3-49",
+            "before": "ABC",
+            "after": "BCD",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X3-59",
+            "before": "AB",
+            "after": "CE",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          },
+          {
+            "id": "X3-60",
+            "before": "AB",
+            "after": "AD",
+            "stillPrefix": false,
+            "optionSequenceChanged": true,
+            "optionContentChanged": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "新增引用全部使用核对来源前缀及HTTPS Git官方域名",
+      "passed": true,
+      "details": {
+        "count": 57,
+        "invalid": []
+      }
+    },
+    {
+      "name": "答案尾部所有官方链接完整解析为citations而非残留正文",
+      "passed": true,
+      "details": {
+        "rawCount": 57,
+        "parsedCount": 57,
+        "unparsedOfficial": []
+      }
+    },
+    {
+      "name": "实际引用仅来自授权小林源站与Git官方HTTPS页面",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "引用页及全部锚点：https://xiaolincoding.com/interview/git.html",
+      "passed": true,
+      "details": {
+        "url": "https://xiaolincoding.com/interview/git.html",
+        "fetchedAt": "2026-10-15T15:39:34.080Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://xiaolincoding.com/interview/git.html",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\interview-git.html-ffc30e1f88c8.html",
+        "sha256": "287c43fc92ec6df2ec2b478a1a92190288e99a1616aa59440f2725b14c040f72",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git面试题 | 小林coding",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "git-%E4%BD%BF%E7%94%A8%E7%86%9F%E7%BB%83%E5%90%97",
+            "found": true
+          },
+          {
+            "fragment": "git-%E6%9C%89%E5%93%AA%E5%87%A0%E4%B8%AA%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%9F%9F-%E5%AE%83%E4%BB%AC%E4%B9%8B%E9%97%B4%E6%98%AF%E6%80%8E%E4%B9%88%E6%B5%81%E8%BD%AC%E7%9A%84",
+            "found": true
+          },
+          {
+            "fragment": "git-pull-%E5%92%8C-git-fetch-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "git-diff-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95",
+            "found": true
+          },
+          {
+            "fragment": "%E4%BB%80%E4%B9%88%E6%98%AF-head-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B8%B8%E7%A6%BB-head-detached-head",
+            "found": true
+          },
+          {
+            "fragment": "git-reset-%E7%9A%84-soft%E3%80%81-mixed%E3%80%81-hard-%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "git-reset-%E5%92%8C-git-revert-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88",
+            "found": true
+          },
+          {
+            "fragment": "git-commit-amend-%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%9A%84-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E7%94%A8",
+            "found": true
+          },
+          {
+            "fragment": "git-checkout%E3%80%81git-switch%E3%80%81git-restore-%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB",
+            "found": true
+          },
+          {
+            "fragment": "git-stash-%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%9C%89%E5%93%AA%E4%BA%9B",
+            "found": true
+          },
+          {
+            "fragment": "%E4%B8%8D%E5%B0%8F%E5%BF%83%E6%8A%8A%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF-%E5%AF%86%E7%A0%81%E3%80%81%E5%AF%86%E9%92%A5-%E6%8F%90%E4%BA%A4%E5%88%B0-git-%E6%80%8E%E4%B9%88%E5%8A%9E",
+            "found": true
+          },
+          {
+            "fragment": "git-rebase%E5%92%8Cmerge%E7%9A%84%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-git-%E5%91%BD%E4%BB%A4%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E5%88%86%E6%94%AF-%E5%8F%91%E7%94%9F%E5%86%B2%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3",
+            "found": true
+          },
+          {
+            "fragment": "git-pull-%E5%92%8C-git-pull-rebase-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88",
+            "found": true
+          },
+          {
+            "fragment": "%E4%BB%80%E4%B9%88%E6%98%AF-fast-forward-%E5%90%88%E5%B9%B6-%E5%92%8C%E6%99%AE%E9%80%9A-merge-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "git-cherry-pick-%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%9A%84-%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E7%94%A8",
+            "found": true
+          },
+          {
+            "fragment": "%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E5%92%8C%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF",
+            "found": true
+          },
+          {
+            "fragment": "%E5%B8%B8%E8%A7%81%E7%9A%84-git-%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%9C%89%E5%93%AA%E4%BA%9B",
+            "found": true
+          },
+          {
+            "fragment": "fork%E3%80%81clone%E3%80%81pull-request-%E5%9C%A8-github-%E5%8D%8F%E4%BD%9C%E4%B8%AD%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88",
+            "found": true
+          },
+          {
+            "fragment": "git-log-%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%9C%89%E5%93%AA%E4%BA%9B",
+            "found": true
+          },
+          {
+            "fragment": "git-tag-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8-%E8%BD%BB%E9%87%8F%E6%A0%87%E7%AD%BE%E5%92%8C%E9%99%84%E6%B3%A8%E6%A0%87%E7%AD%BE%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB",
+            "found": true
+          },
+          {
+            "fragment": "git-blame-%E5%92%8C-git-bisect-%E5%88%86%E5%88%AB%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%9A%84",
+            "found": true
+          },
+          {
+            "fragment": "gitignore-%E9%87%8C%E5%8A%A0%E4%BA%86%E6%96%87%E4%BB%B6%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%9F%E6%95%88",
+            "found": true
+          }
+        ],
+        "passed": true,
+        "referencedBy": [
+          "X1-1",
+          "X1-2",
+          "X1-3",
+          "X1-4",
+          "X1-5",
+          "X1-6",
+          "X1-7",
+          "X1-8",
+          "X1-9",
+          "X1-10",
+          "X1-11",
+          "X1-12",
+          "X1-13",
+          "X1-14",
+          "X1-15",
+          "X1-16",
+          "X1-17",
+          "X1-18",
+          "X1-19",
+          "X1-20",
+          "X1-21",
+          "X1-22",
+          "X1-23",
+          "X1-24",
+          "X1-25",
+          "X1-26",
+          "X1-27",
+          "X1-28",
+          "X1-29",
+          "X1-30",
+          "X1-31",
+          "X1-32",
+          "X1-33",
+          "X1-34",
+          "X1-35",
+          "X1-36",
+          "X1-37",
+          "X1-38",
+          "X1-39",
+          "X1-40",
+          "X1-41",
+          "X1-42",
+          "X1-43",
+          "X1-44",
+          "X1-45",
+          "X1-46",
+          "X1-47",
+          "X1-48",
+          "X1-49",
+          "X1-50",
+          "X1-51",
+          "X1-52",
+          "X1-53",
+          "X1-54",
+          "X1-55",
+          "X2-1",
+          "X2-2",
+          "X2-3",
+          "X2-4",
+          "X2-5",
+          "X2-6",
+          "X2-7",
+          "X2-8",
+          "X2-9",
+          "X2-10",
+          "X2-11",
+          "X2-12",
+          "X2-13",
+          "X2-14",
+          "X2-15",
+          "X2-16",
+          "X2-17",
+          "X2-18",
+          "X2-19",
+          "X2-20",
+          "X2-21",
+          "X2-22",
+          "X2-23",
+          "X2-24",
+          "X2-25",
+          "X2-26",
+          "X2-27",
+          "X2-28",
+          "X2-29",
+          "X2-30",
+          "X2-31",
+          "X2-32",
+          "X2-33",
+          "X2-34",
+          "X2-35",
+          "X2-36",
+          "X2-37",
+          "X2-38",
+          "X2-39",
+          "X2-40",
+          "X2-41",
+          "X2-42",
+          "X2-43",
+          "X2-44",
+          "X2-45",
+          "X2-46",
+          "X2-47",
+          "X2-48",
+          "X2-49",
+          "X2-50",
+          "X2-51",
+          "X2-52",
+          "X2-53",
+          "X2-54",
+          "X2-55",
+          "X2-56",
+          "X2-57",
+          "X2-58",
+          "X2-59",
+          "X2-60",
+          "X2-61",
+          "X3-1",
+          "X3-2",
+          "X3-3",
+          "X3-4",
+          "X3-5",
+          "X3-6",
+          "X3-7",
+          "X3-8",
+          "X3-9",
+          "X3-10",
+          "X3-11",
+          "X3-12",
+          "X3-13",
+          "X3-14",
+          "X3-15",
+          "X3-16",
+          "X3-17",
+          "X3-18",
+          "X3-19",
+          "X3-20",
+          "X3-21",
+          "X3-22",
+          "X3-23",
+          "X3-24",
+          "X3-25",
+          "X3-26",
+          "X3-27",
+          "X3-28",
+          "X3-29",
+          "X3-30",
+          "X3-31",
+          "X3-32",
+          "X3-33",
+          "X3-34",
+          "X3-35",
+          "X3-36",
+          "X3-37",
+          "X3-38",
+          "X3-39",
+          "X3-40",
+          "X3-41",
+          "X3-42",
+          "X3-43",
+          "X3-44",
+          "X3-45",
+          "X3-46",
+          "X3-47",
+          "X3-48",
+          "X3-49",
+          "X3-50",
+          "X3-51",
+          "X3-52",
+          "X3-53",
+          "X3-54",
+          "X3-55",
+          "X3-56",
+          "X3-57",
+          "X3-58",
+          "X3-59",
+          "X3-60",
+          "X3-61",
+          "X3-62",
+          "X3-63",
+          "X4-1",
+          "X4-2",
+          "X4-3",
+          "X4-4",
+          "X4-5",
+          "X4-6",
+          "X4-7",
+          "X4-8",
+          "X4-9",
+          "X4-10",
+          "X4-11",
+          "X4-12",
+          "X4-13",
+          "X4-14",
+          "X4-15",
+          "X4-16",
+          "X4-17",
+          "X4-18",
+          "X4-19",
+          "X4-20",
+          "X4-21",
+          "X4-22",
+          "X4-23",
+          "X4-24",
+          "X4-25",
+          "X4-26",
+          "X4-27",
+          "X4-28",
+          "X4-29",
+          "X4-30",
+          "X4-31",
+          "X4-32",
+          "X4-33",
+          "X4-34",
+          "X4-35",
+          "X4-36",
+          "X4-37",
+          "X4-38",
+          "X4-39",
+          "X4-40",
+          "X4-41",
+          "X4-42",
+          "X4-43",
+          "X4-44",
+          "X4-45",
+          "X4-46",
+          "X4-47",
+          "X4-48",
+          "X4-49",
+          "X4-50",
+          "X4-51",
+          "X4-52",
+          "X4-53",
+          "X4-54",
+          "X4-55",
+          "X4-56",
+          "X4-57",
+          "X4-58",
+          "X4-59",
+          "X4-60",
+          "X4-61",
+          "X4-62",
+          "X4-63",
+          "X4-64",
+          "X4-65",
+          "X4-66",
+          "X4-67",
+          "X4-68",
+          "X4-69",
+          "X4-70",
+          "X4-71",
+          "X4-72",
+          "X4-73"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/gitdatamodel",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/gitdatamodel",
+        "fetchedAt": "2026-10-15T15:39:31.497Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/gitdatamodel",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-gitdatamodel-f4b0599d6346.html",
+        "sha256": "2dd0f318e143f0f0bce58b9263579ea387a0ffde417f549a8e33f2eeea8662f6",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - gitdatamodel Documentation",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "index",
+            "found": true
+          }
+        ],
+        "passed": true,
+        "referencedBy": [
+          "X1-19",
+          "X1-20",
+          "X1-22",
+          "X1-23",
+          "X1-28",
+          "X1-29"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/git-restore",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/git-restore",
+        "fetchedAt": "2026-10-15T15:39:31.537Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/git-restore",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-git-restore-ad3d46f7428a.html",
+        "sha256": "8ce7d0825c08d99bb890e822ac27923659bf73e5dd4e863e665bd876a4c6c5d0",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - git-restore Documentation",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "_description",
+            "found": true
+          }
+        ],
+        "passed": true,
+        "referencedBy": [
+          "X1-25",
+          "X1-26",
+          "X1-29",
+          "X2-34",
+          "X2-35",
+          "X2-39",
+          "X2-41"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/git-pull",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/git-pull",
+        "fetchedAt": "2026-10-15T15:39:35.824Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/git-pull",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-git-pull-f85d41fbe457.html",
+        "sha256": "8a437f90f828d3afd5a4eea1ecd2031707dccf467054b0a3cd627609827d98b8",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - git-pull Documentation",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "_description",
+            "found": true
+          }
+        ],
+        "passed": true,
+        "referencedBy": [
+          "X1-31",
+          "X1-32",
+          "X1-33",
+          "X1-34",
+          "X1-35",
+          "X1-36",
+          "X3-20",
+          "X3-21",
+          "X3-22",
+          "X3-23",
+          "X3-28",
+          "X3-29",
+          "X3-30",
+          "X3-31"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/git-reset",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/git-reset",
+        "fetchedAt": "2026-10-15T15:39:36.468Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/git-reset",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-git-reset-fdf3b0468d27.html",
+        "sha256": "52f7b1a9eb14920049f7d749a0ea4a3653c1d0de1ca203eec1a9dc8b57cbe2f5",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - git-reset Documentation",
+        "titleValid": true,
+        "fragments": [],
+        "passed": true,
+        "referencedBy": [
+          "X2-4",
+          "X2-5",
+          "X2-6",
+          "X2-7",
+          "X2-8",
+          "X2-9",
+          "X2-11"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/git-commit",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/git-commit",
+        "fetchedAt": "2026-10-15T15:39:37.164Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/git-commit",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-git-commit-70d457faa6e0.html",
+        "sha256": "75d370a68b47a1e7549413faafac4b626a20d0019885bb6e0c425f3e3edc3779",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - git-commit Documentation",
+        "titleValid": true,
+        "fragments": [],
+        "passed": true,
+        "referencedBy": [
+          "X2-22",
+          "X2-30"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/git-push",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/git-push",
+        "fetchedAt": "2026-10-15T15:39:41.139Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/git-push",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-git-push-54803d7d51a1.html",
+        "sha256": "ea14db24d11a6303db1bff4d4b36e9e8c535ad68933a88c2d8e1ef848d4a35da",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - git-push Documentation",
+        "titleValid": true,
+        "fragments": [],
+        "passed": true,
+        "referencedBy": [
+          "X2-27",
+          "X2-30",
+          "X2-56",
+          "X2-59",
+          "X2-61"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/git-stash",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/git-stash",
+        "fetchedAt": "2026-10-15T15:39:39.023Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/git-stash",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-git-stash-da62d74f6038.html",
+        "sha256": "f418c8f61f0fb4df7eafcc74211448397c0bd268c55953b84544783ccd709d47",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - git-stash Documentation",
+        "titleValid": true,
+        "fragments": [],
+        "passed": true,
+        "referencedBy": [
+          "X2-45",
+          "X2-46",
+          "X2-50",
+          "X2-52"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/git-merge",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/git-merge",
+        "fetchedAt": "2026-10-15T15:39:39.396Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/git-merge",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-git-merge-b49a020a4b99.html",
+        "sha256": "a2ed6e97f5125d62293d99ae797c76926830de4f8a71931c6766aba4d4520479",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - git-merge Documentation",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "_fast_forward_merge",
+            "found": true
+          }
+        ],
+        "passed": true,
+        "referencedBy": [
+          "X3-1",
+          "X3-2",
+          "X3-3",
+          "X3-4",
+          "X3-5",
+          "X3-6",
+          "X3-7",
+          "X3-8",
+          "X3-9"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/git-archive",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/git-archive",
+        "fetchedAt": "2026-10-15T15:39:42.849Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/git-archive",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-git-archive-b0e4f7ae8781.html",
+        "sha256": "a004cdf94808d248dc1859c8d779571665facff8dbe83a7016750c3fcafffd93",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - git-archive Documentation",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "_examples",
+            "found": true
+          }
+        ],
+        "passed": true,
+        "referencedBy": [
+          "X4-19",
+          "X4-25"
+        ]
+      }
+    },
+    {
+      "name": "引用页及全部锚点：https://git-scm.com/docs/git-tag",
+      "passed": true,
+      "details": {
+        "url": "https://git-scm.com/docs/git-tag",
+        "fetchedAt": "2026-10-15T15:39:42.646Z",
+        "httpStatus": 200,
+        "effectiveUrl": "https://git-scm.com/docs/git-tag",
+        "htmlFile": "docs\\git-review-2026-10-15\\fixes\\official-pages\\docs-git-tag-d6337a33911a.html",
+        "sha256": "bf02a22d1b3aff40873560a69d89a78e6ffcb1bd22f1072ea463651bb6c2d13b",
+        "error": null,
+        "cacheUsed": true,
+        "title": "Git - git-tag Documentation",
+        "titleValid": true,
+        "fragments": [
+          {
+            "fragment": "_description",
+            "found": true
+          }
+        ],
+        "passed": true,
+        "referencedBy": [
+          "X4-41"
+        ]
+      }
+    },
+    {
+      "name": "原审源文快照23个原始锚点仍完整保留",
+      "passed": true,
+      "details": {
+        "count": 23,
+        "missing": []
+      }
+    },
+    {
+      "name": "最终检查期间三份题库文件保持稳定",
+      "passed": true,
+      "details": {
+        "interview-practice/git.md": "70c6414fc0d0b95164338f533df1cd35ceef128ae56bda290241b7c011f4cc98",
+        "interview-practice/answers-xiaolin/git.md": "eac503112dea8c96a03bcb50b74ace1eea906183f3cd42a4f16d6bc27ce8e6f0",
+        "content/typed/git.json": "63c8d8a466f53db715afcd7c0678d95a30e69b03dd0a4af14fe820d0a4426496"
+      }
+    },
+    {
+      "name": "未覆盖或修改原审证据",
+      "passed": true,
+      "details": {
+        "docs\\git-review-2026-10-15\\checks.json": "d556ce2934463b029788cf67fe8a243a4b7c8e570fe3863d62a6033aabb38717",
+        "docs\\git-review-2026-10-15\\questions.json": "ef25749a8d09c35db1ecff81d5094932011c348f678ba517c1b0a891329fd41f",
+        "docs\\git-review-2026-10-15\\source.html": "bd5c08b2ee885dc127e6dc6c2a35237e9e109d951aa81b63e472a2fc4bb589fe",
+        "docs\\git-review-2026-10-15\\audit.ts": "2a37cf56a03da3b3d7bd860d5a83f838121c5cbd356696712af67b0acec786f2"
+      }
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "结构检查、链接有效和单元测试不能证明技术语义；全部变更需由主审对照before-after逐题阅读。",
+    "位置指代扫描仅列候选；字母表述、隐含前提、参考答案覆盖必须人工复核。",
+    "未调用DeepSeek；不代表语义评分实测通过。",
+    "本脚本不运行项目级content:validate或test:unit，也不写content/dist/bank.json。",
+    "原audit.ts曾把字符串传给要求数组的getForAnswering；本脚本改用[q.id]并断言每次实际返回一题。"
+  ]
+}

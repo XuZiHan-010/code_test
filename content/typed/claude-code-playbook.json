@@ -1,0 +1,3865 @@
+{
+  "prefix": "G",
+  "chapters": {
+    "G1": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G1-1",
+          "type": "single",
+          "stem": "面向 Agent 的 CLAUDE.md 与面向人的 README 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都会被自动加载，区别只在 README 可以写得更长、更散",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "README 写给 agent 看，被自动加载，每次都吃 token；CLAUDE.md 写给人看，Claude 默认不会主动去读",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都不会被自动加载，都要用 @ 引用之后才生效",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "README 写给人看，Claude 默认不会主动去读；CLAUDE.md 写给 agent 看，被自动加载，每次都吃 token",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G1-2", "type": "short" },
+        {
+          "id": "G1-3",
+          "type": "multiple",
+          "stem": "项目规则写得越长，遵守效果反而可能下降，原文给出了哪些原因？",
+          "options": [
+            {
+              "key": "A",
+              "text": "规则越长，模型读取文件的时间越久，容易超时",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "模型注意力有限，规则越多，每条的权重越被摊薄",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "文件超过一定行数之后，后面的内容不会再被加载",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它每次启动都完整加载，行数越多越挤压对话、思考和工具结果的空间",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G1-4",
+          "type": "single",
+          "stem": "为什么不该把整份项目架构文档复制进 CLAUDE.md？",
+          "options": [
+            {
+              "key": "A",
+              "text": "复制进来之后，原来的架构文档就不会再被任何工具读取",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "架构文档里都是通用术语，Claude 本来就懂，没有必要再提供",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "架构会变，复制进来的内容会停留在旧版本，应当用一行话指向那份文档",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "架构文档只能给人看，Claude 即使读到也无法理解其中的内容",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G1-5",
+          "type": "single",
+          "stem": "通用编程术语与团队内部术语应怎样区别处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两类术语都不需要写，Claude 会在对话里主动询问",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "通用术语 Claude 本来就懂，不必写；团队特有的黑话才需要解释",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两类术语都要完整写进 CLAUDE.md，越全越好",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "通用术语要逐个解释；团队特有的黑话 Claude 能从代码里推断，不必写",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G1-6",
+          "type": "single",
+          "stem": "“保持代码质量”这类规则，为什么不如具体的检查命令有约束力？",
+          "options": [
+            {
+              "key": "A",
+              "text": "具体规则 Claude 写完自己就能检查，模糊规则没有外部标准，它只能猜你的偏好",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "模糊规则只在子目录里生效，具体命令在整个项目里都生效",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模糊规则会被 Claude 当作最高优先级，反而挤掉其他更重要的规则",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "具体的检查命令不占用上下文，模糊规则每次都要完整加载",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G1-7", "type": "short" },
+        {
+          "id": "G1-8",
+          "type": "single",
+          "stem": "规则里写明原因，对 Claude 处理未覆盖的情况有什么帮助？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它知道规则的边界，遇到没写到的情况能基于规则的本质做判断",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它会把原因当作新的规则，自动追加到 CLAUDE.md 里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它会在遇到没写到的情况时一律拒绝执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它会忽略规则的字面要求，只按原因自由发挥",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G1-9",
+          "type": "single",
+          "stem": "为什么说错误的规则比没有规则更糟？",
+          "options": [
+            {
+              "key": "A",
+              "text": "错误的规则会被 Claude 自动删除，连带删掉其他正确的规则",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "错误的规则会让 CLAUDE.md 无法被加载，整个文件都失效",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "规则摆在那儿 Claude 就会试图遵守，而规则已经过时，结果是花 token 买一份混乱",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "没有规则时 Claude 会主动询问，有错误规则时它就不再提问",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G1-10",
+          "type": "single",
+          "stem": "团队特有的历史坑点为什么通常值得保留在 CLAUDE.md 里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这些坑是通用的编程常识，写出来可以提醒新人",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这些坑写得越多，规则的遵守率就越高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这些坑已经被修复，保留下来只是作为历史记录",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这些坑是踩出来的经验，Claude 没法从代码里推断出来",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G1-11", "type": "short" },
+        {
+          "id": "G1-12",
+          "type": "fill",
+          "stem": "三层 CLAUDE.md 各有分工：写整个项目的通用约定、每次启动都加载的是 ____，写模块特有的规则、工作到该目录才生效的是 ____，写跨项目的个人偏好的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "G1-13", "type": "short" },
+        {
+          "id": "G1-14",
+          "type": "single",
+          "stem": ".claude/rules/ 下的规则文件怎样做到只在需要时加载？",
+          "options": [
+            {
+              "key": "A",
+              "text": "在 CLAUDE.md 里用 @ 引用每一个规则文件，启动时全部加载",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "在文件顶部的 frontmatter 里用 paths 标注适用路径，处理匹配路径的文件时才加载",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把规则文件放进对应的子目录，由用户每次手动指定要读哪一个",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "给每个规则文件设置行数上限，超过上限的文件不会被加载",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G1-15", "type": "short" },
+        {
+          "id": "G1-16",
+          "type": "single",
+          "stem": "同一个仓库同时用 Claude Code 和 Codex 时，怎样减少规则的重复维护？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两个文件都不写，把规则放进 README",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两个文件各写一份完整的规则，定期人工比对",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把规则都写在 CLAUDE.md 里，AGENTS.md 只留一行 @CLAUDE.md",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把规则都写在 AGENTS.md 里，CLAUDE.md 只留一行 @AGENTS.md",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G1-17",
+          "type": "single",
+          "stem": "两条规则互相矛盾时，Claude 会怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "停下来报错，等用户把矛盾解决",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一定采用写在文件更靠后位置的那一条",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "可能随便挑一条，它没法判断哪条优先级更高",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "一定采用更具体、更严格的那一条",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G1-18",
+          "type": "single",
+          "stem": "/init 生成 CLAUDE.md 草稿之后，还要做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "原样提交，草稿不需要任何修改",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "review 一遍，删掉不准的、补上漏掉的",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "把草稿翻译成中文才能被加载",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把草稿整份复制到每个子目录",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G1-19",
+          "type": "fill",
+          "stem": "按原文的使用方式，会话中修改 CLAUDE.md 的两种途径是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        { "id": "G1-20", "type": "short" },
+        { "id": "G1-21", "type": "short" },
+        { "id": "G1-22", "type": "short" },
+        { "id": "G1-23", "type": "short" },
+        { "id": "G1-24", "type": "short" },
+        {
+          "id": "G1-25",
+          "type": "single",
+          "stem": "源码里 CLAUDE.md 是按什么顺序查找和合并的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "从当前目录一路往上爬到根目录，再从根目录往下逐层读取，全部合并",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "只读取当前目录下的那一份，其他目录的都忽略",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "按文件的修改时间排序，只保留最新的一份",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从根目录开始找，遇到第一份就停止，不再读其他的",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G1-26", "type": "short" },
+        {
+          "id": "G1-27",
+          "type": "single",
+          "stem": "“希望测试覆盖率达到 90%”这类愿望型内容，为什么不该写进 CLAUDE.md？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这类内容属于团队黑话，应当放到术语表里解释",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Claude 会把它当作已经达成的事实，从此不再运行任何测试",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这类内容会被 /init 在下次生成时自动覆盖掉",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Claude 没法判断希望和实际的差距，可能为了满足愿望乱补一堆没意义的测试",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G1-28", "type": "short" },
+        {
+          "id": "G1-29",
+          "type": "fill",
+          "stem": "随着规则增多，原文建议的演进路径是：用 ____ 起步；长了就拆到 ____；高频的工作流写到 ____；可复用的能力封装成 ____。",
+          "blankCount": 4,
+          "blankOrder": "ordered"
+        },
+        { "id": "G1-30", "type": "short" },
+        {
+          "id": "G1-31",
+          "type": "fill",
+          "stem": "原文说 CLAUDE.md 里应当直接删掉的三类内容是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        }
+      ]
+    },
+    "G2": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G2-1",
+          "type": "single",
+          "stem": "大仓库里上下文很快耗尽，原文认为原因是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每次启动都会把整个代码库完整读入一遍，仓库越大读入的内容就越多",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Claude Code 靠 agentic search 找代码，没有清晰的起点就会乱翻，摸清结构时上下文已经烧得差不多",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "仓库里的代码都被提前切片做了 embedding，向量索引常驻上下文占掉了大部分空间",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型的上下文窗口太小，换成窗口更大的模型之后这个问题就会自然消失",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G2-2", "type": "short" },
+        { "id": "G2-3", "type": "short" },
+        { "id": "G2-4", "type": "short" },
+        {
+          "id": "G2-5",
+          "type": "single",
+          "stem": "大型仓库根目录的 CLAUDE.md 应当只放什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "指针、关键的坑和跨包通用的约定",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "团队所有成员的个人偏好",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个模块的全部细节和实现说明",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "整份项目架构文档的原文",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G2-6", "type": "short" },
+        { "id": "G2-7", "type": "short" },
+        {
+          "id": "G2-8",
+          "type": "single",
+          "stem": "为什么 LSP 按符号搜索，可能比按函数名字符串 grep 更有效？",
+          "options": [
+            {
+              "key": "A",
+              "text": "grep 的结果会常驻上下文无法清除；LSP 的结果不占用任何上下文",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "grep 只能搜索注释，搜不到代码里的函数名；LSP 能同时搜索注释和代码",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "grep 可能返回上千个匹配，要逐个读文件判断；LSP 直接返回同源的几个精确引用，过滤在读文件之前完成",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "grep 需要先给代码建向量索引；LSP 不需要任何准备就能做语义相似度搜索",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G2-9",
+          "type": "single",
+          "stem": "在大型仓库里，怎样让 Claude 的上下文聚焦到要改的模块？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把要改的模块复制到一个新仓库里，改完之后再手工合并回原来的仓库",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "启动时把整个仓库的文件列表贴进第一条提示词，让模型自己挑选",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "直接在要改的子目录里启动，再用忽略规则排除生成文件、构建产物和第三方代码",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "始终在仓库根目录启动，并把所有模块的细节都写进根目录的 CLAUDE.md",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G2-10", "type": "short" },
+        { "id": "G2-11", "type": "short" },
+        { "id": "G2-12", "type": "short" },
+        {
+          "id": "G2-13",
+          "type": "single",
+          "stem": "把跨文件大改动按会话拆分时，第一个会话做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接实现第一个模块并跑通测试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把所有模块的代码全部改完",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一次性派出几十个并行的 subagent",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只做探索、写 plan，不动代码",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G2-14",
+          "type": "single",
+          "stem": "跨大量文件的改动，原文认为“救不回来的”关键是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "会话边界：要把任务拆成多个会话并用 subagent 做探索，而不是写更长的 prompt",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "提示词长度：要把所有文件的改法都写进一个足够长的 prompt",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "上下文窗口：要把窗口扩大到能装下整个代码库",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "模型能力：要换成更强的模型，才能在一个会话里改完",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G2-15",
+          "type": "single",
+          "stem": "/batch 是怎样执行大规模迁移的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先把所有文件读进同一个会话，再由主 agent 按顺序一个文件一个文件地修改并提交到同一个分支",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先用对话把迁移方案敲定，再一次性派出几十个并行的 subagent，各自在独立的 git worktree 里运行、自测并开 PR",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "先把仓库切片做 embedding，再按相似度召回需要迁移的文件交给一个 agent 处理",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先让用户逐个确认每个文件的改法，再由用户手动把修改应用到各个文件",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G2-16",
+          "type": "single",
+          "stem": "Boris 对“一件事一天做超过一次”的建议是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把它做成 skill",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "把它接成一个 MCP server",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把它写进根目录的 CLAUDE.md",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "每次手动写一遍提示词",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G2-17", "type": "short" },
+        {
+          "id": "G2-18",
+          "type": "single",
+          "stem": "Plugin 怎样把个人配置变成团队可维护的资产？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把每个人本机的配置文件互相复制一遍，谁改了就通知其他人手动同步",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把所有配置都写进根目录的 CLAUDE.md，随仓库一起提交",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把配置保存在每个人的个人目录里，不随仓库分发",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把 skill、hook、MCP、LSP 配置打包成一个安装包，新人安装后就和团队有一样的能力",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G2-19",
+          "type": "fill",
+          "stem": "原文认为搭建的正确顺序是：先打磨 ____ 和 skill，再用 ____ 分发，最后才上 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        { "id": "G2-20", "type": "short" },
+        {
+          "id": "G2-21",
+          "type": "single",
+          "stem": "为什么推广顺利的组织会先让一小队人把整套基础设施搭好，再放开访问？",
+          "options": [
+            {
+              "key": "A",
+              "text": "基础设施搭好之前，Claude Code 无法安装",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "第一印象如果是“这东西不好使”，后面要翻盘就太难了",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "小队人数少，可以绕过公司的权限和合规要求",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先搭好的人可以独占最好的模型配额",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G2-22", "type": "short" },
+        { "id": "G2-23", "type": "short" },
+        {
+          "id": "G2-24",
+          "type": "fill",
+          "stem": "原文认为先做完三件事，大型代码库下的体验会立刻不同，这三件事是：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        { "id": "G2-25", "type": "short" },
+        {
+          "id": "G2-26",
+          "type": "single",
+          "stem": "在大代码库的代码检索上，原文所说的业内主流做法是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "agentic search：不建索引，由模型自己一步步搜索和读取文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "全量读取：每次把整个代码库完整放进上下文窗口",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "RAG：把代码切片、做 embedding、存进向量数据库，查询时按相似度召回",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "LSP：按符号查找定义和引用，不做任何相似度计算",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G2-27",
+          "type": "single",
+          "stem": "怎样判断 CLAUDE.md 里的某一行该不该留？",
+          "options": [
+            {
+              "key": "A",
+              "text": "问自己删掉这行 Claude 还会不会照做：会，就该删；不会，才值得留",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "问自己这行写得够不够详细：不够详细就删，足够详细就留",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "问自己这行是不是 /init 生成的：是就留，不是就删",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "问自己这行有没有超过一行的长度：超过就删，没超过就留",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G2-28",
+          "type": "single",
+          "stem": "模型升级后，旧规则可能出现什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "旧规则在新模型上会全部失效，必须从头重写",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "以前为约束旧模型写的规则，在新模型上可能反而成了枷锁",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "旧规则会被新模型自动重写成更长的版本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "旧规则会让新模型拒绝启动",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G2-29",
+          "type": "single",
+          "stem": "官方认为 hook 真正的价值是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "代替 CLAUDE.md，成为唯一的规则来源",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "代替模型，直接完成代码修改",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是阻止 Claude 做错事，而是让整套设置自我进化",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不是让设置自我进化，而是阻止 Claude 做错事",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G2-30", "type": "short" },
+        { "id": "G2-31", "type": "short" },
+        { "id": "G2-32", "type": "short" },
+        { "id": "G2-33", "type": "short" },
+        { "id": "G2-34", "type": "short" },
+        { "id": "G2-35", "type": "short" },
+        { "id": "G2-36", "type": "short" },
+        { "id": "G2-37", "type": "short" },
+        { "id": "G2-38", "type": "short" }
+      ]
+    },
+    "G3": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G3-1",
+          "type": "single",
+          "stem": "为什么一个 Skill 更适合被理解为文件夹，而不是一份 Markdown？",
+          "options": [
+            {
+              "key": "A",
+              "text": "文件夹里的内容会在会话启动时全部加载，比单个文件更完整",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一个 Skill 必须拆成很多份 Markdown，每份只能写一条规则",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "文件夹可以设置权限，单份 Markdown 无法被 Claude 读取",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "除了 SKILL.md，它还可以放脚本、参考资料、数据文件和输出模板，Claude 能自己发现和使用",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G3-2",
+          "type": "single",
+          "stem": "一个 Skill 里唯一必需的文件是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "SKILL.md",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "assets 下的资源文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "scripts 下的脚本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "references 下的参考资料",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G3-3", "type": "short" },
+        {
+          "id": "G3-4",
+          "type": "single",
+          "stem": "九类用途里，产品验证类 Skill 做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "教 Claude 正确使用某个内部库或 CLI，说明它的边界情况和坑",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "教 Claude 测试自己写的代码，例如用无头浏览器把流程一步步跑完并断言状态",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "按团队规范生成样板代码，例如新建预接好鉴权和日志的应用",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把重复的工作流压成一条命令，例如自动生成站会日报",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G3-5", "type": "short" },
+        { "id": "G3-6", "type": "short" },
+        { "id": "G3-7", "type": "short" },
+        { "id": "G3-8", "type": "short" },
+        { "id": "G3-9", "type": "short" },
+        {
+          "id": "G3-10",
+          "type": "single",
+          "stem": "九类用途里，Runbook 类 Skill 做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "做带护栏的例行维护操作，例如清理孤儿资源前先等人工确认",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "连接数据和监控系统，例如说明该 join 哪些表才能看到转化漏斗",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "负责拉取、推送和部署代码，例如盯着 PR 重试不稳定的 CI",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "从一个报警症状出发做多工具排查，例如按请求 ID 把各系统的相关日志拉齐",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G3-11", "type": "short" },
+        {
+          "id": "G3-12",
+          "type": "single",
+          "stem": "一个 Skill 横跨多个不同职责时，为什么可能需要拆分？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个 skill 只允许附带一个脚本，职责多了脚本不够用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "横跨多类的 skill 不会出现在清单里，永远无法被触发",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "最好的 skill 干净地落在某一类里，想一次干太多事反而会把 agent 搞糊涂",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "一个 skill 的 SKILL.md 有行数上限，职责多了就写不下",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G3-13",
+          "type": "single",
+          "stem": "为什么说验证类 Skill 可能比继续增加生成指令更有价值？",
+          "options": [
+            {
+              "key": "A",
+              "text": "验证类 skill 不占用上下文，而生成指令每次都要完整加载",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Claude 写代码的能力还很弱，必须靠验证类 skill 替它把代码重写一遍",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Claude 写代码的能力已经够强，真正拉开差距的是它有没有办法确认自己写的东西是对的",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "验证类 skill 可以跳过人工 review，直接把代码合入主干",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G3-14",
+          "type": "fill",
+          "stem": "Skill 的渐进式披露分三层：会话启动时只注入每个 skill 的 ____，任务匹配并调用时才加载 ____，Claude 真正需要时才去读正文提到的 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "G3-15",
+          "type": "single",
+          "stem": "Skill 的 description 为什么应当写使用条件，而不是写给人看的摘要？",
+          "options": [
+            {
+              "key": "A",
+              "text": "description 决定 skill 被安装到哪个目录，写错了会装错位置",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Claude 决定用不用一个 skill，唯一的依据就是这行 description，它没读过正文",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "description 是正文的一部分，Claude 每次都会连同正文一起读完",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "description 会被原样展示给终端用户，所以要写成操作步骤",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G3-16", "type": "short" },
+        {
+          "id": "G3-17",
+          "type": "single",
+          "stem": "为什么要把关键的触发条件放在 description 的前面？",
+          "options": [
+            {
+              "key": "A",
+              "text": "清单里单个 skill 的描述有长度上限，超出的部分会被砍掉，写在后面的条件模型看不到",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "写在后面的内容会被当成正文，只有调用之后才加载",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "前面的内容会被缓存，后面的内容每次都要重新计费",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Claude 只读 description 的第一个词，后面的内容一律忽略",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G3-18",
+          "type": "single",
+          "stem": "Skill 装得太多、把清单预算挤爆后，会发生什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "新装的 skill 会顶掉最早装的 skill，清单里始终只保留最近的几个",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有 skill 的正文会被全部加载进上下文，用来弥补被压缩的描述",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "会话会直接报错并拒绝启动，直到卸载一部分 skill",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先按比例压缩所有 description，还装不下就降级成只显示名字，每个 skill 都更难被触发",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G3-19", "type": "short" },
+        {
+          "id": "G3-20",
+          "type": "single",
+          "stem": "团队特有的坑点清单与通用操作常识，在 Skill 里的价值有什么差别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "通用常识 Claude 本来就会，写进去只是噪音；坑点是它靠读代码推断不出的信息，信号最强",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "通用常识是信号最强的内容；坑点只在某个项目有用，写进去只是噪音",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都不应当写进 skill，skill 里只能放脚本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者价值相同，都应当尽量多写，写得越全越好",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G3-21", "type": "short" },
+        {
+          "id": "G3-22",
+          "type": "single",
+          "stem": "为什么步骤写得过于僵硬，可能让 Skill 无法应对边界情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "步骤太多会超过 description 的长度上限，导致无法触发",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Claude 会直接忽略写得太细的步骤，改按自己的想法执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Claude 对指令的服从度很高，遇到指令没覆盖的情况容易僵在轨道上硬走",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "僵硬的步骤无法写成脚本，只能每次由用户手动执行",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G3-23",
+          "type": "single",
+          "stem": "日报 Skill 怎样避免重复汇报已经报过的内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把所有历史日报都写进 description，启动时一起加载",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每次执行前让用户手动告诉它上一次汇报到了哪里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每次都重新汇报全部内容，由读者自己去重",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "在自己的文件夹里维护一个日志文件，每次追加记录，下次先读历史只汇报增量",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G3-24",
+          "type": "single",
+          "stem": "通过 CLAUDE_PLUGIN_DATA 取得的数据目录有什么特点？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只读：skill 只能读取其中的内容，不能写入",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "持久：plugin 升级换版本都不会被清掉，只有彻底卸载时才会删除",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "临时：每次会话结束时都会被自动清空",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "共享：所有 plugin 共用同一个目录，互相可以覆盖",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G3-25", "type": "short" },
+        { "id": "G3-26", "type": "short" },
+        {
+          "id": "G3-27",
+          "type": "single",
+          "stem": "数据分析类 Skill 里，哪些工作适合固化成脚本，哪些留给模型判断？",
+          "options": [
+            {
+              "key": "A",
+              "text": "组合哪些函数来回答问题固化成脚本，连数据源、拼查询这类底层工作留给 Claude 每次现写",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "连数据源、拼查询、算留存这类底层重复工作封装成函数，组合哪些函数来回答问题留给 Claude",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "所有工作都留给 Claude 现场手写，skill 里不放任何函数",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有工作都固化成脚本，Claude 只负责把脚本的输出原样转给用户",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G3-28",
+          "type": "single",
+          "stem": "Skill 自带的 Hook 与全局 Hook 有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它只能在工具执行之后触发，不能用来拦截危险命令",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它由模型自己决定是否执行，不保证一定触发",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它在每次会话启动时注册，常驻生效，必须写进全局的 hook 配置",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它只在 skill 被调用时注册，会话结束就失效",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G3-29", "type": "short" },
+        {
+          "id": "G3-30",
+          "type": "single",
+          "stem": "把 Skill 提交进仓库与做成 plugin 发布，各适合什么团队？",
+          "options": [
+            {
+              "key": "A",
+              "text": "提交进仓库适合大规模组织；小团队应当做成 plugin 放进内部 marketplace",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两种方式都只适合个人使用，团队协作应当改用 MCP",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "提交进仓库适合小团队、仓库不多的场景；规模上来后做成 plugin 放进内部 marketplace，按需安装",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两种方式没有区别，任何规模的团队都应当同时使用",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G3-31", "type": "short" },
+        {
+          "id": "G3-32",
+          "type": "single",
+          "stem": "一个 Skill 依赖另一个 Skill 时，目前怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没有原生的依赖管理，在正文里直接写出另一个 skill 的名字，对方装了模型自己会去调用",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "在 frontmatter 里声明依赖，安装时系统会自动把被依赖的 skill 一起装上",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把被依赖的 skill 的全部内容复制进自己的文件夹",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "无法处理，一个 skill 不允许调用另一个 skill",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G3-33",
+          "type": "single",
+          "stem": "怎样统计各个 Skill 的使用情况？",
+          "options": [
+            {
+              "key": "A",
+              "text": "用一个 PreToolUse hook 监听 skill 工具的每次调用并记录",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "统计每个 skill 文件夹在一段时间内的大小变化",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "定期逐个询问团队成员最近各自用过哪些 skill",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "让每个 skill 在自己的 description 里写上累计的调用次数",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G3-34",
+          "type": "fill",
+          "stem": "Skill 调用统计可以帮助辨认的两类使用情况是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "G3-35",
+          "type": "single",
+          "stem": "一个预期高频使用的 Skill 几乎没人触发，多半是什么原因，该怎么处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "多半是模型能力不够，应当等下一代模型发布",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "多半是正文写得太短，应当把更多通用常识补进正文",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "多半是 description 没写对，应当回头修 description",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "多半是脚本运行太慢，应当把脚本全部删掉",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G3-36", "type": "short" },
+        { "id": "G3-37", "type": "short" },
+        { "id": "G3-38", "type": "short" },
+        {
+          "id": "G3-39",
+          "type": "fill",
+          "stem": "原文在源码里看到两个预算：单个 skill 在清单中的描述最多 ____ 个字符，整张 skill 清单只允许占上下文窗口的 ____。",
+          "blankCount": 2,
+          "blankOrder": "ordered"
+        }
+      ]
+    },
+    "G4": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G4-1",
+          "type": "single",
+          "stem": "聊天式开发在长期项目中为什么容易出现方向漂移？",
+          "options": [
+            {
+              "key": "A",
+              "text": "AI 会把之前所有的对话都牢牢记住，于是拒绝接受任何新的修改意见",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "缺一份双方都认可的对齐，AI 每次只看到当前这句话和眼前的上下文，做到后面可能推翻前面的设计",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "模型能力不足，换一个更强的模型之后方向漂移就不会再出现",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "聊天式开发要求先写完整的文档和流程图，文档一多方向就容易乱",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G4-2", "type": "short" },
+        {
+          "id": "G4-3",
+          "type": "single",
+          "stem": "产品需求与技术实现方案为什么要分开表达？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先定用什么技术和架构，再谈需求；这样可以让需求去适应已经选好的技术栈",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "需求和技术方案由两个不同的模型分别处理，合在一起会超出上下文",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "分开之后两份文档互不相关，后面的步骤不需要再对照前面的内容",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先讲清楚做什么、为什么做，再定技术；需求理解错在第一步就能纠正，技术方案不认同在第二步拦下",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G4-4",
+          "type": "single",
+          "stem": "spec-kit 的 constitution 用来定什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一条条具体的开发任务",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个功能点和它算做完了的标准",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模块划分、接口设计和数据表结构",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这个项目从头到尾都要遵守的几条铁律",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G4-5",
+          "type": "single",
+          "stem": "specify 阶段产出什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一份技术方案，包括分几个模块、接口怎么设计、数据表长什么样",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一份任务清单，把工作拆成搭骨架、建表、写接口等具体任务",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一份只谈需求、不提技术的规约，列清功能点、用户角色和每个功能做完的标准",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "一份项目铁律，规定测试要求和统一的代码风格",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G4-6",
+          "type": "single",
+          "stem": "plan 阶段是怎样进行的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由用户逐条写出开发任务，Claude Code 按任务清单直接实现",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "由用户给出技术栈和架构选型，Claude Code 基于需求文档产出技术方案",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "由 Claude Code 盯着需求文档，把含糊的地方逐个提出来问用户",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "由 Claude Code 自己决定技术栈，用户只在全部代码写完之后验收",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G4-7", "type": "short" },
+        {
+          "id": "G4-8",
+          "type": "single",
+          "stem": "implement 阶段，Claude Code 扮演什么角色？",
+          "options": [
+            {
+              "key": "A",
+              "text": "拿着任务清单逐条实现的执行者，不太会再冒出“我觉得这样更好”的想法去改设计",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "主动提问的面试官，会停下来把每个设计决定交还给用户",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "重新审视需求的产品经理，会把前面定好的需求推翻重写",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "独立的审查者，只读代码、不做任何修改",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G4-9", "type": "short" },
+        {
+          "id": "G4-10",
+          "type": "single",
+          "stem": "为什么必须先进到项目目录再启动 Claude Code，它才认得 spec-kit 的命令？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这些命令底下是装在项目 .claude/skills/ 下的 skill，而 skill 是启动时才扫描加载的",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "这些命令是全局安装的可执行文件，只有在项目目录下才有执行权限",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "这些命令需要联网下载，只有在项目目录下才能访问网络",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这些命令写在 CLAUDE.md 里，CLAUDE.md 只能从项目目录读取",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G4-11", "type": "short" },
+        { "id": "G4-12", "type": "short" },
+        {
+          "id": "G4-13",
+          "type": "single",
+          "stem": "clarify 最好在什么时机运行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "implement 全部完成之后、验收之前",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "tasks 拆完任务之后、开始 implement 之前",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "specify 产出需求文档之后、开始 plan 之前",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "plan 产出技术方案之后、开始 tasks 之前",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G4-14", "type": "short" },
+        {
+          "id": "G4-15",
+          "type": "single",
+          "stem": "analyze 是怎样发现不一致的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把项目铁律逐条念给用户，让用户重新确认一遍",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把需求文档里含糊的地方逐个提出来向用户提问",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "把写好的代码运行一遍，根据测试失败的位置找出问题",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把需求、方案和任务清单放在一起交叉比对，找出互相矛盾或遗漏的地方",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G4-16",
+          "type": "single",
+          "stem": "规约驱动的规约，与传统瀑布流的文档有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都在评审签字后定死，区别只在规约由 AI 生成",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "瀑布流的文档评审后基本定死，规约是活的，随时可以回去改，甚至推翻重来",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都随时可以改，区别只在瀑布流的文档更短",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "瀑布流的文档随时可以改，规约一旦生成就不允许再修改",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G4-17",
+          "type": "single",
+          "stem": "判断一个任务值不值得走完整的 SDD 流程，原文给的标准是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "这东西是否由多个人同时参与开发",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "这东西是否打算长期维护、后面还要不断往上加功能",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "这东西是否需要用到数据库和后端接口",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "这东西的代码量是否已经超过一百行",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G4-18", "type": "short" },
+        {
+          "id": "G4-19",
+          "type": "single",
+          "stem": "vibe coding 适合什么场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "需要长期维护、不断加功能的项目",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "方向定错后返工成本很高的任务",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "做小玩具、写一次性脚本、周末做个小 demo",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "多人协作、要求严格对齐的大项目",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G4-20", "type": "short" },
+        { "id": "G4-21", "type": "short" },
+        { "id": "G4-22", "type": "short" },
+        {
+          "id": "G4-23",
+          "type": "single",
+          "stem": "原文认为规约驱动真正值钱的地方是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它逼着你把“先想清楚再写”从一句正确的废话变成一道绕不过去的工序",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它让 AI 写代码的速度比聊天式开发快很多倍",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它省掉了人工验收，AI 可以自己判断是否完成",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它生成的那几份文档本身，可以直接交付给客户",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G4-24",
+          "type": "single",
+          "stem": "analyze 一般在什么时候用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写需求规格之前",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "拆完任务之后、正式写代码之前",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "代码写完之后、提交之前",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "需求写完之后、设计方案之前",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    "G5": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G5-1",
+          "type": "single",
+          "stem": "grill-me 这样一个很短的 Skill，为什么能改变 Agent 的工作方式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它教给 Claude 一套新的编码技巧，让写出来的代码质量更高",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它把 Claude 的上下文窗口扩大了，能记住更多的对话内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它给 Claude 接入了新的外部工具，让它能访问更多系统",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它改变的是 Claude 用什么姿态跟你说话：从你提需求它执行，变成它提问、你拍板",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G5-2",
+          "type": "single",
+          "stem": "grill-me 与 Plan Mode 在目标上有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都只负责写代码，区别只在 Plan Mode 会先跑测试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "grill-me 急着给出计划，拿不准的地方常自己替你定；Plan Mode 不急着产出，一个一个慢慢问，把决定交还给用户",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "grill-me 不急着产出，一个一个慢慢问，把决定交还给用户；Plan Mode 急着给出计划，拿不准的地方常自己替你定",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "两者都不提问，区别只在 grill-me 的计划写得更长",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G5-3", "type": "short" },
+        {
+          "id": "G5-4",
+          "type": "single",
+          "stem": "为什么要先把上游的决定定死？",
+          "options": [
+            {
+              "key": "A",
+              "text": "上游的决定不定死，下游全是空中楼阁，走错一个岔口之后的活全白干",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "上游的决定一旦定死，下游就不再需要任何决定",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "下游的决定不重要，可以全部交给 AI 自己猜",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "上游的决定最容易，先做可以给用户建立信心",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G5-5",
+          "type": "single",
+          "stem": "grill-me 提问的方式是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不向用户提问，所有的决定都由它根据经验自己推断",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只问开放式的问题，不给任何选项，也不提任何建议",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "一次把所有问题全部列出来，让用户统一作答之后再开工",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一次只问一个，等用户回话再问下一个，并且每个问题都附上推荐的答案",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G5-6", "type": "short" },
+        {
+          "id": "G5-7",
+          "type": "single",
+          "stem": "一个问题如果去翻代码就能搞清楚，grill-me 要求怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "跳过这个问题，不去弄清楚",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "不要问用户，自己去翻",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "仍然先问用户，再去翻代码核对",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把这个问题留到实现阶段再说",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G5-8", "type": "short" },
+        { "id": "G5-9", "type": "short" },
+        {
+          "id": "G5-10",
+          "type": "single",
+          "stem": "在热点助手的例子里，grill-me 揪出了什么隐患？",
+          "options": [
+            {
+              "key": "A",
+              "text": "助手只能访问国内平台，拿不到英文源的首发信息",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "助手每天独立起跑，不记得昨天推过什么，同一个热点可能连推几天",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "助手没有定时能力，每天都要用户手动启动",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "助手推送的内容太长，超过了飞书的消息限制",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G5-11", "type": "short" },
+        {
+          "id": "G5-12",
+          "type": "single",
+          "stem": "grill-me 和 Plan Mode 应按什么顺序配合？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者同时启动，由 Claude 自己决定听谁的",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先进 Plan Mode 出计划并实现，再用 grill-me 回头审查代码",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者只能二选一，用了 grill-me 就不能再用 Plan Mode",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先用 grill-me 把方案想明白，再进 Plan Mode 照着出计划、动手实现",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G5-13",
+          "type": "single",
+          "stem": "哪类任务适合用 grill-me 做深入访谈？",
+          "options": [
+            {
+              "key": "A",
+              "text": "方向定错返工成本很高的活",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "加一个一眼能看穿的小功能",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "改一个错别字",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "调一个颜色",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G5-14", "type": "short" },
+        {
+          "id": "G5-15",
+          "type": "single",
+          "stem": "grill-me 只能用来审代码需求吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，但非代码任务必须先转写成代码才能提问",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，它只能读取代码仓库，无法处理代码以外的内容",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不是，产品点子、选题、课程大纲等任何背后有一棵决策树的东西都可以交给它审",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "是的，它的问题都是针对编程语言和框架设计的",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G5-16",
+          "type": "single",
+          "stem": "把模糊的需求直接丢给 Claude Code，为什么容易返工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "AI 会把模糊的需求原样存进记忆，下次直接复用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "AI 会反复追问每个细节，问得太多导致迟迟无法开工",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "AI 会拒绝执行模糊的需求，要求先提交完整的文档",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "AI 不会拦着你问，默认你都想好了，把没想清楚的空缺全替你猜了默认值",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G5-17", "type": "short" },
+        { "id": "G5-18", "type": "short" },
+        { "id": "G5-19", "type": "short" }
+      ]
+    },
+    "G6": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G6-1",
+          "type": "single",
+          "stem": "grill-me 与 superpowers 在规模和定位上有什么区别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都是完整的开发方法论，区别只在 grill-me 强制测试先行",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都是单个 skill，区别只在 superpowers 的提问更多",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "grill-me 是只有三句话的单点 skill，只做需求盘问；superpowers 是含二十多个 skill 的插件，覆盖从聊需求到代码审查的整条流水线",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "grill-me 是含二十多个 skill 的插件，覆盖从聊需求到代码审查的整条流水线；superpowers 是只有三句话的单点 skill，只做需求盘问",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G6-2", "type": "short" },
+        { "id": "G6-3", "type": "short" },
+        {
+          "id": "G6-4",
+          "type": "single",
+          "stem": "grill-me 与 superpowers 提问的目的有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "grill-me 只问开工所需的最少信息，其余用默认值补齐，superpowers 要把每个决定都摆到用户面前亲手拍板",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "grill-me 要把每个决定都摆到用户面前亲手拍板，superpowers 只问开工所需的最少信息，其余用默认值补齐",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "两者都把每个决定交给用户，区别只在提问的先后顺序",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都尽量不提问，区别只在默认值由谁来定",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G6-5", "type": "short" },
+        {
+          "id": "G6-6",
+          "type": "single",
+          "stem": "需求只留在对话里，与写入设计文件，在维护上有什么差别？",
+          "options": [
+            {
+              "key": "A",
+              "text": "superpowers 把设计决定和任务计划写成文档留在项目里并有提交记录，新会话读完就能接手；grill-me 的共识只存在于对话里",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都不留任何文档，后续维护只能靠重新访谈",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "grill-me 把设计决定和任务计划写成文档留在项目里并有提交记录，新会话读完就能接手；superpowers 的共识只存在于对话里",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者都会把共识写成文档，区别只在文档存放的目录不同",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G6-7", "type": "short" },
+        {
+          "id": "G6-8",
+          "type": "single",
+          "stem": "superpowers 的实现与审查循环是怎样运转的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "所有任务都由主会话自己实现，全部写完之后由用户统一审查",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "每个任务派一个子代理实现，完成后再派一个子代理审查，审出问题就派第三个子代理去修",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "每个任务先由用户写出实现，再派一个子代理帮忙修改格式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有任务同时派给一个子代理，它边实现边审查自己的代码",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G6-9", "type": "short" },
+        { "id": "G6-10", "type": "short" },
+        {
+          "id": "G6-11",
+          "type": "single",
+          "stem": "为什么说装了 superpowers 等于接受它的工作方式？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它有自己的规矩：自作主张 git init、决定开分支、要求测试先行",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它会修改 Claude Code 的安装目录，卸载之后无法恢复",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它要求用户每天固定运行一次完整流程",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它只能在它指定的编程语言和框架下工作",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G6-12",
+          "type": "single",
+          "stem": "superpowers 适合什么样的任务？",
+          "options": [
+            {
+              "key": "A",
+              "text": "改一个小东西、希望几分钟内看到结果的小需求",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只想把脑子里的想法理一理、暂时不打算写代码的时候",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "正经项目、改动多、返工代价高，或需要文档和测试齐全的时候",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "不希望工具改动自己工作习惯的时候",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G6-13",
+          "type": "single",
+          "stem": "superpowers 版的测试用例全部通过，为什么观感仍比另一版差很多？",
+          "options": [
+            {
+              "key": "A",
+              "text": "测试用例写得太少，没有覆盖游戏的主要玩法",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "流程中途卡死，美术部分没有来得及实现",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "模型能力不足，画不出比几何块更复杂的图形",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "美术风格被当成默认值而没有询问用户，画面只是几个纯色几何块",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G6-14", "type": "short" },
+        {
+          "id": "G6-15",
+          "type": "single",
+          "stem": "原文建议的日常组合是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先用 superpowers 走完全套流程，再用 grill-me 审查",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先用 grill-me 把想法理清，再进 Plan Mode 开干",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "所有任务都只用 superpowers，不再使用其他方式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有任务都直接让 Claude 写代码，不做任何澄清",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G6-16",
+          "type": "single",
+          "stem": "superpowers 的触发方式带来什么问题？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它每次触发前都要用户确认三次，流程很慢",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它只在大项目里才触发，小需求完全用不上",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它必须手动逐个调用二十多个 skill，使用门槛很高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它自动触发，而且没有复杂度阈值，改个小东西也想走全套流程",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G6-17",
+          "type": "single",
+          "stem": "这场对比里，真正和 grill-me 同台的是 superpowers 的哪一部分？",
+          "options": [
+            {
+              "key": "A",
+              "text": "负责代码审查的那个 skill",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "负责派子代理实现的那个 skill",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "负责问需求的 brainstorming",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "负责写实施计划的那个 skill",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G6-18", "type": "short" },
+        { "id": "G6-19", "type": "short" },
+        { "id": "G6-20", "type": "short" },
+        { "id": "G6-21", "type": "short" }
+      ]
+    },
+    "G7": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G7-1",
+          "type": "fill",
+          "stem": "ELI5 这句提示词只定了三个要求：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "G7-2",
+          "type": "single",
+          "stem": "ELI5 这样目标明确的短指令，为什么不需要逐步教 AI 怎么写网页？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型本来就会写网页，它只规定目标，页面分几块、画什么图、用什么颜色都交给 Claude 判断",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "模型不会写网页，所以 ELI5 另外附带了一套完整的网页模板",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "短指令会被自动扩写成逐步操作的长模板，再交给模型执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "逐步操作的模板无法保存成 Skill，只能每次手动输入",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G7-3",
+          "type": "single",
+          "stem": "正文里的 $ARGUMENTS 起什么作用？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它是计数器，记录这个 Skill 被调用的次数",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "它是环境变量，保存着 Skill 的安装目录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它是配置项，决定生成的网页用什么颜色",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它是占位符，调用时写在命令后面的内容就成为要讲解的主题",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G7-4", "type": "short" },
+        { "id": "G7-5", "type": "short" },
+        { "id": "G7-6", "type": "short" },
+        { "id": "G7-7", "type": "short" },
+        {
+          "id": "G7-8",
+          "type": "single",
+          "stem": "ELI5 为什么也能装到 Codex、WorkBuddy 等其他 Agent 里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "它本质上就是一份 SKILL.md，并不是 Claude Code 专属",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "它依赖 Claude 模型，其他 Agent 会在后台调用 Claude",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "它为每个 Agent 各写了一个不同的版本",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "它是一个独立的网页应用，与任何 Agent 都没有关系",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G7-9", "type": "short" },
+        { "id": "G7-10", "type": "short" },
+        { "id": "G7-11", "type": "short" },
+        {
+          "id": "G7-12",
+          "type": "fill",
+          "stem": "原文介绍的安装 ELI5 Skill 的两种途径是：____、____。",
+          "blankCount": 2,
+          "blankOrder": "unordered"
+        }
+      ]
+    },
+    "G8": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G8-1",
+          "type": "single",
+          "stem": "给升级 SDK 这类任务定义完成范围时，原文的要求是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只要求把依赖的版本号改掉，业务代码是否兼容留到以后再说",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "把完成写成能检查的标准，例如所有发送入口都完成迁移、清理旧依赖、现有测试通过",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "只说一句“帮我升级一下”，具体做到哪一步由模型在过程中自己判断",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把每一行要改的代码都提前写出来，模型只负责照着粘贴",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G8-2", "type": "short" },
+        {
+          "id": "G8-3",
+          "type": "single",
+          "stem": "新版 SDK 无法兼容现有业务行为时，原文示例约定 Agent 怎么做？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自行修改业务逻辑去适配新版",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "悄悄保留旧版，不向用户提及",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先说明差异，等用户决定",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "直接放弃整个迁移任务",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G8-4",
+          "type": "single",
+          "stem": "为什么具体的设计偏好比“高级一点”更容易验收？",
+          "options": [
+            {
+              "key": "A",
+              "text": "具体的偏好可以省掉验收，模型做完就能直接上线",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "具体的偏好会被自动写进 CLAUDE.md，以后不需要再说",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "“高级一点”会让模型拒绝修改页面，必须换成英文才能被理解",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "“高级一点”留给模型的猜测空间太大，把不喜欢的具体样式点出来，后续才好改",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G8-5",
+          "type": "single",
+          "stem": "哪类叮嘱可能已经不再给任务增加信息，应当清理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "“所有发送入口都要迁移”这类范围说明，因为新模型能猜到范围",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "“现有测试必须通过”这类完成标准，因为新模型会自己决定是否测试",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "“请仔细思考”“一步一步想”这类叮嘱，因为新模型已经会先思考再回答",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "“删除数据前先问我”这类授权边界，因为新模型不会执行危险操作",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G8-6", "type": "short" },
+        {
+          "id": "G8-7",
+          "type": "single",
+          "stem": "Claude 经常中途停下来问要不要继续时，应怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先看它为什么停：缺信息就补上，只是汇报进度就约定汇报完继续做",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每次都手动回复“继续”，不需要弄清楚它停下来的原因",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "换一个更强的模型，它就不会再中途停下来",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "一律告诉它以后任何情况下都不要停，包括删除数据和强推代码",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G8-8",
+          "type": "single",
+          "stem": "约定了“范围内持续执行”之后，危险操作应怎样对待？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一并放开，既然约定了持续执行就不必再问",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "权限确认要保留，提示词里的约定不能代替权限设置",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "写进 TASKS.md，由模型自己决定是否执行",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "交给子代理执行，主会话不再过问",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G8-9", "type": "short" },
+        {
+          "id": "G8-10",
+          "type": "single",
+          "stem": "长任务中接着往下做之前，为什么要先让 Claude 读一遍 TASKS.md？",
+          "options": [
+            {
+              "key": "A",
+              "text": "上下文接近上限时旧内容会被压缩，最早交代的细节可能不再完整",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "TASKS.md 里保存着模型的权限设置，不读就无法执行命令",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "读一遍可以让模型切换到更快的响应模式",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不读的话，模型会把已经写好的代码全部删除",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G8-11",
+          "type": "fill",
+          "stem": "原文建议把汇报格式写进 CLAUDE.md，分成三部分：____、____、____。",
+          "blankCount": 3,
+          "blankOrder": "unordered"
+        },
+        {
+          "id": "G8-12",
+          "type": "multiple",
+          "stem": "一条有效的代码审查发现，按原文应包含哪些内容？",
+          "options": [
+            {
+              "key": "A",
+              "text": "一句“这段可能有问题”的提醒就够了",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "什么情况下会出错",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "原因是什么",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "怎样复现",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "文件名和行号",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G8-13", "type": "short" },
+        {
+          "id": "G8-14",
+          "type": "single",
+          "stem": "调研报告里，没查实的信息应怎样表达？",
+          "options": [
+            {
+              "key": "A",
+              "text": "没查实的信息直接删掉，报告里只保留有依据的结论",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "没查实的信息按最可能的情况写成确定的结论",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "没查实的信息和有依据的结论混在一起写，不作区分",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "有依据的和没查实的分开写，没查实的再说明已经找过哪里",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G8-15", "type": "short" },
+        {
+          "id": "G8-16",
+          "type": "single",
+          "stem": "为什么通常应询问方案的取舍和依据，而不是要求模型展示完整的内部推理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型没有任何内部思考过程，要求它展示只会得到一段空白的输出",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "要求逐字公开内部思考可能触发安全标记或被拒绝，可以直接问取舍和证据",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "内部推理只能用英文输出，使用中文的用户拿到也无法阅读",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "展示内部推理会让回答变得很短，最终的结论反而会被丢掉",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G8-17", "type": "short" },
+        { "id": "G8-18", "type": "short" },
+        {
+          "id": "G8-19",
+          "type": "single",
+          "stem": "正常请求被安全检查误判时，可以怎么处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "把请求拆成一个一个的字，逐个发送给模型",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "关闭所有的权限确认之后，再重新发送一遍",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "新开一个对话再提需求，或者用 /feedback 反馈",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "在同一个对话里反复重发同一条消息，直到通过",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G8-20",
+          "type": "single",
+          "stem": "快速模式是换了一个更小的模型吗？",
+          "options": [
+            {
+              "key": "A",
+              "text": "不是，它用的是更大的模型，所以响应更慢",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "是的，它换成了更小的模型，所以更快也更便宜",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "是的，它换成了更小的模型，但费用更高",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不是，用的还是同一个模型，只是响应更快、费用更高",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G8-21",
+          "type": "single",
+          "stem": "怎样判断额外付费的加速对当前工作是否有价值？",
+          "options": [
+            {
+              "key": "A",
+              "text": "看是否是长任务：交出去以后去忙别的，也应当开着",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "看任务的代码量：超过一千行就一定值得",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "看自己是不是在等：一直坐在屏幕前来回调代码，少等一会可能就值",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "看模型的版本：最新的模型才值得加速",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G8-22", "type": "short" },
+        { "id": "G8-23", "type": "short" },
+        { "id": "G8-24", "type": "short" },
+        { "id": "G8-25", "type": "short" },
+        { "id": "G8-26", "type": "short" }
+      ]
+    },
+    "G9": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G9-1",
+          "type": "single",
+          "stem": "代码生成加速后，研发流程的瓶颈转移到了哪里？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型的上下文窗口，一次只能生成很少的几个文件",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "规划、审查和部署仍按人的速度运行，瓶颈堵在编码阶段的两边",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "版本控制系统，无法保存 Agent 生成的大量提交",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "编码阶段本身，Agent 生成代码的速度仍然是最慢的一环",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G9-2", "type": "short" },
+        { "id": "G9-3", "type": "short" },
+        {
+          "id": "G9-4",
+          "type": "single",
+          "stem": "阶段之间的 Markdown 产物怎样减少口头交接的信息损失？",
+          "options": [
+            {
+              "key": "A",
+              "text": "每个阶段结束时提交一份版本化的产物，下一阶段直接读取它继续工作，不必靠转述",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "每个阶段都从头重新理解需求，不读取前面留下的任何文件",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "每个阶段结束时开一次评审会，由上一阶段的人向下一阶段口头讲解",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "所有阶段共用一份聊天记录，下一阶段从记录里自己找信息",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G9-5", "type": "short" },
+        {
+          "id": "G9-6",
+          "type": "single",
+          "stem": "Plan 阶段的 intent.md 写什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "准备修改哪些文件、按什么顺序实现、要运行哪些测试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "功能怎么工作、数据怎样流动、会影响哪些系统",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "当前问题、期望结果、受影响的系统、数据限制和待确认的问题",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "构建和测试命令、目录职责、代码约定和常犯的错误",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G9-7", "type": "short" },
+        { "id": "G9-8", "type": "short" },
+        { "id": "G9-9", "type": "short" },
+        {
+          "id": "G9-10",
+          "type": "single",
+          "stem": "意图与规格不一致时，应在哪个阶段纠正？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Design 阶段",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Build 阶段",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Test 阶段",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "Deploy 阶段",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G9-11",
+          "type": "single",
+          "stem": "Build 阶段在 Plan Mode 下，Claude 先做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先把任务全部拆给 Subagent，自己不读任何代码",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先读代码库并列出改动计划，在工程师接受计划之前不能直接修改代码",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "先运行全部测试，测试通过后跳过计划直接提交",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先直接修改代码，改完之后再向工程师补一份计划说明",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G9-12",
+          "type": "single",
+          "stem": "项目规则与 Hook 在构建阶段分别约束什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两者都用来拦截危险操作，代码约定不需要记录",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "两者都只记录代码约定，红线由工程师在评审时人工检查",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "Hook 记录命令、目录职责、代码约定和常犯的错误，需要强制执行的红线写进 CLAUDE.md",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "CLAUDE.md 记录命令、目录职责、代码约定和常犯的错误，需要强制执行的红线交给 Hook 拦截",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G9-13", "type": "short" },
+        {
+          "id": "G9-14",
+          "type": "single",
+          "stem": "Test 阶段，Claude 自己验证通过之后，最后还要怎样复核？",
+          "options": [
+            {
+              "key": "A",
+              "text": "直接合并，不需要任何复核",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "再开一个没参与实现的新会话，只负责复核",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "让实现它的那个会话再口头确认一遍",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把代码回滚后重新实现一次",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G9-15",
+          "type": "single",
+          "stem": "功能测试与 Agent Evals 分别检查什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "测试和构建验证这一次的功能能不能运行，Evals 检查更换模型或修改配置之后通过率有没有下降",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Evals 验证这一次的功能能不能运行，测试和构建检查更换模型或修改配置之后通过率有没有下降",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两者都只检查代码风格，不检查功能是否正确",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "两者检查的是同一件事，只是运行的时间不同",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G9-16", "type": "short" },
+        {
+          "id": "G9-17",
+          "type": "single",
+          "stem": "线上发生过的问题，怎样变成后续的回归场景？",
+          "options": [
+            {
+              "key": "A",
+              "text": "写进聊天记录，下次遇到时再翻出来",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只修复一次，不需要再留下任何记录",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "加入 Evals，变成以后长期运行的回归测试",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "交给用户反馈，由用户下次再报告",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G9-18", "type": "short" },
+        {
+          "id": "G9-19",
+          "type": "single",
+          "stem": "Deploy 阶段的代码审查怎样按风险分配给 Agent 和人？",
+          "options": [
+            {
+              "key": "A",
+              "text": "高风险和受监管的代码交给多层 Agent 审查，低风险改动继续交给人复核",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "所有改动都只由 Agent 审查，人不再参与",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "所有改动都只由人审查，Agent 不参与",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "低风险改动可以经过多层 Agent 审查，高风险和受监管的代码继续交给人复核",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G9-20", "type": "short" },
+        {
+          "id": "G9-21",
+          "type": "single",
+          "stem": "对于让 AI 一路自动发布到生产环境，Anthropic 的答案是什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只允许它在测试环境里读取日志",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可以让它走到生产闸门前，但不能让它自己跨过去",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "可以让它全程自动发布，只在出事故后由人介入",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不允许它参与上线之前的任何准备工作",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G9-22", "type": "short" },
+        {
+          "id": "G9-23",
+          "type": "single",
+          "stem": "Maintain 阶段，指标超过预设阈值后 Agent 做什么？",
+          "options": [
+            {
+              "key": "A",
+              "text": "开始做只读诊断，整理可能的原因和修复建议",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "先关闭监控和告警，等待工程师上线处理",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不经批准，直接修改生产环境里的配置",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "不经诊断，直接回滚到上一个稳定的版本",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G9-24",
+          "type": "single",
+          "stem": "涉及回滚或生产修改时，原文对所用的方案有什么限制？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只能由 Agent 自己决定是否回滚",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "可以使用 Agent 现场生成的任何方案",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "只能使用团队提前批准并演练过的方案",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "必须先把问题写进 Evals 才能动手",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G9-25", "type": "short" },
+        { "id": "G9-26", "type": "short" },
+        {
+          "id": "G9-27",
+          "type": "single",
+          "stem": "团队落地时，怎样选择最先改造的阶段？",
+          "options": [
+            {
+              "key": "A",
+              "text": "六个阶段同时改造，一次全部上线",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "必须从 Plan 开始，按顺序一路改到 Maintain",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先改 Maintain，因为生产环境最重要",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "现在最卡哪一步，就先补哪一块",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G9-28", "type": "short" },
+        { "id": "G9-29", "type": "short" },
+        { "id": "G9-30", "type": "short" }
+      ]
+    },
+    "G10": {
+      "status": "draft",
+      "questions": [
+        {
+          "id": "G10-1",
+          "type": "single",
+          "stem": "用 AI 改造老项目时，为什么“写得出来”不等于可以上线？",
+          "options": [
+            {
+              "key": "A",
+              "text": "AI 生成的代码不允许进入版本控制，只能保存在本地",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "改得对不对还得有人确认，代码可以批量生成，负责审核的同事不会跟着批量出现",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "AI 一次只能修改一个文件，改造整个项目需要的时间比人更长",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "AI 生成的代码无法通过编译，必须由人逐行重写之后才能运行",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G10-2", "type": "short" },
+        {
+          "id": "G10-3",
+          "type": "single",
+          "stem": "为什么不能只凭“大家都同意改造”就开工？",
+          "options": [
+            {
+              "key": "A",
+              "text": "同意改造的人越多，需要准备的专用远程主机就越多",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "大家同意之后还需要等旧运行时正式停止支持，才有改造的理由",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "不同角色的期望不一样，不先分清这次是哪一种改造，AI 交卷之后算改对还是改错就没有标准",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "改造必须由业务方独立完成，开发团队同意并不起作用",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G10-4",
+          "type": "fill",
+          "stem": "三个命令各摸清一件事：把语言、复杂度和技术债整理成评估报告的是 ____，把模块调用和数据流向画成关系图的是 ____，把藏在代码里的业务规则整理成说明的是 ____。",
+          "blankCount": 3,
+          "blankOrder": "ordered"
+        },
+        {
+          "id": "G10-5",
+          "type": "single",
+          "stem": "提取出的业务规则为什么要标注对应的文件和行号？",
+          "options": [
+            {
+              "key": "A",
+              "text": "标注的行号会被用来计算改造的费用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "标注可以让规则自动同步到新系统里",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "标注之后 Agent 才有权限修改对应的文件",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "人拿着说明能回到代码里核对，判断这条规则要不要保留",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G10-6",
+          "type": "single",
+          "stem": "Agent 读完代码之后，为什么仍需向业务同事和老开发者确认？",
+          "options": [
+            {
+              "key": "A",
+              "text": "平时怎么用、有哪些历史约定，代码里看不出来",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "Agent 读不懂旧语言写的代码，必须由老开发者逐行翻译",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "业务同事掌握着生产环境的密钥，不确认就无法运行测试",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "确认只是走流程，对保留还是删除哪些逻辑没有影响",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G10-7",
+          "type": "multiple",
+          "stem": "讨论改造风险时，“一直不改”的代价包括哪些？",
+          "options": [
+            {
+              "key": "A",
+              "text": "漏洞没法修",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "待审的代码越堆越多",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "旧运行时停止支持",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "懂这套系统的人越来越少",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "token 开销随试点范围上涨",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G10-8", "type": "short" },
+        {
+          "id": "G10-9",
+          "type": "single",
+          "stem": "验收条件为什么要能自动检查？",
+          "options": [
+            {
+              "key": "A",
+              "text": "自动检查只是为了统计 token 用量",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "条件能自动检查，Agent 才能反复修改、验证，实在过不了再交给人处理",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "自动检查的结果不需要保留，可以省掉每份修改的证据",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "自动检查通过之后，任何修改都不再需要人工审核",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G10-10", "type": "short" },
+        { "id": "G10-11", "type": "short" },
+        {
+          "id": "G10-12",
+          "type": "multiple",
+          "stem": "预发布环境试运行期间，应观察哪些信号？",
+          "options": [
+            {
+              "key": "A",
+              "text": "模型单价有没有下降",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "告警有没有增多",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "错误率有没有升高",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "响应有没有变慢",
+              "correct": true
+            },
+            {
+              "key": "E",
+              "text": "代码行数有没有减少",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G10-13",
+          "type": "single",
+          "stem": "为什么代码审查要放在新的对话里独立进行？",
+          "options": [
+            {
+              "key": "A",
+              "text": "新的对话使用更便宜的模型，可以降低审查费用",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "写代码的对话会在提交后被自动删除，无法继续使用",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "沿用写代码的对话，Claude 可能顺着之前的思路把问题又漏过去",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "写代码的对话没有读取代码的权限，只能写入",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G10-14",
+          "type": "single",
+          "stem": "只升级版本与换技术栈，对旧测试的依赖程度有什么不同？",
+          "options": [
+            {
+              "key": "A",
+              "text": "两种改造都不能使用旧测试，必须全部重新编写",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只升级版本时旧测试没法直接跑，更需要对比新旧系统的结果；换了语言和框架后旧测试可以作验收的核心",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "两种改造都只依赖旧测试，不需要对比新旧系统的结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "只升级版本时旧测试可以作验收的核心；换了语言和框架后旧测试往往没法直接跑，更需要对比新旧系统的结果",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G10-15",
+          "type": "single",
+          "stem": "请求回放与新旧系统并行运行分别是怎样验证的？",
+          "options": [
+            {
+              "key": "A",
+              "text": "请求回放是把线上记录下来的请求交给新系统处理；并行运行是新系统在旁边处理同样的输入，比较两边的结果",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "两者都是把旧系统直接下线，观察新系统是否报错",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "请求回放是让用户重新操作一遍；并行运行是让两个团队同时开发",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "请求回放是新系统在旁边处理同样的输入，比较两边的结果；并行运行是把线上记录下来的请求交给新系统处理",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G10-16", "type": "short" },
+        { "id": "G10-17", "type": "short" },
+        {
+          "id": "G10-18",
+          "type": "single",
+          "stem": "老项目缺少可靠的测试时，应先做什么再推进改造？",
+          "options": [
+            {
+              "key": "A",
+              "text": "先把现有的几条测试全部删除，避免它们时过时不过",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "先降低验收标准，把覆盖率要求去掉",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "先直接开始改造，等上线之后再根据用户反馈补测试",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "先让 Claude 补测试、搭请求回放工具，或准备好对比新旧系统的环境",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "id": "G10-19",
+          "type": "single",
+          "stem": "为什么不能要求每份 Agent 修改都由人逐行审查？",
+          "options": [
+            {
+              "key": "A",
+              "text": "Agent 的修改不允许被人阅读，只能由另一个 Agent 审查",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "Agent 交得越快待审的代码堆得越多，所以要提前给修改分级",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "逐行审查需要生产环境的权限，而审核的人没有",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "人工审查会修改 Agent 的执行记录，导致证据失效",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G10-20", "type": "short" },
+        { "id": "G10-21", "type": "short" },
+        {
+          "id": "G10-22",
+          "type": "single",
+          "stem": "同一类问题在审核中反复出现时，应怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "回头修工作流或验收规则",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "让专家每次都手工纠正",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "换一位专家重新审核",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "把这类问题从审核范围里去掉",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G10-23",
+          "type": "single",
+          "stem": "为加快上线而减少审核时，风险取舍最好由谁确定？",
+          "options": [
+            {
+              "key": "A",
+              "text": "由 Agent 根据测试结果自动决定",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "由点批准的那位审核人自己决定并承担",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "由管理层牵头确定，并按已有的变更管理流程执行",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "由提出改造需求的业务方单独决定",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G10-24", "type": "short" },
+        { "id": "G10-25", "type": "short" },
+        {
+          "id": "G10-26",
+          "type": "multiple",
+          "stem": "给改造 Agent 授权时，应守住哪些边界？",
+          "options": [
+            {
+              "key": "A",
+              "text": "只能写入改造分支",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "不给生产环境的账号、密码和访问密钥",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "给它生产数据库的写权限，方便验证结果",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "允许它把修改直接合并到主干",
+              "correct": false
+            },
+            {
+              "key": "E",
+              "text": "改造分支里的敏感信息和个人信息要清理或脱敏",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G10-27", "type": "short" },
+        { "id": "G10-28", "type": "short" },
+        {
+          "id": "G10-29",
+          "type": "single",
+          "stem": "试运行中多处出现同一种错误时，应怎样处理？",
+          "options": [
+            {
+              "key": "A",
+              "text": "忽略这些错误，等全部跑完再统一处理",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "只把出错的这几处手工修掉，然后扩大执行",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "停止整个改造项目",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "调整 Agent 的操作步骤或检查规则",
+              "correct": true
+            }
+          ]
+        },
+        { "id": "G10-30", "type": "short" },
+        {
+          "id": "G10-31",
+          "type": "single",
+          "stem": "复制一份代码关起门来升级，为什么可能行不通？",
+          "options": [
+            {
+              "key": "A",
+              "text": "原项目每天还在进新代码，两份代码就得不停地同步",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "复制出来的代码无法运行测试",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "复制代码需要管理层逐行审批",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "复制之后 Agent 无法读取原项目的依赖图",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G10-32",
+          "type": "single",
+          "stem": "在现有代码库里分批升级时，如果 A 调用 B、B 调用 C，应从哪个模块开始？",
+          "options": [
+            {
+              "key": "A",
+              "text": "三个模块同时开始，一次全部升级",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "从中间的 B 开始，再处理 A 和 C",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "从末端的 C 开始，再处理 B 和 A",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "从最上层的 A 开始，再处理 B 和 C",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "G10-33",
+          "type": "single",
+          "stem": "模块升级完成后，为什么要在 CI/CD 里加检查？",
+          "options": [
+            {
+              "key": "A",
+              "text": "让已经升级的模块不再运行任何测试",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "防止后来的提交又引入旧版本依赖或不兼容的写法",
+              "correct": true
+            },
+            {
+              "key": "C",
+              "text": "统计每个模块消耗了多少 token",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "防止 Agent 再次读取已经升级过的模块",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G10-34", "type": "short" },
+        {
+          "id": "G10-35",
+          "type": "single",
+          "stem": "用试点的用量推算整体费用，这个估算应怎样看待？",
+          "options": [
+            {
+              "key": "A",
+              "text": "与实际费用无关，没有参考价值",
+              "correct": false
+            },
+            {
+              "key": "B",
+              "text": "一定高于实际费用，可以按七折估算",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "更适合作为成本下限，不能当成最终报价",
+              "correct": true
+            },
+            {
+              "key": "D",
+              "text": "可以直接当成最终报价，不会再有追加",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G10-36", "type": "short" },
+        {
+          "id": "G10-37",
+          "type": "single",
+          "stem": "为什么先用便宜模型不一定更省钱？",
+          "options": [
+            {
+              "key": "A",
+              "text": "便宜模型反复返工几次，账单可能比强模型一次做完还高",
+              "correct": true
+            },
+            {
+              "key": "B",
+              "text": "便宜模型的单价其实比强模型更高",
+              "correct": false
+            },
+            {
+              "key": "C",
+              "text": "便宜模型不支持运行测试，必须人工验证",
+              "correct": false
+            },
+            {
+              "key": "D",
+              "text": "便宜模型每次只能处理一行代码",
+              "correct": false
+            }
+          ]
+        },
+        { "id": "G10-38", "type": "short" },
+        { "id": "G10-39", "type": "short" },
+        { "id": "G10-40", "type": "short" }
+      ]
+    }
+  }
+}
