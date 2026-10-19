@@ -1,10 +1,11 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import {
   QUESTION_TYPES,
   type Bank,
   type Chapter,
+  type Guide,
   type Question,
   type QuestionForAnswering,
   type QuestionWithAnswer,
@@ -20,8 +21,13 @@ const bankSchema = z.object({
       title: z.string(),
       column: z.string(),
       order: z.number(),
+      guide: z.string().optional(),
     }),
   ),
+  // 旧版 bank.json 没有这个字段
+  guides: z
+    .array(z.object({ slug: z.string(), title: z.string(), markdown: z.string() }))
+    .default([]),
   chapters: z.array(
     z.object({
       id: z.string(),
@@ -40,6 +46,8 @@ const bankSchema = z.object({
       section: z.string().nullable(),
       type: z.enum(QUESTION_TYPES),
       stem: z.string(),
+      blankCount: z.number().int().min(1).max(20).optional(),
+      blankOrder: z.enum(["ordered", "unordered"]).optional(),
       options: z
         .array(z.object({ key: z.string(), text: z.string(), correct: z.boolean() }))
         .optional(),
@@ -70,6 +78,7 @@ export class Catalog {
   private readonly chaptersById = new Map<string, Chapter>();
   private readonly chaptersByTopic = new Map<string, Chapter[]>();
   private readonly questionsById = new Map<string, Question>();
+  private readonly guidesBySlug = new Map<string, Guide>();
 
   constructor(bank: Bank) {
     this.topics = [...bank.topics].sort((a, b) => a.order - b.order);
@@ -88,6 +97,19 @@ export class Catalog {
     for (const question of bank.questions) {
       this.questionsById.set(question.id, question);
     }
+    for (const guide of bank.guides) {
+      this.guidesBySlug.set(guide.slug, guide);
+    }
+  }
+
+  /** 按 slug 取复习资料；资料不受章节 draft/approved 状态影响 */
+  getGuide(slug: string): Guide | undefined {
+    return this.guidesBySlug.get(slug);
+  }
+
+  /** 全部复习资料，按 bank.json 中的顺序；同样不受章节状态影响 */
+  listGuides(): Guide[] {
+    return [...this.guidesBySlug.values()];
   }
 
   /** 按专栏分组的专题列表。还没有任何可用章节的专题不出现。 */
@@ -136,6 +158,14 @@ export class Catalog {
     return chapter && topic ? { chapter, topic } : undefined;
   }
 
+  /** 题目所在章节对应的原文（标题和链接）；没有时返回 null */
+  getSource(questionId: string): { title: string; url: string } | null {
+    const chapter = this.locate(questionId)?.chapter;
+    return chapter?.sourceTitle && chapter.sourceUrl
+      ? { title: chapter.sourceTitle, url: chapter.sourceUrl }
+      : null;
+  }
+
   /** 交卷前的形态。不存在的题号被跳过。 */
   getForAnswering(questionIds: string[]): QuestionForAnswering[] {
     const result: QuestionForAnswering[] = [];
@@ -146,6 +176,7 @@ export class Catalog {
         id: question.id,
         type: question.type,
         stem: question.stem,
+        ...(question.type === "fill" ? { blankCount: question.blankCount, blankOrder: question.blankOrder } : {}),
         ...(question.options
           ? { options: question.options.map(({ key, text }) => ({ key, text })) }
           : {}),
@@ -181,14 +212,29 @@ export function loadBankFile(filePath: string): Bank {
   return result.data;
 }
 
-const globalForCatalog = globalThis as unknown as { __quizCatalog?: Catalog };
+const globalForCatalog = globalThis as unknown as {
+  __quizCatalog?: Catalog;
+  __quizCatalogMtime?: number;
+};
 
-/** 进程内共用的题库目录。首次调用时从 content/dist/bank.json 加载。 */
+/**
+ * 进程内共用的题库目录。首次调用时从 content/dist/bank.json 加载。
+ * 生产环境只在启动时读一次；开发时题库文件变了（重新运行过 content:build）就重新加载，不必重启服务。
+ */
 export function getCatalog(): Catalog {
-  if (!globalForCatalog.__quizCatalog) {
-    const filePath =
-      process.env.BANK_PATH ?? path.join(process.cwd(), "content", "dist", "bank.json");
+  const filePath =
+    process.env.BANK_PATH ?? path.join(process.cwd(), "content", "dist", "bank.json");
+  const mtime =
+    process.env.NODE_ENV === "development"
+      ? statSync(filePath, { throwIfNoEntry: false })?.mtimeMs
+      : undefined;
+  // 开发时改了这个文件，热更新会换掉 Catalog 这个类，缓存里的旧对象就不再是它的实例，要重新加载
+  if (
+    !(globalForCatalog.__quizCatalog instanceof Catalog) ||
+    (mtime !== undefined && mtime !== globalForCatalog.__quizCatalogMtime)
+  ) {
     globalForCatalog.__quizCatalog = new Catalog(loadBankFile(filePath));
+    globalForCatalog.__quizCatalogMtime = mtime;
   }
   return globalForCatalog.__quizCatalog;
 }
@@ -196,4 +242,5 @@ export function getCatalog(): Catalog {
 /** 仅供测试：替换进程内的题库目录 */
 export function setCatalogForTesting(catalog: Catalog | undefined): void {
   globalForCatalog.__quizCatalog = catalog;
+  globalForCatalog.__quizCatalogMtime = undefined;
 }

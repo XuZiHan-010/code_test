@@ -1,5 +1,6 @@
-export const QUESTION_TYPES = ["single", "multiple", "short"] as const;
+export const QUESTION_TYPES = ["single", "multiple", "short", "fill", "code"] as const;
 export type QuestionType = (typeof QUESTION_TYPES)[number];
+export type BlankOrder = "ordered" | "unordered";
 
 export interface Citation {
   label: string;
@@ -15,6 +16,8 @@ export interface Topic {
   /** 所属专栏 */
   column: string;
   order: number;
+  /** 专题的复习资料（content/guides/<guide>.md）；专题页会给出入口 */
+  guide?: string;
 }
 
 export interface Chapter {
@@ -43,6 +46,8 @@ export interface Question {
   stem: string;
   /** 仅选择题 */
   options?: QuestionOption[];
+  blankCount?: number;
+  blankOrder?: BlankOrder;
   referenceAnswer: string;
   citations: Citation[];
 }
@@ -78,14 +83,24 @@ export interface QuestionForAnswering {
   type: QuestionType;
   stem: string;
   options?: { key: string; text: string }[];
+  blankCount?: number;
+  blankOrder?: BlankOrder;
 }
 
 /** 交卷后、错题列表和错题本里给用户看的形态 */
 export type QuestionWithAnswer = Question;
 
+/** 站内的复习资料：没有外部原文的专题以它作为出处，页面是 /guides/<slug> */
+export interface Guide {
+  slug: string;
+  title: string;
+  markdown: string;
+}
+
 export interface Bank {
   builtAt: string;
   topics: Topic[];
+  guides: Guide[];
   chapters: Chapter[];
   questions: Question[];
 }

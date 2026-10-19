@@ -59,6 +59,7 @@ export const fixtureBank: Bank = {
     { prefix: "Y", slug: "topic-y", title: "专题乙", column: "专栏二", order: 2 },
     { prefix: "Z", slug: "topic-z", title: "尚无章节的专题", column: "专栏二", order: 3 },
   ],
+  guides: [{ slug: "guide-x", title: "示例资料", markdown: "# 示例资料\n\n## 第一节 {#one}\n\n正文。\n" }],
   chapters: [
     {
       id: "X1",

@@ -29,7 +29,7 @@ export const verdictEnum = pgEnum("verdict", [
 ]);
 
 export type Verdict = (typeof verdictEnum.enumValues)[number];
-export type AnswerResponse = { choice: string[] } | { text: string };
+export type AnswerResponse = { choice: string[] } | { text: string } | { blanks: string[] };
 
 const timestamptz = (name: string) => timestamp(name, { withTimezone: true });
 

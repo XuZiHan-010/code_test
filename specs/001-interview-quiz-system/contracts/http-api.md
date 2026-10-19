@@ -66,7 +66,12 @@
 {
   "id": "…",
   "status": "in_progress",
-  "scope": { "type": "chapter", "chapterId": "B1", "title": "RAG 基本流程" },
+  "scope": {
+    "type": "chapter",
+    "chapterId": "B1",
+    "title": "RAG 基本流程",
+    "source": { "title": "1. 什么是 RAG？…", "url": "https://…" }
+  },
   "lastQuestionId": "B1-3",
   "questions": [
     {
@@ -89,12 +94,12 @@
 
 保存一道题的答案，同时记录用户当前所在的题目。
 
-请求：`{ "response": { "choice": string[] } }` 或 `{ "response": { "text": string } }`，清空答案传 `{ "response": null }`
+请求：选择题 `{ "response": { "choice": string[] } }`，简答题和代码题 `{ "response": { "text": string } }`（上限分别为 2000 字和 8000 字，按 Unicode 字符计），填空题 `{ "response": { "blanks": string[] } }`；清空答案传 `{ "response": null }`。填空题数组必须与 `blankCount` 等长，各空合计不超过 2000 字，全空白规整为 null。作答视图的填空题额外提供 `blankCount`、`blankOrder`，不提供参考答案。
 
 - `204`：已保存，并把 `lastQuestionId` 更新为这道题
 - `404`：作答不存在，或题号不在这次作答里
 - `409` `attempt_not_in_progress`：作答已交卷或已放弃（FR-020）
-- `422`：`choice` 含不存在的选项；单选题选了多个；简答题超过 2000 字
+- `422`：`choice` 含不存在的选项；单选题选了多个；简答题超过 2000 字；代码题超过 8000 字
 
 ### PUT /api/attempts/{id}/position
 
@@ -111,7 +116,7 @@
 - `409` `attempt_not_in_progress`：已经交过卷（包括另一台设备先交了）
 - `429` `too_many_submissions`：10 分钟内交卷超过 10 次（FR-041）
 
-交卷在一个事务里完成：判选择题、给未答题记 `unanswered`、把简答题记为 `pending`、更新选择题的题目统计、写入 `correct_count` 和 `pending_count`。
+交卷在一个事务里完成：判选择题、给未答题记 `unanswered`、把简答题、代码题和至少填了一个空的填空题记为 `pending`、更新选择题的题目统计、写入 `correct_count` 和 `pending_count`。
 
 ### POST /api/attempts/{id}/abandon
 
@@ -125,7 +130,12 @@
 ```json
 {
   "id": "…",
-  "scope": { "type": "chapter", "chapterId": "B1", "title": "RAG 基本流程" },
+  "scope": {
+    "type": "chapter",
+    "chapterId": "B1",
+    "title": "RAG 基本流程",
+    "source": { "title": "1. 什么是 RAG？…", "url": "https://…" }
+  },
   "submittedAt": "2026-10-13T10:00:00Z",
   "totalCount": 15,
   "correctCount": 9,
@@ -141,12 +151,15 @@
       "feedback": null,
       "referenceAnswer": "…",
       "citations": [{ "label": "原文§离线阶段", "url": "https://…" }],
+      "source": { "title": "1. 什么是 RAG？…", "url": "https://…" },
       "inNotebook": false,
       "wrongCount": 0
     }
   ]
 }
 ```
+
+`scope.source` 是章节对应的原文，错题本练习跨多个章节所以为 `null`；每道题的 `source` 是它所在章节的原文，`citations` 是原文里的具体小节。
 
 `verdict` 取值 `correct`、`incorrect`、`unanswered`、`pending`。`pendingCount` 大于 0 时，页面每隔几秒重新请求本接口，直到为 0（FR-027）。正确率由页面按 `correctCount / totalCount` 显示。
 

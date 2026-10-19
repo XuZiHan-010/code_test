@@ -47,10 +47,10 @@ export function NotebookToggle({
       disabled={busy}
       aria-pressed={inNotebook}
       title={failed ? "操作没有成功，请再试一次" : undefined}
-      className={`inline-flex min-h-9 cursor-pointer items-center gap-1.5 rounded-sm border px-2.5 py-1 text-xs transition-colors disabled:opacity-60 ${
+      className={`inline-flex min-h-9 cursor-pointer items-center gap-1.5 border px-2.5 py-1 text-xs font-bold transition-colors disabled:opacity-60 ${
         inNotebook
-          ? "border-pen bg-pen-soft text-pen"
-          : "border-rule bg-card text-ink-soft hover:border-ink-faint"
+          ? "border-accent bg-accent/10 text-accent"
+          : "border-rule bg-transparent text-ink-soft hover:border-accent hover:text-accent"
       }`}
     >
       <span aria-hidden>{inNotebook ? "★" : "☆"}</span>

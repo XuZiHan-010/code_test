@@ -3,6 +3,9 @@ import { createDeepSeekComplete, createDeepSeekGrader } from "./deepseek-grader"
 import { fakeGrader } from "./fake-grader";
 
 export interface GradeInput {
+  type?: "short" | "fill" | "code";
+  blankCount?: number;
+  blankOrder?: "ordered" | "unordered";
   stem: string;
   referenceAnswer: string;
   userAnswer: string;

@@ -1,12 +1,18 @@
 import { describe, expect, it } from "vitest";
 import { buildBank } from "@/server/content/build";
 import type { TypedQuestion, TypedTopicFile } from "@/server/content/typed-schema";
-import type { KnowledgePoint, ParsedTopic, Topic } from "@/server/content/types";
+import type { Guide, KnowledgePoint, ParsedTopic, Topic } from "@/server/content/types";
 import { validateContent, type ContentInput } from "@/server/content/validator";
 
 const topics: Topic[] = [
   { prefix: "X", slug: "x", title: "示例", column: "示例专栏", order: 1 },
 ];
+
+const guide: Guide = {
+  slug: "demo",
+  title: "示例资料",
+  markdown: "# 示例资料\n\n## 简介 {#intro}\n\n正文。\n\n### 细节 {#detail}\n",
+};
 
 function point(id: string, chapterId: string): KnowledgePoint {
   return {
@@ -217,6 +223,14 @@ describe("validateContent：错误规则", () => {
     ]);
   });
 
+  it("V9 接受 https:// 和 /guides/<slug>（可带锚点）两种引用", () => {
+    const parsed = parsedTopic();
+    parsed.points[0].citations = [{ label: "原文§一", url: "/guides/demo" }];
+    parsed.points[1].citations = [{ label: "原文§二", url: "/guides/demo#intro" }];
+    parsed.points[2].citations = [{ label: "原文§三", url: "/other/demo" }];
+    expect(rulesFor(validateContent(input({ parsed: [parsed], guides: [guide] })))).toEqual(["V9:X1-3"]);
+  });
+
   it("V10 typed 文件里的章节不在 Markdown 中", () => {
     const typed = typedFile();
     typed.chapters.X7 = { status: "draft", questions: [short("X7-1")] };
@@ -240,6 +254,45 @@ describe("validateContent：错误规则", () => {
     const bad: TypedQuestion = { ...single("X1-1"), options: options(["A", "B"]) };
     const typed = typedFile({ x1: [bad, multiple("X1-2"), short("X1-3")], x1Status: "draft" });
     expect(rulesFor(validateContent(input({ typed: [typed] })))).toEqual(["V4:X1-1"]);
+  });
+});
+
+describe("validateContent：V17 站内引用", () => {
+  const withSource = (url: string) => {
+    const parsed = parsedTopic();
+    parsed.chapters[1].sourceUrl = url;
+    return parsed;
+  };
+
+  it("指向存在的资料和标题 id 时通过，资料不带锚点也通过", () => {
+    const parsed = parsedTopic();
+    parsed.chapters[0].sourceUrl = "/guides/demo";
+    parsed.chapters[1].sourceUrl = "/guides/demo#detail";
+    parsed.points[0].citations = [{ label: "原文§简介", url: "/guides/demo#intro" }];
+    expect(validateContent(input({ parsed: [parsed], guides: [guide] })).errors).toEqual([]);
+  });
+
+  it("章节的原文链接指向不存在的资料", () => {
+    const result = validateContent(input({ parsed: [withSource("/guides/missing")], guides: [guide] }));
+    expect(rulesFor(result)).toEqual(["V17:X2"]);
+  });
+
+  it("没有任何资料时，站内引用都报错", () => {
+    expect(rulesFor(validateContent(input({ parsed: [withSource("/guides/demo")] })))).toEqual(["V17:X2"]);
+  });
+
+  it("引用的锚点不是资料里的标题 id", () => {
+    const parsed = parsedTopic();
+    parsed.points[1].citations = [{ label: "原文§x", url: "/guides/demo#nope" }];
+    const result = validateContent(input({ parsed: [parsed], guides: [guide] }));
+    expect(rulesFor(result)).toEqual(["V17:X1-2"]);
+    expect(result.errors[0].message).toContain("#nope");
+  });
+
+  it("专题设置的复习资料必须存在", () => {
+    const withGuide = (slug: string): Topic[] => [{ ...topics[0], guide: slug }];
+    expect(validateContent(input({ topics: withGuide("demo"), guides: [guide] })).errors).toEqual([]);
+    expect(rulesFor(validateContent(input({ topics: withGuide("gone"), guides: [guide] })))).toEqual(["V17:X"]);
   });
 });
 
@@ -297,6 +350,14 @@ describe("validateContent：警告规则", () => {
 });
 
 describe("buildBank", () => {
+  it("复习资料原样进入运行时数据，不受章节状态影响；缺省为空数组", () => {
+    const typed = typedFile({ x1Status: "draft", x2Status: "draft" });
+    const withGuides = buildBank(input({ typed: [typed], guides: [guide] }), "2026-01-01T00:00:00Z");
+    expect(withGuides.bank?.chapters).toEqual([]);
+    expect(withGuides.bank?.guides).toEqual([guide]);
+    expect(buildBank(input(), "2026-01-01T00:00:00Z").bank?.guides).toEqual([]);
+  });
+
   it("有错误时不产出数据", () => {
     const typed = typedFile({ x1: [single("X1-1"), multiple("X1-2")] });
     const result = buildBank(input({ typed: [typed] }), "2026-01-01T00:00:00Z");

@@ -1,6 +1,6 @@
 import { and, asc, eq, gt } from "drizzle-orm";
 import { getCatalog } from "@/server/content/catalog";
-import type { Citation, QuestionOption, QuestionType } from "@/server/content/types";
+import type { BlankOrder, Citation, QuestionOption, QuestionType } from "@/server/content/types";
 import { getDb } from "@/server/db/client";
 import {
   attemptAnswers,
@@ -24,11 +24,15 @@ export interface ResultQuestion {
   type: QuestionType;
   stem: string;
   options?: QuestionOption[];
+  blankCount?: number;
+  blankOrder?: BlankOrder;
   response: AnswerResponse | null;
   verdict: Verdict;
   feedback: string | null;
   referenceAnswer: string;
   citations: Citation[];
+  /** 这道题出自哪篇原文 */
+  source: { title: string; url: string } | null;
   inNotebook: boolean;
   wrongCount: number;
 }
@@ -47,9 +51,13 @@ function judge(
   question: { type: QuestionType; options?: QuestionOption[] },
   response: AnswerResponse | null,
 ): Verdict {
-  if (question.type === "short") {
+  if (question.type === "fill") {
+    return response && "blanks" in response && response.blanks.some(value => value.trim() !== "")
+      ? "pending" : "unanswered";
+  }
+  if (question.type === "short" || question.type === "code") {
     const text = response && "text" in response ? response.text.trim() : "";
-    // 简答题交卷时先记为待评分，由评分执行器给出最终判定
+    // 简答题和代码题交卷时先记为待评分，由评分执行器给出最终判定
     return text === "" ? "unanswered" : "pending";
   }
   const selected = response && "choice" in response ? response.choice : [];
@@ -173,11 +181,13 @@ export async function getAttemptResult(userId: string, attemptId: string): Promi
         type: question.type,
         stem: question.stem,
         ...(question.options ? { options: question.options } : {}),
+        ...(question.type === "fill" ? { blankCount: question.blankCount, blankOrder: question.blankOrder } : {}),
         response: row?.response ?? null,
         verdict: row?.verdict ?? "unanswered",
         feedback: row?.feedback ?? null,
         referenceAnswer: question.referenceAnswer,
         citations: question.citations,
+        source: getCatalog().getSource(question.id),
         inNotebook: inNotebook.has(question.id),
         wrongCount: wrongCounts.get(question.id) ?? 0,
       };

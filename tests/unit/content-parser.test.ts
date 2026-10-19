@@ -10,6 +10,7 @@ const read = (...segments: string[]) =>
 
 describe("parseTopic：真实题库", () => {
   const topics = topicsFileSchema.parse(JSON.parse(read("content", "topics.json")));
+  const retiredIds: string[] = JSON.parse(read("content", "retired-ids.json"));
   const parsed = topics.map((topic) =>
     parseTopic(
       topic.prefix,
@@ -20,7 +21,7 @@ describe("parseTopic：真实题库", () => {
 
   // 题库会继续增加章节，所以这里断言的是 1.0 上线时的下限。
   it("解析出全部专题、章节和知识点", () => {
-    expect(parsed).toHaveLength(15);
+    expect(parsed.length).toBeGreaterThanOrEqual(24);
     const chapters = parsed.flatMap((t) => t.chapters);
     const points = parsed.flatMap((t) => t.points);
     expect(chapters.length).toBeGreaterThanOrEqual(151);
@@ -35,13 +36,13 @@ describe("parseTopic：真实题库", () => {
     }
   });
 
-  it("每个知识点都有题干、参考答案和至少一条 https 引用", () => {
+  it("每个知识点都有题干、参考答案和至少一条 https 或站内资料引用", () => {
     for (const point of parsed.flatMap((t) => t.points)) {
       expect(point.stem, point.id).not.toBe("");
       expect(point.referenceAnswer, point.id).not.toBe("");
       expect(point.citations.length, point.id).toBeGreaterThanOrEqual(1);
       for (const citation of point.citations) {
-        expect(citation.url, point.id).toMatch(/^https:\/\//);
+        expect(citation.url, point.id).toMatch(/^(https:\/\/|\/guides\/)/);
       }
     }
   });
@@ -56,10 +57,29 @@ describe("parseTopic：真实题库", () => {
     for (const topic of parsed) {
       for (const chapter of topic.chapters) {
         expect(chapter.sourceTitle, chapter.id).toBeTruthy();
-        expect(chapter.sourceUrl, chapter.id).toMatch(/^https:\/\//);
+        expect(chapter.sourceUrl, chapter.id).toMatch(/^(https:\/\/|\/guides\/)/);
         expect(chapter.questionIds.length, chapter.id).toBeGreaterThan(0);
         const sequence = chapter.questionIds.map((id) => Number(id.split("-")[1]));
-        expect(sequence, chapter.id).toEqual(sequence.map((_, i) => i + 1));
+        expect(sequence, chapter.id).toEqual([...sequence].sort((a, b) => a - b));
+        // 退役的题号从题卷里删掉但不复用，所以把它们补回去之后章内编号才是连续的
+        const retiredHere = retiredIds
+          .filter((id) => id.startsWith(`${chapter.id}-`))
+          .map((id) => Number(id.split("-")[1]));
+        const numbered = [...sequence, ...retiredHere].sort((a, b) => a - b);
+        expect(numbered, chapter.id).toEqual(numbered.map((_, i) => i + 1));
+      }
+    }
+  });
+
+  // MySQL 专题的 SQL 代码题同样使用多行答案
+  const multilineInMysql = new Set(["S1-104", "S1-107", "S1-110", "S4-80"]);
+
+  it("除代码题外的参考答案都是单行，多行答案解析没有改变它们", () => {
+    for (const topic of parsed.filter((t) => t.prefix !== "R")) {
+      for (const point of topic.points) {
+        if (multilineInMysql.has(point.id)) continue;
+        expect(point.referenceAnswer, point.id).not.toContain("\n");
+        expect(point.stem, point.id).not.toContain("\n");
       }
     }
   });
@@ -189,5 +209,85 @@ describe("parseTopic：不一致的输入", () => {
   it("题号的题组号与所在章节不符时报错", () => {
     const body = `${heading}- **X2-1** 甲？`;
     expect(() => parseTopic("X", body, body)).toThrow(/不属于所在的第 1 章/);
+  });
+});
+
+describe("parseTopic：多行答案", () => {
+  const questions = `## 1. 排序
+
+### 快速排序
+
+- **R1-1** 用任意语言实现快速排序。
+- **R1-2** 快排的平均时间复杂度是多少？
+`;
+  const answers = `## 1. 排序
+
+原文：[数据结构与算法](https://example.com/data.html)。
+
+### 快速排序
+
+- **R1-1** 先选基准再划分。
+
+  \`\`\`python
+  def f(xs):
+      ## 1. 看起来像标题但有缩进
+      return xs
+
+  def g(): pass
+  \`\`\`
+
+  要点：O(n log n)。[原文§快速排序](https://example.com/data.html#a)
+- **R1-2** O(n log n)。[原文§快速排序](https://example.com/data.html#a)
+`;
+
+  it("缩进行和空行并入同一题，缩进被去掉，引用取自最后一行", () => {
+    const parsed = parseTopic("R", questions, answers);
+    expect(parsed.points).toHaveLength(2);
+    const [code, plain] = parsed.points;
+    expect(code.referenceAnswer).toBe(
+      "先选基准再划分。\n\n```python\ndef f(xs):\n    ## 1. 看起来像标题但有缩进\n    return xs\n\ndef g(): pass\n```\n\n要点：O(n log n)。",
+    );
+    expect(code.citations).toEqual([{ label: "原文§快速排序", url: "https://example.com/data.html#a" }]);
+    expect(plain.referenceAnswer).toBe("O(n log n)。");
+    expect(parsed.chapters).toHaveLength(1);
+  });
+
+  it("题卷里的缩进行同样并入上一题而不是丢失", () => {
+    const withIndent = questions.replace("快速排序。\n", "快速排序。\n  接口：sort(xs)\n");
+    const [first] = parseTopic("R", withIndent, answers).points;
+    expect(first.stem).toBe("用任意语言实现快速排序。\n接口：sort(xs)");
+  });
+});
+
+describe("parseTopic：站内复习资料引用", () => {
+  const questions = ["## 1. 第一章", "- **X1-1** 什么是甲？", "- **X1-2** 什么是乙？"].join("\n");
+  const answers = [
+    "## 1. 第一章",
+    "",
+    "原文：[复习资料：RPA](/guides/rpa#intro)。",
+    "",
+    "- **X1-1** 甲是一种方法。[原文§概述](/guides/rpa#overview)",
+    "- **X1-2** 乙是另一种。[原文§一](/guides/rpa)[对照原文§二](https://example.com/a.html#b)",
+  ].join("\n");
+  const topic = parseTopic("X", questions, answers);
+
+  it("章节的原文链接可以是 /guides/ 站内路径，锚点保留在地址里", () => {
+    expect(topic.chapters[0].sourceTitle).toBe("复习资料：RPA");
+    expect(topic.chapters[0].sourceUrl).toBe("/guides/rpa#intro");
+  });
+
+  it("行尾引用可以是站内路径，也可以和站外链接混用", () => {
+    const [first, second] = topic.points;
+    expect(first.referenceAnswer).toBe("甲是一种方法。");
+    expect(first.citations).toEqual([{ label: "原文§概述", url: "/guides/rpa#overview" }]);
+    expect(second.referenceAnswer).toBe("乙是另一种。");
+    expect(second.citations.map((c) => c.url)).toEqual(["/guides/rpa", "https://example.com/a.html#b"]);
+  });
+
+  it("其他站内路径不被当成引用，留在答案正文里", () => {
+    const other = answers.replace("(/guides/rpa#overview)", "(/other/page)");
+    const [first] = parseTopic("X", questions, other).points;
+    expect(first.citations).toEqual([]);
+    expect(first.referenceAnswer).toContain("(/other/page)");
   });
 });

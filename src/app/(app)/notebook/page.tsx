@@ -21,10 +21,10 @@ async function Notebook() {
   if (items.length === 0 && !inProgress) {
     return (
       <div className="sheet px-6 py-12 text-center">
-        <p className="mb-2 font-serif text-lg font-bold">错题本还是空的</p>
+        <p className="mb-2 font-head text-lg font-bold">错题本还是空的</p>
         <p className="mx-auto mb-2 max-w-md text-sm leading-7 text-ink-soft">
           错题本里的题由你自己挑选。在答题页、交卷后的结果页，或者每章的错题列表里，点题目旁边的
-          <span className="mx-1 rounded-sm border border-rule px-1.5 py-0.5 text-xs">☆ 加入错题本</span>
+          <span className="mx-1 border border-rule px-1.5 py-0.5 text-xs">☆ 加入错题本</span>
           就能把它收进来。
         </p>
         <p className="mx-auto mb-6 max-w-md text-sm leading-7 text-ink-soft">
@@ -79,7 +79,7 @@ async function Notebook() {
                     <span className="tag tag-plain">没有错过</span>
                   )}
                 </p>
-                <p className="font-serif leading-7 font-bold">{item.stem}</p>
+                <p className="font-head leading-7 font-bold">{item.stem}</p>
                 <p className="mt-1 text-xs text-ink-faint">
                   <Link href={`/practice/${item.topic.slug}`} className="hover:text-ink hover:underline">
                     {item.topic.title}

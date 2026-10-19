@@ -36,13 +36,15 @@
 | id | 题号，如 `B1-1`。主键，全局唯一，永不更改或复用（FR-006） |
 | chapterId | 所属章节 |
 | section | 题组内的小标题，可为空 |
-| type | `single`、`multiple`、`short` |
-| stem | 题干。选择题可以是改写后的题干，简答题沿用原题干 |
+| type | `single`、`multiple`、`short`、`fill`、`code` |
+| stem | 题干。选择题可以是改写后的题干，简答题沿用原题干，代码题与填空题一样必须有题干 |
 | options | 仅选择题：`[{ key, text, correct }]` |
+| blankCount | 仅填空题：1 到 20 个空 |
+| blankOrder | 仅填空题：`ordered` 按位置，`unordered` 顺序不限 |
 | referenceAnswer | 参考答案全文 |
 | citations | 原文小节引用 `[{ label, url }]`，至少一条 |
 
-约束（由校验器保证，见内容格式契约）：单选题恰有 4 个选项且 1 个正确；多选题 4 到 6 个选项且至少 2 个正确；简答题没有选项。
+约束（由校验器保证，见内容格式契约）：单选题恰有 4 个选项且 1 个正确；多选题 4 到 6 个选项且至少 2 个正确；简答题、填空题和代码题没有选项。填空题空数与题干中的 `____` 数量一致。
 
 ### 两种对外视图
 
@@ -87,7 +89,7 @@
 | last_question_id | text，可空 | 用户上次所在的题目（FR-017） |
 | total_count | int | 等于 `question_ids` 的长度 |
 | correct_count | int，可空 | 交卷后写入；补评完成时更新 |
-| pending_count | int | 尚未评出的简答题数量 |
+| pending_count | int | 尚未评出的简答题、填空题和代码题数量 |
 | started_at、submitted_at | timestamptz | |
 
 约束与索引：
@@ -115,9 +117,9 @@
 | --- | --- | --- |
 | attempt_id | uuid，外键 attempts，级联删除 | 与 question_id 组成主键 |
 | question_id | text | |
-| response | jsonb | 选择题 `{ "choice": ["A","C"] }`，简答题 `{ "text": "…" }` |
+| response | jsonb | 选择题 `{ "choice": ["A","C"] }`，简答题和代码题 `{ "text": "…" }`，填空题 `{ "blanks": ["…", "…"] }` |
 | verdict | 枚举 `correct`、`incorrect`、`unanswered`、`pending`，可空 | 交卷前为空 |
-| feedback | text，可空 | 简答题评语 |
+| feedback | text，可空 | 简答题、填空题和代码题的评语 |
 | answered_at | timestamptz | 最后一次保存的时间 |
 | graded_at | timestamptz，可空 | |
 | grading_tries | int，默认 0 | 评分尝试次数 |
@@ -126,7 +128,8 @@
 规则：
 
 - 交卷前每次保存是整行覆盖，以最后保存的为准（两台设备同时作答的情形）。
-- 简答题答案去掉首尾空白后为空，视为未作答；长度上限 2000 字。
+- 简答题答案去掉首尾空白后为空，视为未作答；长度上限 2000 字。代码题答案与简答题同为 `{ "text": "…" }`，空白视为未答，长度上限 8000 字（按 Unicode 字符计）。
+- 填空题答案数组与空数等长，各空合计不超过 2000 字；全空白视为未答，部分填写送模型判分。复用 JSONB，无需数据库迁移。
 - 交卷时，`question_ids` 里没有明细行或答案为空的题，补一行 `verdict = 'unanswered'`。
 - 索引 `(next_retry_at)`，条件 `verdict = 'pending'`：评分执行器领取任务。
 
@@ -143,7 +146,7 @@
 
 更新规则：
 
-- 只在一道题得到 `correct` 或 `incorrect` 判定时更新：选择题在交卷的事务里更新，简答题在评分完成的事务里更新。
+- 只在一道题得到 `correct` 或 `incorrect` 判定时更新：选择题在交卷的事务里更新，简答题、填空题和代码题在评分完成的事务里更新。
 - `unanswered` 不产生也不更新统计行（FR-031）。`abandoned` 的作答不更新统计。
 - `wrong_count` 只增不减；后来答对只改 `last_verdict`（FR-033）。
 - “错题”就是 `wrong_count >= 1` 的行。每章错题、错题总览按题号所属的章节和专题在内存里的题库目录中归类（FR-032、FR-034）。

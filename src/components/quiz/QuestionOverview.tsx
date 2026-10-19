@@ -18,7 +18,7 @@ export function QuestionOverview({
   return (
     <section aria-label="题目概览" className="sheet px-5 py-5 sm:px-6">
       <header className="mb-4 flex items-baseline justify-between">
-        <h3 className="font-serif text-base font-bold">答题卡</h3>
+        <h3 className="font-head text-base font-bold">答题卡</h3>
         <p className="text-sm text-ink-soft">
           已答 <span className="font-mono text-ink">{answered}</span> / {items.length}
           {answered < items.length && (
@@ -36,9 +36,9 @@ export function QuestionOverview({
                 onClick={() => onJump(index)}
                 aria-current={current ? "step" : undefined}
                 aria-label={`第 ${index + 1} 题，${item.answered ? "已答" : "未答"}`}
-                className={`flex h-11 w-full cursor-pointer items-center justify-center rounded-sm border font-mono text-sm transition-colors ${
+                className={`flex h-11 w-full cursor-pointer items-center justify-center border font-mono font-bold text-sm transition-colors ${
                   item.answered
-                    ? "border-ink bg-ink text-card"
+                    ? "border-accent bg-accent text-accent-ink"
                     : "border-rule bg-card text-ink-soft hover:border-ink-faint"
                 } ${current ? "ring-2 ring-pen ring-offset-2 ring-offset-card" : ""}`}
               >

@@ -32,10 +32,10 @@ export function SubmitDialog({
         event.preventDefault();
         onCancel();
       }}
-      className="sheet m-auto w-[min(92vw,26rem)] p-0 backdrop:bg-ink/40"
+      className="sheet m-auto w-[min(92vw,26rem)] p-0 text-ink backdrop:bg-black/75"
     >
       <div className="px-6 py-6">
-        <h3 className="mb-3 font-serif text-lg font-bold">还有题目没有作答</h3>
+        <h3 className="mb-3 font-head text-lg font-bold">还有题目没有作答</h3>
         <p className="mb-6 text-sm leading-7 text-ink-soft">
           还有 <span className="font-mono text-base font-bold text-pen">{unansweredCount}</span>{" "}
           道题没有作答。现在交卷的话，这些题不得分，但也不会记成错题。交卷后不能再修改。

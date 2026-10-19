@@ -42,7 +42,7 @@ npm test                           # 单元测试加集成测试（需要本地 
 npm run e2e                        # 端到端冒烟流程
 ```
 
-预期：全部通过。`content:validate` 在设置 `CONTENT_REQUIRE_ALL=1` 后，只有 151 章全部为 `approved` 才通过。
+预期：全部通过。`content:validate` 在设置 `CONTENT_REQUIRE_ALL=1` 后，只有 161 章全部为 `approved` 才通过。
 
 ## 验证场景
 

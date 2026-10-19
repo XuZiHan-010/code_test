@@ -6,6 +6,7 @@ import { NotebookToggle } from "@/components/NotebookToggle";
 import { PageLoading } from "@/components/PageLoading";
 import { ResultQuestion } from "@/components/result/ResultQuestion";
 import { SourceNotice } from "@/components/result/SourceNotice";
+import { SourceLink } from "@/components/SourceLink";
 import { StartAttemptButton } from "@/components/StartAttemptButton";
 import { requireUserOrRedirect } from "@/server/auth/current-user";
 import { getCatalog } from "@/server/content/catalog";
@@ -51,6 +52,12 @@ async function ChapterMistakes({ params, searchParams }: Pick<Props, "params" | 
           <span className="stamp">{chapter.id}</span>
           {chapter.title}
         </h1>
+        {chapter.sourceUrl && (
+          <p className="mt-2 text-sm">
+            <span className="text-ink-faint">本章原文：</span>
+            <SourceLink href={chapter.sourceUrl}>{chapter.sourceTitle ?? "打开原文"}</SourceLink>
+          </p>
+        )}
       </header>
 
       {items.length === 0 ? (
@@ -79,7 +86,7 @@ async function ChapterMistakes({ params, searchParams }: Pick<Props, "params" | 
               <li key={item.id}>
                 {/* 默认收起，只看题干和错误次数；展开后是完整的题目、正确答案和解答 */}
                 <details className="group">
-                  <summary className="sheet flex cursor-pointer list-none flex-wrap items-center gap-2 px-5 py-4 group-open:rounded-b-none group-open:border-b-0 sm:px-6">
+                  <summary className="sheet flex cursor-pointer list-none flex-wrap items-center gap-2 px-5 py-4 group-open:border-b-0 sm:px-6">
                     <span className="stamp">{item.id}</span>
                     <span className="tag tag-pen">错 {item.wrongCount} 次</span>
                     <span className={`tag ${item.lastVerdict === "correct" ? "tag-pass" : "tag-plain"}`}>
@@ -87,7 +94,7 @@ async function ChapterMistakes({ params, searchParams }: Pick<Props, "params" | 
                     </span>
                     <span className="ml-auto text-xs text-ink-faint group-open:hidden">展开看解答</span>
                     <span className="ml-auto hidden text-xs text-ink-faint group-open:inline">收起</span>
-                    <span className="mt-1 w-full font-serif leading-7 font-bold">{item.stem}</span>
+                    <span className="mt-1 w-full font-head leading-7 font-bold group-open:hidden">{item.stem}</span>
                   </summary>
                   <ResultQuestion
                     question={item}

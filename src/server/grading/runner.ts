@@ -138,8 +138,11 @@ async function gradeOne(
   now: Date,
 ): Promise<"graded" | "failed"> {
   const [question] = getCatalog().getWithAnswer([claimed.question_id]);
-  const text =
-    claimed.response && "text" in claimed.response ? claimed.response.text.trim() : "";
+  const response = claimed.response;
+  const text = question?.type === "fill" && response && "blanks" in response
+    ? (response.blanks.some(value => value.trim() !== "")
+      ? response.blanks.map((value, index) => `第 ${index + 1} 空：${value.trim() || "（未填写）"}`).join("\n") : "")
+    : response && "text" in response ? response.text.trim() : "";
   // 题目已下架或没有可评的内容：不调用评分器，按未答结束
   if (!question || text === "") {
     await recordSuccess(claimed, "unanswered", null, now);
@@ -148,6 +151,8 @@ async function gradeOne(
 
   try {
     const result = await grader.grade({
+      type: question.type === "fill" ? "fill" : question.type === "code" ? "code" : "short",
+      ...(question.type === "fill" ? { blankCount: question.blankCount, blankOrder: question.blankOrder } : {}),
       stem: question.stem,
       referenceAnswer: question.referenceAnswer,
       userAnswer: text,

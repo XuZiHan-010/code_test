@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api } from "@/lib/api-client";
 import type { AttemptForAnswering } from "@/server/attempts/service";
 import type { AnswerResponse } from "@/server/db/schema";
+import { SourceLink } from "../SourceLink";
 import { QuestionCard } from "./QuestionCard";
 import { QuestionOverview } from "./QuestionOverview";
 import { SubmitDialog } from "./SubmitDialog";
@@ -17,6 +18,7 @@ const TEXT_SAVE_DELAY_MS = 800;
 
 function isAnswered(response: AnswerResponse | null | undefined): boolean {
   if (!response) return false;
+  if ("blanks" in response) return response.blanks.some(value => value.trim() !== "");
   return "choice" in response ? response.choice.length > 0 : response.text.trim() !== "";
 }
 
@@ -88,7 +90,7 @@ export function QuizRunner({ attempt }: { attempt: InProgress }) {
     if (ended) return;
     setResponses((prev) => ({ ...prev, [question.id]: response }));
     dirty.current.set(question.id, response);
-    if (question.type === "short") {
+    if (question.type === "short" || question.type === "fill" || question.type === "code") {
       // 输入文字时稍等一下再存，避免每敲一个字就发一次请求
       if (timer.current) clearTimeout(timer.current);
       timer.current = setTimeout(() => void flush(), TEXT_SAVE_DELAY_MS);
@@ -101,7 +103,7 @@ export function QuizRunner({ attempt }: { attempt: InProgress }) {
     if (nextIndex < 0 || nextIndex >= questions.length || nextIndex === index) return;
     void flush();
     setIndex(nextIndex);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
     // 记下翻到了哪一题，下次回来从这里接着做。没记上不影响作答，所以不处理失败
     if (!ended) {
       void api(`/api/attempts/${attempt.id}/position`, {
@@ -184,10 +186,18 @@ export function QuizRunner({ attempt }: { attempt: InProgress }) {
     <div className="space-y-5">
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="eyebrow mb-1">
-            {attempt.scope.type === "chapter" ? `章节 ${attempt.scope.chapterId}` : "错题本"}
+          <p className="eyebrow mb-1.5">
+            {attempt.scope.type === "chapter" ? `Chapter ${attempt.scope.chapterId}` : "Notebook"}
           </p>
-          <h1 className="font-serif text-xl font-bold sm:text-2xl">{attempt.scope.title}</h1>
+          <h1 className="font-head text-2xl leading-tight font-bold sm:text-3xl">
+            {attempt.scope.title}
+          </h1>
+          {attempt.scope.source && (
+            <p className="mt-1.5 text-sm">
+              <span className="text-ink-faint">原文：</span>
+              <SourceLink href={attempt.scope.source.url}>{attempt.scope.source.title}</SourceLink>
+            </p>
+          )}
         </div>
         <p
           aria-live="polite"
@@ -217,6 +227,8 @@ export function QuizRunner({ attempt }: { attempt: InProgress }) {
         </p>
       )}
 
+      <div className="quiz-layout">
+      <div className="min-w-0 space-y-5">
       <QuestionCard
         key={question.id}
         question={question}
@@ -244,7 +256,12 @@ export function QuizRunner({ attempt }: { attempt: InProgress }) {
         </button>
       </nav>
 
-      <QuestionOverview items={overview} currentIndex={index} onJump={jump} />
+      </div>
+      <aside className="quiz-sidebar">
+        <QuestionOverview items={overview} currentIndex={index} onJump={jump} />
+        <p className="mt-4 px-2 text-xs leading-6 text-ink-faint">不必一口气答完。答案会自动保存，下次回来可以接着练。</p>
+      </aside>
+      </div>
 
       <div className="flex flex-wrap items-center justify-end gap-4">
         <p className="mr-auto text-xs text-ink-faint">答案会自动保存，可以随时离开，下次接着做。</p>

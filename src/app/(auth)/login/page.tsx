@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "登录" };
 export default function LoginPage() {
   return (
     <>
-      <h2 className="mb-6 font-serif text-xl font-bold">登录</h2>
+      <h1 className="mb-8 text-center font-head text-2xl font-bold">登录</h1>
       <Suspense fallback={<p className="text-sm text-ink-faint">正在加载…</p>}>
         <AuthForm mode="login" />
       </Suspense>

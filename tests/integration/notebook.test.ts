@@ -148,7 +148,12 @@ describe("错题本：练习", () => {
     });
     const view = await getAttemptForAnswering(user.id, attemptId);
     if (view.status !== "in_progress") throw new Error("应为进行中");
-    expect(view.scope).toEqual({ type: "notebook", chapterId: null, title: "错题本练习" });
+    expect(view.scope).toEqual({
+      type: "notebook",
+      chapterId: null,
+      title: "错题本练习",
+      source: null,
+    });
     expect(view.questions.map((q) => q.id)).toEqual(["X2-1", "X1-1"]);
   });
 

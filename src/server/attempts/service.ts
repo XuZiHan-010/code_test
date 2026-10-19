@@ -13,6 +13,8 @@ export interface ScopeView {
   type: "chapter" | "notebook";
   chapterId: string | null;
   title: string;
+  /** 章节对应的原文；错题本练习跨多个章节，所以为空 */
+  source: { title: string; url: string } | null;
 }
 
 export interface AnsweringQuestion extends QuestionForAnswering {
@@ -32,6 +34,9 @@ export type AttemptForAnswering =
 
 /** 简答题答案的长度上限（按字符计） */
 export const SHORT_ANSWER_MAX_CHARS = 2000;
+
+/** 代码题答案的长度上限（按字符计） */
+export const CODE_ANSWER_MAX_CHARS = 8000;
 
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -72,9 +77,13 @@ export function describeScope(attempt: AttemptRow): ScopeView {
       type: "chapter",
       chapterId: attempt.chapterId,
       title: chapter?.title ?? attempt.chapterId,
+      source:
+        chapter?.sourceTitle && chapter.sourceUrl
+          ? { title: chapter.sourceTitle, url: chapter.sourceUrl }
+          : null,
     };
   }
-  return { type: "notebook", chapterId: null, title: "错题本练习" };
+  return { type: "notebook", chapterId: null, title: "错题本练习", source: null };
 }
 
 /** 该范围内进行中的作答（最多一份） */
@@ -206,16 +215,27 @@ export async function abandonAttempt(userId: string, attemptId: string): Promise
 
 /** 按题型检查并规整答案。清空的答案规整为 null。 */
 function normalizeResponse(
-  question: { type: string; options?: { key: string }[] },
+  question: { type: string; options?: { key: string }[]; blankCount?: number },
   response: AnswerResponse | null,
 ): AnswerResponse | null {
   const invalid = (message: string) => new AppError("invalid_answer", message, 422);
   if (response === null) return null;
 
-  if (question.type === "short") {
-    if (!("text" in response)) throw invalid("简答题需要提交文字答案");
-    if ([...response.text].length > SHORT_ANSWER_MAX_CHARS) {
-      throw invalid(`答案不能超过 ${SHORT_ANSWER_MAX_CHARS} 字`);
+  if (question.type === "fill") {
+    if (!("blanks" in response) || response.blanks.length !== question.blankCount) {
+      throw invalid(`填空题需要提交 ${question.blankCount} 个空的答案`);
+    }
+    if (response.blanks.reduce((total, value) => total + [...value].length, 0) > SHORT_ANSWER_MAX_CHARS) {
+      throw invalid(`各空答案合计不能超过 ${SHORT_ANSWER_MAX_CHARS} 字`);
+    }
+    return response.blanks.every(value => value.trim() === "") ? null : { blanks: [...response.blanks] };
+  }
+
+  if (question.type === "short" || question.type === "code") {
+    const limit = question.type === "code" ? CODE_ANSWER_MAX_CHARS : SHORT_ANSWER_MAX_CHARS;
+    if (!("text" in response)) throw invalid(question.type === "code" ? "代码题需要提交代码文本" : "简答题需要提交文字答案");
+    if ([...response.text].length > limit) {
+      throw invalid(`答案不能超过 ${limit} 字`);
     }
     return response.text.trim() === "" ? null : { text: response.text };
   }

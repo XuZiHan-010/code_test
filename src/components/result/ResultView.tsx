@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api-client";
 import { accuracyPercent } from "@/lib/labels";
 import { NotebookToggle } from "@/components/NotebookToggle";
+import { SourceLink } from "@/components/SourceLink";
 import type { AttemptResult } from "@/server/attempts/submit";
 import { ResultQuestion } from "./ResultQuestion";
 import { SourceNotice } from "./SourceNotice";
@@ -37,20 +38,23 @@ export function ResultView({ initial }: { initial: AttemptResult }) {
 
   return (
     <div className="space-y-6">
-      <header className="rise sheet flex flex-wrap items-center gap-6 px-5 py-6 sm:px-8">
-        {/* 像老师用红笔圈出的成绩 */}
-        <div
-          className="flex h-28 w-28 shrink-0 -rotate-6 flex-col items-center justify-center rounded-full border-[3px] border-pen text-pen"
-          aria-label={`正确率 ${percent}%`}
-        >
-          <span className="font-serif text-4xl leading-none font-bold">{percent}</span>
-          <span className="mt-1 text-xs tracking-widest">正确率 %</span>
-        </div>
-        <div className="min-w-0 flex-1 basis-56">
-          <p className="eyebrow mb-1">
-            {result.scope.type === "chapter" ? `章节 ${result.scope.chapterId}` : "错题本"} · 作答结果
+      <header className="rise sheet relative flex flex-wrap items-center gap-x-8 gap-y-5 overflow-hidden px-5 py-7 sm:px-8">
+        <div aria-hidden className="hazard absolute inset-y-0 left-0 w-1.5" />
+        {/* 记分牌：正确率 */}
+        <div className="shrink-0 pl-2" aria-label={`正确率 ${percent}%`}>
+          <p className="mb-1 text-xs font-bold tracking-[0.2em] text-ink-faint">正确率</p>
+          <p className="display text-7xl text-accent sm:text-8xl">
+            {percent}
+            <span className="ml-1 text-3xl text-ink-soft sm:text-4xl">%</span>
           </p>
-          <h1 className="mb-3 font-serif text-xl font-bold sm:text-2xl">{result.scope.title}</h1>
+        </div>
+        <div className="min-w-0 flex-1 basis-64">
+          <p className="eyebrow mb-2">
+            {result.scope.type === "chapter" ? `Chapter ${result.scope.chapterId}` : "Notebook"} · Result
+          </p>
+          <h1 className="mb-3 font-head text-2xl leading-tight font-bold italic sm:text-3xl">
+            {result.scope.title}
+          </h1>
           <p className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-soft">
             <span>
               答对 <b className="font-mono text-pass">{correctCount}</b> / {totalCount}
@@ -72,6 +76,12 @@ export function ResultView({ initial }: { initial: AttemptResult }) {
           {pendingCount > 0 && (
             <p role="status" className="mt-2 text-xs text-wait">
               还有 {pendingCount} 道简答题正在评分，评出后正确率会自动更新。
+            </p>
+          )}
+          {result.scope.source && (
+            <p className="mt-3 text-sm">
+              <span className="text-ink-faint">本章原文：</span>
+              <SourceLink href={result.scope.source.url}>{result.scope.source.title}</SourceLink>
             </p>
           )}
         </div>

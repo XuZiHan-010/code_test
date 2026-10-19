@@ -1,11 +1,14 @@
+import { guideAnchors, parseGuideUrl } from "./guide";
 import type { TypedQuestion, TypedTopicFile } from "./typed-schema";
-import { QUESTION_TYPES, type ParsedTopic, type Topic } from "./types";
+import { QUESTION_TYPES, type Guide, type ParsedTopic, type Topic } from "./types";
 
 export interface ContentInput {
   topics: Topic[];
   parsed: ParsedTopic[];
   typed: TypedTopicFile[];
   retiredIds: string[];
+  /** content/guides/ 下的复习资料；缺省视为没有 */
+  guides?: Guide[];
   /** 为 true 时要求每个章节都已通过抽查（V12） */
   requireAll: boolean;
   /** 仅供本地开发：把 draft 章节也放进运行时数据。不得用于上线构建 */
@@ -43,12 +46,27 @@ function checkQuestion(
     errors.push({ rule, target: id, message });
 
   if (!(QUESTION_TYPES as readonly string[]).includes(type)) {
-    error("V3", `题型 "${type}" 不是 single、multiple、short 之一`);
+    error("V3", `题型 "${type}" 不是 single、multiple、short、fill、code 之一`);
     return;
   }
 
-  if (type === "short") {
-    if (question.options !== undefined) error("V6", "简答题不得有选项");
+  if (type !== "fill" && (question.blankCount !== undefined || question.blankOrder !== undefined)) {
+    error("V15", "只有填空题可以设置空数与顺序要求");
+  }
+
+  if (type === "short" || type === "fill" || type === "code") {
+    if (question.options !== undefined) error("V6", "简答题、填空题和代码题不得有选项");
+    if (type === "code" && !question.stem?.trim()) error("V16", "代码题必须有非空题干");
+    if (type === "fill") {
+      const count = question.blankCount;
+      if (typeof count !== "number" || !Number.isInteger(count) || count < 1 || count > 20) {
+        error("V15", "填空题必须有 1 到 20 个空");
+      }
+      if (!question.blankOrder) error("V15", "填空题必须标明 ordered 或 unordered");
+      if (!question.stem?.trim() || (question.stem.match(/____/g) ?? []).length !== count) {
+        error("V15", "填空题题干必须用 ____ 标出每个空，数量与 blankCount 一致");
+      }
+    }
     return;
   }
 
@@ -123,9 +141,43 @@ export function validateContent(input: ContentInput): ValidationResult {
       }
       if (point.citations.length === 0) {
         errors.push({ rule: "V9", target: point.id, message: "缺少原文引用" });
-      } else if (point.citations.some((c) => !c.url.startsWith("https://"))) {
-        errors.push({ rule: "V9", target: point.id, message: "引用链接必须以 https:// 开头" });
+      } else if (point.citations.some((c) => !c.url.startsWith("https://") && !parseGuideUrl(c.url))) {
+        errors.push({
+          rule: "V9",
+          target: point.id,
+          message: "引用链接必须以 https:// 开头，或是 /guides/<slug> 形式的站内资料链接",
+        });
       }
+    }
+  }
+
+  // V17：站内引用必须指向存在的复习资料和标题锚点
+  const anchorsBySlug = new Map((input.guides ?? []).map((g) => [g.slug, guideAnchors(g)]));
+  const checkInternalUrl = (target: string, url: string) => {
+    const guide = parseGuideUrl(url);
+    if (!guide) return;
+    const anchors = anchorsBySlug.get(guide.slug);
+    if (!anchors) {
+      errors.push({ rule: "V17", target, message: `站内引用 ${url} 指向的复习资料 ${guide.slug} 不存在` });
+    } else if (guide.anchor !== null && !anchors.has(guide.anchor)) {
+      errors.push({
+        rule: "V17",
+        target,
+        message: `站内引用 ${url} 的锚点 #${guide.anchor} 不是复习资料 ${guide.slug} 里的标题 id`,
+      });
+    }
+  };
+  for (const topic of input.parsed) {
+    for (const chapter of topic.chapters) {
+      if (chapter.sourceUrl) checkInternalUrl(chapter.id, chapter.sourceUrl);
+    }
+    for (const point of topic.points) {
+      for (const citation of point.citations) checkInternalUrl(point.id, citation.url);
+    }
+  }
+  for (const topic of input.topics) {
+    if (topic.guide !== undefined && !anchorsBySlug.has(topic.guide)) {
+      errors.push({ rule: "V17", target: topic.prefix, message: `专题的复习资料 ${topic.guide} 不存在` });
     }
   }
 

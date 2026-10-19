@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { PageLoading } from "@/components/PageLoading";
+import { SourceLink } from "@/components/SourceLink";
 import { StartAttemptButton } from "@/components/StartAttemptButton";
 import { accuracyPercent } from "@/lib/labels";
 import { getChapterProgress, type ChapterProgress } from "@/server/attempts/progress";
@@ -50,18 +51,31 @@ async function ChapterList({ params }: { params: Promise<{ topic: string }> }) {
         <span className="mx-2">/</span>
         {topic.column}
       </p>
-      <h1 className="title mb-8">{topic.title}</h1>
+      <h1 className="title">{topic.title}</h1>
+      {topic.guide && catalog.getGuide(topic.guide) && (
+        <p className="mt-3 text-sm">
+          <Link href={`/guides/${topic.guide}`} className="link">
+            复习资料：{catalog.getGuide(topic.guide)?.title}
+          </Link>
+        </p>
+      )}
+      <div className="chapter-summary">
+        <span><strong>{chapters.length}</strong> 个章节</span>
+        <span><strong>{chapters.reduce((sum, chapter) => sum + chapter.questionIds.length, 0)}</strong> 道练习题</span>
+        <span>已完成 <strong>{chapters.filter((chapter) => progress.get(chapter.id)?.status === "completed").length}</strong> 章</span>
+        <span className="sm:ml-auto">按自己的节奏，一章一章掌握。</span>
+      </div>
 
-      <ol className="sheet divide-y divide-rule">
+      <ol className="chapter-list">
         {chapters.map((chapter) => {
           const state = progress.get(chapter.id)!;
           const status = STATUS[state.status];
           const wrong = wrongByChapter.get(chapter.id) ?? 0;
           return (
-            <li key={chapter.id} className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 py-4 sm:px-6">
+            <li key={chapter.id} className="chapter-row flex flex-wrap items-center gap-x-5 gap-y-3">
               <span className="stamp shrink-0">{chapter.id}</span>
               <div className="min-w-0 flex-1 basis-56">
-                <h2 className="font-serif text-base font-bold">{chapter.title}</h2>
+                <h2 className="font-head text-base font-bold">{chapter.title}</h2>
                 <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-soft">
                   <span className={`tag ${status.tag}`}>{status.label}</span>
                   <span>{chapter.questionIds.length} 题</span>
@@ -69,15 +83,9 @@ async function ChapterList({ params }: { params: Promise<{ topic: string }> }) {
                 </p>
                 <p className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-sm">
                   {chapter.sourceUrl && (
-                    <a
-                      href={chapter.sourceUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="link"
-                      title={chapter.sourceTitle ?? undefined}
-                    >
-                      读原文
-                    </a>
+                    <SourceLink href={chapter.sourceUrl}>
+                      原文：{chapter.sourceTitle ?? "打开原文"}
+                    </SourceLink>
                   )}
                   {state.latestSubmittedAttemptId && (
                     <Link href={`/attempts/${state.latestSubmittedAttemptId}/result`} className="link">

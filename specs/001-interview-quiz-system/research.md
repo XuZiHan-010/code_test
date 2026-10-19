@@ -31,12 +31,12 @@
 ## 4. 发布前检查与抽查怎么落实
 
 - **Decision**: `content/typed/` 里每个章节带一个状态：`draft` 或 `approved`。只有 `approved` 的章节进入 `bank.json`。生成后先是 `draft`，人工抽查通过后改为 `approved`。生产构建设置 `CONTENT_REQUIRE_ALL=1`，此时只要有一章不是 `approved` 构建就失败。被删除的题号记入 `content/retired-ids.json`，校验器拒绝再次使用。本地开发可以设 `CONTENT_INCLUDE_DRAFTS=1` 把 `draft` 章节也放进数据，以便在抽查完成前开发页面；构建脚本拒绝在生产环境或与 `CONTENT_REQUIRE_ALL` 同时使用它。
-- **Rationale**: FR-045 要求未通过检查的题目不得出现在网站上；章节级状态是能满足它的最小机制。`CONTENT_REQUIRE_ALL` 对应 SC-001（上线时 151 章全部可做），开发期间则允许只带部分章节运行。
+- **Rationale**: FR-045 要求未通过检查的题目不得出现在网站上；章节级状态是能满足它的最小机制。`CONTENT_REQUIRE_ALL` 对应 SC-001（上线时 161 章全部可做），开发期间则允许只带部分章节运行。
 - **Alternatives considered**:
   - 只靠口头约定“抽查后再发布”：没有任何东西阻止未抽查的章节上线。
-  - 逐题审批：2884 题逐个标记，工作量与抽查的定位不符。
+  - 逐题审批：3122 题逐个标记，工作量与抽查的定位不符。
 
-## 5. 2884 个知识点怎么转成三种题型
+## 5. 3122 个知识点怎么转成三种题型
 
 - **Decision**: 做一个项目内的 Claude Code skill（`.claude/skills/generate-questions/`），在开发会话里按章运行：读入一章的题干和参考答案，按规格 FR-002 判断题型，为选择题写题干和选项，写入 `content/typed/`，然后运行校验器。先用最小的专题（AI 编程，65 题）跑通并抽查，再铺开。
 - **Rationale**: 这是一次性的离线内容工作，放在开发会话里做不需要额外的运行时设施，也自然带上人工审阅这一环。按章生成可以单独重跑。

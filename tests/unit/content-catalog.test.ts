@@ -81,6 +81,25 @@ describe("Catalog：两种视图", () => {
   });
 });
 
+describe("Catalog：复习资料", () => {
+  it("按 slug 取资料，不存在返回 undefined", () => {
+    expect(catalog.getGuide("guide-x")?.title).toBe("示例资料");
+    expect(catalog.getGuide("nope")).toBeUndefined();
+  });
+
+  it("列出全部资料，与章节状态无关", () => {
+    expect(catalog.listGuides().map((g) => g.slug)).toEqual(["guide-x"]);
+    expect(new Catalog({ ...fixtureBank, chapters: [], questions: [] }).listGuides()).toHaveLength(1);
+  });
+
+  it("旧版 bank.json 没有 guides 字段时按空处理", () => {
+    const dir = mkdtempSync(path.join(tmpdir(), "quiz-bank-"));
+    const file = path.join(dir, "old.json");
+    writeFileSync(file, JSON.stringify({ ...fixtureBank, guides: undefined }), "utf8");
+    expect(loadBankFile(file).guides).toEqual([]);
+  });
+});
+
 describe("loadBankFile", () => {
   const dir = mkdtempSync(path.join(tmpdir(), "quiz-bank-"));
 

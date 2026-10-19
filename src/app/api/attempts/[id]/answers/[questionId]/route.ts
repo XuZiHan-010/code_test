@@ -6,6 +6,7 @@ const bodySchema = z.object({
   response: z.union([
     z.strictObject({ choice: z.array(z.string()) }),
     z.strictObject({ text: z.string() }),
+    z.strictObject({ blanks: z.array(z.string()).max(20) }),
     z.null(),
   ]),
 });

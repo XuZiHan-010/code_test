@@ -2,6 +2,8 @@ export const QUESTION_TYPE_LABEL = {
   single: "单选题",
   multiple: "多选题",
   short: "简答题",
+  fill: "填空题",
+  code: "代码题",
 } as const;
 
 export const VERDICT_LABEL = {

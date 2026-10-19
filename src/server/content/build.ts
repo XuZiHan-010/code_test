@@ -53,7 +53,8 @@ export function mergeBank(input: ContentInput, builtAt: string): Bank {
           section: point.section,
           type,
           stem: typed.stem?.trim() || point.stem,
-          ...(type === "short"
+          ...(type === "fill" ? { blankCount: typed.blankCount, blankOrder: typed.blankOrder } : {}),
+          ...(type === "short" || type === "fill" || type === "code"
             ? {}
             : { options: (typed.options ?? []).map((o) => ({ ...o, text: o.text.trim() })) }),
           referenceAnswer: point.referenceAnswer,
@@ -64,7 +65,7 @@ export function mergeBank(input: ContentInput, builtAt: string): Bank {
   }
 
   const topics = [...input.topics].sort((a, b) => a.order - b.order);
-  return { builtAt, topics, chapters, questions };
+  return { builtAt, topics, guides: [...(input.guides ?? [])], chapters, questions };
 }
 
 export function buildBank(input: ContentInput, builtAt: string): BuildResult {

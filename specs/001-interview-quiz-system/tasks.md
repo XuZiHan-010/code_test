@@ -60,7 +60,7 @@ description: "面试题答题系统 1.0 的任务清单"
 - [X] T014 在 `src/server/content/build.ts` 中实现合并（知识点加题型数据得到 `Question`，只保留 `approved` 章节，简答题省略 `stem` 时使用原题干）；在 `src/server/content/validator.ts` 中实现 `contracts/content-format.md` 的 V1 至 V14，返回错误列表和警告列表
 - [X] T015 创建 `scripts/build-content.ts`：读取四类输入，调用解析、合并和校验；有错误时打印题号和规则编号并以非零状态退出；成功时写出 `content/dist/bank.json`；支持 `--validate-only` 只校验不写文件；读取 `CONTENT_REQUIRE_ALL` 以启用 V12
 - [X] T016 创建 `.claude/skills/generate-questions/SKILL.md`：输入一个章节编号，读取该章的题干和参考答案，按 `spec.md` 的 FR-002 判断每个知识点的题型（明确事实或判断为单选，并列要点为多选，需要成段解释的机制、原因、取舍或对比为简答），为选择题写题干和选项并写入 `content/typed/<slug>.json`，章节状态设为 `draft`，最后运行 `npm run content:validate`。skill 中必须写明：单选 4 个选项且 1 个正确；多选 4 到 6 个选项、至少 2 个正确且不能全部正确；选项只取材于同一章节的参考答案；正确选项的位置要分散、长度不得明显长于干扰项；不得把章节状态设为 `approved`
-- [ ] T017 用 T016 的 skill 生成 `content/typed/ai-coding.json`（专题 P，4 章 65 题），运行 `npm run content:validate` 直到没有错误，处理警告。然后把全部 65 题交给项目所有者按 `contracts/content-format.md` 的四项抽查标准审阅；所有者确认后才把章节状态改为 `approved`。根据审阅意见修订 skill
+- [ ] T017 用 T016 的 skill 生成 `content/typed/ai-coding.json`（专题 P，14 章 272 题），运行 `npm run content:validate` 直到没有错误，处理警告。然后把全部 272 题交给项目所有者按 `contracts/content-format.md` 的四项抽查标准审阅；所有者确认后才把章节状态改为 `approved`。根据审阅意见修订 skill
 - [X] T018 [P] 在 `tests/unit/content-catalog.test.ts` 中写题库目录测试：按专栏、专题、章节、题号查询；作答视图序列化后不含 `correct`、`referenceAnswer`、`citations` 任何一个字段；查询不存在的题号返回空；`bank.json` 缺失或格式不符时加载失败
 - [X] T019 在 `src/server/content/catalog.ts` 中实现题库目录：加载 `content/dist/bank.json` 并建立索引；提供按专栏分组的专题列表、专题下的章节列表、章节下的题号、`getForAnswering(ids)` 和 `getWithAnswer(ids)` 两种视图。其他模块只能通过这两个函数取题目
 
@@ -101,7 +101,7 @@ description: "面试题答题系统 1.0 的任务清单"
 
 - [X] T035 [P] [US1] 在 `src/server/grading/choice.ts` 中实现选择题判分纯函数，规则见 `contracts/grading.md`
 - [X] T036 [P] [US1] 在 `src/server/grading/grader.ts` 中定义 `ShortAnswerGrader` 接口和按 `GRADER` 选择实现的工厂；在 `src/server/grading/fake-grader.ts` 中实现假评分器
-- [X] T037 [US1] 在 `src/server/grading/deepseek-grader.ts` 中实现 DeepSeek 评分器：OpenAI SDK，基础地址 `https://api.deepseek.com`，模型取 `DEEPSEEK_MODEL`，`temperature: 0`，`response_format: { type: "json_object" }`，`max_tokens: 300`，超时 20 秒；提示词满足 `contracts/grading.md` 的四条要求（判定标准、只依据参考答案、用户答案放在分隔标记内且其中的指令不得执行、包含“json”字样和输出示例）；任何失败都抛出错误，自身不重试；密钥不写入日志
+- [X] T037 [US1] 在 `src/server/grading/deepseek-grader.ts` 中实现 DeepSeek 评分器：OpenAI SDK，基础地址 `https://api.deepseek.com`，模型取 `DEEPSEEK_MODEL`，`temperature: 0`，`response_format: { type: "json_object" }`，`max_tokens: 300`，超时 30 秒；提示词满足 `contracts/grading.md` 的四条要求（判定标准、只依据参考答案、用户答案放在分隔标记内且其中的指令不得执行、包含“json”字样和输出示例）；任何失败都抛出错误，自身不重试；密钥不写入日志
 - [X] T038 [US1] 在 `src/server/attempts/service.ts` 中实现 `startAttempt`（章节范围：已有进行中的作答则返回它，否则新建并把该章题号按题库顺序写入 `question_ids`）、`getAttemptForAnswering`（通过题库目录的作答视图组装，附带已保存的答案）、`saveAnswer`（校验题号属于该作答、选项存在、单选只有一个选项、简答题不超过 2000 字；仅 `in_progress` 可写；更新 `last_question_id`）。所有查询都带当前用户条件
 - [X] T039 [US1] 在 `src/server/attempts/submit.ts` 中实现 `submitAttempt`（一个事务内：以 `status = 'in_progress'` 为条件更新状态，失败则报冲突；判选择题；给未答题补 `unanswered`；简答题记 `pending`；写入 `correct_count`、`pending_count`、`submitted_at`；存在未答题且未确认时返回未答数量而不交卷）和 `getAttemptResult`（仅已交卷可用，通过结果视图组装）
 - [X] T040 [US1] 在 `src/server/attempts/submit.ts` 的 `submitAttempt` 中加入限流：按 `attempts` 表统计该用户最近 10 分钟内已交卷次数，达到 10 次则拒绝并给出可重试的秒数（FR-041）
@@ -203,25 +203,25 @@ description: "面试题答题系统 1.0 的任务清单"
 
 ## Phase 8: 铺开题目内容
 
-**Purpose**: 把其余 14 个专题转成三种题型并通过抽查，使 151 章全部可做（FR-001、SC-001）
+**Purpose**: 把其余 14 个专题转成三种题型并通过抽查，使 161 章全部可做（FR-001、SC-001）
 
 本阶段只依赖 Phase 2 的内容流水线，可以与 Phase 3 至 7 并行。每个任务的流程相同：用 `generate-questions` skill 逐章生成，运行 `npm run content:validate` 直到没有错误并处理警告，然后交给项目所有者按 `contracts/content-format.md` 的抽查标准审阅（每个专题至少完整抽查一章，且不少于该专题题数的 10%）。**只有所有者确认后才能把章节状态改为 `approved`，实现者不得自行批准。**
 
 - [ ] T071 [P] 生成并送审 `content/typed/claude-code-insights.json`（专题 J，3 章 73 题）
-- [ ] T072 [P] 生成并送审 `content/typed/agent-illustrated-concepts.json`（专题 K，2 章 70 题）
+- [ ] T072 [P] 生成并送审 `content/typed/agent-illustrated-concepts.json`（专题 K，2 章 72 题）
 - [ ] T073 [P] 生成并送审 `content/typed/claude-code-prompts.json`（专题 I，2 章 79 题）
-- [ ] T074 [P] 生成并送审 `content/typed/claude-code-basics.json`（专题 F，3 章 136 题）
-- [ ] T075 [P] 生成并送审 `content/typed/agent-illustrated-retrieval.json`（专题 L，2 章 140 题）
-- [ ] T076 [P] 生成并送审 `content/typed/codex.json`（专题 N，4 章 146 题）
+- [ ] T074 [P] 生成并送审 `content/typed/claude-code-basics.json`（专题 F，3 章 142 题）
+- [ ] T075 [P] 生成并送审 `content/typed/agent-illustrated-retrieval.json`（专题 L，2 章 143 题）
+- [ ] T076 [P] 生成并送审 `content/typed/codex.json`（专题 N，4 章 149 题）
 - [ ] T077 [P] 生成并送审 `content/typed/agent-illustrated-engineering.json`（专题 M，4 章 154 题）
-- [ ] T078 [P] 生成并送审 `content/typed/langchain.json`（专题 E，12 章 158 题）
+- [ ] T078 [P] 生成并送审 `content/typed/langchain.json`（专题 E，12 章 165 题）
 - [ ] T079 [P] 生成并送审 `content/typed/rag.json`（专题 B，23 章 266 题）
-- [ ] T080 [P] 生成并送审 `content/typed/claude-code-playbook.json`（专题 G，10 章 268 题）
-- [ ] T081 [P] 生成并送审 `content/typed/tools.json`（专题 C，22 章 269 题）
-- [ ] T082 [P] 生成并送审 `content/typed/claude-code-source.json`（专题 H，7 章 287 题）
+- [ ] T080 [P] 生成并送审 `content/typed/claude-code-playbook.json`（专题 G，10 章 269 题）
+- [ ] T081 [P] 生成并送审 `content/typed/tools.json`（专题 C，22 章 270 题）
+- [ ] T082 [P] 生成并送审 `content/typed/claude-code-source.json`（专题 H，7 章 295 题）
 - [ ] T083 [P] 生成并送审 `content/typed/llm.json`（专题 D，23 章 288 题）
-- [ ] T084 [P] 生成并送审 `content/typed/agent.json`（专题 A，30 章 485 题）
-- [ ] T085 设置 `CONTENT_REQUIRE_ALL=1` 运行 `npm run content:build`，确认 151 章全部为 `approved`、2884 题全部进入 `content/dist/bank.json`、没有错误
+- [ ] T084 [P] 生成并送审 `content/typed/agent.json`（专题 A，30 章 511 题）
+- [ ] T085 设置 `CONTENT_REQUIRE_ALL=1` 运行 `npm run content:build`，确认 161 章全部为 `approved`、3215 题全部进入 `content/dist/bank.json`、没有错误
 
 **Checkpoint**: 题库全部可做
 
@@ -301,10 +301,10 @@ Task: "T048 结果组件 src/components/result/"
 
 ### MVP First (User Story 1 Only)
 
-1. 完成 Phase 1 和 Phase 2。Phase 2 结束时试点专题（AI 编程，65 题）已通过抽查，题型转换的质量已经有结论
+1. 完成 Phase 1 和 Phase 2。Phase 2 结束时试点专题（AI 编程，272 题）已通过抽查，题型转换的质量已经有结论
 2. 完成 Phase 3（US1）
 3. **停下来验证**：按 `quickstart.md` 场景 1、6、7 检查
-4. 此时用试点专题的 4 章已经可以完整地做题、评分、看解答
+4. 此时用试点专题的 14 章已经可以完整地做题、评分、看解答
 
 ### Incremental Delivery
 

@@ -1,0 +1,63 @@
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: #141b1a;
+  --color-paper-deep: #2c3733;
+  --color-card: #1d2724;
+  --color-ink: #e8eee8;
+  --color-ink-soft: #b1c1b7;
+  --color-ink-faint: #95a79c;
+  --color-rule: #38463e;
+  --color-accent: #8bd2b2;
+  --color-accent-ink: #142c23;
+  --color-pen: #f2a092;
+  --color-pen-soft: #402b27;
+  --color-pass: #8ed2ac;
+  --color-pass-soft: #243b2e;
+  --color-blue: #9fc9df;
+  --color-blue-soft: #25353d;
+  --color-wait: #e4c280;
+  --color-wait-soft: #3d3524;
+}
+
+h1, h2, h3 { text-wrap: balance; scroll-margin-top: 6rem; }
+button, a, input, textarea { touch-action: manipulation; }
+button:disabled { cursor: not-allowed; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; padding: 12px 20px; background: var(--color-card); color: var(--color-ink); border-radius: 8px; }
+.skip-link:focus { top: 12px; }
+.appearance-settings { position: relative; }
+.settings-trigger { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--color-rule); border-radius: 10px; color: var(--color-ink-soft); cursor: pointer; }
+.settings-trigger:hover, .settings-trigger[aria-expanded="true"] { background: var(--color-paper-deep); color: var(--color-ink); }
+.settings-panel { position: absolute; top: calc(100% + 14px); right: 0; z-index: 40; width: 252px; padding: 20px; border: 1px solid var(--color-rule); border-radius: 14px; background: var(--color-card); box-shadow: 0 12px 40px rgb(0 0 0 / 0.12); }
+.theme-choice { min-height: 48px; border: 1px solid var(--color-rule); border-radius: 8px; color: var(--color-ink-soft); cursor: pointer; }
+.theme-choice:hover { border-color: var(--color-accent); }
+.theme-choice[aria-pressed="true"] { border-color: var(--color-accent); background: var(--color-pass-soft); color: var(--color-accent); font-weight: 700; }
+.auth-shell { position: relative; min-height: 100svh; display: flex; align-items: center; justify-content: center; padding: 88px 24px 48px; }
+.auth-form-panel { width: 100%; max-width: 420px; padding: 32px; border: 1px solid var(--color-rule); border-radius: 16px; background: var(--color-card); }
+.auth-settings { position: absolute; top: 24px; right: 24px; }
+.chapter-list { display: grid; gap: 14px; }
+.chapter-row { border: 1px solid var(--color-rule); border-radius: 14px; background: var(--color-card); padding: 24px; }
+.chapter-row > .stamp { min-width: 44px; min-height: 44px; display: grid; place-items: center; font-size: 13px; background: var(--color-pass-soft); border-color: transparent; }
+.chapter-row .link { text-decoration: none; }
+.chapter-row .link:hover { text-decoration: underline; }
+.chapter-summary { display: flex; flex-wrap: wrap; gap: 10px 24px; padding: 18px 0 28px; color: var(--color-ink-soft); font-size: 13px; }
+.chapter-summary strong { color: var(--color-ink); font-variant-numeric: tabular-nums; }
+.chapter-row h2, article h2 { overflow-wrap: anywhere; }
+.question-option { border-radius: 10px; }
+.question-option:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.question-option:has(input:disabled) { cursor: default; opacity: .65; }
+.quiz-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 24px; align-items: start; }
+.quiz-sidebar { position: sticky; top: 96px; }
+.quiz-sidebar header { flex-wrap: wrap; gap: 8px; }
+.quiz-sidebar button { border-radius: 7px; }
+@media (max-width: 900px) { .quiz-layout { grid-template-columns: 1fr; } .quiz-sidebar { position: static; } }
+@media (max-width: 760px) {
+  .auth-shell { padding: 80px 20px 32px; }
+  .auth-form-panel { padding: 28px 24px; }
+  .auth-settings { top: 16px; right: 20px; }
+  .chapter-row { padding: 20px 16px; }
+}
+@media (max-width: 440px) {
+  header > div > a[aria-label="面试题练习册首页"] { display: none; }
+  header > div > nav { gap: 8px; }
+  header > div > div > div > span[title] { max-width: 52px; }
+}

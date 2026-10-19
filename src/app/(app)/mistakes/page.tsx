@@ -14,7 +14,7 @@ async function Summary() {
   if (summary.total === 0) {
     return (
       <div className="sheet px-6 py-12 text-center">
-        <p className="mb-2 font-serif text-lg font-bold">还没有错题</p>
+        <p className="mb-2 font-head text-lg font-bold">还没有错题</p>
         <p className="mx-auto mb-6 max-w-sm text-sm text-ink-soft">
           做题交卷后，被判错的题会自动记在这里，并统计每道题错了几次。没有作答的题不算错题。
         </p>
@@ -33,7 +33,7 @@ async function Summary() {
       </p>
       {summary.topics.map((topic) => (
         <section key={topic.prefix} className="rise">
-          <h2 className="mb-3 flex items-baseline gap-3 border-b border-ink pb-2 font-serif text-lg font-bold">
+          <h2 className="mb-3 flex items-baseline gap-3 border-b border-ink pb-2 font-head text-lg font-bold">
             <span className="stamp">{topic.prefix}</span>
             {topic.title}
             <span className="ml-auto font-mono text-sm font-normal text-pen">

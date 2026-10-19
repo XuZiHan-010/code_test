@@ -6,6 +6,8 @@ export const topicSchema = z.object({
   title: z.string().min(1),
   column: z.string().min(1),
   order: z.number().int(),
+  /** 专题的复习资料 slug，对应 content/guides/<guide>.md */
+  guide: z.string().regex(/^[a-z0-9-]+$/).optional(),
 });
 
 export const topicsFileSchema = z.array(topicSchema);
@@ -25,6 +27,8 @@ export const typedQuestionSchema = z.object({
   type: z.string(),
   stem: z.string().optional(),
   options: z.array(typedOptionSchema).optional(),
+  blankCount: z.number().optional(),
+  blankOrder: z.enum(["ordered", "unordered"]).optional(),
 });
 
 export const typedChapterSchema = z.object({

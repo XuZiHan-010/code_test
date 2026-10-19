@@ -15,8 +15,10 @@ export class ContentParseError extends Error {
 const CHAPTER_HEADING = /^##\s+(\d+)\.\s+(.+?)\s*$/;
 const SECTION_HEADING = /^###\s+(.+?)\s*$/;
 const ITEM_LINE = /^-\s+\*\*([A-Z]+)(\d+)-(\d+)\*\*\s+(.*)$/;
-const SOURCE_LINE = /^原文：\[(.+)\]\((https?:\/\/[^\s)]+)\)。?\s*$/;
-const TRAILING_CITATION = /\s*\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)\s*$/;
+// 链接除 http(s) 外，还接受站内复习资料 /guides/<slug>（可带 #锚点）
+const LINK_URL = String.raw`(https?:\/\/[^\s)]+|\/guides\/[^\s)]+)`;
+const SOURCE_LINE = new RegExp(String.raw`^原文：\[(.+)\]\(${LINK_URL}\)。?\s*$`);
+const TRAILING_CITATION = new RegExp(String.raw`\s*\[([^\]]+)\]\(${LINK_URL}\)\s*$`);
 
 interface RawItem {
   id: string;
@@ -42,10 +44,17 @@ function parseFile(markdown: string, prefix: string, label: string): RawFile {
   const items: RawItem[] = [];
   let chapter: RawChapter | null = null;
   let section: string | null = null;
+  let current = null as RawItem | null;
 
   const lines = markdown.replace(/^﻿/, "").split(/\r?\n/);
   lines.forEach((line, index) => {
     const where = `${label} 第 ${index + 1} 行`;
+
+    // 题号行之后缩进两个空格的行和其间的空行，属于同一题（代码题的多行答案）
+    if (current && (line.startsWith("  ") || line.trim() === "")) {
+      current.text += `\n${line.startsWith("  ") ? line.slice(2) : ""}`;
+      return;
+    }
 
     const chapterMatch = CHAPTER_HEADING.exec(line);
     if (chapterMatch) {
@@ -57,12 +66,14 @@ function parseFile(markdown: string, prefix: string, label: string): RawFile {
       };
       chapters.push(chapter);
       section = null;
+      current = null;
       return;
     }
 
     const sectionMatch = SECTION_HEADING.exec(line);
     if (sectionMatch) {
       section = sectionMatch[1];
+      current = null;
       return;
     }
 
@@ -91,7 +102,8 @@ function parseFile(markdown: string, prefix: string, label: string): RawFile {
         `${where}：题目 ${id} 不属于所在的第 ${chapter.number} 章`,
       );
     }
-    items.push({ id, chapterNumber: chapter.number, section, text });
+    current = { id, chapterNumber: chapter.number, section, text };
+    items.push(current);
   });
 
   return { chapters, items };

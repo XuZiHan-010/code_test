@@ -1,127 +1,186 @@
 @import "tailwindcss";
 
-/*
- * 视觉方向：一张试卷。米色纸面、墨色文字、红笔批改。
- * 题号像印在卷面上的编号，题目概览像答题卡上的涂卡格，成绩用红笔圈出。
- * 界面是中文，所以用各平台自带的宋体和黑体，不加载网络字体。
- */
+/* Semantic workbook theme. */
 @theme {
-  --color-paper: #f4efe4;
-  --color-paper-deep: #e9e1d0;
-  --color-card: #fffdf7;
-  --color-ink: #1d1b18;
-  --color-ink-soft: #5a554c;
-  --color-ink-faint: #8d8779;
-  --color-rule: #d8cfbd;
-  --color-pen: #bf3220;
-  --color-pen-soft: #f7e3de;
-  --color-pass: #2a764a;
-  --color-pass-soft: #deeee4;
-  --color-blue: #1f3d63;
-  --color-blue-soft: #e2e9f2;
-  --color-wait: #94660f;
-  --color-wait-soft: #f6ebd0;
+  /* 这些名字是角色，不是颜色：paper 是页面底色，card 是面板，ink 是文字 */
+  --color-paper: #f6f7f4;
+  --color-paper-deep: #e9ede8;
+  --color-card: #ffffff;
+  --color-ink: #202e2b;
+  --color-ink-soft: #52645d;
+  --color-ink-faint: #68766e;
+  --color-rule: #dde4dd;
 
-  --font-serif: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "STSong", "SimSun",
-    Georgia, serif;
-  --font-sans: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", "Noto Sans CJK SC",
-    system-ui, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  --color-accent: #246b56;
+  --color-accent-ink: #ffffff;
+
+  --color-pen: #b64435;
+  --color-pen-soft: #fbece7;
+  --color-pass: #23724f;
+  --color-pass-soft: #e8f3ec;
+  --color-blue: #316b87;
+  --color-blue-soft: #eaf2f7;
+  --color-wait: #8a611b;
+  --color-wait-soft: #f8f0dc;
+
+  --font-sans: "PingFang SC", "HarmonyOS Sans SC", "MiSans", "Microsoft YaHei UI",
+    "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+  /* 标题：拉丁字母和数字走 DIN 一类的字体，中文走黑体 */
+  --font-head: "Bahnschrift", "DIN Alternate", "Avenir Next", "PingFang SC", "HarmonyOS Sans SC",
+    "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  /* 记分牌上的大数字和英文小标签 */
+  --font-display: "Bahnschrift", "DIN Condensed", "Avenir Next Condensed", "Roboto Condensed",
+    "Arial Narrow", "PingFang SC", "Microsoft YaHei UI", sans-serif;
+  --font-mono: "Cascadia Code", "SF Mono", ui-monospace, Consolas, monospace;
 }
 
 html {
   background: var(--color-paper);
+  color-scheme: light;
 }
 
 body {
   color: var(--color-ink);
   font-family: var(--font-sans);
-  line-height: 1.7;
-  /* 纸面上极淡的横线 */
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 35px,
-    color-mix(in srgb, var(--color-rule) 38%, transparent) 35px,
-    color-mix(in srgb, var(--color-rule) 38%, transparent) 36px
-  );
-  background-attachment: local;
+  line-height: 1.75;
+
 }
 
 ::selection {
-  background: var(--color-pen-soft);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-blue);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 @layer components {
+  /* 面板 */
   .sheet {
-    @apply rounded-sm border border-rule bg-card;
-    box-shadow:
-      0 1px 0 var(--color-paper-deep),
-      0 10px 24px -18px rgb(60 45 20 / 0.45);
+    @apply border border-rule bg-card;
+    border-radius: 16px;
+    box-shadow: 0 3px 16px rgb(26 49 39 / 0.025);
+  }
+
+  /* 可点击的面板：悬停时抬起，露出一块硬边的黄色投影 */
+  .lift {
+    transition:
+      transform 0.16s ease-out,
+      box-shadow 0.16s ease-out,
+      border-color 0.16s ease-out;
+  }
+  .lift:hover,
+  .lift:focus-visible {
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 24px rgb(26 49 39 / 0.08);
+    transform: translateY(-2px);
   }
 
   .title {
-    @apply font-serif text-2xl font-bold tracking-wide text-ink sm:text-3xl;
+    @apply font-head text-3xl leading-tight font-bold tracking-tight text-ink sm:text-4xl;
   }
 
+  /* 小标签：英文大写的窄体，前面带两道斜杠 */
   .eyebrow {
-    @apply font-mono text-xs tracking-[0.2em] text-ink-faint uppercase;
+    @apply font-display text-xs font-bold tracking-[0.22em] text-accent uppercase;
+    font-stretch: 85%;
+  }
+  .eyebrow::before {
+    content: "";
+    margin-right: 0.6em;
+    color: var(--color-pen);
+    letter-spacing: 0;
+  }
+
+  /* 记分牌数字 */
+  .display {
+    @apply font-display leading-none font-bold;
+    font-stretch: 75%;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 背景里只有描边的大号数字 */
+  .ghost-num {
+    @apply font-display pointer-events-none leading-none font-bold italic select-none;
+    font-stretch: 75%;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-rule);
   }
 
   .btn {
-    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-sm border border-ink bg-card px-4 py-2 text-sm font-medium text-ink transition-colors duration-150 select-none;
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 border border-ink-faint bg-transparent px-5 py-2 text-sm font-bold text-ink select-none;
+    border-radius: 9px;
+    transition:
+      transform 0.14s ease-out,
+      box-shadow 0.14s ease-out,
+      background-color 0.14s ease-out,
+      border-color 0.14s ease-out,
+      color 0.14s ease-out;
   }
   .btn:hover {
-    @apply bg-paper-deep;
+    @apply border-ink bg-paper-deep;
   }
   .btn:disabled {
-    @apply cursor-not-allowed opacity-50;
+    @apply cursor-not-allowed opacity-45;
+    box-shadow: none;
   }
   .btn-primary {
-    @apply border-ink bg-ink text-card;
+    @apply border-accent bg-accent text-accent-ink;
+    box-shadow: 0 2px 3px rgb(26 49 39 / 0.08);
   }
-  .btn-primary:hover {
-    @apply bg-blue border-blue;
+  .btn-primary:hover:not(:disabled) {
+    @apply border-accent bg-accent;
+    filter: brightness(1.08);
+    transform: translateY(-1px);
   }
   .btn-pen {
     @apply border-pen text-pen;
   }
-  .btn-pen:hover {
-    @apply bg-pen-soft;
+  .btn-pen:hover:not(:disabled) {
+    @apply border-pen bg-pen text-accent-ink;
   }
   .btn-quiet {
-    @apply border-transparent bg-transparent text-ink-soft underline-offset-4;
+    @apply border-transparent bg-transparent px-2 font-normal text-ink-soft underline-offset-4;
+    transform: none;
   }
   .btn-quiet:hover {
-    @apply bg-transparent text-ink underline;
+    @apply border-transparent bg-transparent text-ink underline;
   }
 
   .field {
-    @apply block min-h-11 w-full rounded-sm border border-rule bg-card px-3 py-2 text-base text-ink;
+    border-radius: 9px;
+    @apply block min-h-12 w-full border border-rule bg-paper px-3.5 py-2.5 text-base text-ink;
+    transition:
+      border-color 0.14s ease-out,
+      box-shadow 0.14s ease-out;
+  }
+  .field::placeholder {
+    color: var(--color-ink-faint);
   }
   .field:focus {
-    @apply border-blue;
+    @apply border-accent;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 16%, transparent);
   }
 
   .link {
-    @apply text-blue underline decoration-rule underline-offset-4 transition-colors;
+    @apply text-blue underline decoration-blue/40 underline-offset-4 transition-colors;
   }
   .link:hover {
     @apply decoration-blue;
   }
 
-  /* 印在卷面上的题号、章节编号 */
+  /* 题号、章节编号 */
   .stamp {
-    @apply inline-block rounded-sm border border-rule bg-paper px-1.5 py-0.5 font-mono text-xs leading-5 text-ink-soft;
+    border-radius: 7px;
+    @apply inline-block border border-rule bg-paper px-1.5 py-0.5 font-mono text-xs leading-5 text-accent;
   }
 
   .tag {
-    @apply inline-flex items-center rounded-sm px-2 py-0.5 text-xs font-medium;
+    border-radius: 6px;
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-bold;
   }
   .tag-pass {
     @apply bg-pass-soft text-pass;
@@ -138,12 +197,42 @@ body {
   .tag-plain {
     @apply bg-paper-deep text-ink-soft;
   }
+  .tag-accent {
+    @apply bg-accent text-accent-ink;
+  }
+
+  /* 警示条纹：用在“尚未开放”这类提示上 */
+  .hazard {
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--color-accent) 0 10px,
+      var(--color-accent-ink) 10px 20px
+    );
+  }
+  .hazard-faint {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(255 255 255 / 0.035) 0 12px,
+      transparent 12px 24px
+    );
+  }
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
   }
   to {
     opacity: 1;
@@ -152,11 +241,31 @@ body {
 }
 
 .rise {
-  animation: rise 0.35s ease-out both;
+  animation: rise 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+.slide-in {
+  animation: slide-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+.stagger-1 {
+  animation-delay: 0.08s;
+}
+.stagger-2 {
+  animation-delay: 0.16s;
+}
+.stagger-3 {
+  animation-delay: 0.24s;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rise {
+  .rise,
+  .slide-in {
     animation: none;
   }
+  .lift,
+  .btn {
+    transition: none;
+  }
 }
+/* Refresh workbook palette. */

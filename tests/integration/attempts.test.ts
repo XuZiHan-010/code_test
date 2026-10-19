@@ -59,7 +59,12 @@ describe("取作答（交卷前）", () => {
 
     const view = await getAttemptForAnswering(user.id, attemptId);
     if (view.status !== "in_progress") throw new Error("应为进行中");
-    expect(view.scope).toEqual({ type: "chapter", chapterId: "X1", title: "第一章" });
+    expect(view.scope).toEqual({
+      type: "chapter",
+      chapterId: "X1",
+      title: "第一章",
+      source: { title: "第一篇", url: "https://example.com/a.html" },
+    });
     expect(view.lastQuestionId).toBe("X1-3");
     expect(view.questions.map((q) => q.id)).toEqual(["X1-1", "X1-2", "X1-3", "X1-4", "X1-5"]);
     expect(view.questions[0].response).toEqual({ choice: ["B"] });
@@ -332,7 +337,12 @@ describe("取结果", () => {
     const result = await getAttemptResult(user.id, attemptId);
     expect(result).toMatchObject({
       id: attemptId,
-      scope: { type: "chapter", chapterId: "X1", title: "第一章" },
+      scope: {
+        type: "chapter",
+        chapterId: "X1",
+        title: "第一章",
+        source: { title: "第一篇", url: "https://example.com/a.html" },
+      },
       totalCount: 5,
       correctCount: 1,
       pendingCount: 1,

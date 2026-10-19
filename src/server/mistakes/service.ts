@@ -8,6 +8,8 @@ import { getMembership } from "@/server/notebook/service";
 // “错题”就是累计错误次数至少为 1 的题。规则见 data-model.md 的 question_stats。
 
 export interface MistakeItem extends QuestionWithAnswer {
+  /** 这道题出自哪篇原文 */
+  source: { title: string; url: string } | null;
   wrongCount: number;
   /** 最近一次的判定：后来答对了也仍然留在错题里 */
   lastVerdict: "correct" | "incorrect";
@@ -109,6 +111,7 @@ export async function listChapterMistakes(
       const stat = stats.get(question.id)!;
       return {
         ...question,
+        source: getCatalog().getSource(question.id),
         wrongCount: stat.wrongCount,
         lastVerdict: stat.lastVerdict === "correct" ? "correct" : "incorrect",
         inNotebook: inNotebook.has(question.id),

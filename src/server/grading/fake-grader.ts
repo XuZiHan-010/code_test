@@ -5,8 +5,14 @@ import type { ShortAnswerGrader } from "./grader";
  * 【对】判对，【错】判错，【失败】模拟评分服务出错，其余一律判错。
  */
 export const fakeGrader: ShortAnswerGrader = {
-  async grade({ userAnswer }) {
-    const answer = userAnswer.trim();
+  async grade({ userAnswer, type }) {
+    const trimmed = userAnswer.trim();
+    // 代码题的标记可以写在注释里（# // --），先去掉首行注释前缀
+    const answer = type === "fill"
+      ? trimmed.replace(/^第 1 空：\s*/, "")
+      : type === "code"
+        ? trimmed.replace(/^(#|\/\/|--)\s*/, "")
+        : trimmed;
     if (answer.startsWith("【失败】")) {
       throw new Error("假评分器：模拟评分服务不可用");
     }

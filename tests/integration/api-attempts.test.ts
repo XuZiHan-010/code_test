@@ -4,6 +4,8 @@ import { GET as getResultRoute } from "@/app/api/attempts/[id]/result/route";
 import { GET as getAttemptRoute } from "@/app/api/attempts/[id]/route";
 import { POST as submitRoute } from "@/app/api/attempts/[id]/submit/route";
 import { POST as startRoute } from "@/app/api/attempts/route";
+import { Catalog, setCatalogForTesting } from "@/server/content/catalog";
+import { fixtureBank } from "../fixtures/bank";
 import { apiRequest, createUser, getAttemptRow, routeParams, startAndAnswer } from "./helpers";
 
 // 这些键一旦出现在交卷前的响应里，用户就能从浏览器里看到答案
@@ -101,6 +103,35 @@ describe("GET /api/attempts/{id}", () => {
       inNotebook: false,
       response: { choice: ["B"] },
     });
+  });
+
+  it("代码题在交卷前同样不含参考答案", async () => {
+    const bank = structuredClone(fixtureBank);
+    const question = bank.questions.find((q) => q.id === "X1-3")!;
+    delete (question as { options?: unknown }).options;
+    Object.assign(question, { type: "code", stem: "用任意语言实现二分查找。", referenceAnswer: "思路。\n\n```python\ndef f(): pass\n```\n\n要点：O(n)。" });
+    setCatalogForTesting(new Catalog(bank));
+    try {
+      const user = await createUser("alice");
+      const attemptId = await startAndAnswer(user.id, "X1", { "X1-3": { text: "def g(): return 1" } });
+      const response = await getAttemptRoute(
+        apiRequest(`/api/attempts/${attemptId}`, { token: user.token }),
+        routeParams({ id: attemptId }),
+      );
+      expect(response.status).toBe(200);
+      const payload = await response.json();
+      const keys = collectKeys(payload);
+      for (const forbidden of FORBIDDEN_KEYS) {
+        expect(keys.has(forbidden), `响应里出现了 ${forbidden}`).toBe(false);
+      }
+      expect(JSON.stringify(payload)).not.toContain("def f(): pass");
+      expect(payload.questions.find((q: { id: string }) => q.id === "X1-3")).toMatchObject({
+        type: "code",
+        response: { text: "def g(): return 1" },
+      });
+    } finally {
+      setCatalogForTesting(new Catalog(fixtureBank));
+    }
   });
 
   it("未登录返回 401，别人的作答返回 404", async () => {
