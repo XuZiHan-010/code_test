@@ -6,9 +6,10 @@
  *
  * 设置 CONTENT_REQUIRE_ALL=1 时，要求每个章节都已通过抽查（规则 V12）。
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { buildBank } from "../src/server/content/build";
+import { parseGuide } from "../src/server/content/guide";
 import { ContentParseError, parseTopic } from "../src/server/content/parser";
 import {
   retiredIdsSchema,
@@ -16,13 +17,16 @@ import {
   typedTopicFileSchema,
   type TypedTopicFile,
 } from "../src/server/content/typed-schema";
-import type { ParsedTopic } from "../src/server/content/types";
+import type { Guide, ParsedTopic } from "../src/server/content/types";
 
 const root = process.cwd();
 const validateOnly = process.argv.includes("--validate-only");
 const requireAll = process.env.CONTENT_REQUIRE_ALL === "1";
+// 试运行开关：抽查完成之前，允许生产构建带上 draft 章节（项目所有者 2026-10-19 决定先试运行）。
+// 正式上线前必须去掉，改设 CONTENT_REQUIRE_ALL=1。
+const trialDrafts = process.env.CONTENT_ALLOW_DRAFTS_IN_PROD === "1";
 // 仅供本地开发：在抽查完成之前也能看到 draft 章节。上线构建不得使用。
-const includeDrafts = process.env.CONTENT_INCLUDE_DRAFTS === "1";
+const includeDrafts = process.env.CONTENT_INCLUDE_DRAFTS === "1" || trialDrafts;
 
 function readText(...segments: string[]): string {
   return readFileSync(path.join(root, ...segments), "utf8");
@@ -33,9 +37,28 @@ function fail(message: string): never {
   process.exit(1);
 }
 
+/** 读取 content/guides/*.md；目录不存在或为空时返回空数组 */
+function readGuides(): Guide[] {
+  const dir = path.join(root, "content", "guides");
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir)
+    .filter((name) => name.endsWith(".md"))
+    .sort()
+    .map((name) => {
+      try {
+        return parseGuide(name.slice(0, -3), readFileSync(path.join(dir, name), "utf8"));
+      } catch (error) {
+        return fail(`读取 content/guides/${name} 失败：${(error as Error).message}`);
+      }
+    });
+}
+
 function main(): void {
-  if (includeDrafts && (requireAll || process.env.NODE_ENV === "production")) {
-    fail("CONTENT_INCLUDE_DRAFTS 只能用于本地开发，不能和 CONTENT_REQUIRE_ALL 或生产环境一起使用。");
+  if (includeDrafts && requireAll) {
+    fail("CONTENT_INCLUDE_DRAFTS / CONTENT_ALLOW_DRAFTS_IN_PROD 不能和 CONTENT_REQUIRE_ALL 一起使用。");
+  }
+  if (includeDrafts && !trialDrafts && process.env.NODE_ENV === "production") {
+    fail("CONTENT_INCLUDE_DRAFTS 只能用于本地开发；生产环境试运行请改用 CONTENT_ALLOW_DRAFTS_IN_PROD=1。");
   }
 
   const topicsResult = topicsFileSchema.safeParse(
@@ -87,8 +110,9 @@ function main(): void {
     typed.push(typedResult.data);
   }
 
+  const guides = readGuides();
   const result = buildBank(
-    { topics, parsed, typed, retiredIds: retiredResult.data, requireAll, includeDrafts },
+    { topics, parsed, typed, retiredIds: retiredResult.data, guides, requireAll, includeDrafts },
     new Date().toISOString(),
   );
 
@@ -115,10 +139,13 @@ function main(): void {
   );
   console.log(
     `已生成题型的章节 ${typedChapters} 个，其中通过抽查 ${approvedChapters} 个；` +
-      `本次输出 ${bank.chapters.length} 章 ${bank.questions.length} 题（单选 ${byType("single")}，多选 ${byType("multiple")}，简答 ${byType("short")}）。`,
+      `本次输出 ${bank.chapters.length} 章 ${bank.questions.length} 题（单选 ${byType("single")}，多选 ${byType("multiple")}，简答 ${byType("short")}，填空 ${byType("fill")}，代码 ${byType("code")}）。`,
   );
+  console.log(`复习资料 ${guides.length} 份。`);
   console.log(`校验通过，${result.warnings.length} 个警告。`);
-  if (includeDrafts) {
+  if (trialDrafts) {
+    console.warn("注意：CONTENT_ALLOW_DRAFTS_IN_PROD=1，输出包含尚未通过抽查的 draft 章节，仅供试运行，正式上线前必须去掉。");
+  } else if (includeDrafts) {
     console.warn("注意：CONTENT_INCLUDE_DRAFTS=1，输出包含尚未通过抽查的 draft 章节，仅供本地开发。");
   }
 

@@ -2,6 +2,9 @@
     "name": "xiaolin-quiz",
     "version": "0.1.0",
     "private": true,
+    "engines": {
+        "node": "24.x"
+    },
     "scripts": {
         "dev": "next dev",
         "prebuild": "npm run content:build",
@@ -17,6 +20,7 @@
         "db:migrate": "tsx scripts/migrate.ts",
         "content:build": "tsx scripts/build-content.ts",
         "content:validate": "tsx scripts/build-content.ts --validate-only",
+        "content:check-links": "tsx scripts/check-links.ts",
         "eval:grading": "tsx scripts/eval-grading.ts"
     },
     "dependencies": {
