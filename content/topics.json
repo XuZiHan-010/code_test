@@ -23,6 +23,5 @@
   { "prefix": "W", "slug": "linux", "title": "Linux 命令", "column": "工具使用", "order": 22 },
   { "prefix": "X", "slug": "git", "title": "Git", "column": "工具使用", "order": 23 },
   { "prefix": "Y", "slug": "docker", "title": "Docker", "column": "工具使用", "order": 24 },
-  { "prefix": "Z", "slug": "rpa", "title": "RPA 开发", "column": "RPA", "order": 25, "guide": "rpa" },
   { "prefix": "O", "slug": "redis", "title": "Redis", "column": "数据库", "order": 26 }
 ]
